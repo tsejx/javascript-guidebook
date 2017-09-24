@@ -1,6 +1,6 @@
-﻿# JavaScript生存指南
+﻿# JavaScript Guidebook
 
-先挖坑，慢慢填
+这哥Repository是关于JavaScript的一些基础语法知识以及进阶、高阶用法，大部分资源来源于网络，本人仅作整理汇总，文章来源均已标明。希望此Repo能作为提高JavaScript的编程水平。
 
 ## ECMAScript
 
