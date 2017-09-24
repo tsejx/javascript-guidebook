@@ -1,8 +1,5 @@
 ﻿# Javascript类型系统——字符串String类型
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　Javascript没有表示单个字符的字符型，只有字符串String类型，字符型相当于仅包含一个字符的字符串
@@ -110,7 +107,7 @@ lines"*/
 'two\nlines'
 ```
 
-### 转义字符 
+### 转义字符
 
 　　在javascript字符串，反斜线(\)有着特殊的用途，反斜线符号后加一个字符，就不表示它们的字面含义，用来表示一些特殊字符，称为转义字符
 
@@ -155,7 +152,7 @@ lang = lang + "script"; //'javascript'
 
 　　这个过程在后台发生，也是在某些旧版本浏览器(IE6)拼接字符串速度慢的原因，但浏览器后面版本已经解决了这个低效率问题
 
- 
+
 ## 转字符串
 　　把一个值转换为字符串有两种方式，toString()和String()
 
@@ -215,15 +212,15 @@ String({
   }
 })
 ```
- 
+
 
 参考资料
 
-【1】 ES5/类型 https://www.w3.org/html/ig/zh/wiki/ES5/types 
-【2】 阮一峰Javascript标准参考教程——基本语法之字符串 http://javascript.ruanyifeng.com 
+【1】 ES5/类型 https://www.w3.org/html/ig/zh/wiki/ES5/types
+【2】 阮一峰Javascript标准参考教程——基本语法之字符串 http://javascript.ruanyifeng.com
 【3】 W3School-Javascript高级教程——ECMAScript原始类型 http://www.w3school.com.cn
 【4】《javascript权威指南(第6版)》第3章 类型、值和变量
-【5】《javascript高级程序设计(第3版)》第3章 基本概念 
+【5】《javascript高级程序设计(第3版)》第3章 基本概念
 【6】《javascript语言精粹(修订版)》第2章 语法
 【7】《javascript DOM编程艺术(第2版)》第2章 Javascript语法
 

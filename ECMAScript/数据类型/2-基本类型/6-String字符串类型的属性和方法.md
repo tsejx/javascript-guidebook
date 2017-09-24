@@ -1,8 +1,5 @@
-﻿# String字符串类型的属性和方法 
+﻿# String字符串类型的属性和方法
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　前面已经介绍过字符串String类型的基本知识，本文将介绍String类型的属性和方法
@@ -27,7 +24,7 @@ console.log(str,str.length);//"test",4
 
 　　字符串String对象有多达20多个实例方法，包括toString()、toLocaleString()、valueOf()从Object对象继承的3种对象通用方法，chartAt()、中括号[]、charCodeAt()和fromCharCode()4种访问字符方法，concat()和加号+这2种字符串拼接方法，slice()、substr()和substring()3种创建子字符串方法，toLowerCase()、toLocaleLowerCase()、toUpperCase()、toLocaleUpperCase()这4种大小写转换方法，indexOf()和lastIndexOf()这2种查找字符串位置的方法，match()、search()、replace()、split()这4种正则匹配方法以及去除首尾空格的trim()方法和字符串比较的localeCompare()方法
 
- 
+
 
 ### 对象通用方法
 　　String类型是与字符串对应的包装类型，继承了Object对象的通用方法toString()、toLocaleString()、valueOf()这三个方法
@@ -63,7 +60,7 @@ var str = "hello";
 console.log(str.charAt(1));//e
 console.log(str.charAt(-1));//''
 console.log(str.charAt(10));//''
-console.log(str.charAt());//h 
+console.log(str.charAt());//h
 console.log(str.charAt(NaN));//h
 ```
 
@@ -176,7 +173,7 @@ console.log(stringValue);//'hello'
 
 var stringValue = 'hello ';
 console.log(stringValue.concat('world','!'));//'hello world!'
-console.log(stringValue + 'world' + '!');//'hello world!' 
+console.log(stringValue + 'world' + '!');//'hello world!'
 　　[注意]当操作数其中一个是字符串，或者对象转换为字符串时，才进行字符串拼接
 
 复制代码
@@ -187,7 +184,7 @@ o + 2;//'12'
 var o = {valueOf:function(){return 1;}};
 o + 2;//3
 复制代码
- 
+
 
 创建子字符串
 　　创建子字符串共有slice()、substr()和substring()三种方法
@@ -211,7 +208,7 @@ console.log(stringValue.slice(2,-5));//'llo '
 console.log(stringValue.slice(2,-20));//''
 console.log(stringValue.slice(20));//''
 console.log(stringValue.slice(-2,2));//''
-console.log(stringValue.slice(-2,-20));//''            
+console.log(stringValue.slice(-2,-20));//''
 console.log(stringValue.slice(-2,20));//'ld'
 console.log(stringValue.slice(-20,2));//'he'
 console.log(stringValue.slice(-20,-2));//'hello wor'
@@ -249,7 +246,7 @@ console.log(stringValue.substring(-2,20));//'hello world'
 console.log(stringValue.substring(3,2));//'l'
 console.log(stringValue.substring(3,NaN));//'hel'
 console.log(stringValue.substring(-20,2));//'he'
-console.log(stringValue.substring(-20,-2));//'' 
+console.log(stringValue.substring(-20,-2));//''
 复制代码
 　　同样地，substring()方法也涉及到Number()转型函数的隐式类型转换
 
@@ -285,7 +282,7 @@ console.log(stringValue.substr(20));//''
 console.log(stringValue.substr(-2,3));//'ld'
 console.log(stringValue.substr(-2,20));//'ld'
 console.log(stringValue.substr(-20,2));//'he'
-console.log(stringValue.substr(-20,-2));//''    
+console.log(stringValue.substr(-20,-2));//''
 console.log(stringValue.substr(2,5));//llo w
 复制代码
 　　同样地，substr()方法也涉及到Number()转型函数的隐式类型转换
@@ -301,7 +298,7 @@ var str = '';
 console.log(str.slice(1));//''
 console.log(str.substring(1));//''
 console.log(str.substr(1));//''
- 
+
 
 大小写转换
 　　ECMAScript中涉及字符串大小写转换的方法有4个：toLowerCase()、toLocaleLowerCase()、toUpperCase()、toLocaleUpperCase()
@@ -352,7 +349,7 @@ for(var i = 1; i < arr.length; i++){
 var result = arr.join('');
 console.log(result);//'borderTopLeft"
 复制代码
- 
+
 
 查找子串位置
 　　有两个从字符串中查找子字符串位置的方法：indexOf()和lastIndexOf()。查找子串位置的方法同访问字符方法charAt()和中括号[]方法有相反的地方，一个通过字符串查找位置，一个则是通过位置查找字符
@@ -426,12 +423,12 @@ function getFileFormat(url){
 }
 console.log(getFileFormat(url));//'txt'
 复制代码
- 
+
 
 正则匹配方法
 　　javascript中的一些正则操作如查找和测试等可以通过RegExp的方法实现，而切分和替换等另一些操作可以通过String类的方法实现
 
-　　String类共有match()、search()、replace()、split()这4种正则匹配方法 
+　　String类共有match()、search()、replace()、split()这4种正则匹配方法
 
 【match()】
 
@@ -446,16 +443,16 @@ console.log(getFileFormat(url));//'txt'
 var string = 'cat,bat,sat,fat';
 var pattern = /.at/;
 var matches = string.match(pattern);
-console.log(matches,matches.index,matches.input);//['cat'] 0 'cat,bat,sat,fat' 
+console.log(matches,matches.index,matches.input);//['cat'] 0 'cat,bat,sat,fat'
 var matches = string.match(pattern);
-console.log(matches,matches.index,matches.input);//['cat'] 0 'cat,bat,sat,fat' 
+console.log(matches,matches.index,matches.input);//['cat'] 0 'cat,bat,sat,fat'
 
 var string = 'cat,bat,sat,fat';
 var pattern = /.at/;
 var exec = pattern.exec(string);
-console.log(exec,exec.index,exec.input);//['cat'] 0 'cat,bat,sat,fat' 
+console.log(exec,exec.index,exec.input);//['cat'] 0 'cat,bat,sat,fat'
 var exec = pattern.exec(string);
-console.log(exec,exec.index,exec.input);//['cat'] 0 'cat,bat,sat,fat' 
+console.log(exec,exec.index,exec.input);//['cat'] 0 'cat,bat,sat,fat'
 复制代码
 　　【2】设置全局标志后，exec()方法依然返回单次的匹配结果，而match()方法会返回一个字符串数组，其中包括各次成功匹配的文本，但没有index和input属性
 
@@ -463,16 +460,16 @@ console.log(exec,exec.index,exec.input);//['cat'] 0 'cat,bat,sat,fat'
 var string = 'cat,bat,sat,fat';
 var pattern = /.at/g;
 var matches = string.match(pattern);
-console.log(matches,matches.index,matches.input);//["cat", "bat", "sat", "fat"] undefined undefined 
+console.log(matches,matches.index,matches.input);//["cat", "bat", "sat", "fat"] undefined undefined
 var matches = string.match(pattern);
-console.log(matches,matches.index,matches.input);//["cat", "bat", "sat", "fat"] undefined undefined 
+console.log(matches,matches.index,matches.input);//["cat", "bat", "sat", "fat"] undefined undefined
 
 var string = 'cat,bat,sat,fat';
 var pattern = /.at/g;
 var exec = pattern.exec(string);
-console.log(exec,exec.index,exec.input);//['cat'] 0 'cat,bat,sat,fat' 
+console.log(exec,exec.index,exec.input);//['cat'] 0 'cat,bat,sat,fat'
 var exec = pattern.exec(string);
-console.log(exec,exec.index,exec.input);//['bat'] 4 'cat,bat,sat,fat' 
+console.log(exec,exec.index,exec.input);//['bat'] 4 'cat,bat,sat,fat'
 复制代码
 　　【3】match()方法作为字符串String的方法，接受参数为字符串，结果与不设置全局标志的正则表达式为参数相同，只返回第一个匹配项，且具有index和input属性
 
@@ -487,16 +484,16 @@ console.log(matches,matches.index,matches.input);//['at'] 1 'cat,bat,sat,fat'
 var string = 'cat,bat,sat,fat';
 var pattern = /(.)at/g;
 var matches = string.match(pattern);
-console.log(matches);//['cat', 'bat', 'sat', 'fat'] 
+console.log(matches);//['cat', 'bat', 'sat', 'fat']
 var exec = pattern.exec(string);
-console.log(exec);//['cat','c'] 
+console.log(exec);//['cat','c']
 
 var string = 'cat,bat,sat,fat';
 var pattern = /(.)at/;
 var matches = string.match(pattern);
-console.log(matches);//['cat','c']  
+console.log(matches);//['cat','c']
 var exec = pattern.exec(string);
-console.log(exec);//['cat','c'] 
+console.log(exec);//['cat','c']
 复制代码
 　　【tips】两种方法找出字符串中所有的数字
 
@@ -513,13 +510,13 @@ for(var i = 0; i < str1.length; i++){
     }else{
         if(temp != ''){
             array.push(temp);
-            temp = '';    
+            temp = '';
         }
     }
 }
 if(temp != ''){
     array.push(temp);
-    temp = '';    
+    temp = '';
 }
 console.log(array);//["1", "342", "24", "234", "3", "24", "1"]
 复制代码
@@ -555,14 +552,14 @@ console.log(pos);//1
 
 复制代码
 function fnAllSearch(str,pattern){
-    var pos = str.search(pattern); 
+    var pos = str.search(pattern);
     var length = str.match(pattern)[0].length;
     var index = pos+length;
     var result = [];
     var last = index;
     result.push(pos);
     while(true){
-        str = str.substr(index);                    
+        str = str.substr(index);
         pos = str.search(pattern);
         if(pos === -1){
             break;
@@ -570,10 +567,10 @@ function fnAllSearch(str,pattern){
         length = str.match(pattern)[0].length;
         index = pos+length;
         result.push(last+pos);
-        last += index;    
+        last += index;
     }
     return result;
-}    
+}
 console.log(fnAllSearch('cat23fbat246565sa3dftf44at',/\d+/));//[3,9,17,22]
 复制代码
 【replace()】
@@ -664,7 +661,7 @@ console.log(result);//'cta,bta,sta,fta'
 
 var text = 'one two three';
 var result = text.replace(/\b(\w+)\b/g,function(match,m1,pos,originalText){
-    return m1.charAt(0).toUpperCase()+m1.substring(1); 
+    return m1.charAt(0).toUpperCase()+m1.substring(1);
 })
 console.log(result);
 　　【tips】HTML标签转义
@@ -700,7 +697,7 @@ var result = [];
 for(var i = 0 ; i < array.length; i++){
     result.push(formatDate(array[i]));
 }
-console.log(result);//["2015年7月28日", "2015年7月28日", "2015年7月28日", "2015年7月28日", "2015年7月28日", "2015年7月28日"]    
+console.log(result);//["2015年7月28日", "2015年7月28日", "2015年7月28日", "2015年7月28日", "2015年7月28日", "2015年7月28日"]
 复制代码
 　　【tips】找出重复项最多的字符和个数
 
@@ -738,7 +735,7 @@ console.log(colorText.split(/\,/));//["red", "blue", "green", "yellow"]
 console.log(colorText.split(/e/));//["r", "d,blu", ",gr", "", "n,y", "llow"]
 console.log(colorText.split(/[^\,]+/));//将除去逗号以外的字符串变为分隔符["", ",", ",", ",", ""],IE8-会识别为[",",",",","]
 复制代码
- 
+
 
 去除首尾空格
 【trim()】
@@ -770,9 +767,9 @@ if(usename.trim().length){
 
 function fnTrim(str){
     return str.replace(/^\s+|\s+$/,'')
-}  
+}
 console.log(fnTrim('      hello world   '));//'hello world'
- 
+
 
 字符串比较
 【localeCompare()】
@@ -797,7 +794,7 @@ console.log('B'.localeCompare('a'));//1
 console.log('B' > 'a');//false
 console.log('b'.localeCompare('a'));//1
 console.log('b' > 'a');//true
- 
+
 
 参考资料
 

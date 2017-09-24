@@ -1,8 +1,5 @@
-﻿# Javascript运算符——逻辑运算符 
+﻿# Javascript运算符——逻辑运算符
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　逻辑运算符对操作数进行布尔运算，经常和关系运算符一样配合使用。逻辑运算符将多个关系表达式组合起来组成一个更复杂的表达式。逻辑运算符分为逻辑非'!'、逻辑与'&&'、逻辑或'||'3种，本文将介绍这三种逻辑运算符
@@ -47,7 +44,7 @@ while (!bFound) {
   }
 }
 ```
- 
+
 
 ## 逻辑与
 
@@ -97,7 +94,7 @@ console.log(true && 'foo' && '' && 4 && 'foo' && true);// ''
 
 ```javascript
 if(a+1==2 && b+2==3){
-    //Todo    
+    //Todo
 }
 ```
 
@@ -111,7 +108,7 @@ if (a == b) {
 (a == b) && doSomething();
 ```
 
-　　逻辑与运算符常常用于回调函数使用中 
+　　逻辑与运算符常常用于回调函数使用中
 
 ```
 //若没有给参数a传值，则a为默认的undefined，是假值，所以不执行a()，防止报错，如果给参数a传值，则执行函数a()
@@ -125,7 +122,7 @@ function fn(a){
     a && a();
 }
 ```
- 
+
 
 ## 逻辑或
 
@@ -184,7 +181,7 @@ function fn(p){
 【2】 阮一峰Javascript标准参考教程——语法——布尔运算符 http://javascript.ruanyifeng.com/
 【3】 W3School-Javascript高级教程——ECMAScript逻辑运算符 http://www.w3school.com.cn/
 【4】《javascript权威指南(第6版)》第4章 表达式和运算符
-【5】《javascript高级程序设计(第3版)》第3章 基本概念 
+【5】《javascript高级程序设计(第3版)》第3章 基本概念
 【6】《javascript DOM编程艺术(第2版)》第2章 Javascript语法
 
 

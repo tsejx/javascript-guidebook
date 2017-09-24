@@ -1,8 +1,5 @@
-﻿# Javascript语句——表达式语句、块语句、空语句和声明语句 
+﻿# Javascript语句——表达式语句、块语句、空语句和声明语句
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　如果表达式在Javascript中是短语，那么语句(statement)就是Javascript整句或命令。表达式计算出一个值，语句用来执行以使某件事发生。Javascript程序无非就是一系列可执行语句的集合，Javascript解释器依照语句的编写顺序依次执行。本文将介绍Javascript语句中的四类语句——表达式语句、块语句、空语句和声明语句
@@ -171,7 +168,7 @@ function f(x){return x+1;}
 delete f;
 console.log(f(0));//1
 ```
- 
+
 
 参考资料
 

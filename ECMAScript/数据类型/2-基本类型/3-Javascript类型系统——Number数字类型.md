@@ -1,15 +1,12 @@
-﻿# Javascript类型系统——Number数字类型 
+﻿# Javascript类型系统——Number数字类型
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　Javascript只有一种数字类型，它在内部被表示为64位的浮点数，和Java的double数字类型一样。与其他大多数编程语言不同的是，它没有分离出整数类型，所以1和1.0的值相同。这提供了很大的方便，避免了一大堆因数字类型导致的错误
 
 　　数字Number是javascript中基本的原始数据类型，同时javascript也支持Number对象，它是一个原始数值的包装对象。在需要时，javascript会自动在原始形式和对象形式之间转换。本文将介绍数字Number原始类型及Number包装对象
 
- 
+
 ## 定义
 
 　　Javascript采用IEEE754格式来表示数字，不区分整数和浮点数，Javascript中的所有数字都用浮点数值表示
@@ -23,7 +20,7 @@
 
 　　当一个数字直接出现在Javascript程序中时，称之为**数字字面量**(numeric literal)。而当Number()使用new操作符用做构造函数时，称之为**Number对象**
 
- 
+
 
 ## 整数
 
@@ -56,7 +53,7 @@ console.log(num16);//17
 var num16 = 0xg;
 console.log(num16);//报错
 ```
- 
+
 
 ## 浮点数
 
@@ -74,7 +71,7 @@ var num4 = 0x11e1;//出错，会被识别成整数，结果为4577
 ```javascript
 var num1 = 1.1;
 var num2 = 1.;
-var num3 = .1; 
+var num3 = .1;
 console.log(num1,num2,num3);//1.1,1,0.1
 ```
 
@@ -145,7 +142,7 @@ Math.pow(2, 53) + 1// 9007199254740992
 0.923456789012345678;//0.9234567890123456
 9.23456789012345678;//9.234567890123456
 ```
- 
+
 
 ## 数值范围
 
@@ -233,7 +230,7 @@ Number.MIN_VALUE - 2e-324;//5e-324
 0.010011001100110011001100110011001100110011001100110100
 转换为十进制为0.30000000000000004
 ```
- 
+
 
 ## 特殊数值
 　　Javascript提供了几个特殊数值，包括Number.MAX_VALUE、Number.MIN_VALUE、Number.POSITIVE_INFINITY、Number.NEGATIVE_INFINITY、Number.MAX_SAFE_INTEGER、Number.MIN_SAFE_INTEGER、Number.NaN、+0、-0共9个
@@ -385,7 +382,7 @@ console.log(Number(true),Number(false));//1 0
 console.log(Number('    123'));//123
 console.log(Number('1.2.'));//NaN
 console.log(Number(1.2.));//报错
-console.log(Number(''),Number(' '));//0 0 
+console.log(Number(''),Number(' '));//0 0
 console.log(Number('11'),Number('011'),Number('0x11'));//11 11 17
 console.log(Number('abc'));//NaN
 console.log(Number('123abc'));//NaN
@@ -534,7 +531,7 @@ console.log(parseFloat(0x11.1));//报错
 ```javascript
 console.log(parseFloat(null),parseFloat(undefined));//NaN NaN
 console.log(parseFloat(true),parseFloat(false));//NaN NaN
-console.log(parseFloat([]),parseFloat([2.1]),parseFloat(['2.1px']));//NaN 2.1 2.1 
+console.log(parseFloat([]),parseFloat([2.1]),parseFloat(['2.1px']));//NaN 2.1 2.1
 console.log(parseFloat(''),parseFloat({}));//NaN NaN
 ```
 
@@ -583,7 +580,7 @@ console.log(num.toString());//'10'
 console.log(num.toString(2));//'1010'
 console.log(num.toString(8));//'12'
 console.log(num.toString(10));//'10'
-console.log(num.toString(16));//'a'    
+console.log(num.toString(16));//'a'
 console.log(num.toString(undefined));//'10'
 ```
 
@@ -633,7 +630,7 @@ console.log(num.toExponential(-1));//报错
 ```javascript
 var num = 10.1;
 console.log(num.toPrecision(3));//'10.1'
-console.log(num.toPrecision(2));//'10'       
+console.log(num.toPrecision(2));//'10'
 console.log(num.toPrecision(1));//'1e+1'
 console.log(num.toPrecision());//'10.1'
 console.log(num.toPrecision(undefined));//'10.1'
@@ -650,7 +647,7 @@ console.log((12.35).toPrecision(3)); // "12.3"
 console.log((12.35).toFixed(1)); // "12.3"
 console.log((12.35).toExponential(2)); // "1.23e+1"
 ```
- 
+
 参考资料
 
 【1】 ES5/类型 https://www.w3.org/html/ig/zh/wiki/ES5/types#Number_.E7.B1.BB.E5.9E.8B ES5/ ES5/标准内置对象 https://www.w3.org/html/ig/zh/wiki/ES5/builtins#Number_.E5.AF.B9.E8.B1.A1

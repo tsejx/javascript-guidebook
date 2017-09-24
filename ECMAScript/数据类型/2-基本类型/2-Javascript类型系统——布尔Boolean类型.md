@@ -1,8 +1,5 @@
-﻿# javascript类型系统——布尔Boolean类型 
+﻿# javascript类型系统——布尔Boolean类型
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　布尔值Boolean类型可能是三种包装对象Number、String和Boolean中最简单的一种。Number和String对象拥有大量的实例属性和方法，Boolean却很少。从某种意义上说，为计算机设计程序就是与布尔值打交道，作为最基本的事实，所有的电子电路只能识别和使用布尔数据。本文将介绍布尔Boolean类型
@@ -21,7 +18,7 @@ console.log(b2,typeof b2);//Boolean{[[PrimitiveValue]]: true}  'object'
 console.log(b1.valueOf(), typeof b1.valueOf());//true 'boolean'
 console.log(b2.valueOf(), typeof b2.valueOf());//true 'boolean'
 ```
- 
+
 ## 应用场景
 　　布尔类型主要应用于如下场景：
 
@@ -100,7 +97,7 @@ console.log(Boolean(false));//false
 console.log(Boolean(new Boolean(null)));//true
 console.log(Boolean(null));//false
 ```
- 
+
 
 ## 实例方法
 　
@@ -127,7 +124,7 @@ console.log((new Boolean(false)).valueOf());//false
 console.log((new Boolean(false)).toString());//'false'
 console.log((new Boolean(false)).toLocaleString());//'false'
 ```
- 
+
 
 参考资料
 
@@ -135,7 +132,7 @@ console.log((new Boolean(false)).toLocaleString());//'false'
 【2】 阮一峰Javascript标准参考教程——语法概述 http://javascript.ruanyifeng.com/
 【3】 W3School-Javascript高级教程——Boolean对象 http://www.w3school.com.cn/
 【4】《javascript权威指南(第6版)》第3章 类型、值和变量
-【5】《javascript高级程序设计(第3版)》第3章 基本概念 
+【5】《javascript高级程序设计(第3版)》第3章 基本概念
 【6】《javascript DOM编程艺术(第2版)》第2章 Javascript语法
 【7】《javascript启示录》 第12章 Boolean()
 

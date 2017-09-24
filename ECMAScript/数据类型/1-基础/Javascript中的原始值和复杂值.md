@@ -1,8 +1,5 @@
-﻿# Javascript中的原始值和复杂值 
+﻿# Javascript中的原始值和复杂值
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　Javascript的数据类型可以分为两种：**原始类型**和**引用类型**。原始类型也称为**基本类型**或**简单类型**，Javascript基本数据类型包括Undefined、Null、Boolean、Number和String五种，而引用类型也称为复杂类型，在Javascript中是Object。与此相对应，它们的值也分别被称为原始值和复杂值。本文将介绍Javascript中的原始值和复杂值
@@ -94,7 +91,7 @@ var objectA = {foo: 'bar'};
 var objectB = objectA;
 console.log(objectA == objectB);//true
 ```
- 
+
 
 ## 动态属性
 

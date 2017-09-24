@@ -1,8 +1,5 @@
-﻿# Javascript语句——条件语句、循环语句和跳转语句 
+﻿# Javascript语句——条件语句、循环语句和跳转语句
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　默认情况下，javascript解释器依照语句的编写顺序依次执行。而javascript中的很多语句可以改变语句的默认执行顺序。本文介绍可以改变语句默认执行顺序的条件语句、循环语句和跳转语句
@@ -79,7 +76,7 @@ if(i == j){
 }
 ```
 
-　　当代码有多条分支时，需要使用else if语句。else if语句并不是真正的javascript语句，它是多条if/else语句连在一起时的一种惯用写法 
+　　当代码有多条分支时，需要使用else if语句。else if语句并不是真正的javascript语句，它是多条if/else语句连在一起时的一种惯用写法
 
 ```javascript
 if(n == 1){
@@ -247,7 +244,7 @@ switch(n){
         console.log(3);
 }
 ```
- 
+
 
 ## 循环语句
 
@@ -316,7 +313,7 @@ function printArray(a){
 
 ```javascript
 for(initialize;test;increment){
-    statement;    
+    statement;
 }
 
 //等价于:
@@ -436,7 +433,7 @@ for (var i in o) {
 
 　　ECMAScript规范并没有指定for/in循环按照何种顺序来枚举对象属性。但实际上，主流浏览器厂商的javascript实现是按照属性定义的先后顺序来枚举简单对象的属性，先定义的属性先枚举。如果使用对象直接量的形式创建对象，则将按照直接量中属性的出现顺序枚举。有一些网站和javascript库是依赖于这种枚举顺序的，浏览器厂商不大可能会修改这个顺序
 
- 
+
 ## 跳转语句
 
 　　跳转语句(jump statement)可以让解释器跳转到程序的其他部分继续执行，包括break、continue和return语句
@@ -543,7 +540,7 @@ for(i = 0; i < 5; i++){
 //1 3 5
 var i = 0;
 while(i<5){
-    i++;    
+    i++;
     if(i % 2 === 0)continue;
     console.log(i);
 }
@@ -572,7 +569,7 @@ return expression;
 　　return语句只能出现在函数体内，如果不是会报语法错误。当执行到return语句时，函数终止执行，并返回expression的值给调用程序
 
 function square(x)
-{    
+{
     return x*x
 };
 square(2);
@@ -604,14 +601,14 @@ return;true;
 ```javascript
 return true;
 ```
- 
+
 参考资料
 
 【1】 ES5/语句 https://www.w3.org/html/ig/zh/wiki/ES5/statements
 【2】 阮一峰Javascript标准参考教程——语法概述 http://javascript.ruanyifeng.com/grammar/basic.html#toc12
 【3】 W3School-Javascript高级教程——语句 http://www.w3school.com.cn/js/pro_js_statements_if.asp
 【4】《javascript权威指南(第6版)》第5章 语句
-【5】《javascript高级程序设计(第3版)》第3章 基本概念 
+【5】《javascript高级程序设计(第3版)》第3章 基本概念
 【6】《javascript DOM编程艺术(第2版)》第2章 Javascript语法
 【7】《javascript语言精粹》 第2章 语法
 

@@ -1,13 +1,10 @@
-﻿# Javascript类型系统——undefined和null 
+﻿# Javascript类型系统——undefined和null
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　一般的程序语言，表示空的只有null，但Javascript的设计者Brendan Eich却设计了一个undefined，这无疑增加了程序复杂度，但这样做也是有一定原因的。本文将详细介绍Javascript中的undefined和null
 
- 
+
 ## 历史原因
 
 　　1995年Javascript诞生时，最初像Java一样，只设置了null作为表示”无”的值。根据C语言的传统，null被设计成可以自动转为0
@@ -67,7 +64,7 @@ console.log(void(0));//undefined
 ```javascript
 Boolean(undefined):　 false
 Number(undefined):　  NaN
-String(undefined):　　'undefined'    
+String(undefined):　　'undefined'
 ```
 
 【类型鉴别】

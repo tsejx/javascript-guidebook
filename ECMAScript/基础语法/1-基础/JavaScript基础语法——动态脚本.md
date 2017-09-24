@@ -1,9 +1,5 @@
 ﻿# JavaScript基础语法——动态脚本
 
-标签（空格分隔）： JS
-
----
-
 ## 前面的话
 
 　　动态脚本是指在页面加载时不存在，但将来的某一时刻通过修改DOM动态添加的脚本。和操作HTML元素一样，创建动态脚本也有两种方式：插入外部文件和直接插入内部javascript代码。下面将详细介绍这两种情况
@@ -38,7 +34,7 @@ function loadScript(url){
 }
 btn.onclick = function(){
     if(loadScript.mark != 'load'){
-        loadScript("js/script.js");        
+        loadScript("js/script.js");
     }
 }
 </script>
@@ -72,7 +68,7 @@ function loadScript(str){
 }
 btn.onclick = function(){
     if(loadScript.mark != 'load'){
-        loadScript("box.style.color = 'red'");        
+        loadScript("box.style.color = 'red'");
     }
 }
 </script>
@@ -97,7 +93,7 @@ function loadScript(str){
 }
 btn.onclick = function(){
     if(loadScript.mark != 'load'){
-        loadScript("box.style.color = 'red'");        
+        loadScript("box.style.color = 'red'");
     }
 }
 </script>

@@ -1,8 +1,4 @@
-﻿# Javascript类型系统——Math对象 
-
-标签（空格分隔）： JS
-
----
+﻿# Javascript类型系统——Math对象
 
 ## 前面的话
 
@@ -24,7 +20,7 @@ Math.LN10          10的自然对数(约等于2.303)
 Math.LOG2E         以2为底e的对数(约等于1.443)
 Math.LOG10E        以10为底e的对数(约等于0.434)
 console.log(Math.E);//2.718281828459045
-console.log(Math.LN2);//0.6931471805599453    
+console.log(Math.LN2);//0.6931471805599453
 console.log(Math.LN10);//2.302585092994046
 console.log(Math.LOG2E);//1.4426950408889634
 console.log(Math.LOG10E);//0.4342944819032518
@@ -95,7 +91,7 @@ Math.min(Math.max(1,input),12);
 
 　　[注意]Math.ceil()不会将负数变成绝对值更大的负数，而是将它们向0的方向取整
 
-#### Math.floor() 
+#### Math.floor()
 
 　　执行向下取整运算，也就是说，它返回小于等于函数参数的最接近的整数
 
@@ -201,15 +197,15 @@ console.log(Math.abs(1,2,3));//1
 　　[注意]y坐标在x坐标前面
 
 ```javascript
-console.log(Math.sin(30*Math.PI/180));//0.49999999999999994    
+console.log(Math.sin(30*Math.PI/180));//0.49999999999999994
 console.log(Math.cos(60*Math.PI/180));//0.5000000000000001
-console.log(Math.tan(45*Math.PI/180));//0.9999999999999999    
+console.log(Math.tan(45*Math.PI/180));//0.9999999999999999
 console.log(Math.asin(1)*180/Math.PI);//90
 console.log(Math.acos(1)*180/Math.PI);//0
 console.log(Math.atan(1)*180/Math.PI);//45
 console.log(Math.atan2(1,1)*180/Math.PI);//45
 ```
- 
+
 
 ### 乘方开方
 　　Math对象涉及到乘方开方的函数共有4个
@@ -227,7 +223,7 @@ Math.log(num)
 　　返回num的自然对数，logenum(num必须是大于等于0的数)
 
 ```javascript
-log10x = 1og10e * logex 
+log10x = 1og10e * logex
 log2x = log2e * logex
 ```
 

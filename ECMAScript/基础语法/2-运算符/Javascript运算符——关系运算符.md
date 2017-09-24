@@ -1,8 +1,5 @@
-﻿# Javascript运算符——关系运算符 
+﻿# Javascript运算符——关系运算符
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　关系运算符用于测试两个值之间的关系，根据关系是否存在而返回true或false，关系表达式总是返回一个布尔值，通常在if、while或for语句中使用关系表达式，用以控制程序的执行流程
@@ -58,7 +55,7 @@ console.log('abc' === 'acb');//false
 
 ```javascript
 console.log([] === []);//false
-console.log({} === {});//false    
+console.log({} === {});//false
 console.log(function(){} === function(){});//false
 var a = {};
 b = a;
@@ -123,7 +120,7 @@ var a = {
     toString:function(){
         return '2';
     }
-} 
+}
 console.log( a == '1');//true，相当于1 == 1
 
 var a = {
@@ -133,7 +130,7 @@ var a = {
     toString:function(){
         return '1';
     }
-} 
+}
 console.log( a == 1);//true，相当于1 == 1
 ```
 
@@ -201,7 +198,7 @@ console.log('b' > 'a');//true
 
 　　【3】在对象转换为原始值之后，如果至少有一个操作数不是字符串，则两个操作数都转换成数字进行比较
 
-　　[注意]在等于操作符中，时间Date()对象只允许通过toString()方法转换为字符串，而不允许通过valueOf()方法转换为数字；而在大于操作符中，时间Date()对象允许优先使用valueOf()方法转换为数字 
+　　[注意]在等于操作符中，时间Date()对象只允许通过toString()方法转换为字符串，而不允许通过valueOf()方法转换为数字；而在大于操作符中，时间Date()对象允许优先使用valueOf()方法转换为数字
 
 ```javascript
 console.log(new Date() > 100);//true，相当于1466826928667 > 100
@@ -221,7 +218,7 @@ console.log({} > true);//false，相当于 NaN > 1
 console.log(undefined > -1); //false，相当于NaN > -1
 console.log(null > -1); //true，相当于0 > -1
 console.log(undefined > 0); //false，相当于NaN > 0
-console.log(null > 0); //false，相当于0 > 0  
+console.log(null > 0); //false，相当于0 > 0
 ```
 
 　　对于数字和字符串来说，加号运算符和比较运算符的行为有所不同，加号运算符更偏爱字符串，如果它的一个操作数是字符串，就进行字符串连接。而比较运算符则更偏爱数字，只有在两个操作数都是字符串时，才进行字符串的比较
@@ -248,7 +245,7 @@ console.log([1] <= '0');//false，相当于'1' <= '0'
 console.log([0] <= true);//true，相当于0 <= 1
 console.log(1 <= 1);//true
 ```
- 
+
 
 ## 小于运算符
 　　小于运算符(<)用于比较两个操作数，如果第一个操作数小于第二个操作数，则小于运算符的计算结果为true，否则为false
@@ -259,7 +256,7 @@ console.log(1 <= 1);//true
 
 　　同样地，大于等于运算符(>=)并不依赖于大于或等于运算符的比较规则，而是遵循小于运算符的比较规则，结果取反。如果'<'的比较结果是true，则'>='的结果是false；如果'<'的比较结果是false，则'>='的结果是true
 
- 
+
 
 参考资料
 
@@ -267,7 +264,7 @@ console.log(1 <= 1);//true
 【2】 阮一峰Javascript标准参考教程——语法——比较运算符 http://javascript.ruanyifeng.com
 【3】 W3School-Javascript高级教程——ECMAScript关系运算符 http://www.w3school.com.cn
 【4】《javascript权威指南(第6版)》第4章 表达式和运算符
-【5】《javascript高级程序设计(第3版)》第3章 基本概念 
+【5】《javascript高级程序设计(第3版)》第3章 基本概念
 【6】《javascript DOM编程艺术(第2版)》第2章 Javascript语法
 
 

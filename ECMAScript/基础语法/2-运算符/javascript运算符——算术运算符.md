@@ -1,8 +1,5 @@
-﻿# javascript运算符——算术运算符 
+﻿# javascript运算符——算术运算符
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　Javascript中的算术操作主要通过算术运算符来实现，本文将介绍算术运算符的内容。算术运算符包括一元算术运算符和二元算术运算符两种
@@ -225,7 +222,7 @@ console.log('' + true);//'true'
 Number.MAX_VALUE + Number.MAX_VALUE === Infinity;//true
 Infinity + (-Infinity);//NaN
 +0 + (-0) === +0;//true
- 
+
 
 ## 减法(-)
 

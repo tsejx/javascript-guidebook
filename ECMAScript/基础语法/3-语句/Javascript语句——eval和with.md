@@ -1,8 +1,5 @@
-﻿# JavaScript语句——eval和with 
+﻿# JavaScript语句——eval和with
 
-标签（空格分隔）： JS
-
----
 ## 前面的话
 
 　　eval和with经常被嫌弃，好像它们的存在就是错误。在CSS中，表格被嫌弃，在网页中只是用表格来展示数据，而不是做布局，都可能被斥为不规范，矫枉过正。那关于eval和with到底是什么情况呢？本文将详细介绍eval()函数和with语句
@@ -53,8 +50,8 @@ foo('var b = 3;',1);//1 3
 　　当通过别名调用时，eval()会将其字符串当做顶层的全局代码来执行。执行的代码可能会定义新的全局变量和全局函数，或者给全局变量赋值，但却不能使用或修改函数中的局部变量
 
 ```javascript
-var geval = eval; 
-var x = 'global',y = 'global'; 
+var geval = eval;
+var x = 'global',y = 'global';
 function f(){
     var x = 'local';
     eval('x += "changed";');
@@ -132,7 +129,7 @@ with(document.forms[0]){
 }
 ```
 
-　　这种方法减少了大量的输入，不用再为每个属性名添加document.forms[0]前缀。这个对象临时挂载在作用域链上，当javascript需要解析诸如address的标识符时，就会自动在这个对象中查找 
+　　这种方法减少了大量的输入，不用再为每个属性名添加document.forms[0]前缀。这个对象临时挂载在作用域链上，当javascript需要解析诸如address的标识符时，就会自动在这个对象中查找
 
 　　[注意]with语句提供了一种读取对象的属性的快捷方式，但它并不能创建对象的属性
 
@@ -181,7 +178,7 @@ with(o){
     x = 2;
 }
 ```
- 
+
 
 ## 最后
 
