@@ -107,17 +107,35 @@ typeof /s/ === 'object'; // Firefox 5+ , 符合 ECMAScript 5.1
 
 ### 检查一个变量是否存在，是否有值
 
-typeof在两种情况下会返回`undefined`
+`typeof` 在两种情况下会返回 `undefined`
 
- - 一个变量没有被声明的时候
+ - 一个变量**没有被声明**的时候
  - 一个变量的值是`undefined`时
 
 ```javascript
-undeclaredVariable === undefined
-ReferenceError:undeclaredVariable is not defined
-// 注意未初始化的变量，没有被传入参数的形参；
-// 不存在的属性，都不会出现上面的问题，因为它们总是可访问的，值总是undefined
+typeof undeclaredVariable === 'undefined' // true
+
+var declaredVariable;
+typeof declaredVariable // 'undefined'
+typeof undefined // 'undefined'
 ```
+
+还有其他方法检测某个值是否是undefined
+
+```javascript
+var value = undefined;
+value === undefined; // true
+```
+
+但这种方法如果使用在一个**未声明的变量**上的时候,就会抛出异常,因为只有typeof才可以正常检测未声明的变量的同时还不报错:
+
+```
+undeclaredVariable === undefined // ReferenceError:undeclaredVariable is not defined
+
+```
+
+ - 注意未初始化的变量，没有被传入参数的形参；
+ - 不存在的属性，都不会出现上面的问题，因为它们总是可访问的，值总是undefined
 
 ```javascript
 var declaredVariable;
@@ -126,11 +144,20 @@ declaredVarialbe === undefined // true
 ({}).foo === undefined // true
 ```
 
-因此：如果想检测一个可能没有被声明的全局变量是否存在，也可以使用if(window.maybeUndeclaredVariable){}
+因此：如果想检测一个**可能没有被声明的全局变量是否存在**，也可以使用if(window.maybeUndeclaredVariable){}
 
 问题：typeof 在完成这样的任务时显得很繁杂
 
 解决办法：这样的操作不是很常见，所以有人觉得没有必要再找更好的解决办法，不过也许有人会提出一个专门的的操作符
+
+```javascript
+defined undeclaredVariable // false
+
+var declareVariable
+declared declaredVariable // true
+```
+
+注：在perl里，上面的defined操作符相当于defined(),上面的declared操作符相当于exists()
 
 ### 判断一个值不等于undefined也不等于null
 
