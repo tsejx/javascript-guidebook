@@ -208,6 +208,92 @@ obj.foo.bar
 
 ### 区分对象值和原始值
 
+下面的函数用来检测x是否是一个对象值:
+
+```javascript
+function isObject(x) { 
+    return (typeof x === "function" || (typeof x === "object" && x !== null)); 
+} 
+```
+
+问题: 上面的检测比较复杂,是因为 `typeof` 把函数和对象看成是不同的类型,而且typeof null返回"object"
+
+解决办法: 下面的方法也经常用于检测对象值：
+
+```javascript
+function isObject2(x) { 
+    return x === Object(x); 
+} 
+```
+
+警告:你也许认为这里可以使用`instanceof Object`来检测,但是 `instanceof` 是通过使用使用一个对象的原型来判断实例关系的,那么没有原型的对象怎么办呢:
+
+```javascript
+var obj = Object.create(null); 
+Object.getPrototypeOf(obj) // null 
+```
+
+obj确实是一个对象,但它不是任何值的实例:
+
+```javascript
+typeof obj 'object' 
+
+obj instanceof Object // false 
+```
+
+在实际中,你可能很少遇到这样的对象,但它的确存在,而且有它的用途。
+
+译者注:Object.prototype就是一个默认存在的,没有原型的对象
+
+```javascript
+Object.getPrototypeOf(Object.prototype) // null
+typeof Object.prototype // 'object'
+Object.prototype instanceof Object // false
+```
+
+### 原始值的类型是什么
+
+typeof是最好的用来查看某个原始值的类型的方式.
+
+```javascript
+typeof "abc" // 'string' 
+typeof undefined // 'undefined'
+```
+
+问题: 你必须知道typeof null的怪异表现.
+
+```javascript
+> typeof null // 要小心! 'object'
+```
+
+解决办法: 下面的函数可以修复这个问题(只针对这个用例).
+
+```javascript
+function getPrimitiveTypeName(x) { var typeName = typeof x; switch(typeName) { case "undefined": case "boolean": case "number": case "string": return typeName; case "object": if (x === null) { return "null"; } default: // 前面的判断都没通过 throw new TypeError("参数不是一个原始值: "+x); } } 
+```
+
+更好的解决办法: 实现一个函数 `getTypeName()` ,除了可以返回原始值的的类型,还可以返回对象值的内部[[Class]]属性.这里讲了如何实现这个函数(译者注:jQuery中的$.type就是这样的实现)
+
+### 某个值是否是函数
+
+typeof可以用来检测一个值是否是函数.
+
+```javascript
+typeof function () {} // 'function' 
+
+typeof Object.prototype.toString // 'function' 
+```
+
+原则上说, `instanceof Function` 也可以进行这种需求的检测.乍一看,貌似写法还更加优雅.但是,浏览器有一个怪癖:每一个框架和窗口都有它自己的全局变量.因此,如果你将某个框架中的对象传到另一个框架中,`instanceof` 就不能正常工作了,因为这两个框架有着不同的构造函数.这就是为什么ECMAScript5中会有 `Array.isArray()` 方法的原因.如果有一个能够跨框架的,用于检查一个对象是否是给定的构造函数的实例的方法的话,那会很好.上述的 `getTypeName()` 是一个可用的变通方法,但也许还有一个更根本的解决方案.
+
+### 综述
+下面提到的,应该是目前JavaScript中最迫切需要的,可以代替一些typeof目前职责的功能特性:
+`isDefined()` (比如 `Object.isDefined()` ): 可以作为一个函数或者一个运算符 
+`isObject()`
+`getTypeName()`
+能够跨框架的,检测一个对象是否是指定的构造函数的实例的机制 
+检查某个变量是否已经被声明这样的需求,可能没那么必要有自己的运算符.
+
 
  
  
