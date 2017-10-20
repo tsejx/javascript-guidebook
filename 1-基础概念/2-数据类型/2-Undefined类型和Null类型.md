@@ -2,20 +2,20 @@
 
 ## 前面的话
 
-　　一般的程序语言，表示空的只有null，但Javascript的设计者Brendan Eich却设计了一个undefined，这无疑增加了程序复杂度，但这样做也是有一定原因的。本文将详细介绍Javascript中的undefined和null
+　　一般的程序语言，表示空的只有 `null`，但Javascript的设计者Brendan Eich却设计了一个 `undefined` ，这无疑增加了程序复杂度，但这样做也是有一定原因的。本文将详细介绍Javascript中的 `undefined` 和 `null`
 
 
 ## 历史原因
 
-　　1995年Javascript诞生时，最初像Java一样，只设置了null作为表示”无”的值。根据C语言的传统，null被设计成可以自动转为0
+　　1995年Javascript诞生时，最初像Java一样，只设置了 `null` 作为表示”无”的值。根据C语言的传统， `null` 被设计成可以自动转为 0
 
 　　但是，Javascript的设计者Brendan Eich，觉得这样做还不够，有两个原因。首先，null像在Java里一样，被当成一个对象。但是，Javascript的值分成原始类型和对象类型两大类，Brendan Eich觉得表示”无”的值最好不是对象。其次，Javascript的最初版本没有包括错误处理机制，发生数据类型不匹配时，往往是自动转换类型或者默默地失败。Brendan Eich觉得，如果null自动转为0，很不容易发现错误
 
-　　因此，Brendan Eich又设计了一个undefined。他是这样区分的：null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN
+　　因此，Brendan Eich又设计了一个 `undefined` 。他是这样区分的：null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN
 
 　　但是，目前null和undefined基本是同义的，都是原始类型，且只有一些细微的差别
 
-## undefined
+## Undefined 类型
 　
 　　Undefined类型只有一个值，就是undefined。当声明的变量未初始化时，该变量的默认值是undefined。所以一般地，undefined表示**变量没有初始化**
 
@@ -88,7 +88,7 @@ function t(){
 console.log(t());//所有浏览器下都是10
 ```
 
-## null
+## Null 类型
 
 　　Null类型只有一个值，就是null。null是javascript语言的关键字，它表示一个特殊值，常用来描述"空值"
 
@@ -134,13 +134,6 @@ console.log(null === null);//true
 console.log(undefined === null);//false
 console.log('null' === null);//false
 ```
-
-参考资料
-
-【1】 阮一峰Javascript标准参考教程——语法概述 http://javascript.ruanyifeng.com/grammar/basic.html#toc21
-【2】 W3School-Javascript高级教程——原始类型 http://www.w3school.com.cn/js/pro_js_primitivetypes.asp
-【3】《javascript权威指南(第6版)》第3章 类型、值和变量
-【4】《javascript高级程序设计(第3版)》第3章 基本概念
 
 
 
