@@ -99,18 +99,18 @@ console.log(t()); // 所有浏览器下都是10
 
 # Null 类型
 
-　　Null类型只有一个值，就是 `null` 。`null` 是javascript语言的关键字，它表示一个特殊值，常用来描述"空值"
+　　Null类型只有一个值，就是 `null` 。`null` 是Javascript语言的关键字，它表示一个特殊值，常用来描述"空值"
 
 　　逻辑角度看，`null` 值表示一个空对象指针
 
 ```javascript
-console.log(document.getElementById('test'));//null
+console.log(document.getElementById('test')); // null
 ```
 
 　　【注意】`null` 是空对象指针，而 `[]` 是空数组，`{}` 是空对象，三者不相同
 
 ```javascript
-console.log(typeof null);//'object'
+console.log(typeof null); // 'object'
 ```
 
 　　不同的对象在底层都表示为二进制，在Javascript中二进制前三位都为0会被判断为object类型，`null` 的二进制表示是全0，所以执行typeof时返回 `'object'`
@@ -133,9 +133,9 @@ String(null)  ==>  'null'
 
 ## 类型鉴别
 
-　　鉴别null类型，使用typeof运算符不可行，因为该运算符会返回'object'，null被认为是空对象指针
+　　鉴别null类型，使用typeof运算符不可行，因为该运算符会返回 `'object'` ，`null` 被认为是空对象指针
 
-　　判断一个值是否为null类型的最佳方法是直接和null进行恒等比较
+　　判断一个值是否为 `null` 类型的最佳方法是直接和 `null` 进行恒等比较
 
 ```javascript
 console.log(typeof null); // 'object'
