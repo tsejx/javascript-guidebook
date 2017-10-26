@@ -1,6 +1,6 @@
-﻿# Javascript类型系统——undefined和null
+﻿# Undefined类型和Null类型
 
-## 前面的话
+## 概述
 
 　　一般的程序语言，表示空的只有 `null`，但Javascript的设计者Brendan Eich却设计了一个 `undefined` ，这无疑增加了程序复杂度，但这样做也是有一定原因的。本文将详细介绍Javascript中的 `undefined` 和 `null`
 
@@ -17,7 +17,7 @@
 
 # Undefined 类型
 　
-　　Undefined类型只有一个值，就是undefined。当声明的变量未初始化时，该变量的默认值是undefined。所以一般地，undefined表示**变量没有初始化**
+　　Undefined类型只有一个值，就是 `undefined`。当声明的变量未初始化时，该变量的默认值是 `undefined`。所以一般地，`undefined` 表示**变量没有初始化**
 
 ```javascript
 var test; // undefined
@@ -34,30 +34,41 @@ typeof(test); // undefined
 ```
 
 ### 出现场景
-
- 1. 已声明未赋值的变量
- 2. 获取对象不存在的属性
- 3. 无返回值的函数的执行结果
- 4. 函数的参数没有传入
- 5. void(expression)
+1 - 已声明未赋值的变量
 
 ```javascript
 // 已声明未赋值的变量
 var i;
 console.log(i); // undefined
+```
 
+2 - 获取对象不存在的属性
+
+```javascript
 // 获取对象不存在的属性
 var o = {};
 console.log(o.p);//undefined
+```
 
+3 - 无返回值的函数的执行结果
+
+```javascript
 // 无返回值的函数的执行结果
 function f(){};
 console.log(f());//undefined
+```
 
+4 - 函数的参数没有传入
+    
+```javascript
 // 函数得到参数没有传入
 function f(x){return x;}
 console.log(f());//undefined
+``` 
 
+5 - void(expression)
+
+```javascript
 // void(expression)
 console.log(void(0));//undefined
 ```
