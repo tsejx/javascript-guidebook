@@ -45,12 +45,12 @@
    - 条件语句、循环语句和跳转语句
    - eval和with
  - 【函数】
-  - 函数概述
-  - 函数参数
-  - 函数的属性和方法
-  - ES6函数扩展
-  - 高级技巧
-  - 函数式编程
+   - 函数概述
+   - 函数参数
+   - 函数的属性和方法
+   - ES6函数扩展
+   - 高级技巧
+   - 函数式编程
 
 ## 变量、作用域和内存问题
 
@@ -138,12 +138,12 @@
 
 ## 模块化
 
- - 实现javascript下的模块组织
- - commonJS规范及Node模块实现
- - 使用Browserify来实现CommonJS道德浏览器加载
- - AMD及requireJS
- - r.js打包
- - CMD及seaJS
+  - 实现javascript下的模块组织
+  - commonJS规范及Node模块实现
+  - 使用Browserify来实现CommonJS道德浏览器加载
+  - AMD及requireJS
+  - r.js打包
+  - CMD及seaJS
 
 ## DOM
 
@@ -182,10 +182,11 @@
    - 元素视图方法
 
 ## DOM扩展
-    11.1 - 选择符API
-    11.2 - 元素便利
-    11.3 - HTML5
-    11.4 - 专有扩展
+
+ - 选择符API
+ - 元素便利
+ - HTML5
+ - 专有扩展
  
 ## 事件
     
