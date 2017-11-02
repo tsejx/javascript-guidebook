@@ -15,23 +15,19 @@
 ## 基本概念
 
  - 【语法】
-   - 词法结构
+   - [词法结构][1]
    - 标识符
    - 属性和变量
    - 表达式
-   - 严格模式
- - 【关键字和保留字】
+   - [严格模式][2]
    - 关键字和保留字
- - 【变量】
    - 变量
  - 【数据类型】
-   - typeof操作符
-   - Undefined类型
-   - Null类型
-   - Boolean类型
-   - Number类型
-   - String类型
-   - Object类型
+   - [typeof操作符][3]
+   - [Undefined类型和Null类型][4]
+   - [Boolean类型][5]
+   - [Number类型][6]
+   - [String类型][7]
  - 【操作符】
    - 运算符语法概述
    - 算术运算符
@@ -321,3 +317,12 @@
    - 鼠标跟随运动
    - 碰壁运动
    - 碰撞运动
+
+
+  [1]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/1-%E8%AF%AD%E6%B3%95/1-1%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84.md#%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84
+  [2]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/1-%E8%AF%AD%E6%B3%95/1-2%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F.md#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F
+  [3]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-1typeof%20%E6%93%8D%E4%BD%9C%E7%AC%A6.md#typeof-%E6%93%8D%E4%BD%9C%E7%AC%A6
+  [4]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-2Undefined%E7%B1%BB%E5%9E%8B%E5%92%8CNull%E7%B1%BB%E5%9E%8B.md#undefined%E7%B1%BB%E5%9E%8B%E5%92%8Cnull%E7%B1%BB%E5%9E%8B
+  [5]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-3Boolean%E7%B1%BB%E5%9E%8B.md#boolean%E7%B1%BB%E5%9E%8B
+  [6]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-4Number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B.md#number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B
+  [7]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-5String%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B.md#string%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B
