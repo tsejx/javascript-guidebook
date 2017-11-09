@@ -1,13 +1,10 @@
-﻿# Javascript运算符——条件、逗号、赋值、()和void运算符
-
-## 前面的话
+﻿# 条件操作符/逗号操作符/赋值操作符/()/void运算符
 
 　　Javascript中运算符总共有46个，除了前面已经介绍过的**算术运算符**、**关系运算符**、**位运算符**、**逻辑运算符**之外，还有很多运算符。本文将介绍条件运算符、逗号运算符、赋值运算符、()和void运算符
 
-
 ## 条件运算符
 
-　　条件运算符是javascript中唯一的一个三元运算符(三个操作数)，有时直接称做三元运算符。通常这个运算符写成`?:`，当然在代码中往往不会这么简写，因为这个运算符拥有三个操作数，第一个操作数在?之前，第二个操作数在?和:之间，第三个操作数在:之后
+　　条件运算符是Javascript中唯一的一个三元运算符(三个操作数)，有时直接称做三元运算符。通常这个运算符写成 `?:`，当然在代码中往往不会这么简写，因为这个运算符拥有三个操作数，第一个操作数在?之前，第二个操作数在?和:之间，第三个操作数在:之后
 
 ```javascript
 variable = boolean_expression ? true_value : false_value;
@@ -33,7 +30,7 @@ else
     greeting += 'there';
 ```
 
-　　三元条件表达式与if...else语句具有同样表达效果，但是两者有一个重大差别，if...else是语句，没有返回值；三元条件表达式是表达式，具有返回值。所以，在需要返回值的场合，只能使用三元条件表达式，而不能使用if...else
+　　三元条件表达式与 `if...else` 语句具有同样表达效果，但是两者有一个重大差别，`if...else` 是**语句**，**没有返回值**；三元条件表达式是**表达式**，**具有返回值**。所以，在需要返回值的场合，只能使用三元条件表达式，而不能使用if...else
 
 ```javascript
 console.log(true ? 'T' : 'F');
@@ -44,7 +41,7 @@ console.log(true ? 'T' : 'F');
 
 ## 逗号运算符
 
-　　逗号运算符是二元运算符，它的操作数可以是任意类型。它首先计算左操作数，然后计算右操作数，最后返回右操作数的值，用逗号运算符可以在一条语句中执行多个运算
+　　逗号运算符是**二元运算符**，它的操作数可以是任意类型。它首先计算左操作数，然后计算右操作数，最后返回右操作数的值，用逗号运算符可以在一条语句中执行多个运算
 
 ```javacript
 i = 0,j = 1,k = 2;
@@ -55,7 +52,7 @@ i = 0,j = 1,k = 2;
 i =0; j = 1; k = 2;
 ```
 
-　　逗号运算符常用于声明多个变量
+　　**逗号运算符常用于声明多个变量**
 
 ```javascript
 var iNum1 = 1, iNum = 2, iNum3 = 3;
@@ -72,14 +69,14 @@ for(var i=0, j=10;i<j;i++,j--){
 }
 ```
 
-　　逗号运算符还可以用于赋值，在用于赋值时，逗号运算符总是返回表达式中的最后一项
+　　★ 逗号运算符还可以用于**赋值**，在用于赋值时，逗号运算符总是返回表达式中的最后一项
 
 ```javascript
 var num = (1,2,3,4,5);
 console.log(num); //5
 ```
 
-　　[注意]去掉括号会报错
+　　**[注意]去掉括号会报错**
 
 
 ## 赋值运算符
@@ -107,9 +104,9 @@ o.x = 1;
 i = j = k = 0; //把三个变量初始化为0
 ```
 
-　　javascript还提供11个复合的赋值运算符，这些复合的赋值运算符，都是先进行指定运算，然后将得到的值返回给左边的变量
+　　Javascript还提供11个复合的赋值运算符，这些复合的赋值运算符，都是**先进行指定运算**，然后**将得到的值返回给左边的变量**
 
-　　[注意]设计这些操作符的目的是简化赋值操作，使用它们并不会带来任何性能的提升
+　　**[注意]设计这些操作符的目的是简化赋值操作，使用它们并不会带来任何性能的提升**
 
 ```javascript
 total += sales_tax;
@@ -162,13 +159,13 @@ console.log(data);//[0,12,2]
 
 ## 圆括号运算符
 
-　　圆括号运算符也叫分组运算符，它有两种用法：如果表达式放在圆括号中，作用是求值；如果跟在函数后面，作用是调用函数
+　　圆括号运算符也叫**分组运算符**，它有两种用法：如果表达式放在圆括号中，作用是**求值**；如果跟在函数后面，作用是**调用函数**
 
 　　把表达式放在圆括号之中，将返回表达式的值
 
 ```javascript
-console.log((1));  //1
-console.log(('a')); //'a'
+console.log((1));  // 1
+console.log(('a')); // 'a'
 console.log((1+2)); // 3
 ```
 
@@ -187,7 +184,7 @@ console.log((f));// function f(){return 1;}
 console.log(f()); // 1
 ```
 
-　　[注意]圆括号运算符不能为空，否则会报错
+　　**[注意]圆括号运算符不能为空，否则会报错**
 
 ```javascript
 (); //SyntaxError: Unexpected token )
@@ -195,8 +192,8 @@ console.log(f()); // 1
 　　由于圆括号的作用是求值，如果将语句放在圆括号之中，就会报错，因为语句没有返回值
 
 ```javascript
-console.log(var a = 1);// SyntaxError: Unexpected token var
-console.log((var a = 1));// SyntaxError: Unexpected token var
+console.log(var a = 1); // SyntaxError: Unexpected token var
+console.log((var a = 1)); // SyntaxError: Unexpected token var
 ```
 
 ## void运算符
@@ -214,7 +211,7 @@ console.log(void(0)); // undefined
 
 ```javascript
 var undefined = 10;
-console.log(undefined);//IE8-浏览器下为10，高版本浏览器下为undefined
+console.log(undefined); // IE8-浏览器下为10，高版本浏览器下为 undefined
 function t(){
     var undefined = 10;
     console.log(undefined);
@@ -224,7 +221,7 @@ console.log(t());//所有浏览器下都是10
 
 【作用二】客户端URL
 
-　　这个运算符最常用在客户端URL——javascript:URL中，在URL中可以写带有副作用的表达式，而void则让浏览器不必显示这个表达式的计算结果。例如，经常在HTML代码中的`<a>`标签里使用void运算符
+　　这个运算符最常用在客户端URL——Javascript:URL中，在URL中可以写带有副作用的表达式，而 void 则让浏览器不必显示这个表达式的计算结果。例如，经常在HTML代码中的 `<a>` 标签里使用void运算符
 
 ```javascript
 <a href="javascript:void window.open();">打开一个新窗口</a>
@@ -244,13 +241,3 @@ console.log(t());//所有浏览器下都是10
 ```javascript
 <a href="javascript:void(f())">文字</a>
 ```
-
-参考资料
-
-【1】 阮一峰Javascript标准参考教程——基本语法 http://javascript.ruanyifeng.com/grammar/operator.html
-【2】 W3School-Javascript高级教程——一元运算符 http://www.w3school.com.cn/js/pro_js_operators_unary.asp
-【3】《javascript权威指南(第6版)》第4章 表达式和运算符
-【4】《javascript高级程序设计(第3版)》第3章 基本概念
-
-
-
