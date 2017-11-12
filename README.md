@@ -16,25 +16,22 @@
 
  - 【语法】
    - [词法结构][1]
-   - 标识符
-   - 属性和变量
-   - 表达式
-   - [严格模式][2]
-   - 关键字和保留字
-   - 变量
+   - [表达式][2]
+   - [严格模式][3]
+   - [变量和标识符][4]
  - 【数据类型】
-   - [typeof操作符][3]
-   - [Undefined类型和Null类型][4]
-   - [Boolean类型][5]
-   - [Number类型][6]
-   - [String类型][7]
+   - [typeof操作符][5]
+   - [Undefined类型和Null类型][6]
+   - [Boolean类型][7]
+   - [Number类型][8]
+   - [String类型][9]
  - 【操作符】
-   - [运算符][8]
-   - [算术运算符][9]
-   - [关系运算符][10]
-   - [逻辑运算符][11]
-   - [位运算符][12]
-   - [条件、逗号、赋值、()和void运算符][13]
+   - [运算符][10]
+   - [算术运算符][11]
+   - [关系运算符][12]
+   - [逻辑运算符][13]
+   - [位运算符][14]
+   - [条件、逗号、赋值、()和void运算符][15]
    - 运算符优先级
  - 【语句】
    - 表达式语句、块语句、空语句和声明语句
@@ -64,7 +61,7 @@
    - 闭包的7种形式
 
 ## 引用类型
-   
+
 - 【构造器类型】
    - Object类型
      - 初识对象
@@ -73,9 +70,9 @@
      - 对象拷贝
    - Math对象
    - Array数组类型
-   - 正则表达式基础语法 
+   - 正则表达式基础语法
    - RegExp正则类型
-   - 数组方法 
+   - 数组方法
    - 数组复制
    - 字符串和数组的方法比较
    - 错误处理机制
@@ -183,9 +180,9 @@
  - 元素便利
  - HTML5
  - 专有扩展
- 
+
 ## 事件
-    
+
  - 【事件流】
  - 【事件处理程序】
  - 【事件对象】
@@ -320,15 +317,17 @@
 
 
   [1]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/1-%E8%AF%AD%E6%B3%95/1-1%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84.md#%E8%AF%8D%E6%B3%95%E7%BB%93%E6%9E%84
-  [2]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/1-%E8%AF%AD%E6%B3%95/1-2%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F.md#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F
-  [3]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-1typeof%20%E6%93%8D%E4%BD%9C%E7%AC%A6.md#typeof-%E6%93%8D%E4%BD%9C%E7%AC%A6
-  [4]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-2Undefined%E7%B1%BB%E5%9E%8B%E5%92%8CNull%E7%B1%BB%E5%9E%8B.md#undefined%E7%B1%BB%E5%9E%8B%E5%92%8Cnull%E7%B1%BB%E5%9E%8B
-  [5]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-3Boolean%E7%B1%BB%E5%9E%8B.md#boolean%E7%B1%BB%E5%9E%8B
-  [6]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-4Number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B.md#number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B
-  [7]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-5String%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B.md#string%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B
-  [8]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-1%E8%BF%90%E7%AE%97%E7%AC%A6.md
-  [9]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-2%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6.md
-  [10]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-3%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.md
-  [11]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-4%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.md
-  [12]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-5%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6.md
-  [13]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-6%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%97%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6-%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6-%E6%8B%AC%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6-void%E8%BF%90%E7%AE%97%E7%AC%A6.md
+  [2]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/1-%E8%AF%AD%E6%B3%95/1-4%E8%A1%A8%E8%BE%BE%E5%BC%8F.md
+  [3]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/1-%E8%AF%AD%E6%B3%95/1-2%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F.md#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F
+  [4]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/1-%E8%AF%AD%E6%B3%95/1-3%E5%8F%98%E9%87%8F%E5%92%8C%E6%A0%87%E8%AF%86%E7%AC%A6.md
+  [5]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-1typeof%20%E6%93%8D%E4%BD%9C%E7%AC%A6.md#typeof-%E6%93%8D%E4%BD%9C%E7%AC%A6
+  [6]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-2Undefined%E7%B1%BB%E5%9E%8B%E5%92%8CNull%E7%B1%BB%E5%9E%8B.md#undefined%E7%B1%BB%E5%9E%8B%E5%92%8Cnull%E7%B1%BB%E5%9E%8B
+  [7]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-3Boolean%E7%B1%BB%E5%9E%8B.md#boolean%E7%B1%BB%E5%9E%8B
+  [8]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-4Number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B.md#number%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B
+  [9]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2-5String%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B.md#string%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B
+  [10]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-1%E8%BF%90%E7%AE%97%E7%AC%A6.md
+  [11]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-2%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6.md
+  [12]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-3%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.md
+  [13]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-4%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.md
+  [14]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-5%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6.md
+  [15]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/3-%E6%93%8D%E4%BD%9C%E7%AC%A6/3-6%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%97%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6-%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6-%E6%8B%AC%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6-void%E8%BF%90%E7%AE%97%E7%AC%A6.md
