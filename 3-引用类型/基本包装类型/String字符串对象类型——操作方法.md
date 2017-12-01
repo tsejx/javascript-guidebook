@@ -230,9 +230,176 @@ str.slice(0, -1);  // returns 'The morning is upon us'
 
 ## String.prototype.trim()
 
+`trim()` 方法会从一个字符串的两端删除空白字符。在这个上下文中的空白字符是所有的空白字符 (space, tab, no-break space 等) 以及所有行终止符字符（如 LF，CR）。
+
+### 语法
+
+> str.trim()
+
+### 描述
+
+`trim()` 方法并不影响原字符串本身，它返回的是一个新的字符串。
+
+### 例子
+
+**使用 trim()**
+
+下面的例子中将显示小写的字符串 'foo':
+
+```javascript
+var orig = '   foo  ';
+console.log(orig.trim()); // 'foo'
+
+// 另一个.trim()例子，只从一边删除
+
+var orig = 'foo    ';
+console.log(orig.trim()); // 'foo'
+```
+
+### 兼容旧环境Edit
+
+如果 `trim()` 不存在，可以在所有代码前执行下面代码
+
+```javascript
+if (!String.prototype.trim) {
+  String.prototype.trim = function () {
+    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+  };
+}
+```
+
 # 分割方法
 
 ## String.prototype.split()
+
+split() 方法使用指定的分隔符字符串将一个String对象分割成字符串数组，以将字符串分隔为子字符串，以确定每个拆分的位置。
+
+### 语法
+
+> str.split([separator[, limit]])
+
+*Tip: 如果空字符串("")被用作分隔符，则字符串会在每个字符之间分割。*
+
+**参数**
+
+ - `separator`
+指定表示每个拆分应发生的点的字符串。`separator` 可以是一个字符串或正则表达式。 如果纯文本分隔符包含多个字符，则必须找到整个字符串来表示分割点。如果在str中省略或不出现分隔符，则返回的数组包含一个由整个字符串组成的元素。如果分隔符为空字符串，则将str原字符串中每个字符的数组形式返回。
+
+ - `limit`
+一个整数，限定返回的分割片段数量。当提供此参数时，split 方法会在指定分隔符的每次出现时分割该字符串，但在限制条目已放入数组时停止。如果在达到指定限制之前达到字符串的末尾，它可能仍然包含少于限制的条目。新数组中不返回剩下的文本。
+
+### 描述
+
+找到分隔符后，将其从字符串中删除，并将子字符串的数组返回。如果没有找到或者省略了分隔符，则该数组包含一个由整个字符串组成的元素。如果分隔符为空字符串，则将 `str` 转换为字符数组。如果分隔符出现在字符串的开始或结尾，或两者都分开，分别以空字符串开头，结尾或两者开始和结束。因此，如果字符串仅由一个分隔符实例组成，则该数组由两个空字符串组成。
+
+如果分隔符是包含捕获括号的正则表达式，则每次分隔符匹配时，捕获括号的结果（包括任何未定义的结果）将被拼接到输出数组中。但是，并不是所有浏览器都支持此功能。
+
+Note: 当字符串为空时，`split（）` 返回一个包含一个空字符串的数组，而不是一个空数组，如果字符串和分隔符都是空字符串，则返回一个空数组。
+
+### 示例
+
+```javascript
+"Webkit Moz O ms Khtml".split( " " )   // ["Webkit", "Moz", "O", "ms", "Khtml"]
+```
+
+**例子：使用 split**
+
+下例定义了一个函数：根据指定的分隔符将一个字符串分割成一个字符串数组。分隔字符串后，该函数依次输出原始字符串信息，被使用的分隔符，返回数组元素的个数，以及返回数组中所有的元素。
+
+```javascript
+function splitString(stringToSplit, separator) {
+  var arrayOfStrings = stringToSplit.split(separator);
+
+  console.log('The original string is: "' + stringToSplit + '"');
+  console.log('The separator is: "' + separator + '"');
+  console.log("The array has " + arrayOfStrings.length + " elements: ");
+
+  for (var i=0; i < arrayOfStrings.length; i++)
+    console.log(arrayOfStrings[i] + " / ");
+}
+
+var tempestString = "Oh brave new world that has such people in it.";
+var monthString = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
+
+var space = " ";
+var comma = ",";
+
+splitString(tempestString, space);
+splitString(tempestString);
+splitString(monthString, comma);
+```
+
+上例输出下面结果：
+
+```javascript
+The original string is: "Oh brave new world that has such people in it."
+The separator is: " "
+The array has 10 elements: Oh / brave / new / world / that / has / such / people / in / it. /
+
+The original string is: "Oh brave new world that has such people in it."
+The separator is: "undefined"
+The array has 1 elements: Oh brave new world that has such people in it. /
+
+The original string is: "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec"
+The separator is: ","
+The array has 12 elements: Jan / Feb / Mar / Apr / May / Jun / Jul / Aug / Sep / Oct / Nov / Dec /
+```
+
+**例子：移出字符串中的空格**
+
+下例中，split 方法会查找“0 或多个空白符接着的分号，再接着 0 或多个空白符”模式的字符串，找到后，就将空白符从字符串中移除，nameList 是 split 的返回数组。
+
+```javascript
+var names = "Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand ";
+
+console.log(names);
+
+var re = /\s*;\s*/;
+var nameList = names.split(re);
+
+console.log(nameList);
+```
+
+上例输出两行，第一行输出原始字符串，第二行输出结果数组。
+
+```javascript
+Harry Trump ;Fred Barney; Helen Rigby ; Bill Abel ;Chris Hand
+Harry Trump,Fred Barney,Helen Rigby,Bill Abel,Chris Hand
+```
+
+**例子：限制返回值中分割元素数量**
+
+下例中，`split` 查找字符串中的 0 或多个空格，并返回找到的前 3 个分割元素（splits）。
+
+```javascript
+var myString = "Hello World. How are you doing?";
+var splits = myString.split(" ", 3);
+
+console.log(splits);
+```
+
+上例输出：
+
+```javascript
+["Hello", "World.", "How"]
+```
+
+**例子：捕获括号（Capturing parentheses）**
+
+如果 `separator` 包含捕获括号（capturing parentheses），则其匹配结果将会包含在返回的数组中。
+
+```javascript
+var myString = "Hello 1 word. Sentence number 2.";
+var splits = myString.split(/(\d)/);
+
+console.log(splits);
+```
+
+上例输出：
+
+```javascript
+[ "Hello ", "1", " word. Sentence number ", "2", "." ]
+```
 
 # 合并方法
 
