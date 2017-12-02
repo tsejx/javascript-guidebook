@@ -83,15 +83,13 @@
     -  [Number数字对象类型][48]
     -  [String字符串对象类型][49]
  - 【单体内置对象】
-   - Global对象
-   - Math对象
+    - [Global对象][50]
+    - [Math对象][51]
  - 【类型识别】
-   - 四种类型识别的方法
-   - 数组检测方式
+    - [四种类型识别的方法][52]
  - 【类型转换】
-   - toString()
-   - valueOf()
-   - 数据类型转换
+    - [toString()][53]
+    - [valueOf()][54]
 
 ## 面向对象的程序设计
 
@@ -369,3 +367,8 @@
   [47]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B/Boolean%E5%B8%83%E5%B0%94%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B.md
   [48]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B/Number%E6%95%B0%E5%AD%97%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B.md
   [49]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E5%9F%BA%E6%9C%AC%E5%8C%85%E8%A3%85%E7%B1%BB%E5%9E%8B/String%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B.md
+  [50]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E5%8D%95%E4%BD%93%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Global%E5%AF%B9%E8%B1%A1.md
+  [51]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E5%8D%95%E4%BD%93%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1/Math%E5%AF%B9%E8%B1%A1.md
+  [52]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%AF%86%E5%88%AB/%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%AF%86%E5%88%AB%E7%9A%84%E6%96%B9%E6%B3%95.md
+  [53]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E2%80%94%E2%80%94toString%28%29%E6%96%B9%E6%B3%95.md
+  [54]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E2%80%94%E2%80%94valueOf%28%29.md
