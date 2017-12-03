@@ -1,4 +1,4 @@
-﻿# String字符串对象类型——操作方法
+﻿# String字符串对象类型——操作方法                                                                                                                
 
 tags: 前端生存指南
 
@@ -400,7 +400,7 @@ console.log(splits);
 ```javascript
 [ "Hello ", "1", " word. Sentence number ", "2", "." ]
 ```
-
+ 
 # 合并方法
 
 ## String.prototype.concat()
