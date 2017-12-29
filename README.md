@@ -94,31 +94,30 @@
 ## 面向对象的程序设计
 
  - 【面向想象的基础】
-   - 对象的组成
-   - 属性描述符
-   - 属性操作
-   - 工厂模式
+   - [对象的组成][55]
+   - [属性描述符][56]
+   - [属性操作][57]
    - 运算符new的执行过程和原理分析
  - 【继承实现】
-   - 创建对象的5种模式
-   - 实现继承的3种形式
-   - 构造函数和原型对象
+   - [创建对象的5种模式][58]
+   - [实现继承的3种形式][59]
+   - [构造函数和原型对象][60]
 
 ## 函数表达式
 
 - 【递归】
- - 递归
+ - [递归][61]
 - 【闭包】
- - 闭包
- - 闭包的10种形式
- - 执行环境种的闭包
- - 立即调用的闭包
- - this绑定机制
+ - [闭包][62]
+ - [闭包的10种形式][63]
+ - [执行环境种的闭包][64]
+ - [立即调用的闭包][65]
+ - [this绑定机制][66]
 - 【作用域】
- -  声明提升
- -  作用域的内部原理
- -  词法作用域和动态作用域
- -  块作用域
+ -  [声明提升][67]
+ -  [作用域的内部原理][68]
+ -  [词法作用域和动态作用域][69]
+ -  [块作用域][70]
 - 【函数】
  - 函数概述
  - 函数参数
@@ -360,3 +359,19 @@
   [52]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%AF%86%E5%88%AB/%E5%9B%9B%E7%A7%8D%E7%B1%BB%E5%9E%8B%E8%AF%86%E5%88%AB%E7%9A%84%E6%96%B9%E6%B3%95.md
   [53]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E2%80%94%E2%80%94toString%28%29%E6%96%B9%E6%B3%95.md
   [54]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/3-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E2%80%94%E2%80%94valueOf%28%29.md
+  [55]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E7%A1%80/%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%BB%84%E6%88%90.md
+  [56]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E7%A1%80/%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6.md
+  [57]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%9F%BA%E7%A1%80/%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C.md
+  [58]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%BB%A7%E6%89%BF%E5%AE%9E%E7%8E%B0/%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%845%E7%A7%8D%E6%A8%A1%E5%BC%8F.md
+  [59]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%BB%A7%E6%89%BF%E5%AE%9E%E7%8E%B0/%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E7%9A%843%E7%A7%8D%E5%BD%A2%E5%BC%8F.md
+  [60]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/%E7%BB%A7%E6%89%BF%E5%AE%9E%E7%8E%B0/%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1.md
+  [61]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E9%80%92%E5%BD%92/%E9%80%92%E5%BD%92.md
+  [62]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E9%97%AD%E5%8C%85/%E9%97%AD%E5%8C%85.md
+  [63]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E9%97%AD%E5%8C%85/%E9%97%AD%E5%8C%85%E7%9A%8410%E7%A7%8D%E5%BD%A2%E5%BC%8F.md
+  [64]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E9%97%AD%E5%8C%85/%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E4%B8%AD%E7%9A%84%E9%97%AD%E5%8C%85md
+  [65]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E9%97%AD%E5%8C%85/%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F.md
+  [66]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E9%97%AD%E5%8C%85/this%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6.md
+  [67]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E5%A3%B0%E6%98%8E%E6%8F%90%E5%8D%87.md
+  [68]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.md
+  [69]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F.md
+  [70]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F.md
