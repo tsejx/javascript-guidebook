@@ -2,15 +2,6 @@
 
 这个Repository尽可能整理、收录完整的JavaScript语法知识，大部分资源来源于出版书籍以及网络。希望藉此Repo对JavaScript有更深入的研究。
 
-资料来源
-
- - 《JavaScript高级程序设计》
- - 《JavaScript权威指南》
- - 《JavaScript DOM编程艺术》
- - 《JavaScript 语言精粹》
- - 《你不知道的JavaScript》系列
- - Mozilla Document
- - W3CSchool Tutorial
 
 ## 基本概念
 
@@ -232,6 +223,21 @@
   - 【媒体元素】
   - 【历史状态管理】
 
+## BOM
+
+ - 【定时器】
+  - setTimeout和setInterval
+  - requestAnimationFrame
+ - 【window属性】
+  - 对话框
+  - 窗口操作
+  - location对象
+  - history对象
+  - screen对象
+  - navigator对象和用户代理检测
+  - 能力检测
+
+
 ## 错误处理与测试
 
   - 浏览器报告的错误
@@ -239,19 +245,12 @@
   - 测试技术
   - 常见的IE错误
 
-## JavaScript与XML
-
- - 浏览器对XML DOM的支持
- - 浏览器对XPath的支持
- - 浏览器对XSLT的支持
-
-
 ## JSON
 
  - 语法
  - 解析与序列化
 
-## Ajax与Comet
+## Ajax
 
  - 【基础】
    - JSON
