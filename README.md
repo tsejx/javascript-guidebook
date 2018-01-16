@@ -5,30 +5,31 @@
 
 ## 基本概念
 
- - 【语法】
+ - 【基本语法】
    - [词法结构][1]
    - [表达式][2]
    - [变量和标识符][3]
  - 【数据类型】
    - [typeof操作符][4]
-   - [Undefined类型和Null类型][5]
+   - [Undefined类型][5]
+   - Null类型
    - [Boolean类型][6]
    - [Number类型][7]
    - [String类型][8]
  - 【操作符】
-   - [运算符][9]
-   - [算术运算符][10]
-   - [关系运算符][11]
-   - [逻辑运算符][12]
-   - [位运算符][13]
-   - [条件、逗号、赋值、()和void运算符][14]
-   - 运算符优先级
+   - [操作符概述][9]
+   - [算术操作符][10]
+   - [关系操作符符][11]
+   - [逻辑操作符][12]
+   - [位操作符][13]
+   - [其他操作符][14]
+   - 操作符优先级
  - 【语句】
    - [表达式语句][15]
    - [条件语句][16]
    - [循环语句][17]
    - [跳转语句][18]
-   - [eval和with][19]
+   - [eval语句和with语句][19]
  - 【函数】
    - [函数概述][20]
    - [函数参数][21]
@@ -50,11 +51,11 @@
 ## 引用类型
 
  - 【Object类型】
-    - [Object对象类型][32]
+    - [Object类型][32]
     - [属性描述符][33]
     - [属性操作][34]
  - 【Array类型】
-    - [Array数组类型][35]
+    - [Array类型][35]
     - [栈和队列方法][36]
     - [操作方法][37]
     - [检测方法][38]
@@ -63,38 +64,38 @@
     - [迭代方法][41]
     - [重排序方法][42]
  - 【Date类型】
-    - [Date日期类型][43]
-    - [JS中关于日期和时间的基础知识][44]
+    - [Date类型][43]
+    - [Date基本概论][44]
  - 【RegExp类型】
-    - [RegExp正则表达式类型][45]
-    - [JS中正则表达式的基础知识][46]
+    - [RegExp类型][45]
+    - [RegExp基本概论][46]
  - 【Function类型】
  - 【基本包装类型】
-    -  [Boolean布尔对象类型][47]
-    -  [Number数字对象类型][48]
-    -  [String字符串对象类型][49]
+    -  [Boolean类型][47]
+    -  [Number类型][48]
+    -  [String类型][49]
  - 【单体内置对象】
     - [Global对象][50]
     - [Math对象][51]
  - 【类型识别】
-    - [四种类型识别的方法][52]
+    - [类型识别方法][52]
  - 【类型转换】
     - [toString()][53]
     - [valueOf()][54]
 
 ## 面向对象的程序设计
 
- - 【面向想象的基础】
+ - 【面向对象的基础】
    - [对象的组成][55]
    - [属性描述符][56]
    - [属性操作][57]
    - 运算符new的执行过程和原理分析
  - 【继承实现】
-   - [创建对象的5种模式][58]
-   - [实现继承的3种形式][59]
+   - [创建对象模式][58]
+   - [实现继承形式][59]
    - [构造函数和原型对象][60]
 
-## 函数表达式
+## 函数表达式相关
 
 - 【递归】
  - [递归][61]
@@ -110,13 +111,31 @@
  -  [词法作用域和动态作用域][69]
  -  [块作用域][70]
 - 【函数】
- - 函数概述
- - 函数参数
- - 函数属性和方法
- - 函数式编程
- - ES6函数拓展
- - 高阶函数
- - 惰性函数
+ - [函数概述][71]
+ - [函数参数][72]
+ - [函数属性和方法][73]
+ - [函数式编程][74]
+ - [ES6函数拓展][75]
+ - [高阶函数][76]
+ - [惰性函数][77]
+
+## 客户端检测
+
+ - 能力检测
+ - 怪癖检测
+ - 用户代理检测
+
+## BOM
+
+ - 【Window计时】
+   - setTimeout和setInterval
+   - requestAnimationFrame
+ - 系统对话框
+ - 窗口尺寸
+ - [Location对象][78]
+ - [History对象][79]
+ - [Screen对象][80]
+ - [Navigator对象][81]
 
 ## DOM
 
@@ -125,7 +144,8 @@
    - 元素节点
    - 特性节点
    - 文本节点
-   - 注释节点和文档类型节点
+   - 注释节点
+   - 文档类型节点
    - 文档节点
    - 文档片段节点
  - 【获取节点】
@@ -153,13 +173,6 @@
    - 滚动Scroll
    - 回到顶部
    - 元素视图方法
-
-## DOM扩展
-
- - 选择符API
- - 元素便利
- - HTML5
- - 专有扩展
 
 ## 事件
 
@@ -223,32 +236,18 @@
   - 【媒体元素】
   - 【历史状态管理】
 
-## BOM
-
- - 【定时器】
-  - setTimeout和setInterval
-  - requestAnimationFrame
- - 【window属性】
-  - 对话框
-  - 窗口操作
-  - location对象
-  - history对象
-  - screen对象
-  - navigator对象和用户代理检测
-  - 能力检测
-
-
 ## 错误处理与测试
 
-  - 浏览器报告的错误
-  - 错误处理
-  - 测试技术
-  - 常见的IE错误
+  - 【错误处理】
+    - 错误检测
+    - 错误事件
+    - 常见的错误类型
+  - 【调试技术】
+    - 调试技术
 
 ## JSON
 
- - 语法
- - 解析与序列化
+ - JSON
 
 ## Ajax
 
@@ -268,20 +267,11 @@
    - 图片Ping
    - JSONP
 
-## 高级技巧
-
- - 高级函数
- - 防篡改对象
- - 高级定时器
- - 自定义事件
- - 拖放
-
 ## 离线应用与客户端存储
 
  - 离线检测
  - 应用缓存
  - 数据存储
-
 
 ## 动画和运动
 
@@ -374,3 +364,14 @@
   [68]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86.md
   [69]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%8A%A8%E6%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F.md
   [70]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E4%BD%9C%E7%94%A8%E5%9F%9F/%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F.md
+  [71]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%87%BD%E6%95%B0/%E5%87%BD%E6%95%B0%E6%A6%82%E8%BF%B0.md
+  [72]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%87%BD%E6%95%B0/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0.md
+  [73]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%87%BD%E6%95%B0/%E5%87%BD%E6%95%B0%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95.md
+  [74]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%87%BD%E6%95%B0/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B.md
+  [75]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%87%BD%E6%95%B0/ES6%E5%87%BD%E6%95%B0%E6%89%A9%E5%B1%95.md
+  [76]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%87%BD%E6%95%B0/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0.md
+  [77]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/5-%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F/%E5%87%BD%E6%95%B0/%E6%83%B0%E6%80%A7%E5%87%BD%E6%95%B0.md
+  [78]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/7-BOM/window%E5%B1%9E%E6%80%A7/Location%E5%AF%B9%E8%B1%A1.md
+  [79]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/7-BOM/window%E5%B1%9E%E6%80%A7/History%E5%AF%B9%E8%B1%A1.md
+  [80]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/7-BOM/window%E5%B1%9E%E6%80%A7/Screen%E5%AF%B9%E8%B1%A1.md
+  [81]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/7-BOM/window%E5%B1%9E%E6%80%A7/Navigator%E5%AF%B9%E8%B1%A1.md
