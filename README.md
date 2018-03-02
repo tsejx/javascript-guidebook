@@ -89,7 +89,6 @@
    - [对象的组成][56]
    - [属性描述符][57]
    - [属性操作][58]
-   - 运算符new的执行过程和原理分析
  - 【继承实现】
    - [创建对象模式][59]
    - [实现继承形式][60]
@@ -131,35 +130,35 @@
     - [History对象][84]
     - [Screen对象][85]
     - [Navigator对象][86]
-[此处输入链接的描述][87]
+
 ## DOM
 
 
  - 【节点层次】
-   - [节点层次][88]
-   - [文档对象模型][89]
-   - [Document类型][90]
-   - [Element类型][91]
-   - [Node类型][92]
+   - [节点层次][87]
+   - [文档对象模型][88]
+   - [Document类型][89]
+   - [Element类型][90]
+   - [Node类型][91]
  - 【获取节点】
-   - [元素选择器][93]
-   - [动态集合][94]
-   - [HTML5 DOM选择符方法][95]
-   - [HTML5 DOM与类相关扩充][96]
+   - [元素选择器][92]
+   - [动态集合][93]
+   - [HTML5 DOM选择符方法][94]
+   - [HTML5 DOM与类相关扩充][95]
  - 【节点类型】
-   - [文档对象模型][97]
+   - [文档对象模型][96]
  - 【节点操作】
-   - [节点关系][98]
-   - [节点操作][99]
-   - [节点内容][100]
-   - [节点遍历][101]
-   - [节点范围][102]
+   - [节点关系][97]
+   - [节点操作][98]
+   - [节点内容][99]
+   - [节点遍历][100]
+   - [节点范围][101]
  - 【脚本化CSS】
-   - [脚本化CSS][103]
-   - [查询计算样式][104]
-   - [脚本化行间样式][105]
+   - [脚本化CSS][102]
+   - [查询计算样式][103]
+   - [脚本化行间样式][104]
  - 【DOM操作技术】
-   - [DOM操作技术][106]
+   - [DOM操作技术][105]
 
 ## 事件
 
@@ -206,8 +205,8 @@
 ## 错误处理与测试
 
   - 【错误处理】
-    - [错误检测][107]
-    - [错误事件][108]
+    - [错误检测][106]
+    - [错误事件][107]
   - 【调试技术】
     - 调试技术
 
@@ -219,12 +218,12 @@
 
 ## JSON
 
- - [JSON][109]
+ - [JSON][108]
 
 ## Canvas
 
- - CanvasAPI汇总
- - Canvas基础语法
+ - [CanvasAPI汇总][109]
+ - [Canvas基础语法][110]
 
 ## SVG
 
@@ -345,26 +344,27 @@
   [84]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/7-BOM/window%E5%B1%9E%E6%80%A7/History%E5%AF%B9%E8%B1%A1.md
   [85]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/7-BOM/window%E5%B1%9E%E6%80%A7/Screen%E5%AF%B9%E8%B1%A1.md
   [86]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/7-BOM/window%E5%B1%9E%E6%80%A7/Navigator%E5%AF%B9%E8%B1%A1.md
-  [87]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E9%81%8D%E5%8E%86.md
-  [88]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1.md
-  [89]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B.md
-  [90]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/Document%E7%B1%BB%E5%9E%8B.md
-  [91]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/Element%E7%B1%BB%E5%9E%8B.md
-  [92]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/Node%E7%B1%BB%E5%9E%8B.md
-  [93]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8.md
-  [94]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/%E5%8A%A8%E6%80%81%E9%9B%86%E5%90%88.md
-  [95]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/HTML5%20DOM%E9%80%89%E6%8B%A9%E7%AC%A6%E6%96%B9%E6%B3%95.md
-  [96]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/HTML5%20DOM%E4%B8%8E%E7%B1%BB%E7%9B%B8%E5%85%B3%E6%89%A9%E5%85%85.md
-  [97]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/03-%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B/%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B.md
-  [98]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E5%85%B3%E7%B3%BB.md
-  [99]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C.md
-  [100]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E5%86%85%E5%AE%B9.md
-  [101]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E9%81%8D%E5%8E%86.md
-  [102]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E8%8C%83%E5%9B%B4.md
-  [103]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/05-%E8%84%9A%E6%9C%AC%E5%8C%96CSS/%E8%84%9A%E6%9C%AC%E5%8C%96CSS.md
-  [104]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/05-%E8%84%9A%E6%9C%AC%E5%8C%96CSS/%E6%9F%A5%E8%AF%A2%E8%AE%A1%E7%AE%97%E6%A0%B7%E5%BC%8F.md
-  [105]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/05-%E8%84%9A%E6%9C%AC%E5%8C%96CSS/%E8%84%9A%E6%9C%AC%E5%8C%96%E8%A1%8C%E5%86%85%E6%A0%B7%E5%BC%8F.md
-  [106]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/DOM%E6%93%8D%E4%BD%9C%E6%8A%80%E6%9C%AF/DOM%E6%93%8D%E4%BD%9C%E6%8A%80%E6%9C%AF.md
-  [107]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/12-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E6%B5%8B%E8%AF%95/%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B.md
-  [108]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/12-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E6%B5%8B%E8%AF%95/%E9%94%99%E8%AF%AF%E4%BA%8B%E4%BB%B6.md
-  [109]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/13-JSON/JSON.md
+  [87]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1.md
+  [88]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B.md
+  [89]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/Document%E7%B1%BB%E5%9E%8B.md
+  [90]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/Element%E7%B1%BB%E5%9E%8B.md
+  [91]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/01-%E8%8A%82%E7%82%B9%E5%B1%82%E6%AC%A1/Node%E7%B1%BB%E5%9E%8B.md
+  [92]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8.md
+  [93]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/%E5%8A%A8%E6%80%81%E9%9B%86%E5%90%88.md
+  [94]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/HTML5%20DOM%E9%80%89%E6%8B%A9%E7%AC%A6%E6%96%B9%E6%B3%95.md
+  [95]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/02-%E8%8E%B7%E5%8F%96%E8%8A%82%E7%82%B9/HTML5%20DOM%E4%B8%8E%E7%B1%BB%E7%9B%B8%E5%85%B3%E6%89%A9%E5%85%85.md
+  [96]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/03-%E8%8A%82%E7%82%B9%E7%B1%BB%E5%9E%8B/%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B.md
+  [97]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E5%85%B3%E7%B3%BB.md
+  [98]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C.md
+  [99]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E5%86%85%E5%AE%B9.md
+  [100]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E9%81%8D%E5%8E%86.md
+  [101]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/04-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C/%E8%8A%82%E7%82%B9%E8%8C%83%E5%9B%B4.md
+  [102]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/05-%E8%84%9A%E6%9C%AC%E5%8C%96CSS/%E8%84%9A%E6%9C%AC%E5%8C%96CSS.md
+  [103]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/05-%E8%84%9A%E6%9C%AC%E5%8C%96CSS/%E6%9F%A5%E8%AF%A2%E8%AE%A1%E7%AE%97%E6%A0%B7%E5%BC%8F.md
+  [104]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/05-%E8%84%9A%E6%9C%AC%E5%8C%96CSS/%E8%84%9A%E6%9C%AC%E5%8C%96%E8%A1%8C%E5%86%85%E6%A0%B7%E5%BC%8F.md
+  [105]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/08-DOM/DOM%E6%93%8D%E4%BD%9C%E6%8A%80%E6%9C%AF/DOM%E6%93%8D%E4%BD%9C%E6%8A%80%E6%9C%AF.md
+  [106]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/12-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E6%B5%8B%E8%AF%95/%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B.md
+  [107]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/12-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8E%E6%B5%8B%E8%AF%95/%E9%94%99%E8%AF%AF%E4%BA%8B%E4%BB%B6.md
+  [108]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/13-JSON/JSON.md
+  [109]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/14-Canvas/CanvasRenderingContext2D.md
+  [110]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/14-Canvas/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95.md
