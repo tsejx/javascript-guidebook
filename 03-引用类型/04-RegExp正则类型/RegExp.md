@@ -4,9 +4,17 @@
 
 ## 目录
 
+* [RegExp语法](#RegExp语法)
+  * [组成](#组成)
+  * [写法](#写法)
+* [RegExp属性](#RegExp属性)
+  * [通用属性](#通用属性)
+  * [RegExp构造函数属性](#RegExp构造函数属性)
+* [RegExp方法](#RegExp方法)
+  * [exec()](#exec())
+  * [test()](#test())
 
-
-## 语法
+## RegExp语法
 
 ### 组成
 
@@ -51,9 +59,9 @@ RegExp(pattern [, flags])
 
 #### 构造函数
 
-　　和普通的内置对象一样，RegExp正则表达式对象也支持 `new RegExp()` 构造函数的形式。
+和普通的内置对象一样，RegExp正则表达式对象也支持 `new RegExp()` 构造函数的形式。
 　　
-　　RegExp构造函数接收两个参数：
+RegExp构造函数接收两个参数：
 
 - 要匹配的字符串模式(pattern)
 - 可选的标志字符串(flags)
@@ -95,7 +103,7 @@ let regexp = new RegExp("\\w+");
 let regexp = /\w+/;
 ```
 
-## 属性
+## RegExp属性
 
 ### 通用属性
 
@@ -105,13 +113,13 @@ let regexp = /\w+/;
 :---:|:---:
 global:bol|布尔值，表示是否设置了g标志
 ignoreCase:bol|布尔值，表示是否设置了i标志
-lastIndex:|整数，表示开始搜索下一个匹配项的字符位置，从0算起
+lastIndex:num|整数，表示开始搜索下一个匹配项的字符位置，从0算起
 multiline:bol|布尔值，表示是否设置了标志m
-source|正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回
+source:str|正则表达式的字符串表示，按照字面量形式而非传入构造函数中的字符串模式返回
 
 
 ```javascript
-// 实例
+// example
 var regexp = new RegExp('\\[bc\\]at','i');
 
 // global
@@ -184,8 +192,8 @@ rightContext |         \$'           |     input字符串中lastMatch之后的�
 
 ```javascript
 // test()用于测试一个字符串是否匹配某个正则表达式，并返回一个布尔值
-var text = 'this has been a short summer';
-var regexp = /(.)hort/g;
+let text = 'this has been a short summer';
+let regexp = /(.)hort/g;
 
 if(regexp.test(text)){
     console.log(RegExp.input); // 'this has been a short summer'
@@ -206,7 +214,7 @@ if(regexp.test(text)){
 
 　　Javascript有9个用于存储捕获组的构造函数属性，在调用 `exec()` 或 `test()` 方法时，这些属性会被自动填充
 
-　　[注意]理论上，应该保存整个表达式匹配文本的RegExp.$0并不存在，值为undefined
+★  理论上，应该保存整个表达式匹配文本的 `RegExp.$0` 并不存在，值为 `undefined`
 
 ```javascript
 // RegExp.$1\RegExp.$2\RegExp.$3……到RegExp.$9分别用于存储第一、第二……第九个匹配的捕获组
@@ -218,7 +226,7 @@ if(pattern.test(text)){
 }
 ```
 
-## 方法
+## RegExp方法
 
 　　正则表达式RegExp对象的正则匹配方法只有两个：分别是 `exec()` 和 `test()`。
 
@@ -254,73 +262,33 @@ regexp.exec(str)
 #### 示例
 
 ```javascript
-var text = 'mom and dad and baby and others';
-var pattern = /mom( and dad( and baby)?)?/gi;
-var matches = pattern.exec(text);
-console.log(pattern,matches);
-// pattern.lastIndex:20
-// matches[0]:'mom and dad and baby'
-// matches[1]:' and dad and baby'
-// matches[2]:' and baby'
-// matches.index:0
-// matches.input:'mom and dad and baby and others'   
+// Match "quick brown" followed by "jumps", ignoring characters in between
+// Remember "brown" and "jumps"
+// Ignore case
+let regexp = /quick\s(brown).+?(jumps)/ig;
+let result = regexp.exec('The Quick Brown Fox Jumps Over The Lazy Dog');
 ```
 
-　　对于exec()方法而言，即使在模式中设置了全局标志(g)，它每次也只会返回一个匹配项。在不设置全局标志的情况下，在同一个字符串上多次调用exec()，将始终返回第一个匹配项的信息；而在设置全局标志的情况下，每次调用exec()都会在字符串中继续查找新匹配项
+下表列出这个脚本的返回值：
 
-```javascript
-var text = 'cat,bat,sat,fat';
-var pattern1 = /.at/;
-var matches = pattern1.exec(text);
-console.log(pattern1,matches);
-//pattern1.lastIndex:0
-//matches[0]:'cat'
-//matches.index:0
-//matches.input:'cat,bat,sat,fat'
+**对象 result**
 
-var text = 'cat,bat,sat,fat';
-matches = pattern1.exec(text);    
-console.log(pattern1,matches);    
-//pattern1.lastIndex:0
-//matches[0]:'cat'
-//matches.index:0
-//matches.input:'cat,bat,sat,fat'
-```
+|属性/索引|描述|例子|
+|---|---|---|
+|`[0]`|匹配的全部字符串	|`'Quick Brown Fox Jumps'`|
+|`[1],...,[n]`|括号中的分组捕获|`[1] = Brown` `[2] = Jumps`|
+|`index`|匹配到的字符位于原始字符串的基于0的索引值|`4`|
+|`input`|原始字符串|`'The Quick Brown Fox Jumps Over The Lazy Dog'`|
 
-```javascript
-var text = 'cat,bat,sat,fat';
-var pattern2 = /.at/g;
-var matches = pattern2.exec(text);
-console.log(pattern2,matches);    
-//pattern2.lastIndex:3
-//matches[0]:'cat'
-//matches.index:0
-//matches.input:'cat,bat,sat,fat'
+**对象 regexp**
 
-var text = 'cat,bat,sat,fat';
-matches = pattern2.exec(text);
-console.log(pattern2,matches);    
-//pattern2.lastIndex:7
-//matches[0]:'bat'
-//matches.index:4
-//matches.input:'cat,bat,sat,fat'    
-```
-
-　　【tips】用exec()方法找出匹配的所有位置和所有值
-
-```javascript
-var string = 'j1h342jg24g234j 3g24j1';
-var pattern = /\d/g;
-var valueArray = [];//值
-var indexArray = [];//位置
-var temp;
-while((temp=pattern.exec(string)) != null){
-    valueArray.push(temp[0]);
-    indexArray.push(temp.index);  
-}
-//["1", "3", "4", "2", "2", "4", "2", "3", "4", "3", "2", "4", "1"] [1, 3, 4, 5, 8, 9, 11, 12, 13, 16, 18, 19, 21]
-console.log(valueArray,indexArray); 
-```
+|属性/索引|描述|例子|
+|---|---|---|
+|`lastIndex`|下一次匹配开始的位置		|`25`|
+|`ignoreCase`|是否使用了'i'标记使正则匹配忽略大小写|`true`|
+|`global`|是否使用了'g'标记来进行全局的匹配|`true`|
+|`multiline	`|是否使用了'm'标记使正则工作在多行模式（也就是，^ 和 $ 可以匹配字符串中每一行的开始和结束（行是由 \n 或 \r 分割的），而不只是整个输入字符串的最开始和最末尾处。）|`false`|
+|`source	`|正则匹配的字符串|`quick\s(brown).+?(jumps)`|
 
 ### test()
 
@@ -341,42 +309,35 @@ regexp.test(str)
 
 如果正则表达式与指定的字符串匹配 ，返回 `true`；否则 `false`。
 
+★ 当你想要知道一个模式是否存在于一个字符串中时，就可以使用 `test()`（类似于 `String.prototype.search()` 方法），差别在于 `test()` 返回一个布尔值，而 `search()`  返回索引（如果找到）或者-1（如果没找到）；若想知道更多信息（然而执行比较慢），可使用 `exec()` 方法（类似于 `String.prototype.match()` 方法）。 和 `exec()` (或者组合使用),一样，在相同的全局正则表达式实例上多次调用 `test()` 将会越过之前的匹配。
+
 #### 实例
 
-```javascruot
-var text = '000-00-000';
-var pattern = /\d{3}-\d{2}-\d{4}/;
-if(pattern.test(text)){
-    console.log('The pattern was matched');
-}
-```
+**使用test()**
 
-　　同样地，在调用 `test()` 方法时，会造成RegExp对象的lastIndex属性的变化。如果指定了全局模式，每次执行 `test()` 方法时，都会从字符串中的 `lastIndex` 偏移值开始尝试匹配，所以用同一个RegExp多次验证不同字符串，必须在每次调用之后，将 `lastIndex` 值置为0。
+一个简单的例子，测试 "hello" 是否包含在字符串的最开始，返回布尔值。
 
 ```javascript
-var pattern = /^\d{4}-\d{2}-\d{2}$/g;
-console.log(pattern.test('2016-06-23'));//true
-console.log(pattern.test('2016-06-23'));//false
+let str = 'hello world!';
+let result = /^hello/.test(str);
 
-//正确的做法应该是在验证不同字符串前，先将lastIndex重置为0
-var pattern = /^\d{4}-\d{2}-\d{2}$/g;
-console.log(pattern.test('2016-06-23'));//true
-pattern.lastIndex = 0;
-console.log(pattern.test('2016-06-23'));//true
+console.log(result); // true
 ```
 
-　　前面介绍过，javascript有9个用于存储捕获组的构造函数属性，在调用 `exec()` 或 `test()` 方法时，这些属性会被自动填充
+**当设置全局标志的正则使用test()**
 
-　　[注意]理论上，应该保存整个表达式匹配文本的RegExp.$0并不存在，值为 `undefined`
+如果正则表达式设置了全局标志，test() 的执行会改变正则表达式   lastIndex属性。连续的执行test()方法，后续的执行将会从 lastIndex 处开始匹配字符串，(exec() 同样改变正则本身的 lastIndex属性值).
+
+下面的实例表现了这种行为： 
 
 ```javascript
-if(/^(\d{4})-(\d{2})-(\d{2})$/.test('2016-06-23')){
-    console.log(RegExp.$1);//'2016'
-    console.log(RegExp.$2);//'06'
-    console.log(RegExp.$3);//'23'
-    console.log(RegExp.$0);//undefined
-}
-```
+var regex = /foo/g;
 
+// regex.lastIndex is at 0
+regex.test('foo'); // true
+
+// regex.lastIndex is now at 3
+regex.test('foo'); // false
+```
 
   [1]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/03-%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B/04-RegExp%E6%AD%A3%E5%88%99%E7%B1%BB%E5%9E%8B/RegExpRule.md
