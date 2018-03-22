@@ -10,10 +10,12 @@ typeof operand
 typeof (operand)
 ```
 
- - **参数**
-    - `operand`
+### 参数
+
+- `operand`
      - 是一个表达式，表示对象或原始值，其类型将被返回。
 
+### 返回值
 
 下表总结了typeof可能的返回值。有关类型和原始值的更多信息，可查看 [JavaScript数据结构][1] 页面。
 
@@ -29,39 +31,57 @@ typeof (operand)
 |       函数对象    |       `'function'`  |
 |       任何其他对象|       `'object'`    |
 
-**示例**
+## 示例
+
+### 标准示例
+
+- `Numbers`
 
 ```javascript
-// Numbers
 typeof 37 === 'number';
 typeof 3.14 === 'number';
 typeof Math.LN2 === 'number';
 typeof Infinity === 'number';
 typeof NaN === 'number'; // 尽管NaN是"Not-A-Number"的缩写
 typeof Number(1) === 'number'; // 但不要使用这种形式!
+```
 
-// Strings
+ - `Strings`
+
+```javascript
 typeof "" === 'string';
 typeof "bla" === 'string';
 typeof (typeof 1) === 'string'; // typeof总是返回一个字符串
 typeof String("abc") === 'string'; // 但不要使用这种形式!
+```
 
-// Booleans
+ - `Booleans`
+
+```javascript
 typeof true === 'boolean';
 typeof false === 'boolean';
 typeof Boolean(true) === 'boolean'; // 但不要使用这种形式!
+```
 
-// Symbols
+ - `Symbols`
+
+```javascript
 typeof Symbol() === 'symbol';
 typeof Symbol('foo') === 'symbol';
 typeof Symbol.iterator === 'symbol';
+```
 
-// Undefined
+ - `Undefined`
+
+```javascript
 typeof undefined === 'undefined';
 typeof declaredButUndefinedVariable === 'undefined';
 typeof undeclaredVariable === 'undefined'; 
+```
 
-// Objects
+ - `Objects`
+
+```javascript
 typeof {a:1} === 'object';
 
 // 使用Array.isArray 或者 Object.prototype.toString.call
@@ -74,15 +94,19 @@ typeof new Date() === 'object';
 typeof new Boolean(true) === 'object';
 typeof new Number(1) === 'object';
 typeof new String("abc") === 'object';
+```
 
-// 函数
+ - `Function`
+
+
+```javascript
 typeof function(){} === 'function';
 typeof class C{} === 'function'
 typeof Math.sin === 'function';
 typeof new Function() === 'function';
 ```
 
-## 特殊的 `null`
+### 特殊的 `null`
 
 ```javascript
 typeof null === 'object'; // 从一开始出现JavaScript就是这样的
