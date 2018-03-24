@@ -1,4 +1,4 @@
-### # Try...Catch 语句
+# Try...Catch 语句
 
 **`try...catch`** 语句将能引发错误的代码放在 `try` 块中，并且对应一个响应，然后有异常被抛出。
 
@@ -80,3 +80,54 @@ catch (e) {
 当 `try` 块中的抛出一个异常时， *`exception_var`*（如 `catch (e)` 中的 `e` ）用来保存被抛出声明指定的值。你可以用这个标识符来获取关于被抛出异常的信息。
 
 这个标识符是 `catch` 子语句内部的。换言之，当进入 `catch` 子语句时标识符创建，`catch` 子语句执行完毕后，这个标识符将不再可用。
+
+## 示例
+
+### 嵌套 `try` 块
+
+```javascript
+try{
+    try{
+        throw new Error("oops");
+    } finally {
+        console.log("finally");
+    }
+} catch (ex) {
+    console.log("outer", ex.message);
+}
+
+// Output:
+// "finally"
+// "outer" "oops"
+```
+
+
+
+### 从 `finally` 语句块返回
+
+如果从`finally` 块中返回一个值，那么这个值将会成为整个 `try-catch-finally` 的返回值，无论是否有`return` 语句在 `try` 和 `catch` 中。这包括在 `catch` 块里抛出的异常。
+
+```javascript
+try {
+  try {
+    throw new Error("oops");
+  }
+  catch (ex) {
+    console.error("inner", ex.message);
+    throw ex;
+  }
+  finally {
+    console.log("finally");
+    return;
+  }
+}
+catch (ex) {
+  console.error("outer", ex.message);
+}
+
+// Output:
+// "inner" "oops"
+// "finally"
+```
+
+因为 `finally` 块里的 `return` 语句，外部的 `“oops”` 异常没有抛出。从 `catch` 块返回的值同样适用。
