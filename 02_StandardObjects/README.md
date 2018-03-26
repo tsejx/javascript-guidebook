@@ -1,0 +1,54 @@
+# 标准内置对象
+
+## :spiral_notepad:目录
+
+- 『值属性』
+  - Infinity
+  - NaN
+  - undefined
+  - null
+- 『函数属性』
+  - eval()
+  - isFinite()
+  - isNaN()
+  - parseFloat()
+  - parseInt()
+  - decodeURI()
+  - decodeURIComponent()
+  - encodeURI()
+  - encodeURIComponent()
+- 『基本对象』
+  - Object
+  - Function
+  - Boolean
+  - Symbol
+  - Error
+- 『数字和日期对象』
+  - Number
+  - Math
+  - Date
+- 『字符串和正则对象』
+  - String
+  - RegExp
+- 『索引集合』
+  - Array
+    - 栈和队列方法
+    - 操作方法
+    - 检测方法
+    - 缩小方法
+    - 转换方法
+    - 迭代方法
+    - 重排序方法
+  - TypedArrays
+- 『键值集合』
+  - Map
+  - Set
+- 『结构化对象』
+  - ArrayBuffer
+  - JSON
+- 『控制抽象对象』
+  - Promise
+  - Generator
+  - GeneratorFunction
+  - AsyncFunction
+
