@@ -1,112 +1,16 @@
 ﻿# JavaScript Guidebook
 
-## 基本语法
+## :spiral_notepad:项目目录
 
- - 【语法与数据类型】
-   - [词法结构](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar%26Types/1_LexicalStructure.md)
-   - [变量](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar%26Types/2_VariableDeclarations.md)
-   - [数据结构与类型](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar%26Types/3_DataStructures%26Types.md)
- - 【表达式和运算符】
-   - 运算符
-     - [赋值运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/AssignmentOperators.md)
-     - [比较运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/ComparisonOperators.md)
-     - [算术运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/ArithmeticOperators.md)
-     - [位运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/BitwiseOperators.md)
-     - [逻辑运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/LogicalOperators.md)
-     - [字符串运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/StringOperators.md)
-     - [条件运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/ConditionalOperator.md)
-     - [逗号运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/CommaOperator.md)
-     - 一元运算符
-         - [delete](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/UnaryOperators/delete.md)
-         - [typeof](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/UnaryOperators/typeof.md)
-         - [void](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/UnaryOperators/void.md)
-     - 关系运算符
-         - [in](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/RelationalOperator/in.md)
-         - [instanceof](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/RelationalOperator/instanceof.md)
-   - 表达式
-     - 基本表达式
-         - this
-         - 字面量
-         - 对象初始化
-         - 分组表达式
-     - 复杂表达式
-         -  属性访问表达式
-         -  对象创建表达式
-         -  函数表达式
-         -  类表达式
-         -  生成器表达式
- - 【控制流与错误处理】
-   - 条件判断语句
-     - if...else
-     - switch 
-   - 异常处理语句
-     - throw
-     - try..catch
-   - Error对象
-   - Promises
- - 【循环与迭代】
-   - for
-   - do...while
-   - while
-   - label
-   - break
-   - continue
-   - for...in
-   - for...of
+### 基本语法
 
-## 内置对象
+> 基础语法
 
- - 【值属性】
-    - Infinity
-    - NaN
-    - undefined
-    - null
- - 【函数属性】
-    - eval()
-    - isFinite()
-    - isNaN()
-    - parseFloat()
-    - parseInt()
-    - decodeURI()
-    - decodeURIComponent()
-    - encodeURI()
-    - encodeURIComponent()
- - 【基本对象】
-    - Object
-    - Function
-    - Boolean
-    - Symbol
-    - Error
- - 【数字和日期对象】
-    - Number
-    - Math
-    - Date
- - 【字符串和正则对象】
-    - String
-    - RegExp
- - 【索引集合】
-    - Array
-        - 栈和队列方法
-        - 操作方法
-        - 检测方法
-        - 缩小方法
-        - 转换方法
-        - 迭代方法
-        - 重排序方法
-    - TypedArrays
- - 【键值集合】
-    - Map
-    - Set
- - 【结构化对象】
-    - ArrayBuffer
-    - JSON
- - 【控制抽象对象】
-    - Promise
-    - Generator
-    - GeneratorFunction
-    - AsyncFunction
+### 内置对象
 
-## 函数
+> 内置对象
+
+### 函数
 
 - 【定义函数】
     - 函数的声明
@@ -163,7 +67,7 @@
     - 自更新函数
 
 
-## 面向对象编程
+### 面向对象编程
 
  - 【理解对象】
      - 属性类型
@@ -188,7 +92,7 @@
  - 【多态】一个对象调用其他对象的方法，call和apply 继承和重载都是多态的表现形式
  - 【抽象】
 
-## 浏览器对象模型BOM
+### 浏览器对象模型BOM
 
  - 【Window对象】
    - 定时器
@@ -230,7 +134,7 @@
      - 怪癖检测
      - 用户代理检测
 
-## 文档对象模型DOM
+### 文档对象模型DOM
 
  - 【节点层次】
  - 【Node】
@@ -286,7 +190,7 @@
      - 事件模拟
  - 【表单脚本】
 
-## HTML5脚本编程
+### HTML5脚本编程
 
   - 语义
     - HTML5表单
@@ -312,7 +216,7 @@
     - 触控事件
     - 摄录设备
 
-## Web图形开发
+### Web图形开发
 
  - 2D图像
    - Canvas
@@ -323,9 +227,19 @@
    - HTML5音视频
    - WebRTC
 
-## 服务器端数据传输
+### 服务器端数据传输
 
   - JSON
   - HTTP
   - ajax
   - fetch
+
+## :pushpin:说明
+
+**关于排版**
+
+指南内容按照 [中文文案排版指北](http://mazhuang.org/wiki/chinese-copywriting-guidelines/) 进行排版，以保证内容的可读性。
+
+**关于资料**
+
+[MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)：官方推荐的前端文档
