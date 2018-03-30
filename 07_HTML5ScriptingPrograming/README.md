@@ -1,0 +1,36 @@
+# HTML5脚本编程
+
+## 🗒目录
+
+- 语义
+  - HTML5表单
+  - HTML5新语义元素
+- 性能集成
+  - WebWorkers 
+  - 拖放API
+  - 动画渲染
+  - 全屏API
+  - 焦点API
+- 应用与本地存储
+  - 本地文件应用
+  - 本地存储
+    - Cookie
+    - Storage
+    - IndexedDB
+- 服务器通信
+  - WebSockets
+  - Server-sentEvents
+  - WebRTC
+- 设备访问
+  - 地理定位
+  - 触控事件
+  - 摄录设备
+- Web图形开发
+  - 2D图像
+    - Canvas
+    - SVG
+  - 3D图像
+    - WebGL
+  - 视频
+    - HTML5音视频
+    - WebRTC
