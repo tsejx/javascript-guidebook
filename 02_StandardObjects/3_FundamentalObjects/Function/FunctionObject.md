@@ -4,13 +4,13 @@
 
 ## 语法
 
-- 用法一：充当 `Function` 对象的构造函数，用于结合 `new` 关键字构造一个新的 `Function` 对象。
+- **用法一**：充当 `Function` 对象的构造函数，用于结合 `new` 关键字构造一个新的 `Function` 对象。
 
 ```javascript
 new Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 ```
 
-- 用法二：用作普通函数使用，其行为与用法一（使用 `new` 关键字）完全一致，相当于用法一省略了 `new` 关键字。
+- **用法二**：用作普通函数使用，其行为与用法一（使用 `new` 关键字）完全一致，相当于用法一省略了 `new` 关键字。
 
 ```javascript
 Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
