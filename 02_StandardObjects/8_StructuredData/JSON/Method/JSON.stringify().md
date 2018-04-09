@@ -1,4 +1,4 @@
-# JSON.stringify() 序列化选项
+# JSON.stringify()
 
 `JSON.stringify()` 方法是将一个 JavaScript 值（对象或者数组）转换为一个 JSON 字符串，如果指定了 `replacer` 是一个函数，则可以替换值，或者如果指定了 `replacer` 是一个数组，可选的仅包括指定的属性。
 
