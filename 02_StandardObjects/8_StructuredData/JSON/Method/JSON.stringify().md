@@ -20,14 +20,6 @@ JSON.stringify( value[, replacer [, space]] )
 
 一个表示给定值的 JSON 字符串。
 
-### 描述
-
-
-
-- ​
-- ​
-- 不可枚举的属性会被忽略。
-
 ## 示例
 
 ### 标准示例
