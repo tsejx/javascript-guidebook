@@ -98,6 +98,85 @@ myMap.get({});		    // undefined,because keyObj != {}
 myMap.get(function(){})	// undefined,because keyFunc !== function(){}
 ```
 
+### `Map` 键与内存地址绑定
+
+**注意**：只有对同一个对象的引用， `Map` 结构才将其视为同一个键。
+
+```javascript
+const map = new Map();
+
+map.set(['a'], 555);
+map.get(['a']);			// undefined
+// 上面的 set 方法和 get 方法表面上是针对同一个键，实际上却是两个值，内存地址不一样的，因此 get 方法无法读取该值，返回 undefined
+```
+
+同样的值的两个实例在 `Map` 结构中被视为两个键。
+
+```javascript
+const map = new Map();
+
+const k1 = ['a'];
+const k2 = ['a'];
+
+map
+.set(k1, 111)
+.set(k2, 222);
+
+map.get(k1);	// 111
+map.get(k2);	// 222
+```
+
+`Map` 的键实际上是和内存地址绑定的，只要内存地址不一样，就视为两个键。这就解决了同名属性碰撞（clash）的问题，我们扩展别人的库时，如果使用对象作为键名，不用担心自己的属性与原作者的属性同名。
+
+如果 `Map` 的键是一个简单类型的值（数字、字符串、布尔值），则只要两个值严格相等，`Map` 就将其视为一个键，包括 0 和 -0。另外，虽然 `NaN` 不严格等于自身，但 `Map` 将其视为同一个键。
+
+```javascript
+let map = new Map();
+
+map.set(-0, 123);
+map.get(-0);		// 123
+
+map.set(true, 1);
+map.set('true', 2);
+map(true);			// 1
+
+map.set(undefined, 3);
+map.set(null, 4);
+map.get(undefined);	// 3
+
+map.set(NaN, 123);
+map.get(NaN);		// 123
+```
+
+
+
+### 使用 `Set` 对象和 `Map` 对象作 `Map` 构造函数的参数
+
+```javascript
+const set = new Set([
+    ['foo', 1],
+    ['bar', 2]
+]);
+const m1 = new Map(set);
+m1.get('foo');	// 1
+
+const m2 = new Map([['baz'], 3]);
+const m3 = new Map(m2);
+m3.get('baz');	// 3
+```
+
+如果对同一个键多次赋值，后面的值会将覆盖前面的值。
+
+```javascript
+const map = new Map();
+
+map
+.set(1, 'aaa')
+.set(1, 'bbb');
+
+map.get(1);	// 'bbb'
+```
+
 ### 使用 `NaN` 作为映射的键
 
 `NaN` 也可以作为 `Map` 对象的键，虽然 `NaN` 和任何值甚至和自己都不相等（`NaN !== NaN` 返回 `true`），但下面的例子表明，两个 `NaN` 作为 `Map` 的键来说是没有区别的。
@@ -112,7 +191,7 @@ var otherNaN = Number('foo');
 myMap.get(otherNaN);	// 'Not a number'
 ```
 
-#### 使用 `for...of` 方法迭代映射
+### 使用 `for...of` 方法迭代映射
 
 映射也可以使用 `for..of` 循环来实现迭代
 
@@ -139,6 +218,117 @@ for (var [key, value] of myMap.entries()) {
   console.log(key + " = " + value);
 }
 // 将会显示两个log。 一个是 "0 = zero" 另一个是 "1 = one"
+```
+
+### 与其他数据结构的互相转换
+
+#### `Map` 转为数组
+
+`Map` 转为数组最方便的方法就是使用扩展运算符 `...`
+
+```javascript
+const myMap = new Map()
+.set(true, 7)
+.set({foo: 3}, ['abc'])
+[...myMap]
+// [ [true, 7], [ { foo: 3}, ['abc'] ] ]
+```
+
+#### 数组转为 `Map`
+
+将数组传入 `Map` 构造函数就可以转为 `Map`
+
+```javascript
+new Map([
+    [true, 7],
+    [{foo: 3}, ['abc']]
+])
+// Map {
+//	true => 7,
+//  Object {foo: 3} => ['abc']
+// }
+```
+
+#### `Map` 转为对象
+
+如果 `Map` 的所有键都是字符串，则可以转为对象。
+
+```javascript
+function strMapToObj (strMap) {
+    let obj = Object.create(null);
+    for (let [k, v] of strMap){
+        obj[k] = v;
+    }
+    return obj;
+}
+
+const myMap = new Map()
+.set('yes', true)
+.set('no', false)
+// {yes: true, no: false}
+```
+
+#### 对象转为 `Map`
+
+```javascript
+function objToStrMap(obj){
+    let strMap = new Map();
+    for (let k of Object.keys(obj)) {
+        str.set(k, obj[k])
+    }
+    return strMap;
+}
+
+objToStrMap({yes: true, no: false})
+// Map {'yes' => true, "no" => false}
+```
+
+#### `Map` 转为 `JSON`
+
+`Map` 转为 `JSON` 要区分两种情况。一种情况是， `Map` 的键名都是字符串，这时可以选择转为对象 `JSON`。
+
+```javascript
+function strMapToJson(strMap) {
+    return JSON.stringify(strMapToObj(strMap));
+}
+
+let myMap = new Map().set('yes', true).set('no', false);
+strMapToJson(myMap)
+// '{"yes": true, "no": false}'
+```
+
+另一种情况是，`Map` 的键名有非字符串，这时可以选择转为数组 `JSON`。
+
+```javascript
+function mapToArrayJson(map){
+    return JSON.stringify([...map])
+}
+
+let myMap = new Map().set(true, 7).set({foo: 3}, ['abc']);
+mapToArrayJson(myMap);
+// '[[true], 7], [{'foo': 3}, ['abc']]'
+```
+
+#### `JSON` 转为 `Map`
+
+```javascript
+function jsonToStrMap(jsonStr) {
+    return objToStrMap(JSON.parse(jsonStr));
+}
+
+jsonToStrMap('{"yes": true, "no": false}')
+// Map {'yes' => true, 'no': false}
+```
+
+但是，有一种特殊情况：整个 `JSON` 就是一个数组，且每个数组成员本身又是一个具有两个成员的数组。这时，它可以一一对应地转为 `Map` 。这往往是数组转为 `JSON` 的逆操作。
+
+```javascript
+function jsonToMap(jsonStr) {
+    return new Map(JSON.parse(jsonStr));
+}
+
+jsonToMap('[[true, 7], [{"foo": 3}, ["abc"]]]')
+// Map(true => 7, Object {foo: 3} => ['abc'])
 ```
 
 
