@@ -11,43 +11,43 @@
 ## :spiral_notepad:目录
 
 - 『值属性』
-  - Infinity
-  - NaN
-  - undefined
+  - [Infinity](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/1_ValueProperties/Infinity.md)
+  - [NaN](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/1_ValueProperties/NaN.md)
+  - [undefined](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/1_ValueProperties/undefined.md)
 - 『函数属性』
-  - eval()
-  - isFinite()
-  - isNaN()
-  - parseFloat()
-  - parseInt()
-  - decodeURI()
-  - decodeURIComponent()
-  - encodeURI()
-  - encodeURIComponent()
+  - [eval()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/eval.md)
+  - [isFinite()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/isFinite.md)
+  - [isNaN()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/isNaN.md)
+  - [parseFloat()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/parseFloat.md)
+  - [parseInt()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/parseInt.md)
+  - [decodeURI()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/decodeURI.md)
+  - [decodeURIComponent()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/decodeURIComponent.md)
+  - [encodeURI()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/encodeURI.md)
+  - [encodeURIComponent()](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/2_FunctionProperties/encodeURIComponent.md)
 - 『基本对象』
-  - Boolean
-  - Error
-  - Object
-  - Function
+  - [Boolean](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/3_FundamentalObjects/Boolean/BooleanObject.md)
+  - [Error](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/3_FundamentalObjects/Error/ErrorObject.md)
+  - [Object](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/3_FundamentalObjects/Object/Object.md)
+  - [Function](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/3_FundamentalObjects/Function/FunctionObject.md)
   - Symbol
 - 『数字和日期对象』
-  - Date
-  - Math
-  - Number
+  - [Date](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/4_Numbers%26Dates/Date/DateObject.md)
+  - [Math](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/4_Numbers%26Dates/Math/MathObject.md)
+  - [Number](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/4_Numbers%26Dates/Number/NumberObject.md)
 - 『字符串和正则对象』
-  - String
-  - RegExp
+  - [String](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/5_TextProcessing/String/StringObject.md)
+  - [RegExp](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/5_TextProcessing/RegExp/RegExpObject.md)
 - 『索引集合』
-  - Array
-  - TypedArrays
+  - [Array](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/6_IndexedCollections/Array/ArrayObject.md)
+  - [TypedArrays](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/6_IndexedCollections/TypedArray/TypedArray.md)
 - 『键值集合』
-  - Set
-  - WeakSet
-  - Map
-  - WeakMap
+  - [Set](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/7_KeyCollections/Set/Set.md)
+  - [WeakSet](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/7_KeyCollections/WeakSet/WeakSet.md)
+  - [Map](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/7_KeyCollections/Map/Map.md)
+  - [WeakMap](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/7_KeyCollections/WeakMap/WeakMap.md)
 - 『结构化对象』
-  - ArrayBuffer
-  - JSON
+  - [ArrayBuffer](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/8_StructuredData/ArrayBuffer/ArrayBuffer.md)
+  - [JSON](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/8_StructuredData/JSON/JSON.md)
 - 『控制抽象对象』
   - Promise
   - Generator
