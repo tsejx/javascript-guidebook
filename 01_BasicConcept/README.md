@@ -25,9 +25,9 @@
       - [instanceof](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/RelationalOperator/instanceof.md)
   - 表达式
     - 基本表达式
-      - this
-      - 字面量
-      - 对象初始化
+      - [this](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/This.md)
+      - [字面量](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/Literal.md)
+      - [数组和对象的初始化表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/InitializationExpressionsForObjects%26Arrays.md)
       - 分组表达式
     - 复杂表达式
       - 属性访问表达式
