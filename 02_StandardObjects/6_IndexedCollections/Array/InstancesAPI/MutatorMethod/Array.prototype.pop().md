@@ -1,4 +1,4 @@
-## Array.prototype.pop()
+# Array.prototype.pop()
 
 `pop()`函数用于从当前数组中移除最后一个元素，并返回移除的元素。
 
