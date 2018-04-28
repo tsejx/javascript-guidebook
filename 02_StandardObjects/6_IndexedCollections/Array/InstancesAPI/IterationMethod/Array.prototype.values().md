@@ -1,2 +1,0 @@
-# Array.prototype.values()
-
