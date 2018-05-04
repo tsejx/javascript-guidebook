@@ -28,17 +28,17 @@
       - [this](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/This.md)
       - [字面量](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/Literal.md)
       - [数组和对象的初始化表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/InitializationExpressionsForObjects%26Arrays.md)
-      - 分组表达式
+      - [分组表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/GroupingExpression.md)
     - 复杂表达式
-      - 属性访问表达式
-      - 对象创建表达式
-      - 函数表达式
+      - [属性访问表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/MemberExpression/PropertyAccessExpression.md)
+      - [对象创建表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/MemberExpression/ObjectCreationExpression.md)
+      - [函数表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/MemberExpression/FunctionExpression.md)
       - 类表达式
       - 生成器表达式
 - 『控制流与错误处理』
   - 条件判断语句
     - [if](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/3_ControlFlow%26ErrorHandling/ConditionalStatements/If.md)
-    - [switch](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/3_ControlFlow%26ErrorHandling/ConditionalStatements/Switch.md) 
+    - [switch](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/3_ControlFlow%26ErrorHandling/ConditionalStatements/Switch.md)
   - 异常处理语句
     - [throw](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/3_ControlFlow%26ErrorHandling/ExceptionHandlingStatements/Throw.md)
     - [try..catch](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/3_ControlFlow%26ErrorHandling/ExceptionHandlingStatements/Try...Catch.md)
