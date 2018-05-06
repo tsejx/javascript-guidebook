@@ -23,8 +23,6 @@ function Identifier opt( FormalParameterList opt ){
 
 ECMAScript 是通过上下文来区分这两者的：假如 `function foo(){}` 是一个赋值表达式的一部分，则认为它是一个函数表达式。而如果 `function foo(){}` 被包含在一个函数体内，或者位于程序（的最上层）中，则将它作为一个函数声明来解析。显然，在省略标识符的情况下，“表达式”也就只能是表达式了。
 
-
-
 ## 示例
 
 ```javascript

@@ -1,4 +1,4 @@
-﻿# delete
+# delete
 
 `delete` 操作符用于删除对象的某个属性。如果没有指向这个属性的引用了，它最终会被自动的释放掉。
 
@@ -17,10 +17,10 @@ delete object['property']
 
 ### 参数
 
- - `object`
-    - 对象的名称，或计算结果为对象的表达式。
- - `property`
-    - 要删除的属性。
+| 参数       | 说明                                 |
+| ---------- | ------------------------------------ |
+| `object`   | 对象的名称，或计算结果为对象的表达式 |
+| `property` | 要删除的属性                         |
 
 ### 返回值
 
@@ -60,4 +60,4 @@ console.log(delete Employee.salary); // returns true
 ```
 
 
-  [1]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management
+[1]: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Memory_Management

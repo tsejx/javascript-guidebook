@@ -26,8 +26,10 @@ if (condition) {
 
 #### 参数
 
- - `condition`：为任何返回结果（若非 `boolean` 类型会被ECMAScrpt转换）为 `true` 或 `false` 的表达式。如果条件式为 `true`，`statement1` 会被执行；否则 `statement2` 会被执行。
- - `statement1(2)`：为任意语句（代码块），甚至可以将另一个 `if` 语句嵌套七种。
+| 参数            | 说明                                                         |
+| --------------- | ------------------------------------------------------------ |
+| `condition`     | 为任何返回结果（若非 `boolean` 类型会被ECMAScrpt转换）为 `true` 或 `false` 的表达式。如果条件式为 `true`，`statement1` 会被执行；否则 `statement2` 会被执行 |
+| `statement1(2)` | 为任意语句（代码块），甚至可以将另一个 `if` 语句嵌套七种     |
 
 ## 多层条件判断
 

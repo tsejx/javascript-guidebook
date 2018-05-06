@@ -1,4 +1,4 @@
-﻿# typeof
+# typeof
 
 `typeof` 操作符返回一个字符串，表示未经计算的操作数的类型。
 
@@ -12,8 +12,9 @@ typeof (operand)
 
 ### 参数
 
-- `operand`
-     - 是一个表达式，表示对象或原始值，其类型将被返回。
+| 参数     | 说明                                           |
+| -------- | ---------------------------------------------- |
+| `perand` | 是一个表达式，表示对象或原始值，其类型将被返回 |
 
 ### 返回值
 
@@ -118,4 +119,4 @@ ECMAScript提出了一个修复（通过opt-in），但被拒绝。这将导致 
 
 
 
-  [1]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.mdhttps://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.md
+[1]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.mdhttps://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.md

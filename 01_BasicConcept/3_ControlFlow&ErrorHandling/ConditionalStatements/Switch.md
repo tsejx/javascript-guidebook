@@ -24,9 +24,11 @@ switch (expression) {
 
 ### 参数
 
- - `expression`：用于比较的表达式
- - `value_(n)`：与 `expression` 比较的值
- - `statement(n)`：执行语句
+| 参数           | 说明                     |
+| -------------- | ------------------------ |
+| `expression`   | 用于比较的表达式         |
+| `value_(n)`    | 与 `expression` 比较的值 |
+| `statement(n)` | 执行语句                 |
 
 ### 关键词
 

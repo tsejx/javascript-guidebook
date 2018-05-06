@@ -7,7 +7,7 @@
 | `Null` 类型      | `null`              |
 | `Undefined` 类型 | `undefined`         |
 | `Boolean` 类型   | `true` `false`      |
-| `Number` 类型    | `1`                 |
+| `Number` 类型    | `1`、`NaN`          |
 | `String` 类型    | `"hello"` `'world'` |
 | `Regexp` 类型    | `/pattern/`         |
 

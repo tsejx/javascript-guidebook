@@ -2,8 +2,6 @@
 
 **break 语句**用于立即退出最内层的循环或 `switch` 语句。
 
-
-
 ## 语法
 
 ```javascript

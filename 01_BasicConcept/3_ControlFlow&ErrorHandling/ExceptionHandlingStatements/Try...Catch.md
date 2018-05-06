@@ -22,20 +22,13 @@ try {
 
 ### 参数
 
-- `try_statements` ：需要被执行的语句。 
-
-- `catch_statements_1`, `catch_statements_2` ：如果在 `try` 块里有异常被抛出时执行的语句。 
-
-
-- `exception_var_1`, `exception_var_2`：用于保存关联 `catch` 子句的异常对象的标识符。
-
-
-- `condition_1`：一个条件表达式。
-
-
-- `finally_statements`：在 `try` 语句块之后执行的语句块。无论是否有异常抛出或捕获这些语句都将执行。
-
-
+| 参数                                       | 说明                                                         |
+| ------------------------------------------ | ------------------------------------------------------------ |
+| `try_statements`                           | 需要被执行的语句                                             |
+| `catch_statements_1`, `catch_statements_2` | 如果在 `try` 块里有异常被抛出时执行的语句                    |
+| `exception_var_1`, `exception_var_2`       | 用于保存关联 `catch` 子句的异常对象的标识符                  |
+| `condition_1`                              | 一个条件表达式                                               |
+| `finally_statements`                       | 在 `try` 语句块之后执行的语句块。无论是否有异常抛出或捕获这些语句都将执行 |
 
 ## 说明
 
