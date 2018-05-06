@@ -1,14 +1,14 @@
-﻿# 词法结构 
+# 词法结构 
 
-ECMAScript源码文本会被从左到右扫描，并被转换为一系列的输入元素，包括 token、控制符、行终止符、注释和空白符。ECMAScript定义了一些关键字、字面量以及行尾分号补全的规则。
+ECMAScript 源码文本会被从左到右扫描，并被转换为一系列的输入元素，包括 token、控制符、行终止符、注释和空白符。ECMAScript 定义了一些关键字、字面量以及行尾分号补全的规则。
 
 ## 字符集
 
-JavaScript程序使用Unicode字符集编写。Unicode是ASCII和Latin-1的超集，并支持地球上几乎所有在使用的语言。ECMAScript3要求JavaScript的实现必须支持Unicode2.1及后续版本，ECMAScript5则要求支持Unicode3及后续版本。
+JavaScript 程序使用 Unicode 字符集编写。Unicode 是 ASCII 和 Latin-1 的超集，并支持地球上几乎所有在使用的语言。ECMAScript3 要求 JavaScript 的实现必须支持 Unicode2.1及后续版本，ECMAScript5 则要求支持 Unicode3 及后续版本。
 
 ### 区分大小写
 
-JavaScript是区分大小写的语言，也就是说，关键字、变量、函数名和所有的标识符(Identifier)都必须采取一致的大小写的形式。但是需要注意的是，HTML和CSS并不区分大小写(尽管XHTML区分大小写)，也就是说如果我们在用JavaScript控制HTML属性的时候对HTML来说id和ID没区别，但是JavaScript有区别。
+JavaScript 是区分大小写的语言，也就是说，关键字、变量、函数名和所有的标识符（Identifier）都必须采取一致的大小写的形式。但是需要注意的是，HTML 和 CSS 并不区分大小写（尽管XHTML区分大小写），也就是说如果我们在用 JavaScript 控制 HTML 属性的时候对 HTML 来说 id 和 ID 没区别，但是 JavaScript 有区别。
 
 ```javascript
 //'abc'、'Abc'、'aBc'、'abC'、'ABC'是五个不同的变量名
@@ -23,9 +23,9 @@ console.log(abc, Abc, aBc, abC, ABC); // 1 2 3 4 5
 
 ### 空格、换行符和格式控制符
 
-　　Javascript会忽略程序中标识(token)之间的空格。多数情况下，Javascript同样会忽略换行符。由于可以在代码中随意使用空格和换行，因此可以采用整齐、一致的缩进来形成统一的编码风格，从而提高代码的可读性。
+Javascript 会忽略程序中标识（token）之间的空格。多数情况下，Javascript 同样会忽略换行符。由于可以在代码中随意使用空格和换行，因此可以采用整齐、一致的缩进来形成统一的编码风格，从而提高代码的可读性。
 
-#### 空白字符（WhiteSpace）
+#### 空白字符 WhiteSpace
 
 ```javascript
 \u0009    水平制表符        <TAB>
@@ -36,7 +36,7 @@ console.log(abc, Abc, aBc, abC, ABC); // 1 2 3 4 5
 \uFEFF    字符序标记
 ```
 
-#### 行终止符（LineTerminator）
+#### 行终止符 LineTerminator
 
 ```javascirpt
 \u000A    换行符        <LF>
@@ -49,7 +49,7 @@ console.log(abc, Abc, aBc, abC, ABC); // 1 2 3 4 5
 
 ### Unicode转义序列
 
-在有些计算机硬件和软件里，无法显示或输入Unicode字符全集。为了兼容，JavaScript定义了一种特殊序列，使用6个ASCII字符来代表任意16位Unicode内码。这些Unicode转义序列均以 `\u` 为前缀，其后跟随4个十六进制数(使用数数字以及大写或小写的字母A~F表示)，可以用于JavaScript直接量、正则表达式和标识符中(关键字除外)。
+在有些计算机硬件和软件里，无法显示或输入 Unicode 字符全集。为了兼容，JavaScript 定义了一种特殊序列，使用6个 ASCII 字符来代表任意16位 Unicode 内码。这些 Unicode 转义序列均以 `\u` 为前缀，其后跟随4个十六进制数（使用数数字以及大写或小写的字母A~F表示），可以用于 JavaScript 直接量、正则表达式和标识符中（关键字除外）。
 
 ## 注释
 
@@ -120,7 +120,7 @@ var y = x + 2;  // 声明 y 并把 x+2 赋值给它
 
 ## 直接量
 
-Javascript数据直接量：**直接量（Literals）**，又名**字面量**，就是可以在程序中直接使用的数据。
+Javascript 数据直接量：**直接量（Literals）**，又名**字面量**，就是可以在程序中直接使用的数据。
 
 主要有以下几种直接量：
 
@@ -329,7 +329,7 @@ var a;
 a = 3;
 console.log(a);
 ```
-　　
+
 ### 自动分号补全
 
 Javascript并不是在所有换行处都填补分号，只有在缺少了分号就无法正确解析代码时，Javascript才会填补分号。换句话说，如果当前语句和随后的非空格字符不能当成一个整体来解析的话，Javascript就在当前语句行结束处填补分号。
@@ -385,5 +385,5 @@ x;++y;
 // 本意
 x++;y;
 ```
-    
+
 虽然分号不是必须的，但最好不要省略它，因为加上分号可以避免很多错误，代码行结尾处没有分号会导致压缩错误。加上分号也会在某些情况下增进代码的性能，因为这样解析器就不必再花时间推测应该在哪里插入分号了。
