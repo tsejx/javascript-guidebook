@@ -10,7 +10,7 @@
 
 <details>
 
-<summary><b>展开查看基本语法模块目录</b></summary>
+<summary>展开查看基本语法模块目录</summary>
 
 - **语法与数据类型**
   - [词法结构](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar%26Types/1_LexicalStructure.md)
@@ -74,7 +74,7 @@
 
 <details>
 
-<summary><b>展开查看内置对象模块目录</b></summary>
+<summary>展开查看内置对象模块目录</summary>
 
 - **值属性**
   - [Infinity](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/1_ValueProperties/Infinity.md)
@@ -126,7 +126,7 @@
 
 <details>
 
-<summary><b>展开查看函数模块目录</b></summary>
+<summary>展开查看函数模块目录</summary>
 
 - **定义函数** 
   - 函数的声明
@@ -188,7 +188,7 @@
 
 <details>
 
-<summary><b>展开查看面向对象编程模块目录</b></summary>
+<summary>展开查看面向对象编程模块目录</summary>
 
 - **理解对象**
   - 属性类型
@@ -219,7 +219,7 @@
 
 <details>
 
-<summary><b>展开查看浏览器对象模型模块目录</b></summary>
+<summary>展开查看浏览器对象模型模块目录</summary>
 
 - **Window对象**
   - 定时器
@@ -267,7 +267,7 @@
 
 <details>
 
-<summary><b>展开查看文档对象模型模块目录</b></summary>
+<summary>展开查看文档对象模型模块目录</summary>
 
 - **节点层次**
 - **Node**
@@ -329,7 +329,7 @@
 
 <details>
 
- <summary><b>展开查看HTML5脚本编程模块目录</b></summary>
+ <summary>展开查看HTML5脚本编程模块目录</summary>
 
 - **语义**
   - HTML5表单
@@ -370,7 +370,7 @@
 
 <details>
 
- <summary><b>展开查看服务器端数据传输模块目录</b></summary>
+ <summary>展开查看服务器端数据传输模块目录</summary>
 
 - JSON
 - HTTP
