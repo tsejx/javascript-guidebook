@@ -22,11 +22,48 @@ myFunction(...iterableObj);
 let iterableObj = {...obj}
 ```
 
-
-
 ## 应用
 
-### 合并数组
+### 函数中的应用
+
+#### 替代数组的 `apply` 方法
+
+当我们的函数有多个变量的时候（特别是当我们不知道变量的数量的时候），有时候会通过将变量保存在数组中，并通过 `apply` 来执行函数，有了扩展运算符后则有了更好的方式（毕竟使用 `apply` 需要手动指定 `this` ，有时候会不是很方便很准确）。
+
+```javascript
+// ES5
+function myFunction(x, y, z){}
+var args = [0, 1, 2];
+myFunction.apply(null, args);
+
+// ES6
+function myFunction(x, y, z){}
+var args = [0, 1, 2];
+myFunction(...args);
+```
+
+参数列表中的人和参数都可以使用扩展语法，并且可以多次使用。
+
+```javascript
+function myFunction(v, w, x, y, z){}
+var args = [0, 1];
+myFunction(-1, ...args, 2, ...[3]);
+```
+
+#### 函数的返回值
+
+JavaScript 的函数只能返回一个值，如果需要返回多个值，只能返回数组或对象。扩展运算符提供了解决这个问题的一个变通方法。
+
+```javascript
+var dateField = readDateFields(database);
+var d = new Date(...dateFields);
+```
+
+上面的代码从数据库取出一行数据，通过扩展运算符，直接将其传入构造函数 Date。
+
+### 数组中的应用
+
+#### 数组的合并
 
 扩展运算符提供了数组合并的新写法
 
@@ -49,7 +86,16 @@ arr1.concat(arr2, arr3);
 // ['a', 'b', 'c', 'd', 'e']
 ```
 
-### 与解构赋值结合
+#### 数组的拷贝
+
+被拷贝数组元素仅限基本数据类型。
+
+```javascript
+let a = [1, 2, 3];
+let b = [...a];
+```
+
+#### 与解构赋值结合
 
 扩展运算符可以与解构赋值结合起来，用于生成数组。
 
@@ -63,6 +109,7 @@ a = list[0], rest = list.slice(1)
 下面是另外一些例子
 
 ```javascript
+// 数组的分割
 const [first, ...rest] = [1, 2, 3, 4, 5];
 first	// 1
 rest	// [2, 3, 4, 5]
@@ -86,18 +133,7 @@ const [first, ...middle, last] = [1, 2, 3, 4, 5];
 // 报错
 ```
 
-### 函数的返回值
-
-JavaScript 的函数只能返回一个值，如果需要返回多个值，只能返回数组或对象。扩展运算符提供了解决这个问题的一个变通方法。
-
-```javascript
-var dateField = readDateFields(database);
-var d = new Date(...dateFields);
-```
-
-上面的代码从数据库取出一行数据，通过扩展运算符，直接将其传入构造函数 Date。
-
-### 字符串
+### 字符串中的应用
 
 扩展运算符还可以将字符串转为真正的数组。
 
@@ -137,9 +173,9 @@ str.split('').reverse().join('')
 
 上面的代码中，如果不用扩展运算，字符串的 `reverse`  操作就不正确。
 
-### 实现了Iterator接口的对象
+### 实现Iterator接口的对象
 
-任何 Iterator 接口的对象都可以用扩展运算符转为真正的数组。
+任何 Iterator 接口的对象都可以用扩展运算符转为**真正的数组**。
 
 ```javascript
 var nodeList = document.querySelectorAll('div');
@@ -163,3 +199,37 @@ let arr = [...arrayLike];
 ```
 
 上面的代码中，`arrayLike`  是一个类似数组的对象，但是没有部署 Iterator 接口，扩展运算符就会报错。这时，可以改为使用 `Array.from` 方法将 `arrayLike` 转为真正的数组。
+
+### `Map` 和 `Set` 结构、`Generator` 函数
+
+扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符，如 `Map` 结构。
+
+```javascript
+let map = new Map([
+    [1, 'one'],
+    [2, 'two'],
+    [3, 'three'],
+]);
+
+let arr = [...map.keys()];	// [1, 2, 3]
+```
+
+Generator 函数运行后会返回一个遍历器对象，因此也可以使用扩展运算符。
+
+```javascript
+var go = function*(){
+    yield 1;
+    yield 2;
+    yield 3;
+};
+
+[...go()]	// [1, 2, 3]
+```
+
+上面的代码中，变量 `go` 是一个 Generator 函数，执行后返回的是一个遍历器对象，对这个遍历器对象执行扩展运算符即可将内部遍历得到的值转为一个数组。
+
+```javascript
+var obj = {a: 1, b: 2};
+let arr = [...obj];			// TypeError: Cannot spread non-iterable object
+```
+
