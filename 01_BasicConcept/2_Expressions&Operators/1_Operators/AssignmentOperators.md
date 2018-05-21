@@ -21,19 +21,3 @@
 按位与赋值| `x & y` | `x = x & y`
 按位异赋值| `x ^= y` | `x = x ^ y`
 按位或赋值| `x \|= y` | `x = x \| y`
-
-## 解构赋值
-
-对于更复杂的赋值，解构赋值语法是一个能从数组或对象对应的数组结构或对象字面量里提取数据的 Javascript 表达式。
-
-```javascript
-var foo = ["one", "two", "three"];
-
-// 不使用解构
-var one   = foo[0];
-var two   = foo[1];
-var three = foo[2];
-
-// 使用解构
-var [one, two, three] = foo;
-```
