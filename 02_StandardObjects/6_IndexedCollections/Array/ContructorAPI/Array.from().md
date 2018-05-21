@@ -16,8 +16,6 @@ Array.from( arrayLike[, mapFn[, thisArg]] )
 | `mapFn`     | 可选 | 如果指定了该参数，新数组中的每个元素会执行该回调函数。 |
 | `thisArg`   | 可选 | 执行回调函数 `mapFn` 时 `this` 对象。                  |
 
-- 
-
 ### 返回值
 
 一个新的数组实例
