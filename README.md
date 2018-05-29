@@ -10,7 +10,7 @@
 
 <details>
 
-<summary>展开查看基本语法模块目录</summary>
+<summary>查看目录</summary>
 
 - **语法与数据类型**
   - [词法结构](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar%26Types/1_LexicalStructure.md)
@@ -26,6 +26,7 @@
     - [字符串运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/StringOperators.md)
     - [条件运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/ConditionalOperator.md)
     - [逗号运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/CommaOperator.md)
+    - [扩展运算符](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/SpreadOperator.md)
     - 一元运算符
       - [delete](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/UnaryOperators/delete.md)
       - [typeof](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/UnaryOperators/typeof.md)
@@ -33,18 +34,21 @@
     - 关系运算符
       - [in](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/RelationalOperator/in.md)
       - [instanceof](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/RelationalOperator/instanceof.md)
+    - [运算符优先级](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/1_Operators/OperatorsPrecedence.md)
   - 表达式
     - 基本表达式
       - [this](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/This.md)
       - [字面量](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/Literal.md)
-      - [数组和对象的初始化表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/InitializationExpressionsForObjects%26Arrays.md)
+      - [对象初始化](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/InitializationExpressionsForObjects%26Arrays.md)
       - [分组表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/PrimaryExpression/GroupingExpression.md)
+      - 解构赋值
     - 复杂表达式
       - [属性访问表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/MemberExpression/PropertyAccessExpression.md)
       - [对象创建表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/MemberExpression/ObjectCreationExpression.md)
       - [函数表达式](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/2_Expressions%26Operators/2_Expressions/MemberExpression/FunctionExpression.md)
       - 类表达式
       - 生成器表达式
+      - 异步函数表达式
 - **控制流与错误处理**
   - 条件判断语句
     - [if](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/3_ControlFlow%26ErrorHandling/ConditionalStatements/If.md)
@@ -70,11 +74,11 @@
 
 内置对象模块介绍和说明了 JavaScript 中所有的标准的内置对象、以及它们的方法和属性。
 
-**全局的对象**（ Global Objects ）或称**标准内置对象**，不要和 **"全局对象**（Global Object）**"** 混淆。这里说的全局的对象是说在**全局作用域里的内置的对象**。
+全局的对象（ Global Objects ）或称标准内置对象，不要和 "全局对象（Global Object）**"** 混淆。这里说的全局的对象是说在全局作用域里的内置的对象。
 
 <details>
 
-<summary>展开查看内置对象模块目录</summary>
+<summary>查看目录</summary>
 
 - **值属性**
   - [Infinity](https://github.com/tsejx/JavaScript-Guidebook/blob/master/02_StandardObjects/1_ValueProperties/Infinity.md)
@@ -126,7 +130,7 @@
 
 <details>
 
-<summary>展开查看函数模块目录</summary>
+<summary>查看目录</summary>
 
 - **定义函数** 
   - 函数的声明
@@ -188,7 +192,7 @@
 
 <details>
 
-<summary>展开查看面向对象编程模块目录</summary>
+<summary>查看目录</summary>
 
 - **理解对象**
   - 属性类型
@@ -219,7 +223,7 @@
 
 <details>
 
-<summary>展开查看浏览器对象模型模块目录</summary>
+<summary>查看目录</summary>
 
 - **Window对象**
   - 定时器
@@ -267,7 +271,7 @@
 
 <details>
 
-<summary>展开查看文档对象模型模块目录</summary>
+<summary>查看目录</summary>
 
 - **节点层次**
 - **Node**
@@ -329,7 +333,7 @@
 
 <details>
 
- <summary>展开查看HTML5脚本编程模块目录</summary>
+ <summary>查看目录</summary>
 
 - **语义**
   - HTML5表单
@@ -370,7 +374,7 @@
 
 <details>
 
- <summary>展开查看服务器端数据传输模块目录</summary>
+ <summary>查看目录</summary>
 
 - JSON
 - HTTP
