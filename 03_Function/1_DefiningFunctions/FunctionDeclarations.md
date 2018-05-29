@@ -218,3 +218,20 @@ console.log(fn()()); // 0
 ```javascript
 var o = new Math.min(); // Uncaught TypeError: Math.min is not a constructor
 ```
+
+## 函数声明和函数表达式的区别
+
+虽然都可以定义函数，但最大的区别在于：解析器会率先读取函数声明，使其在执行任何代码之前就可以访问（也就是函数声明提升）；而函数表达式则需要解析器执行到它所在的代码行才会被解释执行。
+
+```javascript
+sayHi();	// 能正常运行 弹出 Hi
+sayHi123();	// 报错 Uncaught TypeError: sayHi123 is a function(...)
+
+function sayHi(){
+    alert('Hi');
+}
+
+var sayHi123 = function sayHi(){
+    alert('Hi123');
+}
+```
