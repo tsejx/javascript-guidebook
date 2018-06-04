@@ -133,10 +133,10 @@
 <summary>查看目录</summary>
 
 - **定义函数** 
-  - 函数的声明
+  - [函数的声明](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionDeclarations.md)
   - 作为值的函数
   - 函数的内部属性
-  - 函数属性与方法
+  - [函数属性与方法](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionProperties%26Method.md)
   - 函数返回值
   - 异常
   - 方法函数定义
@@ -147,7 +147,7 @@
   - 方法调用模式
   - 函数调用模式
   - 构造器调用模式
-  - Apply调用模式
+  - 间接调用模式
 - **函数作用域**
   - 函数中的作用域
   - 隐藏内部实现
