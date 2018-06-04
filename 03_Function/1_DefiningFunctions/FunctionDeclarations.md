@@ -10,7 +10,7 @@
 
 函数声明要素：`function` 关键字，`functionName` 函数名，`arg` 参数（可选）
 
-###语法
+### 语法
 
 ```javascript
 function functionName([arg1 [,arg2 [...,argn]]]){
@@ -119,7 +119,7 @@ var variableName = function functionName(arg){
 
 #### 匿名函数
 
-**匿名函数(anonymous function)**也叫拉姆达函数，是 `function` 关键字后面没有标识符的函数。
+**匿名函数(anonymous function)** 也叫拉姆达函数，是 `function` 关键字后面没有标识符的函数。
 
 ```javascript
 var square = function(number){
