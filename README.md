@@ -1,3 +1,5 @@
+![Logo](Image/JavaScriptGuidebookLogo.jpg)
+
 # JavaScript Guidebook
 
 为前端开发者提供完备的系统的技术指南。
