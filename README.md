@@ -136,10 +136,10 @@
 
 - **定义函数** 
   - [函数的声明](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionDeclarations.md)
-  - 作为值的函数
-  - 函数的内部属性
+  - [作为值的函数](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionAsValues.md)
+  - [函数的内部属性](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionInterals.md)
   - [函数属性与方法](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionProperties%26Method.md)
-  - 函数返回值
+  - [函数返回值](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionReturnValues.md)
   - 异常
   - 方法函数定义
     - getter
