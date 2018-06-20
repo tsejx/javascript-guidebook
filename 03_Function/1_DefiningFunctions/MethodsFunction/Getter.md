@@ -28,3 +28,50 @@
 
 可以通过 `delete` 操作符删除 getter。
 
+## 示例
+
+### 在新对象初始化时定义一个 `getter`
+
+这会为 `obj` 创建一个伪属性 `latest`，它会返回 `log` 数组的最后一个元素。
+
+```js
+var obj = {
+  log: ['example','test'],
+  get latest() {
+    if (this.log.length == 0) return undefined;
+    return this.log[this.log.length - 1];
+  }
+}
+console.log(obj.latest); // "test".
+```
+
+注意，尝试为 `latest` 分配一个值不会改变它。
+
+### 使用 `delete` 操作符删除 `getter`
+
+只需使用 `delete`，就可删除 `getter`。
+
+### 使用 `defineProperty` 在现有对象上定义 `getter`
+
+要随时将 `getter` 添加到现有对象，使用 `Object.defineProperty()` 
+
+```js
+let o = {a: 0};
+
+Object.definedProperty(o, "b", { get: function () { return this.a + 1; }});
+
+console.log(o.b); // Runs the getter, which yields a + 1 (which is 1)
+```
+
+### 使用计算属性名
+
+```js
+var expr = 'foo';
+
+var obj = {
+  get [expr]() { return 'bar'; }
+};
+
+console.log(obj.foo); // "bar"
+```
+
