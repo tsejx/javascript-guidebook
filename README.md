@@ -142,39 +142,44 @@
   - [函数返回值](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionReturnValues.md)
   - 异常
   - 方法函数定义
-    - getter
-    - setter
-    - 方法定义语法
+    - [getter](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/MethodsFunction/Getter.md)
+    - [setter](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/MethodsFunction/Setter.md)
 - **调用函数**
   - 方法调用模式
   - 函数调用模式
   - 构造器调用模式
   - 间接调用模式
-- **函数作用域**
-  - 函数中的作用域
-  - 隐藏内部实现
-  - 函数作用域
-- **作用域和函数堆栈**
-  - 递归
-  - 嵌套函数
-  - 匿名函数
-  - 作用域链
-  - 保存变量
-  - 命名冲突
-- **闭包**
+- **作用域和闭包**
+  - 作用域
+    - 编译原理
+    - 理解作用域
   - 词法作用域
-  - 块级作用域
+    - 词法阶段
+    - 欺骗词法
   - 执行上下文
-    - 文法环境
-    - 变量环境
+    - 执行上下文栈
+    - 变量对象
+    - 作用域链
     - this绑定
-  - 闭包的特点
-  - 闭包的写法
-  - 闭包的用途
+    - 执行上下文
+  - 函数作用域和块作用域
+    - 函数中的作用域
+    - 隐藏内部实现
+    - 函数作用域
+      - 匿名和具名
+      - 立即执行函数表达式
+    - 块作用域
+  - 声明提升
+    - 声明提升
+  - 作用域闭包
+    - 闭包的特点
+    - 闭包的写法
+    - 闭包的用途
 - **函数参数**
   - 默认参数
   - 剩余参数
 - **箭头函数**
+  - 箭头函数
 - **高级函数**
   - 安全的类型检测
   - 作用域安全的构造函数
@@ -380,6 +385,8 @@
 
 - JSON
 - HTTP
+  - HTTP协议
+  - HTTP状态码
 - Ajax(XHR)
 - Fetch
 
