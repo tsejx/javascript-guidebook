@@ -1,162 +1,135 @@
-﻿# 声明提升(hoisting)
+# 声明提升
+
+JavaScript程序的运行阶段分为 `预编译阶段` 和 `执行阶段`。
+
+在预编译阶段，JavaScript 引擎会做一件事情，那就是读取 `变量的定义` 并 `确定其作用域` 即生效范围。
+
+- 变量定义
+  - 使用 `var` 关键字定义的变量，并未赋值的情况下，该变量的值是 `undefined`
+- 变量作用域
+  - 全局变量的作用域遍布全局
+  - 局部变量的作用域仅在于函数内部
+  - 函数内部的同名变量或参数其优先级高于全局同名变量
+
+在 JavaScript 中，如果变量或函数没有声明就被使用，是会引致错误的。
+
+```js
+console.log(a);
+// Uncaught ReferenceError: a is not defined
+```
+
+声明提升包括变量声明提升和函数声明提升。
+
+- 变量声明提升：通过 `var` 声明的变量在代码执行之前被 JavaScript 引擎提升了当前作用域的顶部。
+- 函数声明提升：通过函数声明的方式（非函数表达式）声明的函数在代码执行之前被 JavaScript 引擎提升了当前作用域的顶部，而且**函数声明提升优先于变量声明提升**。
+
+## 提升
+
+JavaScript 的代码在生成前，会先对代码进行编译，*编译的一部分工作就是找到所有的声明*，然后建立作用域将其关联起来，因此，在 **当前作用域内** **包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理**。
+
+注意这里是“声明”会被提前处理，赋值并没有， *定义声明是在编译阶段进行的，而赋值是在执行阶段进行的* 。也就是说 **声明提升了，赋值还留着原地**，等待执行。
 
 ## 变量声明提升
 
-```javascript
-a = 2;
-var a;
-console.log( a );
-```
-
-　　直觉上，会认为是 `undefined`，因为 `var a` 声明在 `a = 2;` 之后，可能变量被重新赋值了，因为会被赋予默认值 `undefined`。但是，真正的输出结果是2
-
-```javascript
-console.log( a ) ;
-var a  =  2 ;
-```
-
-　　鉴于上面的特点，可能会认为这个代码片段也会同样输出2。但，真正的输出结果是 `undefined`
-
-　　所有这些和观感相违背的原因是在于编译器的编译过程
-
-　　第一篇介绍过作用域的内部原理。引擎会在解释Javascript代码之前首先对其进行编译。编译阶段中的一部分工作就是找到所有的声明，并用合适的作用域将它们关联起来
-
-　　包括变量和函数在内的所有声明都会在任何代码被执行前首先被处理
-
-```javascript
-var a = 2 ;
-```
-
-　　这个代码片段实际上包括两个操作：`var a` 和 `a = 2 `
-
-　　第一个定义声明是在编译阶段由编译器进行的。第二个赋值操作会被留在原地等待引擎在执行阶段执行
-
-```javascript
-// 对变量a的声明提升到最上面后，再执行代码时，控制台输出2
-var a;
-a = 2 ;
-console.log(a);
-```
-
-　　声明从它们在代码中出现的位置被“移动”到了最上面，这个过程就叫作**提升(hoisting)**
-
-　　[注意]每个作用域都会进行提升操作
+考虑下面代码，猜想输出结果：
 
 ```javascript
 console.log(a);
-var a = 0;
-function fn(){
-    console.log(b);
-    var b = 1;
-    function test(){
-        console.log(c);
-        var c = 2;
-    }
-    test();
-}
-fn();
+var a = 2;
+console.log(a);
 ```
 
-```javascript
-//变量声明提升后，变成下面这样
-var a ;
-console.log(a);
-a = 0;
-function fn(){
-    var b;
-    console.log(b);
-    b = 1;
-    function test(){
-        var c ;
-        console.log(c);
-        c = 2;
-    }
-    test();
-}
-fn();
+等价于
+
+```js
+var a;				// 变量声明 默认赋值 undefined
+comsole.log(a);		// 输出变量a undefined
+a = 2;				// 给a赋值2
+console.log(a);		// 输出变量a 2
 ```
- 
+
+这里就用到了我们上面的结论 **声明提升了，赋值还留着原地**。
+
 
 ## 函数声明提升
-　
-　　声明包括两种：**变量声明**和**函数声明**。不仅变量声明可以提升，函数声明也有提升操作
 
-```javascript
-foo();
-function foo(){
-    console.log(1);//1
+函数的两种创建方式：
+
+- 函数声明
+- 函数表达式
+
+**函数声明**
+
+```js
+foo();	// 输出 'bar'
+
+function foo() {
+    console.log('bar');
 }
 ```
 
-　　上面这个代码片段之所以能够在控制台输出1，就是因为foo()函数声明进行了提升，如下所示：
+**函数表达式**
 
-```javascript
-function foo(){
-    console.log(1);
+```js
+foo();	// 报错：foo is not a function
+
+var foo = function (){
+    console.log('bar');
 }
-foo();
 ```
 
-　　函数声明会提升，但函数表达式却不会提升 
+解析：同样地先执行函数，后创建函数，结果却是不一样。原因在于，通过函数声明的方式，该 `函数声明（包括定义）` 会被提升至作用域的顶部，而表达式的创建方式则只提升了变量 `foo` 至作用域的顶部，此时的 `foo` 其值为`undefined`，调用 `foo()` 自然报错“ `foo` 不是一个方法”。
 
-```javascript
-foo();
+再来看一个示例：
+
+```js
 var foo = function(){
-    console.log(1); // TypeError: foo is not a function
+  console.log('1');
+};
+
+function foo(){
+  console.log('2');
+};
+
+foo(); //输出：'1'
+```
+
+解析：预编译阶段进行变量声明提升和函数声明提升后，上述代码执行效果等同于：
+
+```js
+var foo; //变量声明提升
+
+function foo(){ //函数声明提升
+  console.log('2');
 }
-```
 
-　　上面这段程序中的变量标识符foo被提升并分配给全局作用域，因此 `foo()` 不会导致 ReferenceError 异常。但是foo此时并没有赋值，`foo()` 由于对 `undefined` 值进行函数调用而导致非法操作，因此会抛出 TypeError 异常
-
-```javascript
-// 变量提升后，代码如下所示：
-var foo;
-foo();
-foo = function(){
-    console.log(1);
-}
-```
-
-　　即使是具名的函数表达式也无法被提升
-
-```javascript
-foo(); // TypeError: foo is not a function
-var foo = function bar(){
-      console.log(1);
+foo = function(){ //变量赋值保持原位执行，foo函数被覆盖
+  console.log('1');
 };
-```
-```javascript
-//声明提升后，代码变为:
-var foo;
-foo(); // TypeError: foo is not a function
-foo = function bar(){
-      console.log(1);
-};
-```
-　　[注意]函数表达式的名称只能在函数体内部使用，而不能在函数体外部使用
 
-```javascript
-var bar;
-var foo = function bar(){
-    console.log(1);
-};
-bar();//TypeError: bar is not a function
+foo(); //输出'1'
 ```
+
+总结：函数声明提升，会将函数的声明和定义全都提升至作用域顶部。
+变量声明提升，只提升声明部分（未赋值状态），赋值部分保持原位置不动。
 
 ## 函数覆盖
 
-　　函数声明和变量声明都会被提升。但是，函数声明会覆盖变量声明
+函数声明和变量声明都会被提升。但是，函数声明会覆盖变量声明。
+
+**示例**
 
 ```javascript
 var a;
 function a(){}
+
 console.log(a); // 'function a(){}'
 ```
 
-　　但是，如果变量存在赋值操作，则最终的值为变量的值
+但是，如果变量存在赋值操作，则最终的值为变量的值
 
 ```javascript
-var a=1;
+var a = 1;
 function a(){}
 console.log(a); // 'function a(){}'
 
@@ -168,17 +141,33 @@ a = 1;
 console.log(a); // 1
 ```
 
-　　**[注意]变量的重复声明是无用的，但函数的重复声明会覆盖前面的声明(无论是变量还是函数声明)**
+变量的重复声明是无用的，但函数的重复声明会覆盖前面的声明（无论是变量还是函数声明）
 
-　　**【1】变量的重复声明无用**
+### 重复变量声明无用
 
 ```javascript
 var a = 1;
 var a;
-console.log(a); // 1
+console.log(a); 
 ```
 
-　　**【2】由于函数声明提升优先于变量声明提升，所以变量的声明无作用**
+<details>
+
+<summary>解析</summary>
+
+输出结果为1，以上代码等同于：
+
+```js
+var a;	// 此时a的默认值为undefined
+a = 1;
+console.log(a);	// 1
+```
+
+</details>
+
+### 函数声明优先
+
+由于函数声明提升优先于变量声明提升，所以变量的声明无作用
 
 ```javascript
 var a;
@@ -188,7 +177,9 @@ function a(){
 a(); // 1
 ```
 
-　　**【3】后面的函数声明会覆盖前面的函数声明**
+### 函数声明覆盖
+
+后面的函数声明会覆盖前面的函数声明
 
 ```javascript
 a();//2
@@ -200,8 +191,15 @@ function a(){
 }
 ```
 
-　　所以，应该避免在同一作用域中重复声明
+所以，应该避免在同一作用域中重复声明。
 
+## ES6中的声明
 
+ES6新增了 `let` 和 `const`声明，它们会存在一个暂时性死区（TDZ），表现出的情况会有所不同。相关详细分析可以看上一章节 [块作用域]()
 
+### 总结
 
+- var变量声明和函数声明存在提升
+- 函数表达式不会被提升
+- 函数声明提升的优先权大于普通变量声明
+- let, const由于存在暂时性死区，表现出的情况和var声明有所不同
