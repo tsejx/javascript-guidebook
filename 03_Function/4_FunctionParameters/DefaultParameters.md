@@ -1,351 +1,371 @@
-﻿# 函数参数 
+# 默认参数
 
-## arguments
+通常来说，函数调用者不需要传递所有可能存在的参数，没有被传递的参数可由感知到的默认参数进行填充。JavaScript有严格的默认参数格式，未被传值的参数默认为undefined。ES6引入了一种新方式，可以指定任意参数的默认值。
 
-　　Javascript中的函数定义并未指定函数形参的类型，函数调用也未对传入的实参值做任何类型检查。实际上，Javascript函数调用甚至不检查传入形参的个数
+## 传统用法
 
-```javascript
-function add(x){
-    return x+1;
+JavaScript 函数参数的默认值都是`undefined`， ES5里，不支持直接在形参里写默认值。所以，要设置默认值，就要检测参数是否为`undefined`，按需求赋值。
+
+```js
+function foo(x, y) {
+    y = y || 'World';
+    console.log(x, y);
 }
-console.log(add(1));//2
-console.log(add('1'));//'11'
-console.log(add());//NaN
-console.log(add(1,2));//2
+
+foo('Hello');			// Hello World
+foo('Hello', 'China');	// Hello China
+foo('Hello', '');		// Hello World
 ```
 
-### 同名形参
+缺点：如果参数 `y` 赋值了，但是对应的布尔值为 `false`，则该赋值不起作用。
 
-　　在非严格模式下，函数中可以出现同名形参，且只能访问最后出现的该名称的形参
+为了避免这个问题，我们需要先判断参数 `y` 是否被赋值，如果没有，再等于默认值。
 
-```javascript
-function add(x,x,x){
-    return x;
-}
-console.log(add(1,2,3)); // 3
-```
-
-　　而在严格模式下，出现同名形参会抛出语法错误
-
-```javascript
-function add(x,x,x){
-    'use strict';
-    return x;
-}
-console.log(add(1,2,3)); // SyntaxError: Duplicate parameter name not allowed in this context
-```
-
-### 参数个数
-
-　　当实参比函数声明指定的形参个数要少，剩下的形参都将设置为undefined值
-
-```javascript
-function add(x,y){
-    console.log(x,y); // 1 undefined
-}
-add(1);
-```
-
-　　常常使用逻辑或运算符给省略的参数设置一个合理的默认值
-
-```javascript
-function add(x,y){
-    y = y || 2;
-    console.log(x,y); // 1 2
-}
-add(1);
-```
-
-　　[注意]实际上，使用y || 2是不严谨的，显式地设置假值(undefined、null、false、0、-0、''、NaN)也会得到相同的结果。所以应该根据实际场景进行合理设置
-
-　　当实参比形参个数要多时，剩下的实参没有办法直接获得，需要使用即将提到的 `arguments` 对象
-
-　　Javascript中的参数在内部用一个数组表示。函数接收到的始终都是这个数组，而不关心数组中包含哪些参数。在函数体内可以通过 `arguments` 对象来访问这个参数数组，从而获取传递给函数的每一个参数。`arguments` 对象并不是 `Array` 的实例，它是一个类数组对象，可以使用方括号语法访问它的每一个元素
-
-```javascript
-function add(x){
-    console.log(arguments[0],arguments[1],arguments[2])//1 2 3
-    return x+1;
-}
-add(1,2,3);
-```
-
-　　arguments对象的length属性显示实参的个数，函数的length属性显示形参的个数
-
-```javascript
-function add(x,y){
-    console.log(arguments.length) // 3
-    return x+1;
-}
-add(1,2,3);
-console.log(add.length); // 2
-```
-
-　　形参只是提供便利，但不是必需的
-
-```javascript
-function add(){
-    return arguments[0] + arguments[1];
-}
-console.log(add(1,2)); // 3
-```
-
-　　当一个函数包含超过3个形参时，要记住调用函数中实参的正确顺序实在让人头疼
-
-```javascript
-function arraycopy(/*array*/from,/*index*/form_start,/*array*/to,/*index*/to_start,/*integer*/length){
-    //todo
+```js
+function foo(x, y) {
+    y = typeof y === undefined ? y || 'World';
+    console.log(x, y);
 }
 ```
 
-　　通过名/值对的形式来传入参数，这样参数的顺序就无关紧要了。定义函数的时候，传入的实参都写入一个单独的对象之中，在调用的时候传入一个对象，对象中的名/值对是真正需要的实参数据
+## 基本用法
 
-```javascript
-function easycopy(args){
-    arraycopy(args.from,args.from_start || 0,args.to,args.to_start || 0, args.length);
+ES6 允许为函数的参数设置默认值，即直接写在参数定义的后面。
+
+```js
+function foo(x, y = 'World') {
+    console.log(x, y);
 }
-var a = [1,2,3,4],b =[];
-easycopy({from:a,to:b,length:4});
+
+log('Hello') 			// Hello World
+log('Hello', 'China') 	// Hello China
+log('Hello', '') 		// Hello
 ```
 
-### 同步
+优点：
 
-　　当形参与实参的个数相同时，arguments对象的值和对应形参的值保持同步
+- 阅读代码的人，可以立刻意识到哪些参数是可以省略的，不用查看函数体或文档
+- 有利于将来的代码优化，即使未来的版本在对外接口中，彻底拿掉这个参数，也不会导致以前的代码无法运行
 
-```javascript
-function test(num1,num2){
-    console.log(num1,arguments[0]); // 1 1
-    arguments[0] = 2;
-    console.log(num1,arguments[0]); // 2 2
-    num1 = 10;
-    console.log(num1,arguments[0]); // 10 10
+### 默认声明
+
+参数变量是**默认声明**的，所以不能用 `let` 或 `const` 再次声明。
+
+```js
+function foo(x = 1){
+    let x = 2;		
+    // SyntaxError: Identifier 'x' has already been declared
+    const x = 3;	
+    // SyntaxError: Identifier 'x' has already been declared
 }
-test(1);
 ```
 
-　　[注意]虽然命名参数和对应 `arguments` 对象的值相同，但并不是相同的命名空间。它们的命名空间是独立的，但值是同步的
+### 参数不同名
 
-　　但在严格模式下，arguments对象的值和形参的值是独立的
+使用参数默认值时，函数不能有同名参数。
 
-```javascript
-function test(num1,num2){
-    'use strict';
-    console.log(num1,arguments[0]); // 1 1
-    arguments[0] = 2;
-    console.log(num1,arguments[0]); // 1 2
-    num1 = 10;
-    console.log(num1,arguments[0]); // 10 2
+```js
+// 不报错
+function foo(x, x, y) {
+  // do something
 }
-test(1);
-```
 
-　　当形参并没有对应的实参时，arguments对象的值与形参的值并不对应
-
-```javascript
-function test(num1,num2){
-    console.log(num1,arguments[0]);//undefined,undefined
-    num1 = 10;
-    arguments[0] = 5;
-    console.log(num1,arguments[0]);//10,5
+// 报错
+function foo(x, x, y = 1) {
+  // do something
 }
-test();
-```
- 
-
-## 内部属性
-
-### callee
-
-　　`arguments` 对象有一个名为 `callee` 的属性，该属性是一个指针，指向拥有这个 `arguments` 对象的函数
-
-　　下面是经典的阶乘函数
-
-```javascript
-function factorial(num){
-    if(num <=1){
-        return 1;
-    }else{
-        return num* factorial(num-1);
-    }
-}    
-console.log(factorial(5));//120
+// SyntaxError: Duplicate parameter name not allowed in this context
 ```
 
-　　但是，上面这个函数的执行与函数名紧紧耦合在了一起，可以使用 `arguments.callee` 可以消除函数解耦
+### 惰性求值
 
-```javascript
-function factorial(num){
-    if(num <=1){
-        return 1;
-    }else{
-        return num* arguments.callee(num-1);
-    }
-}    
-console.log(factorial(5));//120
-```
+参数默认值不是传值的，而是每次都重新计算默认值表达式的值。也就是说，参数默认值是惰性求值的。
 
-　　但在严格模式下，访问这个属性会抛出TypeError错误
-
-```javascript
-function factorial(num){
-    'use strict';
-    if(num <=1){
-        return 1;
-    }else{
-        return num* arguments.callee(num-1);
-    }
-}    
-// TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
-console.log(factorial(5));
-```
-
-　　这时，可以使用具名的函数表达式
-
-```javascript
-var factorial = function fn(num){
-    if(num <=1){
-        return 1;
-    }else{
-        return num*fn(num-1);
-    }
-};    
-console.log(factorial(5));//120
-```
-
-### caller
-
-　　实际上有两个caller属性
-
-**【1】函数的caller**
-
-　　函数的 `caller` 属性保存着调用当前函数的函数的引用，如果是在全局作用域中调用当前函数，它的值是 `null`
-
-```javascript
-function outer(){
-    inner();
+```js
+let x = 99;
+function foo(p = x + 1) {
+  console.log(p);
 }
-function inner(){
-    console.log(inner.caller);//outer(){inner();}
-}
-outer();
+
+foo() // 100
+
+x = 100;
+foo() // 101
 ```
 
-```javascript
-function inner(){
-    console.log(inner.caller);//null
+## 与解构赋值结合使用
+
+```js
+function foo({x, y = 5}) {
+  console.log(x, y);
 }
-inner();
+
+foo({}) 			// undefined 5
+foo({x: 1}) 		// 1 5
+foo({x: 1, y: 2}) 	// 1 2
+foo() 				// TypeError: Cannot read property 'x' of undefined
 ```
 
-　　在严格模式下，访问这个属性会抛出TypeError错误
+上面代码只使用了对象的解构赋值默认值，没有使用函数参数的默认值。只有当函数 `foo` 的参数是一个对象时，变量 `x` 和 `y` 才会通过解构赋值生成。如果函数 `foo` 调用时没提供参数，变量 `x` 和 `y` 就不会生成，从而报错。通过提供函数参数的默认值，就可以避免这种情况。
 
-```javascript
-function inner(){
-    'use strict';
-    // TypeError: 'caller' and 'arguments' are restricted function properties and cannot be accessed in this context
-    console.log(inner.caller);
+```js
+function foo({x, y = 5} = {}) {
+  console.log(x, y);
 }
-inner();
+
+foo() // undefined 5
 ```
 
-**【2】arguments对象的caller**
+下面是另一个解构赋值默认值的例子。
 
-　　该属性始终是undefined，定义这个属性是为了分清arguments.caller和函数的caller属性
-
-```javascript
-function inner(x){
-    console.log(arguments.caller);//undefined
+```js
+function fetch(url, { body = '', method = 'GET', headers = {} }) {
+  console.log(method);
 }
-inner(1);
+
+fetch('http://example.com', {})
+// "GET"
+
+fetch('http://example.com')
+// 报错
 ```
 
-　　同样地，在严格模式下，访问这个属性会抛出TypeError错误
+上面代码中，如果函数`fetch`的第二个参数是一个对象，就可以为它的三个属性设置默认值。这种写法不能省略第二个参数，如果结合函数参数的默认值，就可以省略第二个参数。这时，就出现了双重默认值。
 
-```javascript
-function inner(x){
-    'use strict';
-    // TypeError: 'caller' and 'arguments' are restricted function properties and cannot be accessed in this context
-    console.log(arguments.caller);
+```js
+function fetch(url, { body = '', method = 'GET', headers = {} } = {}) {
+  console.log(method);
 }
-inner(1);
-```
- 
 
-## 函数重载
-　
-　　Javascript函数不能像传统意义上那样实现重载。而在其他语言中，可以为一个函数编写两个定义，只要这两个定义的签名(接受的参数的类型和数量)不同即可
-
-　　Javascript函数没有签名，因为其参数是由包含0或多个值的数组来表示的。而没有函数签名，真正的重载是不可能做到的
-
-```javascript
-//后面的声明覆盖了前面的声明
-function addSomeNumber(num){
-    return num + 100;
-}
-function addSomeNumber(num){
-    return num + 200;
-}
-var result = addSomeNumber(100);//300
+fetch('http://example.com')
+// "GET"
 ```
 
-　　只能通过检查传入函数中参数的类型和数量并作出不同的反应，来模仿方法的重载
+上面代码中，函数 `fetch` 没有第二个参数时，函数参数的默认值就会生效，然后才是解构赋值的默认值生效，变量 `method` 才会取到默认值 `GET`。
 
-```javascript
-function doAdd(){
-    if(arguments.length == 1){
-        alert(arguments[0] + 10);
-    }else if(arguments.length == 2){
-        alert(arguments[0] + arguments[1]);
-    }
+### 结合案例分析
+
+```js
+// 写法一
+function m1({x = 0, y = 0} = {}) {
+  return [x, y];
 }
-doAdd(10); // 20
-doAdd(30,20); // 50
+
+// 写法二
+function m2({x, y} = { x: 0, y: 0 }) {
+  return [x, y];
+}
 ```
 
-## 参数传递
-　　javascript中所有函数的参数都是按值传递的。也就是说，把函数外部的值复制到函数内部的参数，就和把值从一个变量复制到另一个变量一样
+上面两种写法都对函数的参数设定了默认值，区别是写法一函数参数的默认值是空对象，但是设置了对象解构赋值的默认值；写法二函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值。
 
-**【1】基本类型值**
+```js
+// 函数没有参数的情况
+m1() // [0, 0]
+m2() // [0, 0]
 
-　　在向参数传递基本类型的值时，被传递的值会被复制给一个局部变量(命名参数或arguments对象的一个元素)
+// x 和 y 都有值的情况
+m1({x: 3, y: 8}) // [3, 8]
+m2({x: 3, y: 8}) // [3, 8]
 
-```javascript
-function addTen(num){
-    num += 10;
-    return num;
-}
-var count = 20;
-var result = addTen(count);
-console.log(count); // 20，没有变化
-console.log(result); // 30
+// x 有值，y 无值的情况
+m1({x: 3}) // [3, 0]
+m2({x: 3}) // [3, undefined]
+
+// x 和 y 都无值的情况
+m1({}) // [0, 0];
+m2({}) // [undefined, undefined]
+
+m1({z: 3}) // [0, 0]
+m2({z: 3}) // [undefined, undefined]
 ```
 
-**【2】引用类型值**
+## 参数默认值的位置
 
-　　在向参数传递引用类型的值时，会把这个值在内存中的地址复制给一个局部变量，因此这个局部变量的变化会反映在函数的外部
+通常情况下，定义了默认值的参数，应该是函数的尾参数。因为这样比较容易看出来，到底省略了哪些参数。如果非尾部的参数设置默认值，实际上这个参数是没法省略的。
 
-```javascript
-function setName(obj){
-    obj.name = 'test';
+```js
+// example 1
+function foo(x = 1, y){
+    return [x, y];
 }
-var person = new Object();
-setName(person);
-console.log(person.name);//'test'
+
+foo();					// [1, undefined]
+foo(2);					// [2, undefined]
+foo(, 1);				// Uncaught SyntaxError: Unexpected token ,
+foo(undefined, 1);		// [1, 1]
+
+// example 2
+function bar(x, y = 5, z){
+    return [x, y, z];
+}
+
+bar();					// [undefined, 5, undefined]
+bar(1);					// [1, 5, undefined]
+bar(1, ,2);				// Uncaught SyntaxError: Unexpected token ,
+bar(1, undefined, 2);	// [1, 5, 2]
 ```
 
-　　当在函数内部重写引用类型的形参时，这个变量引用的就是一个局部对象了。而这个局部对象会在函数执行完毕后立即被销毁
+如果传入`undefined`，将触发该参数等于默认值，`null`则没有这个效果。
 
-```javascript
-function setName(obj){
-    obj.name = 'test';
-    console.log(person.name); // 'test'
-    obj = new Object();
-    obj.name = 'white';
-    console.log(person.name); // 'test'
+```js
+function foo(x = 5, y = 6) {
+  console.log(x, y);
 }
-var person = new Object();
-setName(person);
+
+foo(undefined, null)
+// 5 null
+```
+
+## 函数的 length 属性
+
+指定了默认值以后，函数的`length`属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，`length`属性将失真。
+
+```js
+(function (a) {}).length // 1
+(function (a = 5) {}).length // 0
+(function (a, b, c = 5) {}).length // 2
+```
+
+上面代码中，`length` 属性的返回值，等于函数的参数个数减去指定了默认值的参数个数。比如，上面最后一个函数，定义了 3 个参数，其中有一个参数 `c` 指定了默认值，因此 `length` 属性等于 `3` 减去 `1`，最后得到 `2`。
+
+这是因为 `length` 属性的含义是，该函数预期传入的参数个数。某个参数指定默认值以后，预期传入的参数个数就不包括这个参数了。同理，后文的 rest 参数也不会计入 `length` 属性。
+
+```js
+(function(...args) {}).length // 0
+```
+
+如果设置了默认值的参数不是尾参数，那么`length`属性也不再计入后面的参数了。
+
+```js
+(function (a = 0, b, c) {}).length // 0
+(function (a, b = 1, c) {}).length // 1
+```
+
+## 作用域
+
+一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的。
+
+```js
+var x = 1;
+
+function foo(x, y = x) {
+  console.log(y);
+}
+
+f(2) // 2
+```
+
+上面代码中，参数 `y` 的默认值等于变量 `x`。调用函数 `foo` 时，参数形成一个单独的作用域。在这个作用域里面，默认值变量 `x` 指向第一个参数 `x`，而不是全局变量 `x`，所以输出是 `2`。
+
+再看下面的例子。
+
+```js
+let x = 1;
+
+function foo(y = x) {
+  let x = 2;
+  console.log(y);
+}
+
+foo() // 1
+```
+
+上面代码中，函数 `foo` 调用时，参数 `y = x` 形成一个单独的作用域。这个作用域里面，变量 `x` 本身没有定义，所以指向外层的全局变量 `x`。函数调用时，函数体内部的局部变量 `x` 影响不到默认值变量 `x`。
+
+
+
+如果此时，全局变量 `x` 不存在，就会报错。
+
+```js
+function foo(y = x) {
+  let x = 2;
+  console.log(y);
+}
+
+f() // ReferenceError: x is not defined
+```
+
+下面这样写，也会报错。
+
+```js
+var x = 1;
+
+function foo(x = x) {
+  // ...
+}
+
+foo() // ReferenceError: x is not defined
+```
+
+上面代码中，参数 `x = x` 形成一个单独作用域。实际执行的是 `let x = x`，由于暂时性死区的原因，这行代码会报错 `x is not defined`（指第二个 `x` 未定义）。
+
+如果参数的默认值是一个函数，该函数的作用域也遵守这个规则。请看下面的例子。
+
+```js
+let foo = 'outer';
+
+function bar(func = () => foo) {
+  let foo = 'inner';
+  console.log(func());
+}
+
+bar(); // outer
+```
+
+上面代码中，函数 `bar` 的参数 `func` 的默认值是一个匿名函数，返回值为变量 `foo`。函数参数形成的单独作用域里面，并没有定义变量 `foo`，所以 `foo` 指向外层的全局变量 `foo`，因此输出 `outer`。
+
+如果写成下面这样，就会报错。
+
+```js
+function bar(func = () => foo) {
+  let foo = 'inner';
+  console.log(func());
+}
+
+bar() // ReferenceError: foo is not defined
+```
+
+上面代码中，匿名函数里面的 `foo` 指向函数外层，但是函数外层并没有声明变量 `foo`，所以就报错了。
+
+下面是一个更复杂的例子。
+
+```js
+var x = 1;
+function foo(x, y = function() { x = 2; }) {
+  var x = 3;
+  y();
+  console.log(x);
+}
+
+foo() 	// 3
+x 		// 1
+```
+
+上面代码中，函数 `foo` 的参数形成一个单独作用域。这个作用域里面，首先声明了变量 `x`，然后声明了变量`y`，`y` 的默认值是一个匿名函数。这个匿名函数内部的变量 `x`，指向同一个作用域的第一个参数 `x`。函数 `foo`内部又声明了一个内部变量 `x`，该变量与第一个参数 `x` 由于不是同一个作用域，所以不是同一个变量，因此执行`y`后，内部变量`x`和外部全局变量 `x` 的值都没变。
+
+如果将 `var x = 3` 的 `var` 去除，函数 `foo` 的内部变量 `x` 就指向第一个参数 `x`，与匿名函数内部的 `x` 是一致的，所以最后输出的就是 `2`，而外层的全局变量 `x` 依然不受影响。
+
+```js
+var x = 1;
+function foo(x, y = function() { x = 2; }) {
+  x = 3;
+  y();
+  console.log(x);
+}
+
+foo() 	// 2
+x 		// 1
 ```
 
 
 
+先从函数参数形成的单独作用域找 => 外部作用域 => 内部作用域
+
+
+
+## 抛弃arguments
+
+现在我们已经看到了arguments对象可被不定参数和默认参数完美代替，移除arguments后通常会使代码更易于阅读。除了破坏可读性外，众所周知，针对arguments对象对JavaScript虚拟机进行的优化会导致一些让你头疼不已的问题。
+
+我们期待着不定参数和默认参数可以完全取代arguments，要实现这个目标，标准中增加了相应的限制：在使用不定参数或默认参数的函数中禁止使用arguments对象。曾经实现过arguments的引擎不会立即移除对它的支持，当然，现在更推荐使用不定参数和默认参数。
