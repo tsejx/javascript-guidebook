@@ -140,7 +140,6 @@
   - [函数的内部属性](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionInterals.md)
   - [函数属性与方法](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionProperties%26Method.md)
   - [函数返回值](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/FunctionReturnValues.md)
-  - 异常
   - 方法函数定义
     - [getter](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/MethodsFunction/Getter.md)
     - [setter](https://github.com/tsejx/JavaScript-Guidebook/blob/master/03_Function/1_DefiningFunctions/MethodsFunction/Setter.md)
@@ -171,12 +170,11 @@
     - 块作用域
   - 声明提升
     - 声明提升
-  - 作用域闭包
-    - 闭包的特点
-    - 闭包的写法
-    - 闭包的用途
+  - 闭包
+    - [闭包](03_Function/3_FunctionScope%26Closures/6_Closures/Closures.md)
 - **函数参数**
-  - 默认参数
+  - 函数参数
+  - 参数默认值
   - 剩余参数
 - **箭头函数**
   - 箭头函数
