@@ -74,10 +74,6 @@
 
 ### :joystick:内置对象 Standard Objects
 
-内置对象模块介绍和说明了 JavaScript 中所有的标准的内置对象、以及它们的方法和属性。
-
-全局的对象（ Global Objects ）或称标准内置对象，不要和 "全局对象（Global Object）**"** 混淆。这里说的全局的对象是说在全局作用域里的内置的对象。
-
 <details>
 
 <summary>查看目录</summary>
@@ -162,12 +158,9 @@
     - [this绑定](03_Function/3_FunctionScope%26Closures/3_ExecutionContext/This.md)
     - [执行上下文](03_Function/3_FunctionScope%26Closures/3_ExecutionContext/ExecutionContext.md)
   - 函数作用域和块作用域
-    - 函数中的作用域
-    - 隐藏内部实现
-    - 函数作用域
-      - 匿名和具名
-      - 立即执行函数表达式
-    - 块作用域
+    - [函数中的作用域](03_Function/3_FunctionScope%26Closures/4_FunctionScope%26BlockScope/ScopeFromFunctions.md)
+    - [函数作用域](03_Function/3_FunctionScope%26Closures/4_FunctionScope%26BlockScope/FunctionAsScopes.md)
+    - [块作用域](03_Function/3_FunctionScope%26Closures/4_FunctionScope%26BlockScope/BlockAsScopes.md)
   - 声明提升
     - [声明提升](03_Function/3_FunctionScope%26Closures/5_Hoisting/Hoisting.md)
   - 闭包
