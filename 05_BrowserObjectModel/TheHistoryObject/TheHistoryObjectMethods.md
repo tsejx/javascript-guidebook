@@ -1,4 +1,4 @@
-## history对象的方法
+## History对象的方法
 
 ### history.go()
 
