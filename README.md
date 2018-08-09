@@ -1,14 +1,14 @@
 ![Logo](Image/logo.jpg)
 
-### JavaScript Guidebook
+#JavaScript Guidebook
 
 为前端开发者提供完备的系统的技术指南。
 
 **说明**：编写整理过程有不当之处，欢迎 pull requests 或提出 issue
 
-#### :spiral_notepad:项目目录
+## :spiral_notepad:项目目录
 
-##### :beginner:基本语法 Basic Concept
+### :beginner:基本语法 Basic Concept
 
 <details>
 
@@ -72,7 +72,7 @@
 
 </details>
 
-##### :joystick:内置对象 Standard Objects
+### :joystick:内置对象 Standard Objects
 
 <details>
 
@@ -124,7 +124,7 @@
 
 </details>
 
-#####:chart_with_upwards_trend:函数 Function
+### :chart_with_upwards_trend:函数 Function
 
 <details>
 
@@ -184,7 +184,7 @@
 
 </details>
 
-##### :man_factory_worker:面向对象编程 Object Oriented Programming
+### :man_factory_worker:面向对象编程 Object Oriented Programming
 
 <details>
 
@@ -217,7 +217,7 @@
 
 </details>
 
-##### :office:浏览器对象模型 Browser Oject Model
+### :office:浏览器对象模型 Browser Oject Model
 
 <details>
 
@@ -283,7 +283,7 @@
 
 </details>
 
-##### :page_facing_up:文档对象模型Document Oject Model
+​### :page_facing_up:文档对象模型Document Oject Model
 
 <details>
 
@@ -345,7 +345,7 @@
 
 </details>
 
-##### :keyboard:HTML5脚本编程 Scripting Programing
+### :keyboard:HTML5脚本编程 Scripting Programing
 
 <details>
 
@@ -386,7 +386,7 @@
 
 </details>
 
-##### :outbox_tray:服务器端数据传输 Server Related
+### :outbox_tray:服务器端数据传输 Server Related
 
 <details>
 
@@ -401,7 +401,7 @@
 
 </details>
 
-#### :pushpin:说明
+## :pushpin:说明
 
 **关于排版**
 
@@ -411,7 +411,7 @@
 
 [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)：官方推荐的前端文档
 
-#### License
+### License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/cn/88x31.png" /></a>
 
