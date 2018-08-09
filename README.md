@@ -1,14 +1,14 @@
-![Logo](Image/JavaScriptGuidebookLogo.jpg)
+![Logo](Image/logo.jpg)
 
-# JavaScript Guidebook
+### JavaScript Guidebook
 
 为前端开发者提供完备的系统的技术指南。
 
 **说明**：编写整理过程有不当之处，欢迎 pull requests 或提出 issue
 
-## :spiral_notepad:项目目录
+#### :spiral_notepad:项目目录
 
-### :beginner:基本语法 Basic Concept
+##### :beginner:基本语法 Basic Concept
 
 <details>
 
@@ -72,7 +72,7 @@
 
 </details>
 
-### :joystick:内置对象 Standard Objects
+##### :joystick:内置对象 Standard Objects
 
 <details>
 
@@ -124,7 +124,7 @@
 
 </details>
 
-### :chart_with_upwards_trend:函数 Function
+#####:chart_with_upwards_trend:函数 Function
 
 <details>
 
@@ -172,19 +172,19 @@
 - **箭头函数**
   - [箭头函数](03_Function/5_ArrowFunction/ArrowFunction.md)
 - **高级函数**
-  - 构造函数（作用域安全的构造函数）
-  - 类构造函数
-  - 惰性函数
-  - 级联函数
-  - 回调函数
-  - 高阶函数
-  - 函数绑定
-  - 函数节流
-  - 函数柯里化
+  - [构造函数](03_Function/6_HightLevelFunctions/StructureFunction.md)
+  - [类构造函数](03_Function/6_HightLevelFunctions/ClassStructureFunction.md)
+  - [惰性函数](03_Function/6_HightLevelFunctions/LazyFunction.md)
+  - [级联函数](03_Function/6_HightLevelFunctions/CascadeFunction.md)
+  - [回调函数](03_Function/6_HightLevelFunctions/CallbackFunction.md)
+  - [高阶函数](03_Function/6_HightLevelFunctions/HightOrderFunction.md)
+  - [函数柯里化](03_Function/6_HightLevelFunctions/Currying.md)
+  - [函数节流](03_Function/6_HightLevelFunctions/Throttle.md)
+  - [函数防抖](03_Function/6_HightLevelFunctions/Debounce.md)
 
 </details>
 
-### :man_factory_worker:面向对象编程 Object Oriented Programming
+##### :man_factory_worker:面向对象编程 Object Oriented Programming
 
 <details>
 
@@ -211,59 +211,79 @@
   - 寄生组合式继承
   - 多继承
 - **多态**：一个对象调用其他对象的方法，call和apply 继承和重载都是多态的表现形式
+  - 多态（polymorphism）就是指不同对象收到相同消息时会执行不同的操作。通俗地讲，就是用一个相同的名字定义许多不同的函数，这些函数可以针对不同数据类型实现相同或者相似的功能。
 - **抽象**
+- ES6 Class 类
 
 </details>
 
-### :office:浏览器对象模型 Browser Oject Model
+##### :office:浏览器对象模型 Browser Oject Model
 
 <details>
 
 <summary>查看目录</summary>
 
-- **Window对象**
+- [**Window对象**](05_BrowserObjectModel/TheWindowObject/TheWindowObject.md)
   - 定时器
-    - setInterval
-    - setTimeout
+    - [setInterval](05_BrowserObjectModel/TheWindowObject/Timers/setInterval.md)
+    - [setTimeout](05_BrowserObjectModel/TheWindowObject/Timers/setTimeout.md)
+    - [定时器运行机制](05_BrowserObjectModel/TheWindowObject/Timers/Timers.md)
   - 系统对话框
-    - alert
-    - confirm
-    - prompt
-    - print
-  - 窗口操作（窗口设置参数）
-    - open
-    - close
-    - focus
-    - blur
+    - [alert](05_BrowserObjectModel/TheWindowObject/SystemDialogs/alert.md)
+    - [confirm](05_BrowserObjectModel/TheWindowObject/SystemDialogs/confirm.md)
+    - [prompt](05_BrowserObjectModel/TheWindowObject/SystemDialogs/prompt.md)
   - 工作区尺寸
     - 可视区尺寸
     - 实际网页尺寸
     - 包含滚动条尺寸
     - 滚动距离
-  - 样式计算
-    - getComputedStyle
-  - 数据编码
-    - atob
 - **Location对象**
-  - Location对象属性
-  - Location对象方法
+  - [Location对象的属性](05_BrowserObjectModel/TheLocationObject/TheLocationObjectProperties.md)
+  - [Location对象的方法](05_BrowserObjectModel/TheLocationObject/TheLocationObjectMethods.md)
 - **History对象**
-  - History对象属性
-  - History对象方法
+  - [History对象的属性](05_BrowserObjectModel/TheHistoryObject/TheHistoryObjectProperties.md)
+  - [History对象的方法](05_BrowserObjectModel/TheHistoryObject/TheHistoryObjectMethods.md)
 - **Screen对象**
-  - 屏幕分辨率尺寸
-  - 可用尺寸
+  - [Screen对象的属性](05_BrowserObjectModel/TheScreenObject/TheScreenObjectProperties.md)
+  - [Screen对象的方法](05_BrowserObjectModel/TheScreenObject/TheScreenObjectMethods.md)
 - **Navigator对象**
-  - 浏览器信息 
-- **Cookie**
+  - [Navigator对象的属性](05_BrowserObjectModel/TheNavigatorObject/TheNavigatorObjectProperties.md)
+  - [Navigator对象的方法](05_BrowserObjectModel/TheNavigatorObject/TheNavigatorObjectMethods.md)
+- **其他WebAPI**
+  - [File对象](05_BrowserObjectModel/TheOtherWebAPI/TheFileObject.md)
+  - [FileList对象](05_BrowserObjectModel/TheOtherWebAPI/TheFileListObject.md)
+  - FileError对象
+  - [FileReader对象](05_BrowserObjectModel/TheOtherWebAPI/TheFileReaderObject.md)
+  - [FileReaderSync对象](05_BrowserObjectModel/TheOtherWebAPI/TheFileSyncObject.md)
+  - [FormData对象](05_BrowserObjectModel/TheOtherWebAPI/TheFormDataObject.md)
+  - [ProgressEvent对象](05_BrowserObjectModel/TheOtherWebAPI/TheProgressEventObject.md)
+  - [Blob对象](05_BrowserObjectModel/TheOtherWebAPI/TheBlobObject.md)
+  - [URL对象](05_BrowserObjectModel/TheOtherWebAPI/TheURLObject.md)
+  - [Position对象](05_BrowserObjectModel/TheOtherWebAPI/ThePositionObject.md)
+- **浏览器缓存**
+  - 浏览器缓存机制
+  - Cookie
+  - Session
+  - LocalStorage
 - **客户端检测**
   - 能力检测
   - 怪癖检测
   - 用户代理检测
+- **浏览器工作原理**
+  - 整体工作流程
+  - 渲染引擎的详细介绍
+  - 关于解析的一些基本概念
+  - HTML解析器 HTML Parser
+  - CSS解析
+  - 渲染树构建
+  - 布局
+  - 绘制
+  - 动态变化和渲染引擎的线程
+  - CSS2可视模型
 
 </details>
 
-### :page_facing_up:文档对象模型Document Oject Model
+##### :page_facing_up:文档对象模型Document Oject Model
 
 <details>
 
@@ -325,7 +345,7 @@
 
 </details>
 
-### :keyboard:HTML5脚本编程 Scripting Programing
+##### :keyboard:HTML5脚本编程 Scripting Programing
 
 <details>
 
@@ -362,11 +382,11 @@
     - WebGL
   - 视频
     - HTML5音视频
-    - WebRTC
+    - WebRTC 实时通讯技术
 
 </details>
 
-### :outbox_tray:服务器端数据传输 Server Related
+##### :outbox_tray:服务器端数据传输 Server Related
 
 <details>
 
@@ -381,7 +401,7 @@
 
 </details>
 
-## :pushpin:说明
+#### :pushpin:说明
 
 **关于排版**
 
@@ -391,7 +411,7 @@
 
 [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)：官方推荐的前端文档
 
-## License
+#### License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/cn/88x31.png" /></a>
 
