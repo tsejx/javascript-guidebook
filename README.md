@@ -233,11 +233,11 @@
     - [confirm](05_BrowserObjectModel/TheWindowObject/SystemDialogs/confirm.md)
     - [prompt](05_BrowserObjectModel/TheWindowObject/SystemDialogs/prompt.md)
   - 视窗尺寸位置
-    - [Window视图属性](05_BrowserObjectModel/TheWindowObject/WindowPostion/WindowViewProperties.md)
-    - [Screen视图属性](05_BrowserObjectModel/TheWindowObject/WindowPostion/ScreenViewProperties.md)
-    - [文档视图和元素视图](05_BrowserObjectModel/TheWindowObject/WindowPostion/DocumentView%26ElementView.md)
-    - [元素视图属性](05_BrowserObjectModel/TheWindowObject/WindowPostion/ElementViewProperties.md)
-    - [鼠标位置](05_BrowserObjectModel/TheWindowObject/WindowPostion/MousePosition.md)
+    - [Window视图属性](05_BrowserObjectModel/TheWindowObject/WindowPosition/WindowViewProperties.md)
+    - [Screen视图属性](05_BrowserObjectModel/TheWindowObject/WindowPosition/ScreenViewProperties.md)
+    - [文档视图和元素视图](05_BrowserObjectModel/TheWindowObject/WindowPosition/DocumentView%26ElementView.md)
+    - [元素视图属性](05_BrowserObjectModel/TheWindowObject/WindowPosition/ElementViewProperties.md)
+    - [鼠标位置](05_BrowserObjectModel/TheWindowObject/WindowPosition/MousePosition.md)
 - **Location对象**
   - [Location对象的属性](05_BrowserObjectModel/TheLocationObject/TheLocationObjectProperties.md)
   - [Location对象的方法](05_BrowserObjectModel/TheLocationObject/TheLocationObjectMethods.md)
