@@ -2,13 +2,13 @@
 
 绘制路径的相关方法共有四种：
 
-- [fill()](#fill())
-- [stroke()](#stroke())
-- [drawFocusIfNeeded()](#drawFocusIfNeeded())
-- [scrollPathIntoView()](#scrollPathIntoView())
-- [clip()](#clip())
-- [isPointInPath()](#isPointInPath())
-- [isPointInStroke()](#isPointInStroke())
+- [fill()](#fill)
+- [stroke()](#stroke)
+- [drawFocusIfNeeded()](#drawFocusIfNeeded)
+- [scrollPathIntoView()](#scrollPathIntoView)
+- [clip()](#clip)
+- [isPointInPath()](#isPointInPath)
+- [isPointInStroke()](#isPointInStroke)
 
 ### fill()
 

@@ -2,10 +2,10 @@
 
 绘制矩形的相关方法共有四种：
 
-- [rect()](#rect())
-- [fillRect()](#fillRect())
-- [strokeRect()](#strokeRect())
-- [clearRect()](#clearRect())
+- [rect()](#rect)
+- [fillRect()](#fillRect)
+- [strokeRect()](#strokeRect)
+- [clearRect()](#clearRect)
 
 ### rect()
 

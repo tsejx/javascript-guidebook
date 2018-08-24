@@ -2,9 +2,9 @@
 
 绘制矩形的相关方法共有三种：
 
-- [fillText()](#fillText())
-- [strokeText()](#strokeText())
-- [measureText()](#measureText())
+- [fillText()](#fillText)
+- [strokeText()](#strokeText)
+- [measureText()](#measureText)
 
 ### fillText()
 
