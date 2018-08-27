@@ -2,8 +2,8 @@
 
 渐变的相关样式属性及方法共有两种，分为线性渐变和径向渐变：
 
-- [createLinearGradient](#createLinearGradient)
-- [createRadialGradient](#createRadialGradient)
+- [createLinearGradient](#createlineargradient)
+- [createRadialGradient](#createradialgradient)
 
 ### createLinearGradient()
 
@@ -12,7 +12,7 @@
 渐变可用于填充矩形、圆形、线条、文本等等。
 
 - 请使用该对象作为 [`strokeStyle`](Colors.md) 或 [`fillStyle`](Colors.md) 属性的值。
-- 请使用 [`addColorStop()`](#addcolorstop) 方法规定不同的颜色，以及在 CanvasGradient 对象中的何处定位颜色。
+- 请使用 [`addColorStop()`](#addcolorstop) 方法规定不同的颜色，以及在 [CanvasGradient](#canvasgradient) 对象中的何处定位颜色。
 
 #### 语法
 
@@ -27,7 +27,7 @@ context.createLinearGradient(x0, y0, x1, y1);
 | x1   | 渐变终点的 x 坐标 | number |
 | y1   | 渐变终点的 y 坐标 | number |
 
-通过 `createLinearGradient()` 创建了 `CanvasGradient` 对象，但并没有渐变的颜色，需要通过使用 `CanvasGradient` 对象的唯一一个方法 `addColorStop` 来定义渐变的颜色。
+通过 `createLinearGradient()` 创建了 `CanvasGradient` 对象，但并没有渐变的颜色，需要通过使用 `CanvasGradient` 对象的唯一一个方法 [`addColorStop`](#addcolorstop) 来定义渐变的颜色。
 
 在 Canvas 中线性渐变常见的有三种：水平的线性渐变、垂直的线性渐变和角度的线性渐变。但不管哪种线性渐变，都是依靠起点 `(x0, y0)` 和终点 `(x1, y1)` 来决定：
 
@@ -104,6 +104,7 @@ const gradient = ctx.createRadialGradient(100,100,100,100,100,0);
 
 gradient.addColorStop(0,"white");
 gradient.addColorStop(1,"green");
+
 ctx.fillStyle = gradient;
 ctx.fillRect(0,0,200,200);
 ```
@@ -175,8 +176,10 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 const gradient = ctx.createLinearGradient(0,0,200,0);
+
 gradient.addColorStop(0,"green");
 gradient.addColorStop(1,"white");
+
 ctx.fillStyle = gradient;
 ctx.fillRect(10,10,200,100);
 ```
@@ -185,5 +188,5 @@ ctx.fillRect(10,10,200,100);
 
 参考资料：
 
-- <a href='https://segmentfault.com/p/1210000010536257/read#top' target='_blank'>一个少女心满满的例子带你入门 canvas</a>
 - <a href='https://www.w3cplus.com/canvas/gradient.html' target='_blank'>Canvas学习：渐变</a>
+- <a href='https://segmentfault.com/p/1210000010536257/read#top' target='_blank'>一个少女心满满的例子带你入门 canvas</a>

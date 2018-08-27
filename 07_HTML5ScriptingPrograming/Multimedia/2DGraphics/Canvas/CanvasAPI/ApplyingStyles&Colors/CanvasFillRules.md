@@ -4,8 +4,8 @@
 
 可作为参数的值：
 
-- `"nonzero"`：[non-zero winding rule](http://en.wikipedia.org/wiki/Nonzero-rule)（默认值）
-- `"evenodd"`：[even-odd winding rule](http://en.wikipedia.org/wiki/Even%E2%80%93odd_rule)
+- `"nonzero"`：<a href="//en.wikipedia.org/wiki/Nonzero-rule" target="_blank">non-zero winding rule</a>（默认值）
+- `"evenodd"`：<a target="_blank" href="//en.wikipedia.org/wiki/Even%E2%80%93odd_rule">even-odd winding rule</a>
 
 ### 示例
 

@@ -3,9 +3,9 @@
 绘制线段的相关样式属性及方法共有四种：
 
 - [shadowblur](#shadowblur)
-- [shadowColor](#shadowColor)
-- [shadowOffsetX](#shadowOffsetX)
-- [shadowOffsetY](#shadowOffsetY)
+- [shadowColor](#shadowcolor)
+- [shadowOffsetX](#shadowoffsetx)
+- [shadowOffsetY](#shadowoffsety)
 
 ### shadowblur
 
@@ -54,7 +54,7 @@ context.shadowColor = color;
 
 | 值    | 说明                                              | 类型   | 默认值 |
 | ----- | ------------------------------------------------- | ------ | ------ |
-| color | 可以转换成 CSS `<color>` 值的 `DOMString字符串`。 | string |        |
+| color | 可以转换成 CSS `<color>` 值的 `DOMString字符串`。 | string | -      |
 
 #### 示例
 

@@ -2,13 +2,13 @@
 
 绘制线段的相关样式属性及方法共有七种：
 
-- [lineWidth](#lineWidth)
-- [lineCap](#lineCap)
-- [lineJoin](#lineJoin)
-- [miterLimit](#miterLimit)
-- [getLineDash()](#getLineDash)
-- [setLineDash()](#setLineDash)
-- [lineDashOffset](#lineDashOffset)
+- [lineWidth](#linewidth)
+- [lineCap](#linecap)
+- [lineJoin](#linejoin)
+- [miterLimit](#miterlimit)
+- [getLineDash()](#getlinedash)
+- [setLineDash()](#setlinedash)
+- [lineDashOffset](#linedashoffset)
 
 ### lineWidth
 
@@ -88,7 +88,7 @@ ctx.stroke();
 #### 语法
 
 ```js
-context.lineJoin = "bevel || round || miter";
+context.lineJoin = "bevel" || "round" || "miter";
 ```
 
 | 值     | 说明                                                         | 类型   |
@@ -127,13 +127,13 @@ ctx.stroke();
 
 ![miterLimit1](../../../../../../Image/07/71f18b57-8458-4e96-8046-f3968ed2da0d.gif)
 
-只有当 lineJoin 属性为 "miter" 时，miterLimit 才有效。
+只有当 `lineJoin` 属性为 `"miter"` 时，`miterLimit` 才有效。
 
 边角的角度越小，斜接长度就会越大。
 
-为了避免斜接长度过长，我们可以使用 miterLimit 属性。
+为了避免斜接长度过长，我们可以使用 `miterLimit` 属性。
 
-如果斜接长度超过 miterLimit 的值，边角会以 lineJoin 的 "bevel" 类型来显示（图解 3）：
+如果斜接长度超过 `miterLimit` 的值，边角会以` lineJoin` 的 `"bevel"` 类型来显示（图解 3）：
 
 ![miterLimit2](../../../../../../Image/07/e616d9d1-e7a3-4900-8e33-d3e60ea6cc5c.gif)
 

@@ -40,8 +40,8 @@ ctx.fillRect(10, 10, 100, 100);
 ```js
 function draw() {
   var ctx = document.getElementById('canvas').getContext('2d');
-  for (var i=0;i<6;i++){
-    for (var j=0;j<6;j++){
+  for (let i = 0; i < 6; i++){
+    for (let j = 0;j < 6; j++){
       ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' + 
                        Math.floor(255-42.5*j) + ',0)';
       ctx.fillRect(j*25,i*25,25,25);
@@ -49,6 +49,8 @@ function draw() {
   }
 }
 ```
+
+<a target="_blank" href="https://codepen.io/mrsingsing/pen/yxOzpd">🔎在 CodePen 中打开</a>
 
 ### strokeStyle
 
@@ -89,8 +91,8 @@ ctx.strokeRect(10, 10, 100, 100);
 ```js
 function draw() {
     var ctx = document.getElementById('canvas').getContext('2d');
-    for (var i=0;i<6;i++){
-      for (var j=0;j<6;j++){
+    for (let i = 0; i < 6; i++){
+      for (let j = 0; j < 6; j++){
         ctx.strokeStyle = 'rgb(0,' + Math.floor(255-42.5*i) + ',' + 
                          Math.floor(255-42.5*j) + ')';
         ctx.beginPath();
@@ -101,5 +103,4 @@ function draw() {
   }
 ```
 
-[🔎在 CodePen 中打开](https://codepen.io/mrsingsing/pen/jvWXxx)
-
+<a target="_blank" href="https://codepen.io/mrsingsing/pen/jvWXxx">🔎在 CodePen 中打开</a>
