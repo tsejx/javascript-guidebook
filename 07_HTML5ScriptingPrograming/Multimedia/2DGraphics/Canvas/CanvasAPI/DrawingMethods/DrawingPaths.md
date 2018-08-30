@@ -4,11 +4,11 @@
 
 - [fill()](#fill)
 - [stroke()](#stroke)
-- [drawFocusIfNeeded()](#drawFocusIfNeeded)
-- [scrollPathIntoView()](#scrollPathIntoView)
+- [drawFocusIfNeeded()](#drawfocusIfneeded)
+- [scrollPathIntoView()](#scrollpathIntoview)
 - [clip()](#clip)
-- [isPointInPath()](#isPointInPath)
-- [isPointInStroke()](#isPointInStroke)
+- [isPointInPath()](#ispointInpath)
+- [isPointInStroke()](#ispointInstroke)
 
 ### fill()
 
