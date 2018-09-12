@@ -1,11 +1,15 @@
 ## 绘制矩形
 
+矩形是唯一一种可以直接在 2D 上下文中绘制的形状。
+
 绘制矩形的相关方法共有四种：
 
 - [rect()](#rect)
 - [fillRect()](#fillRect)
 - [strokeRect()](#strokeRect)
 - [clearRect()](#clearRect)
+
+这三个方法都能接收4个参数：矩形的 x 坐标、矩形的 y 坐标、矩形宽度和矩形高度。这些参数的单位都是像素。
 
 ### rect()
 
