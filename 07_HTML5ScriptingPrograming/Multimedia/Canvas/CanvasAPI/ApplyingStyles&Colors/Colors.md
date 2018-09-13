@@ -7,7 +7,7 @@ Canvas 中使用样式与颜色通过两种属性设置：
 
 ### fillStyle
 
-`CanvasRenderingContext2D.fillStyle` 属性设置或返回用于填充绘画的颜色、渐变或模式。
+`CanvasRenderingContext2D.fillStyle` 属性用于设置填充图形的颜色、渐变或模式。
 
 #### 语法
 
@@ -23,13 +23,15 @@ context.fillStyle = color || gradient || pattern;
 
 #### 示例
 
+`fillStyle` 需要在 `fillRect()` 之前设置，可以理解为，先选好颜色再画图（就像画画要先选好画笔颜色才能开始画图）。
+
 ```html
 <canvas id="canvas"></canvas>
 ```
 
 ```js
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
 ctx.fillStyle = "blue";
 ctx.fillRect(10, 10, 100, 100);
@@ -39,7 +41,7 @@ ctx.fillRect(10, 10, 100, 100);
 
 ```js
 function draw() {
-  var ctx = document.getElementById('canvas').getContext('2d');
+  const ctx = document.getElementById('canvas').getContext('2d');
   for (let i = 0; i < 6; i++){
     for (let j = 0;j < 6; j++){
       ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' + 
@@ -54,7 +56,7 @@ function draw() {
 
 ### strokeStyle
 
-`CanvasRenderingContext2D.strokeStyle` 属性设置或返回用于笔触的颜色、渐变或模式。
+`CanvasRenderingContext2D.strokeStyle` 属性用于设置笔触的颜色、渐变或模式。
 
 #### 语法
 
@@ -90,7 +92,7 @@ ctx.strokeRect(10, 10, 100, 100);
 
 ```js
 function draw() {
-    var ctx = document.getElementById('canvas').getContext('2d');
+    const ctx = document.getElementById('canvas').getContext('2d');
     for (let i = 0; i < 6; i++){
       for (let j = 0; j < 6; j++){
         ctx.strokeStyle = 'rgb(0,' + Math.floor(255-42.5*i) + ',' + 

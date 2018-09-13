@@ -51,7 +51,7 @@ ctx.stroke();
 #### 语法
 
 ```js
-context.lineCap = "butt || round || square";
+context.lineCap = "butt" || "round" || "square";
 ```
 
 | 值     | 说明                                                         | 类型   |
@@ -81,9 +81,13 @@ ctx.lineTo(100, 100);
 ctx.stroke();
 ```
 
+[🔎在 CodePen 中打开](https://codepen.io/mrsingsing/pen/gdKgJR?editors=1010)
+
 ### lineJoin
 
 `CanvasRenderingContext2D.lineJoin` 属性设置或返回所创建边角的类型，当两条线交汇时。
+
+![lineJoin](../../../../../Image/07/030199c7-a21b-46e8-98b6-045e28fb7d11.gif)
 
 #### 语法
 
@@ -119,13 +123,15 @@ ctx.lineTo(300,0);
 ctx.stroke();
 ```
 
+[🔎在 CodePen 中打开](https://codepen.io/mrsingsing/pen/WgypKm?editors=1010)
+
 ### miterLimit
 
 `CanvasRenderingContext2D.miterLimit` 属性设置或返回最大斜接长度。当给属性赋值时，0、负数、`Infinity` 和 `NaN` 都会被忽略，除此之外都会被赋予一个新值。
 
 斜接长度指的是在两条线交汇处内角和外角之间的距离。
 
-![miterLimit1](../../../../../../Image/07/71f18b57-8458-4e96-8046-f3968ed2da0d.gif)
+![miterLimit1](../../../../../Image/07/71f18b57-8458-4e96-8046-f3968ed2da0d.gif)
 
 只有当 `lineJoin` 属性为 `"miter"` 时，`miterLimit` 才有效。
 
@@ -135,7 +141,7 @@ ctx.stroke();
 
 如果斜接长度超过 `miterLimit` 的值，边角会以` lineJoin` 的 `"bevel"` 类型来显示（图解 3）：
 
-![miterLimit2](../../../../../../Image/07/e616d9d1-e7a3-4900-8e33-d3e60ea6cc5c.gif)
+![miterLimit2](../../../../../Image/07/e616d9d1-e7a3-4900-8e33-d3e60ea6cc5c.gif)
 
 #### 语法
 

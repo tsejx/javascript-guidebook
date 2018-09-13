@@ -19,4 +19,4 @@ function draw() {
 }
 ```
 
-![evenodd](../../../../../../Image/07/0c2266e7-9b14-4a9a-bfd3-ba4800900748.png)
+![evenodd](../../../../../Image/07/0c2266e7-9b14-4a9a-bfd3-ba4800900748.png)
