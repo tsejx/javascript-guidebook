@@ -10,6 +10,21 @@
 - Gecko内核：Netscape6及以上版本/Firefox/MozillaSuite/SeaMonkey等
 - Trident（MSHTML）内核：IE/MaxThon/TT/The World/360/搜狗浏览器等
 - Presto内核：Opera7及以上
+- Edge内核：Win10以上IE浏览器
+- Blink内核：Chromium
+
+JavaScript 引擎：
+
+- JScript引擎：IE 系列浏览器
+- spiderMonkey引擎：Mozilla Firefox
+- V8引擎：Google Chrome
+- linear b/futhark引擎：Opera
+
+### 渲染引擎及依赖模块分析
+
+![渲染引擎及依赖模块分析](../../Image/05/824d82fb-f521-4adc-9892-539db9547ca4.png)
+
+上图中虚线部分表示渲染引擎所提供的功能。 这里渲染引擎包含了JavaScript引擎，许多时候两者都不太区分。
 
 ### 渲染引擎基本流程
 

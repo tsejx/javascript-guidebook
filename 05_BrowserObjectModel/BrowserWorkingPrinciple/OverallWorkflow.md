@@ -15,8 +15,9 @@
 3. [渲染树构建（Render Tree Construction）](RenderTreeConstruction.md)
 4. [布局（Layout）](Layout.md)
 5. [绘制（Painting）](Painting.md)
-6. 动态变化和渲染引擎的线程
-7. CSS2可视模型（CSS2 Visual Model）
+6. [动态变化和渲染引擎的线程](DynamicChanges&RenderingEngineThreads.md)
+7. [CSS2可视模型（CSS2 Visual Model）](CSS2VisualModule. md)
+8. [渲染层合并](Composite.md)
 
 ### 主流浏览器
 
@@ -72,3 +73,4 @@
 
 - [前端必读：浏览器内部工作原理](https://www.cnblogs.com/wjlog/p/5744753.html#chapter8)
 - [浏览器的渲染：过程与原理](https://zhuanlan.zhihu.com/p/29418126)
+- [浏览器工作员：Webkit 内核研究](https://juejin.im/entry/5a9a379af265da239d48c027)
