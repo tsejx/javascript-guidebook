@@ -285,7 +285,7 @@
 
 - **文档对象模型**
   - [DOM](06_DocumentObjectModel/DOM.md)
-  - [DOM API](06_DocumentObjectModel/DOM API.md)
+  - [DOMAPI](06_DocumentObjectModel/DOM API.md)
 - **节点层次**
   - [节点层次](06_DocumentObjectModel/HierarchyOfNodes/HierarchyOfNodes.md)
   - [Node类型](06_DocumentObjectModel/HierarchyOfNodes/TheNodeType.md)
@@ -375,7 +375,7 @@
 
 ### 📱移动端Web开发指南
 
-<detail>
+<details>
 
 <summary>查看目录</summary>
 
@@ -400,7 +400,7 @@
   - 平台JSSDK
 - touch事件
 
-</detail>
+</details>
 
 ## :pushpin:说明
 
