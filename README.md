@@ -1,4 +1,4 @@
-![Logo](Image/logo.jpg)
+![Logo](./Image/logo.jpg)
 
 # JavaScript Guidebook
 
@@ -285,7 +285,7 @@
 
 - **文档对象模型**
   - [DOM](06_DocumentObjectModel/DOM.md)
-  - [DOMAPI](06_DocumentObjectModel/DOM API.md)
+  - [DOM API](06_DocumentObjectModel/DOM%20API.md)
 - **节点层次**
   - [节点层次](06_DocumentObjectModel/HierarchyOfNodes/HierarchyOfNodes.md)
   - [Node类型](06_DocumentObjectModel/HierarchyOfNodes/TheNodeType.md)
