@@ -320,36 +320,40 @@
 
  <summary>查看目录</summary>
 
-- **语义**
-  - HTML5表单
-  - HTML5新语义元素
-- **性能集成**
-  - WebWorkers 
+- **语义化**
+  - [HTML5表单](07_HTML5ScriptingPrograming/Semantics/FormInprovements.md)
+  - [HTML5新语义元素](07_HTML5ScriptingPrograming/Semantics/NewSemanticElements.md)
+- **离线与存储**
+  - [Service Worker](07_HTML5ScriptingPrograming/Offline&Storage/ServiceWorker.md)
+  - 本地存储
+    - [Cookie](05_BrowserObjectModel/BrowserCache/Cookie.md)
+    - [WebStorage](05_BrowserObjectModel/BrowserCache/WebStorage.md)
+    - [IndexedDB](07_HTML5ScriptingPrograming/Application&LocalStorage/IndexedDB.md)
+  - [本地文件应用](07_HTML5ScriptingPrograming/Application&LocalStorage/LocalFilesApplication.md)
+- **通信**
+  - PostMessage
+  - XMLHttpRequestLevel2
+  - Server Sent Event
+  - WebSocket
+  - WebRTC
+- **多媒体**
+  - 音频
+  - 视频
+- **图形特效**
+  - [Canvas](07_HTML5ScriptingPrograming/Multimedia/Canvas/README.md)
+  - SVG
+  - WebGL
+- **性能与集成**
+  - WebWorkers
   - 拖放API
   - 动画渲染
   - 全屏API
   - 焦点API
-- **应用与本地存储**
-  - 本地文件应用
-  - 本地存储
-    - Cookie
-    - WebStorage
-    - IndexedDB
-- **服务器通信**
-  - WebSockets
-  - Server-sentEvents
-  - WebRTC
 - **设备访问**
-  - 地理定位
+  - [地理定位](07_HTML5ScriptingPrograming/DeviceAccess/Geolocation.md)
   - 触控事件
-  - 摄录设备
-- **多媒体**
-  - [Canvas](07_HTML5ScriptingPrograming/Multimedia/Canvas/README.md)
-  - SVG
-
-  - WebGL
-
-  - WebRTC 实时通讯技术
+  - [摄录设备](07_HTML5ScriptingPrograming/DeviceAccess/Camera.md)
+  - 摇感装置
 
 </details>
 
@@ -368,6 +372,35 @@
 - Fetch
 
 </details>
+
+### 📱移动端Web开发指南
+
+<detail>
+
+<summary>查看目录</summary>
+
+- 页面布局
+  - [移动端视口](09_MobileWebDevelopment/Layout/Viewport.md)
+  - [布局形式](09_MobileWebDevelopment/Layout/Adaptation.md)
+  - 媒体查询
+  - 设备适配
+  - 页面适配
+- 移动设备WebAPI
+  - 视频（Video）
+  - 音频
+  - 媒体流
+  - Web Speech
+  - Web Audio API
+  - 地理定位
+  - 陀螺仪
+  - 设备震动
+  - 电池状态
+  - 环境光
+  - 网络信息
+  - 平台JSSDK
+- touch事件
+
+</detail>
 
 ## :pushpin:说明
 
