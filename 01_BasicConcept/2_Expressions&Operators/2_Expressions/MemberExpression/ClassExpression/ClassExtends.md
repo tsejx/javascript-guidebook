@@ -235,8 +235,48 @@ A.prototype.__proto__	=== Object.prototype	// true
 
 这种情况下，`A` 作为一个基类（即不存在任何继承），就是一个普通函数，所以直接继承 `Function.prototype`。但是，`A` 调用后返回一个空对象（即 `Object` 实例），所以 `A.prototype.__proto__` 指向构造函数（`Object`）的 `prototype` 属性。
 
+### 原生构造函数的继承
+
+原生构造函数是指语言内置的构造函数，通常用来生成数据结构。
+
+过去，原生构造函数是无法继承的，比如，不能自己定义一个 `Array` 的子类。之所以这样，是因为子类无法获得原生构造函数的内部属性，通过 `Array.apply()` 或者分配给原型对象都不行。原生构造函数会忽略 `apply` 方法传入的 `this`，也就是说，原生构造函数 `this` 无法绑定，导致拿不到内部属性。
+
+而在 ES6 中允许继承原生构造函数定义子类，因为 ES6 是先新建父类的实例对象 `this` ，然后再用子类的构造函数修饰 `this`，使得父类的所有行为都可以继承。下面是一个继承 `Array` 的例子。
+
+```js
+class SubArray extends Array {
+    constructor(...args){
+        super(...args)
+    }
+}
+
+var arr = new SubArray()
+arr[0] = 12
+console.log(arr.length)		// 1
+
+arr.length = 0
+console.log(arr[0])			// undefined
+```
+
+上面的例子说明，`extends` 关键字不仅可以用来继承类，还可以用来继承原生的构造函数。因此可以在原生数据结构的基础上，定义自己的数据结构。
+
+⚠️ 注意，继承 `Object` 的子类，有一个行为差异。
+
+```js
+class NewObj extends Object {
+    constructor(){
+        super(...arguments)
+    }
+}
+const obj = new NewObj({attr: true})
+obj.attr === true	// false
+```
+
+上述代码中，`NewObj` 继承了 `Object` ，但是无法通过 `super` 方法向父类 `Object` 传参。这是因为 ES6 改变了 `Object` 构造函数的行为，一旦发现 `Object` 方法不是通过 `new Object()` 这种形式调用，ES6 规定 `Object` 构造函数会忽略参数。
+
 ---
 
 **参考资料：**
 
 * [类的继承](https://juejin.im/post/5b5f3e9c5188257bcc167bc6)
+* [ECMScript 6入门：Class 的继承](http://es6.ruanyifeng.com/#docs/class-extends)
