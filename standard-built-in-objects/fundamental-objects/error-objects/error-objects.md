@@ -22,8 +22,6 @@ new Error([message][, fileName[, lineNumber]])
 
 除了通用的Error构造函数外，还有6个其他类型的错误构造函数。
 
-
-
 - **`EvalError`**：创建一个error实例，表示错误的原因：与 [`eval()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval) 有关。
 - **`InternalError`** ：创建一个代表Javascript引擎内部错误的异常抛出的实例。 如: "递归太多".
 
