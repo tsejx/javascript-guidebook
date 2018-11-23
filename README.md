@@ -21,14 +21,11 @@
 
 - **术语定义**
 - **词法语法**
-
   - [词法语法](basic-concept/lexical-grammar.md)
 - **数据类型和值**
-
   - [数据类型](basic-concept/data-types.md)
 - **表达式**
   - **主要表达式**
-
     - [this 关键字](basic-concept/expression/primaray-expression/this.md)
     - [数组初始化](basic-concept/expression/primaray-expression/array-initializer.md)
     - [字面量引用](basic-concept/expression/primaray-expression/literal.md)
@@ -37,7 +34,6 @@
     - [属性访问器](basic-concept/expression/primaray-expression/property-accessors.md)
   - [更新表达式](basic-concept/expression/update-expressions.md)
   - **一元运算符**
-
     - [in](basic-concept/expression/unary-operators/in.md)
     - [instanceof](basic-concept/expression/unary-operators/instanceof.md)
     - [delete](basic-concept/expression/unary-operators/delete.md)
@@ -54,7 +50,6 @@
   - [扩展运算符](basic-concept/expression/spread-operator.md)
   - [解构赋值](basic-concept/expression/detructing-assignment.md)
   - [运算符优先级](basic-concept/expression/operators-precedence.md)
-
 - **语句和声明**
   - [块语句](basic-concept/statements-and-declarations/block.md)
   - [声明和变量语句](basic-concept/statements-and-declarations/declarations-and-the-variable-statement.md)
@@ -106,7 +101,6 @@
     - 函数属性与方法
     - 作为值的函数
     - 函数的内部属性
-
   - [Boolean](standard-built-in-objects/fundamental-objects/boolean-objects.md)
   - Symbol
   - [Error](standard-built-in-objects/fundamental-objects/error-objects/error-objects.md)
@@ -145,6 +139,8 @@
 
 <details>
 
+<summary>查看目录</summary>
+
 - **可执行代码和执行上下文**
   - 编译阶段
     - [作用域](core-modules/executable-code-and-execution-contexts/compilation/scope.md)
@@ -160,9 +156,7 @@
     - [作用域链](core-modules/executable-code-and-execution-contexts/execution/scope-chain.md)
     - [this绑定](core-modules/executable-code-and-execution-contexts/execution/this.md)
     - [执行上下文](core-modules/executable-code-and-execution-contexts/execution/execution-context.md)
-
 - **函数**
-
   - **函数声明**
     - [函数声明式定义](core-modules/ecmascript-function-objects/function-declarations/function-definitions.md)
     - [箭头函数定义](core-modules/ecmascript-function-objects/function-declarations/arrow-function-definitions.md)
@@ -190,11 +184,11 @@
   - 类的基本语法
   - 类的继承
 - **脚本和模块**
-
   - 脚本
   - 模块
 
 </details>
+
 ### :man_factory_worker:面向对象编程 Object Oriented Programming
 
 <details>
