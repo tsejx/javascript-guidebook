@@ -170,7 +170,7 @@
       - [函数调用模式](core-modules/ecmascript-function-objects/function-calls/function-invocation-pattern.md)
       - [构造器调用模式](core-modules/ecmascript-function-objects/function-calls/constructor-invocation-pattern.md)
       - [间接调用模式](core-modules/ecmascript-function-objects/function-calls/apply-invocation-pattern.md)
-    - **函数类型**
+  - **函数类型**
       - [构造函数](core-modules/ecmascript-function-objects/function-types/structure-function.md)
       - [类构造函数](core-modules/ecmascript-function-objects/function-types/class-structure-function.md)
       - [惰性函数](core-modules/ecmascript-function-objects/function-types/lazy-function.md)
