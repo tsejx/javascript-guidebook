@@ -32,7 +32,7 @@ console.log(instance.getSuperValue());		// true
 
 上述例子中，SubType 继承了 SuperType，而继承是通过创建 SuperType 的实例，并将实例赋值给 SubType.prototype 实现的。实现的本质是重写原型对象，代之以一个新类型的实例。换句话说，原来存在于 SuperType 的实例中的所有属性和方法，现在也存在于 SubType.prototype 中了。在确立了继承关系之后，我们给 SubType.prototype 添加了一个方法，这样就在继承了 SuperType 的属性和方法的基础上又添加了一个新方法。
 
-![实现原型链的基本模式](../../Image/04/ad450def-b38e-4245-84fe-0891b8d82161.png)
+![实现原型链的基本模式](../../images/4/ad450def-b38e-4245-84fe-0891b8d82161.png)
 
 SubType 没有使用默认提供的原型，而是把 SuperType 赋值给它。于是，新原型不仅具有作为一个 SuperType 的实例所拥有的全部属性和方法，而且其内部还有一个指针，指向了 SuperType 的原型。
 
