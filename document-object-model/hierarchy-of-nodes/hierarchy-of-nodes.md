@@ -2,7 +2,7 @@
 
 DOM 可以将任何 HTML 描绘成一个由多层节点构成的结构。节点分为12种不同类型，每种类型分别表示文档中不同的信息及标记。每个节点都拥有各自的特点、数据和方法，也与其他节点存在某种关系。节点之间的关系构成了层次，而所有页面标记则表现为一个以特定节点为根节点的树形结构。
 
-![DOM结构](/Users/mrsingsing/Desktop/mrsingsing/JavaScript-Guidebook/Image/06/f5154d70-d288-41d5-9ab8-f4022c5c1c11.jpeg)
+![DOM结构](../../images/6/f5154d70-d288-41d5-9ab8-f4022c5c1c11.jpeg)
 
 先看看下面代码：
 
@@ -27,7 +27,7 @@ DOM 可以将任何 HTML 描绘成一个由多层节点构成的结构。节点�
 
 将 HTML 代码分解为 DOM 节点层次图：
 
-![DOM结构图](/Users/mrsingsing/Desktop/mrsingsing/JavaScript-Guidebook/Image/06/26c053ef-3a4f-4b17-83cb-f0b0e861479a.jpeg)
+![DOM结构图](../../images/6/26c053ef-3a4f-4b17-83cb-f0b0e861479a.jpeg)
 
 HTML 文档可以说由节点构成的集合，DOM 节点由：
 
