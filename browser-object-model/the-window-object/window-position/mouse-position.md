@@ -21,28 +21,28 @@ MouseEvent 接口指用户与指针设备（如鼠标）交互时发生的事件
 
 MousEvent.clientX 和 MousEvent.clientY  设置或获取鼠标指针位置相对于**窗口客户区域**的横纵坐标，其中客户区域不包括窗口自身的控件和滚动条。
 
-![clientX/clientY](../../../Image/05/59af321c-d367-4231-91e2-b66a0a564110.png)
+![clientX/clientY](../../../images/5/59af321c-d367-4231-91e2-b66a0a564110.png)
 
 ### offsetX/offsetY
 
 MousEvent.offsetX 和 MousEvent.offsetY 设置或获取鼠标指针位置相对于**触发事件的对象**的横纵坐标。
 
-![offsetX/offsetY](../../../Image/05/3a9f7653-6440-4f65-849f-d12c6fa8b550.png)
+![offsetX/offsetY](../../../images/5/3a9f7653-6440-4f65-849f-d12c6fa8b550.png)
 
 ### pageX/pageY
 
 MousEvent.pageX 和 MousEvent.pageY 相对于整个**网页**左上角坐标。
 
-![pageX/pageY](../../../Image/05/3fe172e4-ccb4-49b5-a3f4-4141b946e606.png)
+![pageX/pageY](../../../images/5/3fe172e4-ccb4-49b5-a3f4-4141b946e606.png)
 
 ### screenX/screenY
 
 MousEvent.screenX 和 MousEvent.screenY 设置或获取获取鼠标指针位置相对于**用户屏幕**的横纵坐标。
 
-![screenX/screenY](../../../Image/05/3706b32b-38a8-4420-9aff-7037bca86643.png)
+![screenX/screenY](../../../images/5/3706b32b-38a8-4420-9aff-7037bca86643.png)
 
 ### X/Y
 
 MouseEvent.X 和 MouseEvent.Y 设置或获取鼠标指针位置相对于**父文档**的横纵坐标。
 
-![event.x/event.y](../../../Image/05/c944fe6c-b840-4cb6-9e20-478333287fc3.png)
+![event.x/event.y](../../../images/5/c944fe6c-b840-4cb6-9e20-478333287fc3.png)

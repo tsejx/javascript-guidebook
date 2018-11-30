@@ -6,7 +6,7 @@
 
 `window.outerWidth` 和 `window.outerHeight` 表示整个浏览器窗口外层的宽高（以像素为单位），包括侧边栏（如果存在）、窗口镶边（Window Chrome）和窗口调正边框，包含调试窗及浏览器边框。这两者均为只读属性。
 
-![浏览器窗口外层宽高](../../../Image/05/b9d971a3-1ff0-44e7-8bc6-ba1afe5eb165.png)
+![浏览器窗口外层宽高](../../../images/5/b9d971a3-1ff0-44e7-8bc6-ba1afe5eb165.png)
 
 使用如下示例代码：
 
@@ -21,7 +21,7 @@ window.outerHeight
 
 `window.innerWidth` 和 `window.innerHeight` 表示浏览器窗口的视口宽高，如果存在垂直/水平滚动条，则包括它，不包括调试窗及浏览器边框。
 
-![浏览器窗口内层宽高](../../../Image/05/cbf51ef8-3f89-4b31-86c6-676b05d6fe67.png)
+![浏览器窗口内层宽高](../../../images/5/cbf51ef8-3f89-4b31-86c6-676b05d6fe67.png)
 
 使用如下示例代码：
 

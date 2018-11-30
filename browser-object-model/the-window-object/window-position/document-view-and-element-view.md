@@ -19,7 +19,7 @@ const foo = document.elementFromPoint(offsetX, offsetY);
 
 > ⚠️参数 offsetX 和 offsetY 为坐标数值，不需要单位（比如像素单位px）
 
-![elementFromPoint](../../../Image/05/5d13ccf0-27a9-46aa-a929-d92fd62216c1.png)
+![elementFromPoint](../../../images/5/5d13ccf0-27a9-46aa-a929-d92fd62216c1.png)
 
 使用如下示例代码：
 
@@ -45,7 +45,7 @@ const rectCollection = object.getClientRects();
 
 > ⚠️当元素发生滚动时，顶端（top）、底端（bottom）、左端（left） 和 右端（right） 的偏移量也会发生改变。
 
-![getClientRects()](../../../Image/05/28ad0fda-efae-4bc6-bda4-19e1b11b3c89.png)
+![getClientRects()](../../../images/5/28ad0fda-efae-4bc6-bda4-19e1b11b3c89.png)
 
 - top：元素左上角距浏览器页面顶端的距离
 - left：元素左上角距浏览器页面左端的距离
@@ -86,7 +86,7 @@ DOMRectList [{
 const rectObject = object.getBoundingClientRect();
 ```
 
-![getBoundingClientRect()](../../../Image/05/ff8f2519-71b5-4af4-80b9-db914558e23d.png)
+![getBoundingClientRect()](../../../images/5/ff8f2519-71b5-4af4-80b9-db914558e23d.png)
 
 - top：元素左上角距浏览器可视区域顶端的距离
 - left：元素左上角距浏览器可视区域左端的距离

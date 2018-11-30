@@ -22,7 +22,7 @@ JavaScript 引擎：
 
 ### 渲染引擎及依赖模块分析
 
-![渲染引擎及依赖模块分析](../../Image/05/824d82fb-f521-4adc-9892-539db9547ca4.png)
+![渲染引擎及依赖模块分析](../../images/5/824d82fb-f521-4adc-9892-539db9547ca4.png)
 
 上图中虚线部分表示渲染引擎所提供的功能。 这里渲染引擎包含了JavaScript引擎，许多时候两者都不太区分。
 
@@ -32,7 +32,7 @@ JavaScript 引擎：
 
 下面是渲染引擎在获取文档内容之后的基本流程：
 
-![渲染引擎基本流程](../../Image/05/273fa38f-7637-46c9-a5fc-54a28a8fff9e.png)
+![渲染引擎基本流程](../../images/5/273fa38f-7637-46c9-a5fc-54a28a8fff9e.png)
 
 1. 解析 HTML：渲染引擎开始解析 HTML，并将标签转化为 DOM 节点树，即内容树
 2. 解析 CSS：同时，它也会解析外部 CSS 文件及 `<style>` 标签中的样式数据，生成 CSS 规则树
@@ -45,11 +45,11 @@ JavaScript 引擎：
 
 ### 主要浏览器渲染主流程
 
-![Webkit主流程](../../Image/05/01908eec-19c7-4676-8c6f-fe574a7364b4.png)
+![Webkit主流程](../../images/5/01908eec-19c7-4676-8c6f-fe574a7364b4.png)
 
 
 
-![Gecko主流程](../../Image/05/205dae2d-835d-4e31-9592-c6ee9abe039a.png)
+![Gecko主流程](../../images/5/205dae2d-835d-4e31-9592-c6ee9abe039a.png)
 
 - Gecko 将视觉格式化元素组成的树称为”框架树”（frame）。每个元素都是一个框架。Webkit 使用的术语是”渲染树”（render），它由”渲染对象”组成。
 - 对于元素的放置，Webkit 使用的术语是”布局”（layout），而 Gecko 称之为”重排”（reflow）。
