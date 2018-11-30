@@ -256,7 +256,7 @@ fetch(url, {
 
 Service Workers 拥有良好的浏览器兼容性。
 
-![Service Workers 浏览器兼容性](../../Image/07/bc47a906-70b1-47b8-958b-7ca91af2e546.png)
+![Service Workers 浏览器兼容性](../../images/7/bc47a906-70b1-47b8-958b-7ca91af2e546.png)
 
 ### 总结 
 

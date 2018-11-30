@@ -187,7 +187,7 @@ ctx.stroke();
 
 📌 提示：二次贝塞尔曲线需要两个点。第一个点是用于二次贝塞尔计算中的控制点，第二个点是曲线的结束点。曲线的开始点是当前路径中最后一个点。如果路径不存在，那么请使用 `beginPath()` 或 `moveTo()` 方法来定义开始点。
 
-![quadraticcurve](../../../../../Image/07/34027775-e5d0-4a45-8210-b873a260750f.gif)
+![quadraticcurve](../../../../../images/7/34027775-e5d0-4a45-8210-b873a260750f.gif)
 
 - `quadraticCurveTo(cpx, cpy, x, y)` 方法由1个控制点与1个追加坐标点绘制二维贝塞尔曲线。
 - `bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)` 方法则是由2个控制点和1个追加坐标点绘制三维贝塞尔曲线。
@@ -246,7 +246,7 @@ ctx.fillRect(230, 30, 10, 10);
 
 📌 提示：三次贝塞尔曲线需要三个点。前两个点是用于三次贝塞尔计算中的控制点，第三个点是曲线的结束点。曲线的开始点是当前路径中最后一个点。如果路径不存在，那么请使用 `beginPath()` 和 `moveTo()` 方法来定义开始点。
 
-![](../../../../../Image/07/68957c1b-866b-4ff4-a135-1491fa488f6b.gif)
+![](../../../../../images/7/68957c1b-866b-4ff4-a135-1491fa488f6b.gif)
 
 - `quadraticCurveTo(cpx, cpy, x, y)` 方法由1个控制点与1个追加坐标点绘制二维贝塞尔曲线。
 - `bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)` 方法则是由2个控制点和1个追加坐标点绘制三维贝塞尔曲线。
@@ -335,7 +335,7 @@ context.arcTo(x1, y1, x2, y2, radius)
 4. 连接点 `(x0, y0)` ➡️点 `(x1, y1)` ➡️点 `(x2, y2)` ，使用最短的半径 radius 圆弧连接
 5. 自动计算出圆弧的终点，追加子路径
 
-![arcTo()](../../../../../Image/07/bb7fec1d-c1b3-4867-80d3-16b11bda20c8.gif)
+![arcTo()](../../../../../images/7/bb7fec1d-c1b3-4867-80d3-16b11bda20c8.gif)
 
 
 
@@ -386,7 +386,7 @@ context.arc(x, y, radius, startAngle, endAngle [, anticlockwise])
 
 圆弧的开始角度与终点角度以 x 轴的正方向为回转基准。圆弧的生成方向由参数 `anticlockwise` 指定，开始角度与结束角度的计测方向为顺时针方向。
 
-![arc](../../../../../Image/07/a1365079-27b4-4cd9-9bdd-e52fb269cf38.gif)
+![arc](../../../../../images/7/a1365079-27b4-4cd9-9bdd-e52fb269cf38.gif)
 
 圆弧的生成方向以逆时针方向时为 `true` ，顺时针方向时为 `false`。省略时，也就是初始值为 `false`。如果圆弧的半径为负值时，会显示出错（INDEX_SIZE_ERR）。
 

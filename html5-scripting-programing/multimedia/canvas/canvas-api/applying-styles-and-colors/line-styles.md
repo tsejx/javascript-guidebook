@@ -87,7 +87,7 @@ ctx.stroke();
 
 `CanvasRenderingContext2D.lineJoin` 属性设置或返回所创建边角的类型，当两条线交汇时。
 
-![lineJoin](../../../../../Image/07/030199c7-a21b-46e8-98b6-045e28fb7d11.gif)
+![lineJoin](../../../../../images/7/030199c7-a21b-46e8-98b6-045e28fb7d11.gif)
 
 #### 语法
 
@@ -131,7 +131,7 @@ ctx.stroke();
 
 斜接长度指的是在两条线交汇处内角和外角之间的距离。
 
-![miterLimit1](../../../../../Image/07/71f18b57-8458-4e96-8046-f3968ed2da0d.gif)
+![miterLimit1](../../../../../images/7/71f18b57-8458-4e96-8046-f3968ed2da0d.gif)
 
 只有当 `lineJoin` 属性为 `"miter"` 时，`miterLimit` 才有效。
 
@@ -141,7 +141,7 @@ ctx.stroke();
 
 如果斜接长度超过 `miterLimit` 的值，边角会以` lineJoin` 的 `"bevel"` 类型来显示（图解 3）：
 
-![miterLimit2](../../../../../Image/07/e616d9d1-e7a3-4900-8e33-d3e60ea6cc5c.gif)
+![miterLimit2](../../../../../images/7/e616d9d1-e7a3-4900-8e33-d3e60ea6cc5c.gif)
 
 #### 语法
 

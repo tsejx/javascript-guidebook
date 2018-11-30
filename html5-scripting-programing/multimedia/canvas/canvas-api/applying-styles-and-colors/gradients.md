@@ -85,7 +85,7 @@ context.createRadialGradient(x0, y0, r0, x1, y1, r1);
 
 实际的渐变效果时连接两个圆周的锥体，其中开始圆之前的锥体部分显示偏移值 `0` 的颜色，而结束圆之后的锥体部分则显示偏移值为 1 的颜色。
 
-![createRadialGradient](../../../../../Image/07/a1e92534-0807-4d2b-b4a2-02bfce5f2710.png)
+![createRadialGradient](../../../../../images/7/a1e92534-0807-4d2b-b4a2-02bfce5f2710.png)
 
 #### 使用方法
 
