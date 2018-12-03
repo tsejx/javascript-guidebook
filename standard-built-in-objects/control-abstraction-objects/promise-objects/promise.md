@@ -24,7 +24,7 @@ Promise 是一个代理对象（代理一个值），被代理的值在 Promise 
 
 由于 `Promise.prototype.then` 和 `Promise.prototype.catch` 方法返回 Promise 对象，所以它们可以被链式调用。
 
-![Promise](../../../images/s/566f8e31-9eb2-4eee-a066-cecf7f3567e8.png)
+![Promise](../../../images/2/566f8e31-9eb2-4eee-a066-cecf7f3567e8.png)
 
 ### 状态
 
@@ -36,7 +36,7 @@ Promise 是一个代理对象（代理一个值），被代理的值在 Promise 
 
 关于上述三种状态的读法，其中左侧在 [ES6 Promise](http://liubin.org/promises-book/#es6-promises) 规范中定义的术语，而左侧是在 [Promise/A+](http://liubin.org/promises-book/#promises-aplus) 中描述状态的术语。
 
-![Promise state](../../../images/s/9ce037e1-c5ce-485b-9fae-9fa9c65b81ff.png)
+![Promise state](../../../images/2/9ce037e1-c5ce-485b-9fae-9fa9c65b81ff.png)
 
 ⚠️ Promise 的状态，从 *Pending* 转换为 *Fulfilled* 或 *Rejected* 之后，这个 Promise 对象的状态就不会发生任何变化。
 
