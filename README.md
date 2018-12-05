@@ -221,15 +221,15 @@
 <summary>查看目录</summary>
 
 - [**Window对象**](browser-object-model/the-window-object/the-window-object.md)
-  - 定时器
+  - **定时器**
     - [setInterval](browser-object-model/the-window-object/timers/setInterval.md)
     - [setTimeout](browser-object-model/the-window-object/timers/setTimeout.md)
     - [定时器运行机制](browser-object-model/the-window-object/timers/timers.md)
-  - 系统对话框
+  - **系统对话框**
     - [alert](browser-object-model/the-window-object/system-dialogs/alert.md)
     - [confirm](browser-object-model/the-window-object/system-dialogs/confirm.md)
     - [prompt](browser-object-model/the-window-object/system-dialogs/prompt.md)
-  - 视窗尺寸位置
+  - **视窗尺寸位置**
     - [Window视图属性](browser-object-model/the-window-object/window-position/window-view-properties.md)
     - [Screen视图属性](browser-object-model/the-window-object/window-position/screen-view-properties.md)
     - [文档视图和元素视图](browser-object-model/the-window-object/window-position/document-view-and-element-view.md)
@@ -259,6 +259,7 @@
   - [Position对象](browser-object-model/the-other-api/the-position-object.md)
   - [XMLHttpRequest对象](browser-object-model/the-other-api/the-xmlhttprequest-object.md)
   - [FetchAPI](browser-object-model/the-other-api/the-fetch-api.md)
+  - EventSource对象
 - **浏览器缓存**
   - [浏览器缓存机制](browser-object-model/browser-cache/web-cache.md)
   - [HTTP缓存](browser-object-model/browser-cache/http-cache.md)
@@ -309,7 +310,7 @@
   - [事件流](document-object-model/events/event-flow.md)
   - [事件处理程序](document-object-model/events/event-handlers-or-listener.md)
   - [事件对象](document-object-model/events/the-event-object.md)
-  - 事件类型
+  - **事件类型**
     - [用户界面事件](document-object-model/events/event-types/ui-events.md)
     - [鼠标与滚轮事件](document-object-model/events/event-types/the-mouse-and-dom-mouse-scroll-events)
     - [键盘与文本事件](document-object-model/events/event-types/the-keyboard-and-text-events.md)
@@ -328,16 +329,16 @@
   - [HTML5新语义元素](html5-scripting-programing/semantics/new-semantic-elements.md)
 - **离线与存储**
   - [Service Worker](html5-scripting-programing/offline-and-storage/service-worker.md)
-  - 本地存储
+  - **本地存储**
     - [Cookie](html5-scripting-programing/browser-cache/cookie.md)
     - [WebStorage](html5-scripting-programing/browser-cache/web-storage.md)
     - [IndexedDB](html5-scripting-programing/offline-and-storage/indexedDB.md)
   - [本地文件应用](html5-scripting-programing/offline-and-storage/local-files-application.md)
 - **通信**
-  - PostMessage
-  - Server-sent Event
-  - WebSocket
-  - WebRTC
+  - [PostMessage](html5-scripting-programing/connectivity/post-message.md)
+  - [Server-sent Events](html5-scripting-programing/connectivity/server-sent-events.md)
+  - [WebSocket](html5-scripting-programing/connectivity/web-socket.md)
+  - [WebRTC](html5-scripting-programing/connectivity/web-real-time-communication.md)
 - **多媒体**
   - 音频
   - 视频
@@ -365,13 +366,13 @@
 
 <summary>查看目录</summary>
 
-- 页面布局
+- **页面布局**
   - [移动端视口](mobile-web-development/layout/viewport.md)
   - [布局形式](mobile-web-development/layout/adaptation.md)
   - 媒体查询
   - 设备适配
   - 页面适配
-- 移动设备WebAPI
+- **移动设备WebAPI**
   - 视频
   - 音频
   - 媒体流
@@ -384,7 +385,7 @@
   - 环境光
   - 网络信息
   - 平台JSSDK
-- touch事件
+- Touch事件
 
 </details>
 
@@ -396,7 +397,7 @@
  <summary>查看目录</summary>
 
 - DNS协议
-- HTTP协议
+- **HTTP协议**
   - [HTTP协议](server-related/http/hyper-text-transfer-protocol.md)
   - HTTP首部
   - HTTP请求方法
