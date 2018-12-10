@@ -223,8 +223,8 @@
 - [**Window对象**](browser-object-model/the-window-object/the-window-object.md)
   - **定时器**
     - [setInterval](browser-object-model/the-window-object/timers/setInterval.md)
-    - [setTimeout](browser-object-model/the-window-object/timers/setTimeout.md)
-    - [定时器运行机制](browser-object-model/the-window-object/timers/timers.md)
+    - [setTimeout](browser-object-model/the-window-object/timers/setTimeOut.md)
+    - [定时器运行机制](browser-object-model/the-window-object/timers/timers-mechanism.md)
   - **系统对话框**
     - [alert](browser-object-model/the-window-object/system-dialogs/alert.md)
     - [confirm](browser-object-model/the-window-object/system-dialogs/confirm.md)
@@ -248,17 +248,17 @@
   - [Navigator对象的属性](browser-object-model/the-navigator-object/the-navigator-object-properties.md)
   - [Navigator对象的方法](browser-object-model/the-navigator-object/the-navigator-object-methods.md)
 - **其他WebAPI**
-  - [File对象](browser-object-model/the-other-api/the-file-object.md)
-  - [FileList对象](browser-object-model/the-other-api/the-file-list-object.md)
-  - [FileReader对象](browser-object-model/the-other-api/the-file-reader-object.md)
-  - [FileReaderSync对象](browser-object-model/the-other-api/the-file-sync-object.md)
-  - [FormData对象](browser-object-model/the-other-api/the-file-data-object.md)
-  - [ProgressEvent对象](browser-object-model/the-other-api/the-progress-event-object.md)
-  - [Blob对象](browser-object-model/the-other-api/the-blob-object.md)
-  - [URL对象](browser-object-model/the-other-api/the-url-object.md)
-  - [Position对象](browser-object-model/the-other-api/the-position-object.md)
-  - [XMLHttpRequest对象](browser-object-model/the-other-api/the-xmlhttprequest-object.md)
-  - [FetchAPI](browser-object-model/the-other-api/the-fetch-api.md)
+  - [File对象](browser-object-model/the-other-web-api/the-file-object.md)
+  - [FileList对象](browser-object-model/the-other-web-api/the-file-list-object.md)
+  - [FileReader对象](browser-object-model/the-other-web-api/the-file-reader-object.md)
+  - [FileReaderSync对象](browser-object-model/the-other-web-api/the-file-sync-object.md)
+  - [FormData对象](browser-object-model/the-other-web-api/the-file-data-object.md)
+  - [ProgressEvent对象](browser-object-model/the-other-web-api/the-progress-event-object.md)
+  - [Blob对象](browser-object-model/the-other-web-api/the-blob-object.md)
+  - [URL对象](browser-object-model/the-other-web-api/the-url-object.md)
+  - [Position对象](browser-object-model/the-other-web-api/the-position-object.md)
+  - [XMLHttpRequest对象](browser-object-model/the-other-web-api/the-xmlhttprequest-object.md)
+  - [FetchAPI](browser-object-model/the-other-web-api/the-fetch-api.md)
   - EventSource对象
 - **浏览器缓存**
   - [浏览器缓存机制](browser-object-model/browser-cache/web-cache.md)
@@ -297,12 +297,12 @@
   - [Element类型](document-object-model/hierarchy-of-nodes/the-element-type.md)
 - **节点访问**
   - [节点访问](document-object-model/nodes-access/nodes-access.md)
-  - [节点关系](document-object-model/nodes-access/node-relation.md)
+  - [节点关系](document-object-model/nodes-access/nodes-relation.md)
   - [元素遍历](document-object-model/nodes-access/element-traversal.md)
   - [动态集合](document-object-model/nodes-access/dynamic-collection.md)
 - **节点操作**
-  - [节点创建](document-object-model/nodes-operate/nodes-create.md)
-  - [节点操作](document-object-model/nodes-operate/nodes-operate/README.md)
+  - [节点创建](document-object-model/manipulating-nodes/nodes-create.md)
+  - [节点操作](document-object-model/manipulating-nodes/manipulating-nodes/README.md)
 - **脚本化CSS**
   - [查询样式](document-object-model/scripting-css/accessing-element-styles.md)
   - [操作样式](document-object-model/scripting-css/working-with-style-sheets.md)
@@ -312,7 +312,7 @@
   - [事件对象](document-object-model/events/the-event-object.md)
   - **事件类型**
     - [用户界面事件](document-object-model/events/event-types/ui-events.md)
-    - [鼠标与滚轮事件](document-object-model/events/event-types/the-mouse-and-dom-mouse-scroll-events)
+    - [鼠标与滚轮事件](document-object-model/events/event-types/the-mouse-and-dom-mouse-scroll-events.md)
     - [键盘与文本事件](document-object-model/events/event-types/the-keyboard-and-text-events.md)
   - [事件委托](document-object-model/events/event-delegation.md)
 
@@ -329,10 +329,7 @@
   - [HTML5新语义元素](html5-scripting-programing/semantics/new-semantic-elements.md)
 - **离线与存储**
   - [Service Worker](html5-scripting-programing/offline-and-storage/service-worker.md)
-  - **本地存储**
-    - [Cookie](html5-scripting-programing/browser-cache/cookie.md)
-    - [WebStorage](html5-scripting-programing/browser-cache/web-storage.md)
-    - [IndexedDB](html5-scripting-programing/offline-and-storage/indexedDB.md)
+  - [IndexedDB](html5-scripting-programing/offline-and-storage/indexedDB.md)
   - [本地文件应用](html5-scripting-programing/offline-and-storage/local-files-application.md)
 - **通信**
   - [PostMessage](html5-scripting-programing/connectivity/post-message.md)
@@ -340,23 +337,21 @@
   - [WebSocket](html5-scripting-programing/connectivity/web-socket.md)
   - [WebRTC](html5-scripting-programing/connectivity/web-real-time-communication.md)
 - **多媒体**
-  - 音频
-  - 视频
+  - [音频](html5-scripting-programing/multimedia/audio.md)
+  - [视频](html5-scripting-programing/multimedia/video.md)
 - **图形特效**
-  - [Canvas](html5-scripting-programing/multimedia/canvas/README.md)
+  - [Canvas](html5-scripting-programing/graphics-and-effects/canvas/README.md)
   - SVG
   - WebGL
 - **性能与集成**
   - WebWorkers
-  - 拖放API
-  - 动画渲染
-  - 全屏API
-  - 焦点API
+  - [动画渲染](html5-scripting-programing/performance-and-integration/requestAnimationFrame.md)
+  - [拖放API](html5-scripting-programing/performance-and-integration/drag-and-drop-api.md)
+  - [全屏API](html5-scripting-programing/performance-and-integration/full-screen-api.md)
 - **设备访问**
   - [地理定位](html5-scripting-programing/device-access/geolocation.md)
-  - 触控事件
+  - [触控事件](html5-scripting-programing/device-access/touch-event.md)
   - [摄录设备](html5-scripting-programing/device-access/camera.md)
-  - 摇感装置
 
 </details>
 
@@ -385,7 +380,6 @@
   - 环境光
   - 网络信息
   - 平台JSSDK
-- Touch事件
 
 </details>
 
