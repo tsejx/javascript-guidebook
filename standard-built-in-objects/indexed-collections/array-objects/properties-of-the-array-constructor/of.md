@@ -5,7 +5,7 @@
 ### 语法
 
 ```js
-Array.of( ele0 [, ele1 [, ...[, eleN ] ] ] )
+Array.of( ele0[, ele1[, ...[, eleN ] ] ] )
 ```
 
 | 参数       | 说明                                           | 类型 |
@@ -32,7 +32,7 @@ Array(1, 2, 3)    	// [1, 2, 3]
 ### 示例
 
 ```js
-Array.of(1)       		// [1]
-Array.of(1, 2, 3)   	// [1, 2, 3]
-Array.of(undefined) 	// [undefined]
+Array.of(1)				// [1]
+Array.of(1, 2, 3)		// [1, 2, 3]
+Array.of(undefined)		// [undefined]
 ```

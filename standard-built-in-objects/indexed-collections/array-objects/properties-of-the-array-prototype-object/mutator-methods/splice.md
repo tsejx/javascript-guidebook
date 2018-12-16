@@ -1,24 +1,20 @@
-# Array.prototype.splice()
+## Array.prototype.splice()
 
-`splice()` 函数用于从当前数组中移除一部分连续的元素。如有必要，还可以在所移除元素的位置上插入一个或多个新的元素。该函数以数组形式返回从当前数组中被移除的元素。
+`Array.prototype.splice()` 方法用于从当前数组中移除一部分连续的元素。如有必要，还可以在所移除元素的位置上插入一个或多个新的元素。该函数以数组形式返回从当前数组中被移除的元素。
 
-## 语法
+### 语法
 
 ```javascript
 arr.splice( startIndex, deleteCount [,items... ] )
 ```
 
-### 参数
+| 参数          | 说明                                               | 类型   |
+| ------------- | -------------------------------------------------- | ------ |
+| `startIndex`  | 数组中移除元素操作的起点索引，从0开始。            | number |
+| `deleteCount` | （可选）需要移除的元素个数。                       | number |
+| `items`       | 要添加到数组中元素被移除位置的新元素，可以有多个。 | any    |
 
-| 参数          | 类型                      | 说明                                               |
-| ------------- | ------------------------- | -------------------------------------------------- |
-| `startIndex`  | `Number` 类型             | 数组中移除元素操作的起点索引，从0开始。            |
-| `deleteCount` | `Number` 类型，可选，整数 | 需要移除的元素个数。                               |
-| `items`       | 任意类型，可选            | 要添加到数组中元素被移除位置的新元素，可以有多个。 |
-
-### 返回值
-
-`splice()` 函数的返回值为 `Array` 类型，返回从当前数组中被移除的元素所组成的新的数组。
+**返回值：** 返回从当前数组中被移除的元素所组成的新的数组。
 
 如果只删除了一个元素，则返回只包含一个元素的数组。如果没有删除元素，则返回空数组。
 
@@ -28,7 +24,7 @@ arr.splice( startIndex, deleteCount [,items... ] )
 
 如果添加进数组的元素个数不等于被删除的元素个数，数组的长度会发生相应的改变。
 
-**注意**：请注意，splice() 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改。
+**注意**：请注意，`splice() `方法与 `slice()` 方法的作用是不同的，`splice()` 方法会直接对数组进行修改。
 
 - `startIndex` 开始索引
   - 如果 `startIndex` 是负值，则视为从 `arr.length + startIndex` 位开始
@@ -41,23 +37,27 @@ arr.splice( startIndex, deleteCount [,items... ] )
   - 如果 `items` 参数为 `Array` 类型，仍会被当作一个元素看待，插入到当前数组中
   - 如果不指定 `items` 参数，则 `splice()` 将只删除数组元素
 
-## 示例
+### 示例
 
-```javascript
-var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+在索引为2的位置插入 `e`。
 
-myFish.splice(2, 0, 'drum'); // 在索引为2的位置插入'drum'
-// myFish 变为 ["angel", "clown", "drum", "mandarin", "sturgeon"]
+```js
+const foo = ['a', 'b', 'c', 'd'];
 
-myFish.splice(2, 1); // 从索引为2的位置删除一项（也就是'drum'这一项）
-// myFish 变为 ["angel", "clown", "mandarin", "sturgeon"]
+foo.splice(2, 0, 'e')
+
+console.log(foo)		// ["a", "b", "e", "c", "d"]
 ```
 
-### 标准示例
+从索引为2的位置删除一项（也就是 `e` 这一项）。
 
-如下代码演示了 splice 的用法：
+```js
+foo.splice(2, 1)
 
-```javascript
+console.log(foo)		// ["a", "b", "c", "d"]
+```
+
+```j s
 var myFish = ["angel", "clown", "mandarin", "surgeon"];
 
 //从第 2 位开始删除 0 个元素，插入 "drum"

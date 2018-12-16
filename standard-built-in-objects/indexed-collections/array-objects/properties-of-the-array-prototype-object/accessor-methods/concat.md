@@ -1,23 +1,19 @@
-# Array.prototype.concat()
+## Array.prototype.concat()
 
-`concat()` 方法用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。
+`Array.prototype.concat()` 方法用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。
 
-## 语法
+### 语法
 
-```javascript
-var newArray = oldArray.concat(item1[, itemN])
+```js
+const new_array = old_array.concat( item1[, itemN ] )
 ```
 
-### 参数
+| 参数    | 描述                                         | 类型 |
+| ------- | -------------------------------------------- | ---- |
+| `item1` | 添加到当前数组末尾处的数据项                 | any  |
+| `itemN` | 要添加到当前数组末尾处的其他项，可以有多个。 | any  |
 
-| 参数    | 类型           | 描述                                         |
-| ------- | -------------- | -------------------------------------------- |
-| `item1` | 任意类型       | 添加到当前数组末尾处的数据项。               |
-| `itemN` | 任意类型，可选 | 要添加到当前数组末尾处的其他项，可以有多个。 |
-
-### 返回值
-
-返回新的 `Array` 实例。
+**返回值：** 新的 `Array` 实例。
 
 ### 描述
 
@@ -30,36 +26,36 @@ var newArray = oldArray.concat(item1[, itemN])
 
 **注意**：数组/值在连接时保持不变。此外，对于新数组的任何操作（仅当元素不是对象引用时）都不会对原始数组产生影响，反之亦然。
 
-## 示例
+### 示例
 
-### 连接两个数组
+#### 连接两个数组
 
 以下代码将两个数组合并为一个新数组。
 
 ```javascript
-var alpha = ['a', 'b', 'c'];
-var numeric = [1, 2, 3];
+const alpha = ['a', 'b', 'c'];
+const numeric = [1, 2, 3];
 
 alpha.concat(numeric);
-// result in ['a', 'b', 'c', 1, 2, 3]
+// Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
-### 连接三个数组
+#### 连接三个数组
 
 以下代码将三个数组合并为一个新数组。
 
 ```javascript
-var num1 = [1, 2, 3],
+const num1 = [1, 2, 3],
     num2 = [4, 5, 6],
     num3 = [7, 8, 9];
 
-var nums = num1.concat(num2, num3);
+const nums = num1.concat(num2, num3);
 
 console.log(nums); 
-// results in [1, 2, 3, 4, 5, 6, 7, 8, 9]
+// Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-### 将值连接到数组
+#### 将值连接到数组
 
 以下代码将三个值连接到数组。
 
@@ -69,10 +65,10 @@ var alpha = ['a', 'b', 'c'];
 var alphaNumeric = alpha.concat(1, [2, 3]);
 
 console.log(alphaNumeric); 
-// results in ['a', 'b', 'c', 1, 2, 3]
+// Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
-### 合并嵌套数组
+#### 合并嵌套数组
 
 以下代码合并数组并保留引用。
 
@@ -83,22 +79,22 @@ var num2 = [2, [3]];
 var nums = num1.concat(num2);
 
 console.log(nums);
-// results in [[1], 2, [3]]
+// Outputs: [[1], 2, [3]]
 
 // modify the first element of num1
 num1[0].push(4);
 
 console.log(nums);
-// results in [[1, 4], 2, [3]]
+// Outputs: [[1, 4], 2, [3]]
 ```
 
-### 将对象合并为数组
+#### 将对象合并为数组
 
 ```javascript
 var newArray = Array.prototype.concat.call({ a: 1 }, { b: 2 })
 
-console.log(newArray); // [{ a: 1 }, { b: 2 }]
+console.log(newArray);			// [{ a: 1 }, { b: 2 }]
 
-console.log(newArray[0].a); // 1
+console.log(newArray[0].a); 	// 1
 ```
 

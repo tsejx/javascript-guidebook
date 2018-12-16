@@ -7,14 +7,14 @@
 ### 语法
 
 ```
-Array.from(typedArr [,fn [,arg]] )
+Array.from( typedArr [,fn [, arg]] )
 ```
 
 | 参数         | 说明                                                         | 类型        |
 | ------------ | ------------------------------------------------------------ | ----------- |
-| `  typedArr` | 想要转换成数组的伪数组对象或可迭代对象。                     | typed array |
+| `  typedArr` | 想要转换成数组的伪数组对象或可迭代对象                       | typed array |
 | `fn`         | （可选）如果指定了该参数，新数组中的每个元素会执行该回调函数。 | function    |
-| `arg`        | （可选）执行回调函数 `mapFn` 时 `this` 对象。                | object      |
+| `arg`        | （可选）执行回调函数 `mapFn` 时 `this` 对象                  | object      |
 
 **返回值：**一个新的数组实例。
 
@@ -36,31 +36,31 @@ Array.from(typedArr [,fn [,arg]] )
 #### 标准示例
 
 ```js
-const bar = ["a", "b", "c"];
-Array.from(bar);
-// ["a", "b", "c"]
+const bar = ["a", "b", "c"]
+Array.from(bar)			// ["a", "b", "c"]
 
-Array.from('foo');
-// ["f", "o", "o"]
+Array.from('foo')		// ["f", "o", "o"]
 ```
 
 #### 转换字符串
 
 ```js
-Array.from('foo'); 	// ["f", "o", "o"]
+Array.from('foo') 	// ["f", "o", "o"]
 ```
 
 #### Array from a `Set`
 
 ```js
-let s = new Set(['foo', window]); 
+let s = new Set(['foo', window])
+
 Array.from(s); 		// ["foo", window]
 ```
 
 #### Array from a `Map`
 
 ```js
-let m = new Map([[1, 2], [2, 4], [4, 8]]);
+let m = new Map([[1, 2], [2, 4], [4, 8]])
+
 Array.from(m); 		// [[1, 2], [2, 4], [4, 8]]
 ```
 

@@ -1,83 +1,38 @@
-# Array.prototype.some()
+## Array.prototype.some()
 
-some() 方法测试数组中的某些元素是否通过由提供的函数实现的测试。
-
-```javascript
-const isBiggerThan10 = (element, index, array) => {
-  return element > 10;
-}
-
-[2, 5, 8, 1, 4].some(isBiggerThan10);  
-// false
-
-[12, 5, 8, 1, 4].some(isBiggerThan10); 
-// true
-```
+`Array.prototype.some()` 方法用于判定数组中是否存在一个成员符合判定函数判定条件。
 
 ### 语法
 
-> arr.some(callback[, thisArg])
+```js
+arr.some( callback = function(currentValue, index, arr){} [, thisArg ] )
+```
 
-**参数**
+| 实例方法参数 | 说明                       | 类型     |
+| ------------ | -------------------------- | -------- |
+| `callback`   | 用于判定数组成员的回调函数 | function |
+| `thisArg`    | 执行回调函数的 `this` 值   |          |
 
-- **`callback`**
-
-用来测试每个元素的函数。
-
-- **`thisArg`**
-
-执行 callback 时使用的 this 值。
+| 回调函数参数   | 说明                     | 类型   |
+| -------------- | ------------------------ | ------ |
+| `currentValue` | 当前遍历的数组成员       | any    |
+| `index`        | 当前遍历的数组成员的索引 | number |
+| `arr`          | 原数组                   | array  |
 
 ### 描述
 
-- some 为数组中的每一个元素执行一次 callback 函数，直到找到一个使得 callback 返回一个“真值”（即可转换为布尔值 true 的值）。如果找到了这样一个值，some 将会立即返回 true。否则，some 返回 false。callback 只会在那些”有值“的索引上被调用，不会在那些被删除或从来未被赋值的索引上调用。
-- callback 被调用时传入三个参数：元素的值，元素的索引，被遍历的数组。
-- 如果为 some 提供了一个 thisArg 参数，将会把它传给被调用的 callback，作为 this 值。否则，在非严格模式下将会是全局对象，严格模式下是 undefined。
-- some 被调用时不会改变数组。
-- some 遍历的元素的范围在第一次调用 callback. 时就已经确定了。在调用 some 后被添加到数组中的值不会被 callback 访问到。如果数组中存在且还未被访问到的元素被 callback 改变了，则其传递给 callback 的值是 some 访问到它那一刻的值。
+- 执行该方法会为数组每个成员执行一次回调函数，回调函数需要通过判断代码块后，返回布尔值作为该成员是否通过检测的凭证。当执行回调函数时遇到第一个判定为 `true` 的，则立即跳出迭代，返回 `true`，否则，全部数组成员都执行一次回调函数，没有数组成员通过判定，则返回 `false`。
+- 回调函数只会为那些已经被赋值的索引调用，不会为那些被删除或从来没有被赋值的索引调用。
+- 如果为实例方法提供一个 `thisArg` 参数，则该参数为调用回调函数时的 `this` 值。如果省略该参数，则为回调函数被调用时的 `this` 值，在非严格模式下为全局对象，在严格模式下传入 `undefined`。
+- 遍历的数组成员范围在第一次调用回调函数之前就已确定了。在调用 `some()` 之后添加到数组中的成员不会被回调函数访问到。如果数组中存在的成员被更改，则他们传入回调函数的值是 `some()` 访问到他们那一刻的值。那些被删除的成员或未被赋值的成员将不会被访问到。
 
 ### 示例
 
-**例子：测试数组元素的值**
-
-下面的例子检测在数组中是否有元素大于 10。
-
-```javascript
+```js
 function isBigEnough(element, index, array) {
   return (element >= 10);
 }
-var passed = [2, 5, 8, 1, 4].some(isBigEnough); // passed is false
-passed = [12, 5, 8, 1, 4].some(isBigEnough); // passed is true
+
+[2, 5, 8, 1, 4].some(isBigEnough)		// false
+[12, 5, 8, 1, 4].some(isBigEnough)		// true
 ```
-
-### 兼容旧环境（Polyfill）
-
-在第 5 版时，some 被添加进 ECMA-262 标准；这样导致某些实现环境可能不支持它。你可以把下面的代码插入到脚本的开头来解决此问题，从而允许在那些没有原生支持它的实现环境中使用它。该算法是 ECMA-262 第 5 版中指定的算法，假定 Object 和 TypeError 拥有他们的初始值，且 fun.call 等价于 Function.prototype.call。
-
-```javascript
-if (!Array.prototype.some)
-{
-  Array.prototype.some = function(fun /*, thisArg */)
-  {
-    'use strict';
-
-    if (this === void 0 || this === null)
-      throw new TypeError();
-
-    var t = Object(this);
-    var len = t.length >>> 0;
-    if (typeof fun !== 'function')
-      throw new TypeError();
-
-    var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
-    for (var i = 0; i < len; i++)
-    {
-      if (i in t && fun.call(thisArg, t[i], i, t))
-        return true;
-    }
-
-    return false;
-  };
-}
-```
-
