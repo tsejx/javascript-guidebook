@@ -6,8 +6,8 @@
 
 ### 语法
 
-```
-Array.from( typedArr [,fn [, arg]] )
+```js
+Array.from(typedArr [, fn [, arg]])
 ```
 
 | 参数         | 说明                                                         | 类型        |
@@ -16,20 +16,16 @@ Array.from( typedArr [,fn [, arg]] )
 | `fn`         | （可选）如果指定了该参数，新数组中的每个元素会执行该回调函数。 | function    |
 | `arg`        | （可选）执行回调函数 `mapFn` 时 `this` 对象                  | object      |
 
-**返回值：**一个新的数组实例。
+**返回值：** 一个新的数组实例。
 
 ### 描述
 
-具备以下两种条件的的对象可以通过 `Array.from()` 方法转换成真正的数组：
-
-- 类数组对象：即拥有 `length` 属性和若干索引属性的任意对象
-- 可迭代对象：即部署了 Iterator 接口的对象，可以获取对象中的元素，如 `Map` 和 ` Set ` 等
-
-`Array.from()` 方法有一个可选参数 `fn`，让你可以在最后生成的数组上再执行一次 `Array.prototype.map` 方法后再返回。也就是说 ` Array.from(typedArr, fn, arg) ` 就相当于 ` Array.from(typedArr).map(fn, arg)`  ，除非创建的不是可用的中间数组。 这对一些数组的子类，如对[类型化数组](../../typed-array-objects/)来说很重要，因为中间数组的值在调用 `map()` 时需要是适当的类型。
-
-`from()` 的 `length` 属性为 1 ，即 `Array.from.length === 1`。
-
-在 ES2015 中， `Class` 语法允许我们为内置类型（比如 `Array`）和自定义类新建子类（比如叫 `SubArray`）。这些子类也会继承父类的静态方法，比如 `SubArray.from()`，调用该方法后会返回子类 `SubArray` 的一个实例，而不是 `Array` 的实例。
+* 具备以下两种条件的的对象可以通过 `Array.from()` 方法转换成真正的数组：
+  * 类数组对象：即拥有 `length` 属性和若干索引属性的任意对象
+  * 可迭代对象：即部署了 Iterator 接口的对象，可以获取对象中的元素，如 `Map` 和 ` Set ` 等
+* `Array.from()` 方法有一个可选参数 `fn`，让你可以在最后生成的数组上再执行一次 `Array.prototype.map` 方法后再返回。也就是说 ` Array.from(typedArr, fn, arg) ` 就相当于 ` Array.from(typedArr).map(fn, arg)`  ，除非创建的不是可用的中间数组。 这对一些数组的子类，如对[类型化数组](../../typed-array-objects/)来说很重要，因为中间数组的值在调用 `map()` 时需要是适当的类型。
+* `from()` 的 `length` 属性为 1 ，即 `Array.from.length === 1`。
+* 在 ES2015 中， `Class` 语法允许我们为内置类型（比如 `Array`）和自定义类新建子类（比如叫 `SubArray`）。这些子类也会继承父类的静态方法，比如 `SubArray.from()`，调用该方法后会返回子类 `SubArray` 的一个实例，而不是 `Array` 的实例。
 
 ### 示例
 
@@ -37,15 +33,16 @@ Array.from( typedArr [,fn [, arg]] )
 
 ```js
 const bar = ["a", "b", "c"]
-Array.from(bar)			// ["a", "b", "c"]
 
-Array.from('foo')		// ["f", "o", "o"]
+Array.from(bar)		// ["a", "b", "c"]
+
+Array.from('foo')	// ["f", "o", "o"]
 ```
 
 #### 转换字符串
 
 ```js
-Array.from('foo') 	// ["f", "o", "o"]
+Array.from('foo')	// ["f", "o", "o"]
 ```
 
 #### Array from a `Set`
@@ -53,7 +50,7 @@ Array.from('foo') 	// ["f", "o", "o"]
 ```js
 let s = new Set(['foo', window])
 
-Array.from(s); 		// ["foo", window]
+Array.from(s)		// ["foo", window]
 ```
 
 #### Array from a `Map`
@@ -61,7 +58,7 @@ Array.from(s); 		// ["foo", window]
 ```js
 let m = new Map([[1, 2], [2, 4], [4, 8]])
 
-Array.from(m); 		// [[1, 2], [2, 4], [4, 8]]
+Array.from(m)		// [[1, 2], [2, 4], [4, 8]]
 ```
 
 #### 转换类数组
@@ -71,7 +68,7 @@ function f() {
   return Array.from(arguments);
 }
 
-f(1, 2, 3);		// [1, 2, 3]
+f(1, 2, 3)		// [1, 2, 3]
 ```
 
 #### 使用箭头函数
@@ -79,27 +76,25 @@ f(1, 2, 3);		// [1, 2, 3]
 ```js
 // Using an arrow function as the map function to
 // manipulate the elements
-Array.from([1, 2, 3], x => x + x);      
-// [2, 4, 6]
-
+Array.from([1, 2, 3], x => x + x)		// [2, 4, 6]
 
 // Generate a sequence of numbers
 // Since the array is initialized with `undefined` on each position,
 // the value of `v` below will be `undefined`
-Array.from({length: 5}, (v, i) => i);
-// [0, 1, 2, 3, 4]
+Array.from({length: 5}, (v, i) => i)	// [0, 1, 2, 3, 4]
 ```
 
 #### 数组去重合并
 
 ```js
 function combine(){ 
-    let arr = [].concat.apply([], arguments);  //没有去重复的新数组 
-    return Array.from(new Set(arr));
+    let arr = [].concat.apply([], arguments);  // 没有去重复的新数组 
+    return Array.from(new Set(arr))
 } 
 
-var m = [1, 2, 2], n = [2,3,3]; 
-console.log(combine(m,n));                     // [1, 2, 3]
+const m = [1, 2, 2], n = [2,3,3]
+
+console.log(combine(m, n))		// [1, 2, 3]
 ```
 ---
 

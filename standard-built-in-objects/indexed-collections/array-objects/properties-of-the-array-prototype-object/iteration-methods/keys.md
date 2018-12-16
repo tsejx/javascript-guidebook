@@ -41,9 +41,9 @@ const arr = ["a", , "c"];
 const sparseKeys = Object.keys(arr);
 const denseKeys = [...arr.keys()];
 
-console.log(sparseKeys)		// Outputs: ['0', '2']
+console.log(sparseKeys)	// Outputs: ['0', '2']
 
-console.log(denseKeys)		// Outputs: [0, 1, 2]
+console.log(denseKeys)	// Outputs: [0, 1, 2]
 ```
 
 

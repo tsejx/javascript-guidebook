@@ -81,13 +81,7 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 ```js
 const res = [1, 2, 3, 4, 5].reduce((acc, item) => acc + item, 0)
 
-console.log(res)		// Outputs: 15
-```
-
-```js
-const flat = [[0, 1], [2, 3], [4, 5]].reduce((a, b) => a.concat(b), [])
-
-console.log(flat)		// Outputs: 
+console.log(res)	// Outputs: 15
 ```
 
 #### 初始值的必要性
@@ -99,11 +93,11 @@ console.log(flat)		// Outputs:
 ```js
 const maxCallback = ( pre, current ) => Math.max( pre.x, current.x )
 
-[{ x: 22}, { x: 42}].reduce(maxCallback)		// 42
+[{ x: 22}, { x: 42}].reduce(maxCallback)	// 42
 
-[{ x: 22}].reduce(maxCallback)					// { x: 22 }
+[{ x: 22}].reduce(maxCallback)	// { x: 22 }
 
-[].reduce(maxCallback)							// TypeError
+[].reduce(maxCallback)	// TypeError
 ```
 
 提供初始值。
@@ -117,11 +111,11 @@ const maxCallback = ( max, current ) => Math,max( max, current )
 #### 数组求和、求积和最大值
 
 ```js
-const sum = [ 0, 1, 2, 3 ].reduce(( acc, cur ) => acc + cur, 0)		// Outputs: 6
+const sum = [ 0, 1, 2, 3 ].reduce(( acc, cur ) => acc + cur, 0)	// Outputs: 6
 
-const product = [1, 2, 3, 4, 5].reduce((a, b) => a * b,1)			// Outputs: 120
+const product = [1, 2, 3, 4, 5].reduce((a, b) => a * b,1)	// Outputs: 120
 
-const max = [1, 2, 3, 4, 5].reduce((a, b) => a > b ? a: b)			// Outputs: 5
+const max = [1, 2, 3, 4, 5].reduce((a, b) => a > b ? a: b)	// Outputs: 5
 ```
 
 #### 数组元素
@@ -131,7 +125,7 @@ const max = [1, 2, 3, 4, 5].reduce((a, b) => a > b ? a: b)			// Outputs: 5
 ```js
 const findLongest = (entries) => entries.reduce ((prev, cur) => cur.length > prev.length ? cur : prev, '')
 
-console.log(findLongest([1, 2, 3, 'ab', 4, 'bcd', 5, 6785, 4])); 	// Outputs: 'bcd'
+console.log(findLongest([1, 2, 3, 'ab', 4, 'bcd', 5, 6785, 4]))	// Outputs: 'bcd'
 ```
 
 #### 二维数组扁平化

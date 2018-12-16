@@ -34,7 +34,7 @@ const r = arr.findIndex(function(currentValue, index, array) {
     return currentValue === 2
 })
 
-console.log(r);		// Outputs: 1
+console.log(r)	// Outputs: 1
 ```
 
 #### 查找质数
@@ -52,8 +52,8 @@ function isPrime(element, index, array) {
   return element > 1;
 }
 
-console.log([4, 6, 8, 12].findIndex(isPrime))		// -1
-console.log([4, 6, 7, 12].findIndex(isPrime))		// 2
+console.log([4, 6, 8, 12].findIndex(isPrime))	// -1
+console.log([4, 6, 7, 12].findIndex(isPrime))	// 2
 ```
 
 

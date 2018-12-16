@@ -26,20 +26,22 @@ arr.reduceRight(callback[, initialValue])
 
 #### 数组求和
 
-```javascript
-var total = [0, 1, 2, 3].reduceRight(function(a, b) {
+```js
+const total = [0, 1, 2, 3].reduceRight(function(a, b) {
     return a + b;
-});
-// total == 6
+})
+
+console.log(total)	// 6
 ```
 
 #### 二维数组扁平化
 
-```javascript
-var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
+```js
+const flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) {
     return a.concat(b);
-}, []);
-// flattened is [4, 5, 2, 3, 0, 1]
+}, [])
+
+console.log(flattend)	// [4, 5, 2, 3, 0, 1]
 ```
 
 #### reduce和reduceRight区别
@@ -49,8 +51,8 @@ const a = ['1', '2', '3', '4', '5'];
 const left  = a.reduce((prev, cur) => { return prev + cur })
 const right = a.reduceRight((prev, cur) => { return prev + cur })
 
-console.log(left)		// Outputs: "12345"
-console.log(right)		// Outputs: "54321"
+console.log(left)	// Outputs: "12345"
+console.log(right)	// Outputs: "54321"
 ```
 
 

@@ -34,7 +34,7 @@ arr.filter( callback = function (currentValue, index, arr) {} [, thisArg ] )
 ```js
 const isBigEnough = (value) => value >= 10
 
-[12, 5, 8, 130, 44].filter(isBigEnough)		// Outputs: false
+[12, 5, 8, 130, 44].filter(isBigEnough)	// Outputs: false
 ```
 
 #### 排除偶数保留奇数

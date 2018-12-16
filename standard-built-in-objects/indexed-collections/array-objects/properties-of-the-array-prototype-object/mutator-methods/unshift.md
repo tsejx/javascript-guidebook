@@ -24,16 +24,16 @@ arr.unshift( item1 [, items... ] )
 ```js
 let arr = [1, 2]
 
-arr.unshift(0)				// 3
+arr.unshift(0)		// 3
 
-console.log(arr)			// [0, 1, 2]
+console.log(arr)	// [0, 1, 2]
 
-arr.unshift(-2, -1) 		// 5
+arr.unshift(-2, -1) 	// 5
 
-console.log(arr)			// [-2, -1, 0, 1, 2]
+console.log(arr)	// [-2, -1, 0, 1, 2]
 
-arr.unshift( [-3] )			// 6
+arr.unshift( [-3] )	// 6
 
-console.log(arr)			// [[-3], -2, -1, 0, 1, 2]
+console.log(arr)	// [[-3], -2, -1, 0, 1, 2]
 ```
 

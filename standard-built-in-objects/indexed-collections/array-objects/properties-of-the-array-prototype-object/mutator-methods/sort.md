@@ -61,7 +61,7 @@ bar.sort()		// [1, 10, 2, 21]
 ```js
 const baz = ['word', 'Word', '1 Word', '2 Words'];
 
-baz.sort()		// ['1 Word', '2 Words', 'Word', 'word']
+baz.sort()	// ['1 Word', '2 Words', 'Word', 'word']
 ```
 
 在Unicode中，数字在大写字母之前，大写字母在小写字母之前。
@@ -116,9 +116,9 @@ items.sort(function (a, b) {
 ```js
 const arr = ['3', 3, undefined, 2, '2'];
 
-console.log(arr)			// [2, "2", "3", 3, undefined]
+console.log(arr)	// [2, "2", "3", 3, undefined]
     
-console.log(arr.sort())		// [2, "2", "3", 3, undefined]
+console.log(arr.sort())	// [2, "2", "3", 3, undefined]
 ```
 
 #### 大小写排序

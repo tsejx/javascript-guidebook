@@ -31,9 +31,9 @@ arr.push( item1 [, items...] )
 const foo = ['a', 'b'];
 const bar = sports.push('c', 'd');
 
-console.log(foo)		// ['a', 'b', 'c', 'd']
+console.log(foo)	// ['a', 'b', 'c', 'd']
 
-console.log(bar)		// 4
+console.log(bar)	// 4
 ```
 
 #### 合并数组
@@ -48,6 +48,6 @@ const bar = ['c', 'd'];
 // 相当于 foo.push('celery', 'beetroot');
 Array.prototype.push.apply(foo, bar);
 
-console.log(foo)		// ['a', 'b', 'c', 'd']
+console.log(foo)	// ['a', 'b', 'c', 'd']
 ```
 

@@ -26,11 +26,11 @@ arr.indexOf( searchValue [, fromIndex] )
 ```js
 var arr = [1, 2, 3, 4, 5];
 
-arr.indexOf(1)				// 0
-arr.indexOf(7)				// -1
-arr.indexOf(4, 2)			// 3
-arr.indexOf(3, -1)			// -1
-arr.indexOf(3, -3)			// 2 
+arr.indexOf(1)		// 0
+arr.indexOf(7)		// -1
+arr.indexOf(4, 2)	// 3
+arr.indexOf(3, -1)	// -1
+arr.indexOf(3, -3)	// 2 
 ```
 
 #### 找出指定元素出现的所有位置
@@ -50,6 +50,6 @@ while (idx != -1) {
   idx = array.indexOf(element, idx + 1);
 }
 
-console.log(indices)		// Outputs: [0, 2, 4]
+console.log(indices)	// Outputs: [0, 2, 4]
 ```
 

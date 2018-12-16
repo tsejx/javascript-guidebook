@@ -25,9 +25,9 @@ let myFish = ['a', 'b', 'c', 'd'];
 
 let popped = myFish.pop();
 
-console.log(myFish)		// ['a', 'b', 'c', 'd']
+console.log(myFish)	// ['a', 'b', 'c', 'd']
 
-console.log(popped)		// surgeon
+console.log(popped)	// surgeon
 ```
 
 #### 在空数组中调用
@@ -37,8 +37,8 @@ let empty = [];
 
 let popped = empty.pop();
 
-console.log(popped)		// undefined
+console.log(popped)	// undefined
 
-console.log(empty)		// []
+console.log(empty)	// []
 ```
 

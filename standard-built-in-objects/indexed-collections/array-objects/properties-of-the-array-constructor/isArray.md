@@ -4,7 +4,7 @@
 
 ### 语法
 
-```
+```js
 Array.isArray( value )
 ```
 

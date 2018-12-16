@@ -32,17 +32,17 @@ arr.slice( startIndex [, endIndex ] );
 ```js
 const numbers = [1,2,3,4,5];
 
-numbers.slice(NaN)				// [1,2,3,4,5]
+numbers.slice(NaN)		// [1,2,3,4,5]
 
-numbers.slice(0,NaN)			// []
+numbers.slice(0,NaN)		// []
 
-numbers.slice(true,[3])			// [2,3]
+numbers.slice(true,[3])		// [2,3]
 
-numbers.slice(null,undefined)	// [1,2,3,4,5]
+numbers.slice(null,undefined)		// [1,2,3,4,5]
 
-numbers.slice({})				// [1,2,3,4,5]
+numbers.slice({})		// [1,2,3,4,5]
 
-numbers.slice('2',[5])			// [3,4,5]
+numbers.slice('2',[5])		// [3,4,5]
 ```
 
 ### 截取数组成员
@@ -77,6 +77,6 @@ function list() {
   return slice(arguments);
 }
 
-const arr = list(1, 2, 3)		// Outputs: [1, 2, 3]
+const arr = list(1, 2, 3)	// Outputs: [1, 2, 3]
 ```
 

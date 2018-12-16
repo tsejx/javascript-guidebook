@@ -32,69 +32,64 @@ const new_array = old_array.concat( item1[, itemN ] )
 
 以下代码将两个数组合并为一个新数组。
 
-```javascript
-const alpha = ['a', 'b', 'c'];
-const numeric = [1, 2, 3];
+```js
+const alpha = ['a', 'b', 'c']
+const numeric = [1, 2, 3]
 
-alpha.concat(numeric);
-// Outputs: ['a', 'b', 'c', 1, 2, 3]
+alpha.concat(numeric)	// Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
 #### 连接三个数组
 
 以下代码将三个数组合并为一个新数组。
 
-```javascript
+```js
 const num1 = [1, 2, 3],
     num2 = [4, 5, 6],
     num3 = [7, 8, 9];
 
-const nums = num1.concat(num2, num3);
+const nums = num1.concat(num2, num3)
 
-console.log(nums); 
-// Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(nums)	// Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 #### 将值连接到数组
 
 以下代码将三个值连接到数组。
 
-```javascript
-var alpha = ['a', 'b', 'c'];
+```js
+var alpha = ['a', 'b', 'c']
 
-var alphaNumeric = alpha.concat(1, [2, 3]);
+var alphaNumeric = alpha.concat(1, [2, 3])
 
-console.log(alphaNumeric); 
-// Outputs: ['a', 'b', 'c', 1, 2, 3]
+console.log(alphaNumeric)	// Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
 #### 合并嵌套数组
 
 以下代码合并数组并保留引用。
 
-```javascript
+```js
 var num1 = [[1]];
 var num2 = [2, [3]];
 
 var nums = num1.concat(num2);
 
-console.log(nums);
-// Outputs: [[1], 2, [3]]
+console.log(nums)	// Outputs: [[1], 2, [3]]
 
 // modify the first element of num1
 num1[0].push(4);
 
-console.log(nums);
-// Outputs: [[1, 4], 2, [3]]
+console.log(nums)	// Outputs: [[1, 4], 2, [3]]
 ```
 
 #### 将对象合并为数组
 
-```javascript
+```js
 var newArray = Array.prototype.concat.call({ a: 1 }, { b: 2 })
 
-console.log(newArray);			// [{ a: 1 }, { b: 2 }]
+console.log(newArray)		// [{ a: 1 }, { b: 2 }]
 
-console.log(newArray[0].a); 	// 1
+console.log(newArray[0].a)		// 1
 ```
 

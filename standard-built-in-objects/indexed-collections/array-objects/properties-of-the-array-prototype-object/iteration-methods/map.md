@@ -36,8 +36,8 @@ const roots = numbers.map(Math.sqrt);
 
 // Math.sqrt(x)
 
-console.log(numbers);		// [1, 4, 9]
-console.log(roots);			// [1, 2, 3],
+console.log(numbers)		// [1, 4, 9]
+console.log(roots)		// [1, 2, 3],
 ```
 
 #### 格式化对象数组

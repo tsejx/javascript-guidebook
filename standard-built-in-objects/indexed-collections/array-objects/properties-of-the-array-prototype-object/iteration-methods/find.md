@@ -32,11 +32,9 @@ let inventory = [
     {name: 'cherries', quantity: 5}
 ];
 
-function findCherries(fruit) {
-    return fruit.name === 'cherries';
-}
+const findCherries = fruit => fruit.name === 'cherries';
 
-console.log(inventory.find(findCherries));		// { name: 'cherries', quantity: 5 }
+console.log(inventory.find(findCherries))	// { name: 'cherries', quantity: 5 }
 ```
 
 #### 寻找数组中的质数
@@ -52,8 +50,8 @@ function isPrime(element, index, array) {
     return element > 1
 }
 
-console.log([4, 6, 8, 12].find(isPrime));		// undefined, not found
-console.log([4, 5, 8, 12].find(isPrime));		// 5
+console.log([4, 6, 8, 12].find(isPrime))	// undefined, not found
+console.log([4, 5, 8, 12].find(isPrime))	// 5
 ```
 
 当在回调中删除数组中的一个值时，当访问到这个位置时，其传入的值时 `undefiend`。

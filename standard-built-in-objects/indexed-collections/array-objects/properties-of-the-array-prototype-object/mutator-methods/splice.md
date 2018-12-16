@@ -4,7 +4,7 @@
 
 ### 语法
 
-```javascript
+```js
 arr.splice( startIndex, deleteCount [,items... ] )
 ```
 
@@ -46,7 +46,7 @@ const foo = ['a', 'b', 'c', 'd'];
 
 foo.splice(2, 0, 'e')
 
-console.log(foo)		// ["a", "b", "e", "c", "d"]
+console.log(foo)	// ["a", "b", "e", "c", "d"]
 ```
 
 从索引为2的位置删除一项（也就是 `e` 这一项）。
@@ -54,40 +54,40 @@ console.log(foo)		// ["a", "b", "e", "c", "d"]
 ```js
 foo.splice(2, 1)
 
-console.log(foo)		// ["a", "b", "c", "d"]
+console.log(foo)	// ["a", "b", "c", "d"]
 ```
 
-```j s
+```js
 var myFish = ["angel", "clown", "mandarin", "surgeon"];
 
-//从第 2 位开始删除 0 个元素，插入 "drum"
+// 从第 2 位开始删除 0 个元素，插入 "drum"
 var removed = myFish.splice(2, 0, "drum");
-//运算后的 myFish:["angel", "clown", "drum", "mandarin", "surgeon"]
-//被删除元素数组：[]，没有元素被删除
+// 运算后的 myFish:["angel", "clown", "drum", "mandarin", "surgeon"]
+// 被删除元素数组：[]，没有元素被删除
 
-//从第 3 位开始删除 1 个元素
+// 从第 3 位开始删除 1 个元素
 removed = myFish.splice(3, 1);
-//运算后的myFish：["angel", "clown", "mandarin",]
-//被删除元素数组：["surgeon"]
+// 运算后的myFish：["angel", "clown", "mandarin",]
+// 被删除元素数组：["surgeon"]
 
-//从第 2 位开始删除 1 个元素，然后插入 "trumpet"
+// 从第 2 位开始删除 1 个元素，然后插入 "trumpet"
 removed = myFish.splice(2, 1, "trumpet");
-//运算后的myFish: ["angel", "clown", "trumpet", "surgeon"]
-//被删除元素数组：["drum"]
+// 运算后的myFish: ["angel", "clown", "trumpet", "surgeon"]
+// 被删除元素数组：["drum"]
 
-//从第 0 位开始删除 2 个元素，然后插入 "parrot", "anemone" 和 "blue"
+// 从第 0 位开始删除 2 个元素，然后插入 "parrot", "anemone" 和 "blue"
 removed = myFish.splice(0, 2, "parrot", "anemone", "blue");
-//运算后的myFish：["parrot", "anemone", "blue", "trumpet", "surgeon"]
-//被删除元素的数组：["angel", "clown"]
+// 运算后的myFish：["parrot", "anemone", "blue", "trumpet", "surgeon"]
+// 被删除元素的数组：["angel", "clown"]
 
-//从第 3 位开始删除 2 个元素
+// 从第 3 位开始删除 2 个元素
 removed = myFish.splice(3, Number.MAX_VALUE);
-//运算后的myFish: ["parrot", "anemone", "blue"]
-//被删除元素的数组：["trumpet", "surgeon"]
+// 运算后的myFish: ["parrot", "anemone", "blue"]
+// 被删除元素的数组：["trumpet", "surgeon"]
 
-//从第1位开始删除其后所有即[1，end]的元素
+// 从第1位开始删除其后所有即[1，end]的元素
 removed = myFish.splice(1);
-//运算后的myFish: ["parrot"]
-//被删除元素的数组：["anemone","blue"]
+// 运算后的myFish: ["parrot"]
+// 被删除元素的数组：["anemone","blue"]
 ```
 

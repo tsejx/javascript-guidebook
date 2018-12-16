@@ -26,7 +26,7 @@ const str = arr.jon( separator )
 const arr = ['1', '2', '3', '4', '5'];
 
 // 不传参数默认以逗号作为分隔符
-arr.join()			// '1,2,3,4,5'
+arr.join()		// '1,2,3,4,5'
 
 arr.join(', ')		// '1, 2, 3, 4, 5'
 
@@ -45,6 +45,6 @@ function func(a, b, c) {
   console.log(s)
 }
 
-func(1, 'a', true)		// Outputs: '1,a,true'
+func(1, 'a', true)	// Outputs: '1,a,true'
 ```
 

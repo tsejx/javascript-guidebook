@@ -35,8 +35,8 @@ arr.every( callback = function(currentValue, index, arr){} [, thisArg ] )
 ```js
 const isBigEnough = (element, index, array) => (element >= 10)
 
-[12, 5, 8, 130, 44].every(isBigEnough)		 	// Outputs: false
+[12, 5, 8, 130, 44].every(isBigEnough)		 // Outputs: false
 
-[12, 54, 18, 130, 44].every(isBigEnough) 		// Outputs: true
+[12, 54, 18, 130, 44].every(isBigEnough) 	// Outputs: true
 ```
 

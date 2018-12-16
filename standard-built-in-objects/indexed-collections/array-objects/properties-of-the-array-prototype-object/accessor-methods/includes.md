@@ -22,24 +22,19 @@ arr.includes( searchValue [, fromIndex])
 #### 标准示例
 
 ```js
-let demacia = [1, 2, 3];
+let demacia = [1, 2, 3]
 
-demacia.includes(2); 
-// Outputs: true 
+demacia.includes(2)			// Outputs: true 
 
-demacia.includes(4); 
-// Outputs: false
+demacia.includes(4)		// Outputs: false
 
-demacia.includes(3, 3);
-// Outputs: false
+demacia.includes(3, 3)		// Outputs: false
 
-demacia.includes(3, -1);
-// Outputs: true
+demacia.includes(3, -1)		// Outputs: true
 
-let ionia = [1, 2, NaN];
+let ionia = [1, 2, NaN]
 
-ionia.includes(NaN);
-// Outputs: true
+ionia.includes(NaN)		// Outputs: true
 ```
 
 #### NaN
@@ -49,7 +44,7 @@ ionia.includes(NaN);
 ```js
 const a = [1, 2, 3, 4, NaN, 6, NaN];
 
-a.includes(NaN);		// Outputs: true
+a.includes(NaN)		// Outputs: true
 ```
 
 #### 开始索引超限
@@ -57,10 +52,10 @@ a.includes(NaN);		// Outputs: true
  如果 `fromIndex` 大于等于数组长度 ，则返回 `false` 。该数组不会被搜索。
 
 ```js
-var arr = ['a', 'b', 'c'];
+var arr = ['a', 'b', 'c']
 
-arr.includes('c', 3);   	// false
-arr.includes('c', 100); 	// false
+arr.includes('c', 3)		// false
+arr.includes('c', 100)		// false
 ```
 
 #### 开始索引负值
@@ -74,9 +69,9 @@ arr.includes('c', 100); 	// false
 
 var arr = ['a', 'b', 'c'];
 
-arr.includes('a', -100); // true
-arr.includes('b', -100); // true
-arr.includes('c', -100); // true
+arr.includes('a', -100) 	// true
+arr.includes('b', -100)		// true
+arr.includes('c', -100)		// true
 ```
 
 #### 类数组通用方法
@@ -85,7 +80,7 @@ arr.includes('c', -100); // true
 
 ```js
 (function() {
-  console.log([].includes.call(arguments, 'a')); 	// true
-  console.log([].includes.call(arguments, 'd')); 	// false
+  console.log([].includes.call(arguments, 'a')) 	// true
+  console.log([].includes.call(arguments, 'd')) 	// false
 })('a','b','c');
 ```
