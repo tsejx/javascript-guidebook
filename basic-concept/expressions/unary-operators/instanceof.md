@@ -1,47 +1,69 @@
-# instanceof
+## instanceof
 
-`instanceof` 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 `prototype` 属性。
+`instanceof` 运算符用于测试构造函数的 `prototype` 属性是否出现在对象的原型链中的任何位置。
 
-## 语法
-
-```javascript
+```js
 object instanceof constructor
 ```
 
-### 参数
+### 检测类型
 
-| 参数          | 说明         |
-| ------------- | ------------ |
-| `object`      | 要检测的对象 |
-| `constructor` | 构造函数     |
+`instanceof` 可以检测某个对象是不是另一个对象的实例。
 
+```js
+const Person = function(){}
+const student = new Person()
 
-## 示例
-
-### 标准示例
-
-`instanceof` 运算符用来检测 `constructor.prototype` 是否存在于参数 `object` 的原型链上。
-
-```javascript
-function Car(){}
-function Transportation(){}
-
-var benz = new Men()
-
-benz instanceof Car;     // return true,因为Object.getPrototypeOf(benz) === Car.prototype
-benz instanceof Transportation;    // return false,Transportation.prototype不在benz的原型链上
-
-benz instancof Object;   // return true,因为 Object.prototype.isPrototypeOf(benz)返回true
-Car.prototype instanceof Object;    // return true
-
-Car.prototype = {};
-var benz2 = new Car();
-
-benz2 instanceof Car;    // return true
-benz instanceof Car;     // return false,Car.prototype指向了一个空对象，这个空对象不在benz的原型链上
-
-Transportation.prototype = new Car();     // 继承
-var benz3 = new Transportation();
-benz3 instanceof Transportation;           // return true
-benz3 instanceof Car;            // return true
+console.log(student instanceof Person)	// true
 ```
+
+`instanceof` 可以检测父类型。
+
+```js
+function Person(){}
+function Student(){}
+
+const p = new Person()
+
+// 继承原型
+Student.prototype = p
+
+const s = new Student()
+
+console.log(s instanceof Student)	// true
+console.log(s instanceof Person)	// true
+```
+
+### 检测实例
+
+查看对象B的 `prototype` 指向的对象是否在对象A的 `[[prototype]]` 链上。如果在，则返回 `true`，如果不在则返回 `false`。不过有一个特殊的情况，当对象B的 `prototype` 为 `null` 将会报错（类似于空指针异常）。
+
+函数模拟 `A instanceof B`：
+
+```js
+function _instanceof(A, B) {
+    var O = B.prototype;// 取B的显示原型
+    A = A.__proto__;// 取A的隐式原型
+    while (true) {
+        //Object.prototype.__proto__ === null
+        if (A === null)
+            return false;
+        if (O === A)// 这里重点：当 O 严格等于 A 时，返回 true
+            return true;
+        A = A.__proto__;
+    }
+}
+```
+
+### 示例
+
+```js
+null instanceof Object
+```
+
+---
+
+**参考资料：**
+
+* [JS魔法堂：再识 instanceof](https://juejin.im/entry/5804640d0bd1d0005813083e)
+* [instanceof 原理](https://juejin.im/post/5b7f64be51882542c83476f0)
