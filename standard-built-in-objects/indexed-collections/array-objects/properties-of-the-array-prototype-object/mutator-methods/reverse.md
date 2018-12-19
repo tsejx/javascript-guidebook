@@ -15,11 +15,21 @@ arr.reverse()
 
 ### 示例
 
+#### 标准示例
+
 ```js
 const foo = ['a', 'b', 'c'];
 
 foo.reverse()
 
 console.log(foo)	// ['a', 'b', 'c']
+```
+
+#### 空数组
+
+```js
+const foo = [].reverse()
+
+console.log(foo)
 ```
 

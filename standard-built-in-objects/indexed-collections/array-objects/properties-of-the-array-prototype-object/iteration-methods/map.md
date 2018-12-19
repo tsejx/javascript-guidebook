@@ -66,3 +66,14 @@ const reformattedArray = kvArray.map(function(obj) {
 //  {key: 2, value: 20}, 
 //  {key: 3, value: 30}]
 ```
+
+#### 回调函数参数
+
+经典面试题。
+
+```js
+const answer = ['1', '2', '3'].map(parseInt)
+
+console.log(answer)	// [1, NaN, NaN]
+```
+

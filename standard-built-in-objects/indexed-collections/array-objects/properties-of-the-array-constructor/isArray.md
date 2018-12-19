@@ -18,12 +18,14 @@ Array.isArray( value )
 
 下面的函数调用都返回 `true`
 
-```javascript
+```js
 Array.isArray([])
 
 Array.isArray([1])
 
 Array.isArray(new Array())
+
+Array.isArray(Array.prototype)
 ```
 
 鲜为人知的事实：其实 `Array.prototype` 也是一个数组。
