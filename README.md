@@ -76,7 +76,7 @@
   - [throw 语句](basic-concept/statements-and-declarations/the-throw-statement.md)
   - [try-catch 语句](basic-concept/statements-and-declarations/the-try-statement.md)
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :mortar_board:标准内置对象 Standard Built-in Objects
 
@@ -128,7 +128,7 @@
   - Reflect
   - Module Namespace
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :8ball:核心模块 Core Modules
 
@@ -188,7 +188,7 @@
   - AMD
   - CMD
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :construction:面向对象编程 Object Oriented Programming
 
@@ -271,7 +271,7 @@
   - [CSS2可视模型](browser-object-model/browser-working-principle/css2-visual-module.md)
   - [渲染层合并](browser-object-model/browser-working-principle/composite.md)
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :incoming_envelope:文档对象模型Document Oject Model
 
@@ -304,7 +304,7 @@
     - [键盘与文本事件](document-object-model/events/event-types/the-keyboard-and-text-events.md)
   - [事件委托](document-object-model/events/event-delegation.md)
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :keyboard:HTML5脚本编程 Scripting Programing
 
@@ -337,7 +337,7 @@
   - [触控事件](html5-scripting-programing/device-access/touch-event.md)
   - [摄录设备](html5-scripting-programing/device-access/camera.md)
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :iphone:移动端Web开发指南
 
@@ -361,7 +361,7 @@
   - 网络信息
   - 平台JSSDK
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :globe_with_meridians:计算机网络 ComputerNetwork
 
@@ -385,7 +385,7 @@
 - TCP/IP
 - Web网络安全
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ## :pushpin:说明
 
