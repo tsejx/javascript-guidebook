@@ -8,16 +8,24 @@
 
 指南内容大多收集于各大技术社区和博客，由本人整理、补充和校正而成，相应章节均有来源链接，若有遗漏，烦请提出 issue。
 
-**说明**：编写整理过程有不当之处，欢迎 pull requests 或提出 issue
+**说明**：编写整理过程有不当之处，欢迎提出 issue。
+
+## :books:快速目录
+
+* [基本语法](#memo基本语法-basic-concept)
+* [标准内置对象](#mortar_board标准内置对象-standard-built-in-objects)
+* [核心模块](#8ball核心模块-core-modules)
+* [面向对象编程](#construction面向对象编程-object-oriented-programming)
+* [浏览器对象模型](#world_map浏览器对象模型-browser-oject-model)
+* [文档对象模型](#incoming_envelope文档对象模型document-oject-model)
+* [HTML5脚本编程](#keyboardhtml5脚本编程-scripting-programing)
+* [移动端Web开发指南](#iphone移动端web开发指南)
+* [计算机网络](#globe_with_meridians计算机网络-computernetwork)
 
 
-## :spiral_notepad:项目目录
+## :open_book:项目目录
 
-### :beginner:基本语法 Basic Concept
-
-<details>
-
-<summary>查看目录</summary>
+### :memo:基本语法 Basic Concept
 
 - **术语定义**
 - **词法语法**
@@ -68,13 +76,9 @@
   - [throw 语句](basic-concept/statements-and-declarations/the-throw-statement.md)
   - [try-catch 语句](basic-concept/statements-and-declarations/the-try-statement.md)
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
-### 🎓标准内置对象 Standard Built-in Objects
-
-<details>
-
-<summary>查看目录</summary>
+### :mortar_board:标准内置对象 Standard Built-in Objects
 
 - **全局对象**
   - **值属性**
@@ -124,13 +128,9 @@
   - Reflect
   - Module Namespace
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
-### :joystick:核心模块 Core Modules
-
-<details>
-
-<summary>查看目录</summary>
+### :8ball:核心模块 Core Modules
 
 - **可执行代码和执行上下文**
   - **编译阶段**
@@ -188,13 +188,9 @@
   - AMD
   - CMD
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
-### :man_factory_worker:面向对象编程 Object Oriented Programming
-
-<details>
-
-<summary>查看目录</summary>
+### :construction:面向对象编程 Object Oriented Programming
 
 - **创建对象**
   - [工厂模式](object-oriented-programming/object-creation/the-factory-pattern.md)
@@ -212,13 +208,9 @@
   - [寄生式继承](object-oriented-programming/inheritance/parasitic-inheritance.md)
   - [寄生组合式继承](object-oriented-programming/inheritance/parastic-combination-inheritance.md)
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
-### :office:浏览器对象模型 Browser Oject Model
-
-<details>
-
-<summary>查看目录</summary>
+### :world_map:浏览器对象模型 Browser Oject Model
 
 - [**Window对象**](browser-object-model/the-window-object/the-window-object.md)
   - **定时器**
@@ -279,13 +271,9 @@
   - [CSS2可视模型](browser-object-model/browser-working-principle/css2-visual-module.md)
   - [渲染层合并](browser-object-model/browser-working-principle/composite.md)
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
-### :page_facing_up:文档对象模型Document Oject Model
-
-<details>
-
-<summary>查看目录</summary>
+### :incoming_envelope:文档对象模型Document Oject Model
 
 - **文档对象模型**
   - [DOM](document-object-model/dom.md)
@@ -316,13 +304,9 @@
     - [键盘与文本事件](document-object-model/events/event-types/the-keyboard-and-text-events.md)
   - [事件委托](document-object-model/events/event-delegation.md)
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
 ### :keyboard:HTML5脚本编程 Scripting Programing
-
-<details>
-
- <summary>查看目录</summary>
 
 - **语义化**
   - [HTML5表单](html5-scripting-programing/semantics/form-inprovements.md)
@@ -353,13 +337,9 @@
   - [触控事件](html5-scripting-programing/device-access/touch-event.md)
   - [摄录设备](html5-scripting-programing/device-access/camera.md)
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
-### 📱移动端Web开发指南
-
-<details>
-
-<summary>查看目录</summary>
+### :iphone:移动端Web开发指南
 
 - **页面布局**
   - [移动端视口](mobile-web-development/layout/viewport.md)
@@ -381,14 +361,9 @@
   - 网络信息
   - 平台JSSDK
 
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
-
-### :outbox_tray:计算机网络 ComputerNetwork
-
-<details>
-
- <summary>查看目录</summary>
+### :globe_with_meridians:计算机网络 ComputerNetwork
 
 - DNS协议
 - **HTTP协议**
@@ -410,8 +385,7 @@
 - TCP/IP
 - Web网络安全
 
-
-</details>
+<br>[⬆ 返回快速目录](#books快速目录)
 
 ## :pushpin:说明
 
