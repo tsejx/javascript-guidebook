@@ -1,4 +1,4 @@
-﻿# Number 对象
+# Number 对象
 
 JavaScript中的 `Number` 对象，是原始数值的对象表示。
 
