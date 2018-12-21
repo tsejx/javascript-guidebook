@@ -12,15 +12,15 @@
 
 ## :books:快速目录
 
-* [基本语法](#memo基本语法-basic-concept)
-* [标准内置对象](#mortar_board标准内置对象-standard-built-in-objects)
-* [核心模块](#8ball核心模块-core-modules)
-* [面向对象编程](#construction面向对象编程-object-oriented-programming)
-* [浏览器对象模型](#world_map浏览器对象模型-browser-oject-model)
-* [文档对象模型](#incoming_envelope文档对象模型document-oject-model)
-* [HTML5脚本编程](#keyboardhtml5脚本编程-scripting-programing)
-* [移动端Web开发指南](#iphone移动端web开发指南)
-* [计算机网络](#globe_with_meridians计算机网络-computernetwork)
+* [基本语法 Basic Concept](#memo基本语法-basic-concept)
+* [标准内置对象 Standard Buit-in Objects](#mortar_board标准内置对象-standard-built-in-objects)
+* [核心模块 Core Modules](#8ball核心模块-core-modules)
+* [面向对象编程 Object Oriented Programming](#construction面向对象编程-object-oriented-programming)
+* [浏览器对象模型 Browser Object Model](#world_map浏览器对象模型-browser-oject-model)
+* [文档对象模型 Document Object Model](#incoming_envelope文档对象模型document-oject-model)
+* [HTML5脚本编程 HTML5 Scripting Programing](#keyboardhtml5脚本编程-scripting-programing)
+* [移动端Web开发指南 Mobile Web Development](#iphone移动端web开发指南)
+* [计算机网络 Computer Network](#globe_with_meridians计算机网络-computernetwork)
 
 
 ## :open_book:项目目录
@@ -53,7 +53,7 @@
   - [按位运算符](basic-concept/expressions/bitwise-operators.md)
   - [逗号运算符](basic-concept/expressions/comma-operator.md)
   - [比较运算符](basic-concept/expressions/comparation-operators.md)
-  - [条件运算符](basic-concept/expressions/conditional-operators.md)
+  - [条件运算符](basic-concept/expressions/conditional-operator.md)
   - [逻辑运算符](basic-concept/expressions/logical-operators.md)
   - [扩展运算符](basic-concept/expressions/spread-operator.md)
   - [解构赋值](basic-concept/expressions/detructing-assignment.md)
@@ -176,6 +176,7 @@
     - [类的基本语法]()
     - [类的继承]()
 - **模块化**
+  - 模块化
   - **ECMScript 6 Module**
     - [export](core-modules/modularization/ecmascript6-module/export.md)
     - [import](core-modules/modularization/ecmascript6-module/import.md)
@@ -208,7 +209,7 @@
   - [寄生式继承](object-oriented-programming/inheritance/parasitic-inheritance.md)
   - [寄生组合式继承](object-oriented-programming/inheritance/parastic-combination-inheritance.md)
 
-<br>[⬆ 返回快速目录](#books快速目录)
+[⬆ 返回快速目录](#books快速目录)
 
 ### :world_map:浏览器对象模型 Browser Oject Model
 
@@ -339,7 +340,7 @@
 
 [⬆ 返回快速目录](#books快速目录)
 
-### :iphone:移动端Web开发指南
+### :iphone:移动端Web开发指南 Mobile Web Development
 
 - **页面布局**
   - [移动端视口](mobile-web-development/layout/viewport.md)
@@ -363,7 +364,7 @@
 
 [⬆ 返回快速目录](#books快速目录)
 
-### :globe_with_meridians:计算机网络 ComputerNetwork
+### :globe_with_meridians:计算机网络 Computer Network
 
 - DNS协议
 - **HTTP协议**
