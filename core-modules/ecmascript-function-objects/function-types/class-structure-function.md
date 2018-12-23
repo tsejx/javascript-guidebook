@@ -1,5 +1,8 @@
 ## 类构造函数
 
+* ES5中近类的结构
+* ES6
+
 ### ES5中近类的结构
 
 ES5中创建类的方法：新建一个构造函数，定义一个方法并且赋值给构造函数的原型
@@ -337,8 +340,8 @@ class Square extends Rectangle {
 }
 ```
 
+---
 
+**参考资料：**
 
-参考资料：
-
-1. [ES6 | JavaScript 中的类 class](https://mp.weixin.qq.com/s?__biz=MzI4MDYyNjQ1OA==&mid=2247483956&idx=1&sn=adc1ec7ae4cd3f01728fdcb43a38690f&chksm=ebb4d641dcc35f57cd2bf66ba9819874cf300108884700bf3d6a1410c18c0ed4ff3d90d10a8f#rd)
+* [ES6 | JavaScript 中的类 class](https://mp.weixin.qq.com/s?__biz=MzI4MDYyNjQ1OA==&mid=2247483956&idx=1&sn=adc1ec7ae4cd3f01728fdcb43a38690f&chksm=ebb4d641dcc35f57cd2bf66ba9819874cf300108884700bf3d6a1410c18c0ed4ff3d90d10a8f#rd)
