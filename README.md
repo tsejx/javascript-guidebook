@@ -368,22 +368,15 @@
 
 - DNS协议
 - **HTTP协议**
-  - [HTTP协议](server-related/http/hyper-text-transfer-protocol.md)
-  - HTTP首部
-  - HTTP请求方法
-  - [HTTP响应状态码](server-related/http/status-code.md)
-  - HTTP访问控制
-  - HTTP身份验证
-  - HTTP缓存
-  - HTTP协议中的数据压缩
-  - HTTP条件请求
-  - HTTP内容协商
-  - HTTP请求范围
-  - HTTP重定向
+  - [HTTP协议](computer-networks/http/http.md)
+  - [HTTP首部字段](computer-networks/http/headers.md)
+  - [HTTP请求方法](computer-networks/http/request-methods.md)
+  - [HTTP响应状态码](computer-networks/http/response-status-codes.md)
+  - [HTTP访问控制](computer-networks/http/access-control.md)
+  - [HTTP身份验证](computer-networks/http/authentication.md)
 - HTTPS协议
 - TCP协议
 - IP协议
-- TCP/IP
 - Web网络安全
 
 [⬆ 返回快速目录](#books快速目录)
