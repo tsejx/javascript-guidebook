@@ -8,6 +8,8 @@
 
 指南内容大多收集于各大技术社区和博客，由本人整理、补充和校正而成，相应章节均有来源链接，若有遗漏，烦请提出 issue。
 
+另外：[Wiki](https://github.com/tsejx/JavaScript-Guidebook/wiki) 收集整理了一些本人看过的高质量的文章。
+
 **说明**：编写整理过程有不当之处，欢迎提出 issue。
 
 ## :books:快速目录
@@ -186,8 +188,6 @@
     - [模块的继承](core-modules/modularization/ecmascript6-module/module-inheritance.md)
     - [跨模块常量](core-modules/modularization/ecmascript6-module/cross-module-constant.md)
   - CommonJS
-  - AMD
-  - CMD
 
 [⬆ 返回快速目录](#books快速目录)
 
