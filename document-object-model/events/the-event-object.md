@@ -91,24 +91,18 @@ link.onclick = function(event) {
 
 只有 `cancelable` 属性设置为 `true` 的事件，才可以使用 `preventDefault()`来取消其默认行为。
 
-#### 取消事件冒泡
+#### 阻止事件冒泡
 
-另外，`stopPropagation()` 方法用于立即停止事件在 DOM 层次中的传播，即取消进一步的事件捕获或冒泡。例如，直接添加到一个按钮的事件处理程序可以调用 `stopPropagation()`，从而避免触发注册在 `document.body`上面的事件处理程序，如下面的例子所示。
+`stopPropagation()` 方法用于立即停止事件在 DOM 层次中的传播，即取消进一步的事件捕获或冒泡。
 
-```javascript
-var btn = document.getElementById("myBtn");
-btn.onclick = function(event){
-    alert("Clicked");
-    event.stopPropagation();
-}
-document.body.onclick = function (event){
-    alert("Body clicked");
+```js
+function stopPropagation(e){
+    const event = e || window.event
+    event.stopPropagation ? event.stopPropagation() : (event.cancelBubbl = true)
 }
 ```
 
-对于这个例子而言，如果不调用`stopPropagation()`，就会在单击按钮时出现两个警告框。可以，由于 `click` 事件根本不会传播到 `document.body`，因此就不会触发注册在这个元素上的 `onclick` 事件处理程序。
-
-⚠️ 只有在事件处理程序执行期间，`event` 对象才会存在；一旦事件处理程序执行完成，`event` 对象就会被销毁。
+⚠️ 只有在事件处理程序执行期间，event 对象才会存在。一旦事件处理程序执行完成，event 对象就会被销毁。
 
 ### 跨浏览器的事件对象
 
