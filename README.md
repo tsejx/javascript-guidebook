@@ -104,9 +104,9 @@
   - [Symbol](standard-built-in-objects/fundamental-objects/symbol-objects.md)
   - [Error](standard-built-in-objects/fundamental-objects/error-objects.md)
 - **数字和日期**
-  - [Date](standard-built-in-objects/numbers-and-objects/date-objects/date-objects.md)
-  - [Math](standard-built-in-objects/numbers-and-objects/math-objects/math-objects.md)
-  - [Number](standard-built-in-objects/numbers-and-objects/number-objects/number-objects.md)
+  - [Date](standard-built-in-objects/numbers-and-dates/date-objects/date-objects.md)
+  - [Math](standard-built-in-objects/numbers-and-dates/math-objects/math-objects.md)
+  - [Number](standard-built-in-objects/numbers-and-dates/number-objects/number-objects.md)
 - **字符处理**
   - [String](standard-built-in-objects/text-processing/string-objects/string-objects.md)
   - [RegExp](standard-built-in-objects/text-processing/regexp-objects/regexp-objects.md)
