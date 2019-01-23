@@ -1,6 +1,10 @@
 ## Location对象的属性
 
-`location` 对象提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。事实上，`location` 对象是很特别的一个对象，因为它既是 `window` 对象的属性，也是 `document` 对象的属性；换句话说，`window.location` 和 `document.location` 引用的是同一个对象。`location` 对象的用处不只表现在它保存着当前文档的信息，还表现在它将 URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。
+`location` 对象提供了与当前窗口中加载的文档有关的信息，还提供了一些导航功能。
+
+事实上，`location` 对象是很特别的一个对象，因为它既是 `window` 对象的属性，也是 `document` 对象的属性；换句话说，`window.location` 和 `document.location` 引用的是同一个对象。
+
+`location` 对象的用处不只表现在它保存着当前文档的信息，还表现在它将 URL 解析为独立的片段，让开发人员可以通过不同的属性访问这些片段。
 
 属性名  | 例子 | 描述
 :---: | :---:  | :---:
@@ -18,7 +22,7 @@ origin | `"https://www.baidu.com"` | 页面来源的域名的标准形式
 
 ### 查询字符串参数
 
-虽然通过上面的属性可以访问到 `location` 对象的大多数信息，但其中访问URL包含的查询字符串的属性并不方便。尽管 `location.search` 返回从问号到 URL 末尾的所有内容，但却没有办法逐个访问其中的每个查询字符串参数。为此，可以像下面这样创建一个函数，用以解析查询字符串，然后返回包含所有参数的一个对象。
+虽然通过上面的属性可以访问到 `location` 对象的大多数信息，但其中访问 URL 包含的查询字符串的属性并不方便。尽管 `location.search` 返回从问号到 URL 末尾的所有内容，但却没有办法逐个访问其中的每个查询字符串参数。为此，可以像下面这样创建一个函数，用以解析查询字符串，然后返回包含所有参数的一个对象。
 
 ```js
 /*
@@ -32,17 +36,36 @@ origin | `"https://www.baidu.com"` | 页面来源的域名的标准形式
  */
 
 function urlArgs() {
-    var args = {};										// 定义一个空对象
-    var query = location.search.substring(1);			// 查找到查询串，并去掉问号
-    var pairs = query.split('&');						// 根据&富豪将查询字符串分隔开
-    for(let i = 0; i < pairs.length; i++){				// 对于每个片段
-        const pos = pairs[i].indexOf('=');				// 查找"name=value"
-        if (pos == -1) continue;						// 如果没有找到的话，就跳过
-        const name = pairs[i].substring(0, pos);		// 提取name
-        let value = pairs[i].substring(pos + 1);		// 提取value
-        value = decodeURIComponent(value);				// 对value进行解码
-        args[name] = value;								// 存储为属性
+    // 定义一个空对象
+    var args = {};
+    
+    // 查找到查询串，并去掉问号
+    var query = location.search.substring(1);
+    
+    // 根据 & 符号将查询字符串分隔开
+    var pairs = query.split('&');
+    
+    for(let i = 0; i < pairs.length; i++){
+        // 查找"name=value"
+        const pos = pairs[i].indexOf('=');
+        // 如果没有找到的话，就跳过
+        if (pos == -1) continue;
+        // 提取name
+        const name = pairs[i].substring(0, pos);
+        // 提取value
+        let value = pairs[i].substring(pos + 1);
+        // 对value进行解码
+        value = decodeURIComponent(value);
+        // 存储为属性
+        args[name] = value;								
     }
-    return args;										// 返回解析后的参数
+    return args
 }
 ```
+
+---
+
+[📌 Location对象的方法](./the-location-object-methods.md)
+
+[📖 返回目录](../../README.md)
+
