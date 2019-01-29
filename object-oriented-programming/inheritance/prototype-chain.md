@@ -43,7 +43,7 @@ console.log(foo.__proto__ === Object.prototype) // true
 console.log(Object.getPrototypeOf(foo) === Object.prototype) // true
 ```
 
-![字面量](/Users/mrsingsing/Desktop/mrsingsing/JavaScript-Guidebook/images/4/cfc37d7e-6322-48da-b242-42995120f4eb.png)
+![字面量](../../images/4/cfc37d7e-6322-48da-b242-42995120f4eb.png)
 
 #### 构造器方式
 
@@ -56,7 +56,7 @@ console.log(foo.__proto__ === Foo.prototype) // true
 console.log(Object.getPrototypeOf(foo) === Foo.prototype) // true
 ```
 
-![构造器](/Users/mrsingsing/Desktop/mrsingsing/JavaScript-Guidebook/images/4/46001182-6736-4a81-939d-53f2217e33b2.png)
+![构造器](../../images/4/46001182-6736-4a81-939d-53f2217e33b2.png)
 
 #### Object.create() 方式
 
@@ -70,7 +70,7 @@ const bar = Object.create(foo)
 console.log(bar.__proto__ === foo)
 ```
 
-![Object.create(/Users/mrsingsing/Desktop/mrsingsing/JavaScript-Guidebook/images/4/de959736-b787-4302-b2e9-175346dc57ec.png)](../../images/4/de959736-b787-4302-b2e9-175346dc57ec.png)
+![Object.create()](../../images/4/de959736-b787-4302-b2e9-175346dc57ec.png)
 
 ### 显示原型和隐式原型的区别
 
@@ -82,7 +82,7 @@ console.log(bar.__proto__ === foo)
 ![prototype和__proto__的区别](../../images/4/5c8478c6-285a-49d6-943b-94722ffe9fe7.png)
 
 * `prototype` 是**函数**才有的属性
-* `[[Prototype]]`（ `__proto__` ）是每个**对象**都有的属性
+* `[[Prototype]]`（ `__proto__` ）是每个**实例对象**都有的属性
   * 在 ECMAScript2015 中 `__proto__` 属性已经标准化
   * 因为 JavaScript 中函数也是对象，因此函数也有 `__proto__` 属性
 
@@ -103,8 +103,6 @@ L.__proto__.__proto__... === R.prototype
 ```
 
 ⚠️ 注意：`instanceof` 操作符会递归查找 L 的原型链，即 `L.__proto__.__proto__.__proto__...` 知道找到了或者到达顶层为止。
-
-
 
 构造器 Function 的构造器是它自身：
 
