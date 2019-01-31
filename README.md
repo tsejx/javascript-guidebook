@@ -173,10 +173,6 @@
       - [函数柯里化](core-modules/ecmascript-function-objects/function-types/function-currying.md)
       - [函数节流](core-modules/ecmascript-function-objects/function-types/throttle.md)
       - [函数防抖](core-modules/ecmascript-function-objects/function-types/debounce.md)
-- **对象**
-  - 类
-    - [类的基本语法]()
-    - [类的继承]()
 - **模块化**
   - 模块化
   - **ECMScript 6 Module**
@@ -193,6 +189,13 @@
 
 ### :construction:面向对象编程 Object Oriented Programming
 
+- [**面向对象编程**](object-oriented-programming/object-oriented-programming.md)
+- **理解对象**
+  - [对象类型](object-oriented-programming/object-understand/the-object-type.md)
+  - [属性操作](object-oriented-programming/object-understand/manipulating-property.md)
+  - [对象属性描述符](object-oriented-programming/object-understand/attributes-object.md)
+  - [描述符方法](object-oriented-programming/object-understand/the-descriptor-methods.md)
+  - [对象状态](object-oriented-programming/object-understand/the-object-status.md)
 - **创建对象**
   - [工厂模式](object-oriented-programming/object-creation/the-factory-pattern.md)
   - [构造函数模式](object-oriented-programming/object-creation/the-constructor-pattern.md)
@@ -202,12 +205,15 @@
   - [寄生构造函数模式](object-oriented-programming/object-creation/parastic-constructor-pattern.md)
   - [稳妥构造函数模式](object-oriented-programming/object-creation/durable-constructor-pattern.md)
 - **继承**
-  - [原型链](object-oriented-programming/inheritance/prototype-chaining.md)
+  - [原型链](object-oriented-programming/inheritance/prototype-chain.md)
   - [借用构造函数](object-oriented-programming/inheritance/constructor-stealing.md)
   - [组合继承](object-oriented-programming/inheritance/combination-inheritance.md)
   - [原型式继承](object-oriented-programming/inheritance/prototypal-inheritance.md)
   - [寄生式继承](object-oriented-programming/inheritance/parasitic-inheritance.md)
   - [寄生组合式继承](object-oriented-programming/inheritance/parastic-combination-inheritance.md)
+- **类的定义**
+  - [类的基本语法]()
+  - [类的继承]()
 
 [⬆ 返回快速目录](#books快速目录)
 
@@ -366,7 +372,7 @@
 
 ### :globe_with_meridians:计算机网络 Computer Network
 
-- DNS协议
+- [DNS协议](computer-networks/dns.md)
 - **HTTP协议**
   - [HTTP协议](computer-networks/http/http.md)
   - [HTTP首部字段](computer-networks/http/headers.md)
@@ -378,6 +384,11 @@
 - TCP协议
 - IP协议
 - Web网络安全
+  - CSRF
+  - XSS
+  - DDOS
+  - SQL注入
+  - DNS劫持
 
 [⬆ 返回快速目录](#books快速目录)
 
