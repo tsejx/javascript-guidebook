@@ -343,30 +343,10 @@
   - [地理定位](html5-scripting-programing/device-access/geolocation.md)
   - [触控事件](html5-scripting-programing/device-access/touch-event.md)
   - [摄录设备](html5-scripting-programing/device-access/camera.md)
-
-[⬆ 返回快速目录](#books快速目录)
-
-### :iphone:移动端Web开发指南 Mobile Web Development
-
-- **页面布局**
-  - [移动端视口](mobile-web-development/layout/viewport.md)
-  - [布局形式](mobile-web-development/layout/adaptation.md)
-  - 媒体查询
-  - 设备适配
-  - 页面适配
-- **移动设备WebAPI**
-  - 视频
-  - 音频
-  - 媒体流
-  - Web Speech
-  - Web Audio API
-  - 地理定位
-  - 陀螺仪
-  - 设备震动
-  - 电池状态
-  - 环境光
-  - 网络信息
-  - 平台JSSDK
+- **移动开发**
+  - [移动Web开发](html5-scripting-programing/wireless-development/mobile-web-development.md)
+  - [视口](html5-scripting-programing/wireless-development/viewport.md)
+  - [适配方案](html5-scripting-programing/wireless-development/adaptation.md)
 
 [⬆ 返回快速目录](#books快速目录)
 
