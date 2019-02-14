@@ -255,7 +255,7 @@ Flexbile 方案通过 JavaScript 模拟 `vw` 的特性，如今，`vw` 已经得
 
 > `vmin` 和 `vmax` 是根据 Viewport 中长度偏大的那个维度值计算出来的，如果 `window.innerHeight > window.innerWidth` 则 `vmin` 取百分之一的 `window.innerWidth`，`vmax` 取百分之一的 `window.innerHeight` 计算。
 
-![viewport-unit](../../images/8/d5150d46-ddef-4c63-abf1-482014b835f6.png)
+![viewport-unit](../../images/7/d5150d46-ddef-4c63-abf1-482014b835f6.png)
 
 
 
