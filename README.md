@@ -2,7 +2,9 @@
 
 <img width="200" height="200" src="https://raw.githubusercontent.com/tsejx/JavaScript-Guidebook/master/images/lighthouse.png">
 
-[![](https://img.shields.io/github/downloads/tsejx/JavaScript-Guidebook/total.svg?style=flat-square)][![](https://img.shields.io/github/last-commit/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/commits)[![](https://img.shields.io/github/issues/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/issues)[![](https://img.shields.io/github/issues-pr/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/pulls)
+<br/><br/>
+
+![](https://img.shields.io/github/downloads/tsejx/JavaScript-Guidebook/total.svg?style=flat-square)[![](https://img.shields.io/github/last-commit/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/commits)[![](https://img.shields.io/github/issues/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/issues)[![](https://img.shields.io/github/issues-pr/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/pulls)
 
 <h1>JavaScript Guidebook</h1>
 
