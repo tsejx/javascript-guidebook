@@ -1,8 +1,8 @@
 <div align="center">
 
-<img width="200" height="200" src="https://raw.githubusercontent.com/tsejx/JavaScript-Guidebook/master/images/logo.svg">
+<img width="200" height="200" src="https://raw.githubusercontent.com/tsejx/JavaScript-Guidebook/master/images/lighthouse.png">
 
-<h1>JavaScript Guidebook<h1>
+<h1>JavaScript Guidebook</h1>
 
 <p>
 
