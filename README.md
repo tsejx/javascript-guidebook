@@ -2,14 +2,13 @@
 
 <img width="200" height="200" src="https://raw.githubusercontent.com/tsejx/JavaScript-Guidebook/master/images/lighthouse.png">
 
+[![](https://img.shields.io/github/downloads/tsejx/JavaScript-Guidebook/total.svg?style=flat-square)][![](https://img.shields.io/github/last-commit/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/commits)[![](https://img.shields.io/github/issues/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/issues)[![](https://img.shields.io/github/issues-pr/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/pulls)
+
 <h1>JavaScript Guidebook</h1>
 
-<p>
-
-收集自各大技术社区，由本人整理、补充和校正而成，为前端开发者提供完备的系统的技术指南。
-
-</p>
-
+<p>来源各大技术社区的为前端开发者提供完备系统的技术指南<p>
+<p>本专辑由 <a href="https://github.com/tsejx">tsejx</a> 归纳、整理和修正完成</p>
+<p>章节内容来源注释于具体页面底部，如错漏欢迎提 <a href="https://github.com/tsejx/JavaScript-Guidebook/issues">ISSUE</a> 斧正</p>
 </div>
 
 ## :books:快速目录
