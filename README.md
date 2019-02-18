@@ -1,16 +1,16 @@
-![Logo](./images/logo.jpg)
+<div align="center">
 
-# JavaScript Guidebook
+<img width="200" height="200" src="https://raw.githubusercontent.com/tsejx/JavaScript-Guidebook/master/images/logo.svg">
 
-为前端开发者提供完备的系统的技术指南。
+<h1>JavaScript Guidebook<h1>
 
-指南目录参考各主流前端书籍与 ECMAscript 规范而整合而生。
+<p>
 
-指南内容大多收集于各大技术社区和博客，由本人整理、补充和校正而成，相应章节均有来源链接，若有遗漏，烦请提出 issue。
+收集自各大技术社区，由本人整理、补充和校正而成，为前端开发者提供完备的系统的技术指南。
 
-另外：[Wiki](https://github.com/tsejx/JavaScript-Guidebook/wiki) 收集整理了一些本人看过的高质量的文章。
+</p>
 
-**说明**：编写整理过程有不当之处，欢迎提出 issue。
+</div>
 
 ## :books:快速目录
 
