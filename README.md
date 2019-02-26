@@ -2,28 +2,40 @@
 
 <img width="200" height="200" src="https://raw.githubusercontent.com/tsejx/JavaScript-Guidebook/master/images/lighthouse.png">
 
-<br/><br/>
+<br/>
 
-![](https://img.shields.io/github/downloads/tsejx/JavaScript-Guidebook/total.svg?style=flat-square)[![](https://img.shields.io/github/last-commit/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/commits)[![](https://img.shields.io/github/issues/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/issues)[![](https://img.shields.io/github/issues-pr/tsejx/JavaScript-Guidebook.svg?style=flat-square)](https://github.com/tsejx/JavaScript-Guidebook/pulls)
+<p align="center">
+<a><img src="https://img.shields.io/github/last-commit/tsejx/JavaScript-Guidebook.svg"/></a>
+<a><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"/></a>
+<a><img src="https://img.shields.io/github/issues/d2-projects/d2-admin.svg"/></a>
+<a><img src="https://img.shields.io/github/forks/tsejx/JavaScript-Guidebook.svg"/></a>
+<a><img src="https://img.shields.io/github/stars/tsejx/JavaScript-Guidebook.svg"/></a>
+</p>
 
 <h1>JavaScript Guidebook</h1>
 
 <p>来源各大技术社区的为前端开发者提供完备系统的技术指南<p>
 <p>本专辑由 <a href="https://github.com/tsejx">tsejx</a> 归纳、整理和修正完成</p>
-<p>章节内容来源注释于具体页面底部，如错漏欢迎提 <a href="https://github.com/tsejx/JavaScript-Guidebook/issues">ISSUE</a> 斧正</p>
+<p>章节内容来源注释于具体页面底部，如错漏欢迎提 <a href="https://github.com/tsejx/JavaScript-Guidebook/issues">issue</a> 斧正</p>
 </div>
 
 ## :books:快速目录
 
-* [基本语法 Basic Concept](#memo基本语法-basic-concept)
-* [标准内置对象 Standard Buit-in Objects](#mortar_board标准内置对象-standard-built-in-objects)
-* [核心模块 Core Modules](#8ball核心模块-core-modules)
-* [面向对象编程 Object Oriented Programming](#construction面向对象编程-object-oriented-programming)
-* [浏览器对象模型 Browser Object Model](#world_map浏览器对象模型-browser-oject-model)
-* [文档对象模型 Document Object Model](#incoming_envelope文档对象模型document-oject-model)
-* [HTML5脚本编程 HTML5 Scripting Programing](#keyboardhtml5脚本编程-scripting-programing)
-* [移动端Web开发指南 Mobile Web Development](#iphone移动端web开发指南-mobile-web-development)
-* [计算机网络 Computer Network](#globe_with_meridians计算机网络-computer-network)
+1. [基本语法 Basic Concept](#memo基本语法-basic-concept)
+
+2. [标准内置对象 Standard Buit-in Objects](#mortar_board标准内置对象-standard-built-in-objects)
+
+3. [核心模块 Core Modules](#8ball核心模块-core-modules)
+
+4. [面向对象编程 Object Oriented Programming](#construction面向对象编程-object-oriented-programming)
+
+5. [浏览器对象模型 Browser Object Model](#world_map浏览器对象模型-browser-oject-model)
+
+6. [文档对象模型 Document Object Model](#incoming_envelope文档对象模型document-oject-model)
+
+7. [HTML5脚本编程 HTML5 Scripting Programing](#keyboardhtml5脚本编程-scripting-programing)
+
+8. [计算机网络 Computer Network](#globe_with_meridians计算机网络-computer-network)
 
 
 ## :open_book:项目目录
@@ -362,7 +374,7 @@
   - [HTTP访问控制](computer-networks/http/access-control.md)
   - [HTTP身份验证](computer-networks/http/authentication.md)
   - HTTP/2
-- [HTTPS协议](computer-networks/https/md)
+- [HTTPS协议](computer-networks/https.md)
 - TCP协议
 - IP协议
 - **Web网络安全**
