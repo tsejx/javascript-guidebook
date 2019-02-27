@@ -1,6 +1,6 @@
 ## HTTPS
 
-HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 现在它被广泛用于万维网上安全敏感的通讯，例如交易支付方面。
+HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的 HTTP 通道，简单来说就是 HTTP 的安全版。即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL。 现在它被广泛用于万维网上安全敏感的通讯，例如交易支付方面。
 
 ### 背景
 
@@ -12,7 +12,7 @@ HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是�
 
 对通信内容进行加密的解决方案：
 
-* 对成加密：使用相同密钥加密/解密，但是钥匙交付问题无法解决
+* 对称加密：使用相同密钥加密/解密，但是钥匙交付问题无法解决
 * 非对称加密：公钥加密数据，私钥解密数据，但是加密/解密消耗时间较多
 * 混合加密：公钥加密密钥，密钥加密数据，私钥解密密钥，密钥解密数据（非对称传送密钥，密钥传送数据）。解决非对成加密效率问题
 * 中间人攻击：秘密替换公钥窃取数据，源于服务端无法确认客户端公钥是否合法
@@ -27,11 +27,11 @@ HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是�
 
 ### 工作原理
 
-HTTPS 在传输数据之前需要客户端（浏览器）与服务端（网站）之间进行一次握手，在握手过程中将确立双方加密传输数据的密码信息。TLS/SSL 协议不仅仅是一套加密传输的协议，更是一件经过艺术家精心设计的艺术品，TLS/SSL 中使用了非对称加密，对称加密以及 HASH 算法。
+HTTPS 在传输数据之前需要客户端（浏览器）与服务端之间进行一次握手，在握手过程中将确立双方加密传输数据的密码信息。TLS/SSL 协议不仅仅是一套加密传输的协议，更是一件经过艺术家精心设计的艺术品，TLS/SSL 中使用了**非对称加密**、**对称加密**以及 **HASH 算法**。
 
-![workflow](/Users/mrsingsing/Desktop/3820a643-db06-479a-92a0-f603cf0f8e41.jpeg)
+![https-workflow](../images/8/3820a643-db06-479a-92a0-f603cf0f8e41.jpeg)
 
-**具体流程**
+**具体流程：**
 
 1. **客户端发起 HTTPS 请求**：客户端将支持的一套加密规则发送给服务端
 2. **服务端配置并传送证书**：服务端选用一组**加密算法**与 **HASH 算法**，并将自己的身份信息以证书的形式发回给客户端。证书包含网站地址、过期时间、加密公钥，以及证书的颁发机构等信息

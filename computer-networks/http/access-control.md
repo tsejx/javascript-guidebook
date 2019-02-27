@@ -24,9 +24,18 @@ CORS 机制是为了在认可用户发起的请求的同时，阻止恶意注入
   * Accept-Language
   * Content-Language
   * Last-Event-ID
-  * Content-Type：`application/x-www-form-urlencoded`、`multipart/form-data`、`text/plain`
+  * Content-Type
+    * `application/x-www-form-urlencoded`
+    * `multipart/form-data`
+    * `text/plain`
 
 凡事不满足上面两种条件的，就属于非简单请求。
+
+### 其他限制
+
+* 请求头限制
+* XMLHttpRequestUpload 对象均没有注册任何事件监听器
+* 请求中没有使用 ReadableStream 对象
 
 ### 使用场景
 
@@ -37,6 +46,8 @@ CORS 机制是为了在认可用户发起的请求的同时，阻止恶意注入
 * WebGL 贴图
 * 使用 `drawImage` 将 `Images/viedo` 画面绘制到 Canvas
 * 样式表（使用 CSSOM ）
+
+> ⚠️注意：HTML中 `<link>`、`<script>`、`<img>` 等标签自带连接属性进行 HTTP 请求是能够无视同源策略的。
 
 ---
 

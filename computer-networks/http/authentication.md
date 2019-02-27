@@ -37,7 +37,7 @@ WWW-Authenticate: Basic realm=<需要保护资源的范围>
 
 用户收到服务端响应后，填写用户名、密码，然后向服务端发送认证请求。
 
-![用户发送认证请求](../../images/9/fffa7afc-2fa1-464b-9d7d-05bdade58ce1.png)
+![用户发送认证请求](../../images/8/fffa7afc-2fa1-464b-9d7d-05bdade58ce1.png)
 
 以下为请求报文。`Authorization`请求首部中，包含了用户填写的用户名、密码。
 

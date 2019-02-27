@@ -29,7 +29,7 @@ HTTP 消息头允许客户端和服务器通过 request 和 response 传递附�
 | ------------------- | --------------------------------------------- | --------------------------------------------------------- |
 | Accept              | 用户代理可处理的媒体类型                      | `Accept: text/plain, text/html`                           |
 | Accept-Charset      | 优先的字符集                                  | `Accept-Charset: iso-8859-5`                              |
-| Accept-Encoding     | 优先的内容编码                                | `Accept-Encoding: gzip`                                   |
+| Accept-Encoding     | 优先的内容编码                                | `Accept-Encoding: gzip, deflate, br`                      |
 | Accept-Language     | 优先的语言（自然语言）                        | `Accept-Language: en,zh`                                  |
 | Authorization       | Web认证信息                                   | `Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==`       |
 | Expect              | 期待服务器的特定行为                          | `Expect: 100-continue`                                    |
