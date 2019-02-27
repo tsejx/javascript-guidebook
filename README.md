@@ -7,7 +7,7 @@
 <p align="center">
 <a><img src="https://img.shields.io/github/last-commit/tsejx/JavaScript-Guidebook.svg"/></a>
 <a><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg"/></a>
-<a><img src="https://img.shields.io/github/issues/d2-projects/d2-admin.svg"/></a>
+<a><img src="https://img.shields.io/github/issues/tsejx/JavaScript-Guidebook.svg"/></a>
 <a><img src="https://img.shields.io/github/forks/tsejx/JavaScript-Guidebook.svg"/></a>
 <a><img src="https://img.shields.io/github/stars/tsejx/JavaScript-Guidebook.svg"/></a>
 </p>
