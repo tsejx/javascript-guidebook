@@ -2,9 +2,15 @@
 
 服务器向浏览器推送消息，除了 WebSocket，还有一种方法：Sever-sent Events（以下简称 SSE）。
 
+W3C 关于 Server-Sent Events 部分的描述 [W3C Server-Sent Events](https://www.w3.org/TR/eventsource/)
+
+相比以往的轮询，SSE 可以为 B2C 带来更高的效率。
+
+![Server-sent Events](../../images/7/62071824-1fa4-44cb-b616-833657618367.png)
+
 ### 本质
 
-严格来说，HTTP 协议无法让服务器向客户端主动推送消息。但是，有一种变通方法，就是服务器向客户端声明，接下来要发送的是流信息（streaming）。
+严格来说，HTTP 协议无法让服务器向客户端主动推送消息。但是，有一种变通方法，就是服务器向客户端声明，接下来要发送的是流信息（Streaming）。
 
 也就是说，发送的不是一次性的数据包，而是一个数据流，会连续不断地发送过来。这时，客户端不会关闭连接，会一直等着服务器发过来的新的数据流，视频播放就是这样的例子。本质上，这种通信就是以流信息的方式，完成一次用时很长的下载。
 
@@ -16,15 +22,17 @@ SSE 与 WebSocket 作用相似，都是建立浏览器与服务器之间的通�
 
 总体来说，WebSocket 更强大和灵活。因为它是全双工通道，可以双向通信；SSE 是**单向通道**，只能服务器向浏览器发送，因为流信息本质上就是下载。如果浏览器向服务器发送信息，就变成了另一次 HTTP 请求。
 
+虽然如此，SSE 在设计时就拥有了一些 WebSocket 没有的特性，例如自动重连接、Event IDs 以及发送随机事件的能力等，我们需要根据实际应用场景，去选择不同的应用方案。
+
 **SSE 优点：**
 
-* SSE 使用 HTTP 协议，现有的服务器软件都支持。WebSocket 是一个独立协议。
+* SSE 基于 HTTP 协议，现有的服务器软件都支持。WebSocket 是一个独立协议。
 * SSE 属于轻量级，使用简单；WebSocket 协议相对复杂。
 * SSE 默认支持断线重连，WebSocket，需要自己实现。
 * SSE 一般只用来传送文本，二进制数据需要编码后传送，WebSocket，默认支持传送二进制数据。
 * SSE 支持自定义发送的消息类型。
 
-### 客户端API
+### 客户端实现
 
 EventSource 接口用于接收服务器发送的事件。它通过 HTTP 连接到一个服务器，以 `text/event-stream` 格式接收事件，不关闭连接。
 
@@ -87,7 +95,7 @@ source.addEventListener('foo', function (event) {
 
 #### 数据格式
 
-服务器向浏览器发送的 SSE 数据，必须是 UTF-8 编码的文本，具有如下的 HTTP 头信息。
+服务器向浏览器发送的 SSE 数据，必须是 UTF-8 编码的文本，具有如下的 HTTP 头信息：
 
 ```http
 Content-Type: text/event-stream
@@ -203,3 +211,4 @@ retry: 10000\n
 * [Server-sent Events 教程](http://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
 * [MDN:使用服务器发送事件](https://developer.mozilla.org/zh-CN/docs/Server-sent_events/Using_server-sent_events)
 * [HTML5 服务器推送事件（Server-sent Events）实战开发](https://www.ibm.com/developerworks/cn/web/1307_chengfu_serversentevent/index.html)
+* [JS实时通信三把斧系列之三：EventSource](https://blog.5udou.cn/blog/JSShi-Shi-Tong-Xin-San-Ba-Fu-Xi-Lie-Zhi-San-eventsource55)
