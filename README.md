@@ -22,19 +22,12 @@
 ## :books:快速目录
 
 1. [基本语法 Basic Concept](#memo基本语法-basic-concept)
-
 2. [标准内置对象 Standard Buit-in Objects](#mortar_board标准内置对象-standard-built-in-objects)
-
 3. [核心模块 Core Modules](#8ball核心模块-core-modules)
-
 4. [面向对象编程 Object Oriented Programming](#construction面向对象编程-object-oriented-programming)
-
 5. [浏览器对象模型 Browser Object Model](#world_map浏览器对象模型-browser-oject-model)
-
 6. [文档对象模型 Document Object Model](#incoming_envelope文档对象模型document-oject-model)
-
 7. [HTML5脚本编程 HTML5 Scripting Programing](#keyboardhtml5脚本编程-scripting-programing)
-
 8. [计算机网络 Computer Network](#globe_with_meridians计算机网络-computer-network)
 
 
@@ -187,7 +180,7 @@
       - [函数节流](core-modules/ecmascript-function-objects/function-types/throttle.md)
       - [函数防抖](core-modules/ecmascript-function-objects/function-types/debounce.md)
 - **模块化**
-  - 模块化
+  - [**模块化**](core-modules/modularization/modularization.md)
   - **ECMScript 6 Module**
     - [export](core-modules/modularization/ecmascript6-module/export.md)
     - [import](core-modules/modularization/ecmascript6-module/import.md)
@@ -196,7 +189,6 @@
     - [import()](core-modules/modularization/ecmascript6-module/import%28%29.md)
     - [模块的继承](core-modules/modularization/ecmascript6-module/module-inheritance.md)
     - [跨模块常量](core-modules/modularization/ecmascript6-module/cross-module-constant.md)
-  - CommonJS
 
 [⬆ 返回快速目录](#books快速目录)
 
@@ -271,7 +263,7 @@
   - [Position对象](browser-object-model/the-other-web-api/the-position-object.md)
   - [XMLHttpRequest对象](browser-object-model/the-other-web-api/the-xmlhttprequest-object.md)
   - [FetchAPI](browser-object-model/the-other-web-api/the-fetch-api.md)
-  - EventSource对象
+  - [EventSource对象](browser-object-model/the-other-web-api/the-event-source-object.md)
 - **浏览器缓存**
   - [浏览器缓存机制](browser-object-model/browser-cache/web-cache.md)
   - [HTTP缓存](browser-object-model/browser-cache/http-cache.md)
@@ -318,7 +310,7 @@
   - [事件流](document-object-model/events/event-flow.md)
   - [事件处理程序](document-object-model/events/event-handlers-or-listener.md)
   - [事件对象](document-object-model/events/the-event-object.md)
-  - **事件类型**
+  - [事件类型](document-object-model/events/event-types/event-types.md)
     - [用户界面事件](document-object-model/events/event-types/ui-events.md)
     - [鼠标与滚轮事件](document-object-model/events/event-types/the-mouse-and-dom-mouse-scroll-events.md)
     - [键盘与文本事件](document-object-model/events/event-types/the-keyboard-and-text-events.md)
@@ -348,7 +340,7 @@
   - SVG
   - WebGL
 - **性能与集成**
-  - WebWorkers
+  - [WebWorkers](html5-scripting-programing/performance-and-integration/web-workers.md)
   - [动画渲染](html5-scripting-programing/performance-and-integration/requestAnimationFrame.md)
   - [拖放API](html5-scripting-programing/performance-and-integration/drag-and-drop-api.md)
   - [全屏API](html5-scripting-programing/performance-and-integration/full-screen-api.md)
