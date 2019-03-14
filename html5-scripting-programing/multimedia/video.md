@@ -80,3 +80,15 @@ const video = docuemnt.getElementById('myVideo')
 | `play()`         | 开始播放视频。                         |
 | `pause()`        | 暂停当前播放的视频。                   |
 
+### 加载过程
+
+视频/音频（Audio / Video）在加载过程中，触发的顺序如下：
+
+1. `onloadstart`
+2. `ondurationchange`
+3. `onloadedmetadata`
+4. `onloadeddata`
+5. `onprogress`
+6. `oncanplay`
+7. `oncanplaythrough`
+
