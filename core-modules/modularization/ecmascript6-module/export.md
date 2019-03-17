@@ -7,7 +7,6 @@
 在声明的变量前添加 `export` 关键字即可将相对应的变量输出。
 
 ```js
-// profile.js
 export var foo = 'Foo'
 
 export var bar = 'Bar'
@@ -18,7 +17,6 @@ export var baz = 'Baz'
 除了像上面的写法，也可以写成另一种形式。
 
 ```js
-// profile.js
 var foo = 'Foo'
 var bar = 'Bar'
 var baz = 'Baz'
@@ -38,8 +36,8 @@ function a(){}
 function b(){}
 
 export {
-	a as A,
-	b as B,
+    a as A,
+    b as B,
     b as _B
 }
 ```
@@ -48,15 +46,14 @@ export {
 
 ### 对应关系
 
-需要特别注意的是，`export` 命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。
+需要特别注意的是，`export` 命令规定的是**对外的接口**，必须与模块内部的变量建立一一对应关系。
 
 ```js
-// Throw Error
+// Error
 export 1
 
-// Throw Error
+// Error
 const foo = 1
-
 export foo 
 ```
 
@@ -77,14 +74,14 @@ export {baz as bat}
 同样地，函数和类必须遵守这种书写方法。
 
 ```js
-// Throw Error
+// Error
 function foo(){}
 export foo
 
-// Right
+// Good
 export function bar(){}
 
-// Right
+// Good
 function baz(){}
 export {baz}
 ```
@@ -93,7 +90,9 @@ export {baz}
 
 ### 模块顶层输出
 
-`export` 命令可以出现在模块的任何位置，只要处于模块顶层就可以。如果处于块级作用域内，就会报错，下一节的 `import` 命令也是如此。这是因为处于条件代码块之中，就没法做静态优化了，违背了 ES6 模块的设计初衷。
+`export` 命令可以出现在模块的任何位置，只要处于模块顶层就可以。
+
+如果处于块级作用域内，就会报错，`import` 命令也是如此。这是因为处于条件代码块之中，就没法做**静态优化**了，违背了 ES6 模块的设计初衷。
 
 ```js
 function foo() {

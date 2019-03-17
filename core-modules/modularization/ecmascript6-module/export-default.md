@@ -10,6 +10,7 @@ export default function (){
 function foo(){
     console.log('foo')
 }
+
 export default foo	// 视同匿名函数加载
 ```
 
@@ -22,8 +23,9 @@ export default foo	// 视同匿名函数加载
 
 本质上，`export default` 就是输出一个叫做 `default` 的变量或方法，然后系统允许你为它取任意名字。所以，下面的写法是有效的。
 
+**输出：**
+
 ```js
-// modules.js
 function add(x, y) {
   return x * y;
 }
@@ -31,8 +33,11 @@ function add(x, y) {
 export {add as default};
 // 等同于
 // export default add;
+```
 
-// app.js
+**输入：**
+
+```js
 import { default as foo } from 'modules';
 // 等同于
 // import foo from 'modules';
@@ -41,10 +46,10 @@ import { default as foo } from 'modules';
 正是因为 `export default` 命令其实只是输出一个叫做 `default` 的变量，所以它后面不能跟变量声明语句。
 
 ```js
-// Correct
+// Good
 export var foo = 1
 
-// Correct
+// Good
 const bar = 1
 export default bar
 
@@ -57,7 +62,7 @@ export default const baz = 1
 同样地，因为 `export default` 命令的本质是将后面的值，赋给 `default` 变量，所以可以直接将一个值写在 `export default` 之后。
 
 ```js
-// Correct
+// Good
 export default 42;
 
 // Error
