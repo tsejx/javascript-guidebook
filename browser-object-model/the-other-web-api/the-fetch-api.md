@@ -183,3 +183,5 @@ fetch('api/data.json', {
 参考资料：
 
 - [MDN web docs：Fetch API](https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API)
+- [Fetch 使用的常见问题及解决办法](http://www.cnblogs.com/wonyun/p/fetch_polyfill_timeout_jsonp_cookie_progress.html)
+- [Fetch 用法说明](https://segmentfault.com/a/1190000007019545)

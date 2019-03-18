@@ -10,7 +10,7 @@
 
 `offsetParent` 属性返回一个对象的引用，这个对象是距离调用 `offsetParent` 元素最近的（在包含层次中最靠近的），并且是已进行过 CSS 定位（`position` 不为 `static` ）的容器元素。
 
-- 元素自身为 `fixed` 固定定位，`offsetParent` 的结果为 `null`  
+- 元素自身为 `fixed` 固定定位，`offsetParent` 的结果为 `null`
 
 当元素自身为 `fixed` 固定定位时，固定定位的元素相对于视口进行定位，此时没有父级。
 
@@ -41,11 +41,11 @@
 <div id="div0" style="position:absolute;">
     <div id="div1" style="position:absolute;">
         <div id='foo'
- nm             </div>    
-    </div>    
+ nm             </div>
+    </div>
 </div>
 <script>
-     const foo = document.getElementById('foo');   
+     const foo = document.getElementById('foo');
     console.log(foo.offsetParent);		//<div id="div1">
 </script>
 ```
@@ -92,7 +92,7 @@ const offsetTop = element.offsetTop;
 
 但通过上面的例子我们可以看到，当 `offsetParent` 为 `body` 时情况比较特殊。
 
-在 IE8/9/10 及 Chrome 中，`offsetLeft = (body 的 margin-left) + (body 的 border-width) + (body 的 padding-left) + (当前元素的 margin-left)`
+在 IE8/8/10 及 Chrome 中，`offsetLeft = (body 的 margin-left) + (body 的 border-width) + (body 的 padding-left) + (当前元素的 margin-left)`
 
 在 Firefox 中，`offsetLeft = (body 的 margin-left) + (body 的 padding-left) + (当前元素的 margin-left)`
 
@@ -208,7 +208,7 @@ const scrollHeight = foo.scrollHeight;
 
 > 如果元素没有隐藏的部分，则相关的值应该等于 `clientWidth` 或 `clientHeight`
 >
-> 当你向下滚动滚动条的时候，`scrollHeight` 应该等用于 `scrollTop + clientHeight ` 
+> 当你向下滚动滚动条的时候，`scrollHeight` 应该等用于 `scrollTop + clientHeight `
 
 #### 内容滚动区边距 scrollLeft和scrollTop
 
