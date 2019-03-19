@@ -2,49 +2,83 @@
 
 `export` 命令用于规定模块的对外接口。
 
-### 变量输出
+ECMAScript 规范中的模块化方案提供了两种导出模块的方式：
+
+* 命名导出（Named Exports）
+* 默认导出（Default Export）
+
+### 导出方式
+
+#### 命名导出
 
 在声明的变量前添加 `export` 关键字即可将相对应的变量输出。
 
+导出以前声明的值。（这种写法能在脚本底部清晰看到所有输出模块，推荐）
+
 ```js
-export var foo = 'Foo'
-
-export var bar = 'Bar'
-
-export var baz = 'Baz'
+var something = true;
+export { something }
 ```
 
-除了像上面的写法，也可以写成另一种形式。
+在导出时重命名。同样使用 `as` 关键字，同一函数可以定义多个不同的变量名输出。
 
 ```js
-var foo = 'Foo'
-var bar = 'Bar'
-var baz = 'Baz'
+export { something as sth }
 
-export {foo, bar, baz}
+export { something as sthing }
 ```
 
-使用这种写法可以在脚本底部清晰看到所有输出的变量，推荐这种写法。
-
-### 重置输出
-
-通常情况下，`export` 输出的变量就是本来的名字，但是可以使用 `as` 关键字重命名。
+声明后立即导出。
 
 ```js
-function a(){}
+export var something = true;
+export let anything = true;
+export const nothing = true;
+export function everything = true;
+export class interesting = true;
+```
 
-function b(){}
+#### 默认导出
 
-export {
-    a as A,
-    b as B,
-    b as _B
+默认导出让开发者无须知道源模块输出的模块名称即可完成导入。（默认导出的变量无法使用命名导入）
+
+导出一个值作为源模块的默认导出：
+
+```js
+export default something;
+```
+
+仅当源模块只有一个导出时，才建议使用此做法。
+
+将默认和命名导出组合在同一个模块中是不好的做法，尽管它是规范允许的。
+
+**扩展：**
+
+本质上，`export default` 就是输出一个叫做 `default` 的变量或方法，然后系统允许你为它取任意名字。
+
+所以，下面的写法是有效的。
+
+```js
+// Export
+function add(x, y) {
+  return x * y;
 }
+
+export {add as default};
+// 等同于
+// export default add;
+
+// Import
+import { default as foo } from 'modules';
+// 等同于
+// import foo from 'modules';
 ```
 
-使用 `as` 关键字，可以重命名定义函数的对外接口，重命名后，同一函数可以定义多个不同的变量名输出。
+正是因为 `export default` 命令其实只是输出一个叫做 `default` 的变量，所以它后面不能跟变量声明语句。
 
-### 对应关系
+### 特性规范
+
+#### 对应关系
 
 需要特别注意的是，`export` 命令规定的是**对外的接口**，必须与模块内部的变量建立一一对应关系。
 
@@ -88,7 +122,7 @@ export {baz}
 
 另外，`export` 语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。
 
-### 模块顶层输出
+#### 模块顶层输出
 
 `export` 命令可以出现在模块的任何位置，只要处于模块顶层就可以。
 

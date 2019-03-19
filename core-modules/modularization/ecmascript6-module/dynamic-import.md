@@ -1,4 +1,4 @@
-## import()
+## 动态加载
 
 `import` 命令会被 JavaScript 引擎静态分析，先于模块内的其他语句执行（`import` 命令叫做「连接」）。因此，下面的代码会报错。
 
@@ -21,15 +21,13 @@ const myModual = require(path)
 
 上面的语句就是动态加载，`require` 到底加载哪一个模块，只有运行时才知道。`import` 命令做不到这一点。
 
-#### 动态加载
-
-通过 `import()` 函数，能实现动态加载。
+因此，有一个[提案](https://github.com/tc39/proposal-dynamic-import)，建议引入 `import()` 函数，实现动态加载。
 
 ```js
-import(specifier)
+import(module)
 ```
 
-参数 `specifier` ，表示指定所要加载的模块的位置。`import` 命令能够接受什么参数，`import()` 函数就能接受什么参数，两者区别主要是后者为动态加载。
+参数 `module` ，表示指定所要加载的模块的位置。`import` 命令能够接受什么参数，`import()` 函数就能接受什么参数，两者区别主要是后者为动态加载。
 
 `import()` 返回一个 Promise 对象。
 
@@ -47,9 +45,9 @@ import(`./section-modules/${someVariable}.js`)
 
 `import()` 函数可以用在任何地方，不仅仅是模块，非模块的脚本也可以使用。它是运行时执行，也就是说，什么时候运行到这一句，就会加载指定的模块。另外，`import()` 函数与所加载的模块没有静态连接关系，这点也是与 `import` 语句不相同。`import()` 类似于 Node 的 `require` 方法，区别主要是前者是一部加载，后者是同步加载。
 
-#### 适用场景
+### 适用场景
 
-##### 按需加载
+#### 按需加载
 
 `import()` 可以在需要的时候，再加载某个模块。
 
@@ -67,7 +65,7 @@ button.addEventListener('click', event => {
 
 上面代码中，`import()` 方法放在 `click` 事件的监听函数之中，只有用户点击了按钮，才会加载这个模块。
 
-##### 条件加载
+#### 条件加载
 
 `import()` 可以放在 `if` 代码块，根据不同的情况，加载不同的模块。
 
@@ -81,25 +79,25 @@ if (condition) {
 
 上面代码中，如果满足条件，就加载模块 A，否则加载模块 B。
 
-##### 动态的模块路径
+#### 动态的模块路径
 
 `import()` 允许模块路径动态生成。
 
 ```js
 import(f())
-	.then(...)
+    .then(() => {})
 ```
 
 上面代码中，根据函数 `f` 的返回结果，加载不同的模块。
 
-#### 注意点
+### ⚠️注意事项
 
 `import()` 加载模块成功以后，这个模块会作为一个对象，当作 `then` 方法的参数。因此，可以使用对象解构赋值的语法，获取输出接口。
 
 ```js
 import('./myModule.js')
     .then(({export1, export2}) => {
-        // ...
+        // do something
     })
 ```
 
@@ -114,7 +112,7 @@ import('./myModule.js')
     })
 ```
 
-上面的代码也可以使用具名输入的形式。
+上面的代码也可以使用**具名输**入的形式。
 
 ```js
 import('./myModule.js')
@@ -123,7 +121,7 @@ import('./myModule.js')
     })
 ```
 
-如果想同时加载多个模块，可以采用下面的写法。
+如果想**同时加载多个模块**，可以采用下面的写法。
 
 ```js
 Promise.all([
@@ -132,11 +130,11 @@ Promise.all([
     import('./module3.js')
 ])
 .then(([module1, module2, module3]) => {
-    //...
+    // do something
 })
 ```
 
-`import()` 也可以用在 async 函数之中。
+`import()` 也可以用在 **async 函数**之中。
 
 ```js
 async function main(){
@@ -149,6 +147,7 @@ async function main(){
               import('./module3.js')
           ])
 }
+
 main()
 ```
 
