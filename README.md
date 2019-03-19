@@ -182,13 +182,12 @@
 - **模块化**
   - [**模块化**](core-modules/modularization/modularization.md)
   - **ECMScript 6 Module**
-    - [export](core-modules/modularization/ecmascript6-module/export.md)
     - [import](core-modules/modularization/ecmascript6-module/import.md)
-    - [export default](core-modules/modularization/ecmascript6-module/export-default.md)
-    - [export 和 import 的复合写法](core-modules/modularization/ecmascript6-module/export-and-import.md)
-    - [import()](core-modules/modularization/ecmascript6-module/import%28%29.md)
+    - [export](core-modules/modularization/ecmascript6-module/export.md)
+    - [复合写法](core-modules/modularization/ecmascript6-module/compound.md)
     - [模块的继承](core-modules/modularization/ecmascript6-module/module-inheritance.md)
     - [跨模块常量](core-modules/modularization/ecmascript6-module/cross-module-constant.md)
+    - [动态导入](core-modules/modularization/ecmascript6-module/dynamic-import.md)
 
 [⬆ 返回快速目录](#books快速目录)
 
