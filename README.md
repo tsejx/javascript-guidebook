@@ -10,6 +10,7 @@
 <a><img src="https://img.shields.io/github/issues/tsejx/JavaScript-Guidebook.svg"/></a>
 <a><img src="https://img.shields.io/github/forks/tsejx/JavaScript-Guidebook.svg"/></a>
 <a><img src="https://img.shields.io/github/stars/tsejx/JavaScript-Guidebook.svg"/></a>
+<a><img src="https://img.shields.io/maintenance/yes/2019.svg"/></a>
 </p>
 
 <h1>JavaScript Guidebook</h1>
@@ -17,7 +18,9 @@
 <p>来源各大技术社区的为前端开发者提供完备系统的技术指南<p>
 <p>本专辑由 <a href="https://github.com/tsejx">tsejx</a> 归纳、整理和修正完成</p>
 <p>章节内容来源注释于具体页面底部，如错漏欢迎提 <a href="https://github.com/tsejx/JavaScript-Guidebook/issues">issue</a> 斧正</p>
+<p>更多优质内容收集可查阅 <a href="https://github.com/tsejx/JavaScript-Guidebook/wiki">wiki</a></p>
 </div>
+
 
 ## :books:快速目录
 
