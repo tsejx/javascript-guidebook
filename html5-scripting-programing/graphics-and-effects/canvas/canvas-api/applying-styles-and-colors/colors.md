@@ -18,7 +18,7 @@ context.fillStyle = color || gradient || pattern;
 | 值       | 说明                                                         | 类型           | 默认值    |
 | -------- | ------------------------------------------------------------ | -------------- | --------- |
 | color    | 指示绘画笔触的 CSS 颜色值。                                  | DOMString      | `#000000` |
-| gradient | 用于填充绘画的渐变对象（[线性](Gradients.md)或[放射性](Gradient.md))。 | CanvasGradient | -         |
+| gradient | 用于填充绘画的渐变对象（[线性](gradients.md)或[放射性](gradients.md))。 | CanvasGradient | -         |
 | pattern  | 用于创建 Pattern 笔触的 Pattern 对象。                       | CanvasPattern  | -         |
 
 #### 示例
@@ -44,7 +44,7 @@ function draw() {
   const ctx = document.getElementById('canvas').getContext('2d');
   for (let i = 0; i < 6; i++){
     for (let j = 0;j < 6; j++){
-      ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' + 
+      ctx.fillStyle = 'rgb(' + Math.floor(255-42.5*i) + ',' +
                        Math.floor(255-42.5*j) + ',0)';
       ctx.fillRect(j*25,i*25,25,25);
     }
@@ -67,7 +67,7 @@ context.strokeStyle = color || gradient || pattern;
 | 值       | 说明                                                         | 类型           | 默认值    |
 | -------- | ------------------------------------------------------------ | -------------- | --------- |
 | color    | 指示绘画笔触的 CSS 颜色值。                                  | DOMString      | `#000000` |
-| gradient | 用于填充绘画的渐变对象（[线性](Gradients.md)或[放射性](Gradient.md))。 | CanvasGradient | -         |
+| gradient | 用于填充绘画的渐变对象（[线性](gradients.md)或[放射性](gradients.md))。 | CanvasGradient | -         |
 | pattern  | 用于创建 Pattern 笔触的 Pattern 对象。                       | CanvasPattern  | -         |
 
 
@@ -95,7 +95,7 @@ function draw() {
     const ctx = document.getElementById('canvas').getContext('2d');
     for (let i = 0; i < 6; i++){
       for (let j = 0; j < 6; j++){
-        ctx.strokeStyle = 'rgb(0,' + Math.floor(255-42.5*i) + ',' + 
+        ctx.strokeStyle = 'rgb(0,' + Math.floor(255-42.5*i) + ',' +
                          Math.floor(255-42.5*j) + ')';
         ctx.beginPath();
         ctx.arc(12.5+j*25,12.5+i*25,10,0,Math.PI*2,true);

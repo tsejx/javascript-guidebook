@@ -161,9 +161,3 @@ console.log(({}).__proto__ === Object.prototype)
 
 * 所有的构造器的 constructor 都指向 Function
 * Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 `__proto__` 指向 Object.prototype
-
----
-
-**参考资料：**
-
-* [JS原型链图解教程](object-oriented-programming/object-understand/)

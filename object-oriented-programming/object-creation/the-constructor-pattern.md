@@ -67,7 +67,7 @@ const person1 = new Person('Ben', 21, 'student');
 const person2 = new Person('Gray', 25, 'Doctor');
 ```
 
-在全局作用域中定义的函数实际上只能被某个对象调用，这让全局作用域有点名不副实。而更让人无法接受的是：如果对象需要定义很多方法，那么就要定义很多歌全局函数，于是我们这个自定义的引用类型就丝毫没有封装性可言了。而这些问题可以通过[原型模式](ThePrototypePattern.md)来解决。
+在全局作用域中定义的函数实际上只能被某个对象调用，这让全局作用域有点名不副实。而更让人无法接受的是：如果对象需要定义很多方法，那么就要定义很多歌全局函数，于是我们这个自定义的引用类型就丝毫没有封装性可言了。而这些问题可以通过[原型模式](the-prototype-pattern.md)来解决。
 
 ### ECMAScript6实现
 
@@ -80,7 +80,7 @@ class Person {
         this.age = name;
         this.job = job;
     }
-    
+
     sayName() {
         alert(this.name);
     }

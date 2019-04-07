@@ -2,13 +2,13 @@
 
 历史上，JavaScript 无法处理二进制数据。如果一定要处理的话，只能使用 `charCodeAt()` 方法，一个个字节地从文字编码转成二进制数据，还有一种办法是将二进制数据转成 Base64 编码，再进行处理。这两种方法不仅速度慢，而且容易出错。ECMAScript 5 引入了 Blob 对象，允许直接操作二进制数据。
 
-[Blob 对象](../../05_BrowserObjectModel/TheOtherWebAPI/TheBlobObject.md)是一个代表二进制数据的基本对象，在它的基础上，又衍生出一系列相关的API，用来操作文件。
+[Blob 对象](../../browser-object-model/the-other-web-api/the-blob-object.md)是一个代表二进制数据的基本对象，在它的基础上，又衍生出一系列相关的API，用来操作文件。
 
-- [File 对象](../../05_BrowserObjectModel/TheOtherWebAPI/TheFileObject.md)：负责处理那些以文件形式存在的二进制数据，也就是操作本地文件；
-- [FileList 对象](../../05_BrowserObjectModel/TheOtherWebAPI/TheFileListObject.md)：File 对象的网页表单接口；
-- [FileReader 对象](../../05_BrowserObjectModel/TheOtherWebAPI/TheFileReaderObject.md)：负责将二进制数据读入内存内容；
-- [URL 对象](../../05_BrowserObjectModel/TheOtherWebAPI/TheURLObject.md)：用于对二进制数据生成 URL；
-- [FormData 对象](../../05_BrowserObjectModel/TheOtherWebAPI/TheFormDataObject.md)：读取页面表单项文件数据
+- [File 对象](../../browser-object-model/the-other-web-api/the-file-object.md)：负责处理那些以文件形式存在的二进制数据，也就是操作本地文件；
+- [FileList 对象](../../browser-object-model/the-other-web-api/the-file-list-object.md)：File 对象的网页表单接口；
+- [FileReader 对象](../../browser-object-model/the-other-web-api/the-file-reader-object.md)：负责将二进制数据读入内存内容；
+- [URL 对象](../../browser-object-model/the-other-web-api/the-url-object.md)：用于对二进制数据生成 URL；
+- [FormData 对象](../../browser-object-model/the-other-web-api/the-form-data-object.md)：读取页面表单项文件数据
 
 ### 访问选择的文件
 
@@ -54,7 +54,7 @@ const handleFiles = function(e) => {
             const canvas = document.cteateElement('canvas')
             const context = canvas.getContext('2d')
             context.drawImage(img, 0, 0)
-            
+
             const imageData = context.getImageData(0, 0, canvas.width, canvas.height)
             const data = imageData.data
             for(var i = 0;i <= data.length; i+=4){

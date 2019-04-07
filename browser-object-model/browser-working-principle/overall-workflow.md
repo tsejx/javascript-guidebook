@@ -10,14 +10,14 @@
 
 浏览器渲染的大致工作流程：
 
-1. [渲染引擎（The Rendering Engine）](TheRenderingEngine.md)
-2. [解析过程（Parsing）](Parsing.md)
-3. [渲染树构建（Render Tree Construction）](RenderTreeConstruction.md)
-4. [布局（Layout）](Layout.md)
-5. [绘制（Painting）](Painting.md)
-6. [动态变化和渲染引擎的线程](DynamicChanges&RenderingEngineThreads.md)
+1. [渲染引擎（The Rendering Engine）](the-rendering-engine.md)
+2. [解析过程（Parsing）](parsing.md)
+3. [渲染树构建（Render Tree Construction）](render-tree-construction.md)
+4. [布局（Layout）](layout.md)
+5. [绘制（Painting）](painting.md)
+6. [动态变化和渲染引擎的线程](dynamic-changes-and-rendering-engine-threads.md)
 7. [CSS2可视模型（CSS2 Visual Model）](CSS2VisualModule. md)
-8. [渲染层合并](Composite.md)
+8. [渲染层合并](composite.md)
 
 ### 主流浏览器
 
@@ -53,7 +53,7 @@
 
 2. 构建渲染树（Rendering Tree）
 
-   - 解析完成后，浏览器引擎会通过 DOM 树和 CSS 规则树来构造渲染树 
+   - 解析完成后，浏览器引擎会通过 DOM 树和 CSS 规则树来构造渲染树
 
    - 渲染树并不等同于 DOM 树，因为一些像 Header 或 `display: none` 的东西就没必要放到渲染树中
    - CSS 的 Rule Tree主要是为了完成匹配并把CSS Rule附加上渲染树上的每个Element，也就是所谓的Frame（Firefox 将渲染树中的元素称为frame，WebKit 的是呈现器或呈现对象，其实就是DOM节点，别以为是什么高大上的东西。 呈现器知道如何布局并将自身及其子元素绘制出来 ）。然后，计算每个Frame的位置，这通常是layout和reflow过程中发生。

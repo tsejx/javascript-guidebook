@@ -54,7 +54,7 @@ if (someNode.nodeType == 1){
 - firstChild：节点的第一个子节点
 - lastChild：节点的最后一个子节点
 
-详情可查看 [节点关系](../NodesAccess/NodesRelationships.md)
+详情可查看 [节点关系](../nodes-access/nodes-relationships.md)
 
 ### 节点操作
 
@@ -65,4 +65,4 @@ if (someNode.nodeType == 1){
 - `cloneNode()` 方法：克隆节点
 - `hasChildNodes()` 方法：判定一个节点是否有子节点
 
-详情可查看 [节点操作](../ManipulatingNodes/README.md)
+详情可查看 [节点操作](../manipulating-nodes/manipulating-nodes/README.md)

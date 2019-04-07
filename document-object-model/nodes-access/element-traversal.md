@@ -1,6 +1,6 @@
 ## 元素遍历
 
-对于元素间的空格，IE9 及之前版本不会返回文本节点，而其他所有浏览器都会返回文本节点。这样，就导致了在使用 childNodes 和 firstChild 等属性时的行为不一致。为了弥补这一差异，而同时又保持 DOM 规范不变，[Element Traversal 规范](www.w3.org/TR/ElementTraversal/) 新定义了一组属性。
+对于元素间的空格，IE9 及之前版本不会返回文本节点，而其他所有浏览器都会返回文本节点。这样，就导致了在使用 childNodes 和 firstChild 等属性时的行为不一致。为了弥补这一差异，而同时又保持 DOM 规范不变，[Element Traversal 规范](https://www.w3.org/TR/ElementTraversal/) 新定义了一组属性。
 
 Element Traversal API 为 DOM 元素添加了以下5个属性：
 

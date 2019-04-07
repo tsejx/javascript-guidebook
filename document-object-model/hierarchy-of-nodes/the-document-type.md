@@ -45,7 +45,7 @@ Document 类型提供六种常用访问元素的方法：
 - querySelector()
 - querySelectorAll()
 
-🔍详情可查看 [节点访问](../NodesAccess/NodesAccess.md)
+🔍详情可查看 [节点访问](../nodes-access/nodes-access.md)
 
 ### 文档写入
 

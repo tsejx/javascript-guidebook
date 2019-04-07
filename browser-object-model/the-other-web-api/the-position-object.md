@@ -20,5 +20,5 @@ Position 接口没有实现也没有继承任何方法。
 参考资料：
 
 - [使用地理位置定位](https://developer.mozilla.org/zh-CN/docs/Web/API/Geolocation/Using_geolocation)
-- 使用它的 [Geolocation](../TheNavigatorObject/TheNavigatorObjectMethods.md) 接口
+- 使用它的 [Geolocation](../the-navigator-object/the-navigator-object-methods.md) 接口
 

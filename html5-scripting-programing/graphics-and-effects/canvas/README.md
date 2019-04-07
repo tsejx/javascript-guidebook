@@ -31,23 +31,23 @@ if (foo.getContext){
 ### CanvasAPI 目录
 
 - 绘制方法
-  - [绘制矩形](CanvasAPI/DrawingMethods/DrawingRetangles.md)
-  - [绘制路径](CanvasAPI/DrawingMethods/DrawingPaths.md)
-  - [绘制文本](CanvasAPI/DrawingMethods/DrawingText.md)
+  - [绘制矩形](canvas-api/drawing-methods/drawing-retangles.md)
+  - [绘制路径](canvas-api/drawing-methods/drawing-paths.md)
+  - [绘制文本](canvas-api/drawing-methods/drawing-text.md)
 - 设置样式
-  - [线段样式](CanvasAPI/ApplyingStyles&Colors/LineStyles.md)
-  - [文本样式](CanvasAPI/ApplyingStyles&Colors/TextStyles.md)
-  - [颜色样式](CanvasAPI/ApplyingStyles&Colors/Colors.md)
-  - [图案样式]( CanvasAPI/ApplyingStyles&Colors/Patterns.md)
-  - [透明度](CanvasAPI/ApplyingStyles&Colors/Transparency.md)
-  - [渐变](CanvasAPI/ApplyingStyles&Colors/Shadow.md)
-  - [阴影](CanvasAPI/ApplyingStyles&Colors/Shadow.md)
-  - [填充规则](CanvasAPI/ApplyingStyles&Colors/CanvasFillRules.md)
-- [状态操作](CanvasAPI/TheCanvasState.md)
-- [变换](CanvasAPI/Transform.md)
-- [图像绘制](CanvasAPI/DrawingImages.md)
-- [像素控制](CanvasAPI/PixelManipulation.md)
-- [合成](CanvasAPI/Compositing.md)
+  - [线段样式](canvas-api/applying-styles-and-colors/line-styles.md)
+  - [文本样式](canvas-api/applying-styles-and-colors/text-styles.md)
+  - [颜色样式](canvas-api/applying-styles-and-colors/colors.md)
+  - [图案样式](canvas-api/applying-styles-and-colors/patterns.md)
+  - [透明度](canvas-api/applying-styles-and-colors/transparency.md)
+  - [渐变](canvas-api/applying-styles-and-colors/gradients.md)
+  - [阴影](canvas-api/applying-styles-and-colors/shadows.md)
+  - [填充规则](canvas-api/applying-styles-and-colors/canvas-fill-rules.md)
+- [状态操作](canvas-api/the-canvas-state.md)
+- [变换](canvas-api/transformations.md)
+- [图像绘制](canvas-api/drawing-images.md)
+- [像素控制](canvas-api/pixel-manipulation.md)
+- [合成](canvas-api/compositing.md)
 
 ---
 

@@ -111,7 +111,7 @@ var a = [1,2,3,4],b =[];
 foo({from:a,to:b,length:4});
 ```
 
-ES6的 [剩余参数(Rest 参数)](RestParameters.md) 有效地解决了函数参数过多和参数先后顺序的问题。
+ES6的 [剩余参数(Rest 参数)](rest-parameters.md) 有效地解决了函数参数过多和参数先后顺序的问题。
 
 ### 同步
 
@@ -120,10 +120,10 @@ ES6的 [剩余参数(Rest 参数)](RestParameters.md) 有效地解决了函数�
 ```javascript
 function foo(num1,num2){
     console.log(num1,arguments[0]); // 1 1
-    
+
     arguments[0] = 2;
     console.log(num1,arguments[0]); // 2 2
-    
+
     num1 = 10;
     console.log(num1,arguments[0]); // 10 10
 }
@@ -139,10 +139,10 @@ foo(1);
 function test(num1,num2){
     'use strict';
     console.log(num1,arguments[0]); // 1 1
-    
+
     arguments[0] = 2;
     console.log(num1,arguments[0]); // 1 2
-    
+
     num1 = 10;
     console.log(num1,arguments[0]); // 10 2
 }
@@ -176,7 +176,7 @@ function factorial(num){
     }else{
         return num * factorial(num-1);
     }
-}    
+}
 console.log(factorial(5));	// 120
 ```
 
@@ -189,7 +189,7 @@ function factorial(num){
     }else{
         return num* arguments.callee(num-1);
     }
-}    
+}
 console.log(factorial(5));	// 120
 ```
 
@@ -217,7 +217,7 @@ var factorial = function fn(num){
     }else{
         return num * fn(num-1);
     }
-};    
+};
 console.log(factorial(5));//120
 ```
 
@@ -351,10 +351,10 @@ console.log(baz.name);	// 'ABC'
 function foo(obj){
     obj.name = 'black';
     console.log(person.name); // 'black'
-    
+
     obj = {};
     obj.name = 'white';
-    
+
     console.log(person.name); // 'black'
 }
 

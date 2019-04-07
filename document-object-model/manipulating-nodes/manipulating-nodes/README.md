@@ -4,9 +4,9 @@
 
 | 方法                                                      | 说明                                 |
 | --------------------------------------------------------- | ------------------------------------ |
-| [`appendChild(node)`](appendChild().md)                   | 向元素的子元素列表的末尾添加一个节点 |
-| [`insertBefore(newNode, nextSibling)`](insertBefore().md) | 向参照元素的前面添加一个节点         |
-| [`replaceChild(newChild, oldChild)`](replaceChild().md)   | 替换节点                             |
-| [`removeChild(node)`](removeChild().md)                   | 移除节点                             |
-| [`cloneNode(deep)`](cloneNode().md)                       | 克隆节点                             |
+| [`appendChild(node)`](./append-child.md)                   | 向元素的子元素列表的末尾添加一个节点 |
+| [`insertBefore(newNode, nextSibling)`](./insert-before.md) | 向参照元素的前面添加一个节点         |
+| [`replaceChild(newChild, oldChild)`](./replace-child.md)   | 替换节点                             |
+| [`removeChild(node)`](./remove-child.md)                   | 移除节点                             |
+| [`cloneNode(deep)`](./clone-node.md)                       | 克隆节点                             |
 
