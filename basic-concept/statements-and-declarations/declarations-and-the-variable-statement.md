@@ -22,7 +22,7 @@ function x() {
 
 x();
 
-console.log(y); 	// 打印'1' 
+console.log(y); 	// 打印'1'
 console.log(z); 	// 抛出ReferenceError: z未在x外部声明
 ```
 
@@ -132,7 +132,7 @@ switch(x) {
   case 0: {
     let foo;
     break;
-  }  
+  }
   case 1: {
     let foo;
     break;
@@ -140,7 +140,7 @@ switch(x) {
 }
 ```
 
-拓展：[ES6 中let暂时性死区详解](https://segmentfault.com/a/1190000015603779)
+拓展：[ES6 中 let 暂时性死区详解](https://segmentfault.com/a/1190000015603779)
 
 #### `const`
 
@@ -207,10 +207,10 @@ console.log(y); // ReferenceError: y is not defined
 
 ### 变量的数据类型
 
-详情参考 [数据类型](../data-types.md)
+详情参考 [数据类型](../data-types/data-types.md)
 
 ---
 
 **参考资料：**
 
-* [ECMScript6入门：let 和 const 命令](http://es6.ruanyifeng.com/#docs/let)
+* [ECMScript6 入门：let 和 const 命令](http://es6.ruanyifeng.com/#docs/let)
