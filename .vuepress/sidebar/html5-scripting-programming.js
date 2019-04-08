@@ -34,7 +34,7 @@ const html5ScriptingProgramming = [
   {
     title: '图形特效',
     link: 'graphics-and-effects',
-    children: [{ title: 'Canvas', link: 'canvas/' }, { title: '', link: '' }],
+    children: [{ title: 'Canvas', link: 'canvas/' }],
   },
   {
     title: '性能与集成',
