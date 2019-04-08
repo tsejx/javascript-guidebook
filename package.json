@@ -1,0 +1,28 @@
+{
+  "name": "javascript-guidebook",
+  "version": "1.0.0",
+  "description": "A guidebook for the convenience of the front-end developers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vuepress dev",
+    "docs:build": "vuepress build",
+    "lint:md": "lint-md *.md",
+    "lint:fix": "lint-md *.md --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsejx/JavaScript-Guidebook.git"
+  },
+  "author": "tsejx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tsejx/JavaScript-Guidebook/issues"
+  },
+  "homepage": "https://github.com/tsejx/JavaScript-Guidebook#readme",
+  "devDependencies": {
+    "lint-md": "^0.1.1",
+    "vuepress": "^0.14.10"
+  },
+  "dependencies": {}
+}
