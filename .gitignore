@@ -3,3 +3,4 @@
 .idea/
 Icon
 node_modules
+.vuepress/dist
