@@ -1,4 +1,4 @@
-# 词法结构 
+# 词法语法
 
 ECMAScript 源码文本会被从左到右扫描，并被转换为一系列的输入元素，包括 token、控制符、行终止符、注释和空白符。ECMAScript 定义了一些关键字、字面量以及行尾分号补全的规则。
 
@@ -265,7 +265,7 @@ doSomethingImportant
     continue   for        switch      while
     debugger   function   this        with
     default    if         throw       delete
-    in         try        class       extends    
+    in         try        class       extends
     const      export     import
 ```
 
@@ -274,11 +274,11 @@ doSomethingImportant
 　　以上是 ECMAScript6 的保留字，但在ECMAScript3版本中的保留字并不一样，若希望代码能在基于ECMAScript3实现的解释器上运行的话，应该避免使用以下保留字作为标识符。
 
 ```javascript
-abstract    boolean     byte        char 
-constdouble enum        final       float       
-goto        implements  int         interfacelong 
+abstract    boolean     byte        char
+constdouble enum        final       float
+goto        implements  int         interfacelong
 native      package     private     protected
-public      short       static      super 
+public      short       static      super
 throw       transient   volatile    synchronized
 ```
 
@@ -293,7 +293,7 @@ RegExp      Error       EvalError   JSON
 Infinity    NaN         isNaN       isFinite
 undefined   arguments   parseInt    parseFloat
 eval        decodeURI   encodeURI   decodeURIComponent
-encodeURIComponent      RangeError  ReferenceError 
+encodeURIComponent      RangeError  ReferenceError
 TypeError   URIError    SyntaxError
 ```
 
@@ -337,9 +337,9 @@ Javascript并不是在所有换行处都填补分号，只有在缺少了分号�
 - 当出现一个不允许的行终止符或 `}` 时，会在其之前插入一个分号。
 
 ```javascript
-{ 1 2 } 3 
+{ 1 2 } 3
 
-// 将会被ASI转换为 
+// 将会被ASI转换为
 { 1 2 ;} 3;
 ```
 
@@ -364,7 +364,7 @@ a = b;
     - return
     - yield, yield*
     - module
-    
+
 ```javascript
 return
 a + b
