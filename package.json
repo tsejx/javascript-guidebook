@@ -8,7 +8,8 @@
     "docs:dev": "vuepress dev",
     "docs:build": "vuepress build",
     "lint:md": "lint-md *.md",
-    "lint:fix": "lint-md *.md --fix"
+    "lint:fix": "lint-md *.md --fix",
+    "deploy": "sh deploy.sh"
   },
   "repository": {
     "type": "git",
