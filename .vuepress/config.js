@@ -11,7 +11,7 @@ const computerNetworks = require('./sidebar/computer-networks').computerNetworks
 const transform = require('./utils/transform');
 
 const main = transform(mainPage);
-const name = 'javascript-guidebook';
+const name = 'JavaScript-Guidebook';
 
 module.exports = {
   base: `/${name}/`,
