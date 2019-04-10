@@ -1,14 +1,16 @@
 # 词法语法
 
-ECMAScript 源码文本会被从左到右扫描，并被转换为一系列的输入元素，包括 token、控制符、行终止符、注释和空白符。ECMAScript 定义了一些关键字、字面量以及行尾分号补全的规则。
+ECMAScript 源码文本会被从左到右扫描，并被转换为一系列的输入元素，包括 Token、控制符、行终止符、注释和空白符。
+
+ECMAScript 定义了一些关键字、字面量以及行尾分号补全的规则。
 
 ## 字符集
 
-JavaScript 程序使用 Unicode 字符集编写。Unicode 是 ASCII 和 Latin-1 的超集，并支持地球上几乎所有在使用的语言。ECMAScript3 要求 JavaScript 的实现必须支持 Unicode2.1及后续版本，ECMAScript5 则要求支持 Unicode3 及后续版本。
+JavaScript 程序使用 Unicode 字符集编写。Unicode 是 ASCII 和 Latin-1 的超集，并支持地球上几乎所有在使用的语言。ECMAScript3 要求 JavaScript 的实现必须支持 Unicode2.1 及后续版本，ECMAScript5 则要求支持 Unicode3 及后续版本。
 
 ### 区分大小写
 
-JavaScript 是区分大小写的语言，也就是说，关键字、变量、函数名和所有的标识符（Identifier）都必须采取一致的大小写的形式。但是需要注意的是，HTML 和 CSS 并不区分大小写（尽管XHTML区分大小写），也就是说如果我们在用 JavaScript 控制 HTML 属性的时候对 HTML 来说 id 和 ID 没区别，但是 JavaScript 有区别。
+JavaScript 是区分大小写的语言，也就是说，关键字、变量、函数名和所有的标识符（Identifier）都必须采取一致的大小写的形式。但是需要注意的是，HTML 和 CSS 并不区分大小写（尽管 XHTML 区分大小写），也就是说如果我们在用 JavaScript 控制 HTML 属性的时候对 HTML 来说 id 和 ID 没区别，但是 JavaScript 有区别。
 
 ```javascript
 //'abc'、'Abc'、'aBc'、'abC'、'ABC'是五个不同的变量名
@@ -25,7 +27,9 @@ console.log(abc, Abc, aBc, abC, ABC); // 1 2 3 4 5
 
 Javascript 会忽略程序中标识（token）之间的空格。多数情况下，Javascript 同样会忽略换行符。由于可以在代码中随意使用空格和换行，因此可以采用整齐、一致的缩进来形成统一的编码风格，从而提高代码的可读性。
 
-#### 空白字符 WhiteSpace
+#### 空白字符
+
+**空白字符 WhiteSpace**
 
 ```javascript
 \u0009    水平制表符        <TAB>
@@ -36,7 +40,9 @@ Javascript 会忽略程序中标识（token）之间的空格。多数情况下�
 \uFEFF    字符序标记
 ```
 
-#### 行终止符 LineTerminator
+#### 行终止符
+
+**行终止符 LineTerminator**
 
 ```javascirpt
 \u000A    换行符        <LF>
@@ -45,11 +51,11 @@ Javascript 会忽略程序中标识（token）之间的空格。多数情况下�
 \u2029    段落分割符     <PS>
 ```
 
-**★ 回车符加换行符在一起被解析成一个单行结束符**
+⚠️ **注意事项**：回车符加换行符在一起被解析成一个单行结束符
 
 ### Unicode转义序列
 
-在有些计算机硬件和软件里，无法显示或输入 Unicode 字符全集。为了兼容，JavaScript 定义了一种特殊序列，使用6个 ASCII 字符来代表任意16位 Unicode 内码。这些 Unicode 转义序列均以 `\u` 为前缀，其后跟随4个十六进制数（使用数数字以及大写或小写的字母A~F表示），可以用于 JavaScript 直接量、正则表达式和标识符中（关键字除外）。
+在有些计算机硬件和软件里，无法显示或输入 Unicode 字符全集。为了兼容，JavaScript 定义了一种特殊序列，使用 6 个 ASCII 字符来代表任意 16 位 Unicode 内码。这些 Unicode 转义序列均以 `\u` 为前缀，其后跟随 4 个十六进制数（使用数数字以及大写或小写的字母 A~F 表示），可以用于 JavaScript 直接量、正则表达式和标识符中（关键字除外）。
 
 ## 注释
 
@@ -80,7 +86,7 @@ let a;
 a = 1;
 ```
 
-**★ 注意块级注释 `/**/` 可以跨行书写，但不能嵌套，否则会报错。**
+块级注释 `/**/` 可以跨行书写，但不能嵌套，否则会报错。
 
 ```javascript
 //报错
@@ -92,7 +98,7 @@ a = 1;
  */
 ```
 
-**★块级注释 `/**/` 中的那些字符也可能出现在正则表达式字面量里，所以块级注释对于被注释的代码块来说是不安全的。**
+块级注释 `/**/` 中的那些字符也可能出现在正则表达式字面量里，所以块级注释对于被注释的代码块来说是不安全的。
 
 ```javascript
 /*
@@ -100,7 +106,7 @@ a = 1;
 */
 ```
 
-### 使用注释来阻止执行
+### 阻止执行
 
 注释可用于阻止其中一条代码行的执行（可用于调试）：
 
@@ -109,12 +115,12 @@ a = 1;
 var a = 2;
 ```
 
-### 在行末使用注释
+### 行末注释
 
 在下面的例子中，我们把注释放到代码行的结尾处：
 
 ```javascript
-var x = 5;    // 声明 x 并把 5 赋值给它
+var x = 5;      // 声明 x 并把 5 赋值给它
 var y = x + 2;  // 声明 y 并把 x+2 赋值给它
 ```
 
@@ -126,50 +132,50 @@ Javascript 数据直接量：**直接量（Literals）**，又名**字面量**�
 
 - 空直接量
 
-```javascript
+```js
 null
 ```
 
 - 布尔直接量
 
-```javascript
+```js
 true
 false
 ```
 
 - 数值直接量
 
-```javascript
+```js
 // 十进制
 1234567890
 ```
 
-**★ 请注意，十进制数值直接量可以以0开头，但是如果0以后的最高位比8小，数值将会被认为是八进制而不会报错。**
+⚠️ **注意**：十进制数值直接量可以以0开头，但是如果0以后的最高位比8小，数值将会被认为是八进制而不会报错
 
-```javascript
+```js
 // 二进制
 0b10000000000000000000000000000000 // 2147483648
 ```
 
 二进制表示为开头是0后接大写或小写的B（`0b`或者`0B`）。如果`0b`之后有除了0或1以外的数字，将会抛出错误。
 
-```javascript
+```js
 // 八进制
 0O755; // 493
 ```
 
-进制表示为开头是0后接大写或小写的O（`0o`或`0O`）。如果有不在（01234567）中的数字，将会抛出错误。
+进制表示为开头是 0 后接大写或小写的 O（`0o` 或 `0O`）。如果有不在（01234567）中的数字，将会抛出错误。
 
-```javascript
+```js
 // 十六进制
 0xFFFFFFFFFFFFFFFFF // 295147905179352830000
 ```
 
-十六进制表示为开头是0后接大写或小写的X（`0x`或`0X`）。如果有不在（0123456789ABCDEF）中的数字，将会抛出错误。
+十六进制表示为开头是 0 后接大写或小写的 X（`0x`或`0X`）。如果有不在（0123456789ABCDEF）中的数字，将会抛出错误。
 
 - 字符串直接量
 
-```javascript
+```js
 'foo'
 "bar"
 
@@ -182,25 +188,26 @@ false
 
 - 对象直接量
 
-```javascript
+```js
 var o = { a: "foo", b: "bar", c: 42 };
 
 // ES6中的简略表示方法
 var a = "foo", b = "bar", c = 42;
 var o = {a, b, c};
+
 // 不需要这样
 var o = { a: a, b: b, c: c };
 ```
 
 - 数组直接量
 
-```javascript
+```js
 [1954, 1974, 1990, 2014]
 ```
 
 - 正则表达式直接量
 
-```javascript
+```js
 /ab+c/g
 
 // 一个空的正则表达式直接量
@@ -211,7 +218,7 @@ var o = { a: a, b: b, c: c };
 
 - 模板字符串直接量
 
-```javascript
+```js
 `string text`
 
 `string text line 1
@@ -227,38 +234,37 @@ var o = { a: a, b: b, c: c };
 - 第一个字符必须是一个字母、下划线(`_`)、或一个美元符号(`$`)
 - 其他字符可以是字母、下划线、美元符号或数字
 
-标识符中的字母也可以包含扩展的ASCII或Unicode字母字符，但我们不推荐这样做。
+标识符中的字母也可以包含扩展的 ASCII 或 Unicode 字母字符，但我们不推荐这样做。
 
-按照惯例，ECMAScript标识符采用驼峰大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写。
+按照惯例，ECMAScript 标识符采用驼峰大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写。
 
-```javascript
-firstSecond
-myCar
-doSomethingImportant
+```js
+const firstSecond = 123
+
+const myCar = 'Toyota'
+
+const doSomethingImportant = function(){}
 ```
 
-虽然没有谁强制要求必须采用这种格式，但为了与ECMAScript内置的函数和对象命名格式保持一致，可以将其当作一种最佳实践。
+虽然没有谁强制要求必须采用这种格式，但为了与 ECMAScript 内置的函数和对象命名格式保持一致，可以将其当作一种最佳实践。
 
-**★ 不能把关键字、保留字、true、false和null用作标识符。**
+⚠️ **注意事项**：不能把关键字、保留字、`true`、`false` 和 `null` 用作标识符。
 
 
 ## 关键字和保留字
 
-　　和其他任何编程语言一样，Javascript保留了一些标识符为自己所用。这些保留字不能用做普通的标识符。由于好多参考书的误导，貌似保留字和关键字是分开的，其实并不是，关键字只是保留字的一部分。保留字包括关键字、未来保留字、空字面量和布尔值字面量。
-　　
+和其他任何编程语言一样，Javascript 保留了一些标识符为自己所用。这些保留字不能用做普通的标识符。由于好多参考书的误导，貌似保留字和关键字是分开的，其实并不是，关键字只是保留字的一部分。保留字包括关键字、未来保留字、空字面量和布尔值字面量。
 ### 保留字
-```javascript
-   关键字 Keyword
-   未来保留字 FutureReservedWord
-   空字面量 NullLiteral
-   布尔值字面量 BooleanLiteral
-```
+* 关键字 Keyword
+* 未来保留字 FutureReservedWord
+* 空字面量 NullLiteral
+* 布尔值字面量 BooleanLiteral
 
 ### 关键字
 
 以下关键字ES6已实现
 
-```javascript
+```js
     break      do         instanceof  typeof
     case       else       new         var
     catch      finally    return      void
@@ -271,9 +277,9 @@ doSomethingImportant
 
 ### 未来保留字
 
-　　以上是 ECMAScript6 的保留字，但在ECMAScript3版本中的保留字并不一样，若希望代码能在基于ECMAScript3实现的解释器上运行的话，应该避免使用以下保留字作为标识符。
+以上是 ECMAScript6 的保留字，但在 ECMAScript3 版本中的保留字并不一样，若希望代码能在基于 ECMAScript3 实现的解释器上运行的话，应该避免使用以下保留字作为标识符。
 
-```javascript
+```js
 abstract    boolean     byte        char
 constdouble enum        final       float
 goto        implements  int         interfacelong
@@ -284,9 +290,9 @@ throw       transient   volatile    synchronized
 
 **预定义变量和函数**
 
-　　此外，Javascript预定义了很多全局变量和函数，应该避免把它们的名字用做标识符名。
+此外，Javascript 预定义了很多全局变量和函数，应该避免把它们的名字用做标识符名。
 
-```javascript
+```js
 String      Number      Boolean     Array
 Date        Function    Math        Object
 RegExp      Error       EvalError   JSON
@@ -299,11 +305,11 @@ TypeError   URIError    SyntaxError
 
 ## 分号可选
 
-Javascript使用分号 `;` 将语句分隔开，这对增强代码的可读性和整洁性是非常重要的
+Javascript 使用分号 `;` 将语句分隔开，这对增强代码的可读性和整洁性是非常重要的。
 
-有些地方可以省略分号，有些地方则不能省略分号
+有些地方可以省略分号，有些地方则不能省略分号。
 
-```javascript
+```js
 //两条语句用两行书写，第一个分号可以省略
 a = 3;
 b = 4;
@@ -312,9 +318,9 @@ b = 4;
 a = 3; b = 4;
 ```
 
-　　但Javascript并不是在所有换行处都填补分号，只有在缺少了分号就无法正确解析代码时，Javascript才会填补分号。换句话说，如果当前语句和随后的非空格字符不能当成一个整体来解析的话，Javascript就在当前语句行结束处填补分号。
+但 Javascript 并不是在所有换行处都填补分号，只有在缺少了分号就无法正确解析代码时，Javascript 才会填补分号。换句话说，如果当前语句和随后的非空格字符不能当成一个整体来解析的话，Javascript 就在当前语句行结束处填补分号。
 
-```javascript
+```js
 var a
 a
 =
@@ -322,9 +328,9 @@ a
 console.log(a)
 ```
 
-　　Javascript将其解析为:
+Javascript 将其解析为:
 
-```javascript
+```js
 var a;
 a = 3;
 console.log(a);
@@ -332,14 +338,14 @@ console.log(a);
 
 ### 自动分号补全
 
-Javascript并不是在所有换行处都填补分号，只有在缺少了分号就无法正确解析代码时，Javascript才会填补分号。换句话说，如果当前语句和随后的非空格字符不能当成一个整体来解析的话，Javascript就在当前语句行结束处填补分号。
+Javascript 并不是在所有换行处都填补分号，只有在缺少了分号就无法正确解析代码时，Javascript 才会填补分号。换句话说，如果当前语句和随后的非空格字符不能当成一个整体来解析的话，Javascript 就在当前语句行结束处填补分号。
 
 - 当出现一个不允许的行终止符或 `}` 时，会在其之前插入一个分号。
 
-```javascript
+```js
 { 1 2 } 3
 
-// 将会被ASI转换为
+// 将会被 ASI 转换为
 { 1 2 ;} 3;
 ```
 
@@ -347,7 +353,7 @@ Javascript并不是在所有换行处都填补分号，只有在缺少了分号�
 
 在下面这段中，由于在 `b` 和 `++` 之间出现了一个行终止符，所以 `++` 未被当成变量 `b` 的后置运算符。
 
-```javascript
+```js
 a = b
 ++c
 
@@ -356,25 +362,25 @@ a = b;
 ++c;
 ```
 
-- 当语句中包含语法中的限制产品后跟一个行终止符的时候（也就是语句后紧跟着换行），将会在行结尾插入一个分号。带“这里没有行终止符”规则的语句有：
+- 当语句中包含语法中的限制产品后跟一个行终止符的时候（也就是语句后紧跟着换行），将会在行结尾插入一个分号。带「这里没有行终止符」规则的语句有：
 
-    - 后置运算符（`++`和`--`）
-    - continue
-    - break
-    - return
-    - yield, yield*
-    - module
+    - 后置运算符（`++` 和 `--`）
+    - `continue`
+    - `break`
+    - `return`
+    - `yield`、`yield*`
+    - `module`
 
-```javascript
+```js
 return
 a + b
 
-// 将被ASI转换为
+// 将被 ASI 转换为
 return;
 a + b;
 ```
 
-```javascript
+```js
 x
 ++
 y
@@ -387,3 +393,4 @@ x++;y;
 ```
 
 虽然分号不是必须的，但最好不要省略它，因为加上分号可以避免很多错误，代码行结尾处没有分号会导致压缩错误。加上分号也会在某些情况下增进代码的性能，因为这样解析器就不必再花时间推测应该在哪里插入分号了。
+
