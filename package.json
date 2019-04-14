@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vuepress dev",
-    "docs:build": "vuepress build",
+    "start": "vuepress dev",
+    "build": "vuepress build",
     "lint:md": "lint-md *.md",
     "lint:fix": "lint-md *.md --fix",
-    "deploy": "sh deploy.sh"
+    "deploy": "bash deploy.sh"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,12 @@
   },
   "homepage": "https://github.com/tsejx/JavaScript-Guidebook#readme",
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.47",
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.47",
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.47",
     "lint-md": "^0.1.1",
-    "vuepress": "^0.14.10"
+    "vuepress": "^0.14.10",
+    "vuepress-plugin-baidu-autopush": "^1.0.1"
   },
   "dependencies": {}
 }
