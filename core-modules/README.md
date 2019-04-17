@@ -4,19 +4,17 @@
 
 - **可执行代码和执行上下文**
   - **编译阶段**
-    - [作用域](executable-code-and-execution-contexts/compilation/scope.md)
+    - [编译阶段](executable-code-and-execution-contexts/compilation/compilation.md)
     - [词法作用域](executable-code-and-execution-contexts/compilation/lexical-scope.md)
-    - [函数中的作用域](executable-code-and-execution-contexts/compilation/scope-from-functions.md)
     - [函数作用域](executable-code-and-execution-contexts/compilation/function-as-scopes.md)
     - [块作用域](executable-code-and-execution-contexts/compilation/blocks-as-scopes.md)
     - [声明提升](executable-code-and-execution-contexts/compilation/hoisting.md)
-    - [作用域闭包](executable-code-and-execution-contexts/compilation/closures.md)
+    - [闭包](executable-code-and-execution-contexts/compilation/closures.md)
   - **执行阶段**
     - [执行上下文栈](executable-code-and-execution-contexts/execution/execution-context-stack.md)
     - [变量对象](executable-code-and-execution-contexts/execution/variable-object.md)
     - [作用域链](executable-code-and-execution-contexts/execution/scope-chain.md)
-    - [this绑定](executable-code-and-execution-contexts/execution/this.md)
-    - [执行上下文](executable-code-and-execution-contexts/execution/execution-context.md)
+    - [this](executable-code-and-execution-contexts/execution/this.md)
 - **函数**
   - **函数声明**
     - [函数声明式定义](ecmascript-function-objects/function-declarations/function-definitions.md)
