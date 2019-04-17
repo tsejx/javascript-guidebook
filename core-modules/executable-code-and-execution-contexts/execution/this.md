@@ -1,460 +1,534 @@
-# 从ECMAScript规范解读this
+# this
 
-ECMAScript 5.1 规范地址：
+[[TOC]]
 
-英文版：<http://es5.github.io/#x15.1>
+## 调用位置
 
- 中文版：<http://yanhaijing.com/es5/#115>
+在理解 `this` 的绑定过程之前，首先要理解 `this` 的**调用位置**：调用位置就是函数在代码中被调用的位置（而不是声明的位置）。
 
-## Types
-
-首先是第 8 章 Types：
-
-> Types are further subclassified into ECMAScript language types and specification types.
-
-> An ECMAScript language type corresponds to values that are directly manipulated by an ECMAScript programmer using the ECMAScript language. The ECMAScript language types are Undefined, Null, Boolean, String, Number, and Object.
-
-> A specification type corresponds to meta-values that are used within algorithms to describe the semantics of ECMAScript language constructs and ECMAScript language types. The specification types are Reference, List, Completion, Property Descriptor, Property Identifier, Lexical Environment, and Environment Record.
-
-我们简单的翻译一下：
-
-ECMAScript 的类型分为语言类型和规范类型。
-
-ECMAScript 语言类型是开发者直接使用 ECMAScript 可以操作的。其实就是我们常说的 Undefined, Null, Boolean, String, Number, 和 Object。
-
-而规范类型相当于 meta-values，是用来用算法描述 ECMAScript 语言结构和 ECMAScript 语言类型的。规范类型包括：Reference, List, Completion, Property Descriptor, Property Identifier, Lexical Environment, 和 Environment Record。
-
-没懂？没关系，我们只要知道在 ECMAScript 规范中还有一种只存在于规范中的类型，它们的作用是用来描述语言底层行为逻辑。
-
-今天我们要讲的重点是便是其中的 Reference 类型。它与 `this` 的指向有着密切的关联。
-
-## Reference
-
-那什么又是 Reference ？
-
-让我们看 8.7 章 The Reference Specification Type：
-
-> The Reference type is used to explain the behaviour of such operators as delete, typeof, and the assignment operators.
-
-所以 Reference 类型就是用来解释诸如 `delete`、`typeof` 以及赋值等操作行为的。
-
-抄袭尤雨溪大大的话，就是：
-
-> 这里的 Reference 是一个 Specification Type，也就是 “只存在于规范里的抽象类型”。它们是为了更好地描述语言的底层行为逻辑才存在的，但并不存在于实际的 js 代码中。
-
-再看接下来的这段具体介绍 Reference 的内容：
-
-> A Reference is a resolved name binding.
-
-> A Reference consists of three components, the base value, the referenced name and the Boolean valued strict reference flag.
-
-> The base value is either undefined, an Object, a Boolean, a String, a Number, or an environment record (10.2.1).
-
-> A base value of undefined indicates that the reference could not be resolved to a binding. The referenced name is a String.
-
-这段讲述了 Reference 的构成，由三个组成部分，分别是：
-
-- base value
-- referenced name
-- strict reference
-
-可是这些到底是什么呢？
-
-我们简单的理解的话：
-
-base value 就是属性所在的对象或者就是 EnvironmentRecord，它的值只可能是 undefined, an Object, a Boolean, a String, a Number, or an environment record 其中的一种。
-
-`referenced name` 就是属性的名称。
-
-举个例子：
+而要理解 `this` 的调用位置，最重要的是要**分析调用栈**（就是为了到达当前执行位置所调用的所有函数）。我们关心的调用位置就在当前正在执行的函数的前一个调用中。
 
 ```js
-var foo = 1;
+function baz() {
+    // 当前调用栈是：baz
+    // 因此，当前调用位置是全局作用域
+    console.log('baz');
+    bar();	// <-- bar 的调用的位置
+}
 
-// 对应的Reference是：
-var fooReference = {
-    base: EnvironmentRecord,
-    name: 'foo',
-    strict: false
-};
+function bar() {
+    // 当前调用栈是 baz -> bar
+    // 因此，当前调用调用位置在 baz 中
+    console.log('bar');
+    foo();	// <-- foo 的调用位置
+} 
+
+function foo() {
+    // 当前调用栈是 baz -> bar -> foo
+    // 因此，当前调用位置在 bar 中
+    console.log('foo');
+}
+
+baz();	// <-- baz 的调用位置
 ```
 
-再举个例子：
+注意我们是如何从调用栈中分析出真正的调用位置，因为它决定了 `this` 的绑定。
+
+## 绑定规则
+
+函数的执行过程中调用位置决定 `this` 的**绑定对象**。
+
+你必须找到调用位置，然后判断需要应用下面四条规则中的哪一条。我们首先会分别解释这四条规则，然后解释多条规则都可用时它们的优先级如何排列。
+
+```
+调用栈 => 调用位置 => 绑定规则 => 规则优先级
+```
+
+### 默认绑定
+
+首先要介绍的是最常用的函数调用类型：**独立函数调用**。可以把这条规则看作是无法应用其他规则时的默认规则。
+
+🌰 **标准示例：**
 
 ```js
-var foo = {
-    bar: function () {
-        return this;
-    }
-};
- 
-foo.bar(); // foo
+function foo() {
+    console.log(this.a);
+}
 
-// bar对应的Reference是：
-var BarReference = {
-    base: foo,
-    propertyName: 'bar',
-    strict: false
-};
+// 声明在全局作用域中的变量就是全局对象的一个同名属性
+// 相当于 window.a = 2
+const a = 2;
+
+// 调用 foo 函数时 this.a 被解析成了全局变量 a
+// 因为在本例中，函数调用时应用了 this 的默认绑定
+// 因此 this 指向全局对象 global objects 或 window objects
+// 分析调用位置来获知 foo 是如何调用的
+// foo 函数直接使用不带任何修饰的函数引用进行调用，因此只能使用默认绑定，无法应用其他规则
+foo();
+// 2
 ```
 
-而且规范中还提供了获取 Reference 组成部分的方法，比如 GetBase 和 IsPropertyReference。
-
-这两个方法很简单，简单看一看：
-
-1.GetBase
-
-> GetBase(V). Returns the base value component of the reference V.
-
-返回 `reference` 的 `base value`。
-
-2.IsPropertyReference
-
-> IsPropertyReference(V). Returns true if either the base value is an object or HasPrimitiveBase(V) is true; otherwise returns false.
-
-简单的理解：如果 `base value` 是一个对象，就返回 `true`。
-
-## GetValue
-
-除此之外，紧接着在 8.7.1 章规范中就讲了一个用于从 Reference 类型获取对应值的方法： `GetValue`。
-
-简单模拟 `GetValue` 的使用：
+如果使用严格模式（Strict Mode），则不能将全局对象用于默认绑定，因此 `this` 会绑定到 `undefined`。
 
 ```js
-var foo = 1;
+function foo() {
+    "use strict";
+    
+    console.log( this.a );
+}
 
-var fooReference = {
-    base: EnvironmentRecord,
-    name: 'foo',
-    strict: false
-};
+var a = 2;
 
-GetValue(fooReference) // 1;
+foo();
+// TypeError:this is undefined
 ```
 
-`GetValue` 返回对象属性真正的值，但是要注意：
+这里有一个微妙但是非常重要的细节，虽然 `this` 的绑定规则完全取决于调用位置，但是只有 `foo()` 运行在非严格模式下时，默认绑定才能绑定到全局对象；在严格模式下调用 `foo` 则不受默认绑定影响。
 
-**调用 GetValue，返回的将是具体的值，而不再是一个 Reference**
+```js
+function foo() {
+    console.log( this.a )
+}
 
-这个很重要，这个很重要，这个很重要。
+var a = 2;
 
-## 如何确定this的值
+(function foo() {
+    "use strict";
+    
+    foo();	// 2
+})()
+```
 
-关于 Reference 讲了那么多，为什么要讲 Reference 呢？到底 Reference 跟本文的主题 `this` 有哪些关联呢？如果你能耐心看完之前的内容，以下开始进入高能阶段：
+⚠️ **注意**：通常来说你不应该在代码中混合使用严格模式和非严格模式。整个程序要么严格要么非严格。然而，有时候你可能会用到第三方库，其严格程度和你代码有所不同，因此一定要注意这类兼容性细节。
 
-看规范 11.2.3 Function Calls：
+### 隐式绑定
 
-这里讲了当函数调用的时候，如何确定 `this` 的取值。
+另一条需要考虑的规则是调用位置是否有**上下文对象**，或者说是否**被某个对象拥有或者包含**，不过这种说法可能会造成一些误导。
 
-只看第一步、第六步、第七步：
+🌰 **标准示例：**
 
-> 1.Let *ref* be the result of evaluating MemberExpression.
+```js
+function foo() {
+    console.log( this.a );
+}
 
-> 6.If Type(*ref*) is Reference, then
+const container = {
+    a: 2,
+    foo: foo
+};
 
-> ```
->   a.If IsPropertyReference(ref) is true, then
-> ```
+container.foo();	// 2
+```
 
-> ```
->       i.Let thisValue be GetBase(ref).
-> ```
+首先需要注意的是 `foo()` 的声明方式，及其之后是如何被当作引用属性添加到 `container` 中的。但是无论是直接在 `container` 中定义还是先定义再添加为引用属性，这个函数严格来说都不属于 `container` 对象。
 
-> ```
->   b.Else, the base of ref is an Environment Record
-> ```
+然而，调用位置会使用 `container` 上下文来引用函数，因此你可以说函数被调用时 `container` 对象 **拥有** 或者 **包含** 它。
 
-> ```
->       i.Let thisValue be the result of calling the ImplicitThisValue concrete method of GetBase(ref).
-> ```
+无论你如何称呼这个模式，当 `foo()` 被调用时，它的前面确实加上了对 `container` 的引用。当函数引用有上下文时，隐式绑定规则会把函数调用中的 `this` 绑定到这个上下文对象。因为调用 `foo()` 时 `this` 被绑定到 `container` 上，因此 `this.a` 和 `container.a` 是一样的。
+
+💡 **对象属性引用链中只有上一层或最后一层在调用位置中起作用。**
+
+```js
+function foo() {
+    console.log( this.a );
+}
+
+var obj2 = {
+    a: 42,
+    foo: foo
+};
+
+var obj1 = {
+    a: 2,
+    obj2: obj2
+}
+
+obj1.obj2.foo();		// 42
+```
+
+#### 隐式丢失
+
+一个最常见的 `this` 绑定问题就是**被隐式绑定的函数会丢失绑定对象**，也就是说它会应用默认绑定，从而把 `this` 绑定到全局对象或者 `undefined` 上（这取决于是否是严格模式）。
+
+🌰 **标准示例：**
+
+```js
+function foo() {
+    console.log( this.a );
+}
+
+const container = {
+    a: 2,
+    foo: foo
+};
+
+// 函数别名
+const bar = container.foo;	
+
+// a 是全局对象的属性
+const a = "oops, global";	
+
+bar();
+// "oops, global"
+```
+
+📍 虽然 `bar` 是 `container.foo` 的一个引用，但是实际上，它引用的是 `foo` 函数本身，因此此时的 `bar()` 其实是一个不带任何修饰的函数调用，因此应用了默认绑定。 
+
+一种更微妙、更常见并且更出乎意料的情况发生在传入回调函数时。
+
+🌰 **标准示例：**
+
+```js
+function foo() {
+    console.log( this.a ); 
+}
+
+function bar(fn) {
+    // fn 其实引用的是 foo
+    fn();    // <--调用位置
+}
+
+var container = {
+    a: 2,
+    foo: foo
+}
+
+// a 是全局对象的属性
+var a = "opps, global";		
+
+bar( container.foo );
+// "opps, global"
+```
+
+参数传递其实是一种**隐式赋值**，因此我们传入函数时也会被隐式赋值，所以结果和上个示例一样。
+
+如果把函数传入语言内置的函数而不是传入你自己声明的函数，结果是一样的，没有区别。
+
+```js
+function foo() {
+    console.log( this.a );
+}
+
+const container = {
+    a: 2,
+    foo: foo
+};
+
+// a 是全局对象的属性
+const a = "opps, global";		
+
+setTimeout(container.foo, 100);
+// 'opps, global'
+```
+
+回调函数丢失 `this` 绑定是非常常见的。
+
+除此之外，还有一种情况 `this` 的行为会出乎我们意料：调用回调函数的函数可能会修改 `this`。在一些流行的 JavaScript 库中事件处理器会把回调函数的 `this` 强制绑定到触发事件的 DOM 元素上。这在一些情况下可能很有用，但是有时它可能会让你感到非常郁闷。遗憾的是，这些工具通常无法选择是否启用这个行为。
+
+无论是哪种情况，`this` 的改变都是意想不到的，实际上你无法控制回调函数的执行方式，因此就没有办法控制调用位置以得到期望的绑定。之后我们会介绍如何通过固定 `this` 来修复这个问题。
+
+### 显式绑定
+
+就像我们刚才看到的那样，在分析隐式绑定时，我们必须在一个对象内部包含一个指向函数的属性，并通过这个属性间接引用函数，从而把 `this` 隐式绑定到该对象上。
+
+JavaScript 提供了 `apply()`、`call()` 和 `bind()` 方法，为创建的所有函数绑定宿主环境。通过这些方法绑定函数的 `this` 指向称为**显式绑定**。
+
+#### 硬绑定
+
+硬绑定可以解决之前提出的丢失绑定的问题。
+
+🌰 **标准示例：**
+
+```js
+function foo() {
+    console.log( ths.a );
+}
+
+const container = {
+    a: 2
+}
+
+var bar = function() {
+    foo.call(container)
+}
+
+bar();
+// 2
+
+setTimeout( bar, 100);
+// 2
+
+// 硬绑定的 bar 不可能再修改它的 this
+bar.call( window );
+// 2
+```
+
+我们创建了函数 `bar()`，并在它的内部手动调用了 `foo.call(container)` ，因此强制把 `foo` 的 `this` 绑定到了 `container` 。无论之后如何调用函数 `bar`，它总会手动在 `container` 上调用 `foo`。这种绑定是一种显式（手动）的强制绑定，因此我们称之为**硬绑定**。
+
+#### 内置函数
+
+第三方库的许多函数，以及 JavaScript 语言和宿主环境中许多新的内置函数，都提供了一个可选的参数，通常被称为"上下文"（context），其作用和 `bind()` 一样，确保你的回调函数使用指定的 `this` 。
+
+```js
+function foo(item) {
+    console.log( this.title, item );
+}
+
+const columns = {
+    title: 'No:'
+}
+
+// 调用 foo(..) 时把 this 绑定到 columns
+[1, 2, 3].forEach( foo, columns);
+// No:1 No:2 No:3
+```
+
+这些函数实际上就是通过 `call()` 或者 `apply()` 实现了显式绑定，这样代码会更加优雅。  
+
+### new 绑定
+
+在 JavaScript 中，构造函数只是使用 `new` 操作符时被调用的函数。它们并不会属于某个类，也不会实例化一个类，实际上，它们甚至都不能说是一种特殊的函数类型，它们只是被 `new` 操作符调用的普通函数而已。
+
+举例来说，思考一下 `Number()` 作为构造函数时的行为，ES5.1 中这样描述它：
+
+> 15.7.2 Number 构造函数
 >
-> 7.Else, Type(*ref*) is not Reference.
+> 当 Number 在 new 表达式中被调用时，它是一个构造函数：它会初始化新创建的对象。
 
-> ```
->   a. Let thisValue be undefined.
-> ```
+所以，包括内置对象函数在内的所有函数都可以用 `new` 来调用，这种函数调用被称为**构造函数调用**。这里有一个重要但是非常细微的区别：实际上并不存在所谓的构造函数，只是对于函数的**构造调用**。
 
-让我们描述一下：
+🎉 使用 `new` 来调用函数，或者说发生构造函数调用时，会自动执行下面的操作。
 
-1.计算 MemberExpression 的结果赋值给 `ref`
+1. 创建全新的空对象
+2. 将新对象的隐式原型对象关联构造函数的显式原型对象
+3. 执行对象类的构造函数，同时该实例的属性和方法被 `this` 所引用，即 `this` 指向新构造的实例
+4. 如果构造函数执行后没有返回其他对象，那么 `new` 表达式中的函数调用会自动返回这个新对象
 
-2.判断 `ref` 是不是一个 Reference 类型
-
-​	2.1 如果 `ref` 是 Reference，并且` IsPropertyReference(ref)` 是 `true`, 那么 `this` 的值为 `GetBase(ref)`
-
-​	2.2 如果 `ref` 是 Reference，并且 `base value` 值是 Environment Record, 那么 `this` 的值为 `ImplicitThisValue(ref)`
-
-​	2.3 如果 `ref` 不是 Reference，那么 `this` 的值为 `undefined`
-
-
-## 具体分析
-
-让我们一步一步看：
-
-1. 计算 MemberExpression 的结果赋值给 `ref`
-
-什么是 MemberExpression？看规范 11.2 Left-Hand-Side Expressions：
-
-MemberExpression :
-
-- PrimaryExpression 原始表达式 可以参见《JavaScript权威指南第四章》
-- FunctionExpression  函数定义表达式
-- MemberExpression [ Expression ] 属性访问表达式
-- MemberExpression . IdentifierName  属性访问表达式
-- new MemberExpression Arguments  对象创建表达式
-
-举个例子：
+🎯 **模拟过程：**
 
 ```js
-function foo() {
-    console.log(this)
-}
-
-foo(); // MemberExpression 是 foo
-
-function foo() {
-    return function() {
-        console.log(this)
+const foo = function(func){
+    // 创建空对象，空对象关联构造函数的原型对象
+    const o = Object.create(func.prototype)
+    
+    // 执行对象类的构造函数，同时该实例的属性和方法被 this 所引用，即 this 指向新构造的实例
+    const k = func.call(o)
+    
+    // 判断构造函数的运行结果是否对象类型
+    if(typeof k === 'object'){
+        return k
+    } else {
+        return o
     }
 }
-
-foo()(); // MemberExpression 是 foo()
-
-var foo = {
-    bar: function () {
-        return this;
-    }
-}
-
-foo.bar(); // MemberExpression 是 foo.bar
 ```
 
-所以简单理解 MemberExpression 其实就是 `()` 左边的部分。
+解剖内部操作后，我们能得出结论 `new` 操作符是为了实现该过程的一种**语法糖**。
 
-2.判断 `ref` 是不是一个 Reference 类型。
+## 优先级
 
-关键就在于看规范是如何处理各种 MemberExpression，返回的结果是不是一个Reference类型。
+上文介绍了函数调用中 `this` 绑定的四条规则，你需要做的就是找到函数的调用位置并判断应用哪条规则。但是，如果某个调用位置应用多条规则，则必须给这些规则设定优先级。
 
-举最后一个例子：
+毫无疑问，默认绑定的优先级是四条规则中最低的，所以我们先不考虑它。
 
-```js
-var value = 1;
-
-var foo = {
-  value: 2,
-  bar: function () {
-    return this.value;
-  }
-}
-
-//示例1
-console.log(foo.bar());
-//示例2
-console.log((foo.bar)());
-//示例3
-console.log((foo.bar = foo.bar)());
-//示例4
-console.log((false || foo.bar)());
-//示例5
-console.log((foo.bar, foo.bar)());
+```
+显式绑定 > new 绑定 > 隐式绑定
 ```
 
-### foo.bar()
-
-在示例 1 中，MemberExpression 计算的结果是 foo.bar，那么 foo.bar 是不是一个 Reference 呢？
-
-查看规范 11.2.1 Property Accessors，这里展示了一个计算的过程，什么都不管了，就看最后一步：
-
-> Return a value of type Reference whose base value is baseValue and whose referenced name is propertyNameString, and whose strict mode flag is strict.
-
-我们得知该表达式返回了一个 Reference 类型！
-
-根据之前的内容，我们知道该值为：
-
-```js
-var Reference = {
-  base: foo,
-  name: 'bar',
-  strict: false
-};
-```
-
-接下来按照 2.1 的判断流程走：
-
-> 2.1 如果 ref 是 Reference，并且 IsPropertyReference(ref) 是 true, 那么 this 的值为 GetBase(ref)
-
-该值是 Reference 类型，那么 `IsPropertyReference(ref)` 的结果是多少呢？
-
-前面我们已经铺垫了 IsPropertyReference 方法，如果 `base value` 是一个对象，结果返回 `true`。
-
-`base value` 为 `foo`，是一个对象，所以 `IsPropertyReference(ref)` 结果为 `true`。
-
-这个时候我们就可以确定 `this` 的值了：
-
-```js
-this = GetBase(ref)，
-```
-
-GetBase 也已经铺垫了，获得 `base value` 值，这个例子中就是 `foo`，所以 `this` 的值就是 `foo` ，示例1的结果就是 2！
-
-唉呀妈呀，为了证明 `this` 指向 `foo`，真是累死我了！但是知道了原理，剩下的就更快了。
-
-### (foo.bar)()
-
-看示例2：
-
-```js
-console.log((foo.bar)());
-```
-
-`foo.bar` 被 `()` 包住，查看规范 11.1.6 The Grouping Operator
-
-直接看结果部分：
-
-> Return the result of evaluating Expression. This may be of type Reference.
-
-> NOTE This algorithm does not apply GetValue to the result of evaluating Expression.
-
-实际上 () 并没有对 MemberExpression 进行计算，所以其实跟示例 1 的结果是一样的。
-
-### (foo.bar = foo.bar)()
-
-看示例3，有赋值操作符，查看规范 11.13.1 Simple Assignment ( = ):
-
-计算的第三步：
-
-> 3.Let rval be GetValue(rref).
-
-因为使用了 GetValue，所以返回的值不是 Reference 类型，
-
-按照之前讲的判断逻辑：
-
-> 2.3 如果 ref 不是Reference，那么 this 的值为 undefined
-
-`this` 为 `undefined`，非严格模式下，`this` 的值为 `undefined` 的时候，其值会被隐式转换为全局对象。
-
-### (false || foo.bar)()
-
-看示例4，逻辑与算法，查看规范 11.11 Binary Logical Operators：
-
-计算第二步：
-
-> 2.Let lval be GetValue(lref).
-
-因为使用了 GetValue，所以返回的不是 Reference 类型，`this` 为 `undefined`
-
-### (foo.bar, foo.bar)()
-
-看示例5，逗号操作符，查看规范11.14 Comma Operator ( , )
-
-计算第二步：
-
-> 2.Call GetValue(lref).
-
-因为使用了 GetValue，所以返回的不是 Reference 类型，`this` 为 `undefined`
-
-### 揭晓结果
-
-所以最后一个例子的结果是：
-
-```js
-var value = 1;
-
-var foo = {
-  value: 2,
-  bar: function () {
-    return this.value;
-  }
-}
-
-//示例1
-console.log(foo.bar()); // 2
-//示例2
-console.log((foo.bar)()); // 2
-//示例3
-console.log((foo.bar = foo.bar)()); // 1
-//示例4
-console.log((false || foo.bar)()); // 1
-//示例5
-console.log((foo.bar, foo.bar)()); // 1
-```
-
-注意：以上是在非严格模式下的结果，严格模式下因为 `this` 返回 `undefined`，所以示例 3 会报错。
-
-### 补充
-
-最最后，忘记了一个最最普通的情况：
+### 隐式绑定和显式绑定
 
 ```js
 function foo() {
-    console.log(this)
+    console.log( this.a );
 }
 
-foo(); 
-```
-
-MemberExpression 是 `foo`，解析标识符，查看规范 10.3.1 Identifier Resolution，会返回一个 Reference 类型的值：
-
-```js
-var fooReference = {
-    base: EnvironmentRecord,
-    name: 'foo',
-    strict: false
-};
-```
-
-接下来进行判断：
-
-> 2.1 如果 ref 是 Reference，并且 IsPropertyReference(ref) 是 true, 那么 this 的值为 GetBase(ref)
-
-因为 base value 是 EnvironmentRecord，并不是一个 Object 类型，还记得前面讲过的 `base value` 的取值可能吗？ 只可能是 undefined, an Object, a Boolean, a String, a Number, 和 an environment record 中的一种。
-
-`IsPropertyReference(ref)` 的结果为 `false`，进入下个判断：
-
-> 2.2 如果 ref 是 Reference，并且 base value 值是 Environment Record, 那么this的值为 ImplicitThisValue(ref)
-
-`base value` 正是 Environment Record，所以会调用 `ImplicitThisValue(ref)`
-
-查看规范 10.2.1.1.6，ImplicitThisValue 方法的介绍：该函数始终返回 `undefined`。
-
-所以最后 `this` 的值就是 `undefined`。
-
-## 多说一句
-
-尽管我们可以简单的理解 `this` 为调用函数的对象，如果是这样的话，如何解释下面这个例子呢？
-
-```js
-var value = 1;
-
-var foo = {
-  value: 2,
-  bar: function () {
-    return this.value;
-  }
-}
-console.log((false || foo.bar)()); // 1
-```
-
-此外，又如何确定调用函数的对象是谁呢？在写文章之初，我就面临着这些问题，最后还是放弃从多个情形下给大家讲解 `this` 指向的思路，而是追根溯源的从 ECMASciript 规范讲解 `this` 的指向，尽管从这个角度写起来和读起来都比较吃力，但是一旦多读几遍，明白原理，绝对会给你一个全新的视角看待 `this` 。而你也就能明白，尽管 `foo()` 和 `(foo.bar = foo.bar)()` 最后结果都指向了 `undefined`，但是两者从规范的角度上却有着本质的区别。
-
-此篇讲解执行上下文的 `this`，即便不是很理解此篇的内容，依然不影响大家了解执行上下文这个主题下其他的内容。所以，依然可以安心的看下一篇文章。
-
-## 根据调用场景判断
-
-```js
-var obj = {
+const container1 = {
     a: 1,
-    b: function() {
-        console.log(this)
-    }
+    foo: foo
+};
+
+const container2 = {
+    a: 2,
+    foo: foo
+};
+
+container1.foo();
+// 1
+container2.foo();
+// 2
+
+container1.foo.call( container2 );
+// 2
+container2.foo.call( container1 );
+// 1
+```
+
+可以看到，显式绑定优先级更高，也就是说在判断时应当先考虑是否可以存在显式绑定。
+
+### new 绑定和隐式绑定
+
+```js
+function foo(something) {
+    this.a = something;
+}
+
+const container1 = {
+    foo: foo
+};
+
+const container2 = {};
+
+container1.foo( 2 );
+console.log( container1.a );
+// 2
+
+container1.foo( container2, 3);
+console.log( container2.a );
+// 3
+
+var bar = new container1.foo( 4 );
+console.log( container1.a );
+// 2
+console.log( bar.a );
+// 4
+```
+
+可以看到 `new` 绑定比隐式绑定优先级高。但是 `new` 绑定和显式绑定谁的优先级更高呢？
+
+`new` 和 `call/apply` 无法一起使用，因此无法通过 `new foo.call(obj1)` 来直接进行测试。但是我们可以使用硬绑定来测试他俩的优先级。
+
+在看代码之前先回忆一下硬绑定是如何工作的。`Function.prototype.bind(..)` 会创建一个新的包装函数，这个函数会忽略它当前的 `this` 绑定（无论绑定的对象是什么），并把我们提供的对象绑定到 `this` 上。
+
+这样看起来硬绑定（也是显式绑定的一种）似乎比 `new` 绑定的优先级更高，无法使用 `new` 来控制 `this` 绑定。
+
+```js
+function foo(something) {
+    this.a = something;
+}
+
+var container1 = {};
+
+var bar = foo.bind( container1 );
+bar( 2 );
+console.log( container1.a );
+// 2
+
+var baz = new bar( 3 );
+console.log( container1.a );
+// 2
+console.log( baz.a );
+// 3
+```
+
+## 绑定例外
+
+### 忽略指向
+
+如果将 `null` 或 `undefined` 作为 `this` 的绑定对象传入 `call`、`apply` 或 `bind`，这些值在调用时会被忽略，实际应用的是默认绑定规则。
+
+```js
+function foo(){
+    console.log(this.a)
+}
+
+const a = 2;
+
+foo.call(null);
+// 2
+```
+
+此类写法常用于 `apply()` 来展开数组，并当作参数传入一个函数，类似地，`bind()` 可以对参数进行柯里化（预先设置一些参数）。
+
+```js
+function foo(a, b){
+    console.log('a:' + a + ',b:' + b)
+}
+
+// 把数组展开成参数
+foo.apply( null, [2, 3] );
+// a:2, b:3
+
+// 使用 bind(..) 进行柯里化
+var bar = foo.bind( null, 2 ); bar( 3 );
+// a:2, b:3
+```
+
+这两种方法都需要传入一个参数当作 `this` 的绑定对象。如果函数并不关心 `this` 的话，你
+仍然需要传入一个占位值，这时 `null` 可能是一个不错的选择。
+
+### 软绑定
+
+硬绑定这种方式可以把 `this` 强制绑定到指定的对象（除了使用 `new` 时），防止函数调用应用默认绑定规则。问题在于，硬绑定会大大降低函数的灵活性，使用硬绑定之后就无法使用隐式绑定或者显式绑定来修改 `this`。
+
+如果可以给默认绑定指定一个全局对象和 `undefined` 以外的值，那就可以实现和硬绑定相同的效果，同时保留隐式绑定或者显式绑定修改 `this` 的能力。
+
+```js
+if (!Function.prototype.softBind) { Function.prototype.softBind = function(obj) {
+var fn = this;
+// 捕获所有 curried 参数
+var curried = [].slice.call( arguments, 1 ); var bound = function() {
+return fn.apply(
+(!this || this === (window || global)) ?
+obj : this
+curried.concat.apply( curried, arguments )
+); };
+             bound.prototype = Object.create( fn.prototype );
+return bound; };
 }
 ```
 
-1. 作为对象调用时，指向该对象 `obj.b();` ：指向 `obj`
-2. 作为函数调用, `var b = obj.b; b();` ：指向全局 `window`
-3. 作为构造函数调用 `var b = new Fun();` ：`this` 指向当前实例对象 
-4. 作为 `call` 与 `apply` 调用 `obj.b.apply(object, []); `：`this` 指向当前的 `object`
+## 箭头函数
 
+箭头函数并不是使用 `function` 关键字定义的，而是使用被称为胖箭头的操作符 `=>` 定义的。箭头函数不使用 `this` 的四种标准规则，而是根据外层（函数或者全局）作用域来决定 `this`。并且，箭头函数拥有静态的上下文，即一次绑定之后，便不可再修改。
 
+`this` 指向的固定化，并不是因为箭头函数内部有绑定 `this` 的机制，实际原因是箭头函数根本没有自己的 `this`，导致内部的 `this` 就是外层代码块的 `this`。正是因为它没有 `this`，所以也就不能用作构造函数。
 
-本章节转载自 [JavaScript深入之从ECMAScript规范解读this](https://github.com/mqyqingfeng/Blog/issues/7) 
+```js
+function foo() {
+	// 返回一个箭头函数
+    return (a) => {
+	    // this 继承自 foo()
+	    console.log( this.a );
+    };
+}
+const container1 = { a: 1 };
+
+const container2 = { a: 2};
+
+const bar = foo.call( container1 );
+
+bar.call( container2 );
+// 1
+```
+
+`foo()` 内部创建的箭头函数会捕获调用时 `foo()` 的 `this`。由于 `foo()` 的 `this` 绑定到 `container1`，
+`bar`（引用箭头函数）的 `this` 也会绑定到 `con1`，箭头函数的绑定无法被修改。(`new` 也不
+行）
+
+箭头函数可以像 `bind(..)` 一样确保函数的 `this` 被绑定到指定对象，此外，其重要性还体
+现在它用更常见的词法作用域取代了传统的 `this` 机制。实际上，在 ES6 之前我们就已经
+在使用一种几乎和箭头函数完全一样的模式。
+
+虽然 `self = this` 和箭头函数看起来都可以取代 `bind(..)`，但是从本质上来说，它们想替代的是 `this` 机制。 
+
+如果你经常编写 `this` 风格的代码，但是绝大部分时候都会使用 `self = this` 或者箭头函数来否定 `this` 机制，那你或许应当: 
+
+* 只使用词法作用域并完全抛弃错误 `this` 风格的代码
+* 完全采用 `this` 风格，在必要时使用 `bind(..)`，尽量避免使用 `self = this` 和箭头函数
+
+## 改变指向
+
+如下列出四种方法可以在编码中改变 `this` 指向。
+
+* 使用 ES6 的箭头函数
+* 在函数内部使用 `_this = this`
+* 使用 `apply`、`call` 和 `bind`
+* `new` 实例化一个对象
+
+---
+
+**参考资料：**
+
+* [📚 你不知道的 JavaScript（上卷）](<https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/README.md>)
+* [📝 this 的值到底是什么？一次说清楚](<https://zhuanlan.zhihu.com/p/23804247>)
+* [📝 JavaScript 深入之从 ECMAScript 规范解读 this](https://github.com/mqyqingfeng/Blog/issues/7) 
