@@ -37,5 +37,3 @@ ctx.fillRect(10, 10, 100, 100);
 ctx.fillStyle = 'red';
 ctx.fillRect(50, 50, 100, 100);
 ```
-
-<a target="_blank" href="https://codepen.io/mrsingsing/pen/dqGaMN">🔎在 CodePen 中打开</a>

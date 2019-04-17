@@ -81,8 +81,6 @@ ctx.lineTo(100, 100);
 ctx.stroke();
 ```
 
-[🔎在 CodePen 中打开](https://codepen.io/mrsingsing/pen/gdKgJR?editors=1010)
-
 ### lineJoin
 
 `CanvasRenderingContext2D.lineJoin` 属性设置或返回所创建边角的类型，当两条线交汇时。
@@ -122,8 +120,6 @@ ctx.lineTo(200, 100);
 ctx.lineTo(300,0);
 ctx.stroke();
 ```
-
-[🔎在 CodePen 中打开](https://codepen.io/mrsingsing/pen/WgypKm?editors=1010)
 
 ### miterLimit
 

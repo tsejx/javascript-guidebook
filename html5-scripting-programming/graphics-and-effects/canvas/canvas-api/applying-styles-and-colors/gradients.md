@@ -48,14 +48,12 @@ const ctx = canvas.getContext("2d");
 // 创建线性渐变对象
 const gradient = ctx.createLinearGradient(0,0,200,0);
 
- gradient.addColorStop(0, '#E55D87'); 
+ gradient.addColorStop(0, '#E55D87');
  gradient.addColorStop(1, '#5FC3E4');
 
  context.fillStyle = gradient;
  context.fillRect(0, 0, 400, 300);
 ```
-
-[🔎在 CodePen 中打开](https://codepen.io/mrsingsing/pen/JaZRmW?editors=1010)
 
 ### createRadialGradient()
 
@@ -152,8 +150,6 @@ ctx.fillRect(0,0,200,200);
  context.fillStyle = gradient;
  context.fillRect(0, 0, 300, 500);
 ```
-
-[🔎在 CodePen 中打开](https://codepen.io/mrsingsing/pen/MqXjda?editors=1010)
 
 ### CanvasGradient对象
 

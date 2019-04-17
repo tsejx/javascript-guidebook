@@ -178,7 +178,7 @@ const ctx = canvas.getContext("2d");
 ctx.beginPath();
 ctx.moveTo(0,0);
 ctx.lineTo(100, 100);
-ctx.stroke(); 
+ctx.stroke();
 ```
 
 ### quadraticCurveTo()
@@ -237,8 +237,6 @@ ctx.fillStyle = 'red';
 // control point
 ctx.fillRect(230, 30, 10, 10);
 ```
-
-<a target='_blank' href='https://codepen.io/mrsingsing/pen/JavQYz?editors=1010'>🔎在 CodePen 中打开</a>
 
 ### bezierCurveTo()
 
@@ -301,8 +299,6 @@ ctx.fillRect(230, 30, 10, 10);
 ctx.fillRect(150, 70, 10, 10);
 ```
 
-<a target='_blank' href='https://codepen.io/mrsingsing/pen/KxRjzy?editors=1010'>🔎在 CodePen 中打开</a>
-
 ### arcTo()
 
 `CanvasRenderingContext2D.arcTo()` 方法绘制坐标与直线之间的连接圆弧
@@ -356,8 +352,6 @@ ctx.arcTo(200, 50, 200, 100, 50);
 ctx.strokeStyle = "blue";
 ctx.stroke();
 ```
-
-<a target='_blank' href='https://codepen.io/mrsingsing/pen/NLMoLr'>🔎在 CodePen 中打开</a>
 
 ### arc()
 
@@ -419,8 +413,6 @@ ctx.arc(100, 100, 50, 0, Math.PI/2, false);
 
 ctx.stroke();
 ```
-
-<a target='_blank' href='https://codepen.io/mrsingsing/pen/ZMoPyM?editors=1010'>🔎在 CodePen 中打开</a>
 
 ### rect()
 
@@ -509,8 +501,6 @@ const ctx = canvas.getContext("2d");
 ctx.rect(10, 10, 100, 100);
 ctx.stroke();
 ```
-
-<a target='_blank' href='https://codepen.io/mrsingsing/pen/oPyvrO'>🔎在 CodePen 中打开</a>
 
 ### clip()
 

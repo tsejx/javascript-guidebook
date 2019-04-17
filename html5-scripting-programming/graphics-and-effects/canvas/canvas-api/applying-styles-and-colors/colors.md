@@ -52,8 +52,6 @@ function draw() {
 }
 ```
 
-<a target="_blank" href="https://codepen.io/mrsingsing/pen/yxOzpd">🔎在 CodePen 中打开</a>
-
 ### strokeStyle
 
 `CanvasRenderingContext2D.strokeStyle` 属性用于设置笔触的颜色、渐变或模式。
@@ -104,5 +102,3 @@ function draw() {
     }
   }
 ```
-
-<a target="_blank" href="https://codepen.io/mrsingsing/pen/jvWXxx">🔎在 CodePen 中打开</a>
