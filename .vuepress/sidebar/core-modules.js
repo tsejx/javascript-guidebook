@@ -3,13 +3,12 @@ const coreModules = [
         title: '编译阶段',
         link: 'executable-code-and-execution-contexts/compilation',
         children: [
-            { title: '作用域', link: 'scope' },
+            { title: '编译阶段', link: 'compilation' },
             { title: '词法作用域', link: 'lexical-scope' },
-            { title: '函数中的作用域', link: 'scope-from-functions' },
             { title: '函数作用域', link: 'function-as-scopes' },
             { title: '块作用域', link: 'blocks-as-scopes' },
             { title: '声明提升', link: 'hoisting' },
-            { title: '作用域闭包', link: 'closures' },
+            { title: '闭包', link: 'closures' },
         ]
     },{
         title: '执行阶段',
@@ -18,8 +17,7 @@ const coreModules = [
             { title: '执行上下文栈', link: 'execution-context-stack' },
             { title: '变量对象', link: 'variable-object' },
             { title: '作用域链', link: 'scope-chain' },
-            { title: 'this绑定', link: 'this' },
-            { title: '执行上下文', link: 'execution-context' }
+            { title: 'this', link: 'this' }
         ]
     }, {
         title: '函数声明',

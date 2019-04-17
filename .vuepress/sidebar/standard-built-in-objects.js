@@ -27,10 +27,10 @@ const standardBuiltInObject = [
     title: '基本对象',
     link: 'fundamental-objects',
     children: [
-      { title: 'Object', link: 'object-objects' },
-      { title: 'Function', link: 'function-objects' },
+      { title: 'Object', link: 'object-objects/object-objects' },
+      { title: 'Function', link: 'function-objects/function-objects' },
       { title: 'Boolean', link: 'boolean-objects' },
-      { title: 'Symbol', link: 'symbol-objects' },
+      { title: 'Symbol', link: 'symbol-objects/symbol-objects' },
       { title: 'Error', link: 'error-objects' },
     ],
   },
@@ -83,6 +83,7 @@ const standardBuiltInObject = [
     children: [
       { title: 'Iterator', link: 'iterator-objects/iterator' },
       { title: 'Promise', link: 'promise-objects/promise' },
+      { title: 'Generator', link: 'generator-objects/generator'}
     ],
   },
 ];

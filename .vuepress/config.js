@@ -6,7 +6,8 @@ const objectOrientedProgamming = require('./sidebar/object-oriented-programming'
   .objectOrientedProgamming;
 const browserObjectModel = require('./sidebar/browser-object-model').browserObjectModel;
 const documentObjectModel = require('./sidebar/document-object-model').documentObjectModel;
-const html5ScriptingProgramming = require('./sidebar/html5-scripting-programming').html5ScriptingProgramming;
+const html5ScriptingProgramming = require('./sidebar/html5-scripting-programming')
+  .html5ScriptingProgramming;
 const computerNetworks = require('./sidebar/computer-networks').computerNetworks;
 const transform = require('./utils/transform');
 
@@ -17,6 +18,7 @@ module.exports = {
   base: `/${name}/`,
   head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
   title: 'JavaScript-Guidebook',
+  ga: 'UA-138047269-1',
   serviceWorker: true,
 
   themeConfig: {
@@ -78,4 +80,10 @@ module.exports = {
       github: 'https://github.com/tsejx/JavaScript-Guidebook',
     },
   },
+
+  plugins: [
+    '@vuepress/back-to-top',
+    '@vuepress/medium-zoom',
+    'vuepress-plugin-baidu-autopush'
+  ],
 };
