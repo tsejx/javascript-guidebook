@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 set -e
-yarn run docs:build
+yarn run build
 cd .vuepress/dist
 
 # 如果是发布到自定义域名
