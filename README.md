@@ -24,7 +24,7 @@
 完整知识图谱结构目录 [README](README_QUICK.md)
 
 1. [基本语法 Basic Concept](basic-concept/)
-2. [标准内置对象 Standard Buit-in Objects](standard-built-in-objects/)
+2. [标准内置对象 Standard Built-in Objects](standard-built-in-objects/)
 3. [核心模块 Core Modules](core-modules/)
 4. [面向对象编程 Object Oriented Programming](object-oriented-programming/)
 5. [浏览器对象模型 Browser Object Model](browser-object-model/)
@@ -42,10 +42,12 @@
 
 - [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)：MDN Web Docs 网站提供开放网络（Open Web）技术有关的信息
 - [ecma-international ecma 262 5.1（英）](http://www.ecma-international.org/ecma-262/5.1/index.html)：ECMAScript 5
-- [ECMAScript 6 入门(阮一峰)](http://es6.ruanyifeng.com/)：ECMAScript 6 入门级中文书籍
 - [ECMAScript® 2015 Language Specification（ES6 英）](http://www.ecma-international.org/ecma-262/6.0/)：ECMAScript 2015 规范文档
 - [ECMAScript® 2016 Language Specification（ES7 英）](http://www.ecma-international.org/ecma-262/7.0/index.html)：ECMAScript 2016 规范文档
 - [ECMAScript® 2017 Language Specification（ES8 英）](http://www.ecma-international.org/ecma-262/8.0/index.html)：ECMAScript 2017 规范文档
+- [ECMAScript® 2018 Language Specification（ES8 英）](<https://www.ecma-international.org/ecma-262/9.0/index.html>)：ECMAScript 2018 规范文档
+- [HTML Living Standard](<https://html.spec.whatwg.org/>)：HTML 规范文档 [🇨🇳中文版](<https://whatwg-cn.github.io/html/>)
+- [DOM Living Standard](<https://dom.spec.whatwg.org/>)：DOM 规范文档
 
 ### License
 

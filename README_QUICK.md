@@ -24,12 +24,12 @@
 ## 快速目录
 
 1. [基本语法 Basic Concept](#memo基本语法-basic-concept)
-2. [标准内置对象 Standard Buit-in Objects](#mortar_board标准内置对象-standard-built-in-objects)
+2. [标准内置对象 Standard Built-in Objects](#mortar_board标准内置对象-standard-built-in-objects)
 3. [核心模块 Core Modules](#8ball核心模块-core-modules)
 4. [面向对象编程 Object Oriented Programming](#construction面向对象编程-object-oriented-programming)
 5. [浏览器对象模型 Browser Object Model](#world_map浏览器对象模型-browser-oject-model)
 6. [文档对象模型 Document Object Model](#incoming_envelope文档对象模型document-oject-model)
-7. [HTML5脚本编程 HTML5 Scripting Programing](#keyboardhtml5脚本编程-scripting-programing)
+7. [HTML5 脚本编程 HTML5 Scripting Programing](#keyboardhtml5脚本编程-scripting-programing)
 8. [计算机网络 Computer Network](#globe_with_meridians计算机网络-computer-network)
 
 
@@ -42,9 +42,10 @@
   - [词法语法](basic-concept/lexical-grammar/lexical-grammar.md)
 - **数据类型和值**
   - [数据类型和值](basic-concept/data-types/data-types.md)
+  - [类型检测](basic-concept/data-types/type-check.md)
+    - [类型转换](basic-concept/data-types/type-conversion.md)
 - **表达式**
   - **主要表达式**
-    - [this 关键字](basic-concept/expressions/primary-expression/this.md)
     - [数组初始化](basic-concept/expressions/primary-expression/array-initializer.md)
     - [字面量引用](basic-concept/expressions/primary-expression/literal.md)
     - [对象初始化](basic-concept/expressions/primary-expression/object-initializer.md)
@@ -106,10 +107,10 @@
     - [encodeURI()](standard-built-in-objects/the-global-object/function-properties/encodeURI.md)
     - [encodeURIComponent()](standard-built-in-objects/the-global-object/function-properties/encodeURIComponent.md)
 - **基本对象**
-  - [Object](standard-built-in-objects/fundamental-objects/object-objects.md)
-  - [Function](standard-built-in-objects/fundamental-objects/function-objects.md)
+  - [Object](standard-built-in-objects/fundamental-objects/object-objects/object-objects.md)
+  - [Function](standard-built-in-objects/fundamental-objects/function-objects/function-objects.md)
   - [Boolean](standard-built-in-objects/fundamental-objects/boolean-objects.md)
-  - [Symbol](standard-built-in-objects/fundamental-objects/symbol-objects.md)
+  - [Symbol](standard-built-in-objects/fundamental-objects/symbol-objects/symbol-objects.md)
   - [Error](standard-built-in-objects/fundamental-objects/error-objects.md)
 - **数字和日期**
   - [Date](standard-built-in-objects/numbers-and-dates/date-objects/date-objects.md)
@@ -144,24 +145,26 @@
 
 - **可执行代码和执行上下文**
   - **编译阶段**
-    - [作用域](core-modules/executable-code-and-execution-contexts/compilation/scope.md)
+    - [编译阶段](core-modules/executable-code-and-execution-contexts/compilation/compilation.md)
     - [词法作用域](core-modules/executable-code-and-execution-contexts/compilation/lexical-scope.md)
-    - [函数中的作用域](core-modules/executable-code-and-execution-contexts/compilation/scope-from-functions.md)
     - [函数作用域](core-modules/executable-code-and-execution-contexts/compilation/function-as-scopes.md)
     - [块作用域](core-modules/executable-code-and-execution-contexts/compilation/blocks-as-scopes.md)
     - [声明提升](core-modules/executable-code-and-execution-contexts/compilation/hoisting.md)
-    - [作用域闭包](core-modules/executable-code-and-execution-contexts/compilation/closures.md)
+    - [闭包](core-modules/executable-code-and-execution-contexts/compilation/closures.md)
   - **执行阶段**
     - [执行上下文栈](core-modules/executable-code-and-execution-contexts/execution/execution-context-stack.md)
     - [变量对象](core-modules/executable-code-and-execution-contexts/execution/variable-object.md)
     - [作用域链](core-modules/executable-code-and-execution-contexts/execution/scope-chain.md)
-    - [this绑定](core-modules/executable-code-and-execution-contexts/execution/this.md)
-    - [执行上下文](core-modules/executable-code-and-execution-contexts/execution/execution-context.md)
+    - [this](core-modules/executable-code-and-execution-contexts/execution/this.md)
+  - **内存管理**
+    - [内存模型](core-modules/executable-code-and-execution-contexts/memory-management/memory-model.md)
+    - [内存生命周期](core-modules/executable-code-and-execution-contexts/memory-management/memory-life-cycle.md)
+    - [垃圾回收](core-modules/executable-code-and-execution-contexts/memory-management/garbage-collection.md)
 - **函数**
   - **函数声明**
     - [函数声明式定义](core-modules/ecmascript-function-objects/function-declarations/function-definitions.md)
     - [箭头函数定义](core-modules/ecmascript-function-objects/function-declarations/arrow-function-definitions.md)
-    - [方法定义](core-modules/ecmascript-function-objects/function-declarations/method-definitions.md)
+    - [异步函数定义](core-modules/ecmascript-function-objects/function-declarations/async-function-definitions.md)
   - **函数参数**
       - [函数参数](core-modules/ecmascript-function-objects/function-arguments/function-parameters.md)
       - [默认参数](core-modules/ecmascript-function-objects/function-arguments/default-parameters.md)
@@ -199,8 +202,7 @@
 - **理解对象**
   - [对象类型](object-oriented-programming/object-understand/the-object-type.md)
   - [属性操作](object-oriented-programming/object-understand/manipulating-property.md)
-  - [对象属性描述符](object-oriented-programming/object-understand/attributes-object.md)
-  - [描述符方法](object-oriented-programming/object-understand/the-descriptor-methods.md)
+  - [对象属性描述符](object-oriented-programming/object-understand/attributes-object.md)]
   - [对象状态](object-oriented-programming/object-understand/the-object-status.md)
 - **创建对象**
   - [工厂模式](object-oriented-programming/object-creation/the-factory-pattern.md)
@@ -227,49 +229,48 @@
 
 ### :world_map:浏览器对象模型 Browser Oject Model
 
-- [**Window对象**](browser-object-model/the-window-object/the-window-object.md)
+- [**Window 对象**](browser-object-model/the-window-object/the-window-object.md)
   - **定时器**
     - [setInterval](browser-object-model/the-window-object/timers/setInterval.md)
     - [setTimeout](browser-object-model/the-window-object/timers/setTimeOut.md)
-    - [定时器运行机制](browser-object-model/the-window-object/timers/timers-mechanism.md)
   - **系统对话框**
     - [alert](browser-object-model/the-window-object/system-dialogs/alert.md)
     - [confirm](browser-object-model/the-window-object/system-dialogs/confirm.md)
     - [prompt](browser-object-model/the-window-object/system-dialogs/prompt.md)
   - **视窗尺寸位置**
-    - [Window视图属性](browser-object-model/the-window-object/window-position/window-view-properties.md)
-    - [Screen视图属性](browser-object-model/the-window-object/window-position/screen-view-properties.md)
+    - [Window 视图属性](browser-object-model/the-window-object/window-position/window-view-properties.md)
+    - [Screen 视图属性](browser-object-model/the-window-object/window-position/screen-view-properties.md)
     - [文档视图和元素视图](browser-object-model/the-window-object/window-position/document-view-and-element-view.md)
     - [元素视图属性](browser-object-model/the-window-object/window-position/element-view-properties.md)
     - [鼠标位置](browser-object-model/the-window-object/window-position/mouse-position.md)
-- **Location对象**
-  - [Location对象的属性](browser-object-model/the-location-object/the-location-object-properties.md)
-  - [Location对象的方法](browser-object-model/the-location-object/the-location-object-methods.md)
-- **History对象**
-  - [History对象的属性](browser-object-model/the-history-object/the-history-object-properties.md)
-  - [History对象的方法](browser-object-model/the-history-object/the-history-object-methods.md)
-- **Screen对象**
-  - [Screen对象的属性](browser-object-model/the-screen-object/the-screen-object-properties.md)
-  - [Screen对象的方法](browser-object-model/the-screen-object/the-screen-object-methods.md)
-- **Navigator对象**
-  - [Navigator对象的属性](browser-object-model/the-navigator-object/the-navigator-object-properties.md)
-  - [Navigator对象的方法](browser-object-model/the-navigator-object/the-navigator-object-methods.md)
-- **其他WebAPI**
-  - [File对象](browser-object-model/the-other-web-api/the-file-object.md)
-  - [FileList对象](browser-object-model/the-other-web-api/the-file-list-object.md)
-  - [FileReader对象](browser-object-model/the-other-web-api/the-file-reader-object.md)
-  - [FileReaderSync对象](browser-object-model/the-other-web-api/the-file-reader-sync-object.md)
-  - [FormData对象](browser-object-model/the-other-web-api/the-form-data-object.md)
-  - [ProgressEvent对象](browser-object-model/the-other-web-api/the-progress-event-object.md)
-  - [Blob对象](browser-object-model/the-other-web-api/the-blob-object.md)
-  - [URL对象](browser-object-model/the-other-web-api/the-url-object.md)
-  - [Position对象](browser-object-model/the-other-web-api/the-position-object.md)
-  - [XMLHttpRequest对象](browser-object-model/the-other-web-api/the-xmlhttprequest-object.md)
+- **Location 对象**
+  - [Location 对象的属性](browser-object-model/the-location-object/the-location-object-properties.md)
+  - [Location 对象的方法](browser-object-model/the-location-object/the-location-object-methods.md)
+- **History 对象**
+  - [History 对象的属性](browser-object-model/the-history-object/the-history-object-properties.md)
+  - [History 对象的方法](browser-object-model/the-history-object/the-history-object-methods.md)
+- **Screen 对象**
+  - [Screen 对象的属性](browser-object-model/the-screen-object/the-screen-object-properties.md)
+  - [Screen 对象的方法](browser-object-model/the-screen-object/the-screen-object-methods.md)
+- **Navigator 对象**
+  - [Navigator 对象的属性](browser-object-model/the-navigator-object/the-navigator-object-properties.md)
+  - [Navigator 对象的方法](browser-object-model/the-navigator-object/the-navigator-object-methods.md)
+- **其他 WebAPI**
+  - [File 对象](browser-object-model/the-other-web-api/the-file-object.md)
+  - [FileList 对象](browser-object-model/the-other-web-api/the-file-list-object.md)
+  - [FileReader 对象](browser-object-model/the-other-web-api/the-file-reader-object.md)
+  - [FileReaderSync 对象](browser-object-model/the-other-web-api/the-file-reader-sync-object.md)
+  - [FormData 对象](browser-object-model/the-other-web-api/the-form-data-object.md)
+  - [ProgressEvent 对象](browser-object-model/the-other-web-api/the-progress-event-object.md)
+  - [Blob 对象](browser-object-model/the-other-web-api/the-blob-object.md)
+  - [URL 对象](browser-object-model/the-other-web-api/the-url-object.md)
+  - [Position 对象](browser-object-model/the-other-web-api/the-position-object.md)
+  - [XMLHttpRequest 对象](browser-object-model/the-other-web-api/the-xmlhttprequest-object.md)
   - [FetchAPI](browser-object-model/the-other-web-api/the-fetch-api.md)
-  - [EventSource对象](browser-object-model/the-other-web-api/the-event-source-object.md)
+  - [EventSource 对象](browser-object-model/the-other-web-api/the-event-source-object.md)
 - **浏览器缓存**
   - [浏览器缓存机制](browser-object-model/browser-cache/web-cache.md)
-  - [HTTP缓存](browser-object-model/browser-cache/http-cache.md)
+  - [HTTP 缓存](browser-object-model/browser-cache/http-cache.md)
   - [Cookie](browser-object-model/browser-cache/cookie.md)
   - [WebStorage](browser-object-model/browser-cache/web-storage.md)
 - **客户端检测**
@@ -283,21 +284,21 @@
   - [绘制](browser-object-model/browser-working-principle/painting.md)
   - [回流和重绘](browser-object-model/browser-working-principle/reflow-and-repaint.md)
   - [动态变化和渲染引擎的线](browser-object-model/browser-working-principle/dynamic-changes-and-rendering-engine-threads.md)
-  - [CSS2可视模型](browser-object-model/browser-working-principle/css2-visual-module.md)
+  - [CSS2 可视模型](browser-object-model/browser-working-principle/css2-visual-module.md)
   - [渲染层合并](browser-object-model/browser-working-principle/composite.md)
 
 [⬆ 返回快速目录](#快速目录)
 
-### :incoming_envelope:文档对象模型Document Oject Model
+### :incoming_envelope:文档对象模型 Document Oject Model
 
 - **文档对象模型**
   - [DOM](document-object-model/dom.md)
   - [DOM API](document-object-model/dom-api.md)
 - **节点层次**
   - [节点层次](document-object-model/hierarchy-of-nodes/hierarchy-of-nodes.md)
-  - [Node类型](document-object-model/hierarchy-of-nodes/the-node-type.md)
-  - [Document类型](document-object-model/hierarchy-of-nodes/the-document-type.md)
-  - [Element类型](document-object-model/hierarchy-of-nodes/the-element-type.md)
+  - [Node 类型](document-object-model/hierarchy-of-nodes/the-node-type.md)
+  - [Document 类型](document-object-model/hierarchy-of-nodes/the-document-type.md)
+  - [Element 类型](document-object-model/hierarchy-of-nodes/the-element-type.md)
 - **节点访问**
   - [节点访问](document-object-model/nodes-access/nodes-access.md)
   - [节点关系](document-object-model/nodes-access/nodes-relationships.md)
@@ -306,10 +307,10 @@
 - **节点操作**
   - [节点创建](document-object-model/manipulating-nodes/nodes-create.md)
   - [节点操作](document-object-model/manipulating-nodes/manipulating-nodes/README.md)
-- **脚本化CSS**
+- **脚本化 CSS**
   - [查询样式](document-object-model/scripting-css/accessing-element-styles.md)
   - [操作样式](document-object-model/scripting-css/working-with-style-sheets.md)
-- **DOM事件流**
+- **DOM 事件流**
   - [事件流](document-object-model/events/event-flow.md)
   - [事件处理程序](document-object-model/events/event-handlers-or-listener.md)
   - [事件对象](document-object-model/events/the-event-object.md)
@@ -321,11 +322,11 @@
 
 [⬆ 返回快速目录](#快速目录)
 
-### :keyboard:HTML5脚本编程 Scripting Programing
+### :keyboard:HTML5 脚本编程 Scripting Programing
 
 - **语义化**
-  - [HTML5表单](html5-scripting-programming/semantics/form-inprovements.md)
-  - [HTML5新语义元素](html5-scripting-programming/semantics/new-semantic-elements.md)
+  - [HTML5 表单](html5-scripting-programming/semantics/form-inprovements.md)
+  - [HTML5 新语义元素](html5-scripting-programming/semantics/new-semantic-elements.md)
 - **离线与存储**
   - [Service Worker](html5-scripting-programming/offline-and-storage/service-worker.md)
   - [IndexedDB](html5-scripting-programming/offline-and-storage/indexedDB.md)
@@ -345,14 +346,14 @@
 - **性能与集成**
   - [WebWorkers](html5-scripting-programming/performance-and-integration/web-workers.md)
   - [动画渲染](html5-scripting-programming/performance-and-integration/request-animation-frame.md)
-  - [拖放API](html5-scripting-programming/performance-and-integration/drag-and-drop-api.md)
-  - [全屏API](html5-scripting-programming/performance-and-integration/full-screen-api.md)
+  - [拖放 API](html5-scripting-programming/performance-and-integration/drag-and-drop-api.md)
+  - [全屏 API](html5-scripting-programming/performance-and-integration/full-screen-api.md)
 - **设备访问**
   - [地理定位](html5-scripting-programming/device-access/geolocation.md)
   - [触控事件](html5-scripting-programming/device-access/touch-event.md)
   - [摄录设备](html5-scripting-programming/device-access/camera.md)
 - **移动开发**
-  - [移动Web开发](html5-scripting-programming/wireless-development/mobile-web-development.md)
+  - [移动 Web 开发](html5-scripting-programming/wireless-development/mobile-web-development.md)
   - [视口](html5-scripting-programming/wireless-development/viewport.md)
   - [适配方案](html5-scripting-programming/wireless-development/adaptation.md)
 
@@ -360,23 +361,23 @@
 
 ### :globe_with_meridians:计算机网络 Computer Network
 
-- **HTTP协议**
-  - [HTTP协议](computer-networks/http/http.md)
-  - [HTTP首部字段](computer-networks/http/headers.md)
-  - [HTTP请求方法](computer-networks/http/request-methods.md)
-  - [HTTP响应状态码](computer-networks/http/response-status-codes.md)
-  - [HTTP访问控制](computer-networks/http/access-control.md)
-  - [HTTP身份验证](computer-networks/http/authentication.md)
+- **HTTP 协议**
+  - [HTTP 协议](computer-networks/http/http.md)
+  - [HTTP 首部字段](computer-networks/http/headers.md)
+  - [HTTP 请求方法](computer-networks/http/request-methods.md)
+  - [HTTP 响应状态码](computer-networks/http/response-status-codes.md)
+  - [HTTP 访问控制](computer-networks/http/access-control.md)
+  - [HTTP 身份验证](computer-networks/http/authentication.md)
   - [HTTP2](computer-networks/http/http2.md)
-- [DNS协议](computer-networks/dns.md)
-- [HTTPS协议](computer-networks/https.md)
-- TCP协议
-- IP协议
-- **Web网络安全**
+- [DNS 协议](computer-networks/dns.md)
+- [HTTPS 协议](computer-networks/https.md)
+- TCP 协议
+- IP 协议
+- **Web 网络安全**
   - [XSS](computer-networks/frontend-security/xss.md)
   - [CSRF](computer-networks/frontend-security/csrf.md)
   - [DDoS](computer-networks/frontend-security/ddos.md)
-  - [SQL注入](computer-networks/frontend-security/sql-injection.md)
+  - [SQL 注入](computer-networks/frontend-security/sql-injection.md)
   - [流量劫持](computer-networks/frontend-security/hijacking.md)
 
 [⬆ 返回快速目录](#快速目录)
@@ -391,10 +392,10 @@
 
 - [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)：官方推荐的前端文档
 - [ecma-international ecma 262 5.1（英）](http://www.ecma-international.org/ecma-262/5.1/index.html)：ECMAScript 5
-- [ECMAScript 6 入门(阮一峰)](http://es6.ruanyifeng.com/)：ECMAScript 6 入门级中文书籍
-- [ECMAScript® 2015 Language Specification（ES6英）](http://www.ecma-international.org/ecma-262/6.0/)：ECMAScript 2015 规范文档
-- [ECMAScript® 2016 Language Specification（ES7英）](http://www.ecma-international.org/ecma-262/7.0/index.html)：ECMAScript 2016 规范文档
-- [ECMAScript® 2017 Language Specification（ES8英）](http://www.ecma-international.org/ecma-262/8.0/index.html)：ECMAScript 2017 规范文档
+- [ECMAScript® 2015 Language Specification（ES6 英）](http://www.ecma-international.org/ecma-262/6.0/)：ECMAScript 2015 规范文档
+- [ECMAScript® 2016 Language Specification（ES7 英）](http://www.ecma-international.org/ecma-262/7.0/index.html)：ECMAScript 2016 规范文档
+- [ECMAScript® 2017 Language Specification（ES8 英）](http://www.ecma-international.org/ecma-262/8.0/index.html)：ECMAScript 2017 规范文档
+- [ECMAScript® 2018 Language Specification（ES8 英）](<https://www.ecma-international.org/ecma-262/9.0/index.html>)：ECMAScript 2018 规范文档
 
 ### License
 

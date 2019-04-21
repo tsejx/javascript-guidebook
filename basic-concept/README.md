@@ -7,9 +7,10 @@
   - [词法语法](lexical-grammar/lexical-grammar.md)
 - **数据类型和值**
   - [数据类型和值](data-types/data-types.md)
+  - [类型检测](data-types/type-check.md)
+  - [类型转换](data-types/type-conversion.md)
 - **表达式**
   - **主要表达式**
-    - [this 关键字](expressions/primary-expression/this.md)
     - [数组初始化](expressions/primary-expression/array-initializer.md)
     - [字面量引用](expressions/primary-expression/literal.md)
     - [对象初始化](expressions/primary-expression/object-initializer.md)

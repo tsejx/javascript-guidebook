@@ -18,10 +18,10 @@
     - [encodeURI()](the-global-object/function-properties/encodeURI.md)
     - [encodeURIComponent()](the-global-object/function-properties/encodeURIComponent.md)
 - **基本对象**
-  - [Object](fundamental-objects/object-objects.md)
-  - [Function](fundamental-objects/function-objects.md)
+  - [Object](fundamental-objects/object-objects/object-objects.md)
+  - [Function](fundamental-objects/function-objects/function-objects.md)
   - [Boolean](fundamental-objects/boolean-objects.md)
-  - [Symbol](fundamental-objects/symbol-objects.md)
+  - [Symbol](fundamental-objects/symbol-objects/symbol-objects.md)
   - [Error](fundamental-objects/error-objects.md)
 - **数字和日期**
   - [Date](numbers-and-dates/date-objects/date-objects.md)
@@ -44,7 +44,7 @@
 - **控制抽象对象**
   - [Iterator](control-abstraction-objects/iterator-objects/iterator.md)
   - [Promise](control-abstraction-objects/promise-objects/promise.md)
-  - Generator
+  - [Generator](control-abstraction-objects/generator-objects/generator.md)
 - **反射**
   - Proxy
   - Reflect

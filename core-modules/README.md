@@ -15,11 +15,20 @@
     - [变量对象](executable-code-and-execution-contexts/execution/variable-object.md)
     - [作用域链](executable-code-and-execution-contexts/execution/scope-chain.md)
     - [this](executable-code-and-execution-contexts/execution/this.md)
+  - **内存管理**
+    - [内存模型](executable-code-and-execution-contexts/memory-management/memory-model.md)
+    - [内存生命周期](executable-code-and-execution-contexts/memory-management/memory-life-cycle.md)
+    - [垃圾回收](executable-code-and-execution-contexts/memory-management/garbage-collection.md)
+  - **并发模型**
+    - [并发模型](executable-code-and-execution-contexts/concurrency-model/concurrency-model.md)
+    - [事件循环](executable-code-and-execution-contexts/concurrency-model/event-loop.md)
+    - [定时器机制](executable-code-and-execution-contexts/concurrency-model/timers-mechanism.md)
+    - 异步编程
 - **函数**
   - **函数声明**
     - [函数声明式定义](ecmascript-function-objects/function-declarations/function-definitions.md)
     - [箭头函数定义](ecmascript-function-objects/function-declarations/arrow-function-definitions.md)
-    - [方法定义](ecmascript-function-objects/function-declarations/method-definitions.md)
+    - [异步函数定义](ecmascript-function-objects/function-declarations/async-function-definitions.md)
   - **函数参数**
     - [函数参数](ecmascript-function-objects/function-arguments/function-parameters.md)
     - [默认参数](ecmascript-function-objects/function-arguments/default-parameters.md)
