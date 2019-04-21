@@ -8,8 +8,7 @@ const browserObjectModel = [
         link: 'the-window-object/timers',
         children: [
             { title: 'setInterval', link: 'setInterval' },
-            { title: 'setTimeout', link: 'setTimeOut' },
-            { title: '定时器运行机制', link: 'timers-mechanism' },
+            { title: 'setTimeout', link: 'setTimeOut' }
         ]
     }, {
         title: '系统对话框',

@@ -11,7 +11,6 @@ const objectOrientedProgamming = [
       { title: '对象类型', link: 'the-object-type' },
       { title: '属性操作', link: 'manipulating-property' },
       { title: '对象属性描述符', link: 'attributes-object' },
-      { title: '描述符方法', link: 'the-descriptor-methods' },
       { title: '对象状态', link: 'the-object-status' },
     ],
   },

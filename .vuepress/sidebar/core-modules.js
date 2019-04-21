@@ -20,12 +20,28 @@ const coreModules = [
             { title: 'this', link: 'this' }
         ]
     }, {
+        title: '内存管理',
+        link: 'executable-code-and-execution-contexts/memory-management',
+        children: [
+            { title: '内存模型', link: 'memory-model'},
+            { title: '内存生命周期', link: 'memory-life-cycle'},
+            { title: '垃圾回收机制', link: 'garbage-collection'}
+        ]
+    }, {
+        title: '并发模型',
+        link: 'executable-code-and-execution-contexts/concurrency-model',
+        children: [
+            { title: '并发模型', link: 'concurrency-model' },
+            { title: '事件循环', link: 'event-loop'},
+            { title: '定时器运行机制', link: 'timers-mechanism'}
+        ]
+    },{
         title: '函数声明',
         link: 'ecmascript-function-objects/function-declarations',
         children: [
             { title: '函数声明式定义', link: 'function-definitions' },
             { title: '箭头函数定义', link: 'arrow-function-definitions' },
-            { title: '方法定义', link: 'method-definitions' }
+            { title: '异步函数定义', link: 'async-function-definitions'}
         ]
     }, {
         title: '函数参数',

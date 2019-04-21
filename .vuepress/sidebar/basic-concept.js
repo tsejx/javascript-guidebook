@@ -2,18 +2,23 @@ const basicConcept = [
   {
     title: '词法语法',
     link: 'lexical-grammar',
-    children: [{ title: '词法语法', link: 'lexical-grammar' }],
+    children: [
+      { title: '词法语法', link: 'lexical-grammar' }
+    ],
   },
   {
     title: '数据类型和值',
     link: 'data-types',
-    children: [{ title: '数据类型和值', link: 'data-types' }],
+    children: [
+      { title: '数据类型和值', link: 'data-types' },
+      { title: '类型检测', link: 'type-check'},
+      { title: '类型转换', link: 'type-conversion'}
+    ],
   },
   {
     title: '主要表达式',
     link: 'expressions/primary-expression',
     children: [
-      { title: 'this', link: 'this' },
       { title: '字面量引用', link: 'literal' },
       { title: '数组初始化', link: 'array-initializer' },
       { title: '对象初始化', link: 'object-initializer' },
