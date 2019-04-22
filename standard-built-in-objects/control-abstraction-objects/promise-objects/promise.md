@@ -1,10 +1,10 @@
-## Promise
+# Promise
 
 传统异步编程最大特点是地狱式回调嵌套，一旦嵌套层次过深，项目代码将难以理解和维护。而 Promise 能让我们通过链式调用的方法去解决回调地狱的问题。
 
 Promise 是异步编程的一种解决方案，可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果。可以在对象之间传递和操作 Promise，帮助我们处理队列。
 
-### 语法
+## 语法
 
 ```js
 new Promise(function(resolve, reject){...}/* executor */)
@@ -18,7 +18,7 @@ new Promise(function(resolve, reject){...}/* executor */)
 - `resolve` 和 `reject` 函数被调用时，分别将 Promise 的状态改为 `fulfilled`（完成）或 `rejected`（失败）。
 - `executor` 内部通常会执行一些异步操作，一旦完成，可以调用 `resolve` 函数来将 Promise 状态改成 `fulfilled`，或者在发生错误时将它的状态改为 `rejected`。
 
-### 工作流
+## 工作流
 
 Promise 是一个代理对象（代理一个值），被代理的值在 Promise 对象创建时可能是未知的。它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的 Promise 对象。
 
@@ -26,7 +26,7 @@ Promise 是一个代理对象（代理一个值），被代理的值在 Promise 
 
 ![Promise](../../../images/2/566f8e31-9eb2-4eee-a066-cecf7f3567e8.png)
 
-### 状态
+## 状态
 
  用 `new Promise` 实例化的 Promise 对象有以下三种状态：
 
@@ -46,7 +46,7 @@ Promise 是一个代理对象（代理一个值），被代理的值在 Promise 
 
 另外，Fulfilled 和 Rejected 这两个中的任何一种状态都可以表示为 **Settled（不变的）**。
 
-### 创建Promise
+## 初始化
 
 ES6 规定，`Promise` 对象是一个构造函数，通过 `new` 关键字调用，生成 `Promise` 实例。
 
@@ -97,15 +97,15 @@ new Promise(
 | `Promise.reject(reason)` | 返回新的 Promise 实例，该实例的状态为 `rejected`     |
 | `Promise.resolve(value)` | 返回新的 Promise 实例，该实例的状态为 `fulfilled`    |
 
-### Promise 原型
+## 原型对象
 
-#### 属性
+### 属性
 
 | 原型属性                        | 说明                                      |
 | ------------------------------- | ----------------------------------------- |
 | `Promise.prototype.constructor` | 返回被创建的实例函数，默认为 Promise 函数 |
 
-#### 方法
+### 方法
 
 | 原型方法                                          | 说明                                                         |
 | ------------------------------------------------- | ------------------------------------------------------------ |
