@@ -51,11 +51,11 @@
 - **浏览器工作原理**
   - [整体工作流程](browser-working-principle/overall-workflow.md)
   - [渲染引擎](browser-working-principle/the-rendering-engine.md)
-  - [解析过程](browser-working-principle/parsing.md)
+  - [构建对象模型](browser-working-principle/constructing-the-object-model.md)
+  - [脚本加载](browser-working-principle/script-loads.md)
   - [渲染树构建](browser-working-principle/render-tree-construction.md)
   - [布局](browser-working-principle/layout.md)
   - [绘制](browser-working-principle/painting.md)
   - [回流和重绘](browser-working-principle/reflow-and-repaint.md)
-  - [动态变化和渲染引擎的线](browser-working-principle/dynamic-changes-and-rendering-engine-threads.md)
   - [CSS2 可视模型](browser-working-principle/css2-visual-module.md)
   - [渲染层合并](browser-working-principle/composite.md)

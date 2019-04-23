@@ -26,6 +26,12 @@ module.exports = {
     logo: '/favicon.png',
     search: true,
     searchMaxSuggestions: 15,
+    serviceWorker: {
+      updatePopup: {
+        message: '新内容已准备就绪',
+        buttonText: '刷新'
+      }
+    },
     nav: [
       { text: '主页', link: '/' },
       {

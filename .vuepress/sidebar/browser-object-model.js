@@ -94,12 +94,12 @@ const browserObjectModel = [
         children: [
             { title: '整体工作流程', link: 'overall-workflow' },
             { title: '渲染引擎', link: 'the-rendering-engine' },
-            { title: '解析过程', link: 'parsing' },
+            { title: '构建对象模型', link: 'constructing-the-object-model' },
+            { title: '脚本加载', link: 'script-loads'},
             { title: '渲染树构建', link: 'render-tree-construction' },
             { title: '布局', link: 'layout' },
             { title: '绘制', link: 'painting' },
             { title: '回流和重绘', link: 'reflow-and-repaint' },
-            { title: '动态变化和渲染引擎的线', link: 'dynamic-changes-and-rendering-engine-threads' },
             { title: 'CSS2可视模型', link: 'css2-visual-module' },
             { title: '渲染层合并', link: 'composite' },
         ]
