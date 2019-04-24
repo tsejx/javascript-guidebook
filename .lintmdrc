@@ -3,7 +3,7 @@
   "rules": {
     "space-round-alphabet": 2,
     "space-round-number": 1,
-    "no-empty-code-lang": 1,
+    "no-empty-code-lang": 2,
     "no-empty-url": 2,
     "no-empty-list": 2,
     "no-empty-code": 2,
