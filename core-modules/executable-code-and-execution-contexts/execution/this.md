@@ -21,7 +21,7 @@ function bar() {
     // 因此，当前调用调用位置在 baz 中
     console.log('bar');
     foo();	// <-- foo 的调用位置
-} 
+}
 
 function foo() {
     // 当前调用栈是 baz -> bar -> foo
@@ -40,7 +40,7 @@ baz();	// <-- baz 的调用位置
 
 你必须找到调用位置，然后判断需要应用下面四条规则中的哪一条。我们首先会分别解释这四条规则，然后解释多条规则都可用时它们的优先级如何排列。
 
-```
+```js
 调用栈 => 调用位置 => 绑定规则 => 规则优先级
 ```
 
@@ -73,7 +73,7 @@ foo();
 ```js
 function foo() {
     "use strict";
-    
+
     console.log( this.a );
 }
 
@@ -94,7 +94,7 @@ var a = 2;
 
 (function foo() {
     "use strict";
-    
+
     foo();	// 2
 })()
 ```
@@ -163,16 +163,16 @@ const container = {
 };
 
 // 函数别名
-const bar = container.foo;	
+const bar = container.foo;
 
 // a 是全局对象的属性
-const a = "oops, global";	
+const a = "oops, global";
 
 bar();
 // "oops, global"
 ```
 
-📍 虽然 `bar` 是 `container.foo` 的一个引用，但是实际上，它引用的是 `foo` 函数本身，因此此时的 `bar()` 其实是一个不带任何修饰的函数调用，因此应用了默认绑定。 
+📍 虽然 `bar` 是 `container.foo` 的一个引用，但是实际上，它引用的是 `foo` 函数本身，因此此时的 `bar()` 其实是一个不带任何修饰的函数调用，因此应用了默认绑定。
 
 一种更微妙、更常见并且更出乎意料的情况发生在传入回调函数时。
 
@@ -180,7 +180,7 @@ bar();
 
 ```js
 function foo() {
-    console.log( this.a ); 
+    console.log( this.a );
 }
 
 function bar(fn) {
@@ -194,7 +194,7 @@ var container = {
 }
 
 // a 是全局对象的属性
-var a = "opps, global";		
+var a = "opps, global";
 
 bar( container.foo );
 // "opps, global"
@@ -215,7 +215,7 @@ const container = {
 };
 
 // a 是全局对象的属性
-const a = "opps, global";		
+const a = "opps, global";
 
 setTimeout(container.foo, 100);
 // 'opps, global'
@@ -283,7 +283,7 @@ const columns = {
 // No:1 No:2 No:3
 ```
 
-这些函数实际上就是通过 `call()` 或者 `apply()` 实现了显式绑定，这样代码会更加优雅。  
+这些函数实际上就是通过 `call()` 或者 `apply()` 实现了显式绑定，这样代码会更加优雅。
 
 ### new 绑定
 
@@ -310,10 +310,10 @@ const columns = {
 const foo = function(func){
     // 创建空对象，空对象关联构造函数的原型对象
     const o = Object.create(func.prototype)
-    
+
     // 执行对象类的构造函数，同时该实例的属性和方法被 this 所引用，即 this 指向新构造的实例
     const k = func.call(o)
-    
+
     // 判断构造函数的运行结果是否对象类型
     if(typeof k === 'object'){
         return k
@@ -331,7 +331,7 @@ const foo = function(func){
 
 毫无疑问，默认绑定的优先级是四条规则中最低的，所以我们先不考虑它。
 
-```
+```js
 显式绑定 > new 绑定 > 隐式绑定
 ```
 
@@ -509,9 +509,9 @@ bar.call( container2 );
 现在它用更常见的词法作用域取代了传统的 `this` 机制。实际上，在 ES6 之前我们就已经
 在使用一种几乎和箭头函数完全一样的模式。
 
-虽然 `self = this` 和箭头函数看起来都可以取代 `bind(..)`，但是从本质上来说，它们想替代的是 `this` 机制。 
+虽然 `self = this` 和箭头函数看起来都可以取代 `bind(..)`，但是从本质上来说，它们想替代的是 `this` 机制。
 
-如果你经常编写 `this` 风格的代码，但是绝大部分时候都会使用 `self = this` 或者箭头函数来否定 `this` 机制，那你或许应当: 
+如果你经常编写 `this` 风格的代码，但是绝大部分时候都会使用 `self = this` 或者箭头函数来否定 `this` 机制，那你或许应当:
 
 * 只使用词法作用域并完全抛弃错误 `this` 风格的代码
 * 完全采用 `this` 风格，在必要时使用 `bind(..)`，尽量避免使用 `self = this` 和箭头函数
@@ -531,4 +531,4 @@ bar.call( container2 );
 
 * [📚 你不知道的 JavaScript（上卷）](<https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/README.md>)
 * [📝 this 的值到底是什么？一次说清楚](<https://zhuanlan.zhihu.com/p/23804247>)
-* [📝 JavaScript 深入之从 ECMAScript 规范解读 this](https://github.com/mqyqingfeng/Blog/issues/7) 
+* [📝 JavaScript 深入之从 ECMAScript 规范解读 this](https://github.com/mqyqingfeng/Blog/issues/7)

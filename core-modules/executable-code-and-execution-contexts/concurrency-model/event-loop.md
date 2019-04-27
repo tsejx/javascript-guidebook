@@ -28,7 +28,7 @@ JavaScript 的异步任务根据事件分类分为两种：宏任务（MacroTask
 
 ```js
 console.log(1);
-    
+
 setTimeout(() => {
   console.log(2);
 }, 0);
@@ -41,7 +41,7 @@ let promise = new Promise(res => {
 }).then(res => {
   console.log(5);
 });
-    
+
 console.log(6);
 
 // 1 3 6 4 5 2
@@ -51,7 +51,7 @@ console.log(6);
 
 在 Node 中，事件循环表现出的状态与浏览器中大致相同。不同的是 Node 中有一套自己的模型。Node 中事件循环的实现是依靠的 [libuv](<https://github.com/libuv/libuv>) 引擎。我们知道 Node 选择 Chrome V8 引擎作为 JavaScript 解释器，V8 引擎将 JavaScript 代码分析后去调用对应的 Node API，而这些 API 最后则由 libuv 引擎驱动，执行对应的任务，并把不同的事件放在不同的队列中等待主线程执行。 因此实际上 Node 中的事件循环存在于 libuv 引擎中。
 
-```
+```js
    ┌───────────────────────┐
 ┌─>│        timers         │
 │  └──────────┬────────────┘
