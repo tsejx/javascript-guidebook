@@ -93,7 +93,7 @@ function foo(){
 }
 ```
 
-当一个函数包含超过3个形参时，要记住调用函数中实参的正确顺序实在让人头疼。
+当一个函数包含超过 3 个形参时，要记住调用函数中实参的正确顺序实在让人头疼。
 
 ```javascript
 function foo(/*array*/from,/*index*/form_start,/*array*/to,/*index*/to_start,/*integer*/length){
@@ -111,7 +111,7 @@ var a = [1,2,3,4],b =[];
 foo({from:a,to:b,length:4});
 ```
 
-ES6的 [剩余参数(Rest 参数)](rest-parameters.md) 有效地解决了函数参数过多和参数先后顺序的问题。
+ES6 的 [剩余参数(Rest 参数)](rest-parameters.md) 有效地解决了函数参数过多和参数先后顺序的问题。
 
 ### 同步
 
@@ -223,9 +223,9 @@ console.log(factorial(5));//120
 
 ### caller
 
-实际上有两个caller属性。
+实际上有两个 `caller` 属性。
 
-#### 函数的caller
+#### 函数的 caller
 
 函数的 `caller` 属性保存着调用当前函数的函数的引用，如果是在全局作用域中调用当前函数，它的值是 `null`。
 
@@ -257,7 +257,7 @@ function foo(){
 foo();
 ```
 
-#### arguments对象的caller
+#### arguments 对象的 caller
 
 该属性始终是 `undefined`，定义这个属性是为了分清 `arguments.caller` 和函数的 `caller` 属性。
 
@@ -281,9 +281,9 @@ foo(1);
 
 ## 函数重载
 
-Javascript函数不能像传统意义上那样实现重载。而在其他语言中，可以为一个函数编写两个定义，只要这两个定义的签名(接受的参数的类型和数量)不同即可
+Javascript 函数不能像传统意义上那样实现重载。而在其他语言中，可以为一个函数编写两个定义，只要这两个定义的签名(接受的参数的类型和数量)不同即可
 
-Javascript函数没有签名，因为其参数是由包含0或多个值的数组来表示的。而没有函数签名，真正的重载是不可能做到的
+Javascript 函数没有签名，因为其参数是由包含 0 或多个值的数组来表示的。而没有函数签名，真正的重载是不可能做到的
 
 ```javascript
 //后面的声明覆盖了前面的声明

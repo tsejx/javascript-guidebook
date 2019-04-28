@@ -1,90 +1,48 @@
 # 箭头函数
 
-箭头函数表达式的语法比函数表达式更短，并且没有自己的 `this`,`arguments`,`super` 或 `new.target`。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。
+箭头函数表达式的语法比函数表达式更短，并且没有自己的 `this`、`arguments`、`super` 或 `new.target`。
 
-## 语法
+箭头函数表达式更适用于那些本来需要匿名函数的业务场景，并且它们不能用作构造函数。
 
-ES6 箭头函数的引入，使函数的写法变得更加简洁，但在书写上要遵循一定的规则。
+## 赋值式写法
 
-### 基础语法
-
-- **规则一：箭头函数只能用赋值式写法，不能用声明式写法**
+箭头函数只能用**赋值式写法**，不能用声明式写法
 
 ```js
-const functionName = () => {
+const fn = () => {
     // do something
 }
 ```
 
-- **规则二：当只有一个参数时，圆括号是可选的，如果没有参数或者参数多于一个就需要加括号**
+## 参数
+
+### 单个参数
+
+当只有一个参数时，圆括号是可选的，如果没有参数或者参数多于一个就需要加括号
 
 ```js
-const functionName1 = param1 => {
+const fn1 = param1 => {
     // do something
 }
 
-const functionName2 = () => {
-    // do something 
-} 
+const fn2 = () => {
+    // do something
+}
 
-const functionName3 = (param1, param2) => {
+const fn3 = (param1, param2) => {
     // do something
 }
 ```
 
-- **规则三：如果函数体只有一个表达式，可以不加花括号**
+### 剩余参数
+
+支持剩余参数和默认参数。
 
 ```js
-const functionName4 = (param1, param2) => param1 + param2 
-```
-
-- **规则四：如果函数没有括号，可以不写 `return` ，箭头函数会帮你 `return`**
-
-```js
-const functionName5 = (param1, param2) => param1 + param2
-functionName5(1, 2)
-```
-
-### 高级语法
-
-```js
-// 加括号的函数体返回对象字面表达式
-参数 => ({ foo: bar })
-
-// 支持剩余参数和默认参数
 (params1, params2, ...rest) => { functionDeclarations }
-(params1 = default1, params2, ..., paramsN = defaultN) => { functionDeclarations }
-
-// 同样支持参数列表解构
-let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
-f();	// 6
 ```
 
-## 示例
-
-### 简化回调函数
-
-```js
-// 正常函数写法
-[1, 2, 3].map(function(x){
-    return x * x
-})
-
-// 箭头函数写法
-[1, 2, 3].map(x => x * x);
-```
-
-```js
-// 正常函数写法
-var result = values.sort(function (a, b){
-    return a - b;
-})
-
-// 箭头函数写法
-var result = values.sort((a, b) => a - b)
-```
-
-### rest 参数与箭头函数结合
+🌰 **标准示例**
 
 ```js
 const numbers = (...nums) => nums;
@@ -98,7 +56,23 @@ headAndTail(1, 2, 3, 4, 5);
 // [1, [2, 3, 4, 5]]
 ```
 
-### 箭头函数与解构赋值结合
+### 默认参数
+
+```js
+(params1 = default1, params2, ..., paramsN = defaultN) => { functionDeclarations }
+```
+
+### 解构赋值
+
+同样支持参数列表解构
+
+```js
+let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
+f();
+// 6
+```
+
+🌰 **标准示例**
 
 ```js
 const full = ({ first, last }) => firsr + '' + last;
@@ -107,6 +81,54 @@ const full = ({ first, last }) => firsr + '' + last;
 function full(person){
     return person.first + '' + person.last;
 }
+```
+
+## 函数体
+
+### 单个表达式
+
+如果函数体只有一个表达式，可以不加花括号
+
+```js
+const fn = (param1, param2) => param1 + param2
+```
+
+### 返回缺省
+
+如果函数没有括号，可以不写 `return` ，箭头函数会帮你 `return`
+
+```js
+const fn = (param1, param2) => param1 + param2
+functionName5(1, 2)
+```
+
+### 返回对象
+
+```js
+// 加括号的函数体返回对象字面表达式
+const fn = bar => ({ foo: bar })
+```
+
+## 回调函数
+
+```js
+// 普通函数写法
+[1, 2, 3].map(function(x){
+    return x * x
+})
+
+// 箭头函数写法
+[1, 2, 3].map(x => x * x);
+```
+
+```js
+// 普通函数写法
+var result = values.sort(function (a, b){
+    return a - b;
+})
+
+// 箭头函数写法
+var result = values.sort((a, b) => a - b)
 ```
 
 ## 使用注意
@@ -129,7 +151,7 @@ function foo(){
 
 var id = 21;
 
-foo.call({id: 42});
+foo.call({ id: 42 });
 // id: 42
 ```
 
@@ -137,7 +159,7 @@ foo.call({id: 42});
 
 <summary>例子解析</summary>
 
-上面的代码中，`setTimeout` 的参数一个箭头函数，这个箭头函数的定义生效是在 `foo` 函数生成时，而它的真正执行要等到100毫秒后。如果是普通函数，执行时 `this` 应该指向全局对象 `window`，这时应该输出 `21`。但是，箭头函数导滞 `this` 总是指向函数定义生效时所在的对象（本例时 `{id: 42}`），所以输出的是 `42`。
+上面的代码中，`setTimeout` 的参数一个箭头函数，这个箭头函数的定义生效是在 `foo` 函数生成时，而它的真正执行要等到 100 毫秒后。如果是普通函数，执行时 `this` 应该指向全局对象 `window`，这时应该输出 `21`。但是，箭头函数导滞 `this` 总是指向函数定义生效时所在的对象（本例时 `{id: 42}`），所以输出的是 `42`。
 
 </details>
 
@@ -147,8 +169,10 @@ foo.call({id: 42});
 function Timer(){
     this.s1 = 0;
     this.s2 = 0;
+
     // 箭头函数
     setInterval(() => this.s1++, 1000)
+
     // 普通函数
     setInterval(function (){
         this.s2++;
@@ -167,7 +191,9 @@ setTimeout(() => console.log('s2', timer.s2), 3100);
 
 <summary>例子解析</summary>
 
-上面的代码中，`Timer` 函数内部设置了两个定时器，分别使用了箭头函数和普通函数。前者的 `this` 绑定定义时所在的作用域（即 `Timer` 函数），后者的 `this` 指向运行时所在的作用域（即全局对象）。所以，3100毫秒之后， `timer.s1` 被更新了3次，而 `timer.s2` 一次都没更新。
+上面的代码中，`Timer` 函数内部设置了两个定时器，分别使用了箭头函数和普通函数。
+
+前者的 `this` 绑定定义时所在的作用域（即 `Timer` 函数），后者的 `this` 指向运行时所在的作用域（即全局对象）。所以，3100ms 之后， `timer.s1` 被更新了 3 次，而 `timer.s2` 一次都没更新。
 
 </details>
 
@@ -196,7 +222,7 @@ var handler = {
 
 </details>
 
-箭头函数转成ES5的代码如下。
+箭头函数转成 ES5 的代码如下。
 
 ```js
 // ES6
@@ -209,7 +235,7 @@ function foo(){
 // ES5
 function foo(){
     var _this = this;
-    
+
     setTimeout(function(){
         console.log('id:', _this.id);
     }, 100)
@@ -304,7 +330,7 @@ insert(2).into([1, 3]).after(1);	// [1, 2, 3]
 下面是一个部署管道机制（pipeline）的例子，即前一个函数的输出是后一个函数的输入。
 
 ```js
-const pipeline = (...focus) => 
+const pipeline = (...focus) =>
 	val => focus.reduce((a, b) => b(a), val);
 
 const plus1 = a => a + 1;

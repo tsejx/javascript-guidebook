@@ -1,11 +1,11 @@
-## 类构造函数
+# 类构造函数
 
-* ES5中近类的结构
+* ES5 中近类的结构
 * ES6
 
-### ES5中近类的结构
+## ES5 中近类的结构
 
-ES5中创建类的方法：新建一个构造函数，定义一个方法并且赋值给构造函数的原型
+ES5 中创建类的方法：新建一个构造函数，定义一个方法并且赋值给构造函数的原型
 
 ```js
 'use strict';
@@ -21,11 +21,11 @@ const p = new Person('Poly');
 console.log(p.sayName());		// Poly
 ```
 
-### ES6 class类
+## ES6 class 类
 
 ES6 实现类非常简单，只需要类声明。
 
-#### 类声明
+### 类声明
 
 ```js
 class Person {
@@ -60,7 +60,7 @@ console.log(p.sayName()); 			// Poly
 5. 只能使用 `new` 来调用类的构造函数
 6. 不能在类中修改类名
 
-#### 类表达式
+### 类表达式
 
 类有两种表现形式：声明式和表达式
 
@@ -81,7 +81,7 @@ let B = class B1 {
 }
 ```
 
-#### 类和普通函数的共性
+### 类和普通函数的共性
 
 1. 可以将类作为参数传入函数
 
@@ -119,7 +119,7 @@ let a = new class {
 console.log(a.sayName());	// Uzi
 ```
 
-#### 访问器属性
+### 访问器属性
 
 类支持在原型上定义访问器属性。
 
@@ -145,7 +145,7 @@ console.log('get' in descriptor);		// true
 console.log(descriptor.enumerable);		// false 不可枚举
 ```
 
-#### 可计算成员名称
+### 可计算成员名称
 
 可计算成员时指使用方括号包裹一个表达式，如下面定义了一个变量 `m`，然后使用 `[m]` 设置为类 A 的原型方法。
 
@@ -164,7 +164,7 @@ class A {
 let a = new A("foo")
 ```
 
-#### 生成器方法
+### 生成器方法
 
 生成器是一个返回迭代器的函数。在类中，我们也可以使用生成器方法。
 
@@ -201,7 +201,7 @@ let a = new A();
 console.log(a.render().next());	// {done: false, value: 1}
 ```
 
-#### 静态成员
+### 静态成员
 
 静态成员是指在方法名或属性名前面加上 `static` 关键字，和普通方法不一样的是，`static` 修饰的方法不能在实例中访问，只能用类名直接访问。
 
@@ -222,7 +222,7 @@ let t = new A();
 console.log(t.create('foo'));		// t.create is not a function
 ```
 
-#### 继承与派生类
+### 继承与派生类
 
 我们在写 React 的时候，自定义的组件汇集成 React.Component。
 
@@ -273,7 +273,7 @@ class A extends Component {
 
 3. 如果不想调用 `super`，可以让类的构造函数返回一个对象。
 
-#### 类方法遮蔽
+### 类方法遮蔽
 
 我们可以在继承的类中重写父类的方法。
 
@@ -303,7 +303,7 @@ let subComponent = new SubComponent([2, 3]);
 console.log(subComponent.add());	// 6
 ```
 
-#### 静态成员继承
+### 静态成员继承
 
 父类中静态成员，也可以继承到派生类中。静态成员继承只能通过派生类访问，不能通过派生类的实例访问。
 
@@ -326,7 +326,7 @@ class SubComponent extends Component {
 console.log(subComponent.printSum([2, 3]));	// 5
 ```
 
-#### 派生自表达式的类
+### 派生自表达式的类
 
 很好理解，就是指父类可以是一个表达式。
 
@@ -334,7 +334,7 @@ console.log(subComponent.printSum([2, 3]));	// 5
 function Rectangle(length, width){
     // ...
 }
-    
+
 class Square extends Rectangle {
 	// ...
 }

@@ -79,7 +79,7 @@ var o = {
 console.log(o.m()); // undefined
 ```
 
-如果想访问这个外部函数的this值，需要将 `this` 的值保存在一个变量里，这个变量和内部函数都同在一个作用域内。通常使用变量 `self` 或 `that` 来保存 `this`。
+如果想访问这个外部函数的 `this` 值，需要将 `this` 的值保存在一个变量里，这个变量和内部函数都同在一个作用域内。通常使用变量 `self` 或 `that` 来保存 `this`。
 
 ```javascript
 var o = {

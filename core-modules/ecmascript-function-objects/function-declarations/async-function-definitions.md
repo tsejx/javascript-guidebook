@@ -11,7 +11,7 @@
 
 进一步说，`async` 函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而 `await` 命令就是内部 `then` 命令的语法糖。
 
-**`async` 函数与 Generator 函数的对比**
+**`async`函数与 Generator 函数的对比**
 
 |                  | async 函数           | Generator 函数   |
 | ---------------- | -------------------- | ---------------- |
@@ -22,7 +22,7 @@
 
 ### 异步函数
 
-**凡是在函数声明前添加 `async` 关键字的函数在执行后都会自动返回 Promise 对象**
+凡是在函数声明前添加 `async` 关键字的函数在执行后都会自动返回 Promise 对象
 
 `async` 函数返回一个 Promise 对象，可以使用 `then` 方法添加回调函数。当函数执行的时候，一旦遇到 `await` 就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
 
@@ -44,7 +44,7 @@ foo('Hello world!', 500).then(console.log);
 
 ### 异步语句
 
-**`await` 命令必须在 `async` 函数里使用，不能单独使用**
+`await`命令必须在 `async` 函数里使用，不能单独使用
 
 由于 `async` 函数返回的是 Promise 对象，可以作为 `await` 命令的参数。
 
@@ -58,7 +58,7 @@ foo('Hello world!', 500).then(console.log);
 
 ### 返回值类型
 
-**`async` 函数返回一个 Promise 对象。**
+`async` 函数返回一个 Promise 对象
 
 `async` 函数内部 `return` 语句返回的值，会成为 `then` 方法回调函数的参数。
 
@@ -147,7 +147,7 @@ async function foo(){
     try {
         await Promise.reject('Error!');
     } catch(e) {}
-    
+
     return await Promise.resolve('Hello world!');
 }
 

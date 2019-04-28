@@ -25,7 +25,7 @@ func.apply( [thisArg [, argsArray]])
 ```javascript
 const a = {
     name: 'Cherry',
-    
+
     func1: function(){
 		console.log(this.name)
 	}
@@ -55,7 +55,7 @@ func.call( [thisArg [, arg1 [, arg2 [, argN...]]]] )
 | 参数             | 类型                                     | 描述                                                         |
 | ---------------- | ---------------------------------------- | ------------------------------------------------------------ |
 | `func`           | `Function` 类型                          | 当前函数调用 `call()` 函数的函数，通常为 `this` （函数内部执行）。 |
-| `thisArg`        | 可选，`Object` 类型                      | 在*fun*函数运行时指定的 `this` 值*。*需要注意的是，指定的 `this` 值并不一定是该函数执行时真正的 `this` 值，如果这个函数处于非严格模式下，则指定为 `null` 和 `undefined` 的 `this` 值会自动指向全局对象（浏览器中就是window对象），同时值为原始值（数字，字符串，布尔值）的 `this` 会指向该原始值的自动包装对象。 |
+| `thisArg`        | 可选，`Object` 类型                      | 在*fun*函数运行时指定的 `this` 值*。*需要注意的是，指定的 `this` 值并不一定是该函数执行时真正的 `this` 值，如果这个函数处于非严格模式下，则指定为 `null` 和 `undefined` 的 `this` 值会自动指向全局对象（浏览器中就是 Window 对象），同时值为原始值（数字，字符串，布尔值）的 `this` 会指向该原始值的自动包装对象。 |
 | `arg1,arg2,argN` | 可选，`Array` 类型或 `TypedArray `  类型 | 指定的参数列表。                                             |
 
 #### 示例
@@ -80,7 +80,7 @@ function Person1 () {
     }
 }
 
-function Person2 () {  
+function Person2 () {
     this.name = "person2";
 }
 
@@ -178,4 +178,4 @@ var flower = new LateBloomer();
 flower.bloom();  // 一秒钟后, 调用'declare'方法
 ```
 
-### 
+###

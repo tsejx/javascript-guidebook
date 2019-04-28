@@ -1,10 +1,10 @@
 # 默认参数
 
-通常来说，函数调用者不需要传递所有可能存在的参数，没有被传递的参数可由感知到的默认参数进行填充。JavaScript有严格的默认参数格式，未被传值的参数默认为undefined。ES6引入了一种新方式，可以指定任意参数的默认值。
+通常来说，函数调用者不需要传递所有可能存在的参数，没有被传递的参数可由感知到的默认参数进行填充。JavaScript 有严格的默认参数格式，未被传值的参数默认为 `undefined`。ES6 引入了一种新方式，可以指定任意参数的默认值。
 
 ## 传统用法
 
-JavaScript 函数参数的默认值都是`undefined`， ES5里，不支持直接在形参里写默认值。所以，要设置默认值，就要检测参数是否为`undefined`，按需求赋值。
+JavaScript 函数参数的默认值都是`undefined`， ES5 里，不支持直接在形参里写默认值。所以，要设置默认值，就要检测参数是否为`undefined`，按需求赋值。
 
 ```js
 function foo(x, y) {
@@ -53,9 +53,9 @@ log('Hello', '') 		// Hello
 
 ```js
 function foo(x = 1){
-    let x = 2;		
+    let x = 2;
     // SyntaxError: Identifier 'x' has already been declared
-    const x = 3;	
+    const x = 3;
     // SyntaxError: Identifier 'x' has already been declared
 }
 ```
@@ -366,8 +366,8 @@ x 		// 1
   - 当函数内部作用域重新声明与已有参数同名变量，变量与同名参数不为同一变量
   - 当函数内部作用域存在同名变量（没有重新声明），变量指向的是函数参数本身
 
-## 抛弃arguments
+## 抛弃 arguments
 
-现在我们已经看到了arguments对象可被不定参数和默认参数完美代替，移除arguments后通常会使代码更易于阅读。除了破坏可读性外，众所周知，针对arguments对象对JavaScript虚拟机进行的优化会导致一些让你头疼不已的问题。
+现在我们已经看到了 `arguments` 对象可被不定参数和默认参数完美代替，移除 `arguments` 后通常会使代码更易于阅读。除了破坏可读性外，众所周知，针对 `arguments` 对象对 JavaScript 虚拟机进行的优化会导致一些让你头疼不已的问题。
 
-我们期待着不定参数和默认参数可以完全取代arguments，要实现这个目标，标准中增加了相应的限制：在使用不定参数或默认参数的函数中禁止使用arguments对象。曾经实现过arguments的引擎不会立即移除对它的支持，当然，现在更推荐使用不定参数和默认参数。
+我们期待着不定参数和默认参数可以完全取代 `arguments`，要实现这个目标，标准中增加了相应的限制：在使用不定参数或默认参数的函数中禁止使用 `arguments` 对象。曾经实现过 `arguments` 的引擎不会立即移除对它的支持，当然，现在更推荐使用不定参数和默认参数。

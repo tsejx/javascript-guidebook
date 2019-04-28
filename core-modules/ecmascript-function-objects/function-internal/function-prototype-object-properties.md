@@ -44,9 +44,9 @@ const c = function abc(){}
 console.log(c.name); 		// Output: 'abc'
 ```
 
-- ES6列入标准
+- ES6 列入标准
 
-ES6 对这个属性的行为做出了一些修改。如果将一个匿名函数赋值给一个变量，ES5的 `name` 属性，会返回空字符串，而ES6的 `name` 属性会返回实际的函数名。
+ES6 对这个属性的行为做出了一些修改。如果将一个匿名函数赋值给一个变量，ES5 的 `name` 属性，会返回空字符串，而 ES6 的 `name` 属性会返回实际的函数名。
 
 ```js
 const fun = function () {}
