@@ -1,8 +1,6 @@
 # 同源策略
 
-处于浏览器的同源策略，浏览器会拒绝跨域请求。
-
-同源政策的目的，是为了保证用户信息的安全，防止恶意的网站窃取数据。
+**同源策略**限制从一个源加载的文档或脚本如何与来自另一个源的资源进行交互，这是一个用于隔离潜在恶意文件的关键的安全机制。
 
 同源需要满足以下三个方面：
 
@@ -16,7 +14,7 @@
 * `http://a.com/foo` 不同源（域名不同）
 * `http://b.a.com/foo` 不同源（域名不同）
 * `http://a.com:81/foo` 不同源（端口不同）
-* `https://a.com/foo` 不同源（协议不同） 
+* `https://a.com/foo` 不同源（协议不同）
 
 如果是非同源，则以下行为会受到限制：
 
@@ -126,13 +124,13 @@ CORS 即 [跨域资源共享](../http/access-control.md)，该策略能使服务
 | -------------------------------- | ------------------------------------------------------------ |
 | Access-Control-Allow-Headers     | 请求头，响应头，预请求（携带 Cookie 情况下不能为 `*`）       |
 | Access-Control-Allow-Methods     | 请求头，响应头，预请求（携带 Cookie 情况下不能为 `*`）       |
-| Access-Control-Allow-Origin      | 响应头，预请求 / 正常请求（携带 Cookie情况下不能为 `*`）     |
+| Access-Control-Allow-Origin      | 响应头，预请求 / 正常请求（携带 Cookie 情况下不能为 `*`）     |
 | Access-Control-Allow-Credentials | 响应头，预请求/正常请求（携带 Cookie 情况下要设置为 `true`） |
 | Access-Control-Max-Age           | 响应头，预请求（单位 `s`）                                   |
 
 Access-Control-Allow-Origin 只能阻止浏览器端拿到服务器返回数据，服务端的处理还是会执行，要配合 Token 等策略来防范。
 
-💡 实现细节请参考 [HTTP 跨域资源共享](../http/access-policy.md)
+💡 实现细节请参考 [HTTP 跨域资源共享](../http/access-control.md)
 
 ### WebSocket
 
@@ -142,7 +140,7 @@ WebSocket 是一种通信协议，使用 `ws://`（非加密）和 `wss://`（�
 
 ### PostMessage
 
-`window.postMessage(message, targetOrigin)` 方法是HTML5 新引进的特性，可以使用它向其他的 Window 对象发送消息，无论这个 Window 对象是属于同源或不同源，目前 IE8+、Firefox、Chrome、Opera 等浏览器都已经支持该方法。
+`window.postMessage(message, targetOrigin)` 方法是 HTML5 新引进的特性，可以使用它向其他的 Window 对象发送消息，无论这个 Window 对象是属于同源或不同源，目前 IE8+、Firefox、Chrome、Opera 等浏览器都已经支持该方法。
 
 ```js
 otherWindow.postMessage(message, targetOrigin, [transfer]);
@@ -240,7 +238,7 @@ server {
 ## 阻止跨源访问
 
 - 阻止跨域写操作，只要检测请求中的一个不可测的标记（CSRF token）即可，这个标记被称为 [Cross-Site Request Forgery (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29)  标记。必须使用这个标记来阻止页面的跨站读操作。
-- 阻止跨站嵌入，需要确保你的资源不能是以上列出的可嵌入资源格式。多数情况下浏览器都不会遵守 `Conten-Type` 消息头。例如，如果您在 HTM L文档中指定 `<script>` 标记，则浏览器将尝试将 HTML 解析为 JavaScript。 当您的资源不是您网站的入口点时，您还可以使用 CSRF 令牌来防止嵌入。
+- 阻止跨站嵌入，需要确保你的资源不能是以上列出的可嵌入资源格式。多数情况下浏览器都不会遵守 `Conten-Type` 消息头。例如，如果您在 HTML 文档中指定 `<script>` 标记，则浏览器将尝试将 HTML 解析为 JavaScript。 当您的资源不是您网站的入口点时，您还可以使用 CSRF 令牌来防止嵌入。
 - 阻止资源的跨站读取，需要保证该资源是不可嵌入的。阻止嵌入行为是必须的，因为嵌入资源通常向其暴露信息。
 
 ---
