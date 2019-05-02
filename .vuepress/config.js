@@ -24,7 +24,7 @@ module.exports = {
   themeConfig: {
     repo: 'tsejx/JavaScript-Guidebook',
     logo: '/favicon.png',
-    search: true,
+    search: false,
     searchMaxSuggestions: 15,
     serviceWorker: {
       updatePopup: {

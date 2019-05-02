@@ -20,7 +20,7 @@ const computerNetworks = [
         link: 'response-status-codes',
       },
       {
-        title: 'HTTP 访问控制',
+        title: 'HTTP 跨域資源共享',
         link: 'access-control',
       },
       {
@@ -71,6 +71,10 @@ const computerNetworks = [
         title: '流量劫持',
         link: 'hijacking',
       },
+      {
+        title: '同源策略',
+        link: 'same-origin-policy'
+      }
     ],
   },
 ];
