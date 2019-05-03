@@ -1,64 +1,120 @@
-## 原型链
+# 原型链
 
 ECMAScript 中描述了原型链的概念，并将原型链作为实现继承的主要方法。其基本思想是利用原型让一个引用类型继承另一个引用类型的属性和方法。
 
-### 原型和原型链
+搞懂原型对象和原型链其实就是搞懂 `prototype`、`__proto__` 和 `constructor` 之间的相互关系。
 
-JavaScript 中的对象，都有一个内置属性 `[[Prototype]]` ，指向这个对象的原型对象。
+我们通过示例并附加图例阐述这种复杂的相互关系。
 
-当查找一个对象属性或方法时，如果在当前对象中找不到定义，会继续在当前对象的原型对象中查找。如果原型对象中依然没有找到，会继续在原型对象的原型中查找（原型也是对象，也有它自己的原型）；依次类推，直到找到为止，或者查找到最顶层的原型对象（`Object.prototype`），就结束查找，返回 `undefined`。
+![prototype](../../images/4/412a100f-2207-4e3f-b425-c15eb8183c11.jpg)
 
-整个查找过程中，从当前对象出发沿着原型对象（`[[Prototype]]`）构成的链条查找相关属性和方法，而这些链接对象的整个链条就是**原型链**。
+**图例**
 
-📌 在浏览器中，JavaScript 对象的内置属性 `[[Prototype]]` 以 `__proto__` 表示。
+* 红色箭头表示 `__proto__` 属性指向
+* 绿色箭头表示 `prototype` 属性指向
+* 棕色箭头表示本身具有的 `constructor` 属性
+* 蓝色方块表示对象
+* 浅绿方块表示函数
 
-🌰 **示例：原型链示例**
+在 JavaScript 中，这三者之间依附在不同的引用对象类型上。
+
+* **对象**：`__proto__` 和 `constructor` 是对象独有的。
+* **函数**：`prototype` 是函数独有的。但是函数也是对象，所以函数也有 `__proto__` 和 `constructor`。
+
+## 显式原型
+
+![proto](../../images/4/5d3094ef-eeec-4808-a001-8018ceaec642.jpg)
+
+显示原型对象 `prototype` 由<span style="color: red;font-weight: bold">函数所独有</span>，它是从<span style="color: red;font-weight: bold">一个函数指向另一个对象</span>。它的含义是<span style="color: red;font-weight: bold">函数的原型对象</span>，也就是这个函数（其实所有函数都可以作为构造函数）所创建的实例的原型对象。由此可知：`foo.__proto__ === Foo.prototype`，它们两个完全一样。
+
+那 `prototype` 属性作用又是什么呢？它的<span style="color: red;font-weight: bold">作用</span>就是包含可以由特定类型的所有实例共享的属性和方法，也就是让该该函数的实例化对象们都可以找到公用的属性和方法。
+
+**任何函数在创建的时候，其实会默认同时创建该函数的 `prototype` 对象。**
+
+## 隐式原型
+
+![prototype](../../images/4/9fb93b52-64ab-4974-ac63-59b379738ec2.jpg)
+
+在 JavaScript 中的<span style="color: red;font-weight: bold">对象</span>中都有一个  `__proto__` 属性，从上图可以看出<span style="color: red;font-weight: bold">一个对象指向另一个一个对象</span>，即指向相对应的对象的原型对象。这个原型对象称为<span style="color: red;font-weight: bold">隐式原型对象</span>。
+
+隐式原型对象的作用在于，当访问一个对象的属性或方法时，如果该对象内部不存在这个属性，那么就会从它的 `__proto__` 属性所指向的（原型）对象中寻找（原型也是对象，也有它自己的原型），如果原型对象中也找不到，就会继续在该原型对象的原型对象中找，以此类推，直到找到属性或方法为止，或者查找到顶层原型对象 `null`，就结束查找，返回 `undefined`。
+
+整个查找过程中，从当前对象出发沿着原型对象（`__proto__`）构成的链条查找相关属性和方法直到结束，这些相互关联的对象组成的链条就是<span style="color: red;font-weight: bold">原型链</span>。
+
+## 构造函数
+
+![constructor](../../images/4/2df64c5e-364f-4b4e-a58b-5033380ecf1f.jpg)
+
+属性 `constructor` 也是<span style="color: red;font-weight: bold">对象</span>才拥有的，它是从<span style="color: red;font-weight: bold">一个对象指向一个函数</span>，含义就是<span style="color: red;font-weight: bold">指向该对象的构造函数</span>，每个对象都有构造函数（本身拥有或继承而来，继承而来的要结合 `__proto__` 属性查看会更清楚点），从上图中可以看出 <span style="color: red;font-weight: bold">Function</span> 这个对象比较特殊，它的构造函数就是它自己（因为 Function 可以看成是一个函数，也可以是一个对象），所有函数和对象最终都是由 Function 构造函数得来，所以 `constructor` 属性的终点就是 <span style="color: red;font-weight: bold">Function</span> 这个函数。
+
+## 原型对象
+
+原型对象即为当前实例对象的父对象
+
+| 显式原型对象                        | 隐式原型对象                                                 |
+| ----------------------------------- | ------------------------------------------------------------ |
+| 属性 `prototype`                    | 属性 `__proto__`                                             |
+| 函数独有                            | 对象独有（函数也是对象，因此函数也有该属性）                 |
+| 定义函数时被自动赋值，值默认为 `{}` | 在创建实例对象时被自动添加，并赋值为构造函数的 `prototype` 值 |
+| 用于实现基于原型的继承与属性的共享  | 构成原型链，同样用于实现基于原型的继承                       |
+
+🌰 **标准示例：访问原型链中的原型对象**
 
 ```js
 const Foo = function(){}
 
 const foo = new Foo()
 
-console.log(foo.__proto__)  // Foo {} 构造器 function Foo 的原型对象
+// 构造函数 Foo {} 是函数 foo 的原型对象
+console.log(foo.__proto__)
 
-console.log(foo.__proto__.__proto__)  // Object {} 构造器 function Object 的原型对象
+// 构造函数 Object {} 是函数 Function 的原型对象
+console.log(foo.__proto__.__proto__)
 
-console.log(foo.__proto__.__proto__.__proto__)  // null
+// 原型链顶层
+console.log(foo.__proto__.__proto__.__proto__)  // null 
 ```
 
-区别于的是在原型链中查找属性或方法，没有查找到相关属性或方法，返回的是 `undefined` 表示原型链中没有该属性或方法。而通过访问原型链中的原型对象，到达原型链终点，即 `Object.prototype` 的值为 `null`。
+**原型链中查找属性方法和访问原型链中的原型对象的区别**
 
-### 原型对象
+- 在原型链中查找属性或方法，如果没有查找到相关属性或方法，返回的是 `undefined`，表示原型链中没有该属性或方法。
+- 而通过访问原型链中的原型对象，到达原型链终点，即 `Object.prototype` 的值为 `null`。
+
+## 原型对象的指向
 
 `__proto__` 的指向取决于对象创建时的实现方式。
 
-#### 字面量方式
+### 字面量方式
 
-当通过字面量方式创建对象时，它的原型就是 `Object.prototype`。虽然我们无法直接访问内置属性 `[[Prototype]]`，但我们可以通过 `Object.getPrototypeOf()` 或对象的属性 `__proto__` 获取对象的原型。
+当通过字面量方式创建对象时，它的原型就是 `Object.prototype`。
+
+虽然我们无法直接访问内置属性 `__proto__`，但我们可以通过 `Object.getPrototypeOf()` 或对象的属性 `__proto__` 获取对象的原型。
 
 ```js
 const foo = {}
 
-console.log(foo.__proto__ === Object.prototype) // true
-console.log(Object.getPrototypeOf(foo) === Object.prototype) // true
+console.log(foo.__proto__ === Object.prototype)
+// true
+
+console.log(Object.getPrototypeOf(foo) === Object.prototype)
+// true
 ```
 
-![字面量](../../images/4/cfc37d7e-6322-48da-b242-42995120f4eb.png)
-
-#### 构造器方式
+### 构造器方式
 
 ```js
 const Foo = function(){}
 
 const foo = new Foo()
 
-console.log(foo.__proto__ === Foo.prototype) // true
-console.log(Object.getPrototypeOf(foo) === Foo.prototype) // true
+console.log(foo.__proto__ === Foo.prototype)
+// true
+
+console.log(Object.getPrototypeOf(foo) === Foo.prototype)
+// true
 ```
 
-![构造器](../../images/4/46001182-6736-4a81-939d-53f2217e33b2.png)
-
-#### Object.create() 方式
+### Object.create 方式
 
 通过 `Object.create()` 方式创建的对象会以传入的对象参数为对象的原型。
 
@@ -70,27 +126,7 @@ const bar = Object.create(foo)
 console.log(bar.__proto__ === foo)
 ```
 
-![Object.create()](../../images/4/de959736-b787-4302-b2e9-175346dc57ec.png)
-
-### 显示原型和隐式原型的区别
-
-我们把 `prototype` 称作显式原型，`[[Prototype]]` 称作隐式原型。
-
-* 显示原型的作用：用来实现基于原型的继承与属性的共享。
-* 隐式原型的作用：构成原型链，同样用于实现基于原型的继承。
-
-![prototype和__proto__的区别](../../images/4/5c8478c6-285a-49d6-943b-94722ffe9fe7.png)
-
-* `prototype` 是**函数**才有的属性
-* `[[Prototype]]`（ `__proto__` ）是每个**实例对象**都有的属性
-  * 在 ECMAScript2015 中 `__proto__` 属性已经标准化
-  * 因为 JavaScript 中函数也是对象，因此函数也有 `__proto__` 属性
-
-> ⚠️ 注意：大多数情况下，`__proto__` 可以理解为“构造器的原型”
->
-> 即 `__proto__ === constructor.prototype`（通过 `Object.create()` 创建的对象不适用此等式）
-
-### instanceof
+## 原型对象与实例
 
 通过 `instanceof` 操作符可以确定原型与实例的关系。
 
@@ -161,3 +197,9 @@ console.log(({}).__proto__ === Object.prototype)
 
 * 所有的构造器的 constructor 都指向 Function
 * Function 的 prototype 指向一个特殊匿名函数，而这个特殊匿名函数的 `__proto__` 指向 Object.prototype
+
+---
+
+**参考资料：**
+
+* [📝 帮你彻底搞懂 JavaScript 中的 prototype、proto 与 constructor（图解）](<https://juejin.im/post/5caefd575188251b2822c17e>)

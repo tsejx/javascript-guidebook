@@ -1,4 +1,4 @@
-## 原型式继承
+# 原型式继承
 
 原型式继承是借助原型基于已有的对象创建新对象，同时还不必因此创建自定义类型。
 
@@ -34,11 +34,11 @@ KAT.friends.push('Barbie')
 console.log(Person.friends)    // ['Shelby', 'Court', 'Van', 'Rob', 'Barbie']
 ```
 
-原型式继承需要有一个对象可以作为另一个对象的基础。如果有这么一个对象的话，可以把它传递给实例生成函数，然后再根据具体需求对得到的对象加以修改即可。 
+原型式继承需要有一个对象可以作为另一个对象的基础。如果有这么一个对象的话，可以把它传递给实例生成函数，然后再根据具体需求对得到的对象加以修改即可。
 
 ECMAScript 5 通过新增 `Object.create()` 方法规范化了原型式继承。这个方法接收两个参数：一个用作新对象原型的对象和一个为新对象定义额外属性的对象（可选）。
 
-**实际上就是将 Person 构造函数替换成 `Object.create`**
+**实际上就是将 Person 构造函数替换成`Object.create`**
 
 ```js
 const friendship = {
@@ -58,10 +58,9 @@ console.log(BEN.__proto__.friends) // ["Yuki", "LeYouyou", "Jothan", "Bob", "Bar
 console.log(KAT.__proto__.friends) // ["Yuki", "LeYouyou", "Jothan", "Bob", "Barbie"]
 ```
 
-### 缺陷
+## 缺陷
 
 引用类型值的属性始终都会共享相应的值，多个实例对象对引用类型的操作会被篡改。
 
- 
 
- 
+
