@@ -16,22 +16,25 @@ const name = 'JavaScript-Guidebook';
 
 module.exports = {
   base: `/${name}/`,
-  head: [['link', { rel: 'icon', href: 'favicon.ico' }]],
+  head: [
+    ['link', { rel: 'icon', href: 'favicon.ico' }],
+    [
+      'keyword',
+      {
+        content:
+          'js,JS,JavaScript,javascript,前端,开发,前端开发,前端框架,前段,web,web开发,Web前端,web前端,知识图谱,node,面试,前端面试,前端面试题,后端,前端和后端的区别,frontend,frontend engineer',
+      },
+    ],
+  ],
+  description: '帮助Web前端开发者建立知识体系的图谱',
   title: 'JavaScript-Guidebook',
   ga: 'UA-138047269-1',
-  serviceWorker: true,
 
   themeConfig: {
     repo: 'tsejx/JavaScript-Guidebook',
     logo: '/favicon.png',
-    search: false,
+    search: true,
     searchMaxSuggestions: 15,
-    serviceWorker: {
-      updatePopup: {
-        message: '新内容已准备就绪',
-        buttonText: '刷新'
-      }
-    },
     nav: [
       { text: '主页', link: '/' },
       {
@@ -86,10 +89,21 @@ module.exports = {
       github: 'https://github.com/tsejx/JavaScript-Guidebook',
     },
   },
-
   plugins: [
+    [
+      '@vuepress/pwa',
+      {
+        serviceWorker: {
+          updatePopup: {
+            message: '新内容已准备就绪',
+            buttonText: '刷新',
+          },
+        },
+      },
+    ],
+    ['@vuepress/google-analytics', { ga: 'UA-138047269-1' }],
     '@vuepress/back-to-top',
     '@vuepress/medium-zoom',
-    'vuepress-plugin-baidu-autopush'
+    'vuepress-plugin-baidu-autopush',
   ],
 };
