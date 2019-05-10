@@ -14,7 +14,8 @@
 
 <h1>JavaScript Guidebook</h1>
 
-<p>整理自各大技术社区的前端技术图谱<p>
+<p>在 <a href="https://tsejx.github.io/JavaScript-Guidebook/">这里</a> 阅读体验更佳</p>
+<p>整理自各大技术社区和权威书籍的前端技术图谱<p>
 <p>章节内容来源注释于具体页面底部，如错漏欢迎提 <a href="https://github.com/tsejx/JavaScript-Guidebook/issues">issue</a> 斧正</p>
 <p>更多优质内容整理可查阅 <a href="https://github.com/tsejx/JavaScript-Guidebook/wiki">wiki</a></p>
 </div>
