@@ -5,7 +5,7 @@
 ## 语法
 
 ```javascript
-for (property in expression) statement 
+for (property in expression) statement
 ```
 
 ### 参数
@@ -23,7 +23,7 @@ for (property in expression) statement
 
 
 - ECMAScript 对象的属性没有顺序，因此通过 `for...in` 循环输出的属性名的顺序是不可预测的。具体来说，所有可枚举的属性都会被返回一次，但返回的先后次序可能会因为浏览器而异。
-- 迭代的对象的变量值为 `null` 或 `undefined`，`for...in` 语句不抛出错误，但不会执行循环体（ECMAScript5以上版本可行）。为了保证最大限度的兼容性，建议使用 `for...in` 之前，先检测确认该对象的值不是 `null` 或 `undefined`。
+- 迭代的对象的变量值为 `null` 或 `undefined`，`for...in` 语句不抛出错误，但不会执行循环体（ECMAScript5 以上版本可行）。为了保证最大限度的兼容性，建议使用 `for...in` 之前，先检测确认该对象的值不是 `null` 或 `undefined`。
 
 ## 示例
 
@@ -52,7 +52,7 @@ var lamborghini = new Car();
 for (var prop in lamborghini) {
   if (lamborghini.hasOwnProperty(prop)) {
     console.log(`lamborghini.${prop} = ${lamborghini[prop]}`);
-  } 
+  }
 }
 
 // Output:

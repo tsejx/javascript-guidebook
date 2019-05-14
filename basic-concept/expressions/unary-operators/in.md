@@ -4,7 +4,7 @@
 
 ## 语法
 
-```javascript
+```js
 prop in object
 ```
 
@@ -12,7 +12,7 @@ prop in object
 
 | 参数     | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
-| `prop`   | 一个字符串类型或者 symbol 类型的属性名或者数组索引（非symbol类型将会强制转为字符串）。 |
+| `prop`   | 一个字符串类型或者 symbol 类型的属性名或者数组索引（非 Symbol 类型将会强制转为字符串）。 |
 | `object` | 检查（或其原型链）是否包含具有指定名称的属性的对象。         |
 
 ## 示例
@@ -21,7 +21,7 @@ prop in object
 
 - 数组
 
-```javascript
+```js
 var cars = new Array('Toyota', 'Nissan', 'Mercedes', 'Buick', 'Porsche');
 0 in cars;          //  return true
 1 in cars;          //  return true
@@ -35,13 +35,13 @@ Symbol.iterator in cars;    //  return true(数组可迭代，只在ES2015+上�
 
  - 内置对象
 
-```javascript
+```js
 'PI' in Math;       // return true
 ```
 
  - 自定义对象
 
-```javascript
+```js
 var myCar = {make: 'Honda', model: 'Accord', year: '1998'};
 'make' in myCar;
 'model' in myCar;
@@ -51,7 +51,7 @@ var myCar = {make: 'Honda', model: 'Accord', year: '1998'};
 
 例如：你可以指定使用 `String` 构造函数创建的字符串，但不能指定字符串文字。
 
-```javascript
+```js
 var color1 = new String('green');
 'length' in color1;                     //  return true
 
@@ -63,7 +63,7 @@ var color2 = new 'coral';
 
 如果你使用 `delete` 运算符删除了一个属性，则 `in` 运算符对所删除属性返回 `false`。
 
-```javasript
+```js
 var cars = new Array('Toyota', 'Nissan', 'Mercedes', 'Buick', 'Porsche');
 delete cars[3];
 
@@ -72,7 +72,7 @@ delete cars[3];
 
 如果你只是将一个属性的值赋值为 `undefined`，而没有删除它，则 `in` 运算仍然会返回 `true`。
 
-```javascript
+```js
 var cars = new Array('Toyota', 'Nissan', 'Mercedes', 'Buick', 'Porsche');
 cars[3] = undefined;
 
@@ -83,6 +83,6 @@ cars[3] = undefined;
 
 如果一个属性是从原型链上继承来的，`in` 运算符也会返回 `true`。
 
-```javascript
+```js
 "toString" in {}; // return true
 ```

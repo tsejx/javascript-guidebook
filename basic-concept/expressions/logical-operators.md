@@ -1,6 +1,6 @@
 # 逻辑运算符
 
-逻辑运算符常用于对操作数进行布尔运算，经常和关系运算符一样配合使用。逻辑运算符将多个关系表达式组合起来组成一个更复杂的表达式。逻辑运算符分为逻辑与 `&&` 、逻辑或 `||` 、逻辑非 `!` 3种。
+逻辑运算符常用于对操作数进行布尔运算，经常和关系运算符一样配合使用。逻辑运算符将多个关系表达式组合起来组成一个更复杂的表达式。逻辑运算符分为逻辑与 `&&` 、逻辑或 `||` 、逻辑非 `!` 3 种。
 
 ## 逻辑与
 
@@ -25,7 +25,7 @@
 
 ★ 除了`false`、`undefined`、`null`、`+0`、`-0`、`NaN`、`''` ，其余都是真值。
 
-```javascript
+```js
 var a1 =  true && true;     // t && t returns true
 var a2 =  true && false;    // t && f returns false
 var a3 = false && true;     // f && t returns false
@@ -37,13 +37,13 @@ var a7 = "Cat" && false;    // t && f returns false
 
 **★ 逻辑与运算符可以多个连用，返回第一个布尔值为 `false` 的表达式的值。**
 
-```javascript
+```js
 console.log(true && 'foo' && '' && 4 && 'foo' && true); // ''
 ```
 
 **★ 可以使用逻辑与运算符来取代 `if` 结构**
 
-```javascript
+```js
 if (a == b) {
   doSomething();
 }
@@ -51,9 +51,9 @@ if (a == b) {
 (a == b) && doSomething();
 ```
 
-逻辑与运算符常常用于回调函数使用中 
+逻辑与运算符常常用于回调函数使用中
 
-```javascript
+```js
 // 若没有给参数a传值，则a为默认的undefined，是假值，所以不执行a()，防止报错，如果给参数a传值，则执行函数a()
 function fn(a){
     if(a){
@@ -88,7 +88,7 @@ false       |       false        |     false
 
 对于逻辑或而言，如果第一个操作数是 `true`，则无论第二个操作数是什么值，结果都是 `true`，则返回第一个操作数；如果第一个操作数是 `false`，则结果的真假和第二个操作数的真假相同，则返回第二个操作数。
 
-```javascript
+```js
 var o1 =  true || true;     // t || t returns true
 var o2 = false || true;     // f || t returns true
 var o3 =  true || false;    // t || f returns true
@@ -100,13 +100,13 @@ var o7 = "Cat" || false;    // t || f returns Cat
 
 **★ 同样地，逻辑或运算符也可以多个连用，返回第一个布尔值为 `true` 的表达式的值。**
 
-```javascript
+```js
 console.log(false || 0 || '' || 4 || 'foo' || true); // 4
 ```
 
 逻辑或运算符常用于为变量设置默认值
 
-```javascript
+```js
 // 如果没有向参数p传入任何对象，则将该参数默认设置为空对象
 function fn(p){
     p = p || {};
@@ -115,9 +115,9 @@ function fn(p){
 
 ## 逻辑非
 
-逻辑非操作符由一个叹号( `!` )表示，可以应用于ECMAScript中的任何值。无论这个值是什么数据类型，这个操作符都会返回一个布尔值。逻辑非操作符首先会将它的操作数转换成一个布尔值，然后再对其求反
+逻辑非操作符由一个叹号( `!` )表示，可以应用于 ECMAScript 中的任何值。无论这个值是什么数据类型，这个操作符都会返回一个布尔值。逻辑非操作符首先会将它的操作数转换成一个布尔值，然后再对其求反
 
-```javascript
+```js
 console.log(!{a: 1});       // f 对象
 console.log(!'');           // t 空字符串
 console.log(!'123');        // f 非空字符串
@@ -130,7 +130,7 @@ console.log(!undefined);    // t NaN
 
 逻辑非对操作数转为布尔类型的转换类型与 `Boolean()` 转型函数相同，只不过最后再将其结果取反。而如果同时使用两个逻辑非操作符，实际上就会模拟 `Boolean()` 转型函数的行为。
 
-```javascript
+```js
 console.log(!!undefined);   // false
 console.log(!!null);        // false
 console.log(!!0);           // false
@@ -140,7 +140,7 @@ console.log(!!'');      	// false
 console.log(!!false);       // false
 ```
 
-```javascript
+```js
 console.log(!!{});                  // true
 console.log(!![]);                  // true
 

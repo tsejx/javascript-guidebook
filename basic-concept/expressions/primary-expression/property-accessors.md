@@ -1,8 +1,10 @@
-## 属性访问器
+# 属性访问器
 
-属性访问表达式运算得到一个对象属性或一个数组元素的值。JavaScript 为属性访问定义了两种语法。
+属性访问表达式运算得到一个对象属性或一个数组元素的值。
 
-### 语法
+JavaScript 为属性访问定义了两种语法。
+
+## 语法
 
 - 第一种写法是一个表达式后跟随一个句点和标识符。表达式指定对象，标识符则指定需要访问的属性的名称。
 
@@ -25,23 +27,31 @@ expression[expression]
 
 不论哪种情况，如果命名的属性不存在，那么整个属性访问表达式的值就是 `undefined`。
 
-### 示例
+## 示例
 
 ```js
-var a = {x: 1, y: {z: 3}};		// 一个示例对象
+var a = {x: 1, y: {z: 3}};
+// 一个示例对象
 
-var b = [a, 4, [5, 6]];			// 一个包含这个对象的示例数组
+var b = [a, 4, [5, 6]];
+// 一个包含这个对象的示例数组
 
-console.log(a.x)				// Output: 1
+console.log(a.x);
+// 1
 
-console.log(a.y.z)				// Output: 3
+console.log(a.y.z);
+// 3
 
-console.log(a["x"])				// Output: 1
+console.log(a["x"]);
+// 1
 
-console.log(b[1])				// Output: 4
+console.log(b[1]);
+// 4
 
-console.log(b[2]["1"])			// Output: 6
+console.log(b[2]["1"]);
+// 6
 
-console.log(b[0].x)				// Output: 1
+console.log(b[0].x);
+// 1
 ```
 

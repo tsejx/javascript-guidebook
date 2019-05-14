@@ -1,6 +1,6 @@
 # for...of 语句
 
-**for…of 语句**在可迭代对象（包括 `Array`，`Map`，`Set`，`String`，`TypedArray`，`arguments`  对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
+**for...of 语句**在可迭代对象（包括 `Array`，`Map`，`Set`，`String`，`TypedArray`，`arguments`  对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
 
 ## 语法
 
@@ -136,14 +136,14 @@ for (let paragraph of articleParagraphs) {
 对于 `for...of` 的循环，可以由 `break`, `continue[4]`, `throw` 或 `return[5]` 终止。在这些情况下，迭代器关闭。
 
 ```javascript
-function* foo(){ 
-  yield 1; 
-  yield 2; 
-  yield 3; 
-}; 
+function* foo(){
+  yield 1;
+  yield 2;
+  yield 3;
+};
 
-for (let o of foo()) { 
-  console.log(o); 
+for (let o of foo()) {
+  console.log(o);
   break; // closes iterator, triggers return
 }
 ```
@@ -160,9 +160,9 @@ function* fibonacci() { // 一个生成器函数
         yield curr;
     }
 }
- 
+
 for (let n of fibonacci()) {
-     console.log(n); 
+     console.log(n);
     // 当n大于1000时跳出循环
     if (n >= 1000)
         break;
@@ -173,7 +173,7 @@ for (let n of fibonacci()) {
 
 生成器不应该重用，即使 `for...of` 循环的提前终止，例如通过 `break` 关键字。在退出循环后，生成器关闭，并尝试再次迭代，不会产生任何进一步的结果。
 
-```
+```js
 var gen = (function *(){
     yield 1;
     yield 2;
@@ -182,7 +182,7 @@ var gen = (function *(){
 for (let o of gen) {
     console.log(o);
     break;//关闭生成器
-} 
+}
 
 //生成器不应该重用，以下没有意义！
 for (let o of gen) {
@@ -228,7 +228,7 @@ for (var value of iterable) {
 以下示例显示了与 `Array` 一起使用时，`for...of` 循环和 `for...in` 循环之间的区别。
 
 ```Javascript
-Object.prototype.objCustom = function() {}; 
+Object.prototype.objCustom = function() {};
 Array.prototype.arrCustom = function() {};
 
 let iterable = [3, 5, 7];
@@ -251,9 +251,9 @@ for (let i of iterable) {
 
 ```Javascript
 Object.prototype.objCustom = function() {};
-Array.prototype.arrCustom = function() {}; 
+Array.prototype.arrCustom = function() {};
 
-let iterable = [3, 5, 7]; 
+let iterable = [3, 5, 7];
 iterable.foo = 'hello';
 ```
 
@@ -261,7 +261,7 @@ iterable.foo = 'hello';
 
 ```Javascript
 for (let i in iterable) {
-  console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom" 
+  console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
 }
 ```
 
@@ -279,10 +279,9 @@ for (let i in iterable) {
 
 ```Javascript
 for (let i of iterable) {
-  console.log(i); // logs 3, 5, 7 
+  console.log(i); // logs 3, 5, 7
 }
 ```
 
 该循环迭代并记录 `iterable` 作为可迭代对象定义的迭代值，这些是数组元素 `3`, `5`, `7`，而不是任何对象的**属性**。
 
- 

@@ -2,7 +2,6 @@
 
 **基本语法 Basic Concept**
 
-- **术语定义**
 - **词法语法**
   - [词法语法](lexical-grammar/lexical-grammar.md)
 - **数据类型和值**

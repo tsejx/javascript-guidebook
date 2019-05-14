@@ -1,8 +1,3 @@
----
-title: 算术运算符
-sidebarDepth: 0
----
-
 # 算术运算符
 
 算术运算符使用数值（字面量或者变量）作为操作数进行运算并返回一个数值。
@@ -22,13 +17,25 @@ sidebarDepth: 0
 |自减 `--`|一元运算符，分为前自减和后自减|具体参考 [自增自减](update-expressions.md)|
 |一元负值符 `-`|一元运算符，返回操作数的负值|`var x = 3; console.log(-x); // -3`|
 |一元正值符 `+`|一元运算符，若操作数在操作前非数字类型，将试图将其转换成数字类型|`console.log(+'3') // 3` `console.log(+true) // 1` |
-|指数运算符 `**`|计算 base(底数) 的 exponent(指数)次方| `2 ** 3 = 8` `10 ** -1 = 0.1`|
+|指数运算符 `**`|计算 base（底数） 的 exponent（指数）次方| `2 ** 3 = 8` `10 ** -1 = 0.1`|
 
-### 典型例题
+## 典型例题
 
 ```js
 console.log(-9 % 2)	// -1
 
 console.log(1 + - + + + - + 1)	// 2
+```
+
+### 实现指数运算符
+
+```js
+function calculateExponent(base, exponent){
+    if (exponent === 1) {
+        return base
+    } else {
+        return base * calculateExponent(base, exponent - 1);
+    }
+}
 ```
 

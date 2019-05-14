@@ -1,4 +1,4 @@
-## instanceof
+# instanceof
 
 `instanceof` 运算符用于测试构造函数的 `prototype` 属性是否出现在对象的原型链中的任何位置。
 
@@ -6,7 +6,7 @@
 object instanceof constructor
 ```
 
-### 检测类型
+## 检测类型
 
 `instanceof` 可以检测某个对象是不是另一个对象的实例。
 
@@ -30,13 +30,15 @@ Student.prototype = p
 
 const s = new Student()
 
-console.log(s instanceof Student)	// true
-console.log(s instanceof Person)	// true
+console.log(s instanceof Student)
+// true
+console.log(s instanceof Person)
+// true
 ```
 
-### 检测实例
+## 检测实例
 
-查看对象B的 `prototype` 指向的对象是否在对象A的 `[[prototype]]` 链上。如果在，则返回 `true`，如果不在则返回 `false`。不过有一个特殊的情况，当对象B的 `prototype` 为 `null` 将会报错（类似于空指针异常）。
+查看对象 B 的 `prototype` 指向的对象是否在对象 A 的 `[[prototype]]` 链上。如果在，则返回 `true`，如果不在则返回 `false`。不过有一个特殊的情况，当对象 B 的 `prototype` 为 `null` 将会报错（类似于空指针异常）。
 
 函数模拟 `A instanceof B`：
 
@@ -55,15 +57,15 @@ function _instanceof(A, B) {
 }
 ```
 
-### 示例
+## 示例
 
 ```js
 null instanceof Object
+// invalid
 ```
 
 ---
-
 **参考资料：**
 
-* [JS魔法堂：再识 instanceof](https://juejin.im/entry/5804640d0bd1d0005813083e)
-* [instanceof 原理](https://juejin.im/post/5b7f64be51882542c83476f0)
+* [📝 JS 魔法堂：再识 instanceof](https://juejin.im/entry/5804640d0bd1d0005813083e)
+* [📝 instanceof 原理](https://juejin.im/post/5b7f64be51882542c83476f0)

@@ -4,7 +4,7 @@
 
 ## 语法
 
-```javascript
+```js
 typeof operand
 
 typeof (operand)
@@ -18,7 +18,9 @@ typeof (operand)
 
 ### 返回值
 
-下表总结了typeof可能的返回值。有关类型和原始值的更多信息，可查看 [JavaScript数据结构][1] 页面。
+下表总结了 `typeof` 可能的返回值。
+
+有关类型和原始值的更多信息，可查看 [JavaScript 数据结构](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.mdhttps://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.md) 页面。
 
 |       类型        |       结果          |
 |       ----        |       ----          |
@@ -38,35 +40,44 @@ typeof (operand)
 
 - `Numbers`
 
-```javascript
+```js
 typeof 37 === 'number';
 typeof 3.14 === 'number';
 typeof Math.LN2 === 'number';
 typeof Infinity === 'number';
-typeof NaN === 'number'; // 尽管NaN是"Not-A-Number"的缩写
-typeof Number(1) === 'number'; // 但不要使用这种形式!
+
+typeof NaN === 'number';
+// 尽管NaN是"Not-A-Number"的缩写
+
+typeof Number(1) === 'number';
+// 但不要使用这种形式!
 ```
 
  - `Strings`
 
-```javascript
+```js
 typeof "" === 'string';
 typeof "bla" === 'string';
-typeof (typeof 1) === 'string'; // typeof总是返回一个字符串
-typeof String("abc") === 'string'; // 但不要使用这种形式!
+
+typeof (typeof 1) === 'string';
+// typeof 总是返回一个字符串
+
+typeof String("abc") === 'string';
+// 但不要使用这种形式!
 ```
 
  - `Booleans`
 
-```javascript
+```js
 typeof true === 'boolean';
 typeof false === 'boolean';
-typeof Boolean(true) === 'boolean'; // 但不要使用这种形式!
+typeof Boolean(true) === 'boolean';
+// 但不要使用这种形式!
 ```
 
  - `Symbols`
 
-```javascript
+```js
 typeof Symbol() === 'symbol';
 typeof Symbol('foo') === 'symbol';
 typeof Symbol.iterator === 'symbol';
@@ -74,15 +85,15 @@ typeof Symbol.iterator === 'symbol';
 
  - `Undefined`
 
-```javascript
+```js
 typeof undefined === 'undefined';
 typeof declaredButUndefinedVariable === 'undefined';
-typeof undeclaredVariable === 'undefined'; 
+typeof undeclaredVariable === 'undefined';
 ```
 
  - `Objects`
 
-```javascript
+```js
 typeof {a:1} === 'object';
 
 // 使用Array.isArray 或者 Object.prototype.toString.call
@@ -100,7 +111,7 @@ typeof new String("abc") === 'object';
  - `Function`
 
 
-```javascript
+```js
 typeof function(){} === 'function';
 typeof class C{} === 'function'
 typeof Math.sin === 'function';
@@ -109,14 +120,11 @@ typeof new Function() === 'function';
 
 ### 特殊的 `null`
 
-```javascript
-typeof null === 'object'; // 从一开始出现JavaScript就是这样的
+```js
+typeof null === 'object';
+// 从一开始出现 JavaScript 就是这样的
 ```
 
 在 JavaScript 最初的实现中，JavaScript 中的值是由一个表示类型的标签和实际数据值表示的。对象的类型标签是 0。由于 `null` 代表的是空指针（大多数平台下值为 `0x00`），因此，`null` 的类型标签也成为了 0，`typeof null` 就错误的返回了 `"object"`。
 
-ECMAScript提出了一个修复（通过opt-in），但被拒绝。这将导致 `typeof null === 'object'`。
-
-
-
-[1]: https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.mdhttps://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.md
+ECMAScript 提出了一个修复（通过 opt-in），但被拒绝。这将导致 `typeof null === 'object'`。

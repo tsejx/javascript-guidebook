@@ -142,14 +142,14 @@ const [first, ...middle, last] = [1, 2, 3, 4, 5];
 // ['h', 'e', 'l', 'l', 'o']
 ```
 
-上面的写法有一个重要的好处：能够正确识别32位的 Unicode 字符。
+上面的写法有一个重要的好处：能够正确识别 32 位的 Unicode 字符。
 
 ```javascript
 'x\uD83D\uDE80y'.length			// 4
 [...'x\uD83D\uDE80y'].length	// 3
 ```
 
-以上代码的第一种写法中，JavaScript 会将32位 Unicode 字符识别为2个字符，采用扩展运算符就没有这个问题。因此，正确返回字符串长度的函数可以像下面这样写。
+以上代码的第一种写法中，JavaScript 会将 32 位 Unicode 字符识别为 2 个字符，采用扩展运算符就没有这个问题。因此，正确返回字符串长度的函数可以像下面这样写。
 
 ```javascript
 function length(str) {
@@ -159,7 +159,7 @@ function length(str) {
 length('x\uD83D\uDE80y');	// 3
 ```
 
-凡事涉及操作32位Unicode字符的函数都有这个问题。因此，最好都用扩展运算符改写。
+凡事涉及操作 32 位 Unicode 字符的函数都有这个问题。因此，最好都用扩展运算符改写。
 
 ```javascript
 let str = 'x\uD83D\uDE80y';
@@ -173,7 +173,7 @@ str.split('').reverse().join('')
 
 上面的代码中，如果不用扩展运算，字符串的 `reverse`  操作就不正确。
 
-### 实现Iterator接口的对象
+### 实现 Iterator 接口的对象
 
 任何 Iterator 接口的对象都可以用扩展运算符转为**真正的数组**。
 

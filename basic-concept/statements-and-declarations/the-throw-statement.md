@@ -1,6 +1,6 @@
 # `Throw` 语句
 
-**`throw` 语句**  用来抛出一个用户自定义的异常。当前函数的执行将被停止（ `throw` 之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个[`catch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch)块。如果调用者函数中没有`catch`块，程序将会终止。
+**`throw`语句**  用来抛出一个用户自定义的异常。当前函数的执行将被停止（ `throw` 之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个[`catch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch)块。如果调用者函数中没有`catch`块，程序将会终止。
 
 ## 语法
 
@@ -41,14 +41,14 @@ function getMonthName(mo) {
     mo = mo - 1;	//	调整月份数字到数组索引(1 = Jan,12 = Dec)
     var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     if(months[mo] !== undefined) {
-       return months[mo];   
+       return months[mo];
     } elese {
         throw new UserException("InvalidMonthNo");
     }
 }
 
 try{
-   // statements to try 
+   // statements to try
     var myMonth = 15;	//	超出边界并引发异常
     var monthName = getMonthName(myMonth);
 } catch (e) {

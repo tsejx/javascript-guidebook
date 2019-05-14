@@ -6,9 +6,12 @@
 
 数组的元素是逗号分隔的表达式的值。
 
+空数组：`[]` 内留空即表示该数组没有任何元素
+
+拥有两个元素的数组：第一个是 3，第二个是 7。
+
 ```js
-[]			// 一个空数组：[]内留空即表示该数组没有任何元素
-[1 + 2, 3 + 4]	// 拥有两个元素的数组，第一个是3，第二个是7
+[1 + 2, 3 + 4]
 ```
 
 ### 嵌套数组
@@ -38,10 +41,13 @@ let arr = [0, 1]
 
 arr[10] = 10
 
-console.log(arr)	// [0, 1, empty x 8, 10]
+console.log(arr);
+// [0, 1, empty x 8, 10]
 
-console.log(arr.length)	// 11
+console.log(arr.length);
+// 11
 
-ary.filter(x => x === undefined)	// []
+ary.filter(x => x === undefined);
+// []
 ```
 

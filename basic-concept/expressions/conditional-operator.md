@@ -16,7 +16,7 @@ variable = boolean_expression ? true_value : false_value;
 greeting = 'hello ' + (username ? username : 'there');
 ```
 
-这和下面使用if语句的代码是等价的，但显然上面的代码更加简洁:
+这和下面使用 `if` 语句的代码是等价的，但显然上面的代码更加简洁:
 
 ```javascript
 greeting = 'hello ';
