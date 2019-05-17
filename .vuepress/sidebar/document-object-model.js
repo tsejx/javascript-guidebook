@@ -2,13 +2,15 @@ const documentObjectModel = [
   {
     title: '文档对象模型',
     link: '',
-    children: [{ title: 'DOM', link: 'dom' }, { title: 'DOM API', link: 'dom-api' }],
+    children: [
+      { title: '文档对象模型', link: 'dom' },
+      // { title: '节点层次', link: 'hierarchy-of-nodes' }
+    ],
   },
   {
     title: '节点层次',
     link: 'hierarchy-of-nodes',
     children: [
-      { title: '节点层次', link: 'hierarchy-of-nodes' },
       { title: 'Node 类型', link: 'the-node-type' },
       { title: 'Document 类型', link: 'the-document-type' },
       { title: 'Element 类型', link: 'the-element-type' },
@@ -63,5 +65,5 @@ const documentObjectModel = [
 ];
 
 module.exports = {
-    documentObjectModel
-}
+  documentObjectModel,
+};

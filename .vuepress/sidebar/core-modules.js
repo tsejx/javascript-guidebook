@@ -33,7 +33,7 @@ const coreModules = [
         children: [
             { title: '并发模型', link: 'concurrency-model' },
             { title: '事件循环', link: 'event-loop'},
-            { title: '定时器运行机制', link: 'timers-mechanism'}
+            { title: '定时器机制', link: 'timers-mechanism'}
         ]
     },{
         title: '函数声明',
