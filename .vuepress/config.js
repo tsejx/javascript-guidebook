@@ -50,7 +50,11 @@ module.exports = {
           { text: '计算机网络', link: '/computer-networks/' },
         ],
       },
-
+      { text: '更多',
+        items: [
+          { text: 'Git Guidebook', link: 'https://tsejx.github.io/Git-Guidebook/' }
+        ]
+       },
       { text: 'Wiki', link: 'https://github.com/tsejx/JavaScript-Guidebook/wiki' },
     ],
     sidebarDepth: 0,
