@@ -29,7 +29,7 @@ XSS 攻击全称**跨站脚本攻击**（Cross-Site Scripting），通常指的�
 
 ### 反射型
 
-反射型 XSS 攻击又称为**非持久性跨站点脚本攻击**。漏洞产生的原因是攻击者注入的数据反映在响应中。反射型 XSS 攻击要求用户访问一个被攻击者篡改后的链接，用户访问该链接时，被植入的攻击脚本被用户游览器执行，从而达到攻击目的。通过 URL 参数直接注入，然后在响应的数据中包含着危险的代码。
+反射型 XSS 攻击又称为**非持久性跨站点脚本攻击**。漏洞产生的原因是攻击者注入的数据反映在响应中。反射型 XSS 攻击要求用户访问一个被攻击者篡改后的链接，用户访问该链接时，被植入的攻击脚本被用户浏览器执行，从而达到攻击目的。通过 URL 参数直接注入，然后在响应的数据中包含着危险的代码。
 
 👣 **攻击步骤**
 
@@ -164,7 +164,7 @@ eval("UNTRUSTED")
 1. 设置 HTTP 头信息的 Content-Security-Policy 字段
 
 ```http
-content-security-policy: default-scr https:; connect-src https:; font-src https: data:; frame-src https: twitter:; img-src https: data:; media-src https:; object-src https:; script-src 'unsafe-inline' 'unsafe-eval' https:; style-src 'unsafe-inline' https:; 
+content-security-policy: default-scr https:; connect-src https:; font-src https: data:; frame-src https: twitter:; img-src https: data:; media-src https:; object-src https:; script-src 'unsafe-inline' 'unsafe-eval' https:; style-src 'unsafe-inline' https:;
 ```
 
 > Twitter 采用的内容安全策略，未详细列出

@@ -100,7 +100,7 @@ Slowloris 是一种慢速连接攻击，Slowloris 是利用 Web Server 的漏洞
 
 Slowloris  PoC
 
-```httph t
+```http
 # 构造以下畸形 HTTP 请求包
 GET / HTTP/1.1\r\n
 Host: Victim host\r\n

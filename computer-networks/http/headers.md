@@ -1,4 +1,4 @@
-## HTTP 首部字段
+# HTTP 首部字段
 
 HTTP 消息头允许客户端和服务器通过 request 和 response 传递附加信息。一个请求头由名称（不区分大小写）后跟冒号 `:`，冒号后跟具体的值（不带换行符）组成。该值前的引导空白会被忽略。
 
@@ -9,7 +9,7 @@ HTTP 消息头允许客户端和服务器通过 request 和 response 传递附�
 * 响应首部字段（Response Header Fields）：包含有关响应的补充信息，如其位置或服务器本身（名称和版本等）的消息头。
 * 实体首部字段（Entity Header Fields）：包含有关实体主体的更多信息，比如主体长（Content-Length）度或其 MIME 类型。
 
-### 通用首部字段
+## 通用首部字段
 
 | 首部字段名        | 说明                       | 示例                                             |
 | ----------------- | -------------------------- | ------------------------------------------------ |
@@ -23,7 +23,7 @@ HTTP 消息头允许客户端和服务器通过 request 和 response 传递附�
 | Via               | 代理服务器的相关信息       | `Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)`    |
 | Warning           | 错误通知                   | Warning: 199 Miscellaneous warning               |
 
-### 请求首部字段
+## 请求首部字段
 
 | 首部字段名          | 说明                                          | 示例                                                      |
 | ------------------- | --------------------------------------------- | --------------------------------------------------------- |
@@ -31,48 +31,48 @@ HTTP 消息头允许客户端和服务器通过 request 和 response 传递附�
 | Accept-Charset      | 优先的字符集                                  | `Accept-Charset: iso-8859-5`                              |
 | Accept-Encoding     | 优先的内容编码                                | `Accept-Encoding: gzip, deflate, br`                      |
 | Accept-Language     | 优先的语言（自然语言）                        | `Accept-Language: en,zh`                                  |
-| Authorization       | Web认证信息                                   | `Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==`       |
+| Authorization       | Web 认证信息                                   | `Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==`       |
 | Expect              | 期待服务器的特定行为                          | `Expect: 100-continue`                                    |
 | From                | 用户的电子邮箱地址                            | `From: raykaeso@leixuesong.cn`                            |
 | Host                | 请求资源的服务器的域名和端口号                | `Host: www.leixuesong.cn`                                 |
 | If-Match            | 比较实体标记（ETag）                          | `If-Match: “737060cd8c284d8af7aD3082f209582d”`            |
 | If-Modified-Since   | 比较资源的更新时间                            | `If-Modified-Since: Sat, 29 Oct 2010 19:43:31 GMT`        |
-| If-None-Match       | 比较实体标记（与If-Match相反）                | `If-None-Match: “737060cd8c284d8af7ad3082f209582d”`       |
-| If-Range            | 资源未更新时发送实体Byte的范围请求            | `If-Range: “737060cd8c284d8af7ad3082f209582d”`            |
-| If-Unmodified-Since | 比较资源的更新时间（与If-Modified-Since相反） | `If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT`      |
+| If-None-Match       | 比较实体标记（与 If-Match 相反）                | `If-None-Match: “737060cd8c284d8af7ad3082f209582d”`       |
+| If-Range            | 资源未更新时发送实体 Byte 的范围请求            | `If-Range: “737060cd8c284d8af7ad3082f209582d”`            |
+| If-Unmodified-Since | 比较资源的更新时间（与 If-Modified-Since 相反） | `If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT`      |
 | Max-Forwards        | 最大传输逐跳数                                | `Max-Forwards: 10`                                        |
 | Proxy-Authorization | 代理服务器要求客户端的认证信息                | `Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==` |
 | Range               | 实体的字节范围请求                            | `Range: bytes=500-999`                                    |
-| Referer             | 对请求中URI的原始获取方                       | `Referer: www.leixuesong.cn`                              |
+| Referer             | 对请求中 URI 的原始获取方                       | `Referer: www.leixuesong.cn`                              |
 | TE                  | 传输编码的优先级                              | `TE: trailers,deflate;q=0.5`                              |
-| User-Agent          | HTTP客户端程序的信息                          | `User-Agent: Mozilla/5.0 (Linux; X11)`                    |
+| User-Agent          | HTTP 客户端程序的信息                          | `User-Agent: Mozilla/5.0 (Linux; X11)`                    |
 
-### 响应首部字段
+## 响应首部字段
 
 | 首部字段名 | 说明 | 示例 |
 | ------ | ---- | ---- |
 | Accept-Ranges       | 是否接受字节范围请求 | `Accept-Ranges: bytes`                                    |
 | Age | 从原始服务器到代理缓存形成的估算时间（以秒计，非负） | `Age: 12` |
 | ETag | 请求变量的实体标签的当前值 | `ETag: “737060cd8c284d8af7ad3082f209582d”` |
-| Location | 用来重定向接收方到非请求URL的位置来完成请求或标识新的资源 | ` Location: http://www.leixuesong.cn/724` |
+| Location | 用来重定向接收方到非请求 URL 的位置来完成请求或标识新的资源 | ` Location: http://www.leixuesong.cn/724` |
 | Proxy-Authenticate | 代理服务器对客户端的认证信息 | `Proxy-Authenticate: Basic realm="Access to the internal site"` |
 | Retry-After | 如果实体暂时不可取，通知客户端在指定时间之后再次尝试 | ` Retry-After: 120` |
-| Server | Web服务器的安装信息 | `Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)` |
+| Server | Web 服务器的安装信息 | `Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)` |
 | Vary | 代理服务器缓存的管理信息 | `Vary: *` |
 | WWW-Authenticate | 服务器对客户端的认证信息 | `WWW-Authenticate: Basic` |
 
-### 实体首部字段
+## 实体首部字段
 
 | 首部字段名       | 说明                            | 示例                                           |
 | ---------------- | ------------------------------- | ---------------------------------------------- |
-| Allow            | 资源可支持的HTTP方法            | `Allow: GET,HEAD`                              |
+| Allow            | 资源可支持的 HTTP 方法            | `Allow: GET,HEAD`                              |
 | Content-Encoding | 实体主体适用的编码方式          | `Content-Encoding: gzip`                       |
 | Content-Language | 实体主体的自然语言              | `Content-Language: en,zh`                      |
 | Content-Length   | 实体主体的大小（单位：字节）    | `Content-Length: 348`                          |
-| Content-Location | 替代对应资源的URI               | `Content-Location: /index.htm`                 |
-| Content-MD5      | 实体主体的报文摘要（MD5交验值） | `Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==`        |
+| Content-Location | 替代对应资源的 URI               | `Content-Location: /index.htm`                 |
+| Content-MD5      | 实体主体的报文摘要（MD5 交验值） | `Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ==`        |
 | Content-Range    | 实体主体的位置范围              | `Content-Range: bytes 21010-47021/47022`       |
-| Content-Type     | 实体主体的媒体类型（MIME类型）  | `Content-Type: text/html; charset=utf-8`       |
+| Content-Type     | 实体主体的媒体类型（MIME 类型）  | `Content-Type: text/html; charset=utf-8`       |
 | Expires          | 响应国旗的日期和时间            | `Expires: Thu, 01 Dec 2010 16:00:00 GMT`       |
 | Last-Modified    | 请求资源最后修改的时间          | `Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT` |
 
