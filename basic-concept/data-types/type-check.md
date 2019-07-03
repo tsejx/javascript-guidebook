@@ -5,31 +5,31 @@
 `typeof` 操作符返回一个字符串，表示未经计算的操作数的类型。
 
 ```js
-typeof(undefined)
+typeof undefined;
 // "undefined"
 
-typeof null
+typeof null;
 // "object"
 
-typeof 100
+typeof 100;
 // "number"
 
-typeof NaN
+typeof NaN;
 // "number"
 
-typeof true
+typeof true;
 // "boolean"
 
-typeof 'foo'
+typeof 'foo';
 // "string"
 
-typeof function(){}
+typeof function() {};
 // "function"
 
-typeof [1, 2]
+typeof [1, 2];
 // "object"
 
-typeof new Oject()
+typeof new Oject();
 // "object"
 ```
 
@@ -39,32 +39,36 @@ typeof new Oject()
 
 ## instanceof
 
-`instanceof` 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 `prototype` 属性。
+`instanceof` 运算符用与检测一个对象在其**原型链**中是否存在一个构造函数的 `prototype` 属性。
 
 左操作数为**对象**，不是就返回 `false`，右操作数必须是**函数对象**或者**函数构造器**，不是就返回 `TypeError` 异常。
 
 ```js
-object instanceof constr
+obj instanceof constr;
 ```
 
 ```js
-function Person(){}
-function Student(){}
-Student.prototype = new Person()
-Student.prototype.constructor = Student
+function Person() {}
+function Student() {}
+Student.prototype = new Person();
+Student.prototype.constructor = Student;
 
-const ben = new Student()
-ben instanceof Student      // true
+const ben = new Student();
+ben instanceof Student;
+// true
 
-const one = new Person()
-one instanceof Person       // true
-one instanceof Student      // false
-ben instanceof Person       // true
+const one = new Person();
+one instanceof Person;
+// true
+one instanceof Student;
+// false
+ben instanceof Person;
+// true
 ```
 
 任何一个构造函数都有一个 `prototype` 对象属性，这个对象属性将用作 `new` 实例化对象的原型对象。
 
-📍 `instanceof` 适合用于判断对象是否属于数组 Array，日期 Date，正则 RegExp 等内置对象。
+📍 `instanceof` 适合用于判断对象是否属于 Array、Date 和 RegExp 等内置对象。
 
 📍 不同 Window 或 `iframe` 之间的对象类型检测无法使用 `instanceof` 检测。
 
@@ -74,7 +78,7 @@ ben instanceof Person       // true
 
 可以通过 `toString()` 来获取每个对象的类型。
 
-为了每个对象都能通过 `Object.prototype.toString()` 来检测，需要以 `Function.prototype.call()` 或者 `Function.prototype.apply()` 的形式来调用，传递要检查的对象作为第一个参数。
+为了**每个对象**都能通过 `Object.prototype.toString()` 来检测，需要以 `Function.prototype.call()` 或者 `Function.prototype.apply()` 的形式来调用，传递要检查的对象作为第一个参数。
 
 ```js
 Obejct.prototype.toString.call(undefined)； //  "[object Undefined]"
@@ -88,14 +92,14 @@ Obejct.prototype.toString.call({})；        //  "[object Object]"
 
 📍 使用 `Object.prototype.toString` 方法能精准地判断出值的数据类型。
 
-📍 `Object.prototype.toString` 属于 `Object` 的原型方法，而 `Array` ， `Function` 等类型作为 `Object` 的实例，都重写了 `toString` 方法。因此，不同对象类型调用 `toString` 方法时，调用的是重写后的 `toString` 方法，而非 `Object` 上原型 `toString` 方法，所以采用 `obj.toString()` 不能得到其对象类型，只能将 `obj` 转换成字符串类型。
+📍 `Object.prototype.toString` 属于 `Object` 的原型方法，而 `Array` ， `Function` 等类型作为 `Object` 的实例，都重写了 `toString` 方法。因此，不同对象类型调用 `toString` 方法时，调用的是重写后的 `toString` 方法，而非 `Object` 上原型 `toString` 方法，所以采用 `xxx.toString()` 不能得到其对象类型，只能将 `xxx` 转换成字符串类型。
 
 ## constructor
 
 任何对象都有 `constructor` 属性，继承自原型对象，`constructor` 会指向构造这个对象的构造器或构造函数。
 
 ```js
-Student.prototype.constructor === Student
+Student.prototype.constructor === Student;
 //  true
 ```
 

@@ -5,33 +5,32 @@ JavaScript 是一种 **弱类型语言** 或者说 **动态语言**。这意味�
 这也意味着你可以使用同个相同名称的变量保存不同类型的数据：
 
 ```js
-var foo = 42;    	// foo is a Number now
-var foo = "bar"; 	// foo is a String now
-var foo = true;  	// foo is a Boolean now
+var foo = 42; // foo is a Number now
+var foo = 'bar'; // foo is a String now
+var foo = true; // foo is a Boolean now
 ```
 
-ECMAScript 标准定义了原始数据类型和引用数据类型，共七种内置类型：
+ECMAScript 标准定义了**原始数据类型**和**引用数据类型**，共七种内置类型：
 
- - 原始数据类型（基本类型）：按值访问，可以操作保存在变量中实际的值。
-    - **空值**（null）
-    - **未定义**（undefined）
-    - **布尔值**（boolean）
-    - **数字**（number）
-    - **字符串**（string）
-    - **符号**（symbol）
- - 引用类型（复杂数据类型）：引用类型的值是保存在内存中的对象。
-    - **对象**（Object）
-        - 布尔对象（Boolean）
-        - 数字对象（Number）
-        - 字符串对象（String）
-        - 函数对象（Function）
-        - 数组对象（Array）
-        - 日期对象（Date）
-        - 正则对象（RegExp）
-        - 错误对象（Error）
+- 原始数据类型（基本类型）：按值访问，可以操作保存在变量中实际的值。
+  - **空值**（null）
+  - **未定义**（undefined）
+  - **布尔值**（boolean）
+  - **数字**（number）
+  - **字符串**（string）
+  - **符号**（symbol）
+- 引用类型（复杂数据类型）：引用类型的值是保存在内存中的对象。
+  - **对象**（Object）
+    - 布尔对象（Boolean）
+    - 数字对象（Number）
+    - 字符串对象（String）
+    - 函数对象（Function）
+    - 数组对象（Array）
+    - 日期对象（Date）
+    - 正则对象（RegExp）
+    - 错误对象（Error）
 
-
-📍 与其他语言不同的是，JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。所以引用类型的值是按引用访问的。
+⚠️ **注意：** 与其他语言不同的是，JavaScript 不允许直接访问内存中的位置，也就是说不能直接操作对象的内存空间。在操作对象时，实际上是在操作对象的引用而不是实际的对象。所以引用类型的值是按引用访问的。
 
 ## 原始数据类型
 
@@ -63,9 +62,9 @@ foo;
 未定义值 `undefined` 是全局对象的一个属性。也就是说，它是全局作用域的一个变量。`undefined` 的最初值就是原始数据类型 `undefined`。
 
 ```js
-var foo
+var foo;
 
-console.log(foo)
+console.log(foo);
 // undefined
 ```
 
@@ -77,9 +76,9 @@ console.log(foo)
 
 #### 进制数
 
- - 十进制：JavaScript 中默认的进制数
- - 八进制：第一位必须是 0，然后是 0-7 的数字组成
- - 十六进制：前两位必须是 `0x`，然后是 0-9 及 A-F（字母不区分大小写）
+- 十进制：JavaScript 中默认的进制数
+- 八进制：第一位必须是 0，然后是 0-7 的数字组成
+- 十六进制：前两位必须是 `0x`，然后是 0-9 及 A-F（字母不区分大小写）
 
 ```js
 // 十进制
@@ -95,13 +94,13 @@ var num3 = 079;
 var num4 = 0x1f;
 ```
 
-⚠️ **注意**：八进制在严格模式下 `"use strict"` 是无效的，会导致 JavaScript 报错，避免使用。
+⚠️ **注意：** 八进制在严格模式下 `"use strict"` 是无效的，会导致 JavaScript 报错，避免使用。
 
 #### 浮点数
 
 ```js
 const num = 0.1 + 0.2;
-const sum = '2.3' * 100
+const sum = '2.3' * 100;
 
 console.log(num);
 // 0.30000000000000000004
@@ -136,11 +135,11 @@ JavaScript 中数值的范围是有效位数的，基本上够我们使用，我
 JavaScript 的字符串类型用于表示文本数据。它是一组 16 位的无符号整数值的元素。在字符串中的每个元素占据了字符串的位置。第一个元素的索引为 0，下一个是索引 1，依此类推。字符串的长度是它的元素的数量。
 
 ```js
-'foo'
-"bar"
-'1234'
-'one line \n another line'
-"John's cat"
+'foo';
+'bar';
+'1234';
+'one line \n another line';
+"John's cat";
 ```
 
 ### 符号
@@ -148,10 +147,10 @@ JavaScript 的字符串类型用于表示文本数据。它是一组 16 位的�
 符号（Symbols）是 ECMAScript 第 6 版新定义的。该类型的性质在于这个类型的值可以用来创建匿名的对象属性。该数据类型通常被用作一个对象属性的键值，当这个属性是用于类或对象类型的内部使用的时候。
 
 ```js
-var  myPrivateMethod  = Symbol();
+var myPrivateMethod = Symbol();
 
 this[myPrivateMethod] = function() {
-    // ...
+  // ...
 };
 ```
 
@@ -159,7 +158,7 @@ this[myPrivateMethod] = function() {
 
 引用类型通常叫做类（Class），也就是说，遇到引用值，所处理的就是对象。
 
-从传统意义上来说，ECMAScript 没有真正的类。事实上，除了说明不存在类，在 ECMA-262 中根本没有出现 **类** 这个词，而是定义了 **对象定义**，逻辑上等价于其他程序设计语言中的类。
+在 ECMA-262 标准中根本没有出现 **类** 这个词，而是定义了 **对象定义**，逻辑上等价于其他程序设计语言中的类。
 
 对象是由 `new` 运算符加上要实例化的对象的名字创建的。
 
@@ -182,6 +181,6 @@ const o = new Object;
 ---
 
 **参考资料**：
-* [Symbol 术语表](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol)
-* [Global Objects](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)
 
+- [📖 Symbol 术语表](https://developer.mozilla.org/zh-CN/docs/Glossary/Symbol)
+- [📖 Global Objects](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects)

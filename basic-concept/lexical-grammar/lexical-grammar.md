@@ -123,11 +123,11 @@ var a = 2;
 在下面的例子中，我们把注释放到代码行的结尾处：
 
 ```js
-var x = 5;      // 声明 x 并把 5 赋值给它
-var y = x + 2;  // 声明 y 并把 x+2 赋值给它
+var x = 5; // 声明 x 并把 5 赋值给它
+var y = x + 2; // 声明 y 并把 x+2 赋值给它
 ```
 
-## 直接量/字面量
+## 直接量
 
 JavaScript 数据直接量：**直接量（Literals）**，又名**字面量**，就是可以在程序中直接使用的数据。
 
@@ -136,28 +136,28 @@ JavaScript 数据直接量：**直接量（Literals）**，又名**字面量**�
 **空直接量**
 
 ```js
-null
+null;
 ```
 
 **布尔直接量**
 
 ```js
-true
-false
+true;
+false;
 ```
 
 **数值直接量**
 
 ```js
 // 十进制
-1234567890
+1234567890;
 ```
 
 ⚠️ **注意**：十进制数值直接量可以以 0 开头，但是如果 0 以后的最高位比 8 小，数值将会被认为是八进制而不会报错
 
 ```js
 // 二进制
-0b10000000000000000000000000000000
+0b10000000000000000000000000000000;
 // 2147483648
 ```
 
@@ -165,7 +165,7 @@ false
 
 ```js
 // 八进制
-0O755
+0o755;
 // 493
 ```
 
@@ -173,7 +173,7 @@ false
 
 ```js
 // 十六进制
-0xFFFFFFFFFFFFFFFFF
+0xfffffffffffffffff;
 // 295147905179352830000
 ```
 
@@ -182,24 +182,26 @@ false
 **字符串直接量**
 
 ```js
-'foo'
-"bar"
+'foo';
+'bar';
 
 // 十六进制转义序列
-'\xA9' // "©"
+'\xA9'; // "©"
 
 // Unicode转义序列
-'\u00A9' // "©"
+'\u00A9'; // "©"
 ```
 
 **对象直接量**
 
 ```js
-var o = { a: "foo", b: "bar", c: 42 };
+var o = { a: 'foo', b: 'bar', c: 42 };
 
 // ES6中的简略表示方法
-var a = "foo", b = "bar", c = 42;
-var o = {a, b, c};
+var a = 'foo',
+  b = 'bar',
+  c = 42;
+var o = { a, b, c };
 
 // 不需要这样
 var o = { a: a, b: b, c: c };
@@ -208,7 +210,7 @@ var o = { a: a, b: b, c: c };
 **数组直接量**
 
 ```js
-[1954, 1974, 1990, 2014]
+[1954, 1974, 1990, 2014];
 ```
 
 **正则表达式直接量**
@@ -224,12 +226,8 @@ var o = { a: a, b: b, c: c };
 **模板字符串直接量**
 
 ```js
-`string text`
-
-`string text line 1
- string text line 2`
-
-`string text ${expression} string text`
+`string text``string text line 1
+ string text line 2``string text ${expression} string text`;
 ```
 
 ## 标识符
@@ -244,17 +242,16 @@ var o = { a: a, b: b, c: c };
 按照惯例，ECMAScript 标识符采用驼峰大小写格式，也就是第一个字母小写，剩下的每个单词的首字母大写。
 
 ```js
-const firstSecond = 123
+const firstSecond = 123;
 
-const myCar = 'Toyota'
+const myCar = 'Toyota';
 
-const doSomethingImportant = function(){}
+const doSomethingImportant = function() {};
 ```
 
 虽然没有谁强制要求必须采用这种格式，但为了与 ECMAScript 内置的函数和对象命名格式保持一致，可以将其当作一种最佳实践。
 
 ⚠️ **注意**：不能把关键字、保留字、`true`、`false` 和 `null` 用作标识符。
-
 
 ## 关键字和保留字
 
@@ -264,10 +261,10 @@ const doSomethingImportant = function(){}
 
 ### 保留字
 
-* 关键字 Keyword
-* 未来保留字 FutureReservedWord
-* 空字面量 NullLiteral
-* 布尔值字面量 BooleanLiteral
+- 关键字 Keyword
+- 未来保留字 FutureReservedWord
+- 空字面量 NullLiteral
+- 布尔值字面量 BooleanLiteral
 
 ### 关键字
 
@@ -318,16 +315,18 @@ JavaScript 使用分号 `;` 将语句分隔开，这对增强代码的可读性�
 
 有些地方可以省略分号，有些地方则不能省略分号。
 
-* **两条语句用两行书写，第一个分号可以省略**
+- **两条语句用两行书写，第一个分号可以省略**
 
 ```js
 a = 3;
 b = 4;
 ```
 
-* **两条语句用一行书写，第一个分号不能省略**
+- **两条语句用一行书写，第一个分号不能省略**
+
 ```js
-a = 3; b = 4;
+a = 3;
+b = 4;
 ```
 
 但 JavaScript 并不是在所有换行处都填补分号，只有在缺少了分号无法正确解析代码时，Javascript 才会填补分号。换句话说，如果当前语句和随后的非空格字符不能当成一个整体来解析的话，Javascript 就在当前语句行结束处填补分号。
@@ -335,11 +334,9 @@ a = 3; b = 4;
 🌰 **标准示例：**
 
 ```js
-var a
-a
-=
-3
-console.log(a)
+var a;
+a = 3;
+console.log(a);
 ```
 
 JavaScript 将其解析为:
@@ -372,8 +369,8 @@ JavaScript 并不是在所有换行处都填补分号，只有在缺少了分号
 🌰 **标准示例：**
 
 ```js
-a = b
-++c
+a = b;
+++c;
 
 // 将被ASI转换为
 a = b;
@@ -392,8 +389,8 @@ a = b;
 - `module`
 
 ```js
-return
-a + b
+return;
+a + b;
 
 // 将被 ASI 转换为
 return;
@@ -401,16 +398,16 @@ a + b;
 ```
 
 ```js
-x
-++
-y
+x;
+++y;
 
 // 解析为
-x;++y;
+x;
+++y;
 
 // 本意
-x++;y;
+x++;
+y;
 ```
 
 虽然分号不是必须的，但最好不要省略它，因为加上分号可以避免很多错误，代码行结尾处没有分号会导致压缩错误。加上分号也会在某些情况下增进代码的性能，因为这样解析器就不必再花时间推测应该在哪里插入分号了。
-
