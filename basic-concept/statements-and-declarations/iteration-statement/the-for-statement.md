@@ -1,19 +1,17 @@
-# for 语句 
+# for 语句
 
-**for 语句**也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。
+**for 语句** 也是一种前测试循环语句，但它具有在执行循环之前初始化变量和定义循环后要执行的代码的能力。
 
 ## 语法
 
 ```javascript
-for (initialization; expression; post-loop-expression) statement
+for (initialization; expression; post - loop - expression) statement;
 ```
 
-| 表达式                                | 描述                                                         | 示例         |
-| ------------------------------------- | ------------------------------------------------------------ | ------------ |
-| `initialization` 初始化表达式         | 表达式通常会初始化一个或多个循环计数器（变量），但语法上是允许一个任意复杂度的表达式，通常为一条**声明赋值语句**（只在循环开始之前执行一次）。 | `var i = 0;` |
-| `expression` 循环条件判断             | 执行循环语句前的判断语句（通常为比较表达式），若为 `true` 则执行循环语句，否则则不执行循环语句，并跳出循环语句。 | `i < 10`     |
-| `post-loop-expression` 计数器变量更新 | 循环执行语句执行后执行的计数器变量更新表达式，更新循环计数器（变量），以进入下一次循环条件判断。 | `i++`        |
-| `statement` 循环执行语句              | 当循环条件满足时所执行的语句，执行完毕后执行计数器变量更新语句（利用 `break` 、`continue` 语句除外）。 |              |
+- `initialization` 初始化表达式：表达式通常会初始化一个或多个循环计数器（变量），但语法上是允许一个任意复杂度的表达式，通常为一条**声明赋值语句**（只在循环开始之前执行一次）。
+- `expression` 循环条件判断：执行循环语句前的判断语句（通常为比较表达式），若为 `true` 则执行循环语句，否则则不执行循环语句，并跳出循环语句。
+- `post-loop-expression` 计数器变量更新：循环执行语句执行后执行的计数器变量更新表达式，更新循环计数器（变量），以进入下一次循环条件判断。
+- `statement` 循环执行语句：当循环条件满足时所执行的语句，执行完毕后执行计数器变量更新语句（利用 `break` 、`continue` 语句除外）。
 
 ## 示例
 
@@ -21,16 +19,15 @@ for (initialization; expression; post-loop-expression) statement
 
 ```javascript
 var count = 10;
-for (var i = 0; i < count; i++){
-    console.log(i);
+for (var i = 0; i < count; i++) {
+  console.log(i);
 }
 ```
 
 ### 涉及多个变量的循环
 
 ```javascript
-for (var i = 0, j = 10; i < 10; i++, j--)
-    sum += i * j;
+for (var i = 0, j = 10; i < 10; i++, j--) sum += i * j;
 ```
 
 若在循环中一次迭代改变多个变量，则必须使用到逗号运算符，它将初始化表达式和自增表达式合并入一个表达式中以用于 `for` 循环。
@@ -39,8 +36,8 @@ for (var i = 0, j = 10; i < 10; i++, j--)
 
 ```javascript
 function tail(o) {
-    for(; o.next; o = o.netx) /* empty */;	// 返回链表的最后一个节点对象
-    return								 // 根据判断 o.next 是不是真值来执行遍历
+  for (; o.next; o = o.netx /* empty */); // 返回链表的最后一个节点对象
+  return; // 根据判断 o.next 是不是真值来执行遍历
 }
 ```
 

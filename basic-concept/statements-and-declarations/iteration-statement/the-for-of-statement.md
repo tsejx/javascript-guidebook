@@ -1,12 +1,12 @@
 # for...of 语句
 
-**for...of 语句**在可迭代对象（包括 `Array`，`Map`，`Set`，`String`，`TypedArray`，`arguments`  对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
+**for...of 语句**在可迭代对象（包括  `Array`，`Map`，`Set`，`String`，`TypedArray`，`arguments`   对象等等）上创建一个迭代循环，调用自定义迭代钩子，并为每个不同属性的值执行语句。
 
 ## 语法
 
 ```javascript
 for (variable of iterable) {
-    //statements
+  //statements
 }
 ```
 
@@ -25,8 +25,8 @@ for (variable of iterable) {
 let iterable = [10, 20, 30];
 
 for (let value of iterable) {
-    value += 1;
-    console.log(value);
+  value += 1;
+  console.log(value);
 }
 // 11
 // 21
@@ -49,7 +49,7 @@ for (const value of iterable) {
 ### 迭代 `String`
 
 ```javascript
-let iterable = "boo";
+let iterable = 'boo';
 
 for (let value of iterable) {
   console.log(value);
@@ -136,11 +136,11 @@ for (let paragraph of articleParagraphs) {
 对于 `for...of` 的循环，可以由 `break`, `continue[4]`, `throw` 或 `return[5]` 终止。在这些情况下，迭代器关闭。
 
 ```javascript
-function* foo(){
+function* foo() {
   yield 1;
   yield 2;
   yield 3;
-};
+}
 
 for (let o of foo()) {
   console.log(o);
@@ -174,19 +174,19 @@ for (let n of fibonacci()) {
 生成器不应该重用，即使 `for...of` 循环的提前终止，例如通过 `break` 关键字。在退出循环后，生成器关闭，并尝试再次迭代，不会产生任何进一步的结果。
 
 ```js
-var gen = (function *(){
-    yield 1;
-    yield 2;
-    yield 3;
+var gen = (function*() {
+  yield 1;
+  yield 2;
+  yield 3;
 })();
 for (let o of gen) {
-    console.log(o);
-    break;//关闭生成器
+  console.log(o);
+  break; //关闭生成器
 }
 
 //生成器不应该重用，以下没有意义！
 for (let o of gen) {
-    console.log(o);
+  console.log(o);
 }
 ```
 
@@ -265,7 +265,7 @@ for (let i in iterable) {
 }
 ```
 
-此循环仅以原始插入顺序记录 `iterable`  对象的可枚举属性。它不记录数组**元素**`3`, `5`, `7` 或`hello`，因为这些**不是**枚举属性。但是它记录了数组**索引**以及 `arrCustom` 和 `objCustom`。如果你不知道为什么这些属性被迭代，`array iteration and for...in`中有更多解释。
+此循环仅以原始插入顺序记录 `iterable` 对象的可枚举属性。它不记录数组**元素**`3`, `5`, `7` 或`hello`，因为这些**不是**枚举属性。但是它记录了数组**索引**以及 `arrCustom` 和 `objCustom`。如果你不知道为什么这些属性被迭代，`array iteration and for...in`中有更多解释。
 
 ```Javascript
 for (let i in iterable) {
@@ -284,4 +284,3 @@ for (let i of iterable) {
 ```
 
 该循环迭代并记录 `iterable` 作为可迭代对象定义的迭代值，这些是数组元素 `3`, `5`, `7`，而不是任何对象的**属性**。
-

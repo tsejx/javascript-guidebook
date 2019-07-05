@@ -5,40 +5,40 @@
 ## 语法
 
 ```js
-typeof operand
+typeof operand;
 
-typeof (operand)
+typeof operand;
 ```
 
 ### 参数
 
 | 参数     | 说明                                           |
-| -------- | ---------------------------------------------- |
+| -------| ---------------------------------------------|
 | `perand` | 是一个表达式，表示对象或原始值，其类型将被返回 |
 
 ### 返回值
 
 下表总结了 `typeof` 可能的返回值。
 
-有关类型和原始值的更多信息，可查看 [JavaScript 数据结构](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.mdhttps://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&amp;Types/3_DataStructures&amp;Types.md) 页面。
+有关类型和原始值的更多信息，可查看 [JavaScript 数据结构](https://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.mdhttps://github.com/tsejx/JavaScript-Guidebook/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.md) 页面。
 
-|       类型        |       结果          |
-|       ----        |       ----          |
-|       Undefined   |       `'undefined'` |
-|       Null        |       `'object'`    |
-|       Boolean     |       `'boolean'`   |
-|       Number      |       `'number'`    |
-|       String      |       `'string'`    |
-|       Symbol      |       `'symbol'`    |
-|       宿主对象    |       Implementation-dependent    |
-|       函数对象    |       `'function'`  |
-|       任何其他对象|       `'object'`    |
+| 类型         | 结果                     |
+| -----------| -----------------------|
+| Undefined    | `'undefined'`            |
+| Null         | `'object'`               |
+| Boolean      | `'boolean'`              |
+| Number       | `'number'`               |
+| String       | `'string'`               |
+| Symbol       | `'symbol'`               |
+| 宿主对象     | Implementation-dependent |
+| 函数对象     | `'function'`             |
+| 任何其他对象 | `'object'`               |
 
 ## 示例
 
 ### 标准示例
 
-- `Numbers`
+`Numbers`
 
 ```js
 typeof 37 === 'number';
@@ -47,26 +47,26 @@ typeof Math.LN2 === 'number';
 typeof Infinity === 'number';
 
 typeof NaN === 'number';
-// 尽管NaN是"Not-A-Number"的缩写
+// 尽管 NaN 是 "Not-A-Number" 的缩写
 
 typeof Number(1) === 'number';
 // 但不要使用这种形式!
 ```
 
- - `Strings`
+`Strings`
 
 ```js
-typeof "" === 'string';
-typeof "bla" === 'string';
+typeof '' === 'string';
+typeof 'bla' === 'string';
 
-typeof (typeof 1) === 'string';
+typeof typeof 1 === 'string';
 // typeof 总是返回一个字符串
 
-typeof String("abc") === 'string';
+typeof String('abc') === 'string';
 // 但不要使用这种形式!
 ```
 
- - `Booleans`
+`Booleans`
 
 ```js
 typeof true === 'boolean';
@@ -75,7 +75,7 @@ typeof Boolean(true) === 'boolean';
 // 但不要使用这种形式!
 ```
 
- - `Symbols`
+`Symbols`
 
 ```js
 typeof Symbol() === 'symbol';
@@ -83,7 +83,7 @@ typeof Symbol('foo') === 'symbol';
 typeof Symbol.iterator === 'symbol';
 ```
 
- - `Undefined`
+`Undefined`
 
 ```js
 typeof undefined === 'undefined';
@@ -91,10 +91,10 @@ typeof declaredButUndefinedVariable === 'undefined';
 typeof undeclaredVariable === 'undefined';
 ```
 
- - `Objects`
+`Objects`
 
 ```js
-typeof {a:1} === 'object';
+typeof { a: 1 } === 'object';
 
 // 使用Array.isArray 或者 Object.prototype.toString.call
 // 区分数组,普通对象
@@ -105,15 +105,14 @@ typeof new Date() === 'object';
 // 下面的容易令人迷惑，不要使用！
 typeof new Boolean(true) === 'object';
 typeof new Number(1) === 'object';
-typeof new String("abc") === 'object';
+typeof new String('abc') === 'object';
 ```
 
- - `Function`
-
+`Function`
 
 ```js
-typeof function(){} === 'function';
-typeof class C{} === 'function'
+typeof function() {} === 'function';
+typeof class C {} === 'function';
 typeof Math.sin === 'function';
 typeof new Function() === 'function';
 ```

@@ -1,10 +1,10 @@
-## 变量
+# 变量
 
 ECMAScript 的变量是松散类型的，所谓松散类型就是可以用于保存任何类型的数据。换句话说，每个变量仅仅是一个用于保存值的占位符而已。
 
-### 变量声明
+## 变量声明
 
-#### `var`
+### `var`
 
 `var` 语句用于声明一个变量，可选地将其初始化为一个值。
 
@@ -12,24 +12,24 @@ ECMAScript 的变量是松散类型的，所谓松散类型就是可以用于保
 
 将赋值给未声明变量的值在执行赋值时将其隐式地创建为全局变量（它将成为全局对象的属性）。声明和未声明变量之间的差异是：
 
- - 声明变量的作用域限制在其声明位置的上下文中，而非声明变量总是全局的。
+- 声明变量的作用域限制在其声明位置的上下文中，而非声明变量总是全局的。
 
 ```js
 function x() {
-  y = 1;   			// 在严格模式下会抛出ReferenceError异常
+  y = 1; // 在严格模式下会抛出ReferenceError异常
   var z = 2;
 }
 
 x();
 
-console.log(y); 	// 打印'1'
-console.log(z); 	// 抛出ReferenceError: z未在x外部声明
+console.log(y); // 打印'1'
+console.log(z); // 抛出ReferenceError: z未在x外部声明
 ```
 
- - 声明变量在任何代码执行前创建，而非声明变量只有在执行赋值操作的时候才会被创建。
+- 声明变量在任何代码执行前创建，而非声明变量只有在执行赋值操作的时候才会被创建。
 
 ```js
-console.log(a);                // 抛出ReferenceError
+console.log(a); // 抛出ReferenceError
 
 console.log('still going...'); // 永不执行
 ```
@@ -37,28 +37,28 @@ console.log('still going...'); // 永不执行
 ```js
 var a;
 
-console.log(a);                	// 打印'undefined'或''（不同浏览器实现不同）
+console.log(a); // 打印'undefined'或''（不同浏览器实现不同）
 
-console.log('still going...'); 	// 打印'still going...'
+console.log('still going...'); // 打印'still going...'
 ```
 
- - 声明变量是它所在上下文环境的**不可配置属性**，非声明变量是可配置的（如非声明变量可以被删除）。
+- 声明变量是它所在上下文环境的**不可配置属性**，非声明变量是可配置的（如非声明变量可以被删除）。
 
 ```js
-var a = 1;
+a = 1;
 b = 2;
 
-delete this.a; 		// 在严格模式下抛出TypeError，其他情况下执行失败并无任何提示。
+delete this.a; // 在严格模式下抛出TypeError，其他情况下执行失败并无任何提示。
 delete this.b;
 
-console.log(a, b); 	// 抛出ReferenceError	// 'b'属性已经被删除。
+console.log(a, b); // 抛出ReferenceError	// 'b'属性已经被删除。
 ```
 
 由于这三个差异，未能声明变量将很可能导致意想不到的结果。因此，建议始终声明变量，无论它们是在函数还是全局作用域内。 而在 ECMAScript 5 严格模式下，分配给未声明的变量会引发错误。
 
 ⚠️ 由于变量声明（以及其他声明）总是在任意代码执行之前处理的，所以在代码中的任意位置声明变量总是等效于在代码开头声明。这意味着变量可以在声明之前使用，这个行为叫做[提升（hoisting）](../../core-modules/executable-code-and-execution-contexts/compilation/hoisting.md)。提升就像是把所有的变量声明移动到函数或者全局代码的开头位置。
 
-#### `let`
+### `let`
 
 `let` 语句声明一个块级作用域的本地变量，并且可选的将其初始化为一个值。
 
@@ -70,32 +70,32 @@ console.log(a, b); 	// 抛出ReferenceError	// 'b'属性已经被删除。
 4. `let` 有自己特色的闭包特性，比如在 `for` 语句循环中
 
 ```js
-let a = 1
+let a = 1;
 
-console.log(window.a)		// Output: undefined
+console.log(window.a); // Output: undefined
 ```
 
 ```js
-let b = 2
+let b = 2;
 
-let b = 3					// SyntaxError: Identifier 'b' has already been declared
+let b = 3; // SyntaxError: Identifier 'b' has already been declared
 ```
 
 ```js
-console.log(c)				// ReferenceError: c is not defined
+console.log(c); // ReferenceError: c is not defined
 
-let c = 2
+let c = 2;
 ```
 
 ```js
 for (let i = 0; i < 3; i++) {
-    setTimeout(() => {
-        console.log(i)		// Output: 1,2,3
-    })
+  setTimeout(() => {
+    console.log(i); // Output: 1,2,3
+  });
 }
 ```
 
-##### 暂存性死区
+### 暂存性死区
 
 临时性死区：描述 `let` 和 `const` 声明的变量不提升的效果 。
 
@@ -103,8 +103,8 @@ for (let i = 0; i < 3; i++) {
 
 ```js
 {
-  console.log(bar); 	// undefined
-  console.log(foo); 	// ReferenceError: foo is not defined
+  console.log(bar); // undefined
+  console.log(foo); // ReferenceError: foo is not defined
   var bar = 1;
   let foo = 2;
 }
@@ -128,7 +128,7 @@ switch (x) {
 ```js
 let x = 1;
 
-switch(x) {
+switch (x) {
   case 0: {
     let foo;
     break;
@@ -142,7 +142,7 @@ switch(x) {
 
 拓展：[ES6 中 let 暂时性死区详解](https://segmentfault.com/a/1190000015603779)
 
-#### `const`
+### `const`
 
 `const` 语句用于创建一个常量，一旦声明，常量的值就不能改变。其作用域可以是全局或本地声明的块。
 
@@ -155,22 +155,22 @@ switch(x) {
 
 `const` 声明创建一个值的只读引用。但这并不意味着它所持有值是不可变的，只是变量标识符不能重新分配。例如，在引用内容是对象的情况下，这意味着可以改变对象的内容（例如，其参数）。
 
- - 常量要求一个初始值
+- 常量要求一个初始值
 
 ```javascript
 const b; 	// SyntaxError: missing = in const declaration
 ```
 
- - 常量可以定义成对象
+- 常量可以定义成对象
 
 ```javascript
-const c = {"key": "value"};
+const c = { key: 'value' };
 
 // 重写对象和上面一样会失败
-c = {"OTHER_KEY": "value"};
+c = { OTHER_KEY: 'value' };
 
 // 对象属性并不在保护的范围内，下面这个声明会成功执行
-c.key = "otherValue";
+c.key = 'otherValue';
 ```
 
 - 常量可以定义成数组
@@ -178,12 +178,12 @@ c.key = "otherValue";
 ```javascript
 const d = [];
 
-d.push('A'); 	// ["A"]
+d.push('A'); // ["A"]
 
-d = ['B']		// TypeError: Assignment to constant variable.
+d = ['B']; // TypeError: Assignment to constant variable.
 ```
 
-### 变量作用域
+## 变量作用域
 
 在所有函数之外声明的变量，叫做全局变量，因为它可被当前文档中的任何其他代码所访问。在函数内部声明的变量，叫做局部变量，因为它只能在该函数内部访问。
 
@@ -205,7 +205,7 @@ if (true) {
 console.log(y); // ReferenceError: y is not defined
 ```
 
-### 变量的数据类型
+## 变量的数据类型
 
 详情参考 [数据类型](../data-types/data-types.md)
 
@@ -213,4 +213,4 @@ console.log(y); // ReferenceError: y is not defined
 
 **参考资料：**
 
-* [ECMScript6 入门：let 和 const 命令](http://es6.ruanyifeng.com/#docs/let)
+- [ECMScript6 入门：let 和 const 命令](http://es6.ruanyifeng.com/#docs/let)

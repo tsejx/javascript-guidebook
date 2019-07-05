@@ -1,6 +1,6 @@
-# `Throw` 语句
+# throw 语句
 
-**`throw`语句**  用来抛出一个用户自定义的异常。当前函数的执行将被停止（ `throw` 之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个[`catch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch)块。如果调用者函数中没有`catch`块，程序将会终止。
+**`throw`语句** 用来抛出一个用户自定义的异常。当前函数的执行将被停止（ `throw` 之后的语句将不会执行），并且控制将被传递到调用堆栈中的第一个[`catch`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/try...catch)块。如果调用者函数中没有`catch`块，程序将会终止。
 
 ## 语法
 
@@ -21,10 +21,14 @@ throw expression;
 你可以抛出任意表达式而不是特定一种类型的表达式。
 
 ```javascript
-throw 'Error2';		// String type
-throw 42;			// Number type
-throw true;			// Boolean type
-throw {toString: function(){return "I'm an object"}};
+throw 'Error2'; // String type
+throw 42; // Number type
+throw true; // Boolean type
+throw {
+  toString: function() {
+    return "I'm an object";
+  },
+};
 ```
 
 ### 抛出一个对象
@@ -56,4 +60,3 @@ try{
     console.log(e.message, e.name);		// 传递异常对象到错误处理
 }
 ```
-
