@@ -6,40 +6,37 @@
 
 ## 语法
 
-```javascript
-encodeURI(URIString)
+```js
+encodeURI(URIString);
 ```
 
-### 参数
+| 参数        | 类型          | 说明                  |
+| ----------- | ------------- | --------------------- |
+| `URIString` | `String` 类型 | 需要编码的 URI 字符串 |
 
-| 参数        | 类型          | 说明                |
-| ----------- | ------------- | ------------------- |
-| `URIString` | `String` 类型 | 需要编码的URI字符串 |
+该方法返回一个已经编码的 URI 字符串。
 
-### 返回值
+## 说明
 
-- 返回一个已经编码的 URI 字符串。
+如果要对使用 `encodeURI()` 函数编码的 URI 字符串进行解码，请使用 `decodeURI()` 函数。
 
-### 说明
+`encodeURI()` 函数不编码字符有 82 个 `!`、`#`、`$`、`'`、`(`、`)`、`*`、`+`、`,`、`-`、`.`、`/`、`:`、`;`、`=`、`?`、`@`、`_`、`~`、`0-9`、`a-z`、`A-Z` 。
 
-- 如果要对使用 `encodeURI()` 函数编码的 URI 字符串进行解码，请使用 `decodeURI()` 函数。
-- `encodeURI()` 函数不编码字符有82个 `!` `#` `$` `'` `(` `)` `*` `+` `,` `-` `.` `/` `:` `;` `=` `?` `@` `_` `~` `0-9` `a-z` `A-Z` 。
-- 如果你只是想编码一个带有特殊字符（比如中文）的 URI，这个 URI 用作请求地址，请使用本函数。如果你想把 URI 当作请求参数传递，那么你可以使用 `encodeURIComponent()` 函数。`encodeURIComponent()` 函数会编码所有的字符。
+如果你只是想编码一个带有特殊字符（比如中文）的 URI，这个 URI 用作请求地址，请使用本函数。
+
+如果你想把 URI 当作请求参数传递，那么你可以使用 `encodeURIComponent()` 函数。`encodeURIComponent()` 函数会编码所有的字符。
 
 ## 示例
 
-### 标准示例
-
-```javascript
+```js
 // 原URI
-var ftpUri = "ftp://192.168.0.100/共享文件夹";
+var ftpUri = 'ftp://192.168.0.100/共享文件夹';
 
 // 编码URI
-var encodedFtpUri = encodeURI( ftpUri );
-console.log( encodedFtpUri ); 		// ftp://192.168.0.100/%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9 
+var encodedFtpUri = encodeURI(ftpUri);
+console.log(encodedFtpUri); // ftp://192.168.0.100/%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9
 
 // 解码URI
-var decodedFtpUri = decodeURI( encodedFtpUri );
-console.log( decodedFtpUri ); 		// ftp://192.168.0.100/共享文件夹
+var decodedFtpUri = decodeURI(encodedFtpUri);
+console.log(decodedFtpUri); // ftp://192.168.0.100/共享文件夹
 ```
-

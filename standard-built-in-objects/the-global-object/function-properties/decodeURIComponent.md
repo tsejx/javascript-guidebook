@@ -9,37 +9,27 @@
 ## 语法
 
 ```javascript
-decodeURIComponent(encodedURIString )
+decodeURIComponent(encodedURIString);
 ```
 
-### 参数
-
-| 参数               | 类型          | 说明              |
-| ------------------ | ------------- | ----------------- |
-| `encodedURIString` | `String` 类型 | 已编码的URI字符串 |
+| 参数               | 类型          | 说明                |
+| ------------------ | ------------- | ------------------- |
+| `encodedURIString` | `String` 类型 | 已编码的 URI 字符串 |
 
 如果参数 `encodedURIString` 无效，将引发 URIError 错误。
 
-### 返回值
-
-- `decodeURIComponent()` 函数的返回值是 String 类型，返回一个已经解码的URI组件。
-
-### 说明
-
-- 将已编码 URI 中所有能识别的转义序列转换成原字符。
+`decodeURIComponent()` 函数的返回值是 String 类型，返回一个已经解码的 URI 组件。
 
 ## 示例
 
-### 标准示例
+```js
+var a = 'Hello Javascript';
+var b = encodeURIComponent(a);
 
-```javascript
-var str1 = "你好Javascript";
-var str2 = encodeURIComponent(str1);
-console.log(str2);   
+console.log(b);
 // return '%E4%BD%A0%E5%A5%BDJavascript'
 
-var str3 = decodeURIComponent(str2);
-console.log(str3);
+var c = decodeURIComponent(b);
+console.log(c);
 // return '你好Javascript'
 ```
-
