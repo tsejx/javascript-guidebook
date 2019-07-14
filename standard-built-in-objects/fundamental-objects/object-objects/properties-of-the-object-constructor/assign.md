@@ -8,14 +8,10 @@
 Object.assign(target, ...sources)
 ```
 
-### 参数
-
 | 参数    | 说明     | 类型   |
 | ------- | -------- | ------ |
 | target  | 目标对象 | object |
 | sources | 源对象   | object |
-
-### 返回值
 
 返回目标对象。
 

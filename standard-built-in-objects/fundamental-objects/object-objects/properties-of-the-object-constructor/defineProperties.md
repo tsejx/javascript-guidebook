@@ -8,8 +8,6 @@
 Object.defineProperties(O, Properties)
 ```
 
-### 参数
-
 | 参数       | 说明                                       | 类型   |
 | ---------- | ------------------------------------------ | ------ |
 | O          | 添加或修改 Properties 的目标对象           | object |
@@ -24,8 +22,6 @@ Object.defineProperties(O, Properties)
 | writable     | `false`     |
 | get          | `undefined` |
 | set          | `undefined` |
-
-### 返回值
 
 返回变更后的对象。
 

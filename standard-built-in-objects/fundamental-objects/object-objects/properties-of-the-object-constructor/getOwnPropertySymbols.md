@@ -8,13 +8,9 @@
 Object.getOwnPropertySymbols(O)
 ```
 
-### 参数
-
 | 参数 | 说明                                    | 类型   |
 | ---- | --------------------------------------- | ------ |
 | O    | 用于获取 Symbol Property 键名的目标对象 | object |
-
-### 返回值
 
 返回目标对象 Symbol 组成的数组
 

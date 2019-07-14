@@ -8,13 +8,9 @@
 Object.isExtensible(O)
 ```
 
-### 参数
-
 | 参数 | 说明               | 类型   |
 | ---- | ------------------ | ------ |
 | O    | 指定用于检测的对象 | object |
-
-### 返回值
 
 返回 Boolean 类型的值表示用于检测的对象是否可扩展。
 
@@ -29,8 +25,8 @@ Object.isExtensible(O)
 ### 基本示例
 
 ```js
-let foo = { 
-    a: 1 
+let foo = {
+    a: 1
 };
 console.log(Object.isExtensible(foo)); 			// true
 

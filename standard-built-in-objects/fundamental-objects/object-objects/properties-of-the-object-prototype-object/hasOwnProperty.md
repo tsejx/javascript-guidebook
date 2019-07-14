@@ -8,13 +8,9 @@
 O.prototype.hasOwnProperty(V)
 ```
 
-### 参数
-
 | 参数 | 说明                                      | 类型          |
 | ---- | ----------------------------------------- | ------------- |
 | V    | 需要检测的 Property 字符串名称或者 Symbol | string/symbol |
-
-### 返回值
 
 返回该对象是否含有指定 Property 的 Boolean 值。
 

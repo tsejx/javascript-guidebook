@@ -8,15 +8,11 @@
 Object.defineProperty(O, P, Attributes)
 ```
 
-### 参数
-
 | 参数       | 说明                           | 类型   |
 | ---------- | ------------------------------ | ------ |
 | O          | 定义或修改 Property 的目标对象 | object |
 | P          | 需要定义的 Property 键名       | string |
 | Attributes | 被定义或修改的 Attributes      | object |
-
-### 返回值
 
 返回变更后的对象。
 

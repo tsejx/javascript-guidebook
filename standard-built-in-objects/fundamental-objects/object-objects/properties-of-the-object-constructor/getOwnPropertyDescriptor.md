@@ -8,8 +8,6 @@
 Object.getOwnPropertyDescriptor(O, Property)
 ```
 
-### 参数
-
 | 参数     | 说明                | 类型   |
 | -------- | ------------------- | ------ |
 | O        | 需要查找的目标对象  | object |

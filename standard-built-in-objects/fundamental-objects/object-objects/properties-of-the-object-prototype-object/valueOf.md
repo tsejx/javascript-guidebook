@@ -1,3 +1,0 @@
-# Object.prototype.valueOf
-
-

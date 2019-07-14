@@ -8,8 +8,6 @@
 Object.getOwnPropertyDescriptors(O)
 ```
 
-### 参数
-
 | 参数 | 说明                                   | 类型   |
 | ---- | -------------------------------------- | ------ |
 | O    | 用于获取 Property 的 Attributes 的对象 | object |
@@ -19,8 +17,8 @@ Object.getOwnPropertyDescriptors(O)
 ```js
 const a = {
     name: 'Ben',
-    get age(){ 
-        return '18' 
+    get age(){
+        return '18'
     }
 }
 

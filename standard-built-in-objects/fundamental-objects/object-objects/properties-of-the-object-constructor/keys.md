@@ -8,13 +8,9 @@
 Object.keys(O)
 ```
 
-### 参数
-
 | 参数 | 说明     | 类型   |
 | ---- | -------- | ------ |
 | O    | 指定对象 | object |
-
-### 返回值
 
 返回对象所有可枚举 Property 的键名组成的数组。
 
@@ -49,7 +45,7 @@ console.log(Object.keys(foo));
 const foo = Object.create({}, {
   getBar: {
     value: function () { return this.bar; }
-  } 
+  }
 });
 
 foo.bar = 1;

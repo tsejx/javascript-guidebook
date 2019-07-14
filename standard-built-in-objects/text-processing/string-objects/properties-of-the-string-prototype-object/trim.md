@@ -4,11 +4,9 @@
 
 ## 语法
 
-```javascript
-str.trim()
+```js
+str.trim();
 ```
-
-### 返回值
 
 `trim()` 方法并不影响原字符串本身，它返回的是一个新的字符串。
 
@@ -16,23 +14,22 @@ str.trim()
 
 ### 标准示例
 
-```javascript
+```js
 var orig = '   foo  ';
-orig.trim(); 	// 'foo'
+orig.trim(); // 'foo'
 
 // 另一个.trim()例子，只从一边删除
 
 var orig = 'foo    ';
-orig.trim(); 	// 'foo'
+orig.trim(); // 'foo'
 ```
 
 ### 兼容性
 
-```javascript
+```js
 if (!String.prototype.trim) {
-  String.prototype.trim = function () {
+  String.prototype.trim = function() {
     return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
   };
 }
 ```
-

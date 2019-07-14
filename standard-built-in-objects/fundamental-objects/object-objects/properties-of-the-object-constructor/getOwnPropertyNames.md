@@ -8,13 +8,9 @@
 Object.getOwnPropertyNames(O)
 ```
 
-### 参数
-
 | 参数 | 说明                             | 类型   |
 | ---- | -------------------------------- | ------ |
 | O    | 用于获取 Property 键名的目标对象 | object |
-
-### 返回值
 
 返回 Properties 键名组成的数组。
 

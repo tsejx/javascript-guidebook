@@ -8,13 +8,9 @@
 O.prototype.prototypeIsEnumerable(V)
 ```
 
-### 参数
-
 | 参数 | 说明                     | 类型   |
 | ---- | ------------------------ | ------ |
 | V    | 需要检测的 Property 键名 | string |
-
-### 返回值
 
 返回表示指定 Property 键名是否可枚举的 Boolean 类型值。
 

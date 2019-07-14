@@ -16,8 +16,6 @@ new Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 ```
 
-### 参数
-
 | 参数     | 说明                                                     | 类型   |
 | :------- | :------------------------------------------------------- | :----- |
 | argName1 | 定义的第 1 个参数的名称                                  | string |
@@ -30,9 +28,7 @@ Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 - 如果没有指定任何参数，则表示该函数没有定义参数列表，函数的执行代码也为空。
 - 如果只指定了一个参数，则该参数将被视作函数的执行代码。如果你想定义一个参数、执行代码为空，请传入两个参数，第二个参数为空字符串即可：`new Function("argName1", "")`。
 
-### 返回值
-
-- `Function()` 的返回值是 Function 类型，返回一个函数对象。
+`Function()` 的返回值是 Function 类型，返回一个函数对象。
 
 ## 描述
 

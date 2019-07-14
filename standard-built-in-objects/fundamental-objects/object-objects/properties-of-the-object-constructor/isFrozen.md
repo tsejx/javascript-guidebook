@@ -8,13 +8,9 @@
 Object.isFrozen(O)
 ```
 
-### 参数
-
 | 参数 | 说明               | 类型   |
 | ---- | ------------------ | ------ |
 | O    | 指定用于检测的对象 | object |
-
-### 返回值
 
 返回 Boolean 类型的值表示用于检测的对象是否被冻结。
 
@@ -27,8 +23,8 @@ Object.isFrozen(O)
 ### 基本示例
 
 ```js
-let foo = { 
-    a: 1, 
+let foo = {
+    a: 1,
     b: 2
 };
 
@@ -50,7 +46,7 @@ console.log(foo);
 `Object.freeze` 方法实际上会在现有对象上调用 `Object.seal()` 方法，并把所有现有属性的 `writable` 描述符置为 `false`。
 
 ```js
-let foo = { 
+let foo = {
     a: 1
 };
 

@@ -20,8 +20,6 @@ new Object( [ value ] )
 Object( [ value ] )
 ```
 
-### 参数
-
 |  参数    | 说明         | 类型               |
 | :------ | :------------- | :------------------- |
 | value   | 可选参数，需要包装为对象的值 | 任意类型 |
@@ -66,13 +64,13 @@ Object( [ value ] )
 * [Object.getPrototypeOf](properties-of-the-object-constructor/getPrototypeOf.md)：获取指定对象的原型对象
 * [Object.setPrototypeOf](properties-of-the-object-constructor/setPrototypeOf.md)：设置指定对象的原型对象
 
-## 实例和原型对象
+## 原型对象
 
 JavaScript 中的所有对象都来自 `Object`，所有对象从 `Object.prototype` 继承方法和属性，尽管它们可能被覆盖。
 
 ### 属性
 
-* `Object.prototype.constructor`：返回创建实例对象的 Object 构造函数的引用。注意，此属性的值是对函数本身的引用，而不是一个包含函数名称的字符串。该值为只读的原始类型，如 `1` ，`true`，`'test'`
+* `Object.prototype.constructor`：返回创建实例对象的 Object 构造函数的引用。注意，此属性的值是对函数本身的引用，而不是一个包含函数名称的字符串。该值为只读的原始类型，如 `1`、`true`、`'test'`
 * `Object.prototype.__proto__`：指向当对象被实例化的时候，用作原型的对象
 * `Object.prototype.__noSuchMethod`：当未定义的对象成员被调用作方法的时候，允许定义并执行的函数
 
