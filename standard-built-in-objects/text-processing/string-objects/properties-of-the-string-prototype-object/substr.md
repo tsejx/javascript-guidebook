@@ -8,10 +8,10 @@
 str.substr( startIndex[, length] )
 ```
 
-| 参数         | 类型                | 描述                               |
-| ------------ | ------------------- | ---------------------------------- |
-| `startIndex` | `Number` 类型       | 指向字符串指定部分的开头的索引。   |
-| `length`     | `Number` 类型，可选 | 返回的子字符串片段中包含的字符数。 |
+| 参数         | 说明                                     | 类型   |
+| ------------ | ---------------------------------------- | ------ |
+| `startIndex` | 指向字符串指定部分的开头的索引。         | number |
+| `length`     | 可选，返回的子字符串片段中包含的字符数。 | number |
 
 ## 描述
 
@@ -30,26 +30,34 @@ str.substr( startIndex[, length] )
 var str = 'abcdefghij';
 
 // 开始索引为1，截取长度为2
-str.substr(1, 2); // 'bc'
+str.substr(1, 2);
+// 'bc'
 
 // 开始索引为-3+10=7，截取长度为2
-str.substr(-3, 2); // 'hi'
+str.substr(-3, 2);
+// 'hi'
 
 // 开始索引为-3+10=7，截取长度为延伸至字符结尾
-str.substr(-3); // 'hij'
+str.substr(-3);
+// 'hij'
 
 // 开始索引为1，截取长度为延伸至字符结尾
-str.substr(1); // 'bcdefghij'
+str.substr(1);
+// 'bcdefghij'
 
 // 开始索引为-20+10=-10即0，截取长度为2
-str.substr(-20, 2); // 'ab'
+str.substr(-20, 2);
+// 'ab'
 
 // 开始索引为20大于字符串长度（返回空字符串），截取长度为2
-str.substr(20, 2); // ''
+str.substr(20, 2);
+// ''
 
 // 开始索引为0，截取长度为-1和0（返回空字符串）
-str.substr(0, -1); // ''
-str.substr(0, 0); // ''
+str.substr(0, -1);
+// ''
+str.substr(0, 0);
+// ''
 ```
 
 ### 兼容性

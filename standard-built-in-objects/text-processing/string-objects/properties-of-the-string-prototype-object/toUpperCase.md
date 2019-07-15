@@ -16,5 +16,6 @@ str.toUpperCase();
 
 ```js
 var abc = 'abc';
-abc.toUpperCase(); // 'ABC'
+abc.toUpperCase();
+// 'ABC'
 ```

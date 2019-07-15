@@ -8,10 +8,10 @@
 str.substring(indexStart[, indexEnd])
 ```
 
-| 参数         | 类型                | 描述                                             |
-| ------------ | ------------------- | ------------------------------------------------ |
-| `startIndex` | `Number` 类型       | 指向字符串指定部分的开头的索引。                 |
-| `endIndex`   | `Number` 类型，可选 | 指向字符串指定部分的结尾的索引（不包括该索引）。 |
+| 参数         | 描述                                                   | 类型   |
+| ------------ | ------------------------------------------------------ | ------ |
+| `startIndex` | 指向字符串指定部分的开头的索引。                       | number |
+| `endIndex`   | 可选，指向字符串指定部分的结尾的索引（不包括该索引）。 | number |
 
 ### 描述
 
@@ -71,11 +71,13 @@ str.substring(5, 'h'); // 'abcde'
 var word = 'abcdefghij';
 var word4 = word.substring(word.length - 4);
 
-console.log(word4); // 'ghij'
+console.log(word4);
+// 'ghij'
 
 // Displays 'fghij' the last 5 characters
 var word = 'abcdefghij';
 var word5 = word.substring(word.length - 5);
 
-console.log(word5); // 'fghij'
+console.log(word5); 
+// 'fghij'
 ```

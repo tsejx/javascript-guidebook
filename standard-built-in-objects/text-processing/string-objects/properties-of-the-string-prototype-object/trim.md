@@ -16,12 +16,14 @@ str.trim();
 
 ```js
 var orig = '   foo  ';
-orig.trim(); // 'foo'
+orig.trim();
+// 'foo'
 
 // 另一个.trim()例子，只从一边删除
 
 var orig = 'foo    ';
-orig.trim(); // 'foo'
+orig.trim();
+// 'foo'
 ```
 
 ### 兼容性
