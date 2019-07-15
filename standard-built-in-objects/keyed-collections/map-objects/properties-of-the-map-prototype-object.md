@@ -34,7 +34,10 @@ map.set(262, 'standard');
 // 键是 undefined
 map.set(undefined, 'nah');
 
-const m = new Map().set(1, 'a').set(2, 'b').set(3, 'c');
+const m = new Map()
+  .set(1, 'a')
+  .set(2, 'b')
+  .set(3, 'c');
 ```
 
 ### Map.prototype.get(key)
@@ -44,7 +47,9 @@ const m = new Map().set(1, 'a').set(2, 'b').set(3, 'c');
 ```js
 const m = new Map();
 
-const hello = function (){console.log('hello');};
+const hello = function() {
+  console.log('hello');
+};
 
 m.set(hello, 'Hello ES6!');
 // 键是函数
@@ -81,15 +86,16 @@ m.has(undefined);
 ```js
 const m = new Map();
 m.set(undefined, 'nah');
-m.has(undefined)
+m.has(undefined);
 // true
 
-m.delete(undefined)
+m.delete(undefined);
 m.has(undefined);
 // false
 ```
 
 ### Map.prototype.clear()
+
 `clear` 方法清除所有成员，没有返回值。
 
 ```js

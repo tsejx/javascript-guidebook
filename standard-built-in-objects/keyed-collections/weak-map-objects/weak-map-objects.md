@@ -5,7 +5,7 @@ WeakMap 对象是一组键/值对的集合，其中的键是**弱引用**的。�
 ## 语法
 
 ```js
-new WeakMap([iterable])
+new WeakMap([iterable]);
 ```
 
 参数 `iterable` 是一个数组或者其他可迭代的且元素是键值对的对象。每个键值对会被加到新的 WeakMap 里。`null` 会被当做 `undefiend`。
@@ -15,12 +15,12 @@ new WeakMap([iterable])
 ### 对象键名
 
 ```js
-const map = new WeakMap()
+const map = new WeakMap();
 
-map.set(1, 2)
+map.set(1, 2);
 // TypeError: Invalid value used as weak map key
 
-map.set(null, 2)
+map.set(null, 2);
 // TypeError: Invalid value used as weak map key
 ```
 
@@ -50,41 +50,41 @@ map.set(null, 2)
 ## 使用示例
 
 ```js
-const x = new WeakMap()
-const y = new WeakMap()
+const x = new WeakMap();
+const y = new WeakMap();
 
-const a = {}
-const b = function(){}
-const c = window
+const a = {};
+const b = function() {};
+const c = window;
 
-x.set(a, 100)
-x.set(b, 'BINGO!')
+x.set(a, 100);
+x.set(b, 'BINGO!');
 
-y.set(a, b)
-y.set(c, undefined)
-y.set(x , y)
+y.set(a, b);
+y.set(c, undefined);
+y.set(x, y);
 
-x.get(b)
+x.get(b);
 // 'BINGO!'
 
-y.get(b)
+y.get(b);
 // undefined
-y.get(c)
+y.get(c);
 // undefined
 
-x.has(b)
+x.has(b);
 // true
 
-y.has(b)
+y.has(b);
 // false
-y.has(c)
+y.has(c);
 // true
 
 // delete()
-x.has(a)
+x.has(a);
 // true
-x.delete(a)
-x.has(a)
+x.delete(a);
+x.has(a);
 // false
 ```
 
@@ -92,4 +92,4 @@ x.has(a)
 
 **参考资料：**
 
-* [📝 ES6 系列之 WeakMap](https://juejin.im/post/5b594512f265da0f6263840f)
+- [📝 ES6 系列之 WeakMap](https://juejin.im/post/5b594512f265da0f6263840f)

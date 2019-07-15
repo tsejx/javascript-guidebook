@@ -7,13 +7,11 @@ Map 对象保存键值对。任何值（对象或者原始值）都可以作为�
 ## 语法
 
 ```js
-new Map([iterable])
+new Map([iterable]);
 ```
 
-### 参数
-
-| 参数       | 说明                                                         |
-| ---------- | ------------------------------------------------------------ |
+|    参数    |                                                                        说明                                                                         |
+| :--------: | :-------------------------------------------------------------------------------------------------------------------------------------------------: |
 | `iterable` | `Iterable` 可以是一个数组或者其他 Iterable 对象，其元素或为键值对，或为两个元素的数组。 每个键值对都会添加到新的 Map。`null` 会被当做 `undefined`。 |
 
 ## 描述
@@ -44,29 +42,31 @@ Object 和 Map 类似的一点是，它们都允许你按键存取一个值，�
 
 假如以上全是"是"的话，那么你需要用 Map 来保存这个集。相反，你有固定数目的键值对，独立操作它们，区分它们的用法，那么你需要的是对象。
 
-## 属性
+## 原型对象
 
-| 属性                        | 描述                                                  |
-| --------------------------- | ----------------------------------------------------- |
+### 属性
+
+|            属性             |                        描述                         |
+| :-------------------------: | :-------------------------------------------------: |
 | `Map.prototype.constructor` | 返回一个函数，它创建了实例的原型。默认是 Map 函数。 |
-| `Map.prototype.size`        | 返回 Map 对象的键/值对的数量。                      |
+|    `Map.prototype.size`     |           返回 Map 对象的键/值对的数量。            |
 
-## 方法
+### 方法
 
-| 方法                                            | 描述                                                         |
-| ----------------------------------------------- | ------------------------------------------------------------ |
-| `Map.prototype.clear()`                         | 移除 Map 对象中的所有元素。                                |
-| `Map.prototype.delete(key)`                     | 移除任何与键相关联的值，并且返回该值。                       |
-| `Map.prototype.entries()`                       | 返回一个新的包含 `[key, value] ` 对的 `Iterable` 对象，返回迭代器的迭代顺序与 Map 对象的插入顺序相同。 |
+|                      方法                       |                                                              描述                                                               |
+| :---------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------: |
+|             `Map.prototype.clear()`             |                                                   移除 Map 对象中的所有元素。                                                   |
+|           `Map.prototype.delete(key)`           |                                             移除任何与键相关联的值，并且返回该值。                                              |
+|            `Map.prototype.entries()`            |              返回一个新的包含 `[key, value]` 对的 `Iterable` 对象，返回迭代器的迭代顺序与 Map 对象的插入顺序相同。              |
 | `Map.prototype.forEach(callbackFn [, thisArg])` | 按插入顺序，为 Map 对象里的每一键值对调用一次回调函数。如果为 `forEach` 提供了 `thisArg` ，它将在每次调用回调中作为 `this` 值。 |
-| `Map.prototype.get(key)`                        | 用来获取一个 Map 对象中指定的元素。                        |
-| `Map.prototype.has(key)`                        | 返回一个布尔值，用来表明 Map 中是否存在指定元素。          |
-| `Map.prototype.keys()`                          | 返回一个新的 `Iterable` 对象。它包含按照顺序插入 Map 对象中每个元素的 `key` 值。 |
-| `Map.prototype.set(key, value)`                 | 设置 Map 对象中键的值。返回该 Map 对象。                 |
-| `Map.prototype.values()`                        | 返回一个新的 `Iterator` 对象，它按插入顺序包含了 Map 对象中每个元素的值。 |
-| `Map.prototype[@@iterator]()`                   | 返回一个新的 `Iterator` 对象，它按插入顺序包含了 Map 对象中每个元素的 `[key, value]` 数组。 |
+|            `Map.prototype.get(key)`             |                                               用来获取一个 Map 对象中指定的元素。                                               |
+|            `Map.prototype.has(key)`             |                                        返回一个布尔值，用来表明 Map 中是否存在指定元素。                                        |
+|             `Map.prototype.keys()`              |                        返回一个新的 `Iterable` 对象。它包含按照顺序插入 Map 对象中每个元素的 `key` 值。                         |
+|         `Map.prototype.set(key, value)`         |                                            设置 Map 对象中键的值。返回该 Map 对象。                                             |
+|            `Map.prototype.values()`             |                            返回一个新的 `Iterator` 对象，它按插入顺序包含了 Map 对象中每个元素的值。                            |
+|          `Map.prototype[@@iterator]()`          |                   返回一个新的 `Iterator` 对象，它按插入顺序包含了 Map 对象中每个元素的 `[key, value]` 数组。                   |
 
-## 使用示例
+## 示例
 
 ### 基本用法
 
@@ -105,7 +105,7 @@ map.get('a string');
 // 'Lamborghini',because keyString === 'a string'
 map.get({});
 // undefined,because keyObj != {}
-map.get(function(){});
+map.get(function() {});
 // undefined,because keyFunc !== function(){}
 ```
 
@@ -134,12 +134,10 @@ const map = new Map();
 const a = ['foo'];
 const b = ['foo'];
 
-map
-.set(a, 123)
-.set(b, 456);
+map.set(a, 123).set(b, 456);
 
-map.get(a);		// 123
-map.get(b);		// 456
+map.get(a); // 123
+map.get(b); // 456
 ```
 
 Map 的键实际上是和内存地址绑定的，只要内存地址不一样，就视为两个键。这就解决了 **同名属性碰撞（Clash）** 的问题，我们扩展别人的库时，如果使用对象作为键名，不用担心自己的属性与原作者的属性同名。
@@ -173,10 +171,7 @@ map.get(NaN);
 Set 作为参数
 
 ```js
-const param = new Set([
-    ['foo', 1],
-    ['bar', 2]
-]);
+const param = new Set([['foo', 1], ['bar', 2]]);
 const map = new Map(param);
 
 map.get('foo');
@@ -198,9 +193,7 @@ map.get('baz');
 ```js
 const map = new Map();
 
-map
-.set(1, 'foo')
-.set(1, 'baz');
+map.set(1, 'foo').set(1, 'baz');
 
 map.get(1);
 // 'baz'
@@ -232,7 +225,7 @@ map.set(0, 'zero');
 map.set(1, 'one');
 
 for (var [key, value] of map) {
-    console.log(key + '=' + value);
+  console.log(key + '=' + value);
 }
 // '0 = zero'
 // '1 = one'
@@ -250,7 +243,7 @@ for (var value of map.values()) {
 // 'one'
 
 for (var [key, value] of map.entries()) {
-  console.log(key + " = " + value);
+  console.log(key + ' = ' + value);
 }
 // '0 = zero'
 // '1 = one'
@@ -263,18 +256,11 @@ for (var [key, value] of map.entries()) {
 扩展运算符本质上是将 Map 对象转换成数组。
 
 ```js
-const first = new Map([
-  [1, 'one'],
-  [2, 'two'],
-  [3, 'three']
-])
+const first = new Map([[1, 'one'], [2, 'two'], [3, 'three']]);
 
-const second = new Map([
-  [1, 'uno'],
-  [2, 'dos']
-])
+const second = new Map([[1, 'uno'], [2, 'dos']]);
 
-const merged = new Map([...first, ...second])
+const merged = new Map([...first, ...second]);
 ```
 
 ### 类型转换
@@ -286,7 +272,7 @@ const merged = new Map([...first, ...second])
 Map 转为数组最方便的方法就是使用扩展运算符。
 
 ```js
-const map = new Map().set(true, 1).set({foo: 2}, ['abc'])
+const map = new Map().set(true, 1).set({ foo: 2 }, ['abc']);
 
 console.log([...map]);
 // [ [true, 1], [ { foo: 2}, ['abc'] ] ]
@@ -297,12 +283,9 @@ console.log([...map]);
 将数组传入 Map 构造函数就可以转为 Map。
 
 ```js
-const m = new Map([
-    [true, 7],
-    [{foo: 3}, ['abc']]
-])
+const m = new Map([[true, 7], [{ foo: 3 }, ['abc']]]);
 
-console.log(m)
+console.log(m);
 // Map {
 //	true => 7,
 //  Object {foo: 3} => ['abc']
@@ -316,15 +299,15 @@ console.log(m)
 如果 Map 的所有键都是字符串，则可以转为对象。
 
 ```js
-function toObject (strMap) {
-    let o = Object.create(null);
-    for (let [k, v] of strMap){
-        o[k] = v;
-    }
-    return o;
+function toObject(strMap) {
+  let o = Object.create(null);
+  for (let [k, v] of strMap) {
+    o[k] = v;
+  }
+  return o;
 }
 
-const m = new Map().set('yes', true).set('no', false)
+const m = new Map().set('yes', true).set('no', false);
 
 console.log(toObject(m));
 // {'yes': true, 'no': false}
@@ -333,15 +316,15 @@ console.log(toObject(m));
 **对象转为 Map**
 
 ```js
-function toMap(obj){
-    let strMap = new Map();
-    for (let k of Object.keys(obj)) {
-        strMap.set(k, obj[k])
-    }
-    return strMap;
+function toMap(obj) {
+  let strMap = new Map();
+  for (let k of Object.keys(obj)) {
+    strMap.set(k, obj[k]);
+  }
+  return strMap;
 }
 
-const m = toMap({yes: true, no: false})
+const m = toMap({ yes: true, no: false });
 
 console.log(m);
 // Map {"yes" => true, "no" => false}
@@ -354,7 +337,7 @@ console.log(m);
 Map 转为 JSON 要区分两种情况。一种情况是， Map 的键名都是字符串，这时可以选择转为对象 JSON。
 
 ```js
-const toJSON = (strMap) => JSON.stringify(toObject(strMap));
+const toJSON = strMap => JSON.stringify(toObject(strMap));
 
 let m = new Map().set('yes', true).set('no', false);
 
@@ -365,9 +348,9 @@ console.log(toJSON(m));
 另一种情况是，Map 的键名有非字符串，这时可以选择转为数组 JSON。
 
 ```js
-const toArrayJSON = (map) => JSON.stringify([...map])
+const toArrayJSON = map => JSON.stringify([...map]);
 
-let m = new Map().set(true, 1).set({foo: 2}, ['abc']);
+let m = new Map().set(true, 1).set({ foo: 2 }, ['abc']);
 
 console.log(toArrayJSON(m));
 // '[[true], 1], [{'foo': 2}, ['abc']]'
@@ -385,8 +368,8 @@ console.log(toMap('{"yes": true, "no": false}'));
 但是，有一种特殊情况：整个 JSON 就是一个数组，且每个数组成员本身又是一个具有两个成员的数组。这时，它可以一一对应地转为 Map 。这往往是数组转为 JSON 的逆操作。
 
 ```js
-const toMap = (jsonStr) => new Map(JSON.parse(jsonStr));
+const toMap = jsonStr => new Map(JSON.parse(jsonStr));
 
-console.log(toMap('[[true, 7], [{"foo": 3}, ["abc"]]]'))
+console.log(toMap('[[true, 7], [{"foo": 3}, ["abc"]]]'));
 // Map(true => 7, Object {foo: 3} => ['abc'])
 ```
