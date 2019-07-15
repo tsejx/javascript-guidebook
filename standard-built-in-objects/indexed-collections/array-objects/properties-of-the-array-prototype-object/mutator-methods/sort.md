@@ -1,22 +1,22 @@
-## Array.prototype.sort()
+# Array.prototype.sort()
 
 `Array.prototype.sort()` 方法用于将数组对象的成员按指定顺序进行排序，并返回排序后的数组。
 
-### 语法
+## 语法
 
 ```js
-arr.sort( sortFunction )
+arr.sort(sortFunction);
 ```
 
-| 参数            | 说明                                   | 类型     |
-| --------------- | -------------------------------------- | -------- |
-| ` sortFunction` | （可选）指定如何比较元素顺序的函数名称 | function |
+| 参数           | 说明                                   | 类型     |
+| -------------- | -------------------------------------- | -------- |
+| `sortFunction` | （可选）指定如何比较元素顺序的函数名称 | function |
 
 **返回值：** 返回排序后的数组对象。
 
 在排序过程中，并不会创建新的数组对象，返回的数组对象就是经过排序后的当前数组本身。
 
-### 描述
+## 描述
 
 如果省略 `sortFunction` 参数，元素将按 ASCII 字符顺序的**升序**进行排列。[ASCII 字符表](http://ascii.911cha.com/)
 
@@ -40,51 +40,55 @@ function compare(a, b) {
 }
 ```
 
-### 示例
+## 示例
 
-#### 标准示例
+### 标准示例
 
 ```js
 const foo = ['b', 'c', 'a'];
 
-fruit.sort()	// ['a', 'b', 'c']
+fruit.sort();
+// ['a', 'b', 'c']
 ```
 
 ```js
 const bar = [1, 10, 21, 2];
 
-bar.sort()		// [1, 10, 2, 21]
+bar.sort();
+// [1, 10, 2, 21]
 ```
 
-注意10在2之前，因为在 Unicode 指针顺序中"10"在"2"之前。
+注意 10 在 2 之前，因为在 Unicode 指针顺序中 `"10"` 在 `"2"` 之前。
 
 ```js
 const baz = ['word', 'Word', '1 Word', '2 Words'];
 
-baz.sort()	// ['1 Word', '2 Words', 'Word', 'word']
+baz.sort();
+// ['1 Word', '2 Words', 'Word', 'word']
 ```
 
-在Unicode中，数字在大写字母之前，大写字母在小写字母之前。
+在 Unicode 中，数字在大写字母之前，大写字母在小写字母之前。
 
-#### 数字排序
+### 数字排序
 
-希望比较数字而非字符串，比较函数可以简单的以 `a` 减 `b`，如下的函数将会将数组升序排列。
+希望比较数字而非字符串，比较函数可以简单的以 `a` 减 `b`，如下的函数将会将数组**升序**排列。
 
 ```js
-const compareNumbers = (a, b) => a - b
+const compareNumbers = (a, b) => a - b;
 ```
 
 `sort()` 方法可以使用函数表达式方便地书写。
 
 ```js
-const numbers = [4, 2, 5, 1, 3]
+const foo = [4, 2, 5, 1, 3];
 
-numbers.sort((a, b) => a - b);
+foo.sort((a, b) => a - b);
 
-console.log(numbers)	// Outputs: [1, 2, 3, 4, 5]
+console.log(foo);
+// [1, 2, 3, 4, 5]
 ```
 
-#### 对象属性排序
+### 对象属性排序
 
 对象可以按照某个属性排序。
 
@@ -95,10 +99,10 @@ var items = [
   { name: 'And', value: 45 },
   { name: 'The', value: -12 },
   { name: 'Magnetic' },
-  { name: 'Zeros', value: 37 }
+  { name: 'Zeros', value: 37 },
 ];
 
-items.sort(function (a, b) {
+items.sort(function(a, b) {
   if (a.value > b.value) {
     return 1;
   }
@@ -109,50 +113,53 @@ items.sort(function (a, b) {
 });
 ```
 
-#### `undefined` 排序
+### `undefined` 排序
 
 如果数组包含 `undefined` 元素，它们会被排到数组的尾部。
 
 ```js
 const arr = ['3', 3, undefined, 2, '2'];
 
-console.log(arr)	// [2, "2", "3", 3, undefined]
-    
-console.log(arr.sort())	// [2, "2", "3", 3, undefined]
+console.log(arr);
+// [2, "2", "3", 3, undefined]
+
+console.log(arr.sort());
+// [2, "2", "3", 3, undefined]
 ```
 
-#### 大小写排序
+### 大小写排序
 
 如果对一个字符串数组执行不区分大小写的字母表排序，比较函数首先将参数转化为小写字符串再开始比较。
 
 ```js
-a = ['ant','Bug','cat','Dog'];
+a = ['ant', 'Bug', 'cat', 'Dog'];
 
-a.sort()	// Outputs: ['Bug','Dog','ant','cat'];
+a.sort();
+// ['Bug','Dog','ant','cat'];
 
-a.sort(function(s,t){
-    var a = s.toLowerCase();
-    var b = t.toLowerCase();
-    
-    if(a < b) return -1;
-    
-    if(a > b) return 1;
-    
-    return 0;
-})
-// Outputs: ['ant','bug','cat','dog']
+a.sort(function(s, t) {
+  var a = s.toLowerCase();
+  var b = t.toLowerCase();
+
+  if (a < b) return -1;
+
+  if (a > b) return 1;
+
+  return 0;
+});
+// ['ant','bug','cat','dog']
 ```
 
-#### 升降序
+### 升降序
 
 - 降序函数
 
 ```js
 function desc = function (x, y) {
     if (x > u){
-        return -1; // 返回一个小于0的数即可
+        return -1; // 返回一个小于 0 的数即可
     } else if (x < y){
-        return 1; // 返回一个大于0的数即可
+        return 1; // 返回一个大于 0 的数即可
     }else {
         return 0;
     }
@@ -164,28 +171,29 @@ function desc = function (x, y) {
 ```js
 function asc = function (x, y) {
     if (x > y){
-        return 1; // 返回一个大于0的数即可
+        return 1; // 返回一个大于 0 的数即可
     } else if (x < y){
-        return -1; // 返回一个小于0的数即可
+        return -1; // 返回一个小于 0 的数即可
     }
 }
 ```
 
-#### 对非 ASCII 字符排序
+### 对非 ASCII 字符排序
 
 当排序非 ASCII 字符的字符串（如包含类似 e, é, è, a, ä 等字符的字符串）。一些非英语语言的字符串需要使用`String.localeCompare`。这个函数可以将函数排序到正确的顺序。
 
 ```js
 let items = ['réservé', 'premier', 'cliché', 'communiqué', 'café', 'adieu'];
 
-items.sort(function (a, b) {
+items.sort(function(a, b) {
   return a.localeCompare(b);
 });
 
-console.log(item) // ['adieu', 'café', 'cliché', 'communiqué', 'premier', 'réservé']
+console.log(item);
+// ['adieu', 'café', 'cliché', 'communiqué', 'premier', 'réservé']
 ```
 
-#### 使用映射改善排序
+### 使用映射改善排序
 
 `compareFunction` 可能需要对元素做多次映射以实现排序，尤其当 `compareFunction` 较为复杂，且元素较多的时候，某些 `compareFunction` 可能会导致很高的负载。使用 `map()` 辅助排序将会是一个好主意。基本思想是首先将数组中的每个元素比较的实际值取出来，排序后再将数组恢复。
 
@@ -196,7 +204,7 @@ let list = ['Delta', 'alpha', 'CHARLIE', 'bravo'];
 // 对需要排序的数字和位置的临时存储
 let mapped = list.map(function(el, i) {
   return { index: i, value: el.toLowerCase() };
-})
+});
 
 // 按照多个值排序数组
 mapped.sort(function(a, b) {
@@ -204,7 +212,7 @@ mapped.sort(function(a, b) {
 });
 
 // 根据索引得到排序的结果
-let result = mapped.map(function(el){
+let result = mapped.map(function(el) {
   return list[el.index];
 });
 ```

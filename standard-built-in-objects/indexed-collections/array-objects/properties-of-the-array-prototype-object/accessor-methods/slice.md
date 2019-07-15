@@ -1,21 +1,21 @@
-## Array.prototype.slice()
+# Array.prototype.slice()
 
 `Array.prototype.slice()` 方法用于浅拷贝指定区间的数组成员。
 
-### 语法
+## 语法
 
 ```javascript
 arr.slice( startIndex [, endIndex ] );
 ```
 
 | 参数         | 说明                                             | 类型   |
-| ------------ | ------------------------------------------------ | ------ |
+| :------------: | :------------------------------------------------: | :------: |
 | `startIndex` | 浅拷贝区间的开始索引。                           | number |
 | `endIndex`   | 浅拷贝区间的结束索引，浅拷贝不包括该索引所得值。 | number |
 
 **返回值：** 一个含有提取元素的新数组。
 
-### 描述
+## 描述
 
 `slice` 方法不修改原数组，只会返回浅拷贝原数组的新数组。原数组的元素会按照下述规则拷贝：
 
@@ -30,19 +30,25 @@ arr.slice( startIndex [, endIndex ] );
 ### 标准示例
 
 ```js
-const numbers = [1,2,3,4,5];
+const foo = [1, 2, 3, 4, 5];
 
-numbers.slice(NaN)		// [1,2,3,4,5]
+foo.slice(NaN);
+// [1,2,3,4,5]
 
-numbers.slice(0,NaN)		// []
+foo.slice(0, NaN);
+// []
 
-numbers.slice(true,[3])		// [2,3]
+foo.slice(true, [3]);
+// [2,3]
 
-numbers.slice(null,undefined)		// [1,2,3,4,5]
+foo.slice(null, undefined);
+// [1,2,3,4,5]
 
-numbers.slice({})		// [1,2,3,4,5]
+foo.slice({});
+// [1,2,3,4,5]
 
-numbers.slice('2',[5])		// [3,4,5]
+foo.slice('2', [5]);
+// [3,4,5]
 ```
 
 ### 截取数组成员
@@ -64,7 +70,8 @@ function list() {
   return Array.prototype.slice.call(arguments);
 }
 
-const arr = list(1, 2, 3)	// Outputs: [1, 2, 3]
+const arr = list(1, 2, 3);
+// [1, 2, 3]
 ```
 
 除了使用 `Array.prototype.slice.call(arguments)`，你也可以简单的使用 `[].slice.call(arguments)` 来代替。另外，你可以使用 `bind` 来简化该过程。
@@ -77,6 +84,6 @@ function list() {
   return slice(arguments);
 }
 
-const arr = list(1, 2, 3)	// Outputs: [1, 2, 3]
+const arr = list(1, 2, 3);
+// [1, 2, 3]
 ```
-

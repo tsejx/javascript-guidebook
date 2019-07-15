@@ -1,8 +1,8 @@
-## Array.prototype.concat()
+# Array.prototype.concat()
 
 `Array.prototype.concat()` 方法用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。
 
-### 语法
+## 语法
 
 ```js
 const new_array = old_array.concat( item1[, itemN ] )
@@ -15,7 +15,7 @@ const new_array = old_array.concat( item1[, itemN ] )
 
 **返回值：** 新的 `Array` 实例。
 
-### 描述
+## 描述
 
 `concat` 方法创建一个新的数组，它由被调用的对象中的元素组成，每个参数的顺序依次是该参数的元素（如果参数是数组）或参数本身（如果参数不是数组）。它不会递归到嵌套数组参数中。
 
@@ -26,46 +26,46 @@ const new_array = old_array.concat( item1[, itemN ] )
 
 **注意**：数组/值在连接时保持不变。此外，对于新数组的任何操作（仅当元素不是对象引用时）都不会对原始数组产生影响，反之亦然。
 
-### 示例
+## 示例
 
-#### 连接两个数组
+### 连接两个数组
 
 以下代码将两个数组合并为一个新数组。
 
 ```js
-const alpha = ['a', 'b', 'c']
-const numeric = [1, 2, 3]
+const alpha = ['a', 'b', 'c'];
+const numeric = [1, 2, 3];
 
-alpha.concat(numeric)	// Outputs: ['a', 'b', 'c', 1, 2, 3]
+alpha.concat(numeric); // Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
-#### 连接三个数组
+### 连接三个数组
 
 以下代码将三个数组合并为一个新数组。
 
 ```js
 const num1 = [1, 2, 3],
-    num2 = [4, 5, 6],
-    num3 = [7, 8, 9];
+  num2 = [4, 5, 6],
+  num3 = [7, 8, 9];
 
-const nums = num1.concat(num2, num3)
+const nums = num1.concat(num2, num3);
 
-console.log(nums)	// Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(nums); // Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-#### 将值连接到数组
+### 将值连接到数组
 
 以下代码将三个值连接到数组。
 
 ```js
-var alpha = ['a', 'b', 'c']
+var alpha = ['a', 'b', 'c'];
 
-var alphaNumeric = alpha.concat(1, [2, 3])
+var alphaNumeric = alpha.concat(1, [2, 3]);
 
-console.log(alphaNumeric)	// Outputs: ['a', 'b', 'c', 1, 2, 3]
+console.log(alphaNumeric); // Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
-#### 合并嵌套数组
+### 合并嵌套数组
 
 以下代码合并数组并保留引用。
 
@@ -75,21 +75,20 @@ var num2 = [2, [3]];
 
 var nums = num1.concat(num2);
 
-console.log(nums)	// Outputs: [[1], 2, [3]]
+console.log(nums); // Outputs: [[1], 2, [3]]
 
 // modify the first element of num1
 num1[0].push(4);
 
-console.log(nums)	// Outputs: [[1, 4], 2, [3]]
+console.log(nums); // Outputs: [[1, 4], 2, [3]]
 ```
 
-#### 将对象合并为数组
+### 将对象合并为数组
 
 ```js
-var newArray = Array.prototype.concat.call({ a: 1 }, { b: 2 })
+var newArray = Array.prototype.concat.call({ a: 1 }, { b: 2 });
 
-console.log(newArray)		// [{ a: 1 }, { b: 2 }]
+console.log(newArray); // [{ a: 1 }, { b: 2 }]
 
-console.log(newArray[0].a)		// 1
+console.log(newArray[0].a); // 1
 ```
-

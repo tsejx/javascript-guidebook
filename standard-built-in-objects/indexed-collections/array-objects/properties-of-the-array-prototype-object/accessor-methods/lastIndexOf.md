@@ -1,10 +1,10 @@
-## Array.prototype.lastIndexOf()
+# Array.prototype.lastIndexOf()
 
 `Array.prototype.lastIndexOf()` 方法用于查找指定数组成员在数组中最后一次出现的位置。
 
-### 语法
+## 语法
 
-```javascript
+```js
 arr.lastIndexOd( searchValue [, fromIndex ] )
 ```
 
@@ -15,37 +15,37 @@ arr.lastIndexOd( searchValue [, fromIndex ] )
 
 **返回值：** `lastIndexOf()` 方法的返回值为 `Number` 类型，返回数组元素在当前数组中最后一次查找到的起始位置（索引）。
 
-### 示例
+## 示例
 
-#### 标准示例
+### 标准示例
 
-```javascript
+```js
 const arr = [2, 5, 9, 2];
 
 const index = arr.lastIndexOf(2);
-// index is 3
+// 3
 
 index = arr.lastIndexOf(7);
-// index is -1
+// -1
 
 index = arr.lastIndexOf(2, 3);
-// index is 3
+// 3
 
 index = arr.lastIndexOf(2, 2);
-// index is 0
+// 0
 
 index = arr.lastIndexOf(2, -2);
-// index is 0
+// 0
 
 index = arr.lastIndexOf(2, -1);
-// index is 3
+// 3
 ```
 
-#### 查找所有元素
+### 查找所有元素
 
 下例使用 `lastIndexOf` 查找到一个成员在数组中所有的索引（下标），并使用 `push` 将所有添加到另一个数组中。
 
-```javascript
+```js
 var indices = [];
 var arr = ['a', 'b', 'a', 'c', 'a', 'd'];
 var element = 'a';
@@ -53,11 +53,10 @@ var idx = arr.lastIndexOf(element);
 
 while (idx != -1) {
   indices.push(idx);
-  idx = (idx > 0 ? arr.lastIndexOf(element, idx - 1) : -1);
+  idx = idx > 0 ? arr.lastIndexOf(element, idx - 1) : -1;
 }
 
-console.log(indices)	// Outputs: [4, 2, 0];
+console.log(indices); // Outputs: [4, 2, 0];
 ```
 
 注意：我们要单独处理 `idx == 0` 时的情况，因为如果是第一个元素，忽略了`fromIndex` 参数则第一个元素总会被查找。这不同于 `indexOf` 方法。
-
