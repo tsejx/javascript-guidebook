@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-O.prototype.prototypeIsEnumerable(V)
+O.prototype.prototypeIsEnumerable(V);
 ```
 
 | 参数 | 说明                     | 类型   |
@@ -40,17 +40,19 @@ const a = [];
 
 a.propertyIsEnumerable('constructor');
 
-function b(){
-    this.property = 'b'
+function b() {
+  this.property = 'b';
 }
 
-b.prototype.firstMethod = function(){}
+b.prototype.firstMethod = function() {};
 
-function c(){
-    this.method = function method(){ return 'c' }
+function c() {
+  this.method = function method() {
+    return 'c';
+  };
 }
 
-c.prototype = new b;
+c.prototype = new b();
 c.prototype.constructor = c;
 
 const d = new c();
@@ -69,4 +71,3 @@ d.property = 'd';
 d.prototypeIsEnumerable('property');
 // true
 ```
-

@@ -4,24 +4,24 @@ Function 构造函数通过 `new` 创建一个新的 Function 对象。 在 Java
 
 ## 语法
 
-- **用法一**：充当 `Function` 对象的构造函数，用于结合 `new` 关键字构造一个新的 `Function` 对象。
+**构造函数**
 
 ```js
 new Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 ```
 
-- **用法二**：用作普通函数使用，其行为与用法一（使用 `new` 关键字）完全一致，相当于用法一省略了 `new` 关键字。
+**函数类型转换函数**
 
 ```js
 Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 ```
 
-| 参数     | 说明                                                     | 类型   |
-| :------- | :------------------------------------------------------- | :----- |
-| argName1 | 定义的第 1 个参数的名称                                  | string |
-| argName2 | 定义的第 2 个参数的名称                                  | string |
-| argNameN | 定义的第 N 个参数的名称，可以有任意多个                  | string |
-| funcBody | 定义的函数主体，即函数内部的执行代码，默认为空字符串("") | string |
+| 参数     | 说明                                                       | 类型   |
+| :------- | :--------------------------------------------------------- | :----- |
+| argName1 | 定义的第 1 个参数的名称                                    | string |
+| argName2 | 定义的第 2 个参数的名称                                    | string |
+| argNameN | 定义的第 N 个参数的名称，可以有任意多个                    | string |
+| funcBody | 定义的函数主体，即函数内部的执行代码，默认为空字符串(`""`) | string |
 
 `Function()` 会把传入的**最后一个参数**作为函数定义的执行代码，之前的所有参数均依次作为函数定义的参数。
 
@@ -34,32 +34,32 @@ Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 
 - 使用 Function 构造器生成的 Function 对象是在函数创建时解析的。这比你使用 [函数声明](../../../core-modules/ecmascript-function-objects/function-declarations/function-definitions.md#函数声明语句) 或者 [函数表达式](../../../core-modules/ecmascript-function-objects/function-declarations/function-definitions.md#函数表达式) 并在你的代码中调用更为低效，因为使用后者创建的函数是跟其他代码一起解析的
 - 所有被传递到构造函数中的参数，都将被视为是将被创建函数的参数，并且是相同的标识符名称和传递顺序
-- 使用 Function 构造器生成的函数，并不会在创建它们的上下文中创建闭包；它们一般**在全局作用域中被创建**。当运行这些函数的时候，它们只能访问自己的本地变量和全局变量，不能访问 Function 构造器被调用生成的上下文的作用域。这和使用带有函数表达式代码的 `eval` 不同
-- 以调用函数的方式调用 Function 的构造函数（不是用 `new` 关键字）跟以构造函数来调用是一样的
+- 使用 Function 构造器生成的函数，并不会在创建它们的上下文中创建闭包；它们一般在**全局作用域**中被创建。当运行这些函数的时候，它们只能访问自己的本地变量和全局变量，不能访问 Function 构造器被调用生成的上下文的作用域。这和使用带有函数表达式代码的 `eval` 不同
+- 以调用函数的方式调用 Function 的构造函数（而不是用 `new` 关键字）跟以构造函数来调用是一样的
 
-## 构造函数属性
+## 构造函数
 
-* :-1: Function.arguments：以数组形式获取传入函数的所有参数。此属性已被 [`arguments`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments) 替代。
-* :warning: Function.caller：获取调用函数的具体对象
-* Function.length：获取函数的接收参数个数
-* Function.name：获取函数的名称
-* :warning: ​Function.displayName：获取函数的 display name
+- :-1: Function.arguments：以数组形式获取传入函数的所有参数。此属性已被 [`arguments`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments) 替代。
+- :warning: Function.caller：获取调用函数的具体对象
+- Function.length：获取函数的接收参数个数
+- Function.name：获取函数的名称
+- :warning: ​Function.displayName：获取函数的 display name
 
-## 原型方法
+## 原型对象
 
-* [Function.prototype.apply](properties-of-the-function-prototype-object/apply.md)：设定指定函数的调用上下文环境，并提供数组形式的参数
-* [Function.prototype.call](properties-of-the-function-prototype-object/call.md)：设定指定函数的调用上下文环境，并提供列表形式的参数
-* [Function.prototype.bind](properties-of-the-function-prototype-object/bind.md)：绑定指定函数的调用上下文，无论如何调用均以该调用函数上下文为准
-* ⚠️ Function.prototype.isGenerator：用于检测函数对象是否为 Generator 生成器函数
+- [Function.prototype.apply](properties-of-the-function-prototype-object/apply.md)：设定指定函数的调用上下文环境，并提供数组形式的参数
+- [Function.prototype.call](properties-of-the-function-prototype-object/call.md)：设定指定函数的调用上下文环境，并提供列表形式的参数
+- [Function.prototype.bind](properties-of-the-function-prototype-object/bind.md)：绑定指定函数的调用上下文，无论如何调用均以该调用函数上下文为准
+- ⚠️ Function.prototype.isGenerator：用于检测函数对象是否为 Generator 生成器函数
 
 ## 示例
 
 ### 基本示例
 
-定义一个求和函数：带有2个参数 `x`、`y`
+定义一个求和函数：带有 2 个参数 `x`、`y`
 
 ```js
-const sum = new Function("x", "y", "return x + y;");
+const sum = new Function('x', 'y', 'return x + y;');
 ```
 
 定义一个输出函数：没有定义参数，输出 `"CodePlayer"`
@@ -71,7 +71,7 @@ const foo = Function('var name="CodePlayer"; console.log(name);');
 执行函数。
 
 ```js
-console.log( sum(12, 23) );
+console.log(sum(12, 23));
 // 35
 
 foo();
@@ -90,37 +90,37 @@ console.log(sum instanceof Object);
 JavaScript 支持以 `function` 关键字形式直接声明函数，多数情况下，我们也推荐以 `function` 关键字形式声明函数。我们以 `function` 关键字形式声明等价于上面两个函数的对应代码如下：
 
 ```js
-function sum(x, y){
-    return x + y;
+function sum(x, y) {
+  return x + y;
 }
 
-function foo(){
-    var name = "CodePlayer";
-    console.log( name );
+function foo() {
+  var name = 'CodePlayer';
+  console.log(name);
 }
 
 // 执行函数
-console.log( sum( 12, 23 ) );
+console.log(sum(12, 23));
 // 35
 foo();
 // CodePlayer
 
-console.log( typeof sum );
+console.log(typeof sum);
 // function
-console.log( sum instanceof Function );
+console.log(sum instanceof Function);
 // true
-console.log( sum instanceof Object );
+console.log(sum instanceof Object);
 // true
 ```
 
-### 匿名函数声明
+### 函数表达式
 
 使用 `function` 关键字也可以声明匿名函数，并将函数的引用赋给某个变量。我们还可以在声明一个匿名函数后，立即执行该函数。
 
 ```js
-var foo = function(){
-    var name = "CodePlayer";
-    console.log( name );
+var foo = function() {
+  var name = 'CodePlayer';
+  console.log(name);
 };
 
 foo();
@@ -133,7 +133,7 @@ foo();
 
 ```js
 (function(x, y) {
-    console.log( x + y );
+  console.log(x + y);
 })(2, 3);
 // 5
 ```
@@ -142,8 +142,8 @@ foo();
 
 ```js
 (function(x, y) {
-    console.log( x + y );
-}(2, 3));
+  console.log(x + y);
+})(2, 3);
 // 5
 ```
 
@@ -154,15 +154,15 @@ foo();
 ```js
 const n = 1;
 
-function f(){
-    const n = 2;
-    function e(){
-        return n;
-    }
-    return e;
+function f() {
+  const n = 2;
+  function e() {
+    return n;
+  }
+  return e;
 }
 
-console.log (f()());
+console.log(f()());
 // 2
 ```
 
@@ -171,12 +171,12 @@ console.log (f()());
 ```js
 const n = 1;
 
-function f(){
-    const n = 2;
-    const e = new Function("return n;");
-    return e;
+function f() {
+  const n = 2;
+  const e = new Function('return n;');
+  return e;
 }
 
-console.log (f()());
+console.log(f()());
 // 1
 ```

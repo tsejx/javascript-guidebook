@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.getOwnPropertyDescriptors(O)
+Object.getOwnPropertyDescriptors(O);
 ```
 
 | 参数 | 说明                                   | 类型   |
@@ -16,13 +16,13 @@ Object.getOwnPropertyDescriptors(O)
 
 ```js
 const a = {
-    name: 'Ben',
-    get age(){
-        return '18'
-    }
-}
+  name: 'Ben',
+  get age() {
+    return '18';
+  },
+};
 
-Object.getOwnPropertyDescriptors(a)
+Object.getOwnPropertyDescriptors(a);
 // {
 //   age: {
 //     configurable: true,

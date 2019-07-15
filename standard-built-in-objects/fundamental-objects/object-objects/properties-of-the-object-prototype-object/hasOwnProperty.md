@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-O.prototype.hasOwnProperty(V)
+O.prototype.hasOwnProperty(V);
 ```
 
 | 参数 | 说明                                      | 类型          |
@@ -28,9 +28,9 @@ O.prototype.hasOwnProperty(V)
 const foo = new Object();
 foo.a = 'exist';
 
-function change(){
-    foo.b = foo.a
-    delete foo.a
+function change() {
+  foo.b = foo.a;
+  delete foo.a;
 }
 
 foo.hasOwnProperty('a');
@@ -56,4 +56,3 @@ foo.hasOwnProperty('toString');
 foo.hasOwnProperty('hasOwnProperty');
 // false
 ```
-

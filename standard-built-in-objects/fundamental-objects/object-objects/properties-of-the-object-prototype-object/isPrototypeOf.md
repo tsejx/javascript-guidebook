@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-O.prototype.isPrototypeOf(V)
+O.prototype.isPrototypeOf(V);
 ```
 
 | 参数 | 说明                             | 类型   |
@@ -38,4 +38,3 @@ console.log(Foo.prototype.isPrototypeOf(baz));
 console.log(Object.prototype.isPrototypeOf(baz));
 // true
 ```
-

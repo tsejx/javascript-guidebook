@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.values(O)
+Object.values(O);
 ```
 
 | 参数 | 说明     | 类型   |

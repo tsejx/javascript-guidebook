@@ -1,21 +1,17 @@
 # Function.prototype.apply
 
-`Function.prototype.apply` 方法用于指定函数调用指向的 `this` 指针，并提供 Array 形式的参数列表作为指定函数的参数。
+`Function.prototype.apply` 方法用于指定函数调用指向的 `this` 指针，并提供类数组类型的参数列表作为指定函数的参数。
 
 ## 语法
 
 ```js
-Function.prototype.apply(thisArg, argArray)
+Function.prototype.apply(thisArg, argArray);
 ```
 
 | 参数     | 说明                                     | 类型                |
 | -------- | ---------------------------------------- | ------------------- |
 | thisArg  | 可选参数。调用函数时指向的 `this` 指针。 | /                   |
 | argArray | 可选参数。调用函数参数列表。             | Array \| TypedArray |
-
-### 返回值
-
-调用函数后的返回结果。
 
 ## 描述
 
@@ -37,7 +33,7 @@ Function.prototype.apply(thisArg, argArray)
 
 ```js
 const foo = [];
-const bar = [1, 2 , 3, 4];
+const bar = [1, 2, 3, 4];
 
 foo.push.apply(foo, bar);
 
@@ -58,7 +54,7 @@ const max = Math.max.apply(null, foo);
 const min = Math.min.apply(null, foo);
 ```
 
-⚠️ **注意**：使用上述方式调用 `Function.prototype.apply`，会有超出 JavaScript 引擎的参数长度限制的风险。当对一个函数传入非常多的参数（比如一万个）时，就非常有可能会导致越界问题，这个临界值是根据不同的 JavaScript 引擎而定的（JavaScript 核心中已经做了硬编码 [参数个数限制在65536](https://bugs.webkit.org/show_bug.cgi?id=80797)），因为这个限制（实际上也是任何用到超大栈空间的行为的自然表现）是未指定的，有些引擎会抛出异常。更糟糕的是其他引擎会直接限制传入到方法的参数个数，导致参数丢失。
+⚠️ **注意**：使用上述方式调用 `Function.prototype.apply`，会有超出 JavaScript 引擎的参数长度限制的风险。当对一个函数传入非常多的参数（比如一万个）时，就非常有可能会导致越界问题，这个临界值是根据不同的 JavaScript 引擎而定的（JavaScript 核心中已经做了硬编码 [参数个数限制在 65536](https://bugs.webkit.org/show_bug.cgi?id=80797)），因为这个限制（实际上也是任何用到超大栈空间的行为的自然表现）是未指定的，有些引擎会抛出异常。更糟糕的是其他引擎会直接限制传入到方法的参数个数，导致参数丢失。
 
 如果参数数组可能很大，可以使用以下策略处理：将参数数组切块后循环传入目标方法。
 

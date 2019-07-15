@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.isFrozen(O)
+Object.isFrozen(O);
 ```
 
 | 参数 | 说明               | 类型   |
@@ -16,7 +16,7 @@ Object.isFrozen(O)
 
 ## 描述
 
-被冻结的对象不可扩展，所有 Property 均不可配置，且所有数据属性（即没有 `getter` 或  `setter` 组件的访问器的属性 ）都是不可写的。
+被冻结的对象不可扩展，所有 Property 均不可配置，且所有数据属性（即没有 `getter` 或 `setter` 组件的访问器的属性 ）都是不可写的。
 
 ## 示例
 
@@ -24,17 +24,17 @@ Object.isFrozen(O)
 
 ```js
 let foo = {
-    a: 1,
-    b: 2
+  a: 1,
+  b: 2,
 };
 
-console.log( Object.isFrozen(foo) );
+console.log(Object.isFrozen(foo));
 // false
 
-console.log( Object.freeze(foo) );
+console.log(Object.freeze(foo));
 // {a: 1, b: 2}
 
-console.log( Object.isFrozen(foo) );
+console.log(Object.isFrozen(foo));
 // true
 
 foo.a = 3;
@@ -47,13 +47,13 @@ console.log(foo);
 
 ```js
 let foo = {
-    a: 1
+  a: 1,
 };
 
 // { value: 1, writable: true, enumerable: true, configurable: true }
-console.log( Object.getOwnPropertyDescriptor(foo, 'a') );
+console.log(Object.getOwnPropertyDescriptor(foo, 'a'));
 
-console.log( Object.freeze(foo) );
+console.log(Object.freeze(foo));
 // { a: 1 }
 
 // { value: 1, writable: false, enumerable: true, configurable: false }

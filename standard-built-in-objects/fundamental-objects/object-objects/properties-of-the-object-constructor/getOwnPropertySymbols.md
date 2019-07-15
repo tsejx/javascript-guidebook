@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.getOwnPropertySymbols(O)
+Object.getOwnPropertySymbols(O);
 ```
 
 | 参数 | 说明                                    | 类型   |
@@ -17,7 +17,7 @@ Object.getOwnPropertySymbols(O)
 ## 示例
 
 ```js
-const foo = {}
+const foo = {};
 const a = Symbol('a');
 const b = Symbol('b');
 
@@ -33,4 +33,3 @@ console.log(bar);
 console.log(bar[0]);
 // Symbol(a)
 ```
-

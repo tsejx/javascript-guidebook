@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.getOwnPropertyDescriptor(O, Property)
+Object.getOwnPropertyDescriptor(O, Property);
 ```
 
 | 参数     | 说明                | 类型   |
@@ -26,4 +26,3 @@ Object.getOwnPropertyDescriptor(foo, 'a');
 // 	configurable: true,
 // }
 ```
-

@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.preventExtensions(O)
+Object.preventExtensions(O);
 ```
 
 | 参数 | 说明                   | 类型   |
@@ -31,7 +31,7 @@ Object.preventExtensions(O)
 字面量方式创建的对象默认是可扩展的。
 
 ```js
-const foo = {}
+const foo = {};
 Object.isExtensible(foo);
 // true
 ```
@@ -55,4 +55,3 @@ Object.preventExtensions(nonExtensible);
 Object.defineProperty(nonExtensible, 'new', { value: 5678 });
 // throw TypeError Exception
 ```
-

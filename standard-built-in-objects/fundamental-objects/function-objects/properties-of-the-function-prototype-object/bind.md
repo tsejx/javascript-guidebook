@@ -13,8 +13,6 @@ Function.prototype.apply(thisArg, argArray)
 | thisArg  | 可选参数。调用函数时指向的 `this` 指针。 | /                   |
 | argArray | 可选参数。调用函数参数列表。             | Array \| TypedArray |
 
-调用函数后的返回结果。
-
 ## 描述
 
 `Function.prototype.bind` 函数会创建一个新 **绑定函数**（bound function，BF）。绑定函数是一个 Exotic Function Object（怪异函数对象，ECMAScript 2015 中的术语），它包装了原函数对象。调用绑定函数通常会导致执行 **包装函数**。
@@ -81,16 +79,16 @@ var b1 = b(1, 2);
 const leadingThirtysevenList = a.bind(null, 37);
 
 // 创建一个函数，它拥有预设的第一个参数
-const addThirtySeven = b.bind(null, 37); 
+const addThirtySeven = b.bind(null, 37);
 
-const a2 = leadingThirtysevenList(); 
+const a2 = leadingThirtysevenList();
 // [37]
 
-const a3 = leadingThirtysevenList(1, 2, 3); 
+const a3 = leadingThirtysevenList(1, 2, 3);
 // [37, 1, 2, 3]
 
-const b2 = addThirtySeven(5); 
-// 37 + 5 = 42 
+const b2 = addThirtySeven(5);
+// 37 + 5 = 42
 
 const b3 = addThirtySeven(5, 10);
 // 37 + 5 = 42 ，第二个参数被忽略

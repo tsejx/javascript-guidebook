@@ -6,31 +6,27 @@ JavaScript 中的 `Object` 对象，是 JavaScript 中所有对象的基类，�
 
 ## 语法
 
-`Object` 对象（或称之为 `Object()` 函数），其语法有以下两种：
+**构造函数**
 
-- **用法一**：充当 `Object` 对象的**构造函数**使用，用于结合 `new` 关键字构造一个新的 `Object` 对象。`Object()` 会根据传入参数的类型返回一个对应类型的对象。
-
-```javascript
+```js
 new Object( [ value ] )
 ```
 
-- **用法二**：当作**普通函数**使用，其行为与**用法一**（使用 `new` 关键字）完全一致，相当于用法一省略了 `new` 关键字。
+**对象类型转换函数**
 
-```javascript
+```js
 Object( [ value ] )
 ```
 
 |  参数    | 说明         | 类型               |
 | :------ | :------------- | :------------------- |
-| value   | 可选参数，需要包装为对象的值 | 任意类型 |
+| value   | 可选参数，需要包装为对象的值 | any |
 
 　`Object()` 将会根据参数 `value` 的数据类型，返回对应类型的对象：
 
 - 如果 `value` 为原始数据类型 Boolean、Number、String，则返回对应类型的对象，例如：Boolean 对象、Number 对象、String 对象。
 - 如果 `value` 本身为对象，则不对其作任何更改，返回其本身。
 - 如果省略了 `value` 参数，或 `value` 为 `null`、`undefined`，则返回自身无任何属性的 Object 对象。
-
-### 返回值
 
 `Object()` 的返回一个与给定值对应类型的对象。该对象包装了给定的参数。
 
@@ -86,9 +82,7 @@ JavaScript 中的所有对象都来自 `Object`，所有对象从 `Object.protot
 
 ## 示例
 
-### 标准示例
-
-- 如果参数为原始数据类型，则返回对应类型的对象。
+如果参数为**原始数据类型**，则返回对应类型的对象。
 
 ```js
 const a = new Object(true);
@@ -104,7 +98,7 @@ console.log(c);
 // String {"string"}
 ```
 
-- 如果参数自身就是对象（`typeof` 该参数返回 `"object"` 或 `"function"`），则不对其作任何更改，返回其本身。
+如果参数自身就是**对象**（`typeof` 该参数返回 `"object"` 或 `"function"`），则不对其作任何更改，返回其本身。
 
 ```js
 var a = new Object(Boolean());
@@ -120,7 +114,7 @@ console.log(c);
 // String{"", length: 0}
 ```
 
-- 如果未指定参数，或参数为 `null` 或 `undefined`，则返回一个空对象。
+如果**未指定参数**，或参数为 `null` 或 `undefined`，则返回一个空对象。
 
 ```js
 var a = new Object();

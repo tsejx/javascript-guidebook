@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-O.prototype.toString()
+O.prototype.toString();
 ```
 
 表示该对象的字符串。
@@ -32,10 +32,10 @@ foo.toString();
 ```js
 const toString = Object.prototype.toString();
 
-toString.call(new Date);
+toString.call(new Date());
 // [object Date]
 
-toString.call(new String);
+toString.call(new String());
 // [object String]
 
 toString.call(Math);
@@ -47,4 +47,3 @@ toString.call(undefined);
 toString.call(null);
 // [object Null]
 ```
-

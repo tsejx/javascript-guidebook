@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.defineProperty(O, P, Attributes)
+Object.defineProperty(O, P, Attributes);
 ```
 
 | 参数       | 说明                           | 类型   |
@@ -17,8 +17,6 @@ Object.defineProperty(O, P, Attributes)
 返回变更后的对象。
 
 ## 示例
-
-### 基本示例
 
 ```js
 const foo = {};

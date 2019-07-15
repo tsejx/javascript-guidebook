@@ -5,7 +5,7 @@
 ### 语法
 
 ```js
-Object.entries(O)
+Object.entries(O);
 ```
 
 | 参数 | 说明           | 类型   |
@@ -21,7 +21,7 @@ Object.entries(O)
 ## 示例
 
 ```js
-const a = { foo: 1, bar: 2 }
+const a = { foo: 1, bar: 2 };
 Object.entries(a);
 // [['foo', 1], ['bar', 2]]
 
@@ -35,7 +35,6 @@ for (const [key, value] of Object.entries(obj)) {
 }
 
 Object.entries(obj).forEach(([key, value]) => {
-    console.log(`${key} ${value}`); // "a 5", "b 7", "c 9"
+  console.log(`${key} ${value}`); // "a 5", "b 7", "c 9"
 });
 ```
-

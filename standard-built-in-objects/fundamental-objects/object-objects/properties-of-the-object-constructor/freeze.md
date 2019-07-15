@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.freeze(O)
+Object.freeze(O);
 ```
 
 | 参数 | 说明           | 类型   |

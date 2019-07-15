@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.getPrototypeOf(O)
+Object.getPrototypeOf(O);
 ```
 
 | 参数 | 说明     | 类型   |
@@ -35,12 +35,12 @@ Object.getPrototypeOf(reg) === Regexp.prototype;
 ```js
 const foo = new Object();
 
-Object.getPropertyOf( Object );
+Object.getPropertyOf(Object);
 // f () { [native code] }
-Object.getPropertyOf( Function );
+Object.getPropertyOf(Function);
 // f () { [native code] }
 
-Object.getPropertyOf( Object ) === Function.prototype;
+Object.getPropertyOf(Object) === Function.prototype;
 // true
 
 const bar = new Object();
@@ -49,4 +49,3 @@ Object.prototype === Object.getPrototypeOf(bar);
 Obejct.prototype === Object.getPrototypeOf({});
 // true
 ```
-

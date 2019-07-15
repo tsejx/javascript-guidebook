@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.getOwnPropertyNames(O)
+Object.getOwnPropertyNames(O);
 ```
 
 | 参数 | 说明                             | 类型   |
@@ -14,7 +14,7 @@ Object.getOwnPropertyNames(O)
 
 返回 Properties 键名组成的数组。
 
-### 描述
+## 描述
 
 如果只需要获取可枚举属性，可以使用 [Object.keys](keys.md) 或用 [for-in 语句](../../../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement.md)（还会获取到原型链上的可枚举属性，不过可以使用 [Object.prototype.hasOwnProperty](../properties-of-the-object-prototype-object/hasOwnProperty.md) 方法过滤）。
 
@@ -33,13 +33,13 @@ console.log(Object.getOwnPropertyNames(foo).sort());
 
 ```js
 // 类数组对象
-const foo = {0: 'a', 1: 'b', 2: 'c'};
+const foo = { 0: 'a', 1: 'b', 2: 'c' };
 console.log(Object.getOwnPropertyNames(foo).sort());
 // ['0', '1', '2']
 
 // 使用 Array.forEach 输出属性名和属性值
-Object.getOwnPropertyNames(foo).forEach(function(val, idx, array){
-    console.log(`${val}:${foo[val]}`)
+Object.getOwnPropertyNames(foo).forEach(function(val, idx, array) {
+  console.log(`${val}:${foo[val]}`);
 });
 // 0:a
 // 1:b
@@ -50,15 +50,18 @@ Object.getOwnPropertyNames(foo).forEach(function(val, idx, array){
 
 ```js
 // 不可枚举属性
-const foo = Object.create({}, {
+const foo = Object.create(
+  {},
+  {
     getBar: {
-        value: function(){
-            return this.bar
-        },
-        enumerable: false
-    }
-})
-foo.bar = 1
+      value: function() {
+        return this.bar;
+      },
+      enumerable: false,
+    },
+  }
+);
+foo.bar = 1;
 
 console.log(Object.getOwnPropertyNames(foo).sort());
 // ['foo', 'getBar']
@@ -67,18 +70,18 @@ console.log(Object.getOwnPropertyNames(foo).sort());
 ### 仅获取自有 Property
 
 ```js
-function SuperClass(){}
-SuperClass.prototype.inheritedMethod = function(){}
+function SuperClass() {}
+SuperClass.prototype.inheritedMethod = function() {};
 
-function SubClass(){
-    this.prop = 5;
-    this.method = function(){}
+function SubClass() {
+  this.prop = 5;
+  this.method = function() {};
 }
 
-SubClass.prototype = new SuperClass;
-SubClass.prototype.prototypeMethod = function(){}
+SubClass.prototype = new SuperClass();
+SubClass.prototype.prototypeMethod = function() {};
 
-Object.getOwnPropertyNames(new SubClass())
+Object.getOwnPropertyNames(new SubClass());
 // ['prop', 'method']
 ```
 
@@ -89,13 +92,12 @@ Object.getOwnPropertyNames(new SubClass())
 ```js
 const enum_and_nonenum = Object.getOwnPropertyNames(target);
 const enum_only = Object.keys(target);
-const nonenum_only = enum_and_nonenum.filter(function(key){
-    const indexInEnum = enum_only.indexOf(key);
-    if (indexInEnum === -1){
-        return true
-    } else {
-        return false
-    }
-})
+const nonenum_only = enum_and_nonenum.filter(function(key) {
+  const indexInEnum = enum_only.indexOf(key);
+  if (indexInEnum === -1) {
+    return true;
+  } else {
+    return false;
+  }
+});
 ```
-

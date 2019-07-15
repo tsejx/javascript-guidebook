@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.keys(O)
+Object.keys(O);
 ```
 
 | 参数 | 说明     | 类型   |
@@ -25,7 +25,7 @@ Object.keys(O)
 ```js
 const foo = ['a', 'b', 'c'];
 
-console.log( Object.keys(foo) );
+console.log(Object.keys(foo));
 // console: ['0', '1', '2']
 ```
 
@@ -42,11 +42,16 @@ console.log(Object.keys(foo));
 
 ```js
 // getBar is a property which isn't enumerable
-const foo = Object.create({}, {
-  getBar: {
-    value: function () { return this.bar; }
+const foo = Object.create(
+  {},
+  {
+    getBar: {
+      value: function() {
+        return this.bar;
+      },
+    },
   }
-});
+);
 
 foo.bar = 1;
 

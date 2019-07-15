@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.isSealed(O)
+Object.isSealed(O);
 ```
 
 | 参数 | 说明               | 类型   |
@@ -20,18 +20,16 @@ Object.isSealed(O)
 
 ## 示例
 
-### 基本示例
-
 ```js
-let foo = { a: 1 ,b: 2 };
+let foo = { a: 1, b: 2 };
 
-console.log( Object.isSealed(foo) );
+console.log(Object.isSealed(foo));
 // false
 
-console.log( Object.seal(foo) );
+console.log(Object.seal(foo));
 // { a: 1, b: 2 }
 
-console.log( Object.isSealed(foo) );
+console.log(Object.isSealed(foo));
 // true
 
 console.log(delete foo.b);
@@ -46,14 +44,14 @@ console.log(foo);
 这个方法实际上会在现有对象上调用 `Object.preventExtensions()` 方法，并把所有现有属性的 `configurable` 描述符置为 `false`。
 
 ```js
-let foo = { a:1, b:2 };
+let foo = { a: 1, b: 2 };
 
-console.log( Object.getOwnPropertyDescriptor(foo,'a') );
+console.log(Object.getOwnPropertyDescriptor(foo, 'a'));
 // { value: 1, writable: true, enumerable: true, configurable: true }
 
-console.log( Object.seal(foo) );
+console.log(Object.seal(foo));
 // {a: 1, b: 2}
 
-console.log( Object.getOwnPropertyDescriptor(foo, 'a') );
+console.log(Object.getOwnPropertyDescriptor(foo, 'a'));
 // { value: 1, writable: true, enumerable: true, configurable: false }
 ```

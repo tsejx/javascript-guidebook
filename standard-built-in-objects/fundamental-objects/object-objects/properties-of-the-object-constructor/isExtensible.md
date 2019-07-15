@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.isExtensible(O)
+Object.isExtensible(O);
 ```
 
 | 参数 | 说明               | 类型   |
@@ -22,13 +22,12 @@ Object.isExtensible(O)
 
 ## 示例
 
-### 基本示例
-
 ```js
 let foo = {
-    a: 1
+  a: 1,
 };
-console.log(Object.isExtensible(foo)); 			// true
+console.log(Object.isExtensible(foo));
+// true
 
 foo.b = 2;
 
@@ -47,4 +46,3 @@ console.log(Object.isExtensible(foo));
 console.log(foo);
 // { a: 1, b: 2}
 ```
-

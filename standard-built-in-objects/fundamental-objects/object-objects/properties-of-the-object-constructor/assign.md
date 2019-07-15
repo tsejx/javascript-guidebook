@@ -5,7 +5,7 @@
 ## 语法
 
 ```js
-Object.assign(target, ...sources)
+Object.assign(target, ...sources);
 ```
 
 | 参数    | 说明     | 类型   |
@@ -28,9 +28,9 @@ Object.assign(target, ...sources)
 ### 基本示例
 
 ```js
-const a = { a: 1 }
+const a = { a: 1 };
 
-const b = Object.assign({}, a)
+const b = Object.assign({}, a);
 
-console.log(b);    // { a: 1 }
+console.log(b); // { a: 1 }
 ```
