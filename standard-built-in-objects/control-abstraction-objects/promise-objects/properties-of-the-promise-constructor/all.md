@@ -26,10 +26,10 @@ Promise.all([promise1, promise2, ..., promiseN])
 
 `Promise.all` 执行后返回一个新创建的 Promise 实例，该实例状态由 `Promise.all` 参数成员决定，可以分为两种情况：
 
-* 当参数每个 Promise 实例成员均为 ***Resolved***，返回值才会变为 ***Resolved*** 状态。此时参数每个 Promise 实例成员的返回值会组成一个数组，传递给回调函数。
-* 只要参数每个 Promise 实例成员之中有一个为 ***Rejected***，`Promise.all` 返回值就会变成 ***Rejected***，此时第一个 Rejected 状态的 Promise 实例的返回值，会传递给回调函数。
+- 当参数每个 Promise 实例成员均为 **_Resolved_**，返回值才会变为 **_Resolved_** 状态。此时参数每个 Promise 实例成员的返回值会组成一个数组，传递给回调函数。
+- 只要参数每个 Promise 实例成员之中有一个为 **_Rejected_**，`Promise.all` 返回值就会变成 **_Rejected_**，此时第一个 Rejected 状态的 Promise 实例的返回值，会传递给回调函数。
 
-⚠️  **注意**：作为参数的 Promise 实例，自身定义的 `catch` 方法，那么它的状态一旦变更为 Rejected，并不会触发 `Promise.all` 的 `catch` 方法。
+⚠️ **注意**：作为参数的 Promise 实例，自身定义的 `catch` 方法，那么它的状态一旦变更为 Rejected，并不会触发 `Promise.all` 的 `catch` 方法。
 
 🌰 **标准示例：**
 
@@ -37,18 +37,18 @@ Promise.all([promise1, promise2, ..., promiseN])
 const p1 = new Promise((resolve, reject) => {
   resolve('hello');
 })
-.then(result => result)
-.catch(err => err);
+  .then(result => result)
+  .catch(err => err);
 
 const p2 = new Promise((resolve, reject) => {
   throw new Error('报错了');
 })
-.then(result => result)
-.catch(err => err);
+  .then(result => result)
+  .catch(err => err);
 
 Promise.all([p1, p2])
-.then(result => console.log(result))	// ["hello", Error: 报错了]
-.catch(err => console.log(err));
+  .then(result => console.log(result)) // ["hello", Error: 报错了]
+  .catch(err => console.log(err));
 ```
 
 ## 示例
@@ -58,11 +58,11 @@ Promise.all([p1, p2])
 Promise 等待所有 Promise 实例都 Fulfilled（或首个 Rejected）。
 
 ```js
-const p1 = Promise.resolve('3')
-const p2 = 1234
+const p1 = Promise.resolve('3');
+const p2 = 1234;
 const p3 = new Promise((resolve, reject) => {
-    setTimeout(resolve, 100, 'foo')
-})
+  setTimeout(resolve, 100, 'foo');
+});
 
 Promise.all([p1, p2, p3]).then(v => console.log(v));
 // ['3', 1234, 'foo']
@@ -72,7 +72,7 @@ Promise.all([p1, p2, p3]).then(v => console.log(v));
 
 `Promise.all` 在任意一个传入的 Promise 否决时返回新的 Rejected 状态的 Promise 实例。
 
-例如，如果你传入的 Promise 中，有四个 Promise 实例在一定的时间之后调用成功函数，有一个立即调用失败函数，那么 `Promise.all` 将立即变为 *Rejected* 状态。
+例如，如果你传入的 Promise 中，有四个 Promise 实例在一定的时间之后调用成功函数，有一个立即调用失败函数，那么 `Promise.all` 将立即变为 _Rejected_ 状态。
 
 ```js
 var p1 = new Promise((resolve, reject) => {
@@ -97,11 +97,12 @@ var p5 = new Promise((resolve, reject) => {
 
 // You can also use .catch
 Promise.all([p1, p2, p3, p4, p5])
-    .then(values => {
-  		console.log(values);
-	}).catch(reason => {
-  		console.log(reason)
-	});
+  .then(values => {
+    console.log(values);
+  })
+  .catch(reason => {
+    console.log(reason);
+  });
 ```
 
 ### 完成时回调 Hack
@@ -117,12 +118,14 @@ Promise.all(promises.map(p => p.catch(() => undefined)));
 🌰 **标准示例：**
 
 ```js
-Promise.all([
+Promise.all(
+  [
     // Fulfilled
     Promise.resolve(1),
     // Rejects after 2 seconds
-    new Promise((resolve, reject) => setTimeout(() => reject(1), 2000))
-].map(p => p.catch(() => undefined))).then(() => console.log('done!'));
+    new Promise((resolve, reject) => setTimeout(() => reject(1), 2000)),
+  ].map(p => p.catch(() => undefined))
+).then(() => console.log('done!'));
 
 // >> done!
 ```
@@ -131,4 +134,4 @@ Promise.all([
 
 **参考资料：**
 
-* [📝 Promise.all 处理 Rejection 的技巧](<https://zhuanlan.zhihu.com/p/26920718>)
+- [📝 Promise.all 处理 Rejection 的技巧](https://zhuanlan.zhihu.com/p/26920718)

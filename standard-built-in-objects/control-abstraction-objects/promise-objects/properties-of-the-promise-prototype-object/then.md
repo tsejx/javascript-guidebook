@@ -5,13 +5,13 @@
 ## 语法
 
 ```js
-promiseInstance.then(onFulfilled, onRejected)
+promiseInstance.then(onFulfilled, onRejected);
 ```
 
-| 参数        | 说明                                                         |
-| ----------- | ------------------------------------------------------------ |
+| 参数        | 说明                                                                                                                                                                                                        |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | onFulfilled | 当 Promise 变成 Fulfilled 状态时，该参数作为回调函数被调用。该函数有一个参数，即接受的最终结果。如果传入的 onFulfilled 的参数类型不是函数，则会被内部转换为 `(x) => x`，即原样返回 Promise 最终结果的函数。 |
-| onRejected  | 当 Promise 变成 Rejected 状态时，该参数作为回调函数被调用。该函数有一个参数，即拒绝的原因。 |
+| onRejected  | 当 Promise 变成 Rejected 状态时，该参数作为回调函数被调用。该函数有一个参数，即拒绝的原因。                                                                                                                 |
 
 ## 示例
 
@@ -19,13 +19,13 @@ promiseInstance.then(onFulfilled, onRejected)
 
 ```js
 const promise = new Promise((resolve, reject) => {
-    resolve('Fulfilled')
-})
+  resolve('Fulfilled');
+});
 
 promise.then(
-    res => console.log(res),  // Output: 'Fulfilled'
-    rej => console.log(rej)
-)
+  res => console.log(res), // Output: 'Fulfilled'
+  rej => console.log(rej)
+);
 ```
 
 ### 链式调用
@@ -33,14 +33,9 @@ promise.then(
 采用链式调用的 `.then()`，可以指定一组按照次序调用的回调函数。这时，前一个回调函数，有可能返回的还是一个 Promise 对象（即有异步操作），这时后面紧跟的回调函数，就会等待该 Promise 对象的状态发生变化，才会被调用。
 
 ```js
-getJSON("/post/1.json")
-    .then(
-    	post => getJSON(post.commentURL)
-	)
-    .then(
-    	comments => console.log("resolved: ", comments),
-    	err => console.log("rejected: ", err)
-	)
+getJSON('/post/1.json')
+  .then(post => getJSON(post.commentURL))
+  .then(comments => console.log('resolved: ', comments), err => console.log('rejected: ', err));
 ```
 
 ### 参数传递
@@ -49,25 +44,25 @@ getJSON("/post/1.json")
 
 ```js
 // Example
-function foo(value){
-    return value * 2
+function foo(value) {
+  return value * 2;
 }
 
-function bar(value){
-    return value + 5
+function bar(value) {
+  return value + 5;
 }
 
-function baz(value){
-    console.log(value)
+function baz(value) {
+  console.log(value);
 }
 
-const promise = Promise.resolve(1)
+const promise = Promise.resolve(1);
 
 promise
-    .then(foo)
-	.then(bar)
-	.then(baz)
-	.catch(error => console.log(err))
+  .then(foo)
+  .then(bar)
+  .then(baz)
+  .catch(error => console.log(err));
 ```
 
 执行流程分析：

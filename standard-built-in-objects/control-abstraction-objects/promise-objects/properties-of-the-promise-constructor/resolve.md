@@ -5,17 +5,17 @@
 ## 语法
 
 ```js
-Promise.resolve(value)
+Promise.resolve(value);
 ```
 
 ### 参数
 
 根据传入参数的不同，会有不同的响应效果。
 
-* **Promise 实例** => 返回传入的 Promise 实例
-* **Thenable 对象** => 将该 Thenable 对象转化为 Promise 对象，然后立即执行 `.then()` 方法
-* **非 Thenable 对象** => 返回新的 Fulfilled 状态的 Promise 实例
-* **不带参数** => 返回新的 Fulfilled 状态的 Promise 实例
+- **Promise 实例** => 返回传入的 Promise 实例
+- **Thenable 对象** => 将该 Thenable 对象转化为 Promise 对象，然后立即执行 `.then()` 方法
+- **非 Thenable 对象** => 返回新的 Fulfilled 状态的 Promise 实例
+- **不带参数** => 返回新的 Fulfilled 状态的 Promise 实例
 
 ### Promise 实例
 
@@ -27,21 +27,21 @@ Promise.resolve(value)
 
 ```js
 let thenable = {
-    then: (resolve, reject) => resolve(100)
-}
+  then: (resolve, reject) => resolve(100),
+};
 ```
 
 `Promise.resolve` 方法会将这个对象转为 Promise 对象，然后就立即执行 `thenable` 对象的 `.then()` 方法。
 
- ```js
+```js
 let thenable = {
-  then: (resolve, reject) => resolve(100)
-}
+  then: (resolve, reject) => resolve(100),
+};
 
-let p = Promise.resolve(thenable)
+let p = Promise.resolve(thenable);
 
-p.then((value) => console.log(value))		// 100
- ```
+p.then(value => console.log(value)); // 100
+```
 
 上述代码中，当 `thenable` 对象的 `then` 方法执行后，对象 `p` 的状态就变为 Fulfilled，从而立即执行最后那个 `.then()` 方法指定的回调函数。
 
@@ -50,7 +50,7 @@ p.then((value) => console.log(value))		// 100
 如果参数是一个原始值，或者是一个不具有 `then` 方法的对象，则 `Promise.resolve` 方法返回一个新的 Promise 对象，状态为 Fulfilled。
 
 ```js
-const p = Promise.resolve('Hello')
+const p = Promise.resolve('Hello');
 
 p.then(v => console.log(v));
 // 'Hello'
@@ -73,12 +73,14 @@ p.then(v => console.log(v));
 `Promise.resolve(value)` 可以认为是 `new Promise()` 的快捷方式。返回的 Promise 对象将立即进入 Fulfilled 状态。
 
 ```js
-Promise.resolve('Fulfilled')
-    .then((res) => {
-    	console.log(res)		// 'Fulfilled'
-	}, (rej) => {
-    	console.log(rej)		// 不会调用
-	})
+Promise.resolve('Fulfilled').then(
+  res => {
+    console.log(res); // 'Fulfilled'
+  },
+  rej => {
+    console.log(rej); // 不会调用
+  }
+);
 ```
 
 ### 数组作参数
@@ -86,11 +88,11 @@ Promise.resolve('Fulfilled')
 如果传入的参数为数组，则参数为非 Thenable 对象，会返回新的 Fulfilled 状态的 Promise 实例。
 
 ```js
-const promise = Promise.resolve([0, 1, 2])
+const promise = Promise.resolve([0, 1, 2]);
 
-promise.then((v) => {
-    console.log(v[0])		// 0
-})
+promise.then(v => {
+  console.log(v[0]); // 0
+});
 ```
 
 ### Promise 作参数
@@ -98,16 +100,15 @@ promise.then((v) => {
 如果传入的参数为 Promise 的实例对象，那么会直接返回该 Promise 的实力对象。
 
 ```js
-const foo = new Promise('foo')
+const foo = new Promise('foo');
 
-const bar = Promise.resolve(foo)
+const bar = Promise.resolve(foo);
 
-bar.then((value) => {
-    console.log(value)		// 2. Output: 'foo'
-})
+bar.then(value => {
+  console.log(value); // 2. Output: 'foo'
+});
 
-console.log(foo === bar)	// 1. Output: true
+console.log(foo === bar); // 1. Output: true
 
 // 这里有同步异步先后执行的区别
 ```
-

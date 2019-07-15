@@ -14,20 +14,20 @@ Generator 函数有多种理解角度。语法上，首先可以把它理解成�
 
 形式上，Generator 函数是一个普通函数，但是有两个特征
 
-* `function` 关键字与函数名之间有一个星号（`*`）
-* 函数体内部使用 `yield`（中文 `生产/产出` 的意思）表单式，定义不同的内部状态
+- `function` 关键字与函数名之间有一个星号（`*`）
+- 函数体内部使用 `yield`（中文 `生产/产出` 的意思）表单式，定义不同的内部状态
 
 ```js
-function* helloWorldGenerator(){
-    yield 'Hello';
-    yield 'World';
-    return 'Ending';
+function* helloWorldGenerator() {
+  yield 'Hello';
+  yield 'World';
+  return 'Ending';
 }
 
-const hw = helloWorldGenerator()
+const hw = helloWorldGenerator();
 ```
 
-代码定义了一个 Generator 函数 `helloWorldGenerator`，它内部有两个`yield`表达式（`hello` 和 `world`），即该函数有三个状态：`hello`、`world` 和 `return` 语句（结束执行）。
+代码定义了一个 Generator 函数 `helloWorldGenerator`，它内部有两个 `yield` 表达式（`hello` 和 `world`），即该函数有三个状态：`hello`、`world` 和 `return` 语句（结束执行）。
 
 ### 调用方法
 
@@ -36,16 +36,16 @@ Generator 函数的调用方法与普通函数一样，也是在函数名后面�
 下一步，必须调用遍历器对象的 `next` 方法，使得指针移向下一个状态。也就是说，每次调用 `next` 方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个 `yield` 表达式（或 `return` 语句）为止。换言之，Generator 函数是分段执行的，`yield` 表达式是暂停执行的标记，而 `next` 方法可以恢复执行。
 
 ```js
-hw.next()
+hw.next();
 // { value: 'Hello', done: false }
 
-hw.next()
+hw.next();
 // { value: 'World', done: false }
 
-hw.next()
+hw.next();
 // { value: 'Ending', done: true }
 
-hw.next()
+hw.next();
 // { value: undefined, done: true }
 ```
 
@@ -79,7 +79,7 @@ hw.next()
 
 ```js
 function* gen() {
-  yield  123 + 456;
+  yield 123 + 456;
 }
 ```
 
@@ -89,13 +89,14 @@ function* gen() {
 
 `yield` 表达式与 `return` 语句既有相似之处，也有区别。
 
-* 相似
-  * 两种语句表达式都能返回紧跟在语句后面的那个表达式的值。
+- 相似
 
-* 区别
-  * **记忆功能**：每次遇到 `yield`，函数暂停执行，下一次再从该位置继续向后执行，而 `return` 语句不具备位置记忆的功能。
-  * **执行次数**：一个函数里面，只能执行一次（或者说一个）`return` 语句，但是可以执行多次（或者说多个）`yield` 表达式。
-  * **返回次数**：正常函数只能返回一个值，因为只能执行一次 `return` ；Generator 函数可以返回一系列的值，因为可以有任意多个`yield`。从另一个角度看，也可以说 Generator 生成了一系列的值，这也就是它的名称的来历。
+  - 两种语句表达式都能返回紧跟在语句后面的那个表达式的值。
+
+- 区别
+  - **记忆功能**：每次遇到 `yield`，函数暂停执行，下一次再从该位置继续向后执行，而 `return` 语句不具备位置记忆的功能。
+  - **执行次数**：一个函数里面，只能执行一次（或者说一个）`return` 语句，但是可以执行多次（或者说多个）`yield` 表达式。
+  - **返回次数**：正常函数只能返回一个值，因为只能执行一次 `return` ；Generator 函数可以返回一系列的值，因为可以有任意多个`yield`。从另一个角度看，也可以说 Generator 生成了一系列的值，这也就是它的名称的来历。
 
 ### 暂缓执行函数
 
@@ -103,13 +104,13 @@ Generator 函数可以不用 `yield` 表达式，这时就变成了一个单纯�
 
 ```js
 function* fn() {
-  console.log('执行了！')
+  console.log('执行了！');
 }
 
 var generator = fn();
 
-setTimeout(function () {
-  generator.next()
+setTimeout(function() {
+  generator.next();
 }, 2000);
 ```
 
@@ -117,7 +118,7 @@ setTimeout(function () {
 
 ### 表达式规范
 
-另外需要注意，**`yield` 表达式只能用在 Generator 函数里面**，用在其他地方都会报错。
+另外需要注意，**`yield`表达式只能用在 Generator 函数里面**，用在其他地方都会报错。
 
 ```js
 (function (){
@@ -153,11 +154,9 @@ function* demo() {
 
 ## 原型方法
 
-* Generator.prototype.next
-
-* [Generator.prototype.return](properties-of-the-promise-prototype-object/return.md)
-
-* [Generator.prototype.throw](properties-of-the-promise-prototype-object/throw.md)
+- [Generator.prototype.next](properties-of-the-promise-prototype-object/next.md)
+- [Generator.prototype.return](properties-of-the-promise-prototype-object/return.md)
+- [Generator.prototype.throw](properties-of-the-promise-prototype-object/throw.md)
 
 **原型方法共同点**
 
@@ -166,16 +165,16 @@ function* demo() {
 `next()` 是将 `yield` 表达式替换成一个值。
 
 ```js
-const generator = function* (x, y) {
+const generator = function*(x, y) {
   let result = yield x + y;
   return result;
 };
 
 const gen = generator(1, 2);
 
-gen.next();   // Object {value: 3, done: false}
+gen.next(); // Object {value: 3, done: false}
 
-gen.next(1);  // Object {value: 1, done: true}
+gen.next(1); // Object {value: 1, done: true}
 
 // 相当于将 let result = yield x + y
 // 替换成 let result = 1;
@@ -186,7 +185,7 @@ gen.next(1);  // Object {value: 1, done: true}
 `throw()` 是将 `yield` 表达式替换成一个 `throw` 语句。
 
 ```js
-gen.throw(new Error('出错了'));   // Uncaught Error: 出错了
+gen.throw(new Error('出错了')); // Uncaught Error: 出错了
 
 // 相当于将 let result = yield x + y
 // 替换成 let result = throw(new Error('出错了'));
@@ -195,7 +194,7 @@ gen.throw(new Error('出错了'));   // Uncaught Error: 出错了
 `return()` 是将 `yield` 表达式替换成一个 `return` 语句。
 
 ```js
-gen.return(2);   // Object {value: 2, done: true}
+gen.return(2); // Object {value: 2, done: true}
 
 // 相当于将 let result = yield x + y
 // 替换成 let result = return 2;
@@ -207,9 +206,9 @@ gen.return(2);   // Object {value: 2, done: true}
 
 ```js
 let obj = {
-  * generator() {
+  *generator() {
     // ···
-  }
+  },
 };
 ```
 
@@ -219,9 +218,9 @@ let obj = {
 
 ```js
 let obj = {
-  myGeneratorMethod: function* () {
+  myGeneratorMethod: function*() {
     // ···
-  }
+  },
 };
 ```
 
@@ -230,19 +229,20 @@ let obj = {
 **生成器对象的判断方法**
 
 ```js
-function isGenerator(obj){
-    return obj && typeof obj.next === 'function' && typeof obj.throw === 'function'
+function isGenerator(obj) {
+  return obj && typeof obj.next === 'function' && typeof obj.throw === 'function';
 }
 ```
 
 **生成器函数的判断方法**
 
 ```js
-function isGeneratorFunction(){
-    var constructor = obj.constructor;
-    if(!constructor) return false;
-    if('GeratorFunction' === constructor.name || 'GeneratorFunction' === constructor.displayName) return true;
-    return isGenerator(constructor.prototype);
+function isGeneratorFunction() {
+  var constructor = obj.constructor;
+  if (!constructor) return false;
+  if ('GeratorFunction' === constructor.name || 'GeneratorFunction' === constructor.displayName)
+    return true;
+  return isGenerator(constructor.prototype);
 }
 ```
 
@@ -252,4 +252,4 @@ function isGeneratorFunction(){
 
 **参考书籍：**
 
-* [《ECMAScript 6 入门》阮一峰著](<http://es6.ruanyifeng.com/#docs/generator>)
+- [《ECMAScript 6 入门》阮一峰著](http://es6.ruanyifeng.com/#docs/generator)
