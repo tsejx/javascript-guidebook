@@ -15,8 +15,7 @@ JSON 语法是 JavaScript 对象语法的子集。
 - 使用花括号保存对象，每个名称后面跟着冒号，名值对使用逗号分隔
 - 使用方括号保存数组，数组值用逗号分隔
 
-
-```javascript
+```js
 {
     "book": [
         {
@@ -37,20 +36,20 @@ JSON 语法是 JavaScript 对象语法的子集。
 }
 ```
 
-### JSON 名称/值对
+### JSON 键值对
 
-JSON 数据的书写格式是：名称/值对
+JSON 数据的书写格式是：键/值对
 
 名称/值对包括字段名称（在双引号中），后面写一个冒号，然后是值：
 
-```
- {"firstName":"John", "lastName":"Doe"} 
+```json
+{ "firstName":"John", "lastName":"Doe" }
 ```
 
 等价于这条 JavaScript 语句：
 
-```
- firstName = "John", lastName = "Doe"} 
+```js
+{ firstName = "John", lastName = "Doe"}
 ```
 
 JSON 值允许的 JavaScript 类型：
@@ -68,12 +67,12 @@ JSON 值允许的 JavaScript 类型：
 
 **JSON 字面量**
 
-```javascript
+```js
 let person = {
-    "name": "xianyu",
-    "age": 24,
-    "love": 'Online Game'
-}
+  name: 'xianyu',
+  age: 24,
+  love: 'Online Game',
+};
 ```
 
 从上我们可以看出这就是用字面量表示的一个对象，而这个格式就是 JSON 格式的，因为本身 JSON 就是 JavaScript 语法集的一种，所以 JSON 字面量就是用 JSON 格式的 JavaScript 对象字面量。
@@ -84,7 +83,7 @@ let person = {
 - JSON 没有末尾的的分号（因为不是 JavaScript 语句，所以不需要分号）
 - JSON 对象的属性必须加双引号
 
-```javascript
+```js
 // JavaScript
 let person = {
     "name": "Nicholas",
@@ -100,7 +99,7 @@ let person = {
 
 - JSON 属性的值可以是简单值，也可以是复杂类型值（因此可以像下面这样在对象中嵌入对象）。
 
-```javascript
+```js
 {
     "name": "Nicolas",
     "age": 29,
@@ -117,46 +116,40 @@ let person = {
 
 JSON 数组采用的就是 JavaScript 中的数组字面量形式。
 
-```javascript
-let values = [25, "hi", true];
+```js
+let values = [25, 'hi', true];
 ```
 
 JSON 数组也没有变量和分号。把数组和对象结合起来，可以构成更复杂的数据集合。
 
-```javascript
+```js
 [
-    {
-        "title": "Professional JavaScript",
-        "authors": [
-            "Nicholas C. Zakas"
-        ],
-        edition: 3,
-        year: 2011
-    },
-    {
-        "title": "Professional JavaScript",
-        "authors": [
-            "Nicholas C. Zakas"
-        ],
-        edition: 3,
-        year: 2009
-    },
-    {
-        "title": "Professional JavaScript",
-        "authors": [
-            "Nicholas C. Zakas"
-        ],
-        edition: 3,
-        year: 2008
-    }
-]
+  {
+    title: 'Professional JavaScript',
+    authors: ['Nicholas C. Zakas'],
+    edition: 3,
+    year: 2011,
+  },
+  {
+    title: 'Professional JavaScript',
+    authors: ['Nicholas C. Zakas'],
+    edition: 3,
+    year: 2009,
+  },
+  {
+    title: 'Professional JavaScript',
+    authors: ['Nicholas C. Zakas'],
+    edition: 3,
+    year: 2008,
+  },
+];
 ```
 
 ## 方法
 
-| 方法               | 描述                                                         |
-| ------------------ | ------------------------------------------------------------ |
-| `JSON.stringify()` | 用来解析 JSON 字符串，构造由字符串描述的 JavaScript 值或对象。提供可选的 `reviver` 函数用以在返回之前对所得到的对象进行变换（操作）。 |
+| 方法               | 描述                                                                                                                                                                      |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `JSON.stringify()` | 用来解析 JSON 字符串，构造由字符串描述的 JavaScript 值或对象。提供可选的 `reviver` 函数用以在返回之前对所得到的对象进行变换（操作）。                                     |
 | `JSON.parse()`     | 将一个 JavaScript 值（对象或者数组）转换为一个 JSON 字符串，如果指定了 `replace` 是一个函数，则可以替换值，或者如果指定了 `replacer` 是一个数组，可选的仅包括指定的属性。 |
 
 ## JSON 文件
