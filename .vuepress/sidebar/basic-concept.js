@@ -29,7 +29,19 @@ const basicConcept = [
   {
     title: '其他表达式',
     link: 'expressions',
-    children: [{ title: '更新表达式', link: 'update-expressions' }],
+    children: [
+      { title: '更新表达式', link: 'update-expressions' },
+      { title: '算术运算符', link: 'arithmetic-operators' },
+      { title: '赋值运算符', link: 'assignment-operators' },
+      { title: '按位运算符', link: 'bitwise-operators' },
+      { title: '逗号运算符', link: 'comma-operator' },
+      { title: '比较运算符', link: 'comparation-operators' },
+      { title: '条件运算符', link: 'conditional-operator' },
+      { title: '逻辑运算符', link: 'logical-operators' },
+      { title: '扩展运算符', link: 'spread-operator' },
+      { title: '解构赋值', link: 'detructing-assignment' },
+      { title: '运算符优先级', link: 'operators-precedence' },
+    ],
   },
   {
     title: '一元运算符',
@@ -41,22 +53,6 @@ const basicConcept = [
       { title: 'typeof', link: 'typeof' },
       { title: 'void', link: 'void' },
       { title: '字符串运算符', link: 'string-operator' },
-    ],
-  },
-  {
-    title: '其他运算符',
-    link: 'expressions',
-    children: [
-      { title: '算术运算符', link: 'arithmetic-operators' },
-      { title: '赋值运算符', link: 'assignment-operators' },
-      { title: '按位运算符', link: 'bitwise-operators' },
-      { title: '逗号运算符', link: 'comma-operator' },
-      { title: '比较运算符', link: 'comparation-operators' },
-      { title: '条件运算符', link: 'conditional-operator' },
-      { title: '逻辑运算符', link: 'logical-operators' },
-      { title: '扩展运算符', link: 'spread-operator' },
-      { title: '解构赋值', link: 'detructing-assignment' },
-      { title: '运算符优先级', link: 'operators-precedence' },
     ],
   },
   {

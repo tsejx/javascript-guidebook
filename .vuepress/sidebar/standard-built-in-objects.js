@@ -1,3 +1,6 @@
+const cons = 'properties-of-the-object-constructor';
+const prop = 'properties-of-the-object-constructor';
+
 const standardBuiltInObject = [
   {
     title: '全局值属性',
@@ -83,7 +86,8 @@ const standardBuiltInObject = [
     children: [
       { title: 'Iterator', link: 'iterator-objects/iterator' },
       { title: 'Promise', link: 'promise-objects/promise' },
-      { title: 'Generator', link: 'generator-objects/generator'}
+      { title: 'Generator', link: 'generator-objects/generator' },
+      { title: 'Generator 异步应用', link: 'generator-objects/generator-async'}
     ],
   },
 ];

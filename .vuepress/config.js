@@ -10,6 +10,7 @@ const html5ScriptingProgramming = require('./sidebar/html5-scripting-programming
   .html5ScriptingProgramming;
 const computerNetworks = require('./sidebar/computer-networks').computerNetworks;
 const transform = require('./utils/transform');
+const normalize = require('./utils/normalize');
 
 const main = transform(mainPage);
 const name = 'JavaScript-Guidebook';
@@ -50,11 +51,13 @@ module.exports = {
           { text: '计算机网络', link: '/computer-networks/' },
         ],
       },
-      { text: '更多',
+      {
+        text: '更多',
         items: [
-          { text: 'Git Guidebook', link: 'https://tsejx.github.io/Git-Guidebook/' }
-        ]
-       },
+          { text: 'Git Guidebook', link: 'https://tsejx.github.io/Git-Guidebook/' },
+          { text: 'CSS Guidebook', link: 'https://tsejx.github.io/CSS-Guidebook/'}
+        ],
+      },
       { text: 'Wiki', link: 'https://github.com/tsejx/JavaScript-Guidebook/wiki' },
     ],
     sidebarDepth: 0,
