@@ -1,4 +1,4 @@
-# Symbol 对象
+# Symbol
 
 ES6 之前只有 6 种数据类型，包括 5 种基本数据类型（值本身无法改变），分别是：Undefied、Null、Boolean、Number、String，和一种 Object 类型的数据。而 ES6 中新增的 Symbol 是第七种数据类型，它表示独一无二的值。
 
@@ -58,7 +58,8 @@ Symbol 值不能与其他类型的值进行运算，会报错
 let sym = Symbol('symbol');
 
 'HELLO' +
-  sym`HELLO ${sym // TypeError: Cannot convert a Symbol value to a string
+  sym`HELLO ${
+    sym // TypeError: Cannot convert a Symbol value to a string
   }`; // TypeError: Cannot convert a Symbol value to a string
 ```
 
@@ -241,18 +242,17 @@ Symbol.keyFor(s2); // undefined
 
 除了自定义的 Symbol 值以外，ES6 还提供了 11 个内置的 Symbol 值，指向语言内部使用的方法。
 
-* [Symbol.hasInstance](properties-of-the-object-constructor/hasInstance.md)
-* [Symbol.isConcatSpreadable](properties-of-the-object-constructor/isConcatSpreadable.md)
-* [Symbol.iterator](properties-of-the-object-constructor/iterator.md)
-* [Symbol.match](properties-of-the-object-constructor/match.md)
-* [Symbol.replace](properties-of-the-object-constructor/replace.md)
-* [Symbol.search](properties-of-the-object-constructor/search.md)
-* [Symbol.species](properties-of-the-object-constructor/species.md)
-* [Symbol.split](properties-of-the-object-constructor/split.md)
-* [Symbol.toPrimitive](properties-of-the-object-constructor/toPrimitive.md)
-* [Symbol.toStringTag](properties-of-the-object-constructor/toStringTag.md)
-* [Symbol.unscopables](properties-of-the-object-constructor/unscopables.md)
-
+- [Symbol.hasInstance](properties-of-the-object-constructor/hasInstance.md)
+- [Symbol.isConcatSpreadable](properties-of-the-object-constructor/isConcatSpreadable.md)
+- [Symbol.iterator](properties-of-the-object-constructor/iterator.md)
+- [Symbol.match](properties-of-the-object-constructor/match.md)
+- [Symbol.replace](properties-of-the-object-constructor/replace.md)
+- [Symbol.search](properties-of-the-object-constructor/search.md)
+- [Symbol.species](properties-of-the-object-constructor/species.md)
+- [Symbol.split](properties-of-the-object-constructor/split.md)
+- [Symbol.toPrimitive](properties-of-the-object-constructor/toPrimitive.md)
+- [Symbol.toStringTag](properties-of-the-object-constructor/toStringTag.md)
+- [Symbol.unscopables](properties-of-the-object-constructor/unscopables.md)
 
 ### 总结
 

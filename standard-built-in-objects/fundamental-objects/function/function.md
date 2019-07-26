@@ -1,4 +1,4 @@
-# Function 对象
+# Function
 
 Function 构造函数通过 `new` 创建一个新的 Function 对象。 在 JavaScript 中，每个函数实际上都是一个 Function 对象。
 

@@ -1,4 +1,4 @@
-# Object 对象
+# Object
 
 JavaScript 中的 `Object` 对象，是 JavaScript 中所有对象的基类，也就是说 JavaScript  中的所有对象都是由 Object 对象衍生的。Object 对象主要用于将任意数据封装成对象形式。
 

@@ -1,4 +1,4 @@
-# Function.prototype.apply
+# FFunction.prototype.apply
 
 `Function.prototype.apply` 方法用于指定函数调用指向的 `this` 指针，并提供类数组类型的参数列表作为指定函数的参数。
 
