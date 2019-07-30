@@ -1,6 +1,6 @@
 const mainPage = require('./sidebar/main-page').mainPage;
 const basicConcept = require('./sidebar/basic-concept').basicConcept;
-const standardBuiltInObject = require('./sidebar/standard-built-in-objects').standardBuiltInObject;
+const standardBuiltInObject = require('./sidebar/standard-built-in-objects').standard;
 const coreModules = require('./sidebar/core-modules').coreModules;
 const objectOrientedProgamming = require('./sidebar/object-oriented-programming')
   .objectOrientedProgamming;
@@ -28,7 +28,7 @@ module.exports = {
     ],
   ],
   description: '帮助Web前端开发者建立知识体系的图谱',
-  title: 'JavaScript-Guidebook',
+  title: 'JavaScript Guidebook',
   ga: 'UA-138047269-1',
 
   themeConfig: {
@@ -54,8 +54,11 @@ module.exports = {
       {
         text: '更多',
         items: [
+          { text: 'CSS Guidebook', link: 'https://tsejx.github.io/CSS-Guidebook/' },
+          { text: 'React Guidebook', link: 'https://tsejx.github.io/React-GuideBook/' },
+          { text: 'Vue Guidebook', link: 'http://tsejx.github.io/vue-guidebook' },
+          { text: 'Webpack Guidebook', link: 'https://tsejx.github.io/webpack-guidebook/' },
           { text: 'Git Guidebook', link: 'https://tsejx.github.io/Git-Guidebook/' },
-          { text: 'CSS Guidebook', link: 'https://tsejx.github.io/CSS-Guidebook/'}
         ],
       },
       { text: 'Wiki', link: 'https://github.com/tsejx/JavaScript-Guidebook/wiki' },
@@ -68,7 +71,7 @@ module.exports = {
       '/browser-object-model/': main.concat(transform(browserObjectModel)),
       '/object-oriented-programming/': main.concat(transform(objectOrientedProgamming)),
       '/core-modules/': main.concat(transform(coreModules)),
-      '/standard-built-in-objects/': main.concat(transform(standardBuiltInObject)),
+      '/standard-built-in-objects/': main.concat(standardBuiltInObject),
       '/basic-concept/': main.concat(transform(basicConcept)),
       '/': [
         {
@@ -90,7 +93,6 @@ module.exports = {
     },
     lastUpdated: '最近更新时间',
   },
-
   vueThemes: {
     links: {
       github: 'https://github.com/tsejx/JavaScript-Guidebook',
