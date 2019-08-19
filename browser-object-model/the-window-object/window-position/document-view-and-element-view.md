@@ -1,15 +1,15 @@
-## 文档视图和元素视图
+# 文档视图和元素视图
 
 文档视图和元素视图中包含的与元素大小位置相关的方法主要有：
 
-```
-1. elementFromPoint()
-2. getClientRects()
-3. getBoundingClientRect()
-4. scrollView()
-```
+1. `elementFromPoint()`
+2. `getClientRects()`
+3. `getBoundingClientRect()`
+4. `scrollView()`
 
-### elementFromPoint() 根据坐标获取元素
+## elementFromPoint
+
+根据坐标获取元素
 
 `elementFromPoint()` 根据文档上横纵坐标，获取当前文档上该坐标点上位置最顶层的 DOM 元素，该坐标是相对于文档的浏览器窗口左上角为原点来计算的，通常横纵坐标为正数。
 
@@ -35,7 +35,7 @@ console.log(foo);		// <div id="foo"></foo>
 | --------- | --------- | --------- | --------- | --------- |
 | 12+| 3+| 15+| 5+| 11+|
 
-### getClientRects() 获取元素占据页面的所有矩形区域
+## getClientRects() 获取元素占据页面的所有矩形区域
 
 `getClientRects()` 方法返回一组元素相关的只读属性的矩形集合 DOMRectList。包括当前元素相对于浏览器视口左上角的顶端（top）、底端（bottom）、左端（left）、右端（right）的**偏移量**，元素自身的宽度（width）和高度（height）属性，以及元素自身的横（x）纵（y）坐标。 
 
@@ -76,7 +76,7 @@ DOMRectList [{
 }]
 ```
 
-### getBoundingClientRect() 获取元素位置
+## getBoundingClientRect() 获取元素位置
 
 `getBoundingClientRect()` 方法放回一组元素的左、上、右及下分别**相对**浏览器可视窗口的位置的集合 DOMRect。
 
@@ -121,7 +121,7 @@ DOMRect {
 | --------- | --------- | --------- | --------- | --------- |
 | 12+| 12+| 4+| 4+| 10.6+|
 
-### scrollView()
+## scrollView()
 
 > ⚗️ 这是一个实验中的功能
 
