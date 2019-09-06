@@ -22,10 +22,10 @@ const browserObjectModel = [
         title: '视窗尺寸位置',
         link: 'the-window-object/window-position',
         children: [
-            { title: 'Window视图属性', link: 'window-view-properties' },
-            { title: 'Screen视图属性', link: 'screen-view-properties' },
+            { title: 'Window 对象视图属性', link: 'window-view-properties' },
+            { title: 'Screen 对象视图属性', link: 'screen-view-properties' },
+            { title: 'Element 文档元素视图属性', link: 'element-view-properties' },
             { title: '文档视图和元素视图', link: 'document-view-and-element-view' },
-            { title: '元素视图属性', link: 'element-view-properties' },
             { title: '鼠标位置', link: 'mouse-position' },
         ]
     }, {

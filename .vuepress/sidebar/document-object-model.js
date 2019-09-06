@@ -1,43 +1,48 @@
 const documentObjectModel = [
   {
     title: '文档对象模型',
-    link: '',
+    link: 'dom',
     children: [
       { title: '文档对象模型', link: 'dom' },
-      // { title: '节点层次', link: 'hierarchy-of-nodes' }
+      { title: '节点层次', link: 'hierarchy-of-nodes' },
     ],
   },
   {
-    title: '节点层次',
-    link: 'hierarchy-of-nodes',
+    title: 'EventTarget',
+    link: 'event-target',
     children: [
-      { title: 'Node 类型', link: 'the-node-type' },
-      { title: 'Document 类型', link: 'the-document-type' },
-      { title: 'Element 类型', link: 'the-element-type' },
+      { title: 'EventTarget', link: 'event-target' },
+    ]
+  },
+  {
+    title: 'Node',
+    link: 'node',
+    children: [
+      { title: 'Node', link: 'node' },
+      { title: '节点属性', link: 'node-properties' },
+      { title: '节点关系', link: 'node-relationships' },
+      { title: '节点操作', link: 'node-manipulation' },
     ],
   },
   {
-    title: '节点访问',
-    link: 'nodes-access',
+    title: 'Document',
+    link: 'document',
     children: [
-      { title: '节点访问', link: 'nodes-access' },
-      { title: '节点关系', link: 'nodes-relationships' },
+      { title: 'Document', link: 'document' },
+      { title: '文档属性', link: 'document-properties' },
+      { title: '文档节点创建', link: 'document-node-creation' },
+      { title: '文档元素访问', link: 'document-element-access' },
+      { title: '文档方法', link: 'document-methods'}
+    ],
+  },
+  {
+    title: 'Element',
+    link: 'element',
+    children: [
+      { title: 'Element', link: 'element' },
       { title: '元素遍历', link: 'element-traversal' },
       { title: '动态集合', link: 'dynamic-collection' },
-    ],
-  },
-  {
-    title: '节点操作',
-    link: 'manipulating-nodes',
-    children: [
-      { title: '节点创建', link: 'nodes-create' },
-      { title: '节点操作', link: 'manipulating-nodes/' },
-    ],
-  },
-  {
-    title: '脚本化CSS',
-    link: 'scripting-css',
-    children: [
+      { title: 'element-matches', link: 'element-matches' },
       { title: '查询样式', link: 'accessing-element-styles' },
       { title: '操作样式', link: 'working-with-style-sheets' },
     ],
