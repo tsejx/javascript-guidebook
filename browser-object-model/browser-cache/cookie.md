@@ -1,29 +1,29 @@
-## Cookie
+# Cookie
 
-HTTP Cookie，通常直接叫做 Cookie，是服务端保存在浏览器的一小段文本信息。每个 Cookie 的大小一般不超过4kb。该标准要求服务器对任意 HTTP 请求发送 Set-Cookie 作为响应的一部分，其中包含会话信息。
+HTTP Cookie，通常直接叫做 Cookie，是服务端保存在浏览器的一小段文本信息。每个 Cookie 的大小一般不超过 4kb。该标准要求服务器对任意 HTTP 请求发送 Set-Cookie 作为响应的一部分，其中包含会话信息。
 
-### 运作原理
+## 运作原理
 
 首先必须明确一点，存储 Cookie 是浏览器提供的功能。Cookie 其实是存储在浏览器中的纯文本，浏览器的安装目录下会专门有一个 Cookie 文件夹用于存放各个域下设置的 Cookie。
 
-当网页要发 HTTP 请求时，浏览器会先检查是否有相应的 Cookie，有则自动添加在请求头中的 cookie 字段中。这些是浏览器自动帮我们完成的，而且每一次 HTTP 请求浏览器都会自动帮我们完成。这个特点很重要，因为这关系关乎于什么样的数据适合存储在 Cookie 中。
+当网页要发 HTTP 请求时，浏览器会先检查是否有相应的 Cookie，有则自动添加在请求头中的 Cookie 字段中。这些是浏览器自动帮我们完成的，而且每一次 HTTP 请求浏览器都会自动帮我们完成。这个特点很重要，因为这关系关乎于什么样的数据适合存储在 Cookie 中。
 
 存储在 Cookie 中的数据，每次都会被浏览器自动放在 HTTP 请求中，如果这些数据并不是每个请求都需要发给服务端的数据，浏览器设置自动处理无疑增加了网络开销；但如果这些数据是每个请求都需要发给服务端的数据（比如身份认证信息），浏览器这设置自动处理就大大免去了重复添加操作。所以对于设置那些“每次请求都要携带的信息（最典型的就是身份认证信息）”就特别适合放在  Cookie 中，其他类型的数据就不适合了。
 
-但在 LocalStorage 出现之前，Cookie 被滥用当做了浏览器的存储工具。什么数据都放在 Cookie 中，即使这些数据只在页面中使用而不需要随请求传送到服务端。当然 Cookie 标准还是做了一些限制的：每个域名下的 Cookie 的大小最大为4KB，每个域名下的 Cookie 数量最多为20个（但很多浏览器厂商在具体实现时支持大于20个）。
+但在 LocalStorage 出现之前，Cookie 被滥用当做了浏览器的存储工具。什么数据都放在 Cookie 中，即使这些数据只在页面中使用而不需要随请求传送到服务端。当然 Cookie 标准还是做了一些限制的：每个域名下的 Cookie 的大小最大为 4KB，每个域名下的 Cookie 数量最多为 20 个（但很多浏览器厂商在具体实现时支持大于 20 个）。
 
-### 构成
+## 构成
 
 | 属性     | 名称     | 说明                                                         |
 | -------- | -------- | ------------------------------------------------------------ |
 | Name     | 名称     | Cookie 名称不能相同，相同的名称会被覆盖。                    |
 | Value    | 值       | 储存在 Cookie 中的字符串值。值必须被 URL 编码。              |
 | Domain   | 域       | 当该值与客户端请求的域相匹配时，浏览器会自动添加到请求头中。 |
-| Path     | 路径     | 对于指定域中的那个路径，应该向服务器发送 Cookie。例如，你可以指定 cookie 只有从 `http://www.wrox.com/books/` 中才能访问，那么 `http://www.wrox.com` 的页面就不会发送 cookie 信息，即使请求都是来自同一个域的。 |
+| Path     | 路径     | 对于指定域中的那个路径，应该向服务器发送 Cookie。例如，你可以指定 Cookie 只有从 `http://www.wrox.com/books/` 中才能访问，那么 `http://www.wrox.com` 的页面就不会发送 Cookie 信息，即使请求都是来自同一个域的。 |
 | Expires  | 失效时间 | 表示 Cookie 将被删除的时间戳。[📍详情点击](#expires)          |
-| Max-Age  | 失效时间 | 表示 Cookie 将被删除的剩余时间，单位为秒。过了这个时间 ，浏览器将不会保留这个 Cookie。如果同时指定了Expires和Max-Age，那么Max-Age的值将优先生效。 |
+| Max-Age  | 失效时间 | 表示 Cookie 将被删除的剩余时间，单位为秒。过了这个时间 ，浏览器将不会保留这个 Cookie。如果同时指定了 Expires 和 Max-Age，那么 Max-Age 的值将优先生效。 |
 | Size     | 大小     | Cookie 大小                                                  |
-| HTTP     |          | 指定该 Cookie 无法通过 JavaScript 脚本访问。主要是 `document.cookie` 属性、`XMLHttpRequest` 对象和 `Request API` 都无法访问。唯有浏览器发送 HTTP请求时，才会自动添加 Cookie 至请求中。 |
+| HTTP     |          | 指定该 Cookie 无法通过 JavaScript 脚本访问。主要是 `document.cookie` 属性、`XMLHttpRequest` 对象和 `Request API` 都无法访问。唯有浏览器发送 HTTP 请求时，才会自动添加 Cookie 至请求中。 |
 | Secure   | 安全标志 | 浏览器只有在加密协议 HTTPS 下，才将这个 Cookie 发送到服务器。另一方面，如果当前协议是 HTTP，浏览器会自动忽略服务器发来的的 Secure 属性。 |
 | SameSite |          |                                                              |
 
@@ -37,12 +37,12 @@ HTTP Cookie，通常直接叫做 Cookie，是服务端保存在浏览器的一�
 
 #### Expires
 
-- 必须为 GMT 格式的日期（Wdy，DD-Mon-YYYY HH:SS GMT），用于指定应该删除 cookie 的准确时间。可以通过 `new Date().toGMTString()` 或者 `new Date().toUTCString()` 来获得。
-- 如果没有设置 Expires，则默认有效期为 session，即当浏览器会话结束时即将所有 cookie 删除。
-- cookie 可在浏览器关闭后依然保存在用户的机器上。
-- 如果你设置的失效日期是个以前的时间，则 cookie 会被立刻删除。
+- 必须为 GMT 格式的日期（Wdy，DD-Mon-YYYY HH:SS GMT），用于指定应该删除 Cookie 的准确时间。可以通过 `new Date().toGMTString()` 或者 `new Date().toUTCString()` 来获得。
+- 如果没有设置 Expires，则默认有效期为 session，即当浏览器会话结束时即将所有 Cookie 删除。
+- Cookie 可在浏览器关闭后依然保存在用户的机器上。
+- 如果你设置的失效日期是个以前的时间，则 Cookie 会被立刻删除。
 
-#### Domain和Path
+#### Domain 和 Path
 
 - Domain
   - 如果没有明确设置，那么浏览器会自动获取 url 的 host 作为 domain 值
@@ -52,53 +52,53 @@ HTTP Cookie，通常直接叫做 Cookie，是服务端保存在浏览器的一�
     - 带点：任何 subdomain 都可以访问，包括父 domain
     - 不带点：只有完全一样的域名才能访问，subdomain 不能（但在 IE 下比较特殊，它支持 subdomain 访问）
 - Path
-  - 默认值为设置该 cookie 的网页所在的目录
+  - 默认值为设置该 Cookie 的网页所在的目录
 
-> ⚠️ 注意：发生跨域XHR请求时，即使请求URL的域名和路径都满足 cookie 的 domain 和 path，默认情况下 cookie 也不会自动被添加到请求头部中。
+> ⚠️ 注意：发生跨域 XHR 请求时，即使请求 URL 的域名和路径都满足 Cookie 的 domain 和 path，默认情况下 Cookie 也不会自动被添加到请求头部中。
 >
-> ⚠️ 注意：domain是可以设置为页面本身的域名（本域），或页面本身域名的父域，但不能是公共后缀 [public suffix](https://link.juejin.im?target=https%3A%2F%2Fpublicsuffix.org%2F)。举例说明下：如果页面域名为 `www.baidu.com`，domain可以设置为 `www.baidu.com`，也可以设置为 `baidu.com`，但不能设置为 `.com` 或 `com`。
+> ⚠️ 注意：domain 是可以设置为页面本身的域名（本域），或页面本身域名的父域，但不能是公共后缀 [public suffix](https://link.juejin.im?target=https%3A%2F%2Fpublicsuffix.org%2F)。举例说明下：如果页面域名为 `www.baidu.com`，`domain` 可以设置为 `www.baidu.com`，也可以设置为 `baidu.com`，但不能设置为 `.com` 或 `com`。
 
 #### HTTP
 
-- 该属性为 cookie 的 HttpOnly 属性
-  - 当值为 true 时，则只有在 HTTP 请求头中会带此 cookie 的信息，客户端无法通过 JavaScrept 代码访问 cookie。（能有效地防止 XSS 攻击）
-  - 当值为 false 时，客户端可以通过 JavaScript 代码去访问（包括读取、修改、删除等）这个 cookie 的。
+- 该属性为 Cookie 的 HttpOnly 属性
+  - 当值为 true 时，则只有在 HTTP 请求头中会带此 Cookie 的信息，客户端无法通过 JavaScrept 代码访问 cookie。（能有效地防止 XSS 攻击）
+  - 当值为 false 时，客户端可以通过 JavaScript 代码去访问（包括读取、修改、删除等）这个 Cookie 的。
 - 在客户端不能通过 JavaScript 代码去设置一个 `HttpOnly` 类型的 cookie，而需要通过服务端来设置。
 
-### 特性
+## 特性
 
-1. 一个浏览器针对一个网站最多存20个Cookie，浏览器一般只允许存放300个Cookie
-2. 每个Cookie的长度不能超过4KB（稀缺）。但不同的浏览器实现的不同
+1. 一个浏览器针对一个网站最多存 20 个 Cookie，浏览器一般只允许存放 300 个 Cookie
+2. 每个 Cookie 的长度不能超过 4KB（稀缺）。但不同的浏览器实现的不同
 3. Cookie 的不可跨域名性。
 4. 浏览器的同源政策规定，两个网址只要域名和端口相同，就可以共享 Cookie。注意，这里不要求协议相同。
 
-### 分类
+## 分类
 
-cookie 有两种类型：
+Cookie 有两种类型：
 
-- 临时 cookie
-- 永久 cookie
+- 临时 Cookie
+- 永久 Cookie
 
-不设置过期时间，则表示这个 cookie 生命周期为浏览器会话期间，只要关闭浏览器窗口，cookie 就消失了。这种生命周期为浏览器会话期的 cookie 被称为会话 cookie。会话 cookie 一般不保存在硬盘上二十保存在内存里。可以类比于本地存储的 SessionStorage。
+不设置过期时间，则表示这个 Cookie 生命周期为浏览器会话期间，只要关闭浏览器窗口，cookie 就消失了。这种生命周期为浏览器会话期的 Cookie 被称为会话 cookie。会话 Cookie 一般不保存在硬盘上二十保存在内存里。可以类比于本地存储的 SessionStorage。
 
-设置了过期时间，浏览器就会把 cookie 保存到硬盘上，关闭后再次打开浏览器，这些 cookie 依然有效直到超过设定的过期时间。
+设置了过期时间，浏览器就会把 Cookie 保存到硬盘上，关闭后再次打开浏览器，这些 Cookie 依然有效直到超过设定的过期时间。
 
-存储在硬盘上的 cookie 可以在不同的浏览器进程间共享，比如两个 IE 窗口。而对于保存在内存的 cookie，不同的浏览器有不同的处理方式。可以类比于本地存储的 LocalStorage。
+存储在硬盘上的 Cookie 可以在不同的浏览器进程间共享，比如两个 IE 窗口。而对于保存在内存的 cookie，不同的浏览器有不同的处理方式。可以类比于本地存储的 LocalStorage。
 
-### 设置
+## 设置
 
-#### 服务端设置Cookie
+#### 服务端设置 Cookie
 
 服务端通过对客户端的网络请求的响应头，设置字段 `Set-Cookie` 进行设置 cookie。
 
 - 一个 Set-Cookie 字段只能设置一个 cookie，当你要设置多个 cookie，需要添加同样多的 Set-Cookie 字段
-- 服务端可以设置 cookie 的所有选项：Expires、Domain、Path、Secure、HttpOnly
+- 服务端可以设置 Cookie 的所有选项：Expires、Domain、Path、Secure、HttpOnly
 
-#### 客户端设置Cookie
+#### 客户端设置 Cookie
 
-- 客户端可以设置 cookie 的选贤：Expires、Domain、Path、Secure（有条件：只有在 HTTP 协议的网页中，客户端设置 Secure 类型的 cookie 才能成功），但无法设置 HttpOnly 选项。
+- 客户端可以设置 Cookie 的选贤：Expires、Domain、Path、Secure（有条件：只有在 HTTP 协议的网页中，客户端设置 Secure 类型的 Cookie 才能成功），但无法设置 HttpOnly 选项。
 
-设置多个 cookie
+设置多个 Cookie
 
 ```js
 // Example
@@ -107,35 +107,35 @@ document.cookie = "age=12";
 document.cookie = "grade=111";
 ```
 
-### 操作
+## 操作
 
-#### 发送
+### 发送
 
-浏览器向服务器发送 HTTP 请求时，每个请求都会带上相应的 Cookie。 也就是说，把服务器早前保存在浏览器的这段信息，再发回服务器。 这时要使用 HTTP 头信息的Cookie字段。
+浏览器向服务器发送 HTTP 请求时，每个请求都会带上相应的 Cookie。 也就是说，把服务器早前保存在浏览器的这段信息，再发回服务器。 这时要使用 HTTP 头信息的 Cookie 字段。
 
-#### 读取
+### 读取
 
-- 查看浏览器是否开启 Cookie 功能
+查看浏览器是否开启 Cookie 功能：
 
 ```js
 window.navigator.cookieEnabled
 ```
 
-- 获取当前网页的 Cookie
+获取当前网页的 Cookie：
 
 ```js
 document.cookie
 ```
 
-#### 修改
+### 修改
 
-cookie 的修改只需要对 cookie 进行重新赋值，旧的值即会被新的值所覆盖。但需要注意的是，在设置新的 cookie 时，key、domain、path 和 secure 这几个选项一定要与旧 cookie 保持一致。否则不会修改旧值，而是添加了一个新的 cookie。
+Cookie 的修改只需要对 Cookie 进行重新赋值，旧的值即会被新的值所覆盖。但需要注意的是，在设置新的 Cookie 时，key、domain、path 和 secure 这几个选项一定要与旧 Cookie 保持一致。否则不会修改旧值，而是添加了一个新的 cookie。
 
-#### 删除
+### 删除
 
-cookie 的删除同样需要对 cookie 进行重新赋值，同时，将这个新的 cookie 的 expires 选项设置为一个过去的时间点就行了。同样需要注意的是，key、domain、path 和 secure 这几个选项一定要与旧 cookie 保持一致。
+Cookie 的删除同样需要对 Cookie 进行重新赋值，同时，将这个新的 Cookie 的 expires 选项设置为一个过去的时间点就行了。同样需要注意的是，key、domain、path 和 secure 这几个选项一定要与旧 Cookie 保持一致。
 
-### 实现原理
+## 实现原理
 
 Cookie 实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用响应头向客户端器颁发一个 Cookie。客户端浏览器会把 Cookie 保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该 Cookie 一同提交给服务器。服务器检查该 Cookie，以此来辨认用户状态。服务器还可以根据需要修改 Cookie 的内容。
 
@@ -145,43 +145,43 @@ Cookie 实际上是一小段的文本信息。客户端请求服务器，如果�
 2. 服务器接收到请求后，产生一个 Set-Cookie 报头，放在 HTTP 报文中一起回传客户端，发起一次会话
 3. 客户端收到答应后，若要继续该次会话，则将 Set-Cookie-ie 中的内容取出，形成一个 Cookie.txt 文件储存在客户端计算机里
 
-### 安全问题
+## 安全问题
 
-通常 cookie 信息都是使用 HTTP 连接传递数据，这种传递方式很容易被查看，而且 JavaScript 里面直接有一个 `document.cookie` 方法，可以直接获取到用户的 cookie，所以 cookie 存储的信息容易被窃取。假如 cookie 中所传递的内容比较重要，那么就要求使用加密的数据传输。
+通常 Cookie 信息都是使用 HTTP 连接传递数据，这种传递方式很容易被查看，而且 JavaScript 里面直接有一个 `document.Cookie` 方法，可以直接获取到用户的 cookie，所以 Cookie 存储的信息容易被窃取。假如 Cookie 中所传递的内容比较重要，那么就要求使用加密的数据传输。
 
-**如何来防范cookie的安全呢？有以下几种方法：**
+**如何来防范 Cookie 的安全呢？有以下几种方法：**
 
-1. HttpOnly属性：如果在 cookie 中设置了 HttpOnly 属性，那么通过程序（JavaScript 脚本、Applet 等）将无法读取到 Cookie 信息，这样能有效的防止 XSS 攻击。
-2. Secure属性：当设置为 true 时，表示创建的 cookie 会被以安全的形式向服务器传输，也就是只能在 HTTPS 连接中被浏览器传递到服务器端进行会话验证，如果是 HTTP 连接则不会传递该信息，所以不会被盗取到cookie 的具体内容。
+1. HttpOnly 属性：如果在 Cookie 中设置了 HttpOnly 属性，那么通过程序（JavaScript 脚本、Applet 等）将无法读取到 Cookie 信息，这样能有效的防止 XSS 攻击。
+2. Secure 属性：当设置为 true 时，表示创建的 Cookie 会被以安全的形式向服务器传输，也就是只能在 HTTPS 连接中被浏览器传递到服务器端进行会话验证，如果是 HTTP 连接则不会传递该信息，所以不会被盗取到 Cookies 的具体内容。
 
-**登录时候用cookie的话，安全性问题怎么解决？**
+**登录时候用 Cookie 的话，安全性问题怎么解决？**
 
 **第一种是：**
 
-把用户对象（包含了用户ID、用户名、是否登录..）序列化成字符串再加密存入 cookie。
+把用户对象（包含了用户 ID、用户名、是否登录..）序列化成字符串再加密存入 cookie。
 
-密钥是：客户端IP + 浏览器Agent + 用户标识 + 固定的私有密钥
+密钥是：客户端 IP + 浏览器 Agent + 用户标识 + 固定的私有密钥
 
-当 cookie 被窃取后，只要任一信息不匹配，就无法解密 cookie，进而也就不能登录了。
+当 Cookie 被窃取后，只要任一信息不匹配，就无法解密 cookie，进而也就不能登录了。
 
 这样做的缺点是 IP 不能变动、频繁加密解密会加重 CPU 负担
 
  **第二种是：**
 
-将用户的认证信息保存在一个 cookie 中，具体如下：
+将用户的认证信息保存在一个 Cookie 中，具体如下：
 
-1. cookie 名：UID。推荐进行加密，比如MD5（站点名称）等。
-2. cookie 值：登录名 | 有效时间Expires | hash值。
-   - hash值可以由 `登录名 + 有效时间 Expires + 用户密码（加密后的）的前几位 + Salt`**（Salt 是保证在服务器端站点配置文件中的随机数）**
+1. Cookie 名：UID。推荐进行加密，比如 MD5（站点名称）等。
+2. Cookie 值：登录名 | 有效时间 Expires | hash 值。
+   - hash 值可以由 `登录名 + 有效时间 Expires + 用户密码（加密后的）的前几位 + Salt`**（Salt 是保证在服务器端站点配置文件中的随机数）**
 
 这样子设计有以下几个优点：
 
-1. 即使数据库被盗了，盗用者还是无法登录到系统，因为组成 cookie 值的 salt 是保证在服务器站点配置文件中而非数据库。
-2. 如果账户被盗了，用户修改密码，可以使盗用者的 cookie 值无效。
-3. 如果服务器端的数据库被盗了，通过修改 salt 值可以使所有用户的 cookie 值无效，迫使用户重新登录系统。
-4. 有效时间 Expires 可以设置为 `当前时间+过去时间`（比如2天），这样可以保证每次登录的 cookie 值都不一样，防止盗用者窥探到自己的 cookie 值后作为后门，长期登录。
+1. 即使数据库被盗了，盗用者还是无法登录到系统，因为组成 Cookie 值的 salt 是保证在服务器站点配置文件中而非数据库。
+2. 如果账户被盗了，用户修改密码，可以使盗用者的 Cookie 值无效。
+3. 如果服务器端的数据库被盗了，通过修改 salt 值可以使所有用户的 Cookie 值无效，迫使用户重新登录系统。
+4. 有效时间 Expires 可以设置为 `当前时间+过去时间`（比如 2 天），这样可以保证每次登录的 Cookie 值都不一样，防止盗用者窥探到自己的 Cookie 值后作为后门，长期登录。
 
-### 常用场景
+## 常用场景
 
 Cookie 主要用来分辨两个请求是否来自同一浏览器，以及用来保存一些状态信息。
 
@@ -197,9 +197,9 @@ Cookie 主要用来分辨两个请求是否来自同一浏览器，以及用来�
 
 客户端存储推荐使用 [WebStorageAPI](web-storage.md)
 
-### 替代方案
+## 替代方案
 
-#### JSON Web Tokens
+#### JWT
 
 JSON Web Token（JWT）是一个自包含的信息包，可以用来存储用户标识以及认证信息。可以被用来代替 Session Cookie。和 Cookie 自动附加到每个 HTTP 请求的方式不一样，JWT 必须被 Web 应用明确指定附加到那个 HTTP 请求上。
 
@@ -211,7 +211,7 @@ HTTP 包含基本认证以及摘要认证协议，利用这些协议只有在提
 
 有些用户可能会被基于访问页面的电脑 IP 地址追踪过，服务端知道当前正在运行浏览器的电脑的 IP 地址，理论上可以对这个 IP 地址关联一个用户 Session。
 
-然后 IP 地址通常不是一个可靠的追踪 Session 或者标识用户的方法。许多电脑设计的时候就是为了让一个单独用户使用的，例如办公 PC，家庭 PC 会在网络地址转换协议下共享一个公共的IP地址。而且某些系统，例如 Tor 设计的时候就是为了保持匿名性的，利用 IP 地址追踪用户显然是不合适的，也是不可能的。
+然后 IP 地址通常不是一个可靠的追踪 Session 或者标识用户的方法。许多电脑设计的时候就是为了让一个单独用户使用的，例如办公 PC，家庭 PC 会在网络地址转换协议下共享一个公共的 IP 地址。而且某些系统，例如 Tor 设计的时候就是为了保持匿名性的，利用 IP 地址追踪用户显然是不合适的，也是不可能的。
 
 #### URL 查询字符串
 
@@ -221,7 +221,7 @@ HTTP 包含基本认证以及摘要认证协议，利用这些协议只有在提
 
 这些类型的查询字符串非常像 Cookie，都包含任意的信息供服务端选择，都会随请求返回给服务端。然而其中还是有点不同的。由于查询字符串是 URL 中的一部分，如果 URL 后面被重复发送了，那么上面附加的相同信息将会被发送到服务端，这样可能会产生混乱。例如，如果用户的偏好信息被放在了查询字符串中，用户把这个 URL 通过邮件发给了另一个用户，那么这些偏好信息就会变成另一个用户的。
 
-而且如果相同用户从不同的源多次访问相同的页面，这样不能确保每次使用相同的查询字符串。例如，如果一个用户第一次通过一个页面的内部站点访问了一个页面，然后第二次又通过外部的搜索引擎访问到这个页面，这样查询字符串可能会不同。如果在这种情况下使用 Cookie，Cookie可以是相同的。
+而且如果相同用户从不同的源多次访问相同的页面，这样不能确保每次使用相同的查询字符串。例如，如果一个用户第一次通过一个页面的内部站点访问了一个页面，然后第二次又通过外部的搜索引擎访问到这个页面，这样查询字符串可能会不同。如果在这种情况下使用 Cookie，Cookie 可以是相同的。
 
 使用查询字符串其他缺点就是安全问题。在查询字符串中存储标识 Session 的数据可以导致 Session 固定攻击， Referer 日志攻击以及其他安全漏洞。把 Session 标识转成 HTTP Cookie 更安全。
 
@@ -233,7 +233,7 @@ HTTP 包含基本认证以及摘要认证协议，利用这些协议只有在提
 
 #### Window.name DOM 属性
 
-所有的现代浏览器都可以通过 JavaScript 使用 DOM 属性 window.name 存储一个相当大的数据（2-23M）。这个数据可以用来代替 Session Cookie 也是可以跨域的。这个技术可以和 JSON 对象一起使用来存储客户端上的复杂Session变量集合。
+所有的现代浏览器都可以通过 JavaScript 使用 DOM 属性 window.name 存储一个相当大的数据（2-23M）。这个数据可以用来代替 Session Cookie 也是可以跨域的。这个技术可以和 JSON 对象一起使用来存储客户端上的复杂 Session 变量集合。
 
 不足就是美国单独的窗口或者 Tab 页刚开始打开的时候会有一个空的 window.name 属性。而且，这个属性可以用来追踪不同站点的访问者。
 
@@ -241,7 +241,7 @@ HTTP 包含基本认证以及摘要认证协议，利用这些协议只有在提
 
 #### 广告主标识码
 
-苹果使用了追踪技术称为“广告主标识码”（IDFA）。这种技术会给每个购买苹果产品的用户分配一个唯一标识。这个唯一标识会被苹果网络广告系统使用，来确定用户正在查看或者回复的广告。
+苹果使用了追踪技术称为 **广告主标识码**（IDFA）。这种技术会给每个购买苹果产品的用户分配一个唯一标识。这个唯一标识会被苹果网络广告系统使用，来确定用户正在查看或者回复的广告。
 
 #### ETag
 
@@ -270,38 +270,3 @@ IE 支持在浏览器历史中持久化信息，在浏览器的收藏夹中，�
 浏览器指纹是指浏览器配置信息的集合，例如版本号，屏幕分辨率，操作系统。指纹信息可以用来完全或者部分标识独立用户或者设备，即使 Cookie 已经被关闭了。
 
 基本的 Web 浏览器配置信息一直都在被 Web 分析服务搜集为了精确的统计真实网络流量和不同类型的点击欺诈。在客户端脚本的帮助下，搜集更多的参数也是有可能的。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

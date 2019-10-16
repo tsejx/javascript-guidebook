@@ -1,6 +1,6 @@
-## Fetch API
+# Fetch API
 
-Fetch API 提供了一个获取资源的接口（包括跨域），在功能上与 XMLHttpRequest 有很多相似的地方，但被设计成更具可扩展性和高效性
+Fetch API 提供了一个获取资源的接口（包括跨域），在功能上与 XMLHttpRequest 有很多相似的地方，但被设计成更具可扩展性和高效性。
 
 Fetch 的核心在于对 HTTP 接口的抽象，包括 Request、Response、Headers、Body，以及用于初始化异步请求的 global fetch。得益于 JavaScript 实现的这些抽象好的 HTTP 模块，其他接口能够很方便的使用这些功能。
 
@@ -16,7 +16,32 @@ Fetch 的核心在于对 HTTP 接口的抽象，包括 Request、Response、Head
 | ---------- | ------------ | ---------- | ------- | -------------- | --------------- |
 | 10.3       | 46           | No         | 67      | 70             | 63              |
 
-### Guard
+## 语法
+
+```js
+Promise fetch(input, init)
+```
+
+### 参数
+
+* input: 定义要获取的资源，这可能是
+  * 一个 String 字符串，包含要获取资源的 URL
+  * 一个 Request 对象
+* init：[可选]一个配置项对象，包括所有对请求的设置，可选参数有
+  * method：请求使用的方法，如 GET、POST、PUT、DELETE 等
+  * headers：请求的头信息，形式为 Headers 的对象或包含 ByteString 值的对象字面量
+  * body：请求的 body 信息：可能是一个 Blob、BufferSource、FormData
+  * URLSearchParams 或者 String 对象。注意 GET 或 HEAD 方法的请求不能包含 body 信息
+  * mode：请求的模式，如 cors、no-cors 或者 same-origin
+  * credentials：请求的 credentials，如 omit、same-origin 或者 include。为了当前域名内自动发送 cookie，必须提供这个选项，从 Chorme 50 实例，这个属性也可以受 FederateCrential 实例或是一个 PasswwordCredential 实例
+  * cache：请求的 cache 模型：default、no-store、reload、no-cache、force-cache 或者 only-if-cached
+  * redirect：可用的 redirect 模式：follow（自动重定向），error（如果产生重定向将自动终止并且抛出一个错误）
+  * referer：一个 USVSting 可以是 no-referrer、click 或一个 URL。默认 client。
+  * downgrade、orign、orgin-when-cross-origin、unsafe-url
+  * integrity：包括请求的 subresource integrity 值
+
+
+## Guard
 
 Guard 事 Headers 对象的特征。
 
@@ -24,7 +49,7 @@ Guard 事 Headers 对象的特征。
 
 当创建 Request 和 Response 对象的时候，它将拥有一个按照以下规则实现的与之相关联的 Headers 对象。
 
-### Headers
+## Headers
 
 Headers 类（请求头对象）能用于对 HTTP `request` 和 `response` 的检索、设置、添加和删除等各种操作。
 
@@ -62,7 +87,7 @@ const reqHeaders = new Headers({
 })
 ```
 
-### Request 
+## Request
 
 Request 对象是 FetchAPI 的资源请求对象。
 
@@ -72,10 +97,10 @@ Request(url, options)
 
 | 参数      | 说明     | 类型   |
 | --------- | -------- | ------ |
-| `url`     | 请求URL  | string |
+| `url`     | 请求 URL  | string |
 | `options` | 配置对象 | object |
 
-#### 属性方法
+### 属性方法
 
 | 属性          | 说明                                                         |
 | ------------- | ------------------------------------------------------------ |
@@ -94,7 +119,7 @@ Request(url, options)
 | --------- | ------------------------------- |
 | `clone()` | 复制一个当前 Request 对象的实例 |
 
-#### 示例
+### 示例
 
 ```js
 const requst = new Request('data.json', {
@@ -105,11 +130,11 @@ const requst = new Request('data.json', {
 })
 ```
 
-### Body
+## Body
 
 Fetch mixin 对象，提供了关联 response/request 中 body 的方法，可以定义它的文档类型以及请求如何被处理。
 
-`Request` 和 `Response` 对象都实现了Body的接口，所以都拥有Body的方法和属性，用于指定请求体中的body或响应体的内容的数据类型（`arrayBuffer/blob /json/text`) 主要是做数据类型的转换。
+`Request` 和 `Response` 对象都实现了 Body 的接口，所以都拥有 Body 的方法和属性，用于指定请求体中的 body 或响应体的内容的数据类型（`arrayBuffer/blob /json/text`) 主要是做数据类型的转换。
 
 | 属性       | 说明                                           |
 | ---------- | ---------------------------------------------- |
@@ -123,7 +148,7 @@ Fetch mixin 对象，提供了关联 response/request 中 body 的方法，可�
 | `json()`        | 将响应流转换为 json 的 Promise 对象，并将 `bodyUsed` 状态改为已使用 |
 | `text()`        | 将响应流转换为文本字符串的 Promise 对象，并将 `bodyUsed` 状态改为已使用 |
 
-### Response
+## Response
 
 Request 对象是 FetchAPI 的资源响应对象。
 
@@ -144,11 +169,11 @@ Request 对象是 FetchAPI 的资源响应对象。
 | `error()`    | 返回一个绑定了网络错误的新的 Response 对象 |
 | `redirect()` | 用另一个 URL 创建一个新的 Response         |
 
-### fetch()
+## fetch()
 
 `fetch()` 方法用于发起获取资源的请求，它返回一个 Promise 对象，这个 Promise 对象会在请求响应后将状态变更为 Resolved，并返回 Response 对象。
 
-#### 示例
+### 示例
 
 ```js
 fetch('api/data.json', {
@@ -161,13 +186,13 @@ fetch('api/data.json', {
 }).then(response => {...})
 ```
 
-#### mode
+### mode
 
 - `no-cors`：允许来自 CDN 的脚本、其他域的图片和其他一些跨域资源，但是首先有个前提条件，就是请求的 `method` 只能是 HEAD、GET 或者 POST。此外，任何 ServiceWorkers 拦截了这些请求，它不能随意添加或者改写任何 `header`。其次，JavaScript 不能访问 Response 中的任何属性，这保证了 ServiceWorkers 不会导致任何跨域下的安全问题而隐私信息泄漏。
 - `cors`：通常用作跨域请求来从第三方提供的 API 获取数据。这个模式遵守 CORS 协议。只有有限的一些 `header` 被暴露给 Response 对象，但是 `body` 是可读的。
 - `same-origin`：如果一个请求是跨域的，那么返回一个简单的 `error`，这样确保所有的请求遵守同源策略。
 
-#### cache
+### cache
 
 - `default`：缓存相同的请求
 - `no-store`：不缓存任何请求
