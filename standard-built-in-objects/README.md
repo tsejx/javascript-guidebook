@@ -18,10 +18,10 @@
     - [encodeURI()](the-global-object/function-properties/encodeURI.md)
     - [encodeURIComponent()](the-global-object/function-properties/encodeURIComponent.md)
 - **基本对象**
-  - [Object](fundamental-objects/object-objects/object-objects.md)
-  - [Function](fundamental-objects/function-objects/function-objects.md)
+  - [Object](fundamental-objects/object/object.md)
+  - [Function](fundamental-objects/function/function.md)
   - [Boolean](fundamental-objects/boolean-objects.md)
-  - [Symbol](fundamental-objects/symbol-objects/symbol-objects.md)
+  - [Symbol](fundamental-objects/symbol/symbol.md)
   - [Error](fundamental-objects/error-objects.md)
 - **数字和日期**
   - [Date](numbers-and-dates/date-objects/date-objects.md)

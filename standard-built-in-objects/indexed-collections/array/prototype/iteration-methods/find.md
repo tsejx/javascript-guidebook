@@ -4,7 +4,7 @@
 
 ## 语法
 
-```javascript
+```js
 arr.find( callback = function (currentValue, index, arr) {} [, thisArg ] )
 ```
 
@@ -32,9 +32,10 @@ let foo = [
     {name: 'c', quantity: 5}
 ];
 
-const find = bar => bar.name === 'c';
+const getFoo = key => arr => arr.name === key;
 
-console.log(foo.find(find))	// { name: 'c', quantity: 5 }
+console.log(foo.find(getFoo('c')))
+// { name: 'c', quantity: 5 }
 ```
 
 ### 寻找数组中的质数

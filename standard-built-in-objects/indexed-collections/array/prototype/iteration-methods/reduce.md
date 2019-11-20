@@ -6,7 +6,7 @@
 
 ## 语法
 
-```javascript
+```js
 arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 ```
 
@@ -18,8 +18,8 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 | 回调函数参数 | 说明                                                                          | 类型   |
 | ------------ | ----------------------------------------------------------------------------- | ------ |
 | `acc`        | 累加器累加回调的返回值，它是上一次调用回调时返回的累积值，或 `initialValue`。 | number |
-| `value`      | 数组中正在处理的数组成员                                                      | any    |
-| `index`      | 数组中正在处理的当前成员的索引                                                | number |
+| `currentValue`      | 数组中正在处理的数组成员                                                      | any    |
+| `currentIndex`      | 数组中正在处理的当前成员的索引                                                | number |
 | `arr`        | 调用函数的数组                                                                | array  |
 
 **返回值：** 函数累计处理的结果。
@@ -32,7 +32,7 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 
 - 回调函数参数取值问题
   - 提供 `initialValue`，累加器 `acc` 取值为 `initialValue`，`currentValue` 取数组中的第一个值
-  - 没有提供 `initialValue`，累加器 `acc` 取数组中的第一个值，`currentValue` 取数组中的第二个值。
+  - 没有提供 `initialValue`，累加器 `acc` **取数组中的第一个值作为初始值**，`currentValue` 取数组中的第二个值。
 - 回调函数调用问题
   - 如果提供 `initialValue`，从索引 0 开始执行回调函数。
   - 如果没有提供 `initialValue`，`reduce` 会从索引 1 的地方开始执行回调函数，跳过第一个索引。
@@ -60,7 +60,7 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 
 如果你打算提供一个初始值作为 `reduce` 方法的第二个参数，以下是运行过程及结果。
 
-```javascript
+```js
 [0, 1, 2, 3, 4].reduce((acc, val, index, arr) => accumulator + currentValue, 10);
 ```
 
@@ -76,7 +76,15 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 
 ## 示例
 
-### 标准示例
+将数组转为对象
+展开更大的数组
+在一次遍历中进行两次计算
+将映射和过滤函数组合
+按顺序运行异步函数
+
+### 聚合为数字
+
+数组成员为数字类型时。
 
 ```js
 const res = [1, 2, 3, 4, 5].reduce((acc, item) => acc + item, 0);
@@ -84,6 +92,47 @@ const res = [1, 2, 3, 4, 5].reduce((acc, item) => acc + item, 0);
 console.log(res);
 // 15
 ```
+
+数组成员为对象类型时。
+
+```js
+const arr = [{total: 1}, {total: 2}, {total: 3}, {total: 4}, {total: 5}]
+
+const res = arr.reduce((acc, { total }) => (acc + total), 0)
+
+console.log(res)
+// 15
+```
+
+### 聚合为字符串
+
+将数组的每项转换为固定格式的字符串，每项直接以分号作为分隔。
+
+```js
+const arr = [{ key: 'foo', value: 1}, { key: 'bar', value: 2}, { key: 'baz', value: 3}];
+
+const res = arr.reduce((acc, {key, value}) => (acc + `${key}=${value}&`), '?')
+
+console.log(res)
+// "?foo=1&bar=2&baz=3&"
+```
+
+### 聚合为对象
+
+只要目标是将数组聚合为唯一的元素时，都可以考虑使用 reduce
+
+```js
+const arr = [{id: 1, type: 'a', name: 'foo'}, {id: 2, type: 'b', name: 'bar'}, { id: 3, type: 'c', name: 'baz'}];
+
+const res = arr.reduce((acc, {id, type, name}) => {
+  acc[id] = { type, name }
+  return acc
+}, {})
+
+console.log(res)
+// { 1: { name: 'foo', type: 'a'}, 2: { name: 'bar', type: 'b'}, { name: 'baz', type: 'c' }}
+```
+
 
 ### 初始值的必要性
 
@@ -115,12 +164,15 @@ const maxCallback = ( max, current ) => Math,max( max, current )
 ### 数组求和、求积和最大值
 
 ```js
+// 数组求和
 const sum = [0, 1, 2, 3].reduce((acc, cur) => acc + cur, 0);
 // 6
 
+// 数组求积
 const product = [1, 2, 3, 4, 5].reduce((a, b) => a * b, 1);
 // 120
 
+// 数组最大值
 const max = [1, 2, 3, 4, 5].reduce((a, b) => (a > b ? a : b));
 // 5
 ```
@@ -140,7 +192,11 @@ console.log(findLongest([1, 2, 3, 'ab', 4, 'bcd', 5, 6785, 4]));
 ### 二维数组扁平化
 
 ```js
-[[0, 1], [2, 3], [4, 5]].reduce((a, b) => a.concat(b), []);
+const arr = [[0, 1], [2, 3], [4, 5]]
+
+const res = arr.reduce((a, b) => a.concat(b), []);
+
+console.log(res)
 // [0, 1, 2, 3, 4, 5]
 ```
 
@@ -152,7 +208,7 @@ var flattened = [[0, 1], [2, 3], [4, 5]].reduce((acc, cur) => acc.concat(cur), [
 
 ### 计算数组成员次数
 
-```javascript
+```js
 const names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
 
 const countedNames = names.reduce((allNames, name) => {
@@ -165,4 +221,27 @@ const countedNames = names.reduce((allNames, name) => {
 }, {});
 
 // { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
+```
+
+### 单次遍历多次计算
+
+```js
+const arr = [0.3, 1.2, 3.4, 0.2, 3.2, 5.5, 0.4];
+
+function reduceMaxMin(acc, value) {
+  reuturn {
+    min: Math.min(acc.min, value),
+    max: Math.max(acc.max, value)
+  }
+}
+
+const initMinMax = {
+  min: Number.MIN_VALUE,
+  max: Number.MAX_VALUE
+}
+
+const minMax = arr.reduce(reduceMaxMin, initMinMax);
+
+console.log(minMax);
+// { min: 0.2, max: 5.5}
 ```

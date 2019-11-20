@@ -1,6 +1,6 @@
 # Array.prototype.map()
 
-`Array.prototype.map()` 方法用于遍历数组成员并返回回调函数结果。
+`Array.prototype.map()` 根据传递的转换函数，更新给定数组中的每个值，并返回一个相同长度的新数组。它接受一个回调函数作为参数，用以执行转换过程。
 
 ## 语法
 
