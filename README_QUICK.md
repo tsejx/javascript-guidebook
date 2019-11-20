@@ -19,8 +19,6 @@
 <p>章节内容来源注释于具体页面底部，如错漏欢迎提 <a href="https://github.com/tsejx/JavaScript-Guidebook/issues">issue</a> 斧正</p>
 <p>更多优质内容整理可查阅 <a href="https://github.com/tsejx/JavaScript-Guidebook/wiki">wiki</a></p>
 </div>
-
-
 ## 快速目录
 
 1. [基本语法 Basic Concept](#memo基本语法-basic-concept)
@@ -37,7 +35,6 @@
 
 ### :memo:基本语法 Basic Concept
 
-- **术语定义**
 - **词法语法**
   - [词法语法](basic-concept/lexical-grammar/lexical-grammar.md)
 - **数据类型和值**
@@ -278,12 +275,12 @@
 - **浏览器工作原理**
   - [整体工作流程](browser-object-model/browser-working-principle/overall-workflow.md)
   - [渲染引擎](browser-object-model/browser-working-principle/the-rendering-engine.md)
-  - [解析过程](browser-object-model/browser-working-principle/parsing.md)
+  - [构建对象模型](browser-object-model/browser-working-principle/constructing-the-object-model.md)
+  - [脚本加载](browser-object-model/browser-working-principle/script-loadsmd)
   - [渲染树构建](browser-object-model/browser-working-principle/render-tree-construction.md)
   - [布局](browser-object-model/browser-working-principle/layout.md)
   - [绘制](browser-object-model/browser-working-principle/painting.md)
   - [回流和重绘](browser-object-model/browser-working-principle/reflow-and-repaint.md)
-  - [动态变化和渲染引擎的线](browser-object-model/browser-working-principle/dynamic-changes-and-rendering-engine-threads.md)
   - [CSS2 可视模型](browser-object-model/browser-working-principle/css2-visual-module.md)
   - [渲染层合并](browser-object-model/browser-working-principle/composite.md)
 
@@ -291,9 +288,7 @@
 
 ### :incoming_envelope:文档对象模型 Document Oject Model
 
-- **文档对象模型**
-  - [DOM](document-object-model/dom.md)
-  - [DOM API](document-object-model/dom-api.md)
+- [文档对象模型](document-object-model/dom.md)
 - **节点层次**
   - [节点层次](document-object-model/hierarchy-of-nodes/hierarchy-of-nodes.md)
   - [Node 类型](document-object-model/hierarchy-of-nodes/the-node-type.md)
@@ -307,7 +302,7 @@
 - **节点操作**
   - [节点创建](document-object-model/manipulating-nodes/nodes-create.md)
   - [节点操作](document-object-model/manipulating-nodes/manipulating-nodes/README.md)
-- **脚本化 CSS**
+- **节点样式**
   - [查询样式](document-object-model/scripting-css/accessing-element-styles.md)
   - [操作样式](document-object-model/scripting-css/working-with-style-sheets.md)
 - **DOM 事件流**
@@ -361,24 +356,27 @@
 
 ### :globe_with_meridians:计算机网络 Computer Network
 
+- [计算机网络体系](computer-networks/computer-networks.md)
+- [传输层协议](computer-networks/transport-layer-protocol.md)
+- [网络层协议](computer-networks/network-layer-protocol.md)
+- [DNS 协议](computer-networks/dns.md)
+- [CDN](computer-networks/cdn.md)
 - **HTTP 协议**
   - [HTTP 协议](computer-networks/http/http.md)
+  - [HTTPS 协议](computer-networks/http/https.md)
   - [HTTP 首部字段](computer-networks/http/headers.md)
   - [HTTP 请求方法](computer-networks/http/request-methods.md)
   - [HTTP 响应状态码](computer-networks/http/response-status-codes.md)
-  - [HTTP 访问控制](computer-networks/http/access-control.md)
+  - [HTTP 跨域資源共享](computer-networks/http/access-control.md)
   - [HTTP 身份验证](computer-networks/http/authentication.md)
   - [HTTP2](computer-networks/http/http2.md)
-- [DNS 协议](computer-networks/dns.md)
-- [HTTPS 协议](computer-networks/https.md)
-- TCP 协议
-- IP 协议
 - **Web 网络安全**
   - [XSS](computer-networks/frontend-security/xss.md)
   - [CSRF](computer-networks/frontend-security/csrf.md)
   - [DDoS](computer-networks/frontend-security/ddos.md)
   - [SQL 注入](computer-networks/frontend-security/sql-injection.md)
   - [流量劫持](computer-networks/frontend-security/hijacking.md)
+  - [同源策略](computer-networks/frontend-security/same-origin-policy.md)
 
 [⬆ 返回快速目录](#快速目录)
 

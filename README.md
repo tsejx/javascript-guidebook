@@ -13,7 +13,6 @@
 </p>
 
 <h1>JavaScript Guidebook</h1>
-
 <p>在 <a href="https://tsejx.github.io/JavaScript-Guidebook/">这里</a> 阅读体验更佳</p>
 <p>整理自各大技术社区和权威书籍的前端技术图谱<p>
 <p>章节内容来源注释于具体页面底部，如错漏欢迎提 <a href="https://github.com/tsejx/JavaScript-Guidebook/issues">issue</a> 斧正</p>
@@ -46,7 +45,7 @@
 - [ECMAScript® 2015 Language Specification（ES6 英）](http://www.ecma-international.org/ecma-262/6.0/)：ECMAScript 2015 规范文档
 - [ECMAScript® 2016 Language Specification（ES7 英）](http://www.ecma-international.org/ecma-262/7.0/index.html)：ECMAScript 2016 规范文档
 - [ECMAScript® 2017 Language Specification（ES8 英）](http://www.ecma-international.org/ecma-262/8.0/index.html)：ECMAScript 2017 规范文档
-- [ECMAScript® 2018 Language Specification（ES8 英）](<https://www.ecma-international.org/ecma-262/9.0/index.html>)：ECMAScript 2018 规范文档
+- [ECMAScript® 2018 Language Specification（ES8 英）](https://www.ecma-international.org/ecma-262/9.0/index.html)：ECMAScript 2018 规范文档
 - [HTML Living Standard](<https://html.spec.whatwg.org/>)：HTML 规范文档 [🇨🇳中文版](<https://whatwg-cn.github.io/html/>)
 - [DOM Living Standard](<https://dom.spec.whatwg.org/>)：DOM 规范文档
 
