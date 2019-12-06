@@ -57,7 +57,7 @@ function foo() {
 
 // 声明在全局作用域中的变量就是全局对象的一个同名属性
 // 相当于 window.a = 2
-const a = 2;
+var a = 2;
 
 // 调用 foo 函数时 this.a 被解析成了全局变量 a
 // 因为在本例中，函数调用时应用了 this 的默认绑定
@@ -215,7 +215,7 @@ const container = {
 };
 
 // a 是全局对象的属性
-const a = "opps, global";
+var a = "opps, global";
 
 setTimeout(container.foo, 100);
 // 'opps, global'
@@ -307,19 +307,15 @@ const columns = {
 🎯 **模拟过程：**
 
 ```js
-const foo = function(func){
+function objectFactory(constructor, ...rest){
     // 创建空对象，空对象关联构造函数的原型对象
-    const o = Object.create(func.prototype)
+    const instance = Object.create(constructor.prototype);
 
     // 执行对象类的构造函数，同时该实例的属性和方法被 this 所引用，即 this 指向新构造的实例
-    const k = func.call(o)
+    const result = constructor.call(instance, rest);
 
     // 判断构造函数的运行结果是否对象类型
-    if(typeof k === 'object'){
-        return k
-    } else {
-        return o
-    }
+  	return (typeof result === 'object' && result) || instance;
 }
 ```
 
@@ -505,9 +501,7 @@ bar.call( container2 );
 `bar`（引用箭头函数）的 `this` 也会绑定到 `con1`，箭头函数的绑定无法被修改。(`new` 也不
 行）
 
-箭头函数可以像 `bind(..)` 一样确保函数的 `this` 被绑定到指定对象，此外，其重要性还体
-现在它用更常见的词法作用域取代了传统的 `this` 机制。实际上，在 ES6 之前我们就已经
-在使用一种几乎和箭头函数完全一样的模式。
+箭头函数可以像 `bind(..)` 一样确保函数的 `this` 被绑定到指定对象，此外，其重要性还体现在它用更常见的词法作用域取代了传统的 `this` 机制。实际上，在 ES6 之前我们就已经在使用一种几乎和箭头函数完全一样的模式。
 
 虽然 `self = this` 和箭头函数看起来都可以取代 `bind(..)`，但是从本质上来说，它们想替代的是 `this` 机制。
 
