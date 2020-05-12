@@ -2,5 +2,7 @@
 .DS_Store
 .idea/
 Icon
-node_modules
-.vuepress/dist
+node_modules/
+yarn.lock
+.umi/*
+.temp/*
