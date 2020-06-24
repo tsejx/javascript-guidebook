@@ -11,13 +11,13 @@
     "deploy": "bash ./scripts/deploy.sh"
   },
   "devDependencies": {
-    "dumi": "^1.0.23",
+    "dumi": "^1.0.31",
     "lint-md": "^0.1.1"
   },
-  "homepage": "https://github.com/tsejx/JavaScript-Guidebook#readme",
+  "homepage": "https://github.com/tsejx/javascript-guidebook#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsejx/JavaScript-Guidebook.git"
+    "url": "git+https://github.com/tsejx/javascript-guidebook.git"
   },
   "license": "MIT"
 }

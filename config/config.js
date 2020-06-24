@@ -7,7 +7,9 @@ export default {
   publicPath: '/javascript-guidebook/',
   favicon: './favicon.ico',
   logo: 'http://img.mrsingsing.com/javascript-guidebook-favicon.png',
+  ssr: {},
   exportStatic: {},
+  dynamicImport: {},
   navs: [
     null,
     {
