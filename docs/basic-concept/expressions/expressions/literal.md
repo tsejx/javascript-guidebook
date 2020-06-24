@@ -3,7 +3,7 @@ nav:
   title: 基本语法
   order: 1
 group:
-  title: 主要表达式
+  title: 表达式
   order: 4
 title: 字面量
 order: 1

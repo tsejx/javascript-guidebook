@@ -3,10 +3,10 @@ nav:
   title: 基本语法
   order: 1
 group:
-  title: 其他表达式
+  title: 运算符
   order: 5
 title: 扩展运算符
-order: 9
+order: 16
 ---
 
 # 扩展运算符

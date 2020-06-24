@@ -3,10 +3,10 @@ nav:
   title: 基本语法
   order: 1
 group:
-  title: 其他表达式
+  title: 运算符
   order: 5
 title: 逗号运算符
-order: 5
+order: 12
 ---
 
 # 逗号运算符

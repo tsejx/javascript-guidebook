@@ -3,10 +3,10 @@ nav:
   title: 基本语法
   order: 1
 group:
-  title: 主要表达式
-  order: 4
+  title: 运算符
+  order: 5
 title: 分组表达式
-order: 5
+order: 17
 ---
 
 # 分组表达式

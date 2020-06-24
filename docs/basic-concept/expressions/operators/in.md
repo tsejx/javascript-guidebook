@@ -3,8 +3,8 @@ nav:
   title: 基本语法
   order: 1
 group:
-  title: 一元运算符
-  order: 6
+  title: 运算符
+  order: 5
 title: in
 order: 1
 ---

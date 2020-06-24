@@ -3,10 +3,10 @@ nav:
   title: 基本语法
   order: 1
 group:
-  title: 迭代语句
-  order: 8
+  title: 语句和声明
+  order: 7
 title: for...in 语句
-order: 4
+order: 23
 ---
 
 # for...in 语句
