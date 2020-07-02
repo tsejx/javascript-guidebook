@@ -4,7 +4,7 @@ nav:
   order: 5
 group:
   title: 浏览器工作原理
-  order: 10
+  order: 20
 title: 构建对象模型
 order: 3
 ---
