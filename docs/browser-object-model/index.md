@@ -13,60 +13,90 @@ order: 1
 
 **浏览器对象模型 Browser Oject Model**
 
-- [**Window 对象**](/the-window-object/the-window-object.md)
-  - **定时器**
-    - [setInterval](/the-window-object/timers/setInterval.md)
-    - [setTimeout](/the-window-object/timers/setTimeOut.md)
-  - **系统对话框**
-    - [alert](/the-window-object/system-dialogs/alert.md)
-    - [confirm](/the-window-object/system-dialogs/confirm.md)
-    - [prompt](/the-window-object/system-dialogs/prompt.md)
-  - **视窗尺寸位置**
-    - [Window 视图属性](/the-window-object/window-position/window-view-properties.md)
-    - [Screen 视图属性](/the-window-object/window-position/screen-view-properties.md)
-    - [文档视图和元素视图](/the-window-object/window-position/document-view-and-element-view.md)
-    - [元素视图属性](/the-window-object/window-position/element-view-properties.md)
-    - [鼠标位置](/the-window-object/window-position/mouse-position.md)
-- **Location 对象**
-  - [Location 对象的属性](/the-location-object/the-location-object-properties.md)
-  - [Location 对象的方法](/the-location-object/the-location-object-methods.md)
-- **History 对象**
-  - [History 对象的属性](/the-history-object/the-history-object-properties.md)
-  - [History 对象的方法](/the-history-object/the-history-object-methods.md)
-- **Screen 对象**
-  - [Screen 对象的属性](/the-screen-object/the-screen-object-properties.md)
-  - [Screen 对象的方法](/the-screen-object/the-screen-object-methods.md)
-- **Navigator 对象**
-  - [Navigator 对象的属性](/the-navigator-object/the-navigator-object-properties.md)
-  - [Navigator 对象的方法](/the-navigator-object/the-navigator-object-methods.md)
-- **其他 WebAPI**
-  - [File 对象](/the-other-web-api/the-file-object.md)
-  - [FileList 对象](/the-other-web-api/the-file-list-object.md)
-  - [FileReader 对象](/the-other-web-api/the-file-reader-object.md)
-  - [FileReaderSync 对象](/the-other-web-api/the-file-reader-sync-object.md)
-  - [FormData 对象](/the-other-web-api/the-form-data-object.md)
-  - [ProgressEvent 对象](/the-other-web-api/the-progress-event-object.md)
-  - [Blob 对象](/the-other-web-api/the-blob-object.md)
-  - [URL 对象](/the-other-web-api/the-url-object.md)
-  - [Position 对象](/the-other-web-api/the-position-object.md)
-  - [XMLHttpRequest 对象](/the-other-web-api/the-xmlhttprequest-object.md)
-  - [FetchAPI](/the-other-web-api/the-fetch-api.md)
-  - [EventSource 对象](/the-other-web-api/the-event-source-object.md)
-- **浏览器缓存**
-  - [浏览器缓存机制](/browser-cache/web-cache.md)
-  - [HTTP 缓存](/browser-cache/http-cache.md)
-  - [Cookie](/browser-cache/cookie.md)
-  - [WebStorage](/browser-cache/web-storage.md)
-- **客户端检测**
-  - [客户端检测](/client-detection/client-detection.md)
+- **全局对象**
+  - [Window 对象](/browser-object-model/window/window)
+  - [Location 对象](/browser-object-model/window/location)
+  - [History 对象](/browser-object-model/window/history)
+  - [Screen 对象](/browser-object-model/window/screen)
+  - [Navigator 对象](/browser-object-model/window/navigator)
+- **全局 API**
+  - [setInterval](/browser-object-model/web-event/set-interval)
+  - [setTimeout](/browser-object-model/web-event/set-time-out)
+  - [alert](/browser-object-model/web-event/alert)
+  - [confirm](/browser-object-model/web-event/confirm)
+  - [prompt](/browser-object-model/web-event/prompt)
+  - [拖放 Drag and Drop API](/browser-object-model/web-event/drag-and-drop-api)
+  - [动画渲染 Animation Framee API](/browser-object-model/web-event/request-animation-frame)
+- **视窗尺寸位置**
+  - [Window 视图属性](/browser-object-model/window-position/window-view-properties)
+  - [Screen 视图属性](/browser-object-model/window-position/screen-view-properties)
+  - [文档视图和元素视图](/browser-object-model/window-position/document-view-and-element-view)
+  - [元素视图属性](/browser-object-model/window-position/element-view-properties)
+  - [鼠标位置](/browser-object-model/window-position/mouse-position)
+- **二进制数据与文件 API**
+  - [本地文件应用](/browser-object-model/binary-data-and-files/local-files-application)
+  - [Blob API](/browser-object-model/binary-data-and-files/blob)
+  - [File API](/browser-object-model/binary-data-and-files/file)
+  - [FileList API](/browser-object-model/binary-data-and-files/file-list)
+  - [FileReader API](/browser-object-model/binary-data-and-files/file-reader)
+  - [FileReaderSync API](/browser-object-model/binary-data-and-files/file-reader-sync)
+  - [URL API](/browser-object-model/binary-data-and-files/url)
+  - [FormData API](/browser-object-model/binary-data-and-files/form-data)
+- **数据通信 API**
+  - [PostMessage](/browser-object-model/connectivity/post-message)
+  - [XMLHttpRequest API](/browser-object-model/connectivity/xmlhttprequest)
+  - [Fetch API](/browser-object-model/connectivity/fetch)
+  - [Beacon API](/browser-object-model/connectivity/beacon)
+  - [WebSocket](/browser-object-model/connectivity/web-socket)
+  - [EventSource API](/browser-object-model/connectivity/event-source)
+  - [Server-sent Events](/browser-object-model/connectivity/server-sent-events)
+  - [WebRTC API](/browser-object-model/connectivity/web-real-time-communication)
+  - [ProgressEvent](/browser-object-model/connectivity/progress-event)
+- **离线与存储 API**
+  - Storage API
+  - [浏览器缓存机制](/browser-object-model/offline-and-storage/web-cache)
+  - [HTTP Cache](/browser-object-model/offline-and-storage/http-cache)
+  - [Cookie](/browser-object-model/offline-and-storage/cookie)
+  - [Web Storage API](/browser-object-model/offline-and-storage/web-storage)
+  - [Web Workers API](/browser-object-model/offline-and-storage/web-workers)
+  - [Service Worker API](/browser-object-model/offline-and-storage/service-worker)
+  - [IndexedDB 数据库](/browser-object-model/offline-and-storage/indexedDB)
+  - Progressive Web App（PWA）
+- **性能 API**
+  - [Performance API](/browser-object-model/performance/performance)
+  - [Performance Resource Timing API](/browser-object-model/performance/performance-resource-timing)
+  - [Performance Timeline API](/browser-object-model/performance/performance-timeline)
+  - Timing API
+  - Performance Frame Timing API
+- **多媒体 API**
+  - [音频 Web Auido API](/browser-object-model/multimedia/audio)
+  - [视频 Web Video API](/browser-object-model/multimedia/video)
+- **设备 API**
+  - [地理定位 Geolocation API](/browser-object-model/device/geolocation)
+  - [触控事件 TouchEvent](/browser-object-model/device/touch-event)
+  - [摄录设备](/browser-object-model/device/camera)
+  - [位置信息](/browser-object-model/device/position)
+  - Battery Status API
+- **集成 API**
+  - CSSOM
+  - Console API
+  - [Fullscreen API](/browser-object-model/integration/full-screen)
+  - Pointer Events 指针时间
+  - Pointer Lock API 指针锁定
 - **浏览器工作原理**
-  - [整体工作流程](/browser-working-principle/overall-workflow.md)
-  - [渲染引擎](/browser-working-principle/the-rendering-engine.md)
-  - [构建对象模型](/browser-working-principle/constructing-the-object-model.md)
-  - [脚本加载](/browser-working-principle/script-loads.md)
-  - [渲染树构建](/browser-working-principle/render-tree-construction.md)
-  - [布局](/browser-working-principle/layout.md)
-  - [绘制](/browser-working-principle/painting.md)
-  - [回流和重绘](/browser-working-principle/reflow-and-repaint.md)
-  - [CSS2 可视模型](/browser-working-principle/css2-visual-module.md)
-  - [渲染层合并](/browser-working-principle/composite.md)
+  - [整体工作流程](/browser-object-model/browser-working-principle/workflow)
+  - [渲染引擎](/browser-object-model/browser-working-principle/the-rendering-engine)
+  - [构建对象模型](/browser-object-model/browser-working-principle/constructing-the-object-model)
+  - [脚本加载](/browser-object-model/browser-working-principle/script-loads)
+  - [渲染树构建](/browser-object-model/browser-working-principle/render-tree-construction)
+  - [布局](/browser-object-model/browser-working-principle/layout)
+  - [绘制](/browser-object-model/browser-working-principle/painting)
+  - [回流和重绘](/browser-object-model/browser-working-principle/reflow-and-repaint)
+  - [CSS2 可视模型](/browser-object-model/browser-working-principle/css2-visual-module)
+  - [渲染层合并](/browser-object-model/browser-working-principle/composite)
+- **移动开发原理**
+  - [移动 Web 开发](/browser-object-model/wireless-development/mobile-web-development)
+  - [视口](/browser-object-model/wireless-development/viewport)
+  - [适配方案](/browser-object-model/wireless-development/adaptation)
+
+> ⚠️ 图形学领域的 SVG、Canvas、WebGL 集成于 [visualization-guidebook](https://tsejx.github.io/visualization-guidebook)
