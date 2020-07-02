@@ -5,6 +5,7 @@
   "description": "A guidebook for the convenience of the front-end developers",
   "scripts": {
     "dev": "yarn run dumi dev --port=8010",
+    "start": "yarn run dev",
     "lint:md": "lint-md *.md",
     "lint:fix": "lint-md *.md --fix",
     "build": "yarn run dumi build",
