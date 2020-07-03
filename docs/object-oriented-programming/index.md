@@ -18,7 +18,6 @@ order: 1
   - [对象类型](/object-oriented-programming/object-understand/the-object-type)
   - [属性操作](/object-oriented-programming/object-understand/manipulating-property)
   - [对象属性描述符](/object-oriented-programming/object-understand/attributes-object)
-  - [描述符方法](/object-oriented-programming/object-understand/the-descriptor-methods)
   - [对象状态](/object-oriented-programming/object-understand/the-object-status)
 - **创建对象**
   - [工厂模式](/object-oriented-programming/object-creation/the-factory-pattern)

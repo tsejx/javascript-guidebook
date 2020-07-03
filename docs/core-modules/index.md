@@ -61,10 +61,9 @@ order: 1
     - [函数防抖](/core-modules/ecmascript-function-objects/function-types/debounce)
 - **模块化**
   - [**模块化**](/core-modules/modularization/modularization)
-  - **ECMScript 6 Module**
-    - [import](/core-modules/modularization/ecmascript6-module/import)
-    - [export](/core-modules/modularization/ecmascript6-module/export)
-    - [复合写法](/core-modules/modularization/ecmascript6-module/compound)
-    - [模块的继承](/core-modules/modularization/ecmascript6-module/module-inheritance)
-    - [跨模块常量](/core-modules/modularization/ecmascript6-module/cross-module-constant)
-    - [动态导入](/core-modules/modularization/ecmascript6-module/dynamic-import)
+  - [import](/core-modules/modularization/import)
+  - [export](/core-modules/modularization/export)
+  - [复合写法](/core-modules/modularization/compound)
+  - [模块的继承](/core-modules/modularization/module-inheritance)
+  - [跨模块常量](/core-modules/modularization/cross-module-constant)
+  - [动态导入](/core-modules/modularization/dynamic-import)
