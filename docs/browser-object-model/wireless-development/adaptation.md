@@ -9,13 +9,13 @@ title: 适配方案
 order: 3
 ---
 
-## 适配方案
+# 适配方案
 
 由于移动端的特殊性，屏幕的尺寸碎片化严重，要想很好的适配不同的尺寸的设备，需要我们前端开发相比 PC 端要做一些基层的适配方案。
 
 关键是需要找到一种长度单位，使得一样的取值，在不同尺寸的设备屏幕上按大小比例缩放。
 
-### 常见的适配方案
+## 常见的适配方案
 
 - [流式布局](#流式布局)
 - 视口适配
@@ -26,7 +26,7 @@ order: 3
   - [固定宽度方案](#固定宽度方案)
   - [响应式方案](#响应式方案)
 
-### 流式布局
+## 流式布局
 
 流式布局即使用百分比定义宽度与固定绝对高度的布局方案。
 
@@ -49,42 +49,38 @@ order: 3
 - 水平百分比布局或弹性布局
 - 垂直方向像素恒定
 
-#### 水平百分比布局
+### 水平百分比布局
 
-```html
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
-/>
-
-<style>
-  header {
-    /* 宽度默认100% */
-    height: 45px;
-    line-height: 45px;
-    background-color: #00b38a;
-    color: #fff;
-    /* 可根据媒体查询适当调整字体大小 */
-    font-size: 1.8rem;
-    text-align: center;
-    position: relative;
-  }
-</style>
-
-<header></header>
+```html | inline
+<html>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+  />
+  <header></header>
+</html>
 ```
 
-#### 水平弹性布局
+样式：
+
+```less
+header {
+  /* 宽度默认100% */
+  height: 45px;
+  line-height: 45px;
+  background-color: #00b38a;
+  color: #fff;
+  /* 可根据媒体查询适当调整字体大小 */
+  font-size: 1.8rem;
+  text-align: center;
+  position: relative;
+}
+```
+
+### 水平弹性布局
 
 ```html
-<style>
-  header {
-    height: 45px;
-    display: flex;
-    justify-content: space-between;
-    line-height: 45px;
-  }
-</style>
+<style></style>
 
 <header>
   <span class="layout">水平弹性布局</span>
@@ -92,13 +88,24 @@ order: 3
 </header>
 ```
 
-### 视口适配
+样式：
+
+```css
+header {
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 45px;
+}
+```
+
+## 视口适配
 
 讨论方案之前，需要先了解三个关键概念：
 
-- [设备像素密度](viewport.md#设备像素密度)（Pixel Per Inch，PPI）：现实世界的一英寸内像素数，决定了屏幕的显示质量
-- [设备像素比率](viewport.md#设备像素比率)（Device Pixel Ratio，DPR）：物理像素与逻辑像素（px）的对应关系
-- [分辨率](viewport.md#分辨率)（Resolution）：屏幕区域的宽高所占像素数
+- [设备像素密度](viewport.md)（Pixel Per Inch，PPI）：现实世界的一英寸内像素数，决定了屏幕的显示质量
+- [设备像素比率](viewport.md)（Device Pixel Ratio，DPR）：物理像素与逻辑像素（px）的对应关系
+- [分辨率](viewport.md)（Resolution）：屏幕区域的宽高所占像素数
 
 《使用 Flexible 实现手淘 H5 页面的终端适配》
 
@@ -108,7 +115,7 @@ order: 3
 
 这种方案实现方式有多种 []() 介绍了淘宝实现方案和网易新闻实现的方案。
 
-#### Hack 实现方案
+### Hack 实现方案
 
 Flexible 方案：综合运用 `rem` 和 `px` 两种单位相互转换，并通过 Hack 手段根据设备的 DPR 值相应改变的 `<meta>` 标签中的 viewport 的 `scale` 值和 `html` 字体大小的值（根据官方说法属于过渡方案，现 2019.2 已升级 2.0 版本）
 
@@ -116,20 +123,20 @@ Flexible 方案：综合运用 `rem` 和 `px` 两种单位相互转换，并通�
 - 根据 DPR 的值来修改 `<html>` 的 `font-size`，从而使用 `rem` 实现等比缩放
 - 使用 Hack 手段用 `rem` 模拟 `vw` 特性
 
-##### 设置理想视口
+#### 设置理想视口
 
-```html
+<!-- ```html
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 />
-```
+``` -->
 
 设置理想视口，使得**布局视口**与**视觉视口**一样大，DOM 文档主宽度即为屏幕宽度。
 
 单个 CSS 像素（`1px`）由多少设备像素显示由具体设备而不同。
 
-##### 动态设置视口缩放
+#### 动态设置视口缩放
 
 对于 Android，所有设备缩放设为 1。对于 iOS，根据 DPR 不同，设置其缩放为 DPR 倒数。
 
@@ -193,7 +200,11 @@ function refreshRem() {
 }
 ```
 
-`<html data-dpr="2" style="font-size: 100px">`
+DOM 元素设定：
+
+```html
+<html data-dpr="2" style="font-size: 100px"></html>
+```
 
 - 根据不同的设备规划不同的布局（`font-size` 是不同设备上用 `rem` 的基准值）
 - 任何分辨率下字体需要保持一致（`data-dpr` 针对字体设置）
@@ -213,7 +224,7 @@ function refreshRem() {
   - 在 `scale=0.5` 时，`2px` 边框显示效果
 - 通过对比后发现，在 `scale=0.5` 时，`1px` 的线比 `scale=1.0` 要细，这也就解决了 `1px` 线条的显示问题
 
-##### 单位转换混合宏
+#### 单位转换混合宏
 
 ```scss
 // 使用 Sass 的混合宏
@@ -244,7 +255,7 @@ function refreshRem() {
 }
 ```
 
-#### 原生样式实现方案
+### 原生样式实现方案
 
 移动布局需要面对两个最为重要的问题：
 
@@ -345,7 +356,7 @@ export default () => <img alt="ViewportUnit" src={img} width={800} />;
 - 大于 `1px` 的边框、圆角、阴影都可以使用 `vw`
 - 内边距和外边距可以使用 `vw`
 
-##### 需要考虑的问题
+#### 需要考虑的问题
 
 **容器长宽比问题**
 
@@ -360,13 +371,13 @@ export default () => <img alt="ViewportUnit" src={img} width={800} />;
 
 对于 `1px` 是不建议将其转换成对应的 `vw` 单位的，但在 Retina 下，我们始终是需要面对如何解决 `1px` 的问题。在《[再谈 Retina 下 `1px` 的解决方案](https://www.w3cplus.com/css/fix-1px-for-retina.html)》文章中提供了多种解决 `1px` 的方案。在这里的话，个人推荐另外一种解决`1px` 的方案。依旧是使用 PostCSS 插件，解决 `1px` 可以使用 [postcss-write-svg](https://github.com/jonathantneal/postcss-write-svg)。
 
-#### 技术总结
+### 技术总结
 
 - 使用 `vw` 实现页面适配，并且通过 PostCSS 插件 [postcss-px-to-viewport](https://github.com/evrone/postcss-px-to-viewport) 把 `px` 转换成 `vw`。这样实现的做法便于开发者开发，无须用在开发过程中进行任何计算，只需要根据设计图写 `px` 单位。
 - 为了更好的实现长宽比，特别针对于 `ima`、`video`、`iframe` 元素，通过 PostCSS 插件 `postcss-aspect-ratio-mini` 来实现，在实际使用中，只需把对应的宽高写进去即可
 - 为了解决 `1px` 问题，使用 PostCSS 插件 `postcss-write-svg`自动生成 `border-image` 或者 `background-image` 的图片
 
-### 根元素适配
+## 根元素适配
 
 `rem`（font size of the root element）是指相对于根元素的字体大小的单位。简单的说它就是一个相对单位。看到 `rem` 大家一定会想起 `em` 单位，`em`（font size of the element）是指相对于父元素的字体大小的单位。它们之间其实很相似，只不过一个计算的规则是依赖根元素一个是依赖父元素计算。
 
@@ -401,7 +412,7 @@ export default () => <img alt="ViewportUnit" src={img} width={800} />;
 - 占用了 `rem` 单位
 - 不是纯 CSS 方案
 
-#### 字体大小适配
+### 字体大小适配
 
 在宽高中使用 rem 单位，是为了保证在不同宽度尺寸的设备中能够保证布局的等比例缩放。
 
@@ -411,19 +422,19 @@ export default () => <img alt="ViewportUnit" src={img} width={800} />;
 
 由于 Retina 屏幕下 DPR 的不同，我们又想显示的字体一样大，于是就给字体再增大 DPR 的倍数，这样当缩小 DPR 倍的时候，那么字体也就和设计稿所示的大小一样大了，在不同的手机中显示的大小也是一致的。
 
-### 其他适配方案
+## 其他适配方案
 
-#### 固定宽度方案
+### 固定宽度方案
 
 固定页面宽度的做法，早期有些网站把页面设置成 320 的宽度，超出部分留白，这样做视觉，前端都挺开心，视觉在也不用被流式布局限制自己的设计灵感了，前端也不用在搞坑爹的流式布局。但是这种解决方案也是存在一些问题，例如在大屏幕手机下两边是留白的，还有一个就是大屏幕手机下看起来页面会特别小，操作的按钮也很小。
 
-#### 响应式方案
+### 响应式方案
 
 响应式这种方式在国内很少有大型企业的复杂性的网站在移动端用这种方法去做，主要原因是工作大，维护性难，所以一般都是中小型的门户或者博客类站点会采用响应式的方法从 WebPage 到 WebApp 直接一步到位，因为这样反而可以节约成本，不用再专门为自己的网站做一个 WebApp 的版本。
 
 ---
 
-参考资料：
+**参考资料：**
 
 - [WebAPP 变革之 rem](http://www.cocoachina.com/webapp/20141224/10746.html)
 - [手机淘宝的 flexible 设计与实现](http://www.html-js.com/article/2402)
