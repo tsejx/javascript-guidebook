@@ -13,7 +13,9 @@
   },
   "devDependencies": {
     "dumi": "^1.0.31",
-    "lint-md": "^0.1.1"
+    "lint-md": "^0.1.1",
+    "prism-react-renderer": "^1.1.1",
+    "prismjs": "^1.21.0"
   },
   "homepage": "https://github.com/tsejx/javascript-guidebook#readme",
   "repository": {
