@@ -20,12 +20,25 @@ order: 2
 
 ## TCP
 
-**传输控制协议**（Transmission Control Protocol，TCP）是一种**面向连接**（连接导向）的、可靠的、 基于 IP 协议的传输层协议。
+**传输控制协议**（Transmission Control Protocol，简称 TCP）是一种**面向连接**（连接导向）的、可靠的、 基于 IP 协议的传输层协议。
 
-- 每一条 TCP 连接只能有两个端点，每一条 TCP 连接只能是一对一；
-- TCP 提供可靠交付的服务。通过 TCP 连接传送的数据，无差错、不丢失、不重复、并且按序到达；
-- TCP 提供全双工通信。TCP 允许通信双方的应用进程在任何时候都能发送数据。TCP 连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据；
-- 面向字节流。TCP 中的“流”（Stream）指的是流入进程或从进程流出的字节序列。
+- 每一条 TCP 连接只能有两个端点，每一条 TCP 连接只能是一对一
+- TCP 提供可靠交付的服务。通过 TCP 连接传送的数据，无差错、不丢失、不重复、并且按序到达
+- TCP 提供全双工通信。TCP 允许通信双方的应用进程在任何时候都能发送数据。TCP 连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据
+- 面向字节流，TCP 中的 **流**（Stream）指的是流入进程或从进程流出的字节序列
+
+### TCP 协议特点
+
+在 IP 协议之上，解决网络通讯可依赖问题。
+
+- 点对点（不能广播、多播），面向连接
+- 双向传递（全双工）
+- 字节流：打包成报文段、保证有序接收、重复报文自动丢弃
+  - 缺点：不维护应用报文的边界（对比 HTTP、GEPC）
+  - 优点：不强制要求应用必须离散的创建数据块，不限制数据块大小
+- 流量缓冲：解决速度不匹配问题
+- 可靠的传输服务（保证可达，丢包时通过重发进而增加时延实现可靠性）
+- 拥塞控制
 
 ### 数据包结构
 
@@ -49,9 +62,20 @@ TCP 首部标志比特有 6 个：URG、ACK、PSH、RST、SYN、FIN
 
 TCP 提供<span style="font-weight:bold;color:red">面向连接</span>的通信传输。面向有连接是指在数据通信开始之前先做好两端之间的准备工作，也就是说无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。
 
-三次握手是指建立一个 TCP 连接时需要客户端和服务器端总共发送三个包以确认连接的建立。三次握手的目的是**同步连接双方的序列号和确认号**并**交换 TCP 窗口大小信息**。在 Socket 编程中，这一过程由客户端执行 connect 来触发。
+三次握手是指建立一个 TCP 连接时需要客户端和服务器端总共发送三个包以确认连接的建立。
 
-**三次握手流程图**
+#### 握手的目标
+
+三次握手的目的：
+
+- **同步连接双方的 Sequence 序列号和确认号**
+  - 初始序列号 ISN（Initial Sequence Number）
+- **交换 TCP 窗口大小信息**
+  - 如 MSS、窗口比例因子、选择性确认、指定校验和算法
+
+在 Socket 编程中，这一过程由客户端执行 `connect` 来触发。
+
+#### 三次握手流程图
 
 ```jsx | inline
 import React from 'react';
@@ -60,15 +84,46 @@ import img from '../../assets/transport-layer-protocol/handshake.jpg';
 export default () => <img alt="三次握手流程图" src={img} width={800} />;
 ```
 
-1. **第一次握手**：**建立连接**。客户端发送连接请求报文段，将标志比特位 SYN 置为 1，随机产生一个 Sequence Number 值为 X（由操作系统动态随机选取一个 32 位长的序列号），并将该数据包发送给服务端，客户端进入 `SYN_SENT` 状态，等待服务端确认。
-2. **第二次握手**：**服务端收到 SYN 报文段**。服务端收到数据包后需要对标志位 SYN 报文段进行确认，确认后设置 Acknowledgment Number 为 X+1（Sequence Number+1）；同时，自己还要发送 SYN 请求信息（以建立服务端对客户端的连接），将 SYN 设置为 1，设置 Sequence Number 值为 Y（由操作系统动态随机选取一个 32 位长的序列号），服务端将上述所有信息放到一个报文段（即 SYN+ACK 报文段）中，一并发送给客户端**以确认建立连接请求**，服务端进入 `SYN_RCVD` 状态。
+1. **第一次握手**：**建立连接**。客户端发送连接请求报文段，将标志比特位 SYN 置为 1，随机产生一个序列号码 Sequence Number 值为 X（由操作系统动态随机选取一个 32 位长的序列号），并将该数据包发送给服务端，客户端进入 `SYN_SENT` 状态，等待服务端确认。
+2. **第二次握手**：**服务端收到 SYN 报文段**。服务端收到数据包后需要对标志位 SYN 报文段进行确认，确认后设置确认号码 Acknowledgment Number 为 X+1（Sequence Number+1）；同时，自己还要发送 SYN 请求信息（以建立服务端对客户端的连接），将 SYN 设置为 1，设置 Sequence Number 值为 Y（由操作系统动态随机选取一个 32 位长的序列号），服务端将上述所有信息放到一个报文段（即 SYN+ACK 报文段）中，一并发送给客户端**以确认建立连接请求**，服务端进入 `SYN_RCVD` 状态。
 3. **第三次握手**：**客户端收到服务端的 SYN+ACK 报文段**。确认后，然后将 Acknowledgment Number 设置为 Y+1，向服务端发送 ACK 报文段，这个报文段发送完毕后，客户端和服务器端进入 ESTABLISHED 状态，完成三次握手，随后客户端与服务器端之间可以开始传输数据了。
 
 握手过程中传送的包里<span style="font-weight:bold;color:red">不包含数据</span>，只有三次握手完毕后，客户端与服务器才正式开始传送数据。理想状态下，TCP 连接一旦建立，在通信双方中的任何一方主动关闭连接之前，TCP 连接都将被一直保持下去。
 
+#### 握手报文
+
+SYN 报文
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/transport-layer-protocol/tcp-handshaking-1.jpg';
+
+export default () => <img alt="三次握手-1" src={img} width={640} />;
+```
+
+SYN/ACK 报文
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/transport-layer-protocol/tcp-handshaking-2.jpg';
+
+export default () => <img alt="三次握手-2" src={img} width={640} />;
+```
+
+ACK 报文
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/transport-layer-protocol/tcp-handshaking-3.jpg';
+
+export default () => <img alt="三次握手-3" src={img} width={640} />;
+```
+
+#### 其他问题
+
 **未连接队列**
 
-在三次握手协议中，服务器维护一个未连接队列，该队列为每个客户端的 SYN 包（syn=j）开设一个条目，该条目表明服务器已收到 SYN 包，并向客户端发出确认，正在等待客户端的确认包。这些条目所标识的连接在服务器处于 SYN_RECV 状态，当服务器收到客户端的确认包时，删除该条目，服务器进入 ESTABLISHED 状态。
+在三次握手协议中，服务器维护一个未连接队列，该队列为每个客户端的 SYN 包（syn=j）开设一个条目，该条目表明服务器已收到 SYN 包，并向客户端发出确认，正在等待客户端的确认包。这些条目所标识的连接在服务器处于 `SYN_RECV` 状态，当服务器收到客户端的确认包时，删除该条目，服务器进入 `ESTABLISHED` 状态。
 
 **为什么建立 TCP 连接需要三次握手？**
 
@@ -92,9 +147,9 @@ export default () => <img alt="三次握手流程图" src={img} width={800} />;
 
 ### 四次挥手
 
-四次挥手即终止 TCP 连接，就是指断开一个 TCP 连接时，需要客户端和服务端总共发送 4 个包以确认连接的断开。在 Socket 编程中，这一过程由客户端或服务端任一方执行 close 来触发。
+四次挥手即终止 TCP 连接，就是指断开一个 TCP 连接时，需要客户端和服务端总共发送 4 个包以确认连接的断开。在 Socket 编程中，这一过程由客户端或服务端任一方执行 `close` 来触发。
 
-由于 TCP 连接是<span style="font-weight:bold;color:red">全双工</span>的，因此，每个方向都必须要**单独进行关闭**，这一原则是当一方完成数据发送任务后，发送一个 FIN 来终止这一方向的连接，收到一个 FIN 只是意味着这一方向上没有数据流动了，即不会再收到数据了，但是在这个 TCP 连接上仍然能够发送数据，直到这一方向也发送了 FIN。首先进行关闭的一方将执行主动关闭，而另一方则执行被动关闭。
+由于 TCP 连接是<span style="font-weight:bold;color:red">全双工</span>的，因此，每个方向都必须要**单独进行关闭**，这一原则是当一方完成数据发送任务后，发送一个 `FIN` 来终止这一方向的连接，收到一个 `FIN` 只是意味着这一方向上没有数据流动了，即不会再收到数据了，但是在这个 TCP 连接上仍然能够发送数据，直到这一方向也发送了 `FIN`。首先进行关闭的一方将执行主动关闭，而另一方则执行被动关闭。
 
 **四次挥手流程图**
 
@@ -105,10 +160,12 @@ import img from '../../assets/transport-layer-protocol/wave.jpg';
 export default () => <img alt="四次挥手流程图" src={img} width={800} />;
 ```
 
-1. **第一次挥手**：客户端设置 Sequence Number，发送一个 FIN 报文段，用于关闭客户端到服务器端的数据传送，客户端进入 `FIN_WAIT_1` 状态。意思是说"我客户端没有数据要发给你了"，但是如果你服务器端还有数据没有发送完成，则不必急着关闭连接，可以继续发送数据。
-2. **第二次挥手**：服务器端收到 FIN 报文段，回复 ACK 报文段，Acknowledgment Number 为 Sequence Number 加一，告诉客户端，你的请求我收到了，我同意你的关闭请求。这个时候客户端就进入 `FIN_WAIT_2` 状态。
-3. **第三次挥手**：当服务器端确定数据已发送完成，则向客户端发送 FIN 报文段，告诉客户端，好了，我这边数据发完了，准备好关闭连接了。服务器端进入 `LAST_ACK` 状态。
-4. **第四次挥手**：客户端收到 FIN 报文段后，就知道可以关闭连接了，但是他还是不相信网络，怕服务器端不知道要关闭，所以发送 ACK 报文段回复服务端，然后进入 `TIME_WAIT` 状态，如果服务端端没有收到 ACK 则可以重传。服务器端收到 ACK 后，就知道可以断开连接了。客户端等待了 2MSL 后依然没有收到回复，则证明服务器端已正常关闭，那好，我客户端也可以关闭连接了。最终完成了四次握手。
+1. **第一次挥手**：客户端设置 Sequence Number，发送一个 `FIN` 报文段，用于关闭客户端到服务器端的数据传送，客户端进入 `FIN_WAIT_1` 状态。意思是说「我客户端没有数据要发给你了」，但是如果你服务器端还有数据没有发送完成，则不必急着关闭连接，可以继续发送数据。
+2. **第二次挥手**：服务器端收到 `FIN` 报文段，回复 `ACK` 报文段，Acknowledgment Number 为 Sequence Number 加 1，告诉客户端，你的请求我收到了，我同意你的关闭请求。这个时候客户端就进入 `FIN_WAIT_2` 状态。
+3. **第三次挥手**：当服务器端确定数据已发送完成，则向客户端发送 `FIN` 报文段，告诉客户端，好了，我这边数据发完了，准备好关闭连接了。服务器端进入 `LAST_ACK` 状态。
+4. **第四次挥手**：客户端收到 `FIN` 报文段后，就知道可以关闭连接了，但是他还是不相信网络，怕服务器端不知道要关闭，所以发送 `ACK` 报文段回复服务端，然后进入 `TIME_WAIT` 状态，如果服务端端没有收到 `ACK` 则可以重传。服务器端收到 `ACK` 后，就知道可以断开连接了。客户端等待了 2MSL（通常是两分钟）后依然没有收到回复，则证明服务器端已正常关闭，那好，我客户端也可以关闭连接了。最终完成了四次握手。
+
+> MSL（Maximum Segment Lifetime）报文最大生存时间。维持 2MSL 时长的 TIME-WAIT 状态，保证至少一次报文的往返时间内端口是不可复用。
 
 - 第一次挥手是**服务端确认客户端需要断开连接**
 - 第二次挥手是**客户端确认服务器接收断开请求**
@@ -119,18 +176,64 @@ export default () => <img alt="四次挥手流程图" src={img} width={800} />;
 
 **为什么断开 TCP 连接需要四次挥手？**
 
-由于 TCP 连接采取全双工的通信方式，因此每个方向都必须单独进行关闭，这个原则是当一方完成它的数据发送任务后就能发送一个 FIN 来终止这个方向的连接。收到一个 FIN 只意味着这一方向上没有数据流动，一个 TCP 连接在收到一个 FIN 后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。
+由于 TCP 连接采取全双工的通信方式，因此每个方向都必须单独进行关闭，这个原则是当一方完成它的数据发送任务后就能发送一个 `FIN` 来终止这个方向的连接。收到一个 `FIN` 只意味着这一方向上没有数据流动，一个 TCP 连接在收到一个 `FIN` 后仍能发送数据。首先进行关闭的一方将执行主动关闭，而另一方执行被动关闭。
 
 **为什么基于 TCP 的程序往往都有个应用层的心跳检测机制？**
 
 TCP 建立链接后，只是在两端的内核里面维持 TCP 信息，实际上并没有一个物理的连接通路，对端这个时候挂了，谁也不知道。
 
+### TCP 状态机
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/transport-layer-protocol/tcp-status-machine.jpeg';
+
+export default () => <img alt="TCP 状态机" src={img} width={400} />;
+```
+
+- 11 种状态
+  - CLOSED
+  - LISTEN
+  - SYN-SENT
+  - SYN-RECEIVED
+  - ESTABLISHED
+  - CLOSE-WAIT
+  - LAST-ACK
+  - FIN-WAIT1
+  - FIN-WAIT2
+  - CLOSING
+  - TIME-WAIT
+- 3 种事件
+
+  - SYN
+  - FIN
+  - ACK
+
+### Keep-Alive
+
+TCP 的 Keep-Alive 功能
+
+Linux 的 TCP Keep-Alive
+
+- 发送心跳周期
+  - Linux：`net.ipv4.tcp_keepalive_time = 7200`
+- 探测包发送间隔
+  - `net.ipv4.tcp_keepalive_intvl = 75`
+- 探测包重试次数
+  - `net.ipv4.tcp_keepalive_probes = 9`
+
 ### SYN FLOOD 攻击
 
 攻击原理：
 
-- 利用 TCP 协议缺陷发送大量伪造的 TCP 连接请求，从而使得被攻击方资源耗尽（CPU 满负荷或内存不足）的攻击方式。
-- 第二次握手时候会出现：SYN Timeout，一个用户向服务器发送了 SYN 报文后突然死机或掉线，服务器等待 SYN，ACK。
+攻击者短时间伪造不同 IP 地址的 SYN 报文，快速占满 backlog 队列，使服务器不能为正常用户服务。
+
+- net.core.netdev_max_backlog
+  - 接收自网卡、但未被内核协议栈处理的报文队列长度
+- net.ipv4.tcp_max_syn_backlog
+  - SYN_RCVD 状态连接的最大个数
+- net.ipv4.tcp_abort_on_overflow
+  - 超出处理能力时，对心来的 SYN 直接回包 RST，丢弃连接
 
 ## UDP
 
@@ -175,6 +278,7 @@ TCP 建立链接后，只是在两端的内核里面维持 TCP 信息，实际�
 **参考资料：**
 
 - [📖 维基百科：传输控制协议](https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE)
+- [📝 TCP 协议详解](https://juejin.im/post/5ba895a06fb9a05ce95c5dac)
 - [📝 一篇文章带你熟悉 TCP/IP 协议](https://juejin.im/post/5a069b6d51882509e5432656)
 - [📝 前端必须懂的计算机网络知识](https://juejin.im/post/5ba3b68c6fb9a05d287345ab)
 - [📝 就是要你懂 TCP](http://jm.taobao.org/2017/06/08/20170608/)
