@@ -6,7 +6,7 @@ group:
   title: HTTP
   order: 3
 title: HTTP 身份校验
-order: 7
+order: 8
 ---
 
 # HTTP 身份验证
@@ -113,5 +113,5 @@ HTTP Basic 提供的身份验证策略缺陷比较明显，当代应用较多使
 
 **参考资料：**
 
-- [MDN HTTP Authentication](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Authentication)
-- [一文读懂 HTTP Basic 身份认证](https://juejin.im/entry/5ac175baf265da239e4e3999)
+- [📖 MDN HTTP Authentication](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Authentication)
+- [📝 一文读懂 HTTP Basic 身份认证](https://juejin.im/entry/5ac175baf265da239e4e3999)
