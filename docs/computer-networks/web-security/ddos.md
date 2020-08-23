@@ -6,12 +6,16 @@ group:
   title: Web 安全
   order: 4
 title: DDoS 攻击
-order: 3
+order: 4
 ---
 
 # DDoS 攻击
 
-DDoS 是英文 Distributed Denial of Service 的缩写，中文译作分布式拒绝服务。那什么又是拒绝服务（Denial of Service）呢？凡是能导致合法用户不能够正常访问网络服务的行为都算是拒绝服务攻击。也就是说拒绝服务攻击的目的非常明确，就是要阻止合法用户对正常网络资源的访问，从而达成攻击者不可告人的目的。
+DDoS 是英文 Distributed Denial of Service 的缩写，中文译作分布式拒绝服务。
+
+那什么又是拒绝服务（Denial of Service）呢？
+
+凡是能导致合法用户不能够正常访问网络服务的行为都算是拒绝服务攻击。也就是说拒绝服务攻击的目的非常明确，就是要阻止合法用户对正常网络资源的访问，从而达成攻击者不可告人的目的。
 
 分布式拒绝服务攻击一旦被实施，攻击网络包就会从很多 DoS 攻击源犹如洪水般涌向受害主机。从而把合法用户的网络请求淹没，导致合法用户无法正常访问服务器的网络资源。
 
@@ -19,11 +23,22 @@ DDoS 是英文 Distributed Denial of Service 的缩写，中文译作分布式�
 
 ### 反射型
 
-一般而言，我们会根据针对的协议类型和攻击方式的不同，把 DDoS 分成 SYN Flood、ACK Flood、Connection Flood、UDP Flood、NTP Flood、SSDP Flood、DNS Flood、HTTP Flood、ICMP Flood、CC 等各类攻击类型。
+一般而言，我们会根据针对的协议类型和攻击方式的不同，把 DDoS 分成：
+
+- SYN Flood
+- ACK Flood
+- Connection Flood
+- UDP Flood
+- NTP Flood
+- SSDP Flood
+- DNS Flood
+- HTTP Flood
+- ICMP Flood
+- CC
 
 每一种攻击类型都有其特点，而反射型的 DDoS 攻击是一种新的变种。攻击者并不直接攻击目标服务的 IP，而是利用互联网的某些特殊服务开放的服务器，通过伪造被攻击者的 IP 地址向有开放服务的服务器发送构造的请求报文，该服务器会将数倍于请求报文的回复数据发送到被攻击 IP，从而对后者间接形成 DDoS 攻击。
 
-在反射型攻击中，攻击者利用了网络协议的缺陷或者漏洞进行 IP 欺骗，主要是因为很多协议（例如 ICMP、UDP 等）对源 IP 不进行认证。同时，要达到更好的攻击效果，黑客一般会选择具有放大效果的协议服务进行攻击。
+在反射型攻击中，攻击者利用了网络协议的缺陷或者漏洞进行 **IP 欺骗**，主要是因为很多协议（例如 ICMP、UDP 等）对源 IP 不进行认证。同时，要达到更好的攻击效果，黑客一般会选择具有放大效果的协议服务进行攻击。
 
 总结一下就是利用 IP 欺骗进行反射和放大，从而达到四两拨千斤的效果。目前常见的反射攻击有：DNS 反射攻击、NTP 反射攻击、SSDP 反射攻击等。
 
@@ -49,7 +64,7 @@ DDoS 是英文 Distributed Denial of Service 的缩写，中文译作分布式�
 
 随着 DDoS 攻击技术的发展，又出现了一种新型的攻击方式 Link Flooding Attack，这种方式不直接攻击目标而是以堵塞目标网络的上一级链路为目的。对于使用了 IP Anycast 的企业网络来说，常规的 DDoS 攻击流量会被分摊到不同地址的基础设施，这样能有效缓解大流量攻击。所以攻击者发明了一种新方法，攻击至目标网络 traceroute 的倒数第二跳，即上联路由，致使链路拥塞。
 
-## 常见攻击方法
+## 攻击方法
 
 DDoS 攻击从层次上可分为**网络层攻击**与**应用层攻击**，从攻击手法上可分为**快型流量攻击**与**慢型流量攻击**，但其原理都是造成资源过载，导致服务不可用。
 
@@ -109,10 +124,7 @@ CC 攻击的原理就是借助代理服务器针对目标系统的消耗资源�
 
 Slowloris 是一种慢速连接攻击，Slowloris 是利用 Web Server 的漏洞或设计缺陷，直接造成拒绝服务。其原理是：以极低的速度往服务器发送 HTTP 请求，Apache 等中间件默认会设置最大并发链接数，而这种攻击就是会持续保持连接，导致服务器链接饱和不可用。Slowloris 有点类似于 SYN Flood 攻击，只不过 Slowloris 是基于 HTTP 协议。
 
-Slowloris  PoC
-
 ```http
-# 构造以下畸形 HTTP 请求包
 GET / HTTP/1.1\r\n
 Host: Victim host\r\n
 User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.503l3; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; MSOffice 12)\r\n
