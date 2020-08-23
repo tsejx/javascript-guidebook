@@ -12,7 +12,7 @@
     "deploy": "bash ./scripts/deploy.sh"
   },
   "devDependencies": {
-    "dumi": "^1.0.31",
+    "dumi": "^1.0.34",
     "lint-md": "^0.1.1",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.21.0"
