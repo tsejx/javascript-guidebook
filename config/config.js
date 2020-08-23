@@ -1,13 +1,11 @@
-export default {
+const config = {
   mode: 'site',
-  hash: true,
   title: 'JavaScript Guidebook',
   description: 'JavaScript 完全知识体系',
   base: '/javascript-guidebook/',
   publicPath: '/javascript-guidebook/',
   favicon: './favicon.ico',
   logo: 'http://img.mrsingsing.com/javascript-guidebook-favicon.png',
-  ssr: {},
   exportStatic: {},
   dynamicImport: {},
   navs: [
@@ -18,3 +16,9 @@ export default {
     },
   ],
 };
+
+if (process.env.NODE_ENV !== 'development') {
+  config.ssr = {};
+}
+
+export default config;
