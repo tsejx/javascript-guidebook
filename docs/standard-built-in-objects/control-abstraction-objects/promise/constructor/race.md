@@ -22,11 +22,11 @@ Promise.race(iterator)
 Promise.race([promise1, promise2, ..., promiseN])
 ```
 
-与 [Promise.all](all.md) 相似，`Promise.race` 的 `iterator` 参数必须是 [Iterator](../../iterator-objects/iterator.md)。
+与 [Promise.all](./all) 相似，`Promise.race` 的 `iterator` 参数必须是 [Iterator](../../iterator-objects/iterator)。
 
 只要参数 `iterator` 的其中某个 Promise 实例成员的状态变更，那么 `Promise.race` 会立即返回一个新创建的 Promise 实例，并将返回值传递给回调函数。
 
-`Promise.race` 方法的参数与 `Promise.all` 方法一样，如果不是 Promise 实例，就会先调用 [Promise.resolve](resolve.md) 方法，将参数转为 Promise 实例，再进一步处理。
+`Promise.race` 方法的参数与 `Promise.all` 方法一样，如果不是 Promise 实例，就会先调用 [Promise.resolve](./resolve) 方法，将参数转为 Promise 实例，再进一步处理。
 
 ## 示例
 

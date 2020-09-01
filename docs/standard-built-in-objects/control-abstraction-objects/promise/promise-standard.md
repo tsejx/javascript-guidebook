@@ -12,13 +12,13 @@ order: 3
 
 # Promise/A+ 规范
 
-Promise 表示一个异步操作的最终结果，与之进行交互的方式主要是 then 方法，该方法注册了两个回调函数，用于接收 Promise 的终值或本 Promise 不能执行的原因。
+Promise 表示一个异步操作的最终结果，与之进行交互的方式主要是 `.then` 方法，该方法注册了两个回调函数，用于接收 Promise 的终值或本 Promise 不能执行的原因。
 
-本规范详细列出了 then 方法的执行过程，所有遵循 Promises/A+ 规范实现的 Promise 均可以本标准作为参照基础来实施 then 方法。因而本规范是十分稳定的。尽管 Promise/A+ 组织有时可能会修订本规范，但主要是为了处理一些特殊的边界情况，且这些改动都是微小且向下兼容的。如果我们要进行大规模不兼容的更新，我们一定会在事先进行谨慎地考虑、详尽的探讨和严格的测试。
+本规范详细列出了 `.then` 方法的执行过程，所有遵循 Promises/A+ 规范实现的 Promise 均可以本标准作为参照基础来实施 `.then` 方法。因而本规范是十分稳定的。尽管 Promise/A+ 组织有时可能会修订本规范，但主要是为了处理一些特殊的边界情况，且这些改动都是微小且向下兼容的。如果我们要进行大规模不兼容的更新，我们一定会在事先进行谨慎地考虑、详尽的探讨和严格的测试。
 
 从历史上说，本规范实际上是把之前 Promise/A 规范 中的建议明确成为了行为标准：我们一方面扩展了原有规范约定俗成的行为，一方面删减了原规范的一些特例情况和有问题的部分。
 
-最后，核心的 Promises/A+ 规范不设计如何创建、解决和拒绝 Promise，而是专注于提供一个通用的 then 方法。上述对于 Promises 的操作方法将来在其他规范中可能会提及。
+最后，核心的 Promises/A+ 规范不设计如何创建、解决和拒绝 Promise，而是专注于提供一个通用的 `.then` 方法。上述对于 Promises 的操作方法将来在其他规范中可能会提及。
 
 ## 规范术语
 
@@ -29,14 +29,10 @@ Promise 表示一个异步操作的最终结果，与之进行交互的方式主
 
 ## 术语
 
-- **Promise**：Promise 是一个拥有 then 方法的对象或函数，其行为符合本规范；
-
-- **thenable**：是一个定义了 then 方法的对象或函数，文中译作"拥有 `then` 方法"；
-
-- **值（value）**：指任何 JavaScript 的合法值（包括 undefined , thenable 和 Promise）；
-
-- **异常（exception）**：是使用 throw 语句抛出的一个值。
-
+- **Promise**：Promise 是一个拥有 `.then` 方法的对象或函数，其行为符合本规范；
+- **thenable**：是一个定义了 `.then` 方法的对象或函数，文中译作"拥有 `.then` 方法"；
+- **值（value）**：指任何 JavaScript 的合法值（包括 undefined、thenable 和 Promise）；
+- **异常（exception）**：是使用 `throw` 语句抛出的一个值。
 - **拒因（reason）**：表示一个 Promise 的拒绝原因。
 
 ## 状态
@@ -170,18 +166,18 @@ promise2 = promise1.then(onFulfilled, onRejected);
 
 ### 注 1
 
-这里的**平台代码**指的是引擎、环境以及 promise 的实施代码。实践中要确保 onFulfilled 和 onRejected 方法异步执行，且应该在 then 方法被调用的那一轮事件循环之后的新执行栈中执行。这个事件队列可以采用“宏任务（macro-task）”机制或者“微任务（micro-task）”机制来实现。由于 promise 的实施代码本身就是平台代码（**译者注**：即都是 JavaScript），故代码自身在处理在处理程序时可能已经包含一个任务调度队列。
+这里的**平台代码**指的是引擎、环境以及 promise 的实施代码。实践中要确保 onFulfilled 和 onRejected 方法异步执行，且应该在 then 方法被调用的那一轮事件循环之后的新执行栈中执行。这个事件队列可以采用 **宏任务（macro-task）** 机制或者 **微任务（micro-task）** 机制来实现。由于 Promise 的实施代码本身就是平台代码（**译者注**：即都是 JavaScript），故代码自身在处理在处理程序时可能已经包含一个任务调度队列。
 
-**译者注**：这里提及了 macrotask 和 microtask 两个概念，这表示异步任务的两种分类。在挂起任务时，JS 引擎会将所有任务按照类别分到这两个队列中，首先在 macrotask 的队列（这个队列也被叫做 task queue）中取出第一个任务，执行完毕后取出 microtask 队列中的所有任务顺序执行；之后再取 macrotask 任务，周而复始，直至两个队列的任务都取完。
+**译者注**：这里提及了 `macrotask` 和 `microtask` 两个概念，这表示异步任务的两种分类。在挂起任务时，JavaScript 引擎会将所有任务按照类别分到这两个队列中，首先在 `macrotask` 的队列（这个队列也被叫做 `task queue` 任务队列）中取出第一个任务，执行完毕后取出 `microtask` 队列中的所有任务顺序执行；之后再取 `macrotask` 任务，周而复始，直至两个队列的任务都取完。
 
 两个类别的具体分类如下：
 
 - **macro-task**: script（整体代码）、`setTimeout`、`setInterval`、setImmediate、I/O、UI rendering
-- **micro-task**: process.nextTick、Promises（这里指浏览器实现的原生 Promise）、Object.observe、MutationObserver
+- **micro-task**: process.nextTick、Promise（这里指浏览器实现的原生 Promise）、Object.observe、MutationObserver
 
 ### 注 2
 
-在严格模式（strict）中，函数 `this` 的值为 `undefined`；在非严格模式中其为全局对象。
+在严格模式（`strict`）中，函数 `this` 的值为 `undefined`；在非严格模式中其为全局对象。
 
 ### 注 3
 
@@ -189,7 +185,7 @@ promise2 = promise1.then(onFulfilled, onRejected);
 
 ### 注 4
 
-总体来说，如果 `x` 符合当前实现，我们才认为它是真正的 Promise 。这一规则允许那些特例实现接受符合已知要求的 Promises 状态。
+总体来说，如果 `x` 符合当前实现，我们才认为它是真正的 Promise 。这一规则允许那些特例实现接受符合已知要求的 Promise 状态。
 
 ### 注 5
 
@@ -203,5 +199,7 @@ promise2 = promise1.then(onFulfilled, onRejected);
 
 **参考资料：**
 
-- [Promise/A+ 规范原文](https://Promisesaplus.com/)
-- [Promise/A+ 规范译文](http://www.ituring.com.cn/article/66566)
+- [📖 Promise/A+ 规范原文](https://Promisesaplus.com/)
+- [📖 Promise/A+ 规范译文](http://www.ituring.com.cn/article/66566)
+- [📝 手写一个Promise/A+，完美通过官方 872 个测试用例](https://juejin.im/post/6844904116913700877)
+- [📝 手写 Promise 核心原理](https://juejin.im/post/6856213486633304078)
