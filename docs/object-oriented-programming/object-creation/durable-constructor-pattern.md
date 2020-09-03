@@ -16,13 +16,13 @@ order: 7
 ```js
 function Person(name, age, job) {
   // 创建要返回的对象
-  let obj = new Object();
+  const obj = new Object();
 
   // 可以在这里定义私有变量和函数
 
   // 添加方法
   obj.sayName = function() {
-    alert(name);
+    console.log(name);
   };
 
   // 返回对象
@@ -30,13 +30,15 @@ function Person(name, age, job) {
 }
 ```
 
-注意，在以这种模式创建的对象中，除了使用 `sayName()` 方法之外，没有其他办法访问 `name` 的值。可以像下面使用稳妥 Person 构造函数。
+注意，在以这种模式创建的对象中，除了使用 `sayName()` 方法之外，没有其他办法访问 `name` 的值。可以像下面使用稳妥 `Person` 构造函数。
 
 ```js
-let friend = Person('Nicholas', 29, 'Software Engineer');
-friend.sayName(); // 'Nicholas'
+let uzi = Person('Uzi', 22, 'E-Sports Player');
+
+uzi.sayName();
+// 'Uzi'
 ```
 
-这样，变量 `friend` 中保存的是一个稳妥对象，而除了调用 `sayName()` 方法外，没有别的方式可以访问其数据成员。即使有其他代码会给这个对象添加方法或数据成员，但也不可能有别的办法访问传入到构造函数中的原始数据。稳妥构造函数模式提供的这种安全性，使得它非常适合在某些安全执行环境下使用。
+这样，变量 `uzi` 中保存的是一个稳妥对象，而除了调用 `sayName()` 方法外，没有别的方式可以访问其数据成员。即使有其他代码会给这个对象添加方法或数据成员，但也不可能有别的办法访问传入到构造函数中的原始数据。稳妥构造函数模式提供的这种安全性，使得它非常适合在某些安全执行环境下使用。
 
 > 与寄生构造函数模式类似，使用稳妥构造函数模式创建的对象与构造函数之间也没有什么关系，因此 `instanceof` 操作符对这种对象也没有意义。

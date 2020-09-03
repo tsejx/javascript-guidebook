@@ -21,7 +21,7 @@ order: 3
 * 私有方法移出模块
 * 命名为 Symbol 值
 
-**命名区别**
+### 命名区别
 
 ```js
 class Widget {
@@ -42,23 +42,23 @@ class Widget {
 
 上面代码中，`_bar` 方法前面的下划线，表示这是一个只限于内部使用的私有方法。但是，这种命名是不保险的，在类的外部，还是可以调用到这个方法。
 
-**私有方法移出模块**
+### 私有方法移出模块
 
 将私有方法一处模块，因为模块内部的所有方法都是对外可见的。
 
 ```js
 class Widget {
-    foo (baz) {
-        bar.call(this, baz)
-    }
+  foo (baz) {
+    bar.call(this, baz)
+  }
 }
 
 function bar(baz) {
-    return this.snaf = baz;
+  return this.snaf = baz;
 }
 ```
 
-**命名为 Symbol 值**
+### 命名为 Symbol 值
 
 利用 `Symbol` 值的唯一性，将私有方法的名字命名为一个 `Symbol` 值。
 
@@ -67,24 +67,24 @@ const bar = Symbol('bar')
 const snaf = Symbol('snaf')
 
 export default class myClass {
-    // 公有方法
-    foo (baz) {
-        this[bar](baz)
-    }
+  // 公有方法
+  foo (baz) {
+    this[bar](baz)
+  }
 
-    // 私有方法
-    [bar](baz) {
-        return this[snaf] = baz
-    }
+  // 私有方法
+  [bar](parm) {
+      return this[snaf] = baz
+  }
 }
 ```
 
 上面代码中，`bar` 和 `snaf` 都是 `Symbol` 值，导致第三方无法获取到它们，因此达到了私有方法和私有属性的效果。但是也不是绝对不行，`Reflect.ownKeys()`依然可以拿到它们。
 
  ```js
-const inst = new myClass()
+const instance = new Foo()
 
-Reflect.ownKeys(myClass.prototype)
+Reflect.ownKeys(Foo.prototype)
 // ['constructor', 'foo', Symbol(bar)]
  ```
 
@@ -96,11 +96,11 @@ Reflect.ownKeys(myClass.prototype)
 
 ```js
 class Student {
-    constructor () {
-        this.state = {
-            visible: true
-        }
+  constructor () {
+    this.state = {
+      visible: true
     }
+  }
 }
 ```
 
@@ -108,14 +108,15 @@ class Student {
 
 ```js
 class Point {
-    #x;
+  #x;
+  constructor (x = 0) {
+    #x = !x
+  }
 
-    constructor (x = 0) {
-        #x = !x
-    }
-
-	get x () { return #x }
-    set x (value) { #x = !value }
+  get x () { return #x }
+  set x (value) {
+    #x = !value
+  }
 }
 ```
 

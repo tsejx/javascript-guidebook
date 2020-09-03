@@ -15,21 +15,23 @@ order: 5
 
 ```js
 function Person(name, age, job) {
-    // 属性
-    this.name = name;
-    this.age = age;
-    this.job = job;
+  // 属性
+  this.name = name;
+  this.age = age;
+  this.job = job;
 
-    // 方法
-    if (typeof this.sayName != 'function'){
-        Person.prototype.sayName = function(){
-            alert(this.name);
-        }
+  // 方法（动态插入原型方法）
+  if (typeof this.sayName != 'function'){
+    Person.prototype.sayName = function(){
+      console.log(`I'm ${this.name}`);
     }
+  }
 }
 
-const friend = new Person('Nicholas', 29, 'Software Engineer');
-friend.sayName();
+const uzi = new Person('Uzi', 2, 'E-Sports Player');
+
+uzi.sayName();
+// 'I'm Uzi'
 ```
 
 这里只在 `sayName()` 方法不存在的情况下，才会将它添加到原型中。这段代码只会在初次调用构造函数时才会执行。此后，原型已经完成初始化，不需要再做什么修改了。不过要记住，这里对原型所做的修改，能够立即在所有实例中得到反映。

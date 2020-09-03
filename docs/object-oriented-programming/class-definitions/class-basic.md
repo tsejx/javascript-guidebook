@@ -11,41 +11,34 @@ order: 1
 
 # 类的基本语法
 
-- [类声明](#类声明)
-- [构造函数](#构造函数)
-- [实例对象](#实例对象)
-- [访问器属性](#访问器属性)
-- [属性表达式](#属性表达式)
-- [类的表达式](#类的表达式)
-  - [生成器方法](#生成器方法)
-  - [`this` 的指向](#this的指向)
+ECMAScript 6 中的 Class（类）概念，实际上可以把它看作 ECMAScript 5 对象原型写法的语法糖。
 
-ECMAScript6 中的 Class（类）概念，实际上可以把它看作 ECMAScript5 对象原型写法的语法糖。
+**ES5：**
 
 ```js
-// ES5
 function Point(x, y){
-    this.x = x
-    this.y = y
+  this.x = x
+  this.y = y
 }
 
 Point.prototype.toString = function() {
-    return '(' +  this.x + ',' + this.y + ')'
+  return '(' +  this.x + ',' + this.y + ')'
 }
 
 var p = new Point(1, 2)
 ```
 
+**ES6：**
+
 ```js
-// ES6
 class Point {
-    constructor(x, y){
-        this.x = x
-        this.y = y
-    }
-    toString(){
-        return '(' +  this.x + ',' + this.y + ')'
-    }
+  constructor(x, y){
+    this.x = x
+    this.y = y
+  }
+  toString(){
+    return '(' +  this.x + ',' + this.y + ')'
+  }
 }
 ```
 
@@ -57,18 +50,19 @@ class Point {
 
 ```js
 class Foo(){
-    // 构造函数
-    constructor(name = 'BOT'){
-        this.name = name
-    }
-    // 定义一个方法并且赋值给构造函数的原型
-    sayName(){
-        console.log(this.name)
-    }
+  // 构造函数
+  constructor(name = 'Uzi'){
+    this.name = name
+  }
+  // 定义一个方法并且赋值给构造函数的原型
+  sayName(){
+    console.log(this.name)
+  }
 }
 
-const f = new Foo()
-f.sayName()				// 'BOT'
+const foo = new Foo()
+foo.sayName()
+// 'Uzi'
 ```
 
 类声明和函数声明的区别和特点：
@@ -92,27 +86,32 @@ f.sayName()				// 'BOT'
 
 ## 实例对象
 
-与 ES5 一样，实例的属性除非显式定义在其本身（即定义在 `this` 对象上），否则都是定义在原型上（即定义在 `class` 上）。
+与 ES5 一样，实例的属性除非显式定义在其本身（即定义在 `this` 对象上），否则都是定义在 **原型** 上（即定义在 `class` 上）。
 
 ```js
 class Point{
-    constructor(x, y){
-        this.x = x
-        this.y = y
-    }
-    toString(){
-        return `(${this.x}, ${this.y})`
-    }
+  constructor(x, y){
+    this.x = x
+    this.y = y
+  }
+  toString(){
+    return `(${this.x}, ${this.y})`
+  }
 }
 
 const point = new Point(2, 3)
 
-point.toString()    // (2, 3)
+point.toString()
+// (2, 3)
 
-point.hasOwnProperty('x')    // true
-point.hasOwnProperty('y')    // true
-point.hasOwnProperty('toString')    // false
-point.__proto__.hasOwnProperty('toString')    // true
+point.hasOwnProperty('x')
+// true
+point.hasOwnProperty('y')
+// true
+point.hasOwnProperty('toString')
+// false
+point.__proto__.hasOwnProperty('toString')
+// true
 ```
 
 * 变量 `x` 和 `y` 都是实例对象 `point` 自身的属性（因为定义在 `this` 变量上），所以 `hasOwnProperty` 返回 `true`
@@ -124,28 +123,30 @@ point.__proto__.hasOwnProperty('toString')    // true
 
 ## 访问器属性
 
-与 ES5 一样，在类的内部也可以使用 `get` 和 `set` 关键字，对某个属性设置**存值函数**和**取值函数**，拦截该属性的存取行为。
+与 ES5 一样，在类的内部也可以使用 `get` 和 `set` 关键字，对某个属性设置 **存值函数** 和 **取值函数**，拦截该属性的存取行为。
 
 尽管应该在类的构造函数中创建自己的属性，但是类也支持直接在原型上定义访问器属性。
 
 ```js
 class Student () {
-    constructor () {
-        // ...
-    }
-    get run () {
-        return 'get'
-    }
-    set run (value) {
-     	console.log(`set:${value}`)
-    }
+  constructor () {
+    // ...
+  }
+  get run () {
+    return 'get'
+  }
+  set run (value) {
+    console.log(`set:${value}`)
+  }
 }
 
 let inst = new Student()
 
-Student.run = 'abc'		// set:abc
+Student.run = 'abc'
+// set:abc
 
-Student.run				// get
+Student.run
+// get
 ```
 
 ## 属性表达式
@@ -156,12 +157,12 @@ Student.run				// get
 const methodName = 'getArea'
 
 class Square(){
-    constructor(length){
-        // ...
-    }
-    [methodName](){
-        // ...
-    }
+  constructor(length){
+    // ...
+  }
+  [methodName](){
+    // ...
+  }
 }
 ```
 
@@ -171,23 +172,23 @@ class Square(){
 
 ```js
 // 声明式
-class A = {
-    constructor () {}
+class Foo = {
+  constructor () {}
 }
 
 // 匿名表达式
-const B = class {
-    constructor () {}
+const Bar = class {
+  constructor () {}
 }
 
 // 表达式
-// 这个类的名称为 C 而不是 D
-// D 只有在类内部代码可用 指代当前类
-const C = class D {
-    constructor () {}
-    getClassName () {
-        return D.name
-    }
+// 这个类的名称为 Baz2 而不是 Baz1
+// Baz1 只有在类内部代码可用 指代当前类
+const Baz2 = class Baz1 {
+  constructor () {}
+  getClassName () {
+    return Baz1.name
+  }
 }
 ```
 
@@ -195,9 +196,9 @@ const C = class D {
 
 * 全局严格模式
 * 不存在类声明提升
-* name 属性：总是返回紧跟 class 关键字后的类名
+* `name` 属性：总是返回紧跟 `class` 关键字后的类名
 * Generator 方法
-* this 的指向 默认指向类的实例
+* `this` 的指向 默认指向类的实例
 
 ## 生成器方法
 
@@ -205,18 +206,18 @@ const C = class D {
 
 ```js
 class Foo {
-    constructor (...args) {
-        this.args = args
+  constructor (...args) {
+    this.args = args
+  }
+  * [Symbol.iterator] () {
+    for (let arg of this.args) {
+      yield arg
     }
-    * [Symbol.iterator] () {
-        for (let arg of this.args) {
-            yield arg
-        }
-    }
+  }
 }
 
 for (let x of new Foo('hello', 'world')) {
-    console.log(x)
+  console.log(x)
 }
 // hello
 // world
@@ -226,13 +227,13 @@ for (let x of new Foo('hello', 'world')) {
 
 类的方法内部如果含有 `this`，它默认指向类的实例。但是，如果将类方法内部的方法提取出来单独使用，`this` 会指向该方法运行时所在的环境，因为找不到相对应的方法而导致报错。
 
-因此，需要**在构造函数中绑定 `this`** ，这样就不会找不到相对应的方法。
+因此，需要 **在构造函数中绑定 `this`** ，这样就不会找不到相对应的方法。
 
 ```js
 class Student {
-    constructor () {
-        this.sayName = this.sayName.bind(this)
-    }
+  constructor () {
+    this.sayName = this.sayName.bind(this)
+  }
 }
 ```
 
@@ -240,11 +241,11 @@ class Student {
 
 ```js
 class Car {
-    constructor () {
-        this.sayName = (name = 'BOT') => {
-            this.sayName(`My name is ${name}`)
-        }
+  constructor () {
+    this.sayName = (name = 'BOT') => {
+      this.sayName(`My name is ${name}`)
     }
+  }
 }
 ```
 
@@ -254,5 +255,5 @@ class Car {
 
 **参考资料：**
 
-- [ECMAScrept 6 入门# Class 的基本语法](http://es6.ruanyifeng.com/#docs/class)
-- [ES6|JavaScript中的类class](https://juejin.im/entry/59bbb3b65188256c4b723bdb)
+- [📝 ECMAScrept 6 入门：Class 的基本语法](http://es6.ruanyifeng.com/#docs/class)
+- [📝 ES6 JavaScript中的类 class](https://juejin.im/entry/59bbb3b65188256c4b723bdb)

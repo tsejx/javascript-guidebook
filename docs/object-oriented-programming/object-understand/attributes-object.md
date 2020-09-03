@@ -15,16 +15,6 @@ ECMA-262 第五版在定义只有内部才能使用的特性（Attribute）时�
 
 对象属性描述符的类型分为两种：[数据属性](#数据属性) 和 [访问器属性](#访问器属性)。
 
-📖 **快速目录：**
-
-* [数据属性](#数据属性)
-  * [可写性](#可写性)
-  * [可配置性](#可配置性)
-  * [可枚举性](#可枚举性)
-* [访问器属性](#访问器属性)
-  * [Getter](#Getter)
-  * [Setter](#Setter)
-
 ## 数据属性
 
 数据属性（Data Property）包含一个数据值的位置，在这个位置可以读取和写入值。数据属性共有 4 个特性。
@@ -54,7 +44,7 @@ console.log( foo.a );
 let foo = { a: 1 }
 
 Object.defineProperty(foo, 'a', {
-    writable:false
+  writable:false
 });
 
 foo.a = 2
@@ -63,20 +53,20 @@ console.log(foo.a);
 // 1
 ```
 
-设置 `writable:false` 后，通过 [Object.defineProperty()](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/defineProperty.md) 方法改变属性 `value` 的值不会受影响，因为这也意味着重置 `writable` 的属性值为 `true`。
+设置 `writable:false` 后，通过 [Object.defineProperty()](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/defineProperty) 方法改变属性 `value` 的值不会受影响，因为这也意味着重置 `writable` 的属性值为 `true`。
 
 ```js
 let foo = { a: 1 }
 
 Object.defineProperty(foo,'a',{
-    writable:false
+  writable:false
 });
 
 console.log(foo.a);
 // 1
 
 Object.defineProperty(foo,'a',{
-    value:2
+  value:2
 })
 
 console.log(foo.a);
@@ -93,7 +83,7 @@ console.log(foo.a);
 let foo = { a: 1 };
 
 Object.defineProperty(foo, 'a', {
-    configurable: false
+  configurable: false
 });
 
 delete foo.a;
@@ -109,11 +99,11 @@ console.log(foo.a);
 let foo = { a: 1 }
 
 Object.defineProperty(foo, 'a', {
-    configurable:false
+  configurable: false
 });
 
 Object.defineProperty(foo, 'a', {
-    configurable:true
+  configurable: true
 });
 // Uncaught TypeError: Cannot redefine property: a
 ```
@@ -124,8 +114,8 @@ Object.defineProperty(foo, 'a', {
 let foo = { a: 1 };
 
 Object.defineProperty(foo, 'a', {
-    configurable:false,
-    writable:true
+  configurable:false,
+  writable:true
 });
 
 foo.a = 2;
@@ -134,7 +124,7 @@ console.log(foo.a);
 // 2
 
 Object.defineProperty(foo,'a',{
-    writable:false
+  writable:false
 });
 
 // 由于 writable:false 生效，对象 foo 的 bar 属性无法修改值
@@ -149,7 +139,7 @@ console.log(foo.a);
 
 **可枚举性**（Enumerable）决定属性是否出现在对象的属性枚举中。具体来说，能够通过 `for-in` 循环、`Object.keys` 方法、`JSON.stringify` 等方法获取到的属性为可枚举属性。
 
-除此之外，可以使用 [Object.propertyIsEnumerable](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-prototype-object/propertyIsEnumerable.md) 方法判断对象的 Property 是否可枚举。
+除此之外，可以使用 [Object.propertyIsEnumerable](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-prototype-object/propertyIsEnumerable) 方法判断对象的 Property 是否可枚举。
 
 用户定义的**普通属性默认是可枚举的**，而**原生继承的属性默认是不可枚举的**。
 
@@ -161,7 +151,8 @@ console.log(foo.a);
 let foo = { a: 1 };
 
 for(let item in foo){
-    console.log(foo[item]);  // 1
+  console.log(foo[item]);
+  // 1
 }
 ```
 
@@ -173,7 +164,8 @@ let foo = { a: 1 }
 Object.defineProperty( foo, 'a', { enumerable:false } )
 
 for(let item in foo){
-    console.log(foo[item]);  // undefined
+  console.log(foo[item]);
+  // undefined
 }
 ```
 
@@ -185,7 +177,7 @@ for(let item in foo){
 * 在写入访问器属性时，会调用 `setter` 函数并传入新值，**这个函数负责决定如何处理数据**
 
 | 访问器属性         | 说明                              | 默认值    |
-| ------------------ | --------------------------------- | --------- |
+| :------------------ | :--------------------------------- | --------- |
 | `[[Configurable]]` | 同数据属性中的 `[[Configurable]]` | true      |
 | `[[Enumberable]]`  | 同数据属性中的 `[[Enumberable]]`  | true      |
 | `[[Getter]]`       | 在**读取属性**时调用的函数        | undefined |
@@ -205,17 +197,19 @@ for(let item in foo){
 
 ```js
 const foo = {
-    get a(){
-        return 2
-    }
+  get a(){
+    return 2
+  }
 }
 
-console.log(foo.a);  // 2
+console.log(foo.a);
+// 2
 
 // Invalid
 foo.a = 3;
 
-console.log(foo.a); 	// 2
+console.log(foo.a);
+// 2
 ```
 
 ### Setter
@@ -226,29 +220,31 @@ console.log(foo.a); 	// 2
 
 ```js
 let foo = {
-    set a(val){
-        return 2
-    }
+  set a(val){
+    return 2
+  }
 }
 
 foo.a = 1;
 
-console.log(foo.a);  // undefined
+console.log(foo.a);
+// undefined
 ```
 
 一般地，`set` 和 `get` 方法需要成对出现的。
 
 ```js
 const foo ={
-    get a(){
-        return this._a;
-    },
-    set a(val){
-        this._a = val*2;
-    }
+  get a(){
+    return this._a;
+  },
+  set a(val){
+    this._a = val*2;
+  }
 }
 
 foo.a = 1;
 
-console.log(foo.a);  // 2
+console.log(foo.a);
+// 2
 ```

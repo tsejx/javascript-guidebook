@@ -30,9 +30,11 @@ function inherit(child, parent) {
 }
 ```
 
-这个示例中的函数实现了寄生组合式继承的最简单形式。这个函数接收两个参数：**子类型构造函数**和**超类型构造函数。**
+这个示例中的函数实现了寄生组合式继承的最简单形式。这个函数接收两个参数：**子类型构造函数** 和 **超类型构造函数。**
 
-在函数内部，第一步是创建超类型原型的一个副本。第二步是为创建的副本添加 `constructor` 属性，从而弥补因重写原型而失去的默认的 `constructor` 属性。最后一步，将新创建的对象（即副本）赋值给子类型的原型。
+- 第一步是创建超类型原型的一个副本
+- 第二步是为创建的副本添加 `constructor` 属性，从而弥补因重写原型而失去的默认的 `constructor` 属性
+- 最后一步，将新创建的对象（即副本）赋值给子类型的原型
 
 ```js
 function inherit(children, parent) {
@@ -53,14 +55,14 @@ Parent.prototype.sayName = function() {
   alert(this.name);
 };
 
-function Children(name, age) {
+function Child(name, age) {
   Parent.call(this, name);
   this.age = age;
 }
 
-inherit(Children, Parent);
+inherit(Child, Parent);
 
-Children.prototype.sayAge = function() {
+Child.prototype.sayAge = function() {
   console.log(this.age);
 };
 ```
@@ -83,29 +85,33 @@ Parent.prototype.sayName = function() {
   return this.name;
 };
 
-function Children(name, age) {
+function Child(name, age) {
   Parent.call(this, name);
   this.age = age;
 }
 
-Children.prototype = Object.create(Parent.prototype);
+Child.prototype = Object.create(Parent.prototype);
 
-Children.prototype.constructor = Children;
+Child.prototype.constructor = Child;
 
 // The first instance
-const boy = new Children('Jothan', 22);
+const boy = new Child('Jothan', 22);
 
 boy.num.push(3);
-console.log(boy.num); // [0, 1, 2, 3]
+console.log(boy.num);
+ // [0, 1, 2, 3]
 
-boy.sayName(); // 'Jothan'
+boy.sayName();
+// 'Jothan'
 
 // The second instance
-const girl = new Children('Irene', 18);
+const girl = new Child('Kat', 18);
 
-console.log(girl.num); // [0, 1, 2]
+console.log(girl.num);
+// [0, 1, 2]
 
-girl.sayName(); // 'Irene'
+girl.sayName();
+// 'Kat'
 ```
 
-这个例子的高效率体现在它只调用了一次 Parent 构造函数，并且因此避免了在 `Children.prototype` 上面创建不必要的、多余的属性。与此同时，原型链还保持不变。
+这个例子的高效率体现在它只调用了一次 Parent 构造函数，并且因此避免了在 `Child.prototype` 上面创建不必要的、多余的属性。与此同时，原型链还保持不变。

@@ -15,20 +15,22 @@ order: 6
 
 ```js
 function Person(name, age, job){
-    let obj = new Object();
-    obj.name = name;
-    obj.age = age;
-    obj.job = job;
-    obj.sayName = function(){
-        alert(this.name);
-    };
-    return obj;
+  let obj = new Object();
+  obj.name = name;
+  obj.age = age;
+  obj.job = job;
+  obj.sayName = function(){
+      console.log(`I'm ${this.name}`);
+  };
+
+  return obj;
 }
 
-let friend = new Person('Nicholas', 29, 'Software Engineer');
-friend.sayName();		// 'Nicholas'
+let uzi = new Person('Uzi', 22, 'E-Sports Player');
+uzi.sayName();
+// I'm Uzi
 ```
 
 在构造函数的末尾添加一个 `return` 语句，可以重写调用构造函数时返回的值。
 
-关于寄生构造函数模式，有一点需要说明：首先，返回的对象与构造函数或者与构造函数的原型属性之间没有关系；也就是说，构造函数返回的对象与构造函数外部创建的对象没有什么不同。为此，不能依赖 `instanceof` 操作符来确定对象类型。
+关于寄生构造函数模式，有一点需要说明：首先，返回的对象与构造函数或者与构造函数的原型属性之间没有关系。也就是说，构造函数返回的对象与构造函数外部创建的对象没有什么不同。为此，不能依赖 `instanceof` 操作符来确定对象类型。

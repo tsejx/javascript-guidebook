@@ -19,65 +19,65 @@ order: 3
 
 ```js
 function Parent(name){
-    this.name = name
-    this.attr = {
-        eye: 'blue',
-        hair: 'black',
-        skin: 'white'
-    }
+  this.name = name
+  this.attr = {
+    eye: 'blue',
+    hair: 'black',
+    skin: 'white'
+  }
 }
 
 Parent.prototype.sayName = function(){
-    console.log(this.name)
+  console.log(this.name)
 };
 
-function Children(name, age){
-    // 第二次调用Parent()
-    // Children.prototype 又得到了 name 和 attr 两个属性
-    // 并对上次得到的属性值进行了覆盖
-    Parent.call(this, name)
-    this.age = age
+function Child(name, age){
+  // 第二次调用 Parent()
+  // Child.prototype 又得到了 name 和 attr 两个属性
+  // 并对上次得到的属性值进行了覆盖
+  Parent.call(this, name)
+  this.age = age
 }
 
 // 第一次调用 Parent()
 // 使得子类实例的原型对象指向父类实例对象
-// Children.prototype 得到了 name 和 attr 两个属性
-Children.prototype = new Parent()
-
-Children.prototype.constructor = Children
-
-Children.prototype.sayAge = function(){
-    console.log(this.age)
+// Child.prototype 得到了 name 和 attr 两个属性
+Child.prototype = new Parent()
+Child.prototype.constructor = Child
+Child.prototype.sayAge = function(){
+  console.log(this.age)
 }
 
-// The first instance
-let boy = new Children('Jothan', 3)
+// 第一个实例对象
+let uzi = new Child('Uzi', 3)
 
-boy.attr.height = 80
+uzi.attr.height = 80
 
-console.log(boy.attr)    // { eye: 'blue', hair: 'black', skin: 'white', height: 80 }
+console.log(uzi.attr)
+// { eye: 'blue', hair: 'black', skin: 'white', height: 80 }
+uzi.sayName()
+// 'Uzi'
+uzi.sayAge()
+// 3
 
-boy.sayName()    // 'Jothan'
+// 第二个实例对象
+let kat = new Child('Kat', 1)
 
-boy.sayAge()     // 3
-
-// The second instance
-let girl = new Children('Irene', 1)
-
-console.log(girl.colors)    // { eye: 'blue', hair: 'black', skin: 'white' }
-
-girl.sayName()    // 'Irene'
-
-girl.sayAge()     // 1
+console.log(kat.colors)
+// { eye: 'blue', hair: 'black', skin: 'white' }
+kat.sayName()
+// 'Kat'
+kat.sayAge()
+// 1
 ```
 
 实现步骤分解：
 
-- 父类构造函数定义自身属性（ Parent 构造函数定义了`name` 和 `attr`。 ）
-- 父类原型上定义方法（Parent 的原型定义了一个方法 `sayName()`）
-- 子类构造函数调用父类构造函数，传入参数，继承父类构造函数中的属性，随后子类构造函数又自定义自身的属性（Children 构造函数在调用 Parent 构造函数时传入了 `name` 参数，紧接着又定义了它自己的属性 `height`。）
-- 子类构造函数的原型指向父类构造函数生成的实例（将 Parent 的实例赋值给 Children 的原型）
-- 在子类构造函数的原型上定义方法（在 Children 的原型上定义了方法 `sayAge()`）
+- 父类构造函数定义自身属性（`Parent` 构造函数定义了`name` 和 `attr`）
+- 父类原型上定义方法（`Parent` 的原型定义了一个方法 `sayName`）
+- 子类构造函数调用父类构造函数，传入参数，继承父类构造函数中的属性，随后子类构造函数又自定义自身的属性（`Child` 构造函数在调用 `Parent` 构造函数时传入了 `name` 参数，紧接着又定义了它自己的属性 `height`。）
+- 子类构造函数的原型指向父类构造函数生成的实例（将 `Parent` 的实例赋值给 `Child` 的原型）
+- 在子类构造函数的原型上定义方法（在 `Child` 的原型上定义了方法 `sayAge`）
 - 这样一来，就可以让两个不同的子类实例对象既分别拥有自己属性，又可以使用相同的方法
 
 ## 缺陷
@@ -90,10 +90,10 @@ girl.sayAge()     // 1
 
 ```js
 // Before
-Children.prototype = new Parent()
+Child.prototype = new Parent()
 
 // After
-Children.prototype = Parent.prototype
+Child.prototype = Parent.prototype
 ```
 
 这种优化方式的缺点是，子类实例对象的构造函数无法区分是子类构造函数还是父类构造函数。
@@ -104,13 +104,13 @@ Children.prototype = Parent.prototype
 
 ```js
 function Parent(){
-    this.name = 'Parent'
-    this.num = [0, 1, 2]
+  this.name = 'Parent'
+  this.num = [0, 1, 2]
 }
 
 function Child(){
-    Parent.call(this)
-    thi.type = 'Child'
+  Parent.call(this)
+  thi.type = 'Child'
 }
 
 Child.prototype = Object.create(Parent.prototype)

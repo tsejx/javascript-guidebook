@@ -18,23 +18,27 @@ order: 4
 
 ## 静态方法
 
-类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上 `static` 关键字，就表示该方法不会被实例继承，而是需要直接通过类来调用，这就称为**静态方法**。
+类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上 `static` 关键字，就表示该方法不会被实例继承，而是需要直接通过类来调用，这就称为 **静态方法**。
 
 ```js
 class Foo {
-  static classMethod() {
-    return 'HELLO';
+  static sayHi() {
+    return 'Hello';
   }
 }
 
-Foo.classMethod(); // 'HELLO'
+Foo.sayHi();
+// 'Hello'
 
 const foo = new Foo();
 
-foo.classMethod(); // TypeError: foo.classMethod is not a function
+foo.sayHi();
+// TypeError: foo.sayHi is not a function
 ```
 
-⚠️ 注意，如果静态方法包含 `this` 关键字，这个 `this` 指的是类，而不是实例。
+### 动态作用域
+
+⚠️  **注意：** 如果静态方法包含 `this` 关键字，这个 `this` 指的是类，而不是实例。
 
 ```js
 class Foo {
@@ -42,28 +46,31 @@ class Foo {
     this.baz();
   }
   static baz() {
-    console.log('HELLO');
+    console.log('Hello');
   }
   baz() {
     console.log('WORLD');
   }
 }
 
-Foo.bar(); // 'HELLO'
+Foo.bar(); // 'Hello'
 ```
+
+### 子类继承
 
 父类的静态方法，可以被子类继承。
 
 ```js
 class Foo {
-  static classMethod() {
-    return 'HELLO';
+  static sayHi() {
+    return 'Hello';
   }
 }
 
 class Bar extends Foo {}
 
-Bar.classMethod(); // 'HELLO'
+Bar.sayHi();
+// 'Hello'
 ```
 
 ## 静态属性

@@ -11,16 +11,9 @@ order: 2
 
 # 属性操作
 
-📖 **快速目录**
-
-* [属性查询](#属性查询)
-* [属性设置](#属性设置)
-* [属性删除](#属性删除)
-* [属性继承](#属性继承)
-
 ## 属性查询
 
-属性查询在表达式层面也成为 [属性访问器](../../basic-concept/expressions/primary-expression/property-accessors.md)。
+属性查询在表达式层面也成为 [属性访问器](../../basic-concept/expressions/primary-expression/property-accessors)。
 
 属性查询一般有两种方法：
 
@@ -31,7 +24,7 @@ order: 2
 
 ```js
 const person = {
-    白 : 1
+  白 : 1
 }
 console.log(person.白);
 // 1
@@ -43,12 +36,12 @@ console.log(person['白']);
 
 点运算符是很多面向对象语句的通用写法，由于其比较简单，所以较方括号运算符相比，更常用。
 
-由于 JavaScript 是弱类型语言，在任何对象中都可以创建任意数量的属性。但当通过点运算符 `. ` 访问对象的属性时，属性名用一个标识符来表示，标识符要符合 [变量命名规则](../../basic-concept/lexical-grammar/lexical-grammar.html#标识符)。标识符必须直接出现在 JavaScript 程序中，它们不是数据类型，因此程序无法修改它们。
+由于 JavaScript 是弱类型语言，在任何对象中都可以创建任意数量的属性。但当通过点运算符 `. ` 访问对象的属性时，属性名用一个标识符来表示，标识符要符合 [变量命名规则](../../basic-concept/lexical-grammar/lexical-grammar#标识符)。标识符必须直接出现在 JavaScript 程序中，它们不是数据类型，因此程序无法修改它们。
 
 ```js
 const foo = {
-    a: 1,
-    1: 2
+  a: 1,
+  1: 2
 };
 
 console.log(foo.a);
@@ -77,7 +70,7 @@ console.log(o.1);
 ```js
 const a = 1;
 const foo = {
-    3: 'abc'
+  3: 'abc'
 };
 
 foo[a + 2]; // 'abc'
@@ -89,7 +82,7 @@ foo[a + 2]; // 'abc'
 const a = 1;
 
 const foo = {
-    a + 3: 'abc'
+  a + 3: 'abc'
 };
 // Uncaught SyntaxError: Unexpected token +
 ```
@@ -100,7 +93,7 @@ ES6 增加了可计算属性名，可以在文字中使用 `[]` 包裹一个表�
 const a = 1;
 
 const foo = {
-    [a + 3]: 'bar'
+  [a + 3]: 'bar'
 };
 
 foo[4];
@@ -164,49 +157,60 @@ foo['p'] = 'bar';
 // Bad
 const len = undefined;
 if(book){
-    if(book.subtitle){
-        len = book.subtitle.length;
-    }
+  if(book.subtitle){
+    len = book.subtitle.length;
+  }
 }
 
 // Good
 const len = book && book.subtitle && book.subtitle.length;
 ```
+
 ### 原始类型
 
 由于 String、Number 和 Boolean 等数据类型的值有对应的包装对象，所以给它们设置属性不会报错。
 
 ```js
-'foo'.a = 1; 	// 1
+'foo'.a = 1;
+// 1
 
-(1).a = 1; 		// 1
+(1).a = 1;
+// 1
 
-true.a = 1; 	// 1
+true.a = 1;
+// 1
 ```
 
 而 `null` 和 `undefined` 不是对象，给它们设置属性会报错。
 
 ```js
-null.a = 1; 		// Uncaught TypeError: Cannot set property 'a' of null
+null.a = 1;
+// Uncaught TypeError: Cannot set property 'a' of null
 
-undefined.a = 1; 	// Uncaught TypeError: Cannot set property 'a' of undefined
+undefined.a = 1;
+// Uncaught TypeError: Cannot set property 'a' of undefined
 ```
 
 ## 属性删除
 
-使用 [delete](../../basic-concept/expressions/unary-operators/delete.md) 运算符可以删除对象属性（包括数组元素）。
+使用 [delete](../../basic-concept/expressions/unary-operators/delete) 运算符可以删除对象属性（包括数组元素）。
 
 ```js
 const foo = { a : 1 };
 
-console.log( foo.a ); 			// 1
-console.log( 'a' in foo ); 		// true
+console.log( foo.a );
+// 1
+console.log( 'a' in foo );
+// true
 
 // delete object attribute
-console.log( delete foo.a ); 	// true
+console.log( delete foo.a );
+// true
 
-console.log( foo.a ); 			// undefined
-console.log( 'a' in foo ); 		// false
+console.log( foo.a );
+// undefined
+console.log( 'a' in foo );
+// false
 ```
 
 - 给对象属性设置 `null` 或 `undefined`，并没有删除该属性
@@ -221,7 +225,7 @@ console.log( 'a' in foo ); 		// false
 
 ## 属性继承
 
-每个 Javascript 对象都和另一个对象相关联。"另一个对象"就是我们熟知的原型，每一个对象都从原型继承属性。
+每个 JavaScript 对象都和另一个对象相关联。"另一个对象"就是我们熟知的原型，每一个对象都从原型继承属性。
 
 所有通过对象直接量创建的对象都具有同一个原型对象，并可以通过 `Object.prototype` 获得对原型对象的引用。
 
@@ -243,8 +247,8 @@ console.log(Object.prototype.__proto__ === null);
 
 ### 判断方法
 
-* [in](../../basic-concept/expressions/unary-operators/in.md)：`in` 操作符可以判断属性在不在该对象上，但无法区别自有还是继承属性。
-* [for-in](../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement.md)：通过 `for-in` 循环可以遍历出该对象中所有**可枚举属性**。
-* [hasOwnProperty](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-prototype-object/hasOwnProperty.md)：通过 `hasOwnProperty()` 方法**可以确定该属性是自有属性还是继承属性**。
-* [Object.keys](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/keys.md)：`Object.keys()` 方法返回所有**可枚举的自有属性**。
-* [Object.getOwnPropertyNames](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/getOwnPropertyNames.md)：`Object.getOwnPropertyNames()` 方法返回所有自有属性（包括不可枚举的属性）。
+* [in](../../basic-concept/expressions/unary-operators/in)：`in` 操作符可以判断属性在不在该对象上，但无法区别自有还是继承属性。
+* [for-in](../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement)：通过 `for-in` 循环可以遍历出该对象中所有**可枚举属性**。
+* [hasOwnProperty](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-prototype-object/hasOwnProperty)：通过 `hasOwnProperty()` 方法**可以确定该属性是自有属性还是继承属性**。
+* [Object.keys](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/keys)：`Object.keys()` 方法返回所有**可枚举的自有属性**。
+* [Object.getOwnPropertyNames](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/getOwnPropertyNames)：`Object.getOwnPropertyNames()` 方法返回所有自有属性（包括不可枚举的属性）。

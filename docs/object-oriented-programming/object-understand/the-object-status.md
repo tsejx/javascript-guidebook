@@ -34,7 +34,7 @@ console.log(foo);
 // { a: 1 }
 ```
 
-使用 [Object.isExtensible](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/isExtensible.md) 可以检测指定对象是否可扩展。
+使用 [Object.isExtensible](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/isExtensible) 可以检测指定对象是否可扩展。
 
 ```js
 const foo = {};
@@ -43,7 +43,7 @@ console.log(Object.isExtensible(foo));
 // true
 ```
 
-使用 [Object.preventExtensions](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/preventExtensions.md) 方法可以标记一个对象为不可扩展（Non-Extensible）。
+使用 [Object.preventExtensions](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/preventExtensions) 方法可以标记一个对象为不可扩展（Non-Extensible）。
 
 不可扩展的对象具有以下特征：
 
@@ -66,7 +66,7 @@ console.log(foo);
 // {}
 ```
 
-使用 [Object.defineProperty](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/defineProperty.md) 为不可扩展对象添加属性会抛出异常。
+使用 [Object.defineProperty](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/defineProperty) 为不可扩展对象添加属性会抛出异常。
 
 ```js
 const foo = { a: 1};
@@ -97,7 +97,6 @@ Object.defineProperty(foo, 'b', {
   * 意味着已有属性不可删除
   * 数据属性不能被重新定义
 * 所有已有属性仍可以被修改 `writable: true`
-
 
 密封对象无法添加新属性，也无法删除已有属性。
 
@@ -134,13 +133,13 @@ Object.defineProperty(foo, 'd', {
 
 ```js
 Object.defineProperty(foo, 'a', {
-    value: 2
+  value: 2
 });
 console.log(foo.a);
 // 2
 ```
 
-使用方法 [Object.seal](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/seal.md) 可将对象变为**密封状态**。
+使用方法 [Object.seal](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/seal) 可将对象变为**密封状态**。
 
 * 如果把一个空对象变得不可扩展，则它同时也会变成个密封对象
 * 如果该对象不是空对象，则它不会变成密封对象，因为密封对象的所有自身属性必须是不可配置的
@@ -153,7 +152,7 @@ console.log(Object.isSealed(foo));
 // true
 ```
 
-使用 [Object.isSealed](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/isSealed.md) 可以检测指定对象是否已密封。
+使用 [Object.isSealed](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/isSealed) 可以检测指定对象是否已密封。
 
 ```js
 const foo = {};
@@ -235,7 +234,7 @@ console.log(a);
 // [0]
 ```
 
-使用 [Object.isFrozen](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/isFrozen.md) 可以检测指定对象是否已冻结。
+使用 [Object.isFrozen](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/isFrozen) 可以检测指定对象是否已冻结。
 
 ```js
 const foo = Object.freeze({})
@@ -258,8 +257,9 @@ function deepFreeze(o) {
     const prop = o[name];
 
     // 如果 prop 是个对象，冻结它
-    if (typeof prop == 'object' && prop !== null)
+    if (typeof prop == 'object' && prop !== null) {
       deepFreeze(prop);
+    }
   });
 
   // 冻结自身(no-op if already frozen)
@@ -288,4 +288,4 @@ console.log(foo.bar.a);
 
 **参考资料：**
 
-* [📝 浅谈 JavaScript 对象之扩展、密封及冻结三大特征](<https://segmentfault.com/a/1190000003894119>)
+- [📝 浅谈 JavaScript 对象之扩展、密封及冻结三大特征](<https://segmentfault.com/a/1190000003894119>)
