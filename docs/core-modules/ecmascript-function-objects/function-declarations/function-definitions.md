@@ -25,12 +25,14 @@ order: 1
 
 ```js
 function functionName ([arg1 [,arg2 [...,argn]]]) {
-    functionBody;	// 函数体
+  // functionBody 函数体
 }
 ```
 
+<br/>
+
 | 函数声明要素   | 含义       | 说明                                                         |
-| -------------- | ---------- | ------------------------------------------------------------ |
+| :-------------- | :---------- | :------------------------------------------------------------ |
 | `function`     | 声明关键字 | 声明的函数名称的标识符                                       |
 | `functionName` | 函数名称   | 当前作用域内函数名称唯一                                     |
 | `arg`          | 参数列表   | 函数名之后的圆括号中是参数列表，参数之间使用逗号分隔。当调用函数时，这些标识符则指代传入函数的实参。 |
@@ -43,22 +45,27 @@ function functionName ([arg1 [,arg2 [...,argn]]]) {
 
 ```js
 function foo (bar) {
-    bar.name = 'JAVASCRIPT';
+  bar.name = 'JavaScript';
 }
 
 let baz = { name: 'JAVA', year: 1998 };
 
 myFunc(baz);
 
-console.log(baz.name);	// 'JAVASCRIPT'
+console.log(baz.name);	// 'JavaScript'
 ```
 
 - `function` 语句里的**花括号是必需**的，这和 `while` 循环和其他一些语句所使用的语句块是不同的，即使函数体内只包含一条语句，仍然必须使用花括号将其括起来。
 
 ```js
-function test() 		// SyntaxError: Unexpected end of input
-function test(){}; 		// 不报错
-while(true); 			// 不报错
+function test();
+// SyntaxError: Unexpected end of input
+
+function test(){};
+// 不报错
+
+while(true);
+// 不报错
 ```
 
 - **函数的重复声明会覆盖前面的声明**（无论是变量还是函数声明）

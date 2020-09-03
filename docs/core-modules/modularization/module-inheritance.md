@@ -5,11 +5,11 @@ nav:
 group:
   title:  模块化
   order: 11
-title: 模块的继承
+title: 模块继承
 order: 5
 ---
 
-# 模块的继承
+# 模块继承
 
 模块之间也可以继承。
 
@@ -22,7 +22,7 @@ export * from 'parent'
 export var name = 'child'
 
 export function cry(){
-    // do something
+  // do something
 }
 ```
 
@@ -32,20 +32,19 @@ export function cry(){
 
 ```js
 // children.js
-export { work as job }
+export { work as job } from 'parent'
 ```
 
 上面的代码表示，只输出 `parent` 模块的 `work` 方法，并且将其改名为 `job`。
 
-加载上面模块的写法如下。
+加载上面模块的写法如下：
 
 ```js
 // main.js
-improt * as something from 'children'
-
+import * as child from 'children'
 import cry from 'children'
 
-console.log(cry(something.name))
+console.log(cry(child.name))
 ```
 
 上面代码中的 `import cry from 'children'` 表示，将 `children` 模块的默认方法加载为 `cry` 方法。

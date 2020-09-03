@@ -4,11 +4,11 @@
 
 > In computer science, partial application(or partial function application) refers to the process of fixing a number of arguments to a function, producing another function of smaller arity.
 
-翻译成中文：
-
 在计算机科学中，局部应用是指固定一个函数的一些参数，然后产生另一个更小元的函数。
 
-什么是元？元是指函数参数的个数，比如一个带有两个参数的函数被称为二元函数。
+什么是元？
+
+元是指函数参数的个数，比如一个带有两个参数的函数被称为二元函数。
 
 🌰 **示例：**
 
@@ -28,8 +28,8 @@ addOne(2); // 3
 
 偏函数与柯里化十分相像：
 
-- 柯里化：将多参数函数转换成多个单参数函数，也就是将一个 n 元函数转换成 n 个一元函数
-- 偏函数：则是固定一个函数的一个或多个参数，也就是将一个 n 元函数转换成一个 n - x 元函数
+- **柯里化：**将多参数函数转换成多个单参数函数，也就是将一个 n 元函数转换成 n 个一元函数
+- **偏函数：**则是固定一个函数的一个或多个参数，也就是将一个 n 元函数转换成一个 n - x 元函数
 
 ## 实际应用
 

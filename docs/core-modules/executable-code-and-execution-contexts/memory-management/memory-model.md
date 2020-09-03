@@ -15,7 +15,7 @@ JavaScript 内存空间分为**栈**（Stack）、**堆**（Heap）、**池**（
 
 ## 栈数据结构
 
-与 C / C++ 不同，JavaScript 中并没有严格意义上区分栈内存与堆内存。因此我们可以简单粗暴的理解为 JavaScript 的所有数据都保存在堆内存中。但是在某些场景，我们仍然需要基于堆栈数据结构的思维来实现一些功能，比如 JavaScript 的 [执行上下文](../execution/execution-context-stack.md)。执行上下文的执行顺序借用了栈数据结构的存取方式。
+与 C / C++ 不同，JavaScript 中并没有严格意义上区分栈内存与堆内存。因此我们可以简单粗暴的理解为 JavaScript 的所有数据都保存在堆内存中。但是在某些场景，我们仍然需要基于堆栈数据结构的思维来实现一些功能，比如 JavaScript 的 [执行上下文](../execution/execution-context-stack)。执行上下文的执行顺序借用了栈数据结构的存取方式。
 
 要简单理解栈的存取方式，我们可以通过类比乒乓球盒子来分析。
 
@@ -34,7 +34,7 @@ export default () => <img alt="乒乓球盒子与栈类比" src={img} width={720
 
 书虽然也整齐的存放在书架上，但是我们只要知道书的名字，我们就可以很方便的取出我们想要的书，而不用像从乒乓球盒子里取乒乓一样，非得将上面的所有乒乓球拿出来才能取到中间的某一个乒乓球。好比在 JSON 格式的数据中，我们存储的 `key-value` 是可以无序的，因为顺序的不同并不影响我们的使用，我们只需要关心书的名字。
 
-## 队列
+## 队列数据结构
 
 队列是一种先进先出（FIFO）的数据结构。正如排队过安检一样，排在队伍前面的人一定是最先过检的人。用以下的图示可以清楚的理解队列的原理。
 
@@ -47,7 +47,7 @@ export default () => <img alt="队列数据结构" src={img} width={720} />;
 
 ## 变量对象与基础数据类型
 
-JavaScript 的 [执行上下文](../execution/execution-context-stack.md) 生成之后，会创建一个叫做 [变量对象](../execution/variable-object.md) 的特殊对象，JavaScript 的基础数据类型往往都会保存在变量对象中。
+JavaScript 的 [执行上下文](../execution/execution-context-stack) 生成之后，会创建一个叫做 [变量对象](../execution/variable-object) 的特殊对象，JavaScript 的基础数据类型往往都会保存在变量对象中。
 
 严格意义上来说，变量对象也是存放于堆内存中，但是由于变量对象的特殊职能，我们在理解时仍然需要将其于堆内存区分开来。
 
@@ -75,11 +75,13 @@ var b = { m: 20 };
 var c = [1, 2, 3];
 ```
 
+<br/>
+
 ```jsx | inline
 import React from 'react';
 import img from '../../../assets/memory-model/sample-illustruction.jpg';
 
-export default () => <img alt="sample-illustruction" src={img} width={720} />;
+export default () => <img alt="sample-illustruction" src={img} width={640} />;
 ```
 
 因此当我们要访问堆内存中的引用数据类型时，实际上我们首先是从变量对象中获取了该对象的**地址引用**（或者地址指针），然后再从堆内存中取得我们需要的数据。
@@ -104,7 +106,7 @@ b = 20;
 import React from 'react';
 import img from '../../../assets/memory-model/basic-type-copy-sample.jpg';
 
-export default () => <img alt="basic-type-copy-sample" src={img} width={720} />;
+export default () => <img alt="basic-type-copy-sample" src={img} width={640} />;
 ```
 
 ### 引用数据类型
@@ -123,13 +125,13 @@ n.a = 15;
 import React from 'react';
 import img from '../../../assets/memory-model/refered-type-copy-sample.jpg';
 
-export default () => <img alt="refered-type-copy-sample" src={img} width={720} />;
+export default () => <img alt="refered-type-copy-sample" src={img} width={640} />;
 ```
 
 ## 总结
 
 | 栈内存                 | 堆内存                       |
-| ---------------------- | ---------------------------- |
+| :---------------------- | :---------------------------- |
 | 存储基础数据类型       | 存储引用数据类型             |
 | 按值访问               | 按引用访问                   |
 | 存储的值大小固定       | 存储的值大小不定，可动态调整 |

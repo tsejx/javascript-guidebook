@@ -17,7 +17,7 @@ order: 2
 
 ## 赋值式写法
 
-箭头函数只能用**赋值式写法**，不能用声明式写法
+箭头函数只能用 **赋值式写法**，不能用声明式写法
 
 ```js
 const fn = () => {
@@ -50,7 +50,9 @@ const fn3 = (param1, param2) => {
 支持剩余参数和默认参数。
 
 ```js
-(params1, params2, ...rest) => { functionDeclarations }
+const fn = (params1, params2, ...rest) => {
+  // do something
+}
 ```
 
 🌰 **标准示例**
@@ -70,7 +72,9 @@ headAndTail(1, 2, 3, 4, 5);
 ### 默认参数
 
 ```js
-(params1 = default1, params2, ..., paramsN = defaultN) => { functionDeclarations }
+const fn = (params1 = default1, params2, ..., paramsN = defaultN) => {
+  // do something
+}
 ```
 
 ### 解构赋值
@@ -78,8 +82,9 @@ headAndTail(1, 2, 3, 4, 5);
 同样支持参数列表解构
 
 ```js
-let f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
-f();
+const fn = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
+
+fn();
 // 6
 ```
 
@@ -90,7 +95,7 @@ const full = ({ first, last }) => firsr + '' + last;
 
 // 等同于
 function full(person){
-    return person.first + '' + person.last;
+  return person.first + '' + person.last;
 }
 ```
 
@@ -104,16 +109,17 @@ function full(person){
 const fn = (param1, param2) => param1 + param2
 ```
 
-### 返回缺省
+### 返回缺省值
 
 如果函数没有括号，可以不写 `return` ，箭头函数会帮你 `return`
 
 ```js
 const fn = (param1, param2) => param1 + param2
-functionName5(1, 2)
+
+fn(1, 2)
 ```
 
-### 返回对象
+### 直接返回对象
 
 ```js
 // 加括号的函数体返回对象字面表达式
@@ -122,134 +128,122 @@ const fn = bar => ({ foo: bar })
 
 ## 回调函数
 
+**数组方法 map 函数：**
+
 ```js
 // 普通函数写法
-[1, 2, 3].map(function(x){
+const result = [1, 2, 3].map(function(x){
     return x * x
 })
 
 // 箭头函数写法
-[1, 2, 3].map(x => x * x);
+const result = [1, 2, 3].map(x => x * x);
 ```
+
+**数组方法 sort 函数：**
 
 ```js
 // 普通函数写法
-var result = values.sort(function (a, b){
+const result = values.sort(function (a, b){
     return a - b;
 })
 
 // 箭头函数写法
-var result = values.sort((a, b) => a - b)
+const result = values.sort((a, b) => a - b)
 ```
 
-## 使用注意
+## 注意事项
 
-- 函数体内的 `this` 对象，就是定义时所在的对象，而不是使用时所在的对象
+- 函数体内的 `this` 对象，就是 **定义时所在** 的对象，而不是使用时所在的对象
 - 不可以当作构造函数，也就是说，不可以使用 `new` 命令，否则会抛出一个错误
 - 不可以使用 `arguments` 对象，该对象在函数体内不存在。如果要用，可以用 `rest` 参数代替
 - 不可以使用 `yield` 命令，因此箭头函数不能用作 Generator 函数
 
 ### 箭头函数中的 `this`
 
-`this` 对象的指向时可变的，但是在箭头函数中，它是固定的。因为箭头函数内部的 `this` 是词法作用域，由上下文确定。
+`this` 对象的指向时可变的，但是在箭头函数中，它是**固定的**。因为箭头函数内部的 `this` 是 **词法作用域**，由上下文确定。
 
 ```js
 function foo(){
-    setTimeout(() => {
-        console.log('id', this.id);
-    }, 100);
+  setTimeout(() => {
+    console.log(this.key);
+  }, 100);
 }
 
-var id = 21;
+var key = 100;
 
-foo.call({ id: 42 });
-// id: 42
+foo.call({ key: 50 });
+// 50
 ```
 
-<details>
+上面的代码中，`setTimeout` 的参数一个箭头函数，这个箭头函数的定义生效是在 `foo` 函数生成时，而它的真正执行要等到 100 毫秒后。如果是普通函数，执行时 `this` 应该指向全局对象 `window`，这时应该输出 `100`。但是，箭头函数导致 `this` 总是指向函数定义生效时所在的对象（本例时 `{ key: 50 }`），所以输出的是 `50`。
 
-<summary>例子解析</summary>
+箭头函数可以让 `setTimeout` 里面的 `this`，绑定定义时所在的作用域，而不是指向运行时所在的作用域。
 
-上面的代码中，`setTimeout` 的参数一个箭头函数，这个箭头函数的定义生效是在 `foo` 函数生成时，而它的真正执行要等到 100 毫秒后。如果是普通函数，执行时 `this` 应该指向全局对象 `window`，这时应该输出 `21`。但是，箭头函数导滞 `this` 总是指向函数定义生效时所在的对象（本例时 `{id: 42}`），所以输出的是 `42`。
-
-</details>
-
-箭头函数可以让 `setTimeout` 里面的 `this`，绑定定义时所在的作用域，而不是指向运行时所在的作用域。下面是另一个例子。
+下面是另一个例子。
 
 ```js
 function Timer(){
-    this.s1 = 0;
-    this.s2 = 0;
+  this.num1 = 0;
+  this.num2 = 0;
 
-    // 箭头函数
-    setInterval(() => this.s1++, 1000)
+  // 箭头函数
+  setInterval(() => this.num1++, 1000)
 
-    // 普通函数
-    setInterval(function (){
-        this.s2++;
-    }, 1000);
+  // 普通函数
+  setInterval(function (){
+      this.num2++;
+  }, 1000);
 }
 
-var timer = new Timer();
+const timer = new Timer();
 
-setTimeout(() => console.log('s1', timer.s1), 3100);
-setTimeout(() => console.log('s2', timer.s2), 3100);
-// s1: 3
-// s2: 0
+setTimeout(() => console.log('num1', timer.num1), 3000);
+setTimeout(() => console.log('num2', timer.num2), 3000);
+// num1: 3
+// num2: 0
 ```
-
-<details>
-
-<summary>例子解析</summary>
 
 上面的代码中，`Timer` 函数内部设置了两个定时器，分别使用了箭头函数和普通函数。
 
-前者的 `this` 绑定定义时所在的作用域（即 `Timer` 函数），后者的 `this` 指向运行时所在的作用域（即全局对象）。所以，3100ms 之后， `timer.s1` 被更新了 3 次，而 `timer.s2` 一次都没更新。
+前者的 `this` 绑定 **定义时** 所在的作用域（即 `Timer` 函数），后者的 `this` 指向 **运行时** 所在的作用域（即全局对象）。所以，3000ms 之后， `timer.num1` 被更新了 3 次，而 `timer.num2` 一次都没更新。
 
-</details>
-
-箭头函数可以让 `this` 指向固定化，这种特征很有利于封装回调函数。
+箭头函数可以让 `this` 指向固定化，这种特征很 **有利于封装回调函数**。
 
 ```js
-var handler = {
-    id: '123456',
-    init: function (){
-        document.addEventListener('click',
-        	event => this.doSomething(event.type), false);
-    },
-    doSomething: function (type) {
-        console.log('Handling' + type + ' for ' + this.id);
-    }
+const handler = {
+  id: '123456',
+  init: function (){
+    document.addEventListener('click',
+      event => this.doSomething(event.type), false);
+  },
+  doSomething: function (type) {
+    console.log('Handling' + type + ' for ' + this.id);
+  }
 }
 ```
 
-<details>
-
-<summary>例子解析</summary>
-
 以上的代码的 `init` 方法中使用了箭头函数，这导致箭头函数里面的 `this` 总是指向 `handler` 对象。否则，回调函数运行时，`this.doSomething` 一行会报错，因为此时 `this` 指向 `document` 对象。
 
-`this` 指向的固定化并不是因为箭头函数内部有绑定 `this` 的机制，实际原因时箭头函数根本没有自己的 `this`，导致内部的 `this` 就是外层代码块的 `this`。正是因为它没有 `this`，所以不能用作构造函数。
-
-</details>
+⚠️ **注意：**`this` 指向的固定化并不是因为箭头函数内部有绑定 `this` 的机制，实际原因时箭头函数根本没有自己的 `this`，导致内部的 `this` 就是外层代码块的 `this`。正是因为它没有 `this`，所以不能用作构造函数。
 
 箭头函数转成 ES5 的代码如下。
 
 ```js
 // ES6
 function foo(){
-    setTimeout(() => {
-        console.log('id:', this.id);
-    }, 100);
+  setTimeout(() => {
+    console.log('id:', this.id);
+  }, 100);
 }
 
 // ES5
 function foo(){
-    var _this = this;
+  var _this = this;
 
-    setTimeout(function(){
-        console.log('id:', _this.id);
-    }, 100)
+  setTimeout(function(){
+    console.log('id:', _this.id);
+  }, 100)
 }
 ```
 
@@ -258,29 +252,26 @@ function foo(){
 ```js
 // 请问下面的代码之中有几个this?
 function foo(){
+  return () => {
     return () => {
-        return () => {
-            return () => {
-                console.log('id:', this.id);
-            }
-        }
+      return () => {
+        console.log('id:', this.id);
+      }
     }
+  }
 }
 
-var f = foo.call({id: 1});
+var fn = foo.call({id: 1});
 
-var t1 = f.call({id: 2})()();	// id: 1
-var t2 = f().call({id: 3})();	// id: 1
-var t3 = f()().call({id: 4});	// id: 1
+var res1 = fn.call({id: 2})()();
+// id: 1
+var res2 = fn().call({id: 3})();
+// id: 1
+var res3 = fn()().call({id: 4});
+// id: 1
 ```
 
-<details>
-
-<summary>例子解析</summary>
-
-上面的代码中只有一个 `this`，就是函数 `foo` 的 `this`，所以 t1、t2、t3 都输出同样的结果。因为所有的内层函数都是箭头函数，都没有自己的 `this`，它们的 `this` 其实都是最外层 `foo` 函数的 `this`。
-
-</details>
+上面的代码中只有一个 `this`，就是函数 `foo` 的 `this`，所以 `res1`、`res2`、`res3` 都输出同样的结果。因为所有的内层函数都是箭头函数，都没有自己的 `this`，它们的 `this` 其实都是最外层 `foo` 函数的 `this`。
 
 除了 `this` 外，以下三个变量在箭头函数之中也是不存在的，指向外层函数的对应变量：`arguments`、`super`、`new.target`。
 
@@ -316,12 +307,16 @@ foo(2, 4, 6, 8);
 
 ```js
 function insert(value){
-    return {into:function (array){
-        return {after: function (afterValue){
-        	array.splice(array.indexOf(afterValue) + 1, 0, value);
-            return array;
-        }}
-    }}
+  return {
+    into:function (array){
+      return {
+        after: function (afterValue){
+          array.splice(array.indexOf(afterValue) + 1, 0, value);
+          return array;
+        }
+      }
+    }
+  }
 }
 
 insert(2).into([1, 3]).after(1);	// [1, 2, 3]
@@ -330,10 +325,7 @@ insert(2).into([1, 3]).after(1);	// [1, 2, 3]
 上面这个函数，可以使用箭头函数改写。
 
 ```js
-let insert = (value) => ({into: (array) => ({after: (afterValue) => {
-  array.splice(array.indexOf(afterValue) + 1, 0, value);
-  return array;
-}})});
+let insert = (value) => ({into: (array) => ({after: (afterValue) => { array.splice(array.indexOf(afterValue) + 1, 0, value); return array }})});
 
 insert(2).into([1, 3]).after(1);	// [1, 2, 3]
 ```
@@ -341,8 +333,7 @@ insert(2).into([1, 3]).after(1);	// [1, 2, 3]
 下面是一个部署管道机制（pipeline）的例子，即前一个函数的输出是后一个函数的输入。
 
 ```js
-const pipeline = (...focus) =>
-	val => focus.reduce((a, b) => b(a), val);
+const pipeline = (...focus) => val => focus.reduce((a, b) => b(a), val);
 
 const plus1 = a => a + 1;
 const mult2 = a => a * 2;

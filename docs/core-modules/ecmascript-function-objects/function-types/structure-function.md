@@ -23,15 +23,17 @@ order: 1
 
 ```js
 function Person(name, age){
-    this.name = name;
-    this.age = age;
-    this.sayHello = function(){
-        console.log(this.name + "say hello");
-    }
+  this.name = name;
+  this.age = age;
+  this.sayHello = function(){
+    console.log(this.name + "say hello");
+  }
 }
 
 const foo = new Person('Bella', 23);
-foo.sayHello();	// Bella say hello
+
+foo.sayHello();
+// Bella say hello
 ```
 
 ## 缺点
@@ -50,17 +52,23 @@ foo.sayHello();	// Bella say hello
 
 ```js
 function Person(){};
+
 const person1 = new Person();
-console.log(person1.constructor === Person);	// true
+
+console.log(person1.constructor === Person);
+// true
 ```
 
 2. 从实例中新建另一个实例
 
 ```js
 function Person(){};
+
 const person1 = new Person(){};
 const person2 = new person1.constructor();
-console.log(person2 instanceof Person); // true
+
+console.log(person2 instanceof Person);
+// true
 ```
 
 3. 由于 `constructor` 属性是一种原型对象和构造函数的关系，所以在修改原型对象对的时候，一定要注意 `constructor` 的指向问题，避免 `instanceof` 失真。
@@ -72,7 +80,7 @@ console.log(person2 instanceof Person); // true
 在函数调用的时候：
 
 | 构造函数                                       | 普通函数                                                     |
-| ---------------------------------------------- | ------------------------------------------------------------ |
+| :---------------------------------------------- | :------------------------------------------------------------ |
 | `new Fn()`                                     | `fn()`                                                       |
 | 构造函数内部会创建一个新的对象，即 `Fn` 的实例 | 在调用函数的内部不会创建新的对象                             |
 | 函数内部的 `this` 指向 新创建的 `Fn` 的实例    | 函数内部的 `this` 指向调用函数的对象（如果没有对象调用，默认是 `window`） |
@@ -80,9 +88,9 @@ console.log(person2 instanceof Person); // true
 
 构造函数的返回值：
 
-有一个默认的返回值，新创建的对象（实例）
+有一个默认的返回值，新创建的实例对象。
 
 当手动添加返回值后（`return` 语句）：
 
-1. 返回值是基本数据类型 --> 真正的返回值还是那个新创建的对象（实例）
-2. 返回值是复杂数据类型（对象）--> 真正的返回值是这个对象
+1. 返回值是基本数据类型的话，真正的返回值还是那个新创建的实例对象
+2. 返回值是复杂数据类型（对象）的话，真正的返回值是这个对象

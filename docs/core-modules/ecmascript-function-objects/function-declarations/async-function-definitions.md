@@ -5,11 +5,11 @@ nav:
 group:
   title: 函数声明
   order: 6
-title: Async 函数
+title: 异步函数
 order: 3
 ---
 
-# async 函数
+# 异步函数
 
 `async` 函数是 Generator 函数的语法糖。使用关键字 `async` 来表示，在函数内部是使用 `await` 命令来表示异步。
 
@@ -17,7 +17,7 @@ order: 3
 
 - **内置执行器**：Generator 函数的执行必须靠执行器，而 `async` 函数自带执行器，调用方式与普通函数一致。
 - **更好的语义**：`async` 和 `await` 相较于星号（`*`）和 `yield` 更加语义化。`async` 表示函数中有异步操作，`await` 表示紧跟在后面的表达式需要等待结果。
-- **更广的适用性**：`co` 模块约定，`yield` 命令后面只能是 Thunk 函数或 Promise 对象，而 `async` 函数的 `await` 命令后面则可以是 Promise 和原始类型的值（Number、String 和 Boolean，但这时会自动转成立即 `resolved` 的 Promise 对象）。
+- **更广的适用性**：`co` 模块约定，`yield` 命令后面只能是 Thunk 函数或 Promise 对象，而 `async` 函数的 `await` 命令后面则可以是 Promise 和原始类型的值（Number、String 和 Boolean，但这时会自动转成立即 `fulfilled` 状态的 Promise 对象）。
 - **返回值是 Promise**：`async` 函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用 `then` 方法指定下一步的操作。
 
 进一步说，`async` 函数完全可以看作多个异步操作，包装成的一个 Promise 对象，而 `await` 命令就是内部 `then` 命令的语法糖。
@@ -25,7 +25,7 @@ order: 3
 **`async`函数与 Generator 函数的对比**
 
 |                  | async 函数           | Generator 函数   |
-| ---------------- | -------------------- | ---------------- |
+| :---------------- | :-------------------- | :---------------- |
 | **定义方式**     | `async function(){}` | `function* (){}` |
 | **异步语句命令** | `await`              | `yield`          |
 
@@ -33,7 +33,7 @@ order: 3
 
 ### 异步函数
 
-凡是在函数声明前添加 `async` 关键字的函数在执行后都会自动返回 Promise 对象
+凡是在函数声明前添加 `async` 关键字的函数在执行后都会自动返回 Promise 对象。
 
 `async` 函数返回一个 Promise 对象，可以使用 `then` 方法添加回调函数。当函数执行的时候，一旦遇到 `await` 就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
 
@@ -55,13 +55,15 @@ foo('Hello world!', 500).then(console.log);
 
 ### 异步语句
 
-`await`命令必须在 `async` 函数里使用，不能单独使用
+`await`命令必须在 `async` 函数里使用，不能单独使用。
 
 由于 `async` 函数返回的是 Promise 对象，可以作为 `await` 命令的参数。
 
 ### 异步语句返回值
 
-`await` 后需跟 Promise。`await` 作用之一就是获取随后 Promise 对象成功状态传递出来的参数。
+`await` 后需跟 Promise。
+
+`await` 作用之一就是获取随后 Promise 对象成功状态传递出来的参数。
 
 `await` 命令只能用在 `async` 函数中，否则会报错。
 
@@ -82,12 +84,13 @@ foo().then(res => console.log(res));
 // 'Hello world!'
 ```
 
-如果 `async` 函数内部抛出异常，则会导致返回的 Promise 对象状态变为 `reject` 状态。抛出的错误而会被 `catch` 方法回调函数接收到。
+如果 `async` 函数内部抛出异常，则会导致返回的 Promise 对象状态变为 `rejected` 状态。抛出的错误而会被 `catch` 方法回调函数接收到。
 
 ```js
 async function foo() {
   throw new Error('Error');
 }
+
 foo()
   .then(res => console.log(res))
   .catch(err => console.log(err));
@@ -130,11 +133,11 @@ fn.then(res => console.log(res));
 // 1
 ```
 
-## 错误处理
+## 异常处理
 
-### 失败状态
+### 捕捉异常
 
-任何一个 `await` 语句后面的 Promise 对象变为 `reject` 状态，那么整个 `async` 函数都会中断执行。
+任何一个 `await` 语句后面的 Promise 对象变为 `rejected` 状态，那么整个 `async` 函数都会中断执行。
 
 🌰 **标准示例：**
 
@@ -145,9 +148,9 @@ async function foo() {
 }
 ```
 
-当 `async` 异步函数中只要有一个 `await` 异步语句返回的 Promise 处于 `reject` 状态，则后面的 `await` 异步语句都不会执行。
+当 `async` 异步函数中只要有一个 `await` 异步语句返回的 Promise 处于 `rejected` 状态，则后面的 `await` 异步语句都不会执行。
 
-🔧 **解决方法**：使用 [try-catch 语句](../../../basic-concept/statements-and-declarations/the-try-statement.md) 或在 `await` 返回的 Promise 添加 `catch` 方法捕捉错误
+**解决方法**：使用 [try-catch 语句](../../../basic-concept/statements-and-declarations/the-try-statement) 或在 `await` 返回的 Promise 添加 `catch` 方法捕捉错误。
 
 有时，我们希望即使前一个异步操作失败，也不要中断后面的异步操作。这时可以将第一个 `await` 放在 `try...catch` 结构里面，这样不管这个异步操作是否成功，第二个 `await` 都会执行。
 
@@ -157,7 +160,9 @@ async function foo() {
 async function foo() {
   try {
     await Promise.reject('Error!');
-  } catch (e) {}
+  } catch (err) {
+    // do something
+  }
 
   return await Promise.resolve('Hello world!');
 }
@@ -173,6 +178,7 @@ foo().then(res => console.log(res));
 ```js
 async function foo() {
   await Promise.reject('Error!').catch(e => console.log(e));
+
   return await Promise.resolve('Hello world!');
 }
 
@@ -199,8 +205,11 @@ async function foo() {
     try {
       await superagent.get('https://google.com/this-throws-an-error');
       break;
-    } catch (e) {}
+    } catch (err) {
+      // do something
+    }
   }
+
   console.log(i);
   // 3
 }
@@ -276,9 +285,9 @@ function spawn(genF) {
 
 ```js
 function request(time) {
-  return new Promise((res, rej) => {
+  return new Promise((resolve, rejecr) => {
     setTimeout(() => {
-      res(time);
+      resolve(time);
     }, time);
   });
 }
@@ -306,17 +315,18 @@ getResult()
 🌰 **标准示例：**
 
 ```js
-const [foo, bar] = await Promise.all([getFoo(), getBar()]);
+const [userList, orderList] = await Promise.all([getUserList(), getOrderList()]);
 
-let fooPromise = getFoo();
-let barPromise = getBar();
-let foo = await fooPromise;
-let bar = await barPromise;
+let userPromise = getUserList();
+let orderPromise = getOrderList();
+
+let user = await userPromise;
+let order = await orderPromise;
 ```
 
-上面两种写法，`getFoo` 和 `getBar` 都是同时触发，这样就会缩短程序的执行时间。
+上面两种写法，`getUserList` 和 `getOrderList` 都是同时触发，这样就会缩短程序的执行时间。
 
-###综合运用
+### 非阻塞异步
 
 在某些业务场景下，开发者可能需要处理多个连续步骤的操作，但是这些操作未必相互依赖。因此需要对这些操作进行优化。
 
@@ -325,30 +335,47 @@ let bar = await barPromise;
 🌰 **标准示例：**
 
 ```js
+// 选择披萨
 async function selectPizza() {
+  // 异步获取披萨数据
   const pizzaData = await getPizzaData();
+  // 选择披萨
   const chosenPizza = choosePizza();
+  // 异步添加选中披萨到购物车
   await addPizzaToCart(chosenPizza);
 }
 
+// 选择饮料
 async function selectDrink() {
+  // 异步获取饮料数据
   const drinkData = await getDrinkData();
+  // 选择饮料
   const chosenDrink = chooseDrink();
+  // 异步添加选中饮料到购物车
   await addDrinkToCart(chosenDrink);
 }
 
 (async () => {
-  Promise.all([selectPizza(), selectDrink()]).then(orderItems);
+  // 并发执行这些非阻塞异步函数
+  Promise.all(
+    [
+      selectPizza(),
+      selectDrink()
+    ]
+  ).then(orderItems);
 })();
 ```
 
 补充一种与之相关的比较优雅的写法。
 
 ```js
-await Promise.all(a().then(b), c().then(d));
+await Promise.all(
+  selectPizza().then(choosePizza),
+  selectDrink().then(chooseDrink)
+);
 ```
 
-### 未知数量
+### 未知数量的异步操作
 
 承接上个实践方案，当我们需要解决未知数量的 Promise 的时候，我们只需要创建数组并存储它们，然后同样使用 `Promise.all` 方法就能够并发地等待所有 Promise 返回结果。
 
@@ -356,7 +383,9 @@ await Promise.all(a().then(b), c().then(d));
 
 ```js
 async function foo() {
+  // 批量配置项
   const items = await batchDisposal();
+  // 每个配置项对应一个异步请求
   const promises = items.map(item => sendRequest(item));
   await Promise.all(promises);
 }

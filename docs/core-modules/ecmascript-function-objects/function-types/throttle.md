@@ -11,7 +11,7 @@ order: 8
 
 # 函数节流
 
-函数节流：规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。
+**函数节流**：规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。
 
 🏕 **生活中的实例：**
 
@@ -34,90 +34,95 @@ order: 8
 */
 
 function throttle(fn, wait = 100){
-    // 利用闭包保存定时器和上次执行时间
-    let timer = null;
-    // 上次执行时间
-    let previous;
-    return function (){
-        // 保存函数调用时的上下文和参数，传递给 fn
-        const context = this;
-        const args = arguments;
-        const now = +new Date();
-        if (previous && now < previous + wait) { // 周期之中
-            clearTimeout(timer);
-            timer = setTimeout(function(){
-                previous = now;
-                fn.apply(context, args);
-            }, wait);
-        } else {
-            previous = now;
-            fn.apply(context, args);
-        }
+  // 利用闭包保存定时器和上次执行时间
+  let timer = null;
+
+  // 上次执行时间
+  let previous;
+
+  return function (){
+    // 保存函数调用时的上下文和参数，传递给 fn
+    const context = this;
+    const args = arguments;
+    const now = +new Date();
+
+    // 周期之中
+    if (previous && now < previous + wait) {
+      clearTimeout(timer);
+      timer = setTimeout(function(){
+        previous = now;
+        fn.apply(context, args);
+      }, wait);
+    } else {
+      // 周期之外
+      previous = now;
+      fn.apply(context, args);
     }
+  }
 }
 ```
 
-**在原生应用中使用：**
+### 原生实现应用
 
-首次点击按钮触发 `invoke` 函数，在 1000 毫秒内频繁点击按钮也不会再次执行 `invoke` 函数，直到 1000 毫秒之后再次点击才会再次执行 `invoke` 函数。
+首次点击按钮触发 `trigger` 函数，在 1000 毫秒内频繁点击按钮也不会再次执行 `trigger` 函数，直到 1000 毫秒之后再次点击才会再次执行 `trigger` 函数。
 
 ```js
 const button = document.getElementById('button');
 
-function invoke(){
-    console.log('click');
+function trigger(){
+  console.log('click');
 }
 
-button.addEventListener('click', throttle(invoke, 1000));
+button.addEventListener('click', throttle(trigger, 1000));
 ```
 
-**在 React 应用中使用：**
+### React 应用
 
 在 React 中使用，下面监听窗口的 `resize` 和输入框的 `onChange` 事件：
 
-<!-- ```jsx
+```jsx | pure
 import React, { Component } from 'react';
 import { throttle } from '@utils/throttle';
 
 export default class Invoke extends Component {
-    constructor() {
-        super();
-        this.change = throttle((e) => {
-            console.log(e.target.value);
-            console.log('throttle');
-        }, 100)
-    }
+  constructor() {
+    super();
+    this.change = throttle((e) => {
+      console.log(e.target.value);
+      console.log('throttle');
+    }, 100)
+  }
 
-    handleWindowResize(){
-        console.log('resize');
-    }
+  handleWindowResize(){
+    console.log('resize');
+  }
 
-    componentDidMount() {
-        window.addEventListener('resize', throttle(this.handleWindowResize, 100));
-    }
+  componentDidMount() {
+    window.addEventListener('resize', throttle(this.handleWindowResize, 100));
+  }
 
-    componentWillUnmount() {
-        window.removeEvenetListener('resize', throttle(this.handleWindowResize), 100);
-    }
+  componentWillUnmount() {
+    window.removeEvenetListener('resize', throttle(this.handleWindowResize), 100);
+  }
 
-    handleInputChange = (e) => {
-        // 持久化
-        e.persist();
-        this.change(e);
-    }
+  handleInputChange = (e) => {
+    // 持久化
+    e.persist();
+    this.change(e);
+  }
 
-    render() {
-        return (
-        	<input type="text" onChange={this.handleInputChange}/>
-        )
-    }
+  render() {
+    return (
+      <input type="text" onChange={this.handleInputChange}/>
+    )
+  }
 }
-``` -->
+```
 
 其他框架库的实现：
 
-* [Lodash](https://github.com/lodash/lodash/blob/master/throttle.js)
-* [Underscore](https://underscorejs.org/#throttle)
+- [Lodash - throttle](https://github.com/lodash/lodash/blob/master/throttle.js)
+- [Underscore - throttle](https://underscorejs.org/#throttle)
 
 ### 应用场景
 
@@ -140,15 +145,15 @@ export default class Invoke extends Component {
 
 ```js
 $(window).on('scroll', function(){
-    // 判断是否滚动到底部的逻辑
-    let pageHeight = $('body').height(),
-        scrollTop = $(window).scrollTop(),
-        winHeight = $(window).height(),
-        thresold = pageHeight - scrollTop - winHeight;
+  // 判断是否滚动到底部的逻辑
+  let pageHeight = $('body').height(),
+    scrollTop = $(window).scrollTop(),
+    winHeight = $(window).height(),
+    thresold = pageHeight - scrollTop - winHeight;
 
-    if (thresod > -100 && thresold <= 20) {
-        console.log('the end');
-    }
+  if (thresod > -100 && thresold <= 20) {
+    console.log('The end');
+  }
 })
 ```
 
@@ -156,14 +161,14 @@ $(window).on('scroll', function(){
 
 ```js
 $(window).on('scroll', throttle(function () {
-    // 判断是否滚动到底部的逻辑
-    let pageHeight = $('body').height(),
-        scrollTop = $(window).scrollTop(),
-        winHeight = $(window).height(),
-        thresold = pageHeight - scrollTop - winHeight;
-    if (thresold > -100 && thresold <= 20) {
-        console.log('end');
-    }
+  // 判断是否滚动到底部的逻辑
+  let pageHeight = $('body').height(),
+    scrollTop = $(window).scrollTop(),
+    winHeight = $(window).height(),
+    thresold = pageHeight - scrollTop - winHeight;
+  if (thresold > -100 && thresold <= 20) {
+    console.log('end');
+  }
 }, 300));
 ```
 
@@ -173,15 +178,15 @@ $(window).on('scroll', throttle(function () {
 
 ```js
 function throttle(fn, interval = 300) {
-    let canRun = true;
-    return function() {
-        if (!canRun) return
-        canRun = false;
-        setTimeout(() => {
-            fn.apply(this.arguments);
-            canRun = true;
-        }, interval);
-    }
+  let canRun = true;
+  return function() {
+    if (!canRun) return
+    canRun = false;
+    setTimeout(() => {
+      fn.apply(this.arguments);
+      canRun = true;
+    }, interval);
+  }
 }
 ```
 

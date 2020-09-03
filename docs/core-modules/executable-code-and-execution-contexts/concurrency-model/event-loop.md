@@ -11,7 +11,7 @@ order: 2
 
 # 事件循环
 
-为了协调事件、用户交互、脚本、UI 渲染、网络请求，用户代理必须使用事件循环机制（Event Loop）。
+为了协调事件、用户交互、脚本、UI 渲染、网络请求，用户代理必须使用 **事件循环机制（Event Loop）**。
 
 这种事件循环机制是由 JavaScript 的宿主环境来实现的，在浏览器运行环境中由浏览器内核引擎实现，而在 NodeJS 中则由 [libuv](https://github.com/libuv/libuv) 引擎实现。
 
@@ -112,12 +112,6 @@ console.log(6);
 - [📝 详解 JavaScript 中的 Event Loop（事件循环）机制](https://zhuanlan.zhihu.com/p/33058983)
 - [📝 不要混淆 Node.js 和浏览器中的 Event Loop](https://cnodejs.org/topic/5a9108d78d6e16e56bb80882)
 - [🎥 Further Adventure of the Event Loop](https://www.youtube.com/watch?v=u1kqx6AenYw)
-
-深度揭秘 Promise 微任务和执行过程
-https://blog.csdn.net/lqyygyss/article/details/102662606
-
-事件循环与任务队列
-https://kongchenglc.github.io/blog/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF20171026/
-
-深入解析你不知道的 EventLoop 和浏览器渲染、帧动画、空闲回调（动图演示）
-https://juejin.im/post/5ec73026f265da76da29cb25
+- [深度揭秘 Promise 微任务和执行过程](https://blog.csdn.net/lqyygyss/article/details/102662606)
+- [事件循环与任务队列](https://kongchenglc.github.io/blog/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF20171026/)
+- [深入解析你不知道的 EventLoop 和浏览器渲染、帧动画、空闲回调（动图演示）](https://juejin.im/post/5ec73026f265da76da29cb25)

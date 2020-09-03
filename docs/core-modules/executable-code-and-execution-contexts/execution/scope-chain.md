@@ -11,9 +11,9 @@ order: 3
 
 # 作用域链
 
-在 [变量对象](variable-object.md) 中提及到，当查找变量的时候，会先从当前执行上下文的变量对象中查找，如果没有找到，就会从父级（词法层面上的父级）执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。这样由多个执行上下文的变量对象构成的链表就叫做作用域链。
+在 [变量对象](./variable-object) 中提及到，当查找变量的时候，会先从当前执行上下文的变量对象中查找，如果没有找到，就会从父级（词法层面上的父级）执行上下文的变量对象中查找，一直找到全局上下文的变量对象，也就是全局对象。**这样由多个执行上下文的变量对象构成的链表就叫做作用域链。**
 
-下面，我们从一个函数的**创建**和**激活**两个时期来剖析作用域链是如何创建和变化的。
+下面，我们从一个函数的 **创建** 和 **激活** 两个时期来剖析作用域链是如何创建和变化的。
 
 ## 函数创建
 
@@ -25,9 +25,9 @@ order: 3
 
 ```js
 function foo() {
-    function bar() {
-        // do something
-    }
+  function bar() {
+    // do something
+  }
 }
 ```
 
@@ -39,8 +39,8 @@ foo.[[Scopes]] = [
 ];
 
 bar.[[Scopes]] = [
-    fooContext.AO,
-    globalContext.VO
+  fooContext.AO,
+  globalContext.VO
 ];
 ```
 
@@ -63,8 +63,8 @@ Scopes = [AO].concat([[Scopes]]);
 ```js
 const scope = 'global scope';
 function checkscope(){
-    var scope2 = 'local scope';
-    return scope2;
+  var scope2 = 'local scope';
+  return scope2;
 }
 checkscope();
 ```
@@ -75,7 +75,7 @@ checkscope();
 
 ```js
 checkscope.[[Scopes]] = [
-    globalContext.VO
+  globalContext.VO
 ];
 ```
 
@@ -83,8 +83,8 @@ checkscope.[[Scopes]] = [
 
 ```js
 ECStack = [
-    checkscopeContext,
-    globalContext
+  checkscopeContext,
+  globalContext
 ];
 ```
 
@@ -92,7 +92,7 @@ ECStack = [
 
 ```js
 checkscopeContext = {
-    Scopes: checkscope.[[Scopes]],
+  Scopes: checkscope.[[Scopes]],
 }
 ```
 
@@ -100,13 +100,13 @@ checkscopeContext = {
 
 ```js
 checkscopeContext = {
-    AO: {
-        arguments: {
-            length: 0
-        },
-        scope2: undefined
-    }，
-    Scopes: checkscope.[[Scopes]],
+  AO: {
+    arguments: {
+      length: 0
+    },
+    scope2: undefined
+  }，
+  Scopes: checkscope.[[Scopes]],
 }
 ```
 
@@ -114,13 +114,13 @@ checkscopeContext = {
 
 ```js
 checkscopeContext = {
-    AO: {
-        arguments: {
-            length: 0
-        },
-        scope2: undefined
+  AO: {
+    arguments: {
+      length: 0
     },
-    Scopes: [AO, [[Scopes]]]
+    scope2: undefined
+  },
+  Scopes: [AO, [[Scopes]]]
 }
 ```
 
@@ -128,13 +128,13 @@ checkscopeContext = {
 
 ```js
 checkscopeContext = {
-    AO: {
-        arguments: {
-            length: 0
-        },
-        scope2: 'local scope'
+  AO: {
+    arguments: {
+      length: 0
     },
-    Scopes: [AO, [[Scopes]]]
+    scope2: 'local scope'
+  },
+  Scopes: [AO, [[Scopes]]]
 }
 ```
 
@@ -142,7 +142,7 @@ checkscopeContext = {
 
 ```js
 ECStack = [
-    globalContext
+  globalContext
 ];
 ```
 

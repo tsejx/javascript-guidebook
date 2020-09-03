@@ -11,12 +11,12 @@ order: 6
 
 # 高阶函数
 
-高阶函数指操作函数的函数，一般地，有以下两种情况：
+**高阶函数** 指操作函数的函数，一般地，有以下两种情况：
 
 1. 函数可以作为参数被传递
 2. 函数可以作为返回值输出
 
-Javascript 中的函数显然满足高阶函数的条件，在实际开发中，无论是将函数当作参数传递，还是让函数的执行结果返回另外一个函数，这两种情形都有很多应用场景。
+JavaScript 中的函数显然满足高阶函数的条件，在实际开发中，无论是将函数当作参数传递，还是让函数的执行结果返回另外一个函数，这两种情形都有很多应用场景。
 
 
 ## 作为参数传递
@@ -34,20 +34,20 @@ Javascript 中的函数显然满足高阶函数的条件，在实际开发中，
 🌰 **标准示例**
 
 ```js
-const getUserInfo = function( userId, callback ){
-  $.ajax( 'http://xx.com/getUserInfo?' + userId, function( data ){
-    if ( typeof callback === 'function' ){
+const getUserInfo = function(userId, callback){
+  $.ajax( 'http://example.com/getUserInfo?' + userId, function(data){
+    if (typeof callback === 'function'){
       callback( data );
     }
   });
 }
 
-getUserInfo( 123, function( data ){
+getUserInfo(123, function(data){
   console.log( data.userName );
 });
 ```
 
-回调函数的应用不仅只在异步请求中，当一个函数不适合执行一些请求时，也可以把这些请求封装成一个函数，并把它作为参数传递给另外一个函数，**委托**给另外一个函数来执行。
+回调函数的应用不仅只在异步请求中，当一个函数不适合执行一些请求时，也可以把这些请求封装成一个函数，并把它作为参数传递给另外一个函数，**委托** 给另外一个函数来执行。
 
 比如，想在页面中创建 100 个 `div` 节点，然后把这些 `div` 节点都设置为隐藏。
 
@@ -67,7 +67,7 @@ appendDiv();
 
 于是把 `div.style.display = 'none'` 这行代码抽出来，用回调函数的形式传入 `appendDiv` 方法
 
-```javascript
+```js
 const appendDiv = function( callback ){
   for ( let i = 0; i < 100; i++ ){
     const div = document.createElement( 'div' );
@@ -84,7 +84,7 @@ appendDiv(function( node ){
 });
 ```
 
-可以看到，隐藏节点的请求实际上是由客户发起的，但是客户并不知道节点什么时候会创建好，于是把隐藏节点的逻辑放在回调函数中，**委托**给 `appendDiv` 方法。`appendDiv` 方法当然知道节点什么时候创建好，所以在节点创建好的时候，`appendDiv` 会执行之前客户传入的回调函数。
+可以看到，隐藏节点的请求实际上是由客户发起的，但是客户并不知道节点什么时候会创建好，于是把隐藏节点的逻辑放在回调函数中，**委托** 给 `appendDiv` 方法。`appendDiv` 方法当然知道节点什么时候创建好，所以在节点创建好的时候，`appendDiv` 会执行之前客户传入的回调函数。
 
 ### 数组排序
 
@@ -101,7 +101,6 @@ appendDiv(function( node ){
   return b - a;
 });
 ```
-
 
 ## 作为返回值输出
 
@@ -136,7 +135,8 @@ const isString = isType( 'String' );
 const isArray = isType( 'Array' );
 const isNumber = isType( 'Number' );
 
-console.log( isArray( [ 1, 2, 3 ] ) );    	// 输出：true
+console.log( isArray( [ 1, 2, 3 ] ) );
+// true
 ```
 
 其实上面实现的 isType 函数，也属于**偏函数**的范畴，偏函数实际上是返回了一个包含**预处理参数**的新函数，以便后续逻辑可以调用。
@@ -153,83 +153,96 @@ for ( var i = 0, type; type = [ 'String', 'Array', 'Number' ][ i++ ]; ){
   })( type )
 };
 
-Type.isArray( [] );    		// 输出：true
-Type.isString( "str" ); 	// 输出：true
+Type.isArray( [] );
+// true
+Type.isString( "str" );
+// true
 ```
 
+## AOP 面向切面编程
 
-## AOP
+AOP 即面向切面编程，它的主要作用是 **把一些跟核心业务逻辑模块无关的功能抽离出来**，这些跟业务逻辑无关的功能通常包括日志统计、安全控制、异常处理等。把这些功能抽离出来之后，再通过 **动态织入** 的方式掺入业务逻辑模块中。这样做的好处首先是可以保持业务逻辑模块的纯净和高内聚性，其次是可以很方便地复用日志统计等功能模块。
 
-AOP 即面向切面编程，它的主要作用是**把一些跟核心业务逻辑模块无关的功能抽离出来**，这些跟业务逻辑无关的功能通常包括日志统计、安全控制、异常处理等。把这些功能抽离出来之后，再通过 **动态织入** 的方式掺入业务逻辑模块中。这样做的好处首先是可以保持业务逻辑模块的纯净和高内聚性，其次是可以很方便地复用日志统计等功能模块。
-
-通常，在 Javascript 中实现 AOP，都是指把一个函数“动态织入”到另外一个函数之中。下面通过扩展 `Function.prototype` 来实现
+通常，在 JavaScript 中实现 AOP，都是指把一个函数 **动态织入** 到另外一个函数之中。下面通过扩展 `Function.prototype` 来实现
 
 ```js
 Function.prototype.before = function (beforefn) {
-    // 保存原函数的引用
-    const _this = this;
-    // 返回包含了原函数和新函数的"代理"函数
-    return function () {
-        // 先执行新函数，修正 this
-        beforefn.apply(this, arguments);
-        // 再执行原函数
-        return _this.apply(this, arguments);
-    }
+  // 保存原函数的引用
+  const _this = this;
+
+  // 返回包含了原函数和新函数的 "代理" 函数
+  return function () {
+    // 先执行新函数，修正 this
+    beforefn.apply(this, arguments);
+
+    // 再执行原函数
+    return _this.apply(this, arguments);
+  }
 };
 
 Function.prototype.after = function (afterfn) {
-    const _this = this;
-    return function () {
-        // 先执行原函数
-        const ret = _this.apply(this, arguments);
-        // 再执行新函数
-        afterfn.apply(this, arguments);
-        return ret;
-    }
+  const _this = this;
+
+  return function () {
+    // 先执行原函数
+    const result = _this.apply(this, arguments);
+
+    // 再执行新函数
+    afterfn.apply(this, arguments);
+
+    return result;
+  }
 };
 
-const func = function () {
-    console.log(2);
+const fn = function () {
+  console.log(2);
 };
 
-func = func.before(function () {
-    console.log(1);
+fn = fn.before(function () {
+  console.log(1);
 }).after(function () {
-    console.log(3);
+  console.log(3);
 });
 
-func();
+fn();
 // 1 2 3
 ```
 
-把负责打印数字 1 和打印数字 3 的两个函数通过 AOP 的方式动态植入 `func` 函数。通过执行上面的代码，控制台顺利地返回了执行结果 1、2、3。
+把负责输出数字 1 和输出数字 3 的两个函数通过 AOP 的方式动态植入 `fn` 函数。
+
+通过执行上面的代码，控制台顺利地返回了执行结果 1、2、3。
 
 ```js
 const service = function (){
-    console.log('功能逻辑');
+  console.log('功能逻辑');
 }
 
-const test = (function (){
-    let start_time;
-    return {
-        before: function (){
-            start_time = new Date();
-            console.log('计时开始');
-        },
-        after: function (){
-            const end_time = (new Date()) - start_time;
-            console.log('计时结束，用时：' + end_time)
-        }
+const proxyMethod = (function (){
+  let startTime;
+
+  return {
+    before: function (){
+      startTime = new Date();
+
+      console.log('计时开始');
+    },
+    after: function (){
+      const endTime = (new Date()) - startTime;
+
+      console.log('计时结束，用时：' + endTime)
     }
+  }
 })();
 
 const aop = function(fn, proxy){
-    proxy.before && proxy.before();
-    fn();
-    proxy.after && proxy.after();
+  proxy.before && proxy.before();
+
+  fn();
+
+  proxy.after && proxy.after();
 }
 
-aop(service, test);
+aop(service, proxyMethod);
 // 计时开始
 // 功能逻辑
 // 计时结束：1
@@ -237,16 +250,13 @@ aop(service, test);
 
 ## 其他应用
 
-- [函数柯里化](function-currying.md)
-- [反柯里化](function-currying.md#反柯里化)
-- [函数节流](throttle.md)
-- [函数防抖](debounce)
-- 分时函数
-- 惰性加载
+- [函数柯里化](./function-currying)
+- [反柯里化](./function-currying#反柯里化)
+- [函数节流](./throttle)
+- [函数防抖](./debounce)
 
 ---
 
 **参考资料：**
 
 - [📝 高阶函数介绍](https://juejin.im/entry/5815876c8ac247004fb6d132)
-

@@ -19,15 +19,19 @@ export const a = 1
 export const b = 2
 export const c = 3
 
-// cos1.js 命名空间导入
+// module1.js 命名空间导入
 import * as constants from './constants.js'
-console.log(constants.a)	// 1
-console.log(constants.b)	// 2
+console.log(constants.a)
+// 1
+console.log(constants.b)
+// 2
 
-// cos2.js 命名导入
+// module2.js 命名导入
 import { a, b } from './constants.js'
-console.log(a)				// 1
-console.log(b)				// 2
+console.log(a)
+// 1
+console.log(b)
+// 2
 ```
 
 如果要使用的常量非常多，可以建一个专门的 `constants` 目录，将各种常量写在不同的文件里面，保存在该目录下。
@@ -47,9 +51,8 @@ export const b = ['b1', 'b2', 'b3', 'b5', 'b6', 'b7']
 然后，将这些文件输出的常量，合并在 `index.js` 里面。
 
 ```js
-// constants.js
+// constants/index.js
 export { a } from './a'
-
 export { b } from './b'
 ```
 
@@ -57,5 +60,5 @@ export { b } from './b'
 
 ```js
 // module.js
-import { a, b } from './constants/index'
+import { a, b } from './constants'
 ```

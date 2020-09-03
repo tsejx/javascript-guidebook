@@ -17,7 +17,7 @@ order: 2
 
 ## 语法
 
-```javascript
+```js
 func.apply( [thisArg [, argsArray]])
 ```
 
@@ -33,7 +33,7 @@ func.apply( [thisArg [, argsArray]])
 
 ### 基本用法
 
-```javascript
+```js
 const a = {
     name: 'Cherry',
 
@@ -57,7 +57,7 @@ a.func2()		// Cherry
 
 ## 语法
 
-```javascript
+```js
 func.call( [thisArg [, arg1 [, arg2 [, argN...]]]] )
 ```
 
@@ -71,7 +71,7 @@ func.call( [thisArg [, arg1 [, arg2 [, argN...]]]] )
 
 ## 示例
 
-```javascript
+```js
 const sayName = function() {
   console.log(this.name);
 };
@@ -83,7 +83,7 @@ const peter = {
 sayName.call(peter); // peter
 ```
 
-```javascript
+```js
 function Person1() {
   this.name = 'person1';
   this.sayName = function() {
@@ -108,7 +108,7 @@ sam.sayName(); // person1
 
 ## 语法
 
-```javascript
+```js
 func.bind( thisArg [, arg1 [, arg2 [, ...]]] )
 ```
 
@@ -130,7 +130,7 @@ func.bind( thisArg [, arg1 [, arg2 [, ...]]] )
 
 `bind()` 最简单的用法是创建一个函数，使这个函数不论怎么调用都有同样的 `this` 值。JavaScript 新手经常犯的一个错误是将一个方法从对象中拿出来，然后再调用，希望方法中的 `this` 是原来的对象（比如在回调中传入这个方法）。如果不做特殊处理的话，一般会丢失原来的对象。从原来的函数和原来的对象创建一个绑定函数，则能很漂亮地解决这个问题。
 
-```javascript
+```js
 this.x = 9;
 
 var module = {
@@ -153,7 +153,7 @@ boundGetX(); // return 8
 
 `bind()` 的另一个最简单的用法是使一个函数拥有预设的初始参数。这些参数（如果有的话）作为 `bind()` 的第二个参数跟在 `this`（或其他对象）后面，之后它们会被插入到目标函数的参数列表的开始位置，传递给绑定函数的参数会跟在它们的后面。
 
-```javascript
+```js
 function list() {
   return Array.prototype.slice.call(arguments);
 }
@@ -171,7 +171,7 @@ var list3 = defaultsList(1, 2, 3); // [10, 1, 2, 3]
 
 在默认情况下，使用 `window.setTimeout()` 时，`this` 关键字会指向 `window` （或全局）对象。当使用类的方法时，需要 `this` 引用类的实例，你可能需要显式地把 `this` 绑定到回调函数以便继续使用实例。
 
-```javascript
+```js
 function LateBloomer() {
   this.petalCount = Math.ceil(Math.random() * 12) + 1;
 }
