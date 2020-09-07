@@ -6,12 +6,19 @@ group:
   title: 浏览器工作原理
   order: 20
 title: 构建对象模型
-order: 3
+order: 4
 ---
 
 # 构建对象模型
 
 浏览器渲染页面前需要先构建 DOM 树和 CSSOM 树。而 DOM 树 和 CSSOM 树是基于 HTML 文件和 CSS 文件构建的。
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/browser-working-principle/main-process-parsing-html-and-constructing-dom-tree.png';
+
+export default () => <img alt="文档对象模型图解" src={img} width={640} />;
+```
 
 ## 文档对象模型
 
@@ -25,7 +32,7 @@ order: 3
 import React from 'react';
 import img from '../../assets/browser-working-principle/dom-model.png';
 
-export default () => <img alt="文档对象模型图解" src={img} width={800} />;
+export default () => <img alt="文档对象模型图解" src={img} width={640} />;
 ```
 
 1. **转换：** 浏览器从磁盘或网络读取 HTML 的原始字节，并根据文件的指定编码（例如 UTF-8）将它们转换成各个字符。
@@ -51,7 +58,7 @@ CSS 字节转换成字符，接着转换成令牌和节点，最后链接到一�
 import React from 'react';
 import img from '../../assets/browser-working-principle/cssom-model.png';
 
-export default () => <img alt="CSS 对象模型图解" src={img} width={800} />;
+export default () => <img alt="CSS 对象模型图解" src={img} width={640} />;
 ```
 
 CSSOM 为何具有树结构？为页面上的任何对象计算最后一组样式时，浏览器都会先从适用于该节点的最通用规则开始（例如，如果该节点是 `body` 元素的子项，则应用所有 `body` 样式），然后通过应用更具体的规则（即规则**向下级联**）以递归方式优化计算的样式。
@@ -64,6 +71,6 @@ CSSOM 为何具有树结构？为页面上的任何对象计算最后一组样�
 
 * [📖 W3C The HTML syntax: Parsing HTML documents](https://www.w3.org/TR/html5/syntax.html#html-parser)
 * [📖 W3C Document Object Model (DOM) Technical Reports](https://www.w3.org/DOM/DOMTR)
-* [📝 Ilya Grigorik: Constructing the Object Model](<https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction?hl=zh-cn>)
+* [📝 Ilya Grigorik: Constructing the Object Model](<https://developers.google.com/web/fundamentals/performance/critical-rendering-path/construction-of-render-tree?hl=zh-cn>)
 * [📝 浏览器原理](https://juejin.im/post/5b0a6f1af265da0ddb63ecd9)
 * [📝 前端必读：浏览器内部工作原理](https://www.cnblogs.com/wjlog/p/5744753.html)
