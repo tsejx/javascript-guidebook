@@ -43,7 +43,7 @@ Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 
 ## 描述
 
-- 使用 Function 构造器生成的 Function 对象是在函数创建时解析的。这比你使用 [函数声明](../../../core-modules/ecmascript-function-objects/function-declarations/function-definitions.md#函数声明语句) 或者 [函数表达式](../../../core-modules/ecmascript-function-objects/function-declarations/function-definitions.md#函数表达式) 并在你的代码中调用更为低效，因为使用后者创建的函数是跟其他代码一起解析的
+- 使用 Function 构造器生成的 Function 对象是在函数创建时解析的。这比你使用 [函数声明](../../../core-modules/ecmascript-function-objects/function-declarations/function-definitions#函数声明语句) 或者 [函数表达式](../../../core-modules/ecmascript-function-objects/function-declarations/function-definitions#函数表达式) 并在你的代码中调用更为低效，因为使用后者创建的函数是跟其他代码一起解析的
 - 所有被传递到构造函数中的参数，都将被视为是将被创建函数的参数，并且是相同的标识符名称和传递顺序
 - 使用 Function 构造器生成的函数，并不会在创建它们的上下文中创建闭包；它们一般在**全局作用域**中被创建。当运行这些函数的时候，它们只能访问自己的本地变量和全局变量，不能访问 Function 构造器被调用生成的上下文的作用域。这和使用带有函数表达式代码的 `eval` 不同
 - 以调用函数的方式调用 Function 的构造函数（而不是用 `new` 关键字）跟以构造函数来调用是一样的
@@ -58,9 +58,9 @@ Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 
 ## 原型对象
 
-- [Function.prototype.apply](properties-of-the-function-prototype-object/apply.md)：设定指定函数的调用上下文环境，并提供数组形式的参数
-- [Function.prototype.call](properties-of-the-function-prototype-object/call.md)：设定指定函数的调用上下文环境，并提供列表形式的参数
-- [Function.prototype.bind](properties-of-the-function-prototype-object/bind.md)：绑定指定函数的调用上下文，无论如何调用均以该调用函数上下文为准
+- [Function.prototype.apply](properties-of-the-function-prototype-object/apply)：设定指定函数的调用上下文环境，并提供数组形式的参数
+- [Function.prototype.call](properties-of-the-function-prototype-object/call)：设定指定函数的调用上下文环境，并提供列表形式的参数
+- [Function.prototype.bind](properties-of-the-function-prototype-object/bind)：绑定指定函数的调用上下文，无论如何调用均以该调用函数上下文为准
 - ⚠️ Function.prototype.isGenerator：用于检测函数对象是否为 Generator 生成器函数
 
 ## 示例

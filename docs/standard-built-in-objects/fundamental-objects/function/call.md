@@ -42,6 +42,67 @@ function Toy(name, price) {
   this.category = 'toy';
 }
 
-var cheese = new Food('feta', 5);
-var fun = new Toy('robot', 40);
+const cheese = new Food('cheese', 5);
+const robot = new Toy('robot', 40);
+
+console.log(cheese);
+// {
+//   category: "food",
+//   name: "cheese",
+//   price: 5,
+// }
+console.log(robot);
+// {
+//   category: "toy",
+//   name: "robot",
+//   price: 40,
+// }
 ```
+
+## Polyfill
+
+功能分析：
+
+- 改变函数中 `this` 的指向
+- 获取后续参数并执行
+
+```js
+Function.prototype.call = function(context) {
+  // context 是调用 call 的时候参数中的第一个参数
+
+  // 先判断当前的调用方是不是一个函数
+  if (typeof this !== 'function') {
+    throw new TypeError('当前调用 call 方法的不是函数.')
+  }
+
+  // 保存调用方给的参数
+  const args = [...arguments].slice(1)
+
+  // 确定执行方的类型，因为可以传 null 和 undefined
+  context = context || window;
+
+  // 将调用方的内容保存为执行方的一个属性，为了保证不与执行方中的 key 键名重复
+  const fn = Symbol('fn')
+
+  context[fn] = this;
+
+  // 执行保存的函数，这个时候作用域就是在调用方的对象的作用域下执行，改变 this 的指向
+  const result = context[fn](...args)
+
+  // 执行完删除刚才新增的属性值
+  delete context[fn]
+
+  // 返回执行结果
+  return result
+}
+```
+
+由于 `call` 和 `apply` 的区别就在于传参的方式不同：
+
+```js
+fn.call(ctx, arg1, arg2, arg3)
+fn.call(ctx, [arg1, arg2, arg3])
+```
+
+- `call` 调用函数的参数是散列的形式
+- `apply` 调用函数的参数是数组的形式

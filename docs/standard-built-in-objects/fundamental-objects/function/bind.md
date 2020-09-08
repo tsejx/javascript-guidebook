@@ -87,7 +87,7 @@ bar(4, 5, 6);
 
 ### 配合定时器
 
-默认情况下，使用 [window.setTimeout](../../../../browser-object-model/the-window-object/timers/setTimeOut.md) 时，`this` 关键字会指向 Window 对象。当类的方法中需要 `this` 指向类的实例时，你可能需要显式地把 `this` 绑定到回调函数，就不会丢失该实例的引用。
+默认情况下，使用 [window.setTimeout](../../../../browser-object-model/the-window-object/timers/setTimeOut) 时，`this` 关键字会指向 Window 对象。当类的方法中需要 `this` 指向类的实例时，你可能需要显式地把 `this` 绑定到回调函数，就不会丢失该实例的引用。
 
 ```js
 function LaterBloomer() {
@@ -105,4 +105,40 @@ LateBloomer.prototype.declare = function() {
 const flower = new LateBloomer();
 
 flower.bloom();
+```
+
+## Polyfill
+
+关键点：
+
+- 创建新函数
+- `bind` 被调用时，新函数的 `this` 被 `bind` 的第一个参数指定
+
+```js
+Function.prototype.bind = function(context) {
+  if (typeof this !== 'function') {
+    throw new TypeError('当前调用 call 方法的不是函数.')
+  }
+
+  // 参数要拼接
+  const args = Array.prototype.slice.call(arguments, 1)
+
+  const currentContext = this;
+
+  const fn = function () {
+    return currentContext.apply(this instanceof fn ? this : context, args.concat(Array.prototype.slice.call(arguments)))
+  };
+
+  const OP = function () {}
+
+  if (this.prototype) {
+    OP.prototype = this.prototype;
+  }
+
+  // 将 fn.prototype 是 OP 的实例，因此返回 fn 若作为 new 的构造函数
+  // new 生成的新对象作为 this 传入 fn，新对象的 __proto__ 就是 OP 的实例
+  fn.prototype = new OP();
+
+  return fn;
+}
 ```
