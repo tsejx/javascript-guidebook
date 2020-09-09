@@ -114,6 +114,19 @@ flower.bloom();
 - 创建新函数
 - `bind` 被调用时，新函数的 `this` 被 `bind` 的第一个参数指定
 
+实现步骤：
+
+1. 确保调用 `call` 方法的调用方为 `function` 类型
+2. 参数：使用 `Array.prototype.slice.call` 将 `context` 参数去除❗️（重点）
+3. 当前执行上下文：就是调用 `bind` 的函数 `this`
+4. 创建返回的新函数
+    - 调用方是 `bind` 函数的执行上下文 `currentContext`
+    - 使用 `apply` 实现
+    - 执行方看调用新函数的所在上下文是否是新函数的实例，是则 `this` 否则 `context`
+    - 参数是 `bind` 的参数与新函数参数的合并
+5. 处理原型链
+6. 返回新函数
+
 ```js
 Function.prototype.bind = function(context) {
   if (typeof this !== 'function') {

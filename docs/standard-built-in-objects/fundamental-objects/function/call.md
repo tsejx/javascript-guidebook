@@ -61,10 +61,15 @@ console.log(robot);
 
 ## Polyfill
 
-功能分析：
+实现步骤：
 
-- 改变函数中 `this` 的指向
-- 获取后续参数并执行
+1. 确保调用 `call` 方法的调用方为 `function` 类型
+2. 参数：将参数数组转化为数组形式 ❗️（重点）
+3. 执行上下文：确保 `context` 执行上下文，用 `window` 全局变量兜底
+4. 将 `this`（调用方函数）赋值到执行上下文上，用 `Symbol` 创建属性键名以防冲突
+5. 执行调用方函数，并保存调用结果 ❗️（重点）
+6. 删除调用方（执行上下文）的键值对
+7. 返回结果
 
 ```js
 Function.prototype.call = function(context) {
@@ -72,7 +77,7 @@ Function.prototype.call = function(context) {
 
   // 先判断当前的调用方是不是一个函数
   if (typeof this !== 'function') {
-    throw new TypeError('当前调用 call 方法的不是函数.')
+    throw new TypeError(`${this}.call is not a function.`)
   }
 
   // 保存调用方给的参数
