@@ -52,22 +52,26 @@ var b = 'Hello';
 
 // 给对象及其包含的值分配内存
 var c = {
-    a: 1,
-    b: null
-}
+  a: 1,
+  b: null,
+};
 
 // 给数组及其包含的值分配内存
-var d = [0, null, undefined, 'Hello']
+var d = [0, null, undefined, 'Hello'];
 
 // 给函数分配内存
-function e(){
-    return 1
+function e() {
+  return 1;
 }
 
 // 函数表达式也能分配内存
-someElement.addEventListener('click', function(){
-  someElement.style.backgroundColor = 'blue';
-}, false);
+someElement.addEventListener(
+  'click',
+  function() {
+    someElement.style.backgroundColor = 'blue';
+  },
+  false
+);
 ```
 
 ### 函数调用分配
@@ -94,11 +98,11 @@ var q = s.substr(0, 3);
 
 var x = ['a', 'b'];
 var y = ['c', 'd'];
-var z = x.concat(y)
+var z = x.concat(y);
 // 新数组有四个元素 是 x 和 y 连接的结果
 ```
 
-##  内存使用
+## 内存使用
 
 使用值的过程实际上是对分配内存进行读取与写入的操作。读取与写入可能是写入一个变量或者一个对象的属性值，甚至传递函数的参数。
 
@@ -112,4 +116,4 @@ var z = x.concat(y)
 
 **参考资料：**
 
-* [📝 How JavaScript works:memory management + how to handle 4 common memory leaks](<https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec>)
+- [📝 How JavaScript works:memory management + how to handle 4 common memory leaks](https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec)
