@@ -35,7 +35,7 @@ import img from '../../assets/browser-working-principle/composite-rasterizing.pn
 export default () => <img alt="合成的光栅化过程" src={img} width={520} />;
 ```
 
-为了实现合成技术，我们需要对元素进行分层，确定哪些元素需要放置在哪一层，主线程需要遍历渲染树来创建一棵层次树（Layer Tree），对于添加了 `will-change` CSS 属性的元素，会被看做单独的一层，没有 `will-change` CSS属性的元素，浏览器会根据情况决定是否要把该元素放在单独的层。
+为了实现合成技术，我们需要对元素进行分层，确定哪些元素需要放置在哪一层，主线程需要遍历渲染树来创建一棵层次树（Layer Tree），对于添加了 `will-change` CSS 属性的元素，会被看做单独的一层，没有 `will-change` CSS 属性的元素，浏览器会根据情况决定是否要把该元素放在单独的层。
 
 ```jsx | inline
 import React from 'react';
@@ -62,13 +62,19 @@ export default () => <img alt="光栅线程创建图块的位图并发送给GPU"
 - 绘画四边形：包含图块在内存的位置以及图层合成后图块在页面的位置之类的信息。
 - 合成帧：代表页面一个帧的内容的绘制四边形集合。
 
-以上所有步骤完成后，合成线程就会通过 IPC 向浏览器进程（browser process）提交（commit）一个渲染帧。这个时候可能有另外一个合成帧被浏览器进程的UI线程（UI thread）提交以改变浏览器的 UI。这些合成帧都会被发送给 GPU 从而展示在屏幕上。如果合成线程收到页面滚动的事件，合成线程会构建另外一个合成帧发送给 GPU 来更新页面。
+以上所有步骤完成后，合成线程就会通过 IPC 向浏览器进程（browser process）提交（commit）一个渲染帧。这个时候可能有另外一个合成帧被浏览器进程的 UI 线程（UI thread）提交以改变浏览器的 UI。这些合成帧都会被发送给 GPU 从而展示在屏幕上。如果合成线程收到页面滚动的事件，合成线程会构建另外一个合成帧发送给 GPU 来更新页面。
 
 ```jsx | inline
 import React from 'react';
 import img from '../../assets/browser-working-principle/composite-frame.png';
 
-export default () => <img alt="合成线程构建出合成帧，合成帧会被发送给浏览器进程然后再发送给GPU" src={img} width={520} />;
+export default () => (
+  <img
+    alt="合成线程构建出合成帧，合成帧会被发送给浏览器进程然后再发送给GPU"
+    src={img}
+    width={520}
+  />
+);
 ```
 
 合成的好处在于这个过程没有涉及到主线程，所以合成线程不需要等待样式的计算以及 JavaScript 完成执行。这就是为什么合成器相关的动画最流畅，如果某个动画涉及到布局或者绘制的调整，就会涉及到主线程的重新计算，自然会慢很多。
@@ -113,6 +119,18 @@ CSS `transform` 创建新的复合图层，可以被 GPU 直接用来执行 `tra
 - 拥有加速 CSS `filter` 过滤器的元素
 - 元素有一个包含复合层的后代节点（换句话说，就是一个元素拥有一个子元素，该子元素在自己的层里）
 - 元素有一个兄弟元素在复合图层渲染，并且该兄弟元素的 `z-index` 较小，那这个元素也会被应用到复合图层
+
+**实际优化点：**
+
+- 用 `translate` 替代 `top` 改变
+- 用 `opacity` 替代 `visibility`
+- 不要逐条修改 DOM 的样式，预先定义好 `class`，然后修改 DOM 的 `className`
+- 把 DOM 离线后修改，比如：先把 DOM 给 `display: none`（有一次 Reflow 重排），然后你修改 100 次，然后再把它显示出来
+- 不要把 DOM 节点的属性值放在一个循环里当成循环里的变量
+- 不要使用 `table` 布局，可能很小的一个小改动会造成整个 `table` 的重新布局
+- 动画实现的速度的选择
+- 对于动画新建吐槽那个
+- 启用 GPU 硬件加速
 
 ### 开启硬件加速
 
