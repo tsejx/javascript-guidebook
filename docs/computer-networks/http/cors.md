@@ -11,7 +11,7 @@ order: 6
 
 # HTTP CORS 跨域资源共享
 
-跨域资源共享（CORS：Cross-Origin Resource Sharing）是一种机制，它使用额外的  HTTP 头来告诉浏览器，让运行在相同域（Origin）上的 Web 应用被准许访问来自不同源服务器上的指定的资源（也即是 [同源策略](../frontend-security/same-origin-policy.md) 的 HTTP 解决方案）。当一个资源从与该资源本身所在的服务器**不同的域、协议或端口**请求一个资源时，资源会发起一个**跨域 HTTP 请求**。
+跨域资源共享（CORS：Cross-Origin Resource Sharing）是一种机制，它使用额外的  HTTP 头来告诉浏览器，让运行在相同域（Origin）上的 Web 应用被准许访问来自不同源服务器上的指定的资源（也即是 [同源策略](../frontend-security/same-origin-policy) 的 HTTP 解决方案）。当一个资源从与该资源本身所在的服务器**不同的域、协议或端口**请求一个资源时，资源会发起一个**跨域 HTTP 请求**。
 
 CORS 机制是为了在认可用户发起的请求的同时，阻止恶意注入脚本；并在以下情况发起的 HTTP 请求时触发：
 

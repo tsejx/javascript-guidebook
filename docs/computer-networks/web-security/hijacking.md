@@ -237,3 +237,4 @@ function checkScriptDiff(src, srcNew) {
 - [📝 浅谈流量劫持与防治](https://juejin.im/entry/5bcec8e2518825102423e391)
 - [📝 腾讯 IVWEB 团队：使用 SRI 解决 CDN 劫持](https://juejin.im/post/5c355a816fb9a049a42f3ac8)
 - [📝 应对流量劫持，前端能做哪些工作？](https://www.zhihu.com/question/35720092)
+- [📝 Web 前端页面劫持和反劫持](https://js8.in/2017/08/04/Web%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%8A%AB%E6%8C%81%E5%92%8C%E5%8F%8D%E5%8A%AB%E6%8C%81/#more)

@@ -123,7 +123,7 @@ HTTP/1.1 协议中共定义了八种方法，以不同的方式操作指定的�
 | TRACE   | 显示服务器收到的请求，主要用于测试或诊断。                                                                                                                                                             |
 | CONNECT | HTTP/1.1 中预留给能够将连接改为通道方式的代理服务器。通常用于 SSL 加密服务器的链接（经由非加密的 HTTP 代理服务器）。                                                                                   |
 
-其中，最常见的是 GET 和 POST 方法，如果是 RESful 接口的话一般会用到 PUT、DELETE、GET、POST（分别对应增删查改），这里附上一篇有关 REST 的文章  [什么是 REST](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/08.3.md) 。
+其中，最常见的是 GET 和 POST 方法，如果是 RESful 接口的话一般会用到 PUT、DELETE、GET、POST（分别对应增删查改），这里附上一篇有关 REST 的文章  [什么是 REST](https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/08.3) 。
 
 **请求行**
 
@@ -206,7 +206,7 @@ HTTP 响应的格式上除状态行（第一行）与请求报文的请求行不
 
 **状态码**
 
-状态码用以表示网页服务器超文本传输协议响应状态的 3 位数字码。[详细的状态码表](./response-status-codes.md)
+状态码用以表示网页服务器超文本传输协议响应状态的 3 位数字码。[详细的状态码表](./response-status-codes)
 
 | 状态码 | 对应信息                                                       |
 | ------ | -------------------------------------------------------------- |

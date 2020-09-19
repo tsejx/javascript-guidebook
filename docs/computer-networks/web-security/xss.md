@@ -223,7 +223,7 @@ function serverRender(s) {
 1. 攻击者构造出特殊的 URL，其中包含恶意代码
 2. 用户打开带有恶意代码的 URL 时，网站服务端将恶意代码从 URL 中取出，拼接在 HTML 中返回给浏览器
 3. 用户浏览器接收到响应后解析执行，混在其中的恶意代码也被执行
-4. 恶意代码窃取用户数据并发送到攻击者的网站，活着冒充用户的行为，调用目标网站接口执行攻击者指定的操作
+4. 恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作
 
 ```html
 <div id="root"></div>
@@ -465,7 +465,6 @@ content-security-policy: default-scr https:; connect-src https:; font-src https:
 />
 
 <!--  一个在线邮箱的管理者想要允许在邮件里包含HTML，同样图片允许从任何地方加载，但不允许JavaScript或者其他潜在的危险内容（从任意位置加载）。 -->
-<!--  -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self' *.mailsite.com; img-src *" />
 ```
 

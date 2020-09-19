@@ -66,7 +66,7 @@ order: 1
 
 ### CORS
 
-CORS 亦即 [跨域资源共享](../http/access-control.md)，是一种 HTTP 机制，它使用额外的 HTTP 响应头来告诉浏览器让其运行在一个 `origin` (`domain`) 上的 Web 应用被准许访问来自 **不同源服务器** 上的指定的资源。当一个资源从与该资源本身所在的服务器 **不同的域、协议或端口** 请求一个资源时，资源会发起一个 **跨域 HTTP 请求**。
+CORS 亦即 [跨域资源共享](../http/access-control)，是一种 HTTP 机制，它使用额外的 HTTP 响应头来告诉浏览器让其运行在一个 `origin` (`domain`) 上的 Web 应用被准许访问来自 **不同源服务器** 上的指定的资源。当一个资源从与该资源本身所在的服务器 **不同的域、协议或端口** 请求一个资源时，资源会发起一个 **跨域 HTTP 请求**。
 
 值得注意的是，通常使用 CORS 时，异步请求会被分为**简单请求**和**非简单请求**，非简单请求的区别是会先发送一个 **预检请求**（Preflight Request）。
 
@@ -82,7 +82,7 @@ CORS 亦即 [跨域资源共享](../http/access-control.md)，是一种 HTTP 机
 
 `Access-Control-Allow-Origin` 只能阻止浏览器端拿到服务器返回数据，服务端的处理还是会执行，要配合 `token` 鉴权令牌等策略来防范。
 
-💡 实现细节请参考 [HTTP 跨域资源共享](../http/access-control.md)
+💡 实现细节请参考 [HTTP 跨域资源共享](../http/access-control)
 
 #### 原生实现
 
@@ -520,7 +520,7 @@ Set-Cookie: key=value; domain=.example; path=/
 ## 阻止跨源访问
 
 - 阻止跨域写操作，只要检测请求中的一个不可测的标记（CSRF token）即可，这个标记被称为 [Cross-Site Request Forgery (CSRF)](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_%28CSRF%29) 标记。必须使用这个标记来阻止页面的跨站读操作。
-- 阻止跨站嵌入，需要确保你的资源不能是以上列出的可嵌入资源格式。多数情况下浏览器都不会遵守 `Conten-Type` 消息头。例如，如果您在 HTML 文档中指定 `<script>` 标记，则浏览器将尝试将 HTML 解析为 JavaScript。 当您的资源不是您网站的入口点时，您还可以使用 CSRF 令牌来防止嵌入。
+- 阻止跨站嵌入，需要确保你的资源不能是以上列出的可嵌入资源格式。多数情况下浏览器都不会遵守 `Content-Type` 消息头。例如，如果您在 HTML 文档中指定 `<script>` 标记，则浏览器将尝试将 HTML 解析为 JavaScript。 当您的资源不是您网站的入口点时，您还可以使用 CSRF 令牌来防止嵌入。
 - 阻止资源的跨站读取，需要保证该资源是不可嵌入的。阻止嵌入行为是必须的，因为嵌入资源通常向其暴露信息。
 
 ---
