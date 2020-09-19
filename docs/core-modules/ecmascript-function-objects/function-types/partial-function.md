@@ -1,3 +1,14 @@
+---
+nav:
+  title: 核心模块
+  order: 3
+group:
+  title: 函数类型
+  order: 10
+title: 偏函数
+order: 20
+---
+
 # 偏函数
 
 维基百科中对偏函数（Partial）的定义为：

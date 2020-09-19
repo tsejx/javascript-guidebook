@@ -49,17 +49,17 @@ function debounce(fn, delay = 1000) {
 
   // 返回一个函数，这个函数会在一个时间区间结束后的delay毫秒执行func函数
   return function() {
-    // 保存函数调用时的上下文和参数，传递给func
-    const context = this;
+    // 保存函数调用时的参数，传递给func
     const args = arguments;
 
     // 函数被调用，清除定时器
-    clearTimout(timer);
+    timer && clearTimout(timer);
 
     // 当返回的函数被最后一个调用后（也就是用户停止了某个连续的操作）
-    // 再过delay毫秒就执行fn
-    timer = setTimeout(function() {
-      fn.apply(context, args);
+    // 再过 delay 毫秒就执行 fn
+    // 这里直接使用箭头函数就不用保存执行上下文的引用了
+    timer = setTimeout(() => {
+      fn.apply(this, args);
     }, delay);
   };
 }
