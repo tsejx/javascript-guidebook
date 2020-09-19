@@ -99,7 +99,7 @@ const boy = new Child('Jothan', 22);
 
 boy.num.push(3);
 console.log(boy.num);
- // [0, 1, 2, 3]
+// [0, 1, 2, 3]
 
 boy.sayName();
 // 'Jothan'

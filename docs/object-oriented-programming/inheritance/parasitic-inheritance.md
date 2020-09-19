@@ -14,28 +14,28 @@ order: 5
 **寄生式继承（Parasitic Inheritance）**：创建一个仅用于封装继承过程的函数，在函数内部以某种方式增强对象
 
 ```js
-function creator(origin){
+function creator(origin) {
   // 以 origin 为原型对象创建一个新对象
-  let clone = Object.create(origin)
+  let clone = Object.create(origin);
 
   // 以某种方式来增强这个对象
-  clone.sayHi = function(){
-    console.log('Hello world!')
-  }
+  clone.sayHi = function() {
+    console.log('Hello world!');
+  };
 
   // 返回这个对象
-  return clone
+  return clone;
 }
 
 let friendship = {
   name: 'Uzi',
-  friends: ['Amy', 'Ben', 'Tom']
-}
+  friends: ['Amy', 'Ben', 'Tom'],
+};
 
 // 具有实例的原型person的所有属性和方法，也有自己的方法
-let uzi = creator(friendship)
+let uzi = creator(friendship);
 
-uzi.sayHi()
+uzi.sayHi();
 // Hello world!
 ```
 

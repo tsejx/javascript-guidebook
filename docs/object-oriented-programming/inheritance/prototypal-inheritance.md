@@ -6,7 +6,7 @@ group:
   title: 继承
   order: 4
 title: 原型式继承
-order: 1
+order: 4
 ---
 
 # 原型式继承
@@ -16,10 +16,10 @@ order: 1
 🌰 **示例：**
 
 ```js
-function Person(friendship){
-  function Creator(){}
-  Creator.prototype = friendship
-  return new Creator()
+function Person(friendship) {
+  function Creator() {}
+  Creator.prototype = friendship;
+  return new Creator();
 }
 ```
 
@@ -29,53 +29,50 @@ function Person(friendship){
 // 作为另一个对象的基础
 const friendship = {
   name: 'unamed',
-  friends: ['Amy', 'Ben', 'Tom']
-}
+  friends: ['Amy', 'Ben', 'Tom'],
+};
 
 // 返回新实例对象，该实例对象原型为 Person
-let uzi = Person(friendship)
-uzi.name = 'Uzi'
-uzi.friends.push('Peter')
+let uzi = Person(friendship);
+uzi.name = 'Uzi';
+uzi.friends.push('Peter');
 
-let kat = Person(friendship)
-kat.name = 'Kat'
-kat.friends.push('Sid')
+let kat = Person(friendship);
+kat.name = 'Kat';
+kat.friends.push('Sid');
 
 // 原型中的基本类型属性和引用类型属性被两个实例对象共享
-console.log(uzi.friends)
+console.log(uzi.friends);
 // ["Amy", "Ben", "Tom", "Peter", "Sid"]
 ```
 
 原型式继承需要有一个对象可以作为另一个对象的基础。如果有这么一个对象的话，可以把它传递给实例生成函数，然后再根据具体需求对得到的对象加以修改即可。
 
-ECMAScript 5 通过新增 `Object.create()` 方法规范化了原型式继承。这个方法接收两个参数：一个用作新对象原型的对象和一个为新对象定义额外属性的对象（可选）。
+ECMAScript 5 通过新增  `Object.create()` 方法规范化了原型式继承。这个方法接收两个参数：一个用作新对象原型的对象和一个为新对象定义额外属性的对象（可选）。
 
 **实际上就是将 Person 构造函数替换成`Object.create`**
 
 ```js
 const friendship = {
   name: 'unamed',
-  friends: ['Amy', 'Ben', 'Tom']
-}
+  friends: ['Amy', 'Ben', 'Tom'],
+};
 
-let uzi = Object.create(friendship)
-uzi.name = 'Uzi'
-uzi.friends.push('Peter')
+let uzi = Object.create(friendship);
+uzi.name = 'Uzi';
+uzi.friends.push('Peter');
 
-let kat = Object.create(friendship)
-kat.name = 'Kat'
-kat.friends.push('Sid')
+let kat = Object.create(friendship);
+kat.name = 'Kat';
+kat.friends.push('Sid');
 
-console.log(uzi.__proto__.friends)
+console.log(uzi.__proto__.friends);
 // ["Amy", "Ben", "Tom", "Peter", "Sid"]
 
-console.log(kat.__proto__.friends)
+console.log(kat.__proto__.friends);
 // ["Amy", "Ben", "Tom", "Peter", "Sid"]
 ```
 
 ## 模式缺陷
 
 引用类型值的属性始终都会共享相应的值，多个实例对象对引用类型的操作会被篡改。
-
-
-

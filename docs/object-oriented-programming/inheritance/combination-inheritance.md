@@ -18,56 +18,56 @@ order: 3
 🌰 **示例：**
 
 ```js
-function Parent(name){
-  this.name = name
+function Parent(name) {
+  this.name = name;
   this.attr = {
     eye: 'blue',
     hair: 'black',
-    skin: 'white'
-  }
+    skin: 'white',
+  };
 }
 
-Parent.prototype.sayName = function(){
-  console.log(this.name)
+Parent.prototype.sayName = function() {
+  console.log(this.name);
 };
 
-function Child(name, age){
+function Child(name, age) {
   // 第二次调用 Parent()
   // Child.prototype 又得到了 name 和 attr 两个属性
   // 并对上次得到的属性值进行了覆盖
-  Parent.call(this, name)
-  this.age = age
+  Parent.call(this, name);
+  this.age = age;
 }
 
 // 第一次调用 Parent()
 // 使得子类实例的原型对象指向父类实例对象
 // Child.prototype 得到了 name 和 attr 两个属性
-Child.prototype = new Parent()
-Child.prototype.constructor = Child
-Child.prototype.sayAge = function(){
-  console.log(this.age)
-}
+Child.prototype = new Parent();
+Child.prototype.constructor = Child;
+Child.prototype.sayAge = function() {
+  console.log(this.age);
+};
 
 // 第一个实例对象
-let uzi = new Child('Uzi', 3)
+let uzi = new Child('Uzi', 3);
 
-uzi.attr.height = 80
+uzi.attr.height = 80;
 
-console.log(uzi.attr)
+console.log(uzi.attr);
 // { eye: 'blue', hair: 'black', skin: 'white', height: 80 }
-uzi.sayName()
+uzi.sayName();
 // 'Uzi'
-uzi.sayAge()
+uzi.sayAge();
 // 3
 
 // 第二个实例对象
-let kat = new Child('Kat', 1)
+let kat = new Child('Kat', 1);
 
-console.log(kat.colors)
+console.log(kat.colors);
 // { eye: 'blue', hair: 'black', skin: 'white' }
-kat.sayName()
+kat.sayName();
 // 'Kat'
-kat.sayAge()
+kat.sayAge();
 // 1
 ```
 
@@ -90,10 +90,10 @@ kat.sayAge()
 
 ```js
 // Before
-Child.prototype = new Parent()
+Child.prototype = new Parent();
 
 // After
-Child.prototype = Parent.prototype
+Child.prototype = Parent.prototype;
 ```
 
 这种优化方式的缺点是，子类实例对象的构造函数无法区分是子类构造函数还是父类构造函数。
@@ -103,17 +103,17 @@ Child.prototype = Parent.prototype
 组合继承优化示例二：通过中间对象，继承父类原型对象，实现子类与父类的隔离
 
 ```js
-function Parent(){
-  this.name = 'Parent'
-  this.num = [0, 1, 2]
+function Parent() {
+  this.name = 'Parent';
+  this.num = [0, 1, 2];
 }
 
-function Child(){
-  Parent.call(this)
-  thi.type = 'Child'
+function Child() {
+  Parent.call(this);
+  thi.type = 'Child';
 }
 
-Child.prototype = Object.create(Parent.prototype)
+Child.prototype = Object.create(Parent.prototype);
 
-Child.prototype.constructor = Child
+Child.prototype.constructor = Child;
 ```

@@ -28,12 +28,14 @@ order: 1
   - [寄生构造函数模式](/object-oriented-programming/object-creation/parastic-constructor-pattern)
   - [稳妥构造函数模式](/object-oriented-programming/object-creation/durable-constructor-pattern)
 - **继承**
+
   - [原型链](/object-oriented-programming/inheritance/prototype-chain)
   - [借用构造函数](/object-oriented-programming/inheritance/constructor-stealing)
   - [组合继承](/object-oriented-programming/inheritance/combination-inheritance)
   - [原型式继承](/object-oriented-programming/inheritance/prototypal-inheritance)
   - [寄生式继承](/object-oriented-programming/inheritance/parasitic-inheritance)
   - [寄生组合式继承](/object-oriented-programming/inheritance/parasitic-combination-inheritance)
+
 - **类的定义**
   - [类的基本语法](/object-oriented-programming/class-definitions/class-basic)
   - [类的继承](/object-oriented-programming/class-definitions/class-extends)

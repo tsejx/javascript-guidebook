@@ -16,32 +16,31 @@ order: 2
 🌰 **示例：**
 
 ```js
-function Parent(){
+function Parent() {
   this.attr = {
     eye: 'blue',
     hair: 'black',
-    skin: 'white'
-  }
-  this.sayName = function(){
-    console.log('Name')
-  }
+    skin: 'white',
+  };
+  this.sayName = function() {
+    console.log('Name');
+  };
 }
 
-function Child(){
-  Parent.call(this)
+function Child() {
+  Parent.call(this);
 
-  this.sayHi = function(){
-    console.log('Hello world!')
-  }
+  this.sayHi = function() {
+    console.log('Hello world!');
+  };
 }
 
-let boy = new Child()
+let boy = new Child();
 boy.attr.age = 3;
 console.log(boy.attr);
 // { eye: 'blue', hair: 'black', skin: 'white', age: 3}
 
-
-let girl = new Child()
+let girl = new Child();
 console.log(girl.attr);
 // { eye: 'blue', hair: 'black', skin: 'white'}
 ```
@@ -59,22 +58,22 @@ console.log(girl.attr);
 相对于原型链而言，借用构造函数有一个很大的优势，即 **可以在子类型构造函数中向父类型构造函数传递参数**。
 
 ```js
-function Parent(name){
-  this.name = name
+function Parent(name) {
+  this.name = name;
 }
 
-function Child(){
+function Child() {
   //继承了 Parent，同时还传递了参数
-  Parent.call(this, 'Uzi')
+  Parent.call(this, 'Uzi');
 
   //实例属性
-  this.age = 18
+  this.age = 18;
 }
 
-const child = new Child()
-console.log(child.name)
+const child = new Child();
+console.log(child.name);
 // 'Uzi'
-console.log(child.age)
+console.log(child.age);
 // 18
 ```
 
@@ -85,4 +84,3 @@ console.log(child.age)
 
 - 只能继承父类**实例对象**的属性和方法，不能继承**原型对象**的属性和方法
 - 无法实现复用，每个子类都有父类实例函数的副本，影响性能
-
