@@ -22,7 +22,7 @@ order: 2
 
 ## `typeof` 操作符
 
-```javascript
+```js
 var arr = [1,2,3,4]
 console.log(typeof arr); // 'object'
 ```
@@ -31,7 +31,7 @@ console.log(typeof arr); // 'object'
 
 ## `instanceof` 操作符
 
-```javascript
+```js
 var arr = [1,2,3,4,5];
 console.log(arr instanceof Array); // true
 ```
@@ -40,7 +40,7 @@ console.log(arr instanceof Array); // true
 
 ## 数组对象的构造函数
 
-```javascript
+```js
 var arr = [1,2,3,4];
 console.log(arr.__proto__.constructor == Array); // true
 console.log(arr.constructor == Array); // true
@@ -49,7 +49,7 @@ console.log(arr.constructor == Array); // true
 在IE早期版本里面 `__proto__` 是没有定义的，而且，仍然有局限性。 `instanceof` 和 `constructor` 的问题在于，它假定单一的全局执行环境。如果网页中包含多个框架，那实际上就存在两个以上不同的全局执行环境，从而存在连个以上不同版本的Array
 构造函数。如果你从一个人框架向另一个框架传入一个数组，那么传入的数组与在第二个框架中原生创建的数组分别具有各自不同的构造函数。
 
-```javascript
+```js
 var iframe = document.createElement('iframe'); // 创建iframe
 document.body.appendChild(iframe); // 添加到body中
 xArray = window.frames[window.frames.length-1].Array;
@@ -60,7 +60,7 @@ console.log(arr.constructor === Array); // false
 
 ## Array.isArray()
 
-```javascript
+```js
 var arr = [1,2,3,4,5];
 console.log(Array.isArray(arr)); // true
 ```
@@ -69,7 +69,7 @@ console.log(Array.isArray(arr)); // true
 
 Object.prototype.toString的行为：首先，取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于"[object Array]"的字符串作为结果(看过ECMA标准的应该都知道，[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”)。利用这 个方法，再配合call，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的。
 
-```javascript
+```js
 var arr = [1,2,3,4,5];
 function isArray(item){
     return Object.prototype.toString.call(item) === '[object Array]';

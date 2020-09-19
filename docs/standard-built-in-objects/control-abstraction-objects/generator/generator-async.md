@@ -107,7 +107,7 @@ Promise 的最大问题是代码冗余，原来的任务被 Promise 包装了一
 
 举例来说，读取文件的协程写法如下。
 
-```javascript
+```js
 function* asyncJob() {
   // ...其他代码
   var f = yield readFile(fileA);
@@ -192,7 +192,7 @@ generator.throw('出错了');
 
 下面看看如何使用 Generator 函数，执行一个真实的异步任务。
 
-```javascript
+```js
 var fetch = require('node-fetch');
 
 function* gen(){
@@ -206,7 +206,7 @@ function* gen(){
 
 执行这段代码的方法如下。
 
-```javascript
+```js
 var g = gen();
 var result = g.next();
 
@@ -231,7 +231,7 @@ Thunk 函数早在上个世纪 60 年代就诞生了。
 
 那时，编程语言刚刚起步，计算机学家还在研究，编译器怎么写比较好。一个争论的焦点是 **求值策略**，即函数的参数到底应该何时求值。
 
-```javascript
+```js
 var x = 1;
 
 function f(m) {

@@ -29,7 +29,7 @@ Object.isExtensible(O);
 
 默认情况下，对象是可扩展的：即可以为他们添加新的属性。
 
-[Object.preventExtensions](./preventExtensions.md)、[Object.seal](./seal.md) 或 [Object.freeze](./freeze.md) 方法都可以标记一个对象为不可扩展（non-extensible）。
+[Object.preventExtensions](./preventExtensions)、[Object.seal](./seal) 或 [Object.freeze](./freeze) 方法都可以标记一个对象为不可扩展（non-extensible）。
 
 ## 示例
 

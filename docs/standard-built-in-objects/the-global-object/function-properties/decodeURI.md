@@ -17,7 +17,7 @@ order: 6
 
 ## 语法
 
-```javascript
+```js
 decodeURI(encodedURIString);
 ```
 
@@ -32,7 +32,7 @@ decodeURI(encodedURIString);
 ## 示例
 
 ```js
-let a = 'Hello Javascript!';
+let a = 'Hello JavaScript!';
 let b = encodeURI(a);
 
 console.log(b);

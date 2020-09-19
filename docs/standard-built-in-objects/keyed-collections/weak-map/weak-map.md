@@ -42,7 +42,7 @@ map.set(null, 2);
 
 翻译过来应该是 **WeakMap 保持了对键名所引用的对象的弱引用**。
 
-这个弱引用的特性，就是 WeakMap 保持了对键名所引用的对象的弱引用，即 [垃圾回收机制](../../../core-modules/executable-code-and-execution-contexts/memory-management/garbage-collection.md) 不将该引用考虑在内。只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用。
+这个弱引用的特性，就是 WeakMap 保持了对键名所引用的对象的弱引用，即 [垃圾回收机制](../../../core-modules/executable-code-and-execution-contexts/memory-management/garbage-collection) 不将该引用考虑在内。只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用。
 
 也正是因为这样的特性，WeakMap 内部有多少个成员，取决于垃圾回收机制有没有运行，运行前后很可能成员个数是不一样的，而垃圾回收机制何时运行是不可预测的，因此 ES6 规定 WeakMap 不可遍历。
 
@@ -105,3 +105,4 @@ x.has(a);
 **参考资料：**
 
 - [📝 ES6 系列之 WeakMap](https://juejin.im/post/5b594512f265da0f6263840f)
+- [你不知道的 WeakMap](https://mp.weixin.qq.com/s/iacn5m0qjaAPS2huG2pKRA)

@@ -11,7 +11,7 @@ order: 5
 
 # parseInt
 
-`parseInt()` 函数用于**将字符串转换为整数并返回**。该函数可以将字符串视作指定的进制形式表示。
+`parseInt()` 函数用于 **将字符串转换为整数并返回**。该函数可以将字符串视作指定的进制形式表示。
 
 该函数属于 `Global` 对象，所有主流浏览器均支持该函数。
 
@@ -21,12 +21,12 @@ order: 5
 parseInt( numString [, radix ] )
 ```
 
-| 参数        | 类型          | 说明                     |
-| ----------- | ------------- | ------------------------ |
-| `numString` | `String` 类型 | 需要转换为整数的字符串。 |
-| `radix`     | `Number` 类型 | 可选，指定的进制基数。   |
+<br />
 
-* 参数 `radix` 可以是一个介于 [2, 36] 之间的数值。
+| 参数        | 类型          | 说明                     |
+| :----------- | :------------- | :------------------------ |
+| `numString` | `String` 类型 | 需要转换为整数的字符串 |
+| `radix`     | `Number` 类型 | 可选，指定的进制基数（介于 `[2, 36]` 之间的数值。）   |
 
 例如：参数 `radix` 为 2，则将 `numString` 视作二进制；参数 `radix` 为 8，则视作八进制；参数 `radix` 为 16，则视作十六进制。
 
@@ -67,6 +67,9 @@ parseInt('FXX123', 16);
 - 以下均返回 `NaN`
 
 ```js
-parseInt('Hello', 8); // not a number
-parseInt('546', 2); // except 0 & 1,other number are not valid binary numbers
+parseInt('Hello', 8);
+// not a number
+
+parseInt('546', 2);
+// except 0 & 1,other number are not valid binary numbers
 ```

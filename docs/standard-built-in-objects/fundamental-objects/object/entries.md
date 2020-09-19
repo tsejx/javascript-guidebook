@@ -27,7 +27,7 @@ Object.entries(O);
 
 ## 描述
 
-给定对象自身可枚举属性的键值对数组，其排列与使用 [for-in](../../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement.md) 循环遍历该对象时返回的顺序一致，区别在于 `for-in` 循环也枚举原型链中的属性。
+给定对象自身可枚举属性的键值对数组，其排列与使用 [for-in](../../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement) 循环遍历该对象时返回的顺序一致，区别在于 `for-in` 循环也枚举原型链中的属性。
 
 ## 示例
 

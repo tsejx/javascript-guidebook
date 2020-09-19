@@ -87,4 +87,4 @@ promise
 
 每个方法中 `return` 的值不仅只局限于字符串或者数值类型，也可以是对象或者 Promise 对象等复杂类型。
 
-`return` 的值会由 [Promise.resolve](../properties-of-the-promise-constructor/resolve.md) 进行相应的包装处理，因此不管回调函数中会返回一个什么样的值，最终 `.then()` 的结果都是返回一个新创建的 Promise 对象。
+`return` 的值会由 [Promise.resolve](../properties-of-the-promise-constructor/resolve) 进行相应的包装处理，因此不管回调函数中会返回一个什么样的值，最终 `.then()` 的结果都是返回一个新创建的 Promise 对象。

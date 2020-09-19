@@ -32,7 +32,7 @@ Object.assign(target, ...sources);
 
 `Object.assign` 方法只会拷贝源对象自身的并且可枚举的属性到目标对象。
 
-该方法使用源对象的 `[[Get]]` 和目标对象的 `[[Set]]`，所以它会调用相关 `getter` 和 `setter`。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含 `getter`，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用 [Object.getOwnPropertyDescriptor](./getOwnPropertyDescriptor.md) 和 [Object.defineProperty](./defineProperty.md) 。
+该方法使用源对象的 `[[Get]]` 和目标对象的 `[[Set]]`，所以它会调用相关 `getter` 和 `setter`。因此，它分配属性，而不仅仅是复制或定义新的属性。如果合并源包含 `getter`，这可能使其不适合将新属性合并到原型中。为了将属性定义（包括其可枚举性）复制到原型，应使用 [Object.getOwnPropertyDescriptor](./getOwnPropertyDescriptor) 和 [Object.defineProperty](./defineProperty) 。
 
 ## 示例
 

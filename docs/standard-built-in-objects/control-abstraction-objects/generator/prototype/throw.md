@@ -66,7 +66,7 @@ iterator.throw(new Error('出错了！'));
 
 ⚠️ **注意**：不要混淆遍历器对象的 `throw` 方法和全局的 `throw` 命令。
 
-上面代码的错误，是用遍历器对象的 `throw` 方法抛出的，而不是用 [throw](../../../../basic-concept/statements-and-declarations/the-throw-statement.md) 命令抛出的。后者只能被函数体外的 `catch` 语句捕获。
+上面代码的错误，是用遍历器对象的 `throw` 方法抛出的，而不是用 [throw](../../../../basic-concept/statements-and-declarations/the-throw-statement) 命令抛出的。后者只能被函数体外的 `catch` 语句捕获。
 
 ```js
 const generator = function*() {

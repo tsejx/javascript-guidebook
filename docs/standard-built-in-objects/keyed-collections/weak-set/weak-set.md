@@ -22,7 +22,7 @@ WeakSet 中的对象都是弱作用，即垃圾回收机制不考虑 WeakSet 对
 
 ## 语法
 
-```javascript
+```js
 new WeakSet();
 ```
 
@@ -46,7 +46,7 @@ WeakSet 不能遍历，因为成员都是弱作用，随时可能消失，遍历
 
 ## 示例
 
-```javascript
+```js
 const a = [
   [1, 2],
   [3, 4],
@@ -61,7 +61,7 @@ const ws = new WeakSet(a);
 
 注意：成为 WeakSet 的成员的是 `a` 数组的成员，而不是 `a` 数组本身。这意味着，数组的成员只能是对象。
 
-```javascript
+```js
 // Wrong
 const b = [3, 4];
 const ws = new WeakSet(b);

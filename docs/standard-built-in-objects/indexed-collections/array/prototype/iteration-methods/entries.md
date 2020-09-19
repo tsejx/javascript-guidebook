@@ -20,4 +20,4 @@ order: 20
 arr.entries();
 ```
 
-**返回值：** 返回一个新的 Array 迭代器对象。Array Iterator 是对象，它的原型上有一个 `next()` 方法，可用于便利迭代器取得原数组的键值对。详情请查询 [Iterator 对象](../../../../control-abstraction-objects/iterator-objects/iterator.md)
+**返回值：** 返回一个新的 Array 迭代器对象。Array Iterator 是对象，它的原型上有一个 `next()` 方法，可用于便利迭代器取得原数组的键值对。详情请查询 [Iterator 对象](../../../../control-abstraction-objects/iterator-objects/iterator)

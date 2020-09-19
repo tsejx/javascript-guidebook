@@ -67,8 +67,7 @@ new Promise(
 
 Promise 是一个代理对象（代理一个值），被代理的值在 Promise 对象创建时可能是未知的。它允许你为异步操作的 **Fulfilled** 和 **Rejected** 分别绑定相应的处理方法（handlers）。这让异步方法可以像同步方法那样返回值，但**并不是立即返回**最终执行结果，而是一个能代表**未来出现**的结果的 Promise 对象。
 
-由于 `Promise.prototype.then` 和 `Promise.prototype.catch` 方法返回 Promise 对象，所以它们可以被 [链式调用](../../../core-modules/ecmascript-function-objects/function-types/cascade-function.md)。
-
+由于 `Promise.prototype.then` 和 `Promise.prototype.catch` 方法返回 Promise 对象，所以它们可以被 [链式调用](../../../core-modules/ecmascript-function-objects/function-types/cascade-function)。
 
 ```jsx | inline
 import React from 'react';
@@ -81,9 +80,9 @@ export default () => <img alt="Promise Workflow" src={img} width={720} />;
 
 用 `new` 实例化的 Promise 对象有以下三种状态：
 
-| 状态      | 含义 |                描述                |
-| :--------- | :---- | :-------------------------------- |
-| Pending   | 待定 |              初始状态              |
+| 状态      | 含义 | 描述                               |
+| :-------- | :--- | :--------------------------------- |
+| Pending   | 待定 | 初始状态                           |
 | Fulfilled | 实现 | 操作成功，此时会调用 `onFulfilled` |
 | Rejected  | 否决 | 操作失败，此时会调用 `onRejected`  |
 
@@ -104,12 +103,12 @@ export default () => <img alt="Promise State" src={img} width={720} />;
 
 ## 静态方法
 
-| 方法                                                                       | 说明                                                                                              |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| [Promise.all(iterable)](properties-of-the-promise-constructor/all.md)      | 将多个 Promise 实例包装成一个新的 Promise 实例。全部成员 Fulfilled 或某个成员 Rejected 时触发回调 |
-| [Promise.race(iterable)](properties-of-the-promise-constructor/race.md)    | 将多个 Promise 实例包装成一个新的 Promise 实例。某个成员状态变更后触发回调                        |
-| [Promise.reject(reason)](properties-of-the-promise-constructor/reject.md)  | 返回新的 Promise 实例，该实例的状态为 Rejected                                                    |
-| [Promise.resolve(value)](properties-of-the-promise-constructor/resolve.md) | 返回新的 Promise 实例，该实例的状态为 Fulfilled                                                   |
+| 方法                                                                    | 说明                                                                                              |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| [Promise.all(iterable)](properties-of-the-promise-constructor/all)      | 将多个 Promise 实例包装成一个新的 Promise 实例。全部成员 Fulfilled 或某个成员 Rejected 时触发回调 |
+| [Promise.race(iterable)](properties-of-the-promise-constructor/race)    | 将多个 Promise 实例包装成一个新的 Promise 实例。某个成员状态变更后触发回调                        |
+| [Promise.reject(reason)](properties-of-the-promise-constructor/reject)  | 返回新的 Promise 实例，该实例的状态为 Rejected                                                    |
+| [Promise.resolve(value)](properties-of-the-promise-constructor/resolve) | 返回新的 Promise 实例，该实例的状态为 Fulfilled                                                   |
 
 ## 原型对象
 
@@ -121,11 +120,65 @@ export default () => <img alt="Promise State" src={img} width={720} />;
 
 ### 方法
 
-| 原型方法                                                                                              | 说明                                                                                                     |
-| ----------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [Promise.prototype.catch(onRejected)](properties-of-the-promise-prototype-object/catch.md)            | 相当于 `.then(null, rejection)`，用于指定发生错误时的回调函数                                            |
-| [Promise.prototype.then(onFulfilled, onRejected)](properties-of-the-promise-prototype-object/then.md) | 添加 `fulfillment` 和 `rejection` 回调到当前 Promise，返回一个新的 Promise，将以回调的返回值来 `resolve` |
-| `Promise.prototype.finally(onFinally)`                                                                | 用于指定无论 Promise 对象最后状态如何，都会执行的操作                                                    |
+| 原型方法                                                                                           | 说明                                                                                                     |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [Promise.prototype.catch(onRejected)](properties-of-the-promise-prototype-object/catch)            | 相当于 `.then(null, rejection)`，用于指定发生错误时的回调函数                                            |
+| [Promise.prototype.then(onFulfilled, onRejected)](properties-of-the-promise-prototype-object/then) | 添加 `fulfillment` 和 `rejection` 回调到当前 Promise，返回一个新的 Promise，将以回调的返回值来 `resolve` |
+| `Promise.prototype.finally(onFinally)`                                                             | 用于指定无论 Promise 对象最后状态如何，都会执行的操作                                                    |
+
+## 最佳实践
+
+### 多任务串行
+
+```js
+const Task = function(result, isSuccess = true) {
+  return () =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (isSuccess) {
+          resolve(result);
+        } else {
+          reject(result);
+        }
+      }, 1000);
+    });
+};
+
+execute([Task('A'), Task('B'), Task('C', false), Task('D')]).then(resultList => {
+  // do something
+});
+```
+
+注意事项：
+
+1. 每个 Task 无论成功与否，都不能阻断下个 Task 的执行
+2. 最后的 `then` 需要把每个 Task 的执行结果 `决议` 出去
+
+实现思路：
+
+1. 每个 Task 外层包装一层 Promise，捕获 Task 的 `rejected` 状态
+2. 可以利用中间变量，缓存所有 Task 的输出结果，然后在最后一个 Promise 的 `then` 里把中间变量 `决议` 出去
+
+```js
+function execute(tasks) {
+  return;
+  task.reduce(
+    (previousPromise, currentPromise) =>
+      previousPromise.then(resultList => {
+        return new Promise(resolve => {
+          currentPromise()
+            .then(result => {
+              resolve(resultList.concat(result));
+            })
+            .catch(() => {
+              resolve(resultList.concat(null));
+            });
+        });
+      }),
+    []
+  );
+}
+```
 
 ---
 
@@ -133,3 +186,4 @@ export default () => <img alt="Promise State" src={img} width={720} />;
 
 - [📚 JavaScript Promise 迷你书](http://liubin.org/promises-book/)
 - [📝 Promise 原理讲解(遵循 Promise/A+ 规范)](https://juejin.im/post/5aa7868b6fb9a028dd4de672)
+- [📝 Promise 串行](https://zhuanlan.zhihu.com/p/90850451)

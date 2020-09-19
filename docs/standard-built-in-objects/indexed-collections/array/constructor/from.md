@@ -35,7 +35,7 @@ Array.from(typedArr [, fn [, arg]])
 * 具备以下两种条件的的对象可以通过 `Array.from()` 方法转换成真正的数组：
   * 类数组对象：即拥有 `length` 属性和若干索引属性的任意对象
   * 可迭代对象：即部署了 Iterator 接口的对象，可以获取对象中的元素，如 `Map` 和 ` Set ` 等
-* `Array.from()` 方法有一个可选参数 `fn`，让你可以在最后生成的数组上再执行一次 `Array.prototype.map` 方法后再返回。也就是说 ` Array.from(typedArr, fn, arg) ` 就相当于 ` Array.from(typedArr).map(fn, arg)`  ，除非创建的不是可用的中间数组。 这对一些数组的子类，如对[类型化数组](../../typed-array-objects/typed-array-objects.md)来说很重要，因为中间数组的值在调用 `map()` 时需要是适当的类型。
+* `Array.from()` 方法有一个可选参数 `fn`，让你可以在最后生成的数组上再执行一次 `Array.prototype.map` 方法后再返回。也就是说 ` Array.from(typedArr, fn, arg) ` 就相当于 ` Array.from(typedArr).map(fn, arg)`  ，除非创建的不是可用的中间数组。 这对一些数组的子类，如对[类型化数组](../../typed-array-objects/typed-array-objects)来说很重要，因为中间数组的值在调用 `map()` 时需要是适当的类型。
 * `from()` 的 `length` 属性为 1 ，即 `Array.from.length === 1`。
 * 在 ES2015 中， `Class` 语法允许我们为内置类型（比如 `Array`）和自定义类新建子类（比如叫 `SubArray`）。这些子类也会继承父类的静态方法，比如 `SubArray.from()`，调用该方法后会返回子类 `SubArray` 的一个实例，而不是 `Array` 的实例。
 

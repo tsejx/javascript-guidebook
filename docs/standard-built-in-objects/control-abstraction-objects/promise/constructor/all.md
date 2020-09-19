@@ -24,9 +24,9 @@ Promise.all([promise1, promise2, ..., promiseN])
 
 ### 参数
 
-参数 `iterable` 必须具备 [Iterator](../../iterator-objects/iterator.md) 接口，且每个成员都是 Promise 实例。
+参数 `iterable` 必须具备 [Iterator](../../iterator-objects/iterator) 接口，且每个成员都是 Promise 实例。
 
-如果 `iterable` 内每个成员都不是 Promise 实例，会先调用 [Promise.resolve](resolve.md) 将每个成员转化为 Promise 实例，再进一步处理。
+如果 `iterable` 内每个成员都不是 Promise 实例，会先调用 [Promise.resolve](resolve) 将每个成员转化为 Promise 实例，再进一步处理。
 
 |             参数             |          返回值          |
 | :--------------------------: | :----------------------: |

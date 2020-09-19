@@ -16,7 +16,7 @@ order: 4
 
 ## 语法
 
-```javascript
+```js
 str.charCodeAt(index);
 ```
 

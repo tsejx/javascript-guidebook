@@ -14,13 +14,13 @@ order: 15
 
 Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同。
 
-> 本篇着重介绍 语法及 API，异步编程应用参考 [Generator 函数的异步应用](./generator-async.md)
+> 本篇着重介绍 语法及 API，异步编程应用参考 [Generator 函数的异步应用](./generator-async)
 
 ## 状态机
 
 Generator 函数有多种理解角度。语法上，首先可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。
 
-执行 Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个 [遍历器对象](../iterator-objects/iterator.md) 生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。
+执行 Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个 [遍历器对象](../iterator-objects/iterator) 生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。
 
 ### 函数特征
 
@@ -43,7 +43,7 @@ const hw = helloWorldGenerator();
 
 ### 调用方法
 
-Generator 函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用 Generator 函数后，该函数并**不执行**，返回的也不是函数运行结果，而是一个**指向内部状态的指针对象**，也就是 [遍历器对象](../iterator-objects/iterator.md)（Iterator Object）。
+Generator 函数的调用方法与普通函数一样，也是在函数名后面加上一对圆括号。不同的是，调用 Generator 函数后，该函数并**不执行**，返回的也不是函数运行结果，而是一个**指向内部状态的指针对象**，也就是 [遍历器对象](../iterator-objects/iterator)（Iterator Object）。
 
 下一步，必须调用遍历器对象的 `next` 方法，使得指针移向下一个状态。也就是说，每次调用 `next` 方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个 `yield` 表达式（或 `return` 语句）为止。换言之，Generator 函数是分段执行的，`yield` 表达式是暂停执行的标记，而 `next` 方法可以恢复执行。
 
@@ -166,9 +166,9 @@ function* demo() {
 
 ## 原型方法
 
-- [Generator.prototype.next](properties-of-the-promise-prototype-object/next.md)
-- [Generator.prototype.return](properties-of-the-promise-prototype-object/return.md)
-- [Generator.prototype.throw](properties-of-the-promise-prototype-object/throw.md)
+- [Generator.prototype.next](properties-of-the-promise-prototype-object/next)
+- [Generator.prototype.return](properties-of-the-promise-prototype-object/return)
+- [Generator.prototype.throw](properties-of-the-promise-prototype-object/throw)
 
 **原型方法共同点**
 

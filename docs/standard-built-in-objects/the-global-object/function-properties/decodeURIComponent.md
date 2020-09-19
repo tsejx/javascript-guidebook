@@ -19,7 +19,7 @@ order: 7
 
 ## 语法
 
-```javascript
+```js
 decodeURIComponent(encodedURIString);
 ```
 
@@ -34,7 +34,7 @@ decodeURIComponent(encodedURIString);
 ## 示例
 
 ```js
-var a = 'Hello Javascript';
+var a = 'Hello JavaScript';
 var b = encodeURIComponent(a);
 
 console.log(b);

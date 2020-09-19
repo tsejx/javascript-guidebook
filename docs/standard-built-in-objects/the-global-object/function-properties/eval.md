@@ -17,7 +17,7 @@ order: 1
 
 ## 语法
 
-```javascript
+```js
 eval(code);
 ```
 

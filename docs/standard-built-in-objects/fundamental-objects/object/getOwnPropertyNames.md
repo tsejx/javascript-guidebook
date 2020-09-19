@@ -27,7 +27,7 @@ Object.getOwnPropertyNames(O);
 
 ## 描述
 
-如果只需要获取可枚举属性，可以使用 [Object.keys](keys.md) 或用 [for-in 语句](../../../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement.md)（还会获取到原型链上的可枚举属性，不过可以使用 [Object.prototype.hasOwnProperty](../properties-of-the-object-prototype-object/hasOwnProperty.md) 方法过滤）。
+如果只需要获取可枚举属性，可以使用 [Object.keys](keys) 或用 [for-in 语句](../../../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement)（还会获取到原型链上的可枚举属性，不过可以使用 [Object.prototype.hasOwnProperty](../properties-of-the-object-prototype-object/hasOwnProperty) 方法过滤）。
 
 ## 示例
 
@@ -98,7 +98,7 @@ Object.getOwnPropertyNames(new SubClass());
 
 ### 只获取不可枚举 Property
 
-使用 [Array.prototype.filter](../../../indexed-collections/array-objects/properties-of-the-array-prototype-object/iteration-methods/filter.md) 方法，从所有的 Property 键名数组（使用 `Object.getOwnPropertyNames` 方法获取）中去除可枚举的属性（使用 [Object.keys](./keys.md) 方法获取），剩余的属性便是不可枚举的属性。
+使用 [Array.prototype.filter](../../../indexed-collections/array-objects/properties-of-the-array-prototype-object/iteration-methods/filter) 方法，从所有的 Property 键名数组（使用 `Object.getOwnPropertyNames` 方法获取）中去除可枚举的属性（使用 [Object.keys](./keys) 方法获取），剩余的属性便是不可枚举的属性。
 
 ```js
 const enum_and_nonenum = Object.getOwnPropertyNames(target);

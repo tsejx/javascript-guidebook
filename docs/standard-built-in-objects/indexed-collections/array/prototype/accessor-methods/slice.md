@@ -16,7 +16,7 @@ order: 15
 
 ## 语法
 
-```javascript
+```js
 arr.slice( startIndex [, endIndex ] );
 ```
 
@@ -42,25 +42,34 @@ arr.slice( startIndex [, endIndex ] );
 ### 标准示例
 
 ```js
-const foo = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5];
 
-foo.slice(NaN);
-// [1,2,3,4,5]
+arr.slice(1);
+// [2, 3, 4, 5]
 
-foo.slice(0, NaN);
+arr.slice(0, 2)
+// [1, 2]
+
+arr.slice(1, 2)
+// [2]
+
+arr.slice(NaN);
+// [1, 2, 3, 4, 5]
+
+arr.slice(0, NaN);
 // []
 
-foo.slice(true, [3]);
-// [2,3]
+arr.slice(true, [3]);
+// [2, 3]
 
-foo.slice(null, undefined);
-// [1,2,3,4,5]
+arr.slice(null, undefined);
+// [1, 2,  3,4, 5]
 
-foo.slice({});
-// [1,2,3,4,5]
+arr.slice({});
+// [1, 2, 3, 4, 5]
 
-foo.slice('2', [5]);
-// [3,4,5]
+arr.slice('2', [5]);
+// [3, 4, 5]
 ```
 
 ### 截取数组成员

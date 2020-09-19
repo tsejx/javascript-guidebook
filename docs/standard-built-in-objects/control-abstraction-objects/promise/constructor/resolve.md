@@ -76,7 +76,7 @@ p.then(v => console.log(v));
 
 如果希望得到一个 Promise 对象，比较方便的方法就是直接调用 `Promise.resolve` 方法。
 
-需要注意的是，状态为 Fulfilled 的 Promise 对象，是在本轮 [事件循环](../../../../core-modules/executable-code-and-execution-contexts/concurrency-model/event-loop.md)（Event Loop）的结束时，而不是在下一轮事件循环的开始时。
+需要注意的是，状态为 Fulfilled 的 Promise 对象，是在本轮 [事件循环](../../../../core-modules/executable-code-and-execution-contexts/concurrency-model/event-loop)（Event Loop）的结束时，而不是在下一轮事件循环的开始时。
 
 ## 示例
 

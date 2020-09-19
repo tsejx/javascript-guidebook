@@ -16,7 +16,7 @@ order: 4
 
 ## 语法
 
-```javascript
+```js
 JSON.stringify( value[, replacer [, space]] )
 ```
 
@@ -37,7 +37,7 @@ JSON.stringify( value[, replacer [, space]] )
 - 非数组对象的属性不能保证以特定的顺序出现在序列化后的字符串中。
 - JavaScript 基本数据类型
 
-```javascript
+```js
 JSON.stringify(1); // return '1'
 JSON.stringify(true); // return 'true'
 JSON.stringify('foo'); // return '"foo"'
@@ -45,7 +45,7 @@ JSON.stringify('foo'); // return '"foo"'
 
 - JavaScript 复杂数据类型
 
-```javascript
+```js
 JSON.stringify({ x: 5 }); // return '{"x":5}'
 JSON.stringify([1, 'false', false]); // return '[1,"false",false]'
 JSON.stringify({ x: 5, y: 6 }); // return "{"x":5,"y":6}
@@ -53,14 +53,14 @@ JSON.stringify({ x: 5, y: 6 }); // return "{"x":5,"y":6}
 
 - 布尔值、数字、字符串的包装对象在序列化过程中会自动转换成对应的原始值。
 
-```javascript
+```js
 JSON.stringify([new Number(1), new String('false'), new Boolean(false)]);
 // '[1,"false",false]'
 ```
 
 - `undefined`、任意的函数以及 `Symbol` 值，在序列化过程中会被忽略（出现在非数组对象的属性值中时）或者被转换成 `null`（出现在数组中时）。
 
-```javascript
+```js
 JSON.stringify({ x: undefined, y: Object, z: Symbol('') });
 // '{}'
 
@@ -70,7 +70,7 @@ JSON.stringify([undefined, Object, Symbol('')]);
 
 - 所有以 `Symbol` 为属性键的属性都会被完全忽略掉，即便 `replacer` 参数中强制指定包含了它们。
 
-```javascript
+```js
 JSON.stringify({ [Symbol('foo')]: 'foo' });
 // '{}'
 
@@ -87,7 +87,7 @@ JSON.stringify({ [Symbol.for('foo')]: 'foo' }, function(k, v) {
 
 - 不可枚举的属性会被忽略。
 
-```javascript
+```js
 JSON.stringify(
   Object.create(null, {
     x: { value: 'x', enumerable: false },
@@ -112,7 +112,7 @@ JSON.stringify(
 
 #### 例子（当参数为 `Function`）
 
-```javascript
+```js
 function replacer(key, value) {
   if (typeof value === 'string') {
     return undefined;
@@ -129,7 +129,7 @@ var jsonString = JSON.stringify(foo, replacer); // {"week": 45,"month": 7}
 
 如果 `replacer` 是一个数组，数组的值代表将被序列化成 JSON 字符串的属性名。
 
-```javascript
+```js
 JSON.stringify(foo, ['week', 'month']);
 // '{"week": 45,"month":7}', 只保留“week”和“month”属性值
 ```
@@ -138,13 +138,13 @@ JSON.stringify(foo, ['week', 'month']);
 
 `space` 参数用来控制结果字符串里面的间距。如果一个数字，则在字符串化时每一级别会比上一级别缩进多这个数字值的空格（最多 10 个空格）；如果是一个字符串，则每一级别会比上一级别多缩进用该字符串（或该字符串的前十个字符）。
 
-```javascript
+```js
 JSON.stringify({ a: 2 }, null, ' '); // '{\n "a": 2\n}'
 ```
 
 使用制表符（`\t`）来缩进：
 
-```javascript
+```js
 JSON.stringify({ uno: 1, dos: 2 }, null, '\t');
 //'{            \
 //    "uno": 1, \
@@ -156,7 +156,7 @@ JSON.stringify({ uno: 1, dos: 2 }, null, '\t');
 
 如果一个被序列化的对象拥有 `toJSON` 方法，那么该 `toJSON` 方法就会覆盖该对象默认的序列化行为：不是那个对象被序列化，而是调用 `toJSON` 方法后的返回值会被序列化。
 
-```javascript
+```js
 var obj = {
   foo: 'foo',
   toJSON: function() {

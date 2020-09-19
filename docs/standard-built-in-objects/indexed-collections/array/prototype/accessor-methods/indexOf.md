@@ -16,7 +16,7 @@ order: 12
 
 ## 语法
 
-```javascript
+```js
 arr.indexOf( searchValue [, fromIndex] )
 ```
 

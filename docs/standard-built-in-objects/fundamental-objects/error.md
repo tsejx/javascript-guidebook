@@ -30,7 +30,7 @@ new Error([ message ][, fileName[, lineNumber]])
 除了通用的 Error 构造函数外，还有 6 个其他类型的异常构造函数。
 
 - `EvalError`：用于表示与 [`eval()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval) 相关的异常
-- `InternalError`：用于表示 Javascript 引擎内部错误的异常抛出的实例。 如: "递归太多"。
+- `InternalError`：用于表示 JavaScript 引擎内部错误的异常抛出的实例。 如: "递归太多"。
 - `RangeError`：用于表示数值变量或参数**超出其有效范围**的异常
 - `ReferenceError`：用于表示**无效引用**的异常
 - `SyntaxError`：用于表示 [`eval()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/eval) 在解析代码的过程中发生的**语法错误**的异常

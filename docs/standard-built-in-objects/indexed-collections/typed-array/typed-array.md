@@ -60,7 +60,7 @@ var buffer = new ArrayBuffer(16);
 
 现在我们有了一段初始化为 0 的内存，目前还做不了什么太多操作。让我们确认一下数据的字节长度：
 
-```javascript
+```js
 if (buffer.byteLength === 16) {
   console.log("Yes, it's 16 bytes.");
 } else {
@@ -70,13 +70,13 @@ if (buffer.byteLength === 16) {
 
 在实际开始操作这个缓冲之前，需要创建一个视图。我们将创建一个视图，此视图将把缓冲内的数据格式化为一个 32 位的有符号整数数组：
 
-```javascript
+```js
 var int32View = new Int32Array(buffer);
 ```
 
 现在我们可以像普通数组一样访问该数组中的元素：
 
-```javascript
+```js
 for (var i = 0; i < int32View.length; i++) {
   int32View[i] = i * 2;
 }
@@ -88,7 +88,7 @@ for (var i = 0; i < int32View.length; i++) {
 
 更有意思的是，你可以在同一数据上创建多个视图。例如：基于上文的代码，我们可以添加如下代码处理：
 
-```javascript
+```js
 var int16View = new Int16Array(buffer);
 
 for (var i = 0; i < int16View.length; i++) {
@@ -100,7 +100,7 @@ for (var i = 0; i < int16View.length; i++) {
 
 那么，这样呢？
 
-```javascript
+```js
 int16View[0] = 32;
 console.log('Entry 0 in the 32-bit array is now ' + int32View[0]);
 ```

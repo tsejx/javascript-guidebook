@@ -69,7 +69,7 @@ var obj = {
 
 数组是对象的特殊形式，使用方括号访问数组元素就像用方括号访问对象的属性一样。
 
-Javascript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。之所以可以用数值读取，是因为非字符串的键名会被转为字符串，然后将其作为属性名来使用
+JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。之所以可以用数值读取，是因为非字符串的键名会被转为字符串，然后将其作为属性名来使用
 
 ```js
 // 创建一个普通的对象
@@ -172,15 +172,15 @@ console.log(a.length);
 
 方法名|描述
 :---:|:---:
-[Array.prototype.copyWithin()](properties-of-the-array-prototype-object/mutator-methods/copyWithin.md)|在数组内部，将一段元素序列拷贝到另一段元素序列上，覆盖原有的值。
-[Array.prototype.fill()](properties-of-the-array-prototype-object/mutator-methods/fill.md)|用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。
-[Array.prototype.pop()](properties-of-the-array-prototype-object/mutator-methods/pop.md)|从数组中删除的最后一个元素，并返回这个元素。此方法更改数组长度。
-[Array.prototype.push()](properties-of-the-array-prototype-object/mutator-methods/push.md)|将一个或多个元素添加到数组末尾，并返回数组的新长度。
-[Array.prototype.reverse()](properties-of-the-array-prototype-object/mutator-methods/reverse.md)|颠倒数组中元素的排列顺序，即原先的第一个变为最后一个，原先的最后一个变为第一个。
-[Array.prototype.shift()](properties-of-the-array-prototype-object/mutator-methods/shift.md)|从数组中删除第一个元素，并返回该元素的值。此方法更改数组长度。
-[Array.prototype.sort()](properties-of-the-array-prototype-object/mutator-methods/sort.md)|用就地的算法对数组元素进行排序，并返回当前数组。排序不一定是稳定的。默认排序顺序是根据字符串 Unicode 码点。
-[Array.prototype.splice()](properties-of-the-array-prototype-object/mutator-methods/splice.md)|通过删除现有元素和/或添加新元素来更改一个数组的内容。
-[Array.prototype.unshift()](properties-of-the-array-prototype-object/mutator-methods/unshift.md)|在数组的开头增加一个或多个元素，并返回数组的新长度
+[Array.prototype.copyWithin()](properties-of-the-array-prototype-object/mutator-methods/copyWithin)|在数组内部，将一段元素序列拷贝到另一段元素序列上，覆盖原有的值。
+[Array.prototype.fill()](properties-of-the-array-prototype-object/mutator-methods/fill)|用一个固定值填充一个数组中从起始索引到终止索引内的全部元素。
+[Array.prototype.pop()](properties-of-the-array-prototype-object/mutator-methods/pop)|从数组中删除的最后一个元素，并返回这个元素。此方法更改数组长度。
+[Array.prototype.push()](properties-of-the-array-prototype-object/mutator-methods/push)|将一个或多个元素添加到数组末尾，并返回数组的新长度。
+[Array.prototype.reverse()](properties-of-the-array-prototype-object/mutator-methods/reverse)|颠倒数组中元素的排列顺序，即原先的第一个变为最后一个，原先的最后一个变为第一个。
+[Array.prototype.shift()](properties-of-the-array-prototype-object/mutator-methods/shift)|从数组中删除第一个元素，并返回该元素的值。此方法更改数组长度。
+[Array.prototype.sort()](properties-of-the-array-prototype-object/mutator-methods/sort)|用就地的算法对数组元素进行排序，并返回当前数组。排序不一定是稳定的。默认排序顺序是根据字符串 Unicode 码点。
+[Array.prototype.splice()](properties-of-the-array-prototype-object/mutator-methods/splice)|通过删除现有元素和/或添加新元素来更改一个数组的内容。
+[Array.prototype.unshift()](properties-of-the-array-prototype-object/mutator-methods/unshift)|在数组的开头增加一个或多个元素，并返回数组的新长度
 
 #### Accessor 访问方法
 
@@ -188,12 +188,12 @@ console.log(a.length);
 
 方法名|描述
 :---:|:---:
-[Array.prototype.indexOf()](properties-of-the-array-prototype-object/accessor-methods/indexOf.md)|返回数组中第一个与指定值相等的元素的索引，如果找不到这样的元素，则返回 -1。
-[Array.prototype.lastIndexOf()](properties-of-the-array-prototype-object/accessor-methods/lastIndexOf.md)|返回数组中最后一个（从右边数第一个）与指定值相等的元素的索引，如果找不到这样的元素，则返回 -1。
-[Array.prototype.concat()](properties-of-the-array-prototype-object/accessor-methods/concat.md)|用于合并当前数组和其他若干个数组或者若干个非数组值组合而成的新数组。
-[Array.prototype.includes()](properties-of-the-array-prototype-object/accessor-methods/includes.md)|判断当前数组是否包含某指定的值，如果是返回 `true`，否则返回 `false`
-[Array.prototype.join()](properties-of-the-array-prototype-object/accessor-methods/join.md)|将一个数组（或一个类数组对象） 的所有元素连接成一个字符串并返回这个字符串。
-[Array.prototype.slice()](properties-of-the-array-prototype-object/accessor-methods/slice.md)|返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象。
+[Array.prototype.indexOf()](properties-of-the-array-prototype-object/accessor-methods/indexOf)|返回数组中第一个与指定值相等的元素的索引，如果找不到这样的元素，则返回 -1。
+[Array.prototype.lastIndexOf()](properties-of-the-array-prototype-object/accessor-methods/lastIndexOf)|返回数组中最后一个（从右边数第一个）与指定值相等的元素的索引，如果找不到这样的元素，则返回 -1。
+[Array.prototype.concat()](properties-of-the-array-prototype-object/accessor-methods/concat)|用于合并当前数组和其他若干个数组或者若干个非数组值组合而成的新数组。
+[Array.prototype.includes()](properties-of-the-array-prototype-object/accessor-methods/includes)|判断当前数组是否包含某指定的值，如果是返回 `true`，否则返回 `false`
+[Array.prototype.join()](properties-of-the-array-prototype-object/accessor-methods/join)|将一个数组（或一个类数组对象） 的所有元素连接成一个字符串并返回这个字符串。
+[Array.prototype.slice()](properties-of-the-array-prototype-object/accessor-methods/slice)|返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象。
 `Array.prototype.toSource()`|返回一个表示当前数组字面量的字符串。遮蔽了原型链上的 `Object.prototype.toSource()`
 `Array.prototype.toString()`|返回一个由所有数组元素组合而成的字符串。遮蔽了原型链上的 `Object.prototype.toString()` 方法。
 `Array.prototype.toLocaleString()`|返回一个由所有数组元素组合而成的本地化后的字符串。遮蔽了原型链上的 `Object.prototype.toLocaleString()` 方法
@@ -204,17 +204,17 @@ console.log(a.length);
 
 方法名|描述
 :---:|:---:
-[Array.prototype.forEach()](properties-of-the-array-prototype-object/iteration-methods/forEach.md)|对数组的每个元素执行一次回调函数。
-[Array.prototype.entries()](properties-of-the-array-prototype-object/iteration-methods/entries.md)|返回一个数组迭代器对象，该迭代器会包含所有数组元素的键值对。
-[Array.prototype.every()](properties-of-the-array-prototype-object/iteration-methods/every.md)|测试数组的所有元素是否都通过了指定函数的测试。
-[Array.prototype.some()](properties-of-the-array-prototype-object/iteration-methods/some.md)|测试数组中的某些元素是否通过由提供的函数实现的测试。
-[Array.prototype.filter()](properties-of-the-array-prototype-object/iteration-methods/filter.md)|创建一个新数组，其包含通过所提供函数实现的测试的所有元素。
-[Array.prototype.find()](properties-of-the-array-prototype-object/iteration-methods/find.md)|返回数组中满足提供的测试函数的第一个元素的值。否则返回 `undefined`。
-[Array.prototype.findIndex()](properties-of-the-array-prototype-object/iteration-methods/findIndex.md)|返回数组中满足提供的测试函数的第一个元素的缩影。否则返回-1。
-[Array.prototype.keys()](properties-of-the-array-prototype-object/iteration-methods/keys.md)|返回一个数组迭代器对象，该迭代器会包含所有数组元素的键。
-[Array.prototype.map()](properties-of-the-array-prototype-object/iteration-methods/map.md)|创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
-[Array.prototype.reduce()](properties-of-the-array-prototype-object/iteration-methods/reduce.md)|从左到右为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值。
-[Array.prototype.reduceRight()](properties-of-the-array-prototype-object/iteration-methods/reduceRight.md)|从右到左为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值。
+[Array.prototype.forEach()](properties-of-the-array-prototype-object/iteration-methods/forEach)|对数组的每个元素执行一次回调函数。
+[Array.prototype.entries()](properties-of-the-array-prototype-object/iteration-methods/entries)|返回一个数组迭代器对象，该迭代器会包含所有数组元素的键值对。
+[Array.prototype.every()](properties-of-the-array-prototype-object/iteration-methods/every)|测试数组的所有元素是否都通过了指定函数的测试。
+[Array.prototype.some()](properties-of-the-array-prototype-object/iteration-methods/some)|测试数组中的某些元素是否通过由提供的函数实现的测试。
+[Array.prototype.filter()](properties-of-the-array-prototype-object/iteration-methods/filter)|创建一个新数组，其包含通过所提供函数实现的测试的所有元素。
+[Array.prototype.find()](properties-of-the-array-prototype-object/iteration-methods/find)|返回数组中满足提供的测试函数的第一个元素的值。否则返回 `undefined`。
+[Array.prototype.findIndex()](properties-of-the-array-prototype-object/iteration-methods/findIndex)|返回数组中满足提供的测试函数的第一个元素的缩影。否则返回-1。
+[Array.prototype.keys()](properties-of-the-array-prototype-object/iteration-methods/keys)|返回一个数组迭代器对象，该迭代器会包含所有数组元素的键。
+[Array.prototype.map()](properties-of-the-array-prototype-object/iteration-methods/map)|创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+[Array.prototype.reduce()](properties-of-the-array-prototype-object/iteration-methods/reduce)|从左到右为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值。
+[Array.prototype.reduceRight()](properties-of-the-array-prototype-object/iteration-methods/reduceRight)|从右到左为每个数组元素执行一次回调函数，并把上次回调函数的返回值放在一个暂存器中传给下次回调函数，并返回最后一次回调函数的返回值。
 `Array.prototype.values()`|返回一个数组迭代器对象，该迭代器会包含所有数组元素的值。
 `Array.prototype[@@iterator]()`|和上面的 `values()` 方法是同一个函数。
 
@@ -308,7 +308,7 @@ console.log(a.length);
 
 ### 数组长度
 
-每个数组有一个 `length` 属性，就是这个属性使其区别于常规的 Javascript 对象。针对稠密（也就是非稀疏）数组，`length` 属性值代表数组中元素的个数，其值比数组中最大的索引大 1。
+每个数组有一个 `length` 属性，就是这个属性使其区别于常规的 JavaScript 对象。针对稠密（也就是非稀疏）数组，`length` 属性值代表数组中元素的个数，其值比数组中最大的索引大 1。
 
 ```js
 [].length     			//=>0:数组没有元素,length为0
@@ -463,7 +463,7 @@ for(var i in a){
 }
 ```
 
-Javascript 规范允许 `for/in` 循环以不同的顺序遍历对象的属性。通常数组元素的遍历实现是升序的，但不能保证一定是这样的。特别地，如果数组同时拥有对象属性和数组元素，返回的属性名很可能是按照创建的顺序而非数值的大小顺序。**如果算法依赖于遍历的顺序，那么最好不要使用 `for/in` 而用常规的 `for` 循环。**
+JavaScript 规范允许 `for/in` 循环以不同的顺序遍历对象的属性。通常数组元素的遍历实现是升序的，但不能保证一定是这样的。特别地，如果数组同时拥有对象属性和数组元素，返回的属性名很可能是按照创建的顺序而非数值的大小顺序。**如果算法依赖于遍历的顺序，那么最好不要使用 `for/in` 而用常规的 `for` 循环。**
 
 ### 数组乱序
 

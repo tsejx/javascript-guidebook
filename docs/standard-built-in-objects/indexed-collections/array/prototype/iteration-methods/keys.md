@@ -16,7 +16,7 @@ order: 26
 
 ## 语法
 
-```javascript
+```js
 arr.keys();
 ```
 

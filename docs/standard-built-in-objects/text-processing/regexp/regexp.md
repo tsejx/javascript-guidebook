@@ -131,8 +131,8 @@ console.log(regexp.source); // '\[bc\]at'
 
 | 方法                                                                          | 描述                                                                             |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| [RegExp.prototype.exec()](properties-of-the-regexp-prototype-objects/exec.md) | 在一个指定字符串中执行一个搜索匹配。返回一个结果数组或 `null`。                  |
-| [RegExp.prototype.test()](properties-of-the-regexp-prototype-objects/test.md) | 执行一个检索，用来查看正则表达式与指定的字符串是否匹配。返回 `true` 或 `false`。 |
+| [RegExp.prototype.exec()](properties-of-the-regexp-prototype-objects/exec) | 在一个指定字符串中执行一个搜索匹配。返回一个结果数组或 `null`。                  |
+| [RegExp.prototype.test()](properties-of-the-regexp-prototype-objects/test) | 执行一个检索，用来查看正则表达式与指定的字符串是否匹配。返回 `true` 或 `false`。 |
 
 ## 构造函数
 
@@ -175,7 +175,7 @@ if (regexp.test(text)) {
 }
 ```
 
-Javascript 有 9 个用于存储捕获组的构造函数属性，在调用 `exec()` 或 `test()` 方法时，这些属性会被自动填充
+JavaScript 有 9 个用于存储捕获组的构造函数属性，在调用 `exec()` 或 `test()` 方法时，这些属性会被自动填充
 
 理论上，应该保存整个表达式匹配文本的 `RegExp.$0` 并不存在，值为 `undefined` 。
 

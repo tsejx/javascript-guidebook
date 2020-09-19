@@ -183,7 +183,10 @@ map.get(NaN);
 Set 作为参数
 
 ```js
-const param = new Set([['foo', 1], ['bar', 2]]);
+const param = new Set([
+  ['foo', 1],
+  ['bar', 2],
+]);
 const map = new Map(param);
 
 map.get('foo');
@@ -268,9 +271,16 @@ for (var [key, value] of map.entries()) {
 扩展运算符本质上是将 Map 对象转换成数组。
 
 ```js
-const first = new Map([[1, 'one'], [2, 'two'], [3, 'three']]);
+const first = new Map([
+  [1, 'one'],
+  [2, 'two'],
+  [3, 'three'],
+]);
 
-const second = new Map([[1, 'uno'], [2, 'dos']]);
+const second = new Map([
+  [1, 'uno'],
+  [2, 'dos'],
+]);
 
 const merged = new Map([...first, ...second]);
 ```
@@ -295,7 +305,10 @@ console.log([...map]);
 将数组传入 Map 构造函数就可以转为 Map。
 
 ```js
-const m = new Map([[true, 7], [{ foo: 3 }, ['abc']]]);
+const m = new Map([
+  [true, 7],
+  [{ foo: 3 }, ['abc']],
+]);
 
 console.log(m);
 // Map {
@@ -384,4 +397,30 @@ const toMap = jsonStr => new Map(JSON.parse(jsonStr));
 
 console.log(toMap('[[true, 7], [{"foo": 3}, ["abc"]]]'));
 // Map(true => 7, Object {foo: 3} => ['abc'])
+```
+
+### 替代 if-else
+
+```js
+const timemap = new Map([
+  [0, '星期天'],
+  [1, '星期一'],
+  [2, '星期二'],
+  [3, '星期三'],
+  [4, '星期四'],
+  [5, '星期五'],
+  [6, '星期六'],
+])
+
+// 中间使用 React Hooks 的 useEffect 实现
+const [ time, setTime ] = setState(new Date())
+
+useEffect(() => {
+  clearInterval()
+  setInterval(
+    () => { setTimeout(new Date())}, 1000
+  )
+})
+
+const res = (timemap.get(time.getDay()) || '') + time.toLacleTimeString()
 ```

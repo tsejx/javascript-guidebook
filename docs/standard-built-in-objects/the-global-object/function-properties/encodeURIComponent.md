@@ -29,8 +29,8 @@ encodeURIComponent(URIString);
 
 ## 说明
 
-- 如果要对使用`encodeURIComponent()` 函数编码后的 URI 组件字符串进行解码，请使用 [decodeURIComponent()](./decodeURIComponent.md) 函数。
-- `encodeURIComponent()` 函数会编码所有的字符。如果你想把 URI 当作请求参数传递，那么你可以使用本函数。如果你只是想编码一个带有特殊字符（比如中文）的 URI，这个 URI 用作请求地址，请使用 [encodeURI](./encodeURI.md) 函数。
+- 如果要对使用`encodeURIComponent()` 函数编码后的 URI 组件字符串进行解码，请使用 [decodeURIComponent()](./decodeURIComponent) 函数。
+- `encodeURIComponent()` 函数会编码所有的字符。如果你想把 URI 当作请求参数传递，那么你可以使用本函数。如果你只是想编码一个带有特殊字符（比如中文）的 URI，这个 URI 用作请求地址，请使用 [encodeURI](./encodeURI) 函数。
 
 ## 示例
 

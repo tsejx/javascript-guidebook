@@ -17,7 +17,7 @@ order: 2
 
 ## 语法
 
-```javascript
+```js
 isFinite(number);
 ```
 
