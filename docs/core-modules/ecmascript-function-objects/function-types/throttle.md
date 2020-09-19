@@ -21,46 +21,56 @@ order: 8
 
 从字面上就可以理解，函数节流就是用来节流函数从而一定程度上优化性能的。
 
-例如，DOM 操作比起非 DOM 交互需要占用更多的内存空间和消耗更多的 CPU 时间。连续尝试进行过多的 DOM 相关操作可能会导致浏览器卡顿，有时候甚至会崩溃。尤其在 IE 中使用 `onresize` 事件处理程序的时候容易发生，当调整浏览器大小的时候，该事件会连续触发。在 `onresize` 事件处理程序内部如果尝试进行 DOM 操作，其高频率的更改可能会让浏览器崩溃。
+例如，DOM  操作比起非 DOM  交互需要占用更多的内存空间和消耗更多的 CPU  时间。连续尝试进行过多的 DOM  相关操作可能会导致浏览器卡顿，有时候甚至会崩溃。尤其在 IE  中使用 `onresize`  事件处理程序的时候容易发生，当调整浏览器大小的时候，该事件会连续触发。在 `onresize`  事件处理程序内部如果尝试进行 DOM  操作，其高频率的更改可能会让浏览器崩溃。
 
-## 实现
+## 代码实现
+
+### 时间戳实现
 
 ```js
 /**
-* 节流函数
-* @param fn {Function} 实际要执行的函数
-* @param wait {Number} 	执行间隔，单位是毫秒(ms)，默认100ms
-* @return {Function} 返回一个"节流"函数
-*/
+ * 实现函数的节流（目的是频繁触发中缩减频率）
+ * @param func {Function} 实际要执行的函数
+ * @param wait {Number} 执行间隔，单位是毫秒(ms)，默认100ms
+ * @return {Function} 可被调用执行的函数
+ */
 
-function throttle(fn, wait = 100){
+function throttle(func, wait = 500) {
   // 利用闭包保存定时器和上次执行时间
   let timer = null;
 
   // 上次执行时间
-  let previous;
+  let prev = Date.now();
 
-  return function (){
-    // 保存函数调用时的上下文和参数，传递给 fn
-    const context = this;
-    const args = arguments;
-    const now = +new Date();
+  return function(...params) {
+    const now = Date.now();
 
-    // 周期之中
-    if (previous && now < previous + wait) {
-      clearTimeout(timer);
-      timer = setTimeout(function(){
-        previous = now;
-        fn.apply(context, args);
-      }, wait);
-    } else {
-      // 周期之外
-      previous = now;
-      fn.apply(context, args);
+    if (now - prev > wait) {
+      prev = now;
+      func.apply(this, params);
     }
-  }
+  };
 }
 ```
+
+### 定时器实现
+
+```js
+function throttle(func, wait = 500) {
+  let timer = null;
+
+  return function(...params) {
+    if (!timer) {
+      timer = setTimeout(() => {
+        func.apply(this, params);
+        timer = null;
+      }, wait);
+    }
+  };
+}
+```
+
+## 具体应用
 
 ### 原生实现应用
 
@@ -69,7 +79,7 @@ function throttle(fn, wait = 100){
 ```js
 const button = document.getElementById('button');
 
-function trigger(){
+function trigger() {
   console.log('click');
 }
 
@@ -87,34 +97,28 @@ import { throttle } from '@utils/throttle';
 export default class Invoke extends Component {
   constructor() {
     super();
-    this.change = throttle((e) => {
+    this.change = throttle(e => {
       console.log(e.target.value);
       console.log('throttle');
-    }, 100)
+    }, 100);
   }
-
-  handleWindowResize(){
+  handleWindowResize() {
     console.log('resize');
   }
-
   componentDidMount() {
     window.addEventListener('resize', throttle(this.handleWindowResize, 100));
   }
-
   componentWillUnmount() {
     window.removeEvenetListener('resize', throttle(this.handleWindowResize), 100);
   }
-
-  handleInputChange = (e) => {
+  handleInputChange = e => {
     // 持久化
     e.persist();
     this.change(e);
-  }
+  };
 
   render() {
-    return (
-      <input type="text" onChange={this.handleInputChange}/>
-    )
+    return <input type="text" onChange={this.handleInputChange} />;
   }
 }
 ```
@@ -128,14 +132,13 @@ export default class Invoke extends Component {
 
 常见的高频触发监听事件的应用场景：
 
-- 视图事件：视图滚动 `scroll` 事件和视窗伸缩 `resize` 事件
-- 鼠标移动事件：`mouseover` 和 `mousemove`
-  - 计算鼠标移动的距离
-  - Canvas 模拟画板功能
-- 鼠标点击事件：`click`、`dbclick`（多次点击鼠标）
-- 鼠标滚轮事件：`wheel`
+- 动画场景：避免短时间内多次触发动画引起性能问题
+- 拖拽场景：固定时间内只执行一次，防止超高频次触发位置变动（`mousemove`）
+- 缩放场景：监控浏览器窗口大小（`resize`）
+- 滚轮场景：鼠标滚轮事件（`wheel`）
+- Canvas 画笔功能
 
-总结可得主要用于外部设备的交互频繁触发引起的视图定位、坐标等信息的实时变更导致的大量事件监听。
+> 总结：适合大量事件按时间做平均分配触发
 
 ## 应用实践
 
@@ -144,7 +147,7 @@ export default class Invoke extends Component {
 这里以判断页面是否滚动到底部为例，普通的做法就是监听 Window 对象的 `scroll` 事件，然后在函数体中写入判断是否滚动到底部的逻辑。
 
 ```js
-$(window).on('scroll', function(){
+$(window).on('scroll', function() {
   // 判断是否滚动到底部的逻辑
   let pageHeight = $('body').height(),
     scrollTop = $(window).scrollTop(),
@@ -154,22 +157,25 @@ $(window).on('scroll', function(){
   if (thresod > -100 && thresold <= 20) {
     console.log('The end');
   }
-})
+});
 ```
 
 这样做的一个缺点就是比较消耗性能，因为当在滚动的时候，浏览器会无时无刻地在计算判断是否滚动到底部的逻辑，而在实际场景中是不需要这么做的，在实际场景中可能是这样的：在滚动过程中，每隔一段时间再去计算这个判断逻辑。而函数节流所做的工作就是每隔一段时间去执行一次原本需要无时无刻地在执行的函数，所以在滚动事件中引入函数的节流是一个非常好的实践。
 
 ```js
-$(window).on('scroll', throttle(function () {
-  // 判断是否滚动到底部的逻辑
-  let pageHeight = $('body').height(),
-    scrollTop = $(window).scrollTop(),
-    winHeight = $(window).height(),
-    thresold = pageHeight - scrollTop - winHeight;
-  if (thresold > -100 && thresold <= 20) {
-    console.log('end');
-  }
-}, 300));
+$(window).on(
+  'scroll',
+  throttle(function() {
+    // 判断是否滚动到底部的逻辑
+    let pageHeight = $('body').height(),
+      scrollTop = $(window).scrollTop(),
+      winHeight = $(window).height(),
+      thresold = pageHeight - scrollTop - winHeight;
+    if (thresold > -100 && thresold <= 20) {
+      console.log('end');
+    }
+  }, 300)
+);
 ```
 
 加入函数节流之后，当页面再滚动的时候，每隔 300ms 才会执行一次判断逻辑。
@@ -180,13 +186,13 @@ $(window).on('scroll', throttle(function () {
 function throttle(fn, interval = 300) {
   let canRun = true;
   return function() {
-    if (!canRun) return
+    if (!canRun) return;
     canRun = false;
     setTimeout(() => {
       fn.apply(this.arguments);
       canRun = true;
     }, interval);
-  }
+  };
 }
 ```
 
@@ -196,4 +202,3 @@ function throttle(fn, interval = 300) {
 
 - [📝 函数节流和函数防抖的可视化区别](http://demo.nimius.net/debounce_throttle/)
 - [📝 轻松理解 JavaScript 函数节流和函数防抖](https://juejin.im/post/5a35ed25f265da431d3cc1b1)
-
