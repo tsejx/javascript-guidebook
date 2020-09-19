@@ -193,6 +193,23 @@ Promise.reject = function (reason) {
   })
 }
 
+// 返回一个 Promise 对象，
+Promise.race = function (iterable) {
+  return new Promise((resolve, reject) => {
+    // 遍历数组，获取每个 Promise 的结果
+    iterable.forEach((item, index) => {
+      Promise.resolve(item).then(
+        value => {
+          resolve(value)
+        },
+        reason => {
+          reject(reason)
+        }
+      )
+    })
+  })
+}
+
 // 返回一个 Promise 对象，只有当所有 Promise 都成功时返回的 Promise 状态才成功
 Promise.all = function (iterable) {
   const values = new Array(iterable.length)
@@ -221,31 +238,15 @@ Promise.all = function (iterable) {
   })
 }
 
-// 返回一个 Promise 对象，
-Promise.race = function (iterable) {
-  return new Promise((resolve, reject) => {
-    // 遍历数组，获取每个 Promise 的结果
-    iterable.forEach((item, index) => {
-      Promise.resolve(item).then(
-        value => {
-          resolve(value)
-        },
-        reason => {
-          reject(reason)
-        }
-      )
-    })
-  })
-}
-
+// 返回所有 Promise 均已 fulfilled 或 rejected 后的 Promise
 Promise.allSettled = function (iterable) {
   return new Promise(function (resolve, reject) {
     const len = iterable.length
-    let result = []
+    let values = []
     let resolveCount = 0
 
     if (length === 0) {
-      return resolve(result)
+      return resolve(values)
     } else {
       for (let i = 0; i < len; i++) {
         (function (i) {
@@ -253,22 +254,22 @@ Promise.allSettled = function (iterable) {
 
           currentPromise.then(function (value) {
             resolveCount++
-            result[i] = {
+            values[i] = {
               status: STATUS.FULFILLED,
               value: value
             }
 
             if (resolveCount === len) {
-              return resolve(result)
+              return resolve(values)
             }
           }, function (reason) {
             resolveCount++
-            result[i] = {
+            values[i] = {
               status: STATUS.REJECTED,
               reason: reason
             }
-            if (count === len) {
-              return resolve(result)
+            if (resolveCount === len) {
+              return resolve(values)
             }
           })
         })(i)
