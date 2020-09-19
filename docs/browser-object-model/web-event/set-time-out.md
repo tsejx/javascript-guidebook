@@ -51,3 +51,31 @@ const timeoutID = setTimeout(animate, 500);
 // 清除超时调用
 clearTimeout(timeoutID);
 ```
+
+### 实现间歇调用
+
+```js
+window.timeWorkers = {};
+
+const _setInterval = function(cb, time) {
+  let key = Symbol('interval');
+
+  const execute = function(fn, time) {
+    timeWorkers[key] = setTimeout(function() {
+      fn();
+      execute(fn, time);
+    });
+
+    return key;
+  };
+
+  execute(cb, time);
+};
+
+const _clearInterval = function(key) {
+  if (key in window.timeWorkers) {
+    clearTimeout(timeWorkers[key]);
+    delete timeWorkers[key];
+  }
+};
+```

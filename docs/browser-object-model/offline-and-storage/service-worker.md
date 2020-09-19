@@ -11,7 +11,7 @@ order: 6
 
 # Service Worker
 
-Service Worker 也称服务工作线程，是浏览器在后台独立网页运行的脚本，也算作是 Javascript 工作线程。它无法直接访问 DOM，因此，如果你需要操作页面的 DOM 节点的话，可以通过  [postMessage](https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage)  来跟想控制的页面进行通信。 Service Worker 中的 API 大量采用 Promise 方式设计，因此代码比较友好。
+Service Worker 也称服务工作线程，是浏览器在后台独立网页运行的脚本，也算作是 JavaScript 工作线程。它无法直接访问 DOM，因此，如果你需要操作页面的 DOM 节点的话，可以通过  [postMessage](https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage)  来跟想控制的页面进行通信。 Service Worker 中的 API 大量采用 Promise 方式设计，因此代码比较友好。
 
 在兼容性方面， Chrome Firefox Opera 都已经支持， Microsoft Edge 现在也表示公开支持。而之前 Safari 因为不计划支持被很多开发者吐槽，认为它将会是下一代 IE 。迫于压力下，现 Safari 也[暗示未来会进行开发](https://trac.webkit.org/wiki/FiveYearPlanFall2015)。
 
@@ -19,7 +19,7 @@ Service Worker 也称服务工作线程，是浏览器在后台独立网页运�
 
 ## 概述
 
-若想理解 Service Workers 相关的一切，你首先应该阅读一下之前发布的有关 [Web Workers](https://github.com/Troland/how-javascript-works/blob/master/worker.md) 的文章。
+若想理解 Service Workers 相关的一切，你首先应该阅读一下之前发布的有关 [Web Workers](https://github.com/Troland/how-javascript-works/blob/master/worker) 的文章。
 
 大体上，Service Worker 是一种 Web Worker，更准确地说，它更像是一个 [Shared Worker](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker)。
 
@@ -286,7 +286,7 @@ export default () => <img alt="Service Workers 浏览器兼容性" src={img} wid
 - [初识 Service Worker 及简单应用](https://github.com/Leslie2014/blog/issues/1)
 - [腾讯浏览器服务：Service Worker 简介](https://x5.tencent.com/product/service-worker.html)
 - [ServiceWorker 的生命周期](http://www.fly63.com/article/detial/234)
-- [Github：Service Worker Explained](https://github.com/neal1991/articles-translator/blob/master/Service%20worker%E4%BB%8B%E7%BB%8D.md)
+- [Github：Service Worker Explained](https://github.com/neal1991/articles-translator/blob/master/Service%20worker%E4%BB%8B%E7%BB%8D)
 - [CSDN：Service Worker 入门 - PWA 强依赖于 Service Worker](https://blog.csdn.net/ztguang/article/details/53750479)
 - [📍Github：Service Worker 101](https://github.com/delapuente/service-workers-101)
 - [Service Worker - first draft published](https://jakearchibald.com/2014/service-worker-first-draft/)

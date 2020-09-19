@@ -5,15 +5,15 @@ nav:
 group:
   title: 设备 API
   order: 15
-title: 摄像头访问
+title: 摄录设备
 order: 3
 ---
 
-## 摄像头访问
+# 摄录设备
 
 HTML5 的 `getUserMedia` API 提供了访问用户媒体设备的能力，基于该特性，开发者可以在不依赖任何浏览器插件的条件下访问视频和音频等设备。
 
-### getUserMedia API
+## getUserMedia API
 
 各主要浏览器对 `getUserMedia` API 的支持情况。
 
@@ -87,7 +87,7 @@ navigator.mediaDevices
 
 初次访问用户媒体设备时，浏览器会询问用户是否允许访问，在用户允许后获得访问媒体设备授权。
 
-### 调用摄像头拍照实例
+## 调用摄像头拍照实例
 
 本例子中，将请求访问用户摄像头，并把视频流通过 Video 元素显示出来。
 

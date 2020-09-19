@@ -34,6 +34,6 @@ window.alert('Hello world!');
 
 `alert()` 方法的参数可以用 `\n` 指定换行
 
-```javascript
+```js
 alert('本条提示\n分成两行');
 ```

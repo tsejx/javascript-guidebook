@@ -100,6 +100,7 @@ document.querySelect('#getData').href = URL.createObjectURL(blob);
 - [细说 Web API 中的 Blob](https://juejin.im/post/59e35d0e6fb9a045030f1f35)
 - [Web 开发中 Blob 与 FileAPI 使用简述](https://juejin.im/post/5b544b01f265da0f800ddece)
 - [前端图片 canvas，file，blob，DataURL 等格式转换](https://juejin.im/post/5b5187da51882519ec07fa41)
-- [DataURL 与 File,Blob,canvas 对象之间的互相转换的 Javascript](https://blog.csdn.net/cuixiping/article/details/45932793)
+- [DataURL 与 File,Blob,canvas 对象之间的互相转换的 JavaScript](https://blog.csdn.net/cuixiping/article/details/45932793)
 - [前端图片转 base64，转格式，转 blob，上传的总结](https://blog.csdn.net/wangzhanzheng/article/details/78923013)
 - [前端本地文件操作与上传](https://juejin.im/post/5a193b4bf265da43052e528a)
+- [遇见 Blob](https://juejin.im/post/5f0fa5626fb9a07e765512b2)

@@ -21,7 +21,7 @@ location.assign('https://github.com');
 
 使用 `assign()` 方法并为其传递一个 URL，可以立即打开新 URL 并在浏览器的历史记录中生成一条记录。如果是将 `location.href` 或 `window.location` 设置为一个 URL 值，相当于调用 `assign()` 方法。
 
-```javascript
+```js
 window.location = 'https://github.com';
 location.href = 'https://github.com';
 ```
@@ -30,7 +30,7 @@ location.href = 'https://github.com';
 
 另外，修改  `location`  对象的其他属性也可以改变当前加载的页面。下面的例子展示了通过将  `hash`、`search`、`hostname`、`pathname`  和  `port`  属性设置为新值来改变 URL。
 
-```javascript
+```js
 // 假设初始 URL 为 http://github.com/about/
 location.href = 'http://github.com/about/';
 
@@ -56,7 +56,7 @@ location.port = 8080;
 
 `location.replace()` 方法接收一个参数即要导航到的 URL，结果虽然会导致浏览器位置改变，但不会在历史记录中生成新记录，也就是说用户不能回到前一个页面（只有 chrome 下有效）。
 
-```javascript
+```js
 location.replace('http://github.com');
 ```
 
@@ -66,7 +66,7 @@ location.replace('http://github.com');
 
 位于 `reload()` 调用之后的代码可能会也可能不会执行，这要取决于网络延迟或系统资源等因素，为此，最好将 `reload()` 放在代码的最后一行
 
-```javascript
+```js
 // 重新加载（有可能从缓存中加载）
 location.reload();
 

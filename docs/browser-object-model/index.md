@@ -20,8 +20,8 @@ order: 1
   - [Screen 对象](/browser-object-model/window/screen)
   - [Navigator 对象](/browser-object-model/window/navigator)
 - **全局 API**
-  - [setInterval](/browser-object-model/web-event/set-interval)
-  - [setTimeout](/browser-object-model/web-event/set-time-out)
+  - [setInterval 间歇调用](/browser-object-model/web-event/set-interval)
+  - [setTimeout 超时调用](/browser-object-model/web-event/set-time-out)
   - [alert](/browser-object-model/web-event/alert)
   - [confirm](/browser-object-model/web-event/confirm)
   - [prompt](/browser-object-model/web-event/prompt)
@@ -30,8 +30,8 @@ order: 1
 - **视窗尺寸位置**
   - [Window 视图属性](/browser-object-model/window-position/window-view-properties)
   - [Screen 视图属性](/browser-object-model/window-position/screen-view-properties)
-  - [文档视图和元素视图](/browser-object-model/window-position/document-view-and-element-view)
-  - [元素视图属性](/browser-object-model/window-position/element-view-properties)
+  - [Element 文档元素视图属性](/browser-object-model/window-position/document-view-and-element-view)
+  - [文档视图和元素视图](/browser-object-model/window-position/element-view-properties)
   - [鼠标位置](/browser-object-model/window-position/mouse-position)
 - **二进制数据与文件 API**
   - [本地文件应用](/browser-object-model/binary-data-and-files/local-files-application)
@@ -69,7 +69,7 @@ order: 1
   - Timing API
   - Performance Frame Timing API
 - **多媒体 API**
-  - [音频 Web Auido API](/browser-object-model/multimedia/audio)
+  - [音频 Web Audio API](/browser-object-model/multimedia/audio)
   - [视频 Web Video API](/browser-object-model/multimedia/video)
 - **设备 API**
   - [地理定位 Geolocation API](/browser-object-model/device/geolocation)
@@ -80,23 +80,23 @@ order: 1
 - **集成 API**
   - CSSOM
   - Console API
-  - [Fullscreen API](/browser-object-model/integration/full-screen)
+  - [全屏 Fullscreen API](/browser-object-model/integration/full-screen)
   - Pointer Events 指针时间
   - Pointer Lock API 指针锁定
+- **监视 API**
+  - [IntersectionObserver](/browser-object-model/observer/intersection-observer)
+  - MutationObserver
+  - ResizeObserver
+  - PerformanceObserver
 - **浏览器工作原理**
-  - [整体工作流程](/browser-object-model/browser-working-principle/workflow)
-  - [渲染引擎](/browser-object-model/browser-working-principle/the-rendering-engine)
-  - [构建对象模型](/browser-object-model/browser-working-principle/constructing-the-object-model)
-  - [脚本加载](/browser-object-model/browser-working-principle/script-loads)
-  - [渲染树构建](/browser-object-model/browser-working-principle/render-tree-construction)
+  - [浏览器架构](/browser-object-model/browser-working-principle/browser-architecture)
+  - [渲染进程的内部机制](/browser-object-model/browser-working-principle/workflow)
+  - [构建对象模型](/browser-object-model/browser-working-principle/construction-of-the-object-model)
+  - [脚本异步加载](/browser-object-model/browser-working-principle/script-loads)
+  - [渲染树构建](/browser-object-model/browser-working-principle/construction-of-render-tree)
   - [布局](/browser-object-model/browser-working-principle/layout)
   - [绘制](/browser-object-model/browser-working-principle/painting)
-  - [回流和重绘](/browser-object-model/browser-working-principle/reflow-and-repaint)
-  - [CSS2 可视模型](/browser-object-model/browser-working-principle/css2-visual-module)
-  - [渲染层合并](/browser-object-model/browser-working-principle/composite)
-- **移动开发原理**
-  - [移动 Web 开发](/browser-object-model/wireless-development/mobile-web-development)
-  - [视口](/browser-object-model/wireless-development/viewport)
-  - [适配方案](/browser-object-model/wireless-development/adaptation)
+  - [合并](/browser-object-model/browser-working-principle/composite)
+  - [浏览器事件处理](/browser-object-model/browser-working-principle/browser-event)
 
 > ⚠️ 图形学领域的 SVG、Canvas、WebGL 集成于 [visualization-guidebook](https://tsejx.github.io/visualization-guidebook)

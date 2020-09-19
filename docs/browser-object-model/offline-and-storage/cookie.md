@@ -206,7 +206,7 @@ Cookie 主要用来分辨两个请求是否来自同一浏览器，以及用来�
 2. 缺乏数据操作接口
 3. 影响浏览器性能
 
-客户端存储推荐使用 [WebStorageAPI](web-storage.md)
+客户端存储推荐使用 [WebStorageAPI](web-storage)
 
 ## 替代方案
 
@@ -264,7 +264,7 @@ HTTP 包含基本认证以及摘要认证协议，利用这些协议只有在提
 
 一些 Web 浏览器支持持久化机制，允许页面本地存储信息以后使用。
 
-HTML5 标准（绝大多数现代浏览器在某种程度上都支持）包含了一个 Javascript API 叫做 Web storage：Local Storage 和 Session Storage。Local Storage 的行为和持久化 Cookie 类似，而 Session Storage 的行为和 Session Cookie 的行为类似，也就是 Session Storage 是绑定在一个单独的 Tab 或者窗口的生命周期中的（也就是页面 Session），而 Session Cookie 是针对整个浏览器的。
+HTML5 标准（绝大多数现代浏览器在某种程度上都支持）包含了一个 JavaScript API 叫做 Web storage：Local Storage 和 Session Storage。Local Storage 的行为和持久化 Cookie 类似，而 Session Storage 的行为和 Session Cookie 的行为类似，也就是 Session Storage 是绑定在一个单独的 Tab 或者窗口的生命周期中的（也就是页面 Session），而 Session Cookie 是针对整个浏览器的。
 
 IE 支持在浏览器历史中持久化信息，在浏览器的收藏夹中，以一个 XML 格式存储，或者直接在页面中存储到硬盘。
 
@@ -281,3 +281,9 @@ IE 支持在浏览器历史中持久化信息，在浏览器的收藏夹中，�
 浏览器指纹是指浏览器配置信息的集合，例如版本号，屏幕分辨率，操作系统。指纹信息可以用来完全或者部分标识独立用户或者设备，即使 Cookie 已经被关闭了。
 
 基本的 Web 浏览器配置信息一直都在被 Web 分析服务搜集为了精确的统计真实网络流量和不同类型的点击欺诈。在客户端脚本的帮助下，搜集更多的参数也是有可能的。
+
+---
+
+**参考资料：**
+
+- [预测最近面试会考 Cookie 的 SameSite 属性](https://juejin.im/post/5e718ecc6fb9a07cda098c2d)

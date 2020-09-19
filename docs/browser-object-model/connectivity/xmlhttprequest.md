@@ -135,19 +135,12 @@ const req = new XMLHttpRequest();
 ### 事件
 
 - [loadstart](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2Floadstart) - 当程序开始加载时，loadstart 事件将被触发。
-
 - [progress](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2F%25E8%25BF%259B%25E5%25BA%25A6%25E6%259D%25A1) - 进度事件会被触发用来指示一个操作正在进行中。
-
 - [abort](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2Fabort) - 当一个资源的加载已中止时，将触发 abort 事件。
-
 - [error](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2Ferror) - 当一个资源加载失败时会触发 error 事件。
-
 - [load](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2Fload) - 当一个资源及其依赖资源已完成加载时，将触发 load 事件。
-
 - [timeout](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2Ftimeout) - 当进度由于预定时间到期而终止时，会触发 timeout 事件。
-
 - [loadend](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2Floadend) - 当一个资源加载进度停止时 (例如，在已经分派“错误”，“中止”或“加载”之后)，触发 loadend 事件。
-
 - [readystatechange](https://link.juejin.im?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FEvents%2Freadystatechange) - readystatechange 事件会在 document.readyState 属性发生变化时触发。
 
 ### XMLHttpRequest Level 1
@@ -206,7 +199,7 @@ xhr.ontimeout = function(event) {
 
 AJAX 操作往往用来传递表单数据。为了方便表单处理，HTML 5 新增了一个  FormData 对象，可以用于模拟表单。
 
-点击查看 [FormData 对象](./the-form-data-object.md)详细分析。
+点击查看 [FormData 对象](./the-form-data-object)详细分析。
 
 ### 上传文件
 
@@ -250,9 +243,9 @@ xhr.responseType = 'blob';
 xhr.send();
 ```
 
-接收数据的时候，用浏览器自带的 [Blob 对象](./the-blob-object.md)即可。
+接收数据的时候，用浏览器自带的 [Blob 对象](./the-blob-object)即可。
 
-> 一个  **Blob**  对象表示一个不可变的, 原始数据的类似文件对象。Blob 表示的数据不一定是一个 JavaScript 原生格式。 [`File`](./the-file-object.md)  接口基于 Blob，继承 blob 功能并将其扩展为支持用户系统上的文件。
+> 一个  **Blob**  对象表示一个不可变的, 原始数据的类似文件对象。Blob 表示的数据不一定是一个 JavaScript 原生格式。 [`File`](./the-file-object)  接口基于 Blob，继承 blob 功能并将其扩展为支持用户系统上的文件。
 
 ```js
 const blob = new Blob([xhr.response], { type: 'image/png' });
@@ -344,7 +337,7 @@ xhr.send(uInt8Array.buffer); 					// Step 5
 ```
 
 1. 发送普通的文本到服务器
-2. 通过 [FormData API](./the-form-data-object.md) 创建动态表单
+2. 通过 [FormData API](./the-form-data-object) 创建动态表单
 3. 发送 FormData 数据到服务器
 4. 创建 Unit8Array 数组（Unit8Array 数组类型表示一个 8 位无符号整型数组，创建时内容被初始化为 0）
 5. 发送二进制数据到服务器

@@ -92,6 +92,19 @@ Firefox、Chrome、IE10+ 对 `requestAnimationFrame` 支持很好，但不兼容
 })();
 ```
 
+## 传递参数
+
+```js
+function requestAnimation(a, b, c) {
+  if () {
+
+    window.requestAnimationFrame(function () {
+      requestAnimation(a, b, c)
+    })
+  }
+}
+```
+
 ---
 
 **参考资料：**
