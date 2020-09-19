@@ -32,3 +32,33 @@ order: 1
 
 1. 扩展性差
 2. 指责过重
+
+## 代码实现
+
+```js
+const SingleTon = function (name) {
+  this.name = name;
+  this.instance = null
+}
+
+SingleTon.prototype.getName = function () {
+  console.log(this.name)
+}
+
+SingleTon.prototype.getInstance = function (name) {
+  if (!this.instance) {
+    this.instance = new SingleTon(name)
+  }
+
+  return this.instance;
+}
+
+const foo = SingleTon.getInstance('foo')
+
+const bar = SingleTon.getInstance('bar')
+```
+
+## 实践应用
+
+- 命名空间
+- 使用闭包封装私有变量
