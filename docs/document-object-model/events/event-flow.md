@@ -27,7 +27,7 @@ IE 的事件流叫做**事件冒泡（Event Bubbling）**，即事件开始时�
 import React from 'react';
 import img from '../../assets/event-flow/event-bubble.png';
 
-export default () => <img alt="事件冒泡" src={img} width={800} />;
+export default () => <img alt="事件冒泡" src={img} width={480} />;
 ```
 
 ## 事件捕获
@@ -38,7 +38,7 @@ Netscape Communicator 团队提出的另一种事件流叫做事件捕获。事�
 import React from 'react';
 import img from '../../assets/event-flow/event-capture.png';
 
-export default () => <img alt="事件捕获" src={img} width={800} />;
+export default () => <img alt="事件捕获" src={img} width={480} />;
 ```
 
 ## DOM 事件流
@@ -51,11 +51,31 @@ export default () => <img alt="事件捕获" src={img} width={800} />;
 import React from 'react';
 import img from '../../assets/event-flow/event-flow.png';
 
-export default () => <img alt="DOM事件流" src={img} width={800} />;
+export default () => <img alt="DOM事件流" src={img} width={480} />;
 ```
 
 - 当处于目标阶段，没有捕获与冒泡之分，执行顺序会按照 `addEventListener` 的添加顺序决定，现添加先执行。
 - 使用 `stopPropagation()` 取消事件传播时，事件不会被传播给下一个节点，但是，同一个节点上的其他监听器还是会执行。如果想要同一层级的监听器也不执行，可以使用 `stopImmediatePropagation()`。
-
 - `preventDefault()` 只是阻止默认行为，跟 JavaScript 的事件传播一点关系都没有。
 - 一旦发起了 `preventDefault()`，在之后传递下去的事件里面也會有效果。
+
+## 最佳实践
+
+### 弹窗点击空白关闭
+
+不实用蒙层实现点击弹窗外空白区域实现关闭弹窗功能。
+
+```js
+const modal = document.querySelector('.modal');
+
+document.body.addEventListener('click', e => {
+  const evt = e || widnow.event;
+  const target = e.target || e.srcElement;
+
+  if (modal == target || modal.contains(target)) {
+    // 其他操作
+  } else {
+    // 隐藏 Modal
+  }
+});
+```

@@ -5,19 +5,17 @@ nav:
 group:
   title: Node
   order: 4
-title: 节点操作
-order: 4
+title: Node 方法
+order: 3
 ---
 
-# 节点操作
+# Node 方法
 
 由于关系指针都是只读的，因此 DOM 提供了一些操作节点的方法。
 
-## API
+## 增删改型方法
 
-从其父类型 EventTarget 继承方法。
-
-### Node.insertBefore
+### insertBefore
 
 在当前节点下增加一个子节点 Node，并使该子节点位于参考节点的前面。
 
@@ -36,7 +34,7 @@ const bar = document.getElementId('bar');
 foo.insertBefore(bar);
 ```
 
-### Node.appendChild
+### appendChild
 
 将指定的 childNode 参数作为最后一个子节点添加到当前节点。
 如果参数引用了 DOM 树上的现有节点，则节点将从当前位置分离，并附加到新位置。
@@ -59,10 +57,10 @@ foo.appendChild(bar);
 ```
 
 - 如果被插入的节点已经存在于当前文档的文档树中，则那个节点会首先从原先的位置移除，然后再插入到新的位置
-- 如果你需要保留这个子节点在原先位置的显示，则你需要先用 [`Node.cloneNode`](clone-node.md) 方法复制出一个节点的副本，然后在插入到新位置
+- 如果你需要保留这个子节点在原先位置的显示，则你需要先用 [`Node.cloneNode`](clone-node) 方法复制出一个节点的副本，然后在插入到新位置
 - 这个方法只能将某个子节点插入到同一个文档的其他位置,如果你想跨文档插入，你需要先调用 `document.importNode` 方法
 
-### Node.replaceChild
+### replaceChild
 
 替换当前节点的某个指定子节点为指定的节点。
 
@@ -98,7 +96,7 @@ foo.replace(bar, span);
 </div>
 ```
 
-### Node.removeChild
+### removeChild
 
 从 DOM 中删除一个子节点，返回删除的节点。
 
@@ -129,7 +127,7 @@ foo.removeChild(bar);
 <div id="foo"></div>
 ```
 
-### Node.cloneNode()
+### cloneNode()
 
 克隆节点到当前节点的子节点列表（及其属性和后代节点）。
 
@@ -176,7 +174,9 @@ foo.appendChild(backup);
 - 为了防止一个文档中出现两个 ID 重复的元素，使用 `cloneNode()` 方法克隆的节点在需要时应该指定另一个与原 ID 值不同的 ID。
 - 如果原始节点设置了 ID，并且克隆节点会被插入到相同的文档中，那么应该更新克隆节点的 ID 以保证唯一性。`name` 属性可能也需要进行修改，取决于你是否希望有相同名称的节点存在于文档中。
 
-### Node.hasChildNodes
+## 判定型方法
+
+### hasChildNodes
 
 判断当前节点是否含有子节点
 
@@ -193,7 +193,7 @@ Node.hasChildNodes();
   <div id="bar"></div>
 </div>
 
-<script>
+<script type="text/javascript">
   const foo = document.getElementById('foo');
   const bar = document.getElementById('bar');
 
@@ -204,28 +204,7 @@ Node.hasChildNodes();
 </script>
 ```
 
-### Node.compareDocumentPosition
-
-比较当前节点与任意文档中的另一节点的位置关系
-
-📖 **语法：**
-
-```js
-Node.compareDocumentPosition(node);
-```
-
-🌰 **示例：**
-
-```js
-var head = document.getElementsByTagName('head').item(0);
-if (head.compareDocumentPosition(document.body) & Node.DOCUMENT_POSITION_FOLLOWING) {
-  console.log('well-formed document');
-} else {
-  console.log('<head> is not before <body>');
-}
-```
-
-### Node.isEqualNode
+### isEqualNode
 
 判断两个节点是否相等。
 
@@ -256,7 +235,28 @@ consolg.log(items[0].isEqualNode(items[2]));
 // true
 ```
 
-### Node.normalize
+### compareDocumentPosition
+
+比较当前节点与任意文档中的另一节点的位置关系
+
+📖 **语法：**
+
+```js
+Node.compareDocumentPosition(node);
+```
+
+🌰 **示例：**
+
+```js
+var head = document.getElementsByTagName('head').item(0);
+if (head.compareDocumentPosition(document.body) & Node.DOCUMENT_POSITION_FOLLOWING) {
+  console.log('well-formed document');
+} else {
+  console.log('<head> is not before <body>');
+}
+```
+
+### normalize
 
 规范化当前节点及其后代节点
 
@@ -284,6 +284,10 @@ wrapper.normalize();
 // 规范化后：wrapper.childNodes.length === 1
 // wrapper.childNodes[0].textContent === 'Part 1 Part 2'
 ```
+
+## ChildNode 方法
+
+ChildNode 继承于 Node，但是有其自身的一些方法。
 
 ### ChildNode.remove
 
@@ -317,7 +321,6 @@ item2.remove();
 
 ```html
 <ul class="list">
-  <li class="item1"></li>
   <li class="item3"></li>
 </ul>
 ```
@@ -345,7 +348,7 @@ ChildNode.before();
 ```js
 const item1 = document.querySelector('.item1');
 const li = document.createElement('li');
-li.innerHTML = '123';
+li.innerHTML = 'Hello world!';
 
 item1.before(li);
 ```
@@ -354,7 +357,7 @@ item1.before(li);
 
 ```html
 <ul class="list">
-  <li>123</li>
+  <li>Hello world!</li>
   <li class="item1"></li>
   <li class="item2"></li>
   <li class="item3"></li>
@@ -363,7 +366,7 @@ item1.before(li);
 
 ### ChildNode.after
 
-插入节点到当前节点后面
+插入节点到当前节点后面。
 
 在其父节点的子节点列表中插入一些 Node 或 DOMString 对象。插入位置为 ChildNode 之后。DOMString 对象会被以 Text 的形式插入。
 
@@ -386,7 +389,7 @@ ChildNode.after();
 ```js
 const item1 = document.querySelector('.item1');
 const li = document.createElement('li');
-li.innerHTML = '123';
+li.innerHTML = 'Hello world!';
 
 item1.after(li);
 ```
@@ -398,13 +401,13 @@ item1.after(li);
   <li class="item1"></li>
   <li class="item2"></li>
   <li class="item3"></li>
-  <li>123</li>
+  <li>Hello world!</li>
 </ul>
 ```
 
 ### ChildNode.replaceWith
 
-替换当前节点为另一节点
+替换当前节点为另一节点。
 
 📖 **语法：**
 

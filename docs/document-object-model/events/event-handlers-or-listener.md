@@ -21,7 +21,7 @@ order: 2
 
 ### HTML事件处理程序
 
-某个元素支持的每种事件，都可以使用一个与相应事件处理程序同名的 HTML 特性来指定。这个特性的值应该是能够执行的 Javascript 代码。
+某个元素支持的每种事件，都可以使用一个与相应事件处理程序同名的 HTML 特性来指定。这个特性的值应该是能够执行的 JavaScript 代码。
 
 ```html
 <div onclick="alert(event.type)"></div>
@@ -35,7 +35,7 @@ order: 2
 
 ### DOM0级事件处理程序
 
-通过 Javascript 指定事件处理程序的传统方式，就是将一个函数赋值给一个事件处理程序属性。这种为事件处理程序赋值的方法是在第四代Web浏览器中出现的，而且至今仍然为所有现代浏览器所支持。
+通过 JavaScript 指定事件处理程序的传统方式，就是将一个函数赋值给一个事件处理程序属性。这种为事件处理程序赋值的方法是在第四代Web浏览器中出现的，而且至今仍然为所有现代浏览器所支持。
 
 每个元素都有自己的事件处理程序属性，这些属性通常全部小写，将这种属性的值设置为一个函数，就可以指定事件处理程序。
 
@@ -167,7 +167,7 @@ btn.detachEvent('onclick', showMessage);
 
 `EventUtil` 的用法如下所示
 
-```javascript
+```js
 var EventUtil = {
     addHandler: function(element, type, handler){
     if (element,.addEventListener) {

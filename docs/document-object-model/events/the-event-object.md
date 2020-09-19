@@ -44,7 +44,7 @@ eventPhase | Integer | 只读 | 调用事件处理程序的阶段：1表示捕�
 target|Element|只读|事件的目标
 trusted|Boolean|只读|为 `true` 表示事件是浏览器生成的。为 `false` 表示事件是由开发人员通过JavaScript创建的（DOM3级事件中新增）
 type|String|只读|被触发的事件的类型
-view|AbstractView|只读|与事件关联的抽象视图。等同于发生事件的window 对象
+view|AbstractView|只读|与事件关联的抽象视图。等同于发生事件的 `window` 对象
 
 #### 事件处理程序内部this指向
 
@@ -65,20 +65,20 @@ btn.onclick = function(event) {
 
 在需要通过一个函数处理多个事件时，可以使用 `type` 属性。例如：
 
-```javascript
+```js
 var btn = document.getElementById("myBtn");
 var handler = function(event) {
-    switch(event.type) {
-        case "click":
-            alert("Clicked");
-            break;
-        case "mouseover":
-            event.target.style.backgroundColor = "red";
-            break;
-        case "mouseout":
-            event.target.style.backgroundColor = "";
-            break;
-    }
+  switch(event.type) {
+    case "click":
+      alert("Clicked");
+      break;
+    case "mouseover":
+      event.target.style.backgroundColor = "red";
+      break;
+    case "mouseout":
+      event.target.style.backgroundColor = "";
+      break;
+  }
 };
 
 btn.onclick = handler;
@@ -95,8 +95,8 @@ btn.mouseout = handler;
 ```js
 var link = document.getElementById("myLink");
 link.onclick = function(event) {
-    // 阻止鼠标的默认行为
-    event.preventDefault();
+  // 阻止鼠标的默认行为
+  event.preventDefault();
 }
 ```
 
@@ -121,36 +121,36 @@ function stopPropagation(e){
 
 ```js
 const EventUtil = {
-    addHandler: function(element, type, handler) {
-        // 省略的代码
-    }，
+  addHandler: function(element, type, handler) {
+    // 省略的代码
+  }，
 
-    getEvent: function(event) {
-    	return event ? event : window.event;
+  getEvent: function(event) {
+    return event ? event : window.event;
 	}
 
 	getTarget: function(event) {
-    	return event.target || event.srcElement;
+    return event.target || event.srcElement;
 	}
 
 	preventDefault: function(event) {
-        if (event.preventDefault){
-            event.preventDefault();
-        } else {
-            event.returnValue = false;
-        }
+    if (event.preventDefault){
+      event.preventDefault();
+    } else {
+      event.returnValue = false;
+    }
 	}
 
 	removeHandler: function(element, type, handler) {
-    	// 省略的代码
+    // 省略的代码
 	}
 
 	stopPropagation: function(event) {
-        if (event.stopPropagation) {
-            event.stopPropagation;
-        } else {
-            event.cancelBubble = true;
-        }
+    if (event.stopPropagation) {
+      event.stopPropagation;
+    } else {
+      event.cancelBubble = true;
+    }
 	}
 }
 ```

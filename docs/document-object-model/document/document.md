@@ -11,8 +11,10 @@ order: 1
 
 # Document
 
-Document 对象是 HTMLDocument（继承自 Document 类型）的一个实例，表示整个 HTML 页面或其他基于 XML 的文档。并且 document 是 window 对象的一个属性，可以将其当做全局对象来访问。
+Document 接口表示任何在浏览器中载入的网页，并作为网页内容的入口，也就是 DOM 树。DOM 树包含了像 `<body>`、`<table>` 这样的元素，以及大量其他元素。它向网页文档本身提供了全局操作功能，能解决如何获取页面的 URL ，如何在文档中创建一个新的元素这样的问题。
 
 ```
-Document => Node => EventTarget
+EventTarget <- Node <- Document
 ```
+
+Document 接口描述了任何类型的文档的通用属性与方法。根据不同的文档类型（例如 HTML、XML、SVG 等等），还能使用更多 API：使用 `"text/html"` 作为内容类型（content type）的 HTML 文档，还实现了 HTMLDocument 接口，而 XML 和 SVG 文档则（额外）实现了 XMLDocument 接口。

@@ -33,7 +33,7 @@ export default () => <img alt="DOM结构" src={img} width={720} />;
     <h2><a href="https://github.com">javascript DOM</a></h2>
     <p>对HTML元素进行操作，可添加、改变或移除css样式等</p>
     <ul>
-      <li>Javascript</li>
+      <li>JavaScript</li>
       <li>DOM</li>
       <li>CSS</li>
     </ul>
