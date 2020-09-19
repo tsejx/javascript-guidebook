@@ -15,7 +15,7 @@ order: 22
 
 ## 语法
 
-```javascript
+```js
 for (initialization; expression; post - loop - expression) statement;
 ```
 
@@ -28,7 +28,7 @@ for (initialization; expression; post - loop - expression) statement;
 
 ## 标准示例
 
-```javascript
+```js
 var count = 10;
 for (var i = 0; i < count; i++) {
   console.log(i);
@@ -37,7 +37,7 @@ for (var i = 0; i < count; i++) {
 
 ### 涉及多个变量的循环
 
-```javascript
+```js
 for (var i = 0, j = 10; i < 10; i++, j--) sum += i * j;
 ```
 
@@ -45,7 +45,7 @@ for (var i = 0, j = 10; i < 10; i++, j--) sum += i * j;
 
 ### 可忽略的表达式
 
-```javascript
+```js
 function tail(o) {
   for (; o.next; o = o.netx /* empty */); // 返回链表的最后一个节点对象
   return; // 根据判断 o.next 是不是真值来执行遍历

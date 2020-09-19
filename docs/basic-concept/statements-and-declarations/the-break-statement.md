@@ -15,7 +15,7 @@ order: 5
 
 ## 语法
 
-```javascript
+```js
 break [labelname];
 ```
 
@@ -32,7 +32,7 @@ break [labelname];
 
 ### 标准示例
 
-```javascript
+```js
 var num = 0;
 for (var i = 1; i < 10; i++) {
   if (i % 5 == 0) {
@@ -45,7 +45,7 @@ console.log(num); // 4
 
 ### switch 语句
 
-```javascript
+```js
 var str = 'string', variable;
 
 swtich (str) {

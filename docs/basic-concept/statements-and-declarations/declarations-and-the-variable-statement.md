@@ -67,7 +67,7 @@ console.log(a, b); // 抛出ReferenceError	// 'b'属性已经被删除。
 
 由于这三个差异，未能声明变量将很可能导致意想不到的结果。因此，建议始终声明变量，无论它们是在函数还是全局作用域内。 而在 ECMAScript 5 严格模式下，分配给未声明的变量会引发错误。
 
-⚠️ 由于变量声明（以及其他声明）总是在任意代码执行之前处理的，所以在代码中的任意位置声明变量总是等效于在代码开头声明。这意味着变量可以在声明之前使用，这个行为叫做[提升（hoisting）](../../core-modules/executable-code-and-execution-contexts/compilation/hoisting.md)。提升就像是把所有的变量声明移动到函数或者全局代码的开头位置。
+⚠️ 由于变量声明（以及其他声明）总是在任意代码执行之前处理的，所以在代码中的任意位置声明变量总是等效于在代码开头声明。这意味着变量可以在声明之前使用，这个行为叫做[提升（hoisting）](../../core-modules/executable-code-and-execution-contexts/compilation/hoisting)。提升就像是把所有的变量声明移动到函数或者全局代码的开头位置。
 
 ### `let`
 
@@ -168,13 +168,13 @@ switch (x) {
 
 - 常量要求一个初始值
 
-```javascript
+```js
 const b; 	// SyntaxError: missing = in const declaration
 ```
 
 - 常量可以定义成对象
 
-```javascript
+```js
 const c = { key: 'value' };
 
 // 重写对象和上面一样会失败
@@ -186,7 +186,7 @@ c.key = 'otherValue';
 
 - 常量可以定义成数组
 
-```javascript
+```js
 const d = [];
 
 d.push('A'); // ["A"]
@@ -200,7 +200,7 @@ d = ['B']; // TypeError: Assignment to constant variable.
 
 ECMAScript 6 之前的 JavaScript 没有 语句块 作用域；相反，语句块中声明的变量将成为语句块所在代码段的局部变量。例如，如下的代码将在控制台输出 5，因为 x 的作用域是声明了 x 的那个函数（或全局范围），而不是 `if` 语句块。
 
-```javascript
+```js
 if (true) {
   var x = 5;
 }
@@ -209,7 +209,7 @@ console.log(x); // 5
 
 如果使用 ECMAScript 6 中的 let 声明，上述行为将发生变化。
 
-```javascript
+```js
 if (true) {
   let y = 5;
 }
@@ -218,7 +218,7 @@ console.log(y); // ReferenceError: y is not defined
 
 ## 变量的数据类型
 
-详情参考 [数据类型](../data-types/data-types.md)
+详情参考 [数据类型](../data-types/data-types)
 
 ---
 

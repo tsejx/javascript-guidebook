@@ -167,7 +167,7 @@ a.valueOf().toString(); // "[object Object]"
 
 ## 显式类型转换
 
-通过手动进行类型转换，Javascript 提供了以下转型函数：
+通过手动进行类型转换，JavaScript 提供了以下转型函数：
 
 - 转换为数值类型
   - `Number(mix)`
@@ -196,15 +196,15 @@ JavaScript 的数据类型隐式转换主要分为三种情况：
 Boolean 类型转换规则表：
 
 | 数据值           | 转换后的值 |
-| :----------------: | :----------: |
-| 数字 0           | false      |
-| NaN              | false      |
-| 空字符串 ""      | false      |
-| null             | false      |
-| undefined        | false      |
-| 非 0 数字        | true       |
-| 非空字符串       | true       |
-| 非 null 对象类型 | true       |
+| :---------------- | :---------- |
+| 数字 `0`           | false      |
+| `NaN`              | false      |
+| 空字符串 `""`      | false      |
+| `null`             | false      |
+| `undefined`        | false      |
+| 非 `!0` 数字        | true       |
+| 非空字符串 `!""`       | true       |
+| 非 `!null` 对象类型 | true       |
 
 ⚠️ **注意事项**：使用 `new` 运算符创建的对象隐式转换为 Boolean 类型的值都是 `true`。
 
@@ -391,7 +391,7 @@ nul == null; // true
 
 #### 关系运算符
 
-[关系运算符](../expressions/comparation-operators.md)：会把其他数据类型转换成 Number 之后再比较关系（除了 Date 类型对象）
+[关系运算符](../expressions/comparation-operators)：会把其他数据类型转换成 Number 之后再比较关系（除了 Date 类型对象）
 
 - 如果两个操作值都是数值，则进行**数值**比较
 - 如果两个操作值都是字符串，则比较字符串对应的**字符编码值**

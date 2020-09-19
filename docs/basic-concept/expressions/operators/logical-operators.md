@@ -28,7 +28,7 @@ order: 15
 
 逻辑与操作可以应用于任何类型的操作数，而不仅仅是布尔值。
 
-⚠️ **注意：** 逻辑与操作属于**短路操作**，如果第一个操作数能够决定结果，那么就不会再对第二个操作数求值。
+⚠️ **注意：** 逻辑与操作属于 **短路操作**，如果第一个操作数能够决定结果，那么就不会再对第二个操作数求值。
 
 对于逻辑与而言，如果第一个操作数是 `false`，则无论第二个操作数是什么值，结果都是 `false`，则返回第一个操作数；如果第一个操作数为 `true`，则结果的真假和第二个操作数的真假相同，则返回第二个操作数。
 
@@ -36,29 +36,29 @@ order: 15
 
 除了`false`、`undefined`、`null`、`+0`、`-0`、`NaN`、`''` ，其余都是真值。
 
-## 实践示例
+示例:
 
 ```js
-var a1 = true && true;
-// t && t returns true
+var a = true && true;
+// true
 
-var a2 = true && false;
-// t && f returns false
+var b = true && false;
+// false
 
-var a3 = false && true;
-// f && t returns false
+var c = false && true;
+//false
 
-var a4 = false && 3 == 4;
-// f && f returns false
+var d = false && 3 == 4;
+// false
 
-var a5 = 'Cat' && 'Dog';
-// t && t returns Dog
+var e = 'Cat' && 'Dog';
+// 'Dog'
 
-var a6 = false && 'Cat';
-// f && t returns false
+var f = false && 'Cat';
+// false
 
-var a7 = 'Cat' && false;
-// t && f returns false
+var g = 'Cat' && false;
+// false
 ```
 
 逻辑与运算符可以多个连用，返回第一个布尔值为 `false` 的表达式的值。
@@ -68,19 +68,27 @@ console.log(true && 'foo' && '' && 4 && 'foo' && true);
 // ''
 ```
 
-**可以使用逻辑与运算符来取代 `if` 结构**
+**可以使用逻辑与运算符来取代 `if-else` 结构**
 
 ```js
 if (a == b) {
   doSomething();
 }
+
 // 等价于
 a == b && doSomething();
 ```
 
+或者：
+
+```js
+// 判断对象是否存在再取值
+const foo = a && a.b;
+```
+
 逻辑与运算符常常用于回调函数使用中
 
-若没有给参数 a 传值，则 a 为默认的 `undefined`，是假值，所以不执行 `a()`，防止报错，如果给参数 a 传值，则执行函数 `a()`。
+若没有给参数 `a` 传值，则 `a` 为默认的 `undefined`，是假值，所以不执行 `a()`，防止报错，如果给参数 `a` 传值，则执行函数 `a()`。
 
 ```js
 function fn(a) {
@@ -114,26 +122,26 @@ function fn(a) {
 对于逻辑或而言，如果第一个操作数是 `true`，则无论第二个操作数是什么值，结果都是 `true`，则返回第一个操作数；如果第一个操作数是 `false`，则结果的真假和第二个操作数的真假相同，则返回第二个操作数。
 
 ```js
-var o1 = true || true;
-// t || t returns true
+var a = true || true;
+// true
 
-var o2 = false || true;
-// f || t returns true
+var b = false || true;
+// true
 
-var o3 = true || false;
-// t || f returns true
+var c = true || false;
+// true
 
-var o4 = false || 3 == 4;
-// f || f returns false
+var d = false || 3 == 4;
+// false
 
-var o5 = 'Cat' || 'Dog';
-// t || t returns Cat
+var e = 'Cat' || 'Dog';
+// Cat
 
-var o6 = false || 'Cat';
-// f || t returns Cat
+var f = false || 'Cat';
+// Cat
 
-var o7 = 'Cat' || false;
-// t || f returns Cat
+var g = 'Cat' || false;
+// Cat
 ```
 
 **同样地，逻辑或运算符也可以多个连用，返回第一个布尔值为 `true` 的表达式的值。**

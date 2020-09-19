@@ -15,7 +15,7 @@ order: 4
 
 ## 语法
 
-```javascript
+```js
 break [labelname];
 ```
 
@@ -42,7 +42,7 @@ break [labelname];
 
 在 `for` 语句中使用 `continue`
 
-```javascript
+```js
 var num = 0;
 for (var i = 1; i < 10; i++) {
   if (i % 5 == 0) {
@@ -56,7 +56,7 @@ console.log(num);
 
 在 `while` 语句中使用 `continue`
 
-```javascript
+```js
 i = 0;
 n = 0;
 while (i < 5) {

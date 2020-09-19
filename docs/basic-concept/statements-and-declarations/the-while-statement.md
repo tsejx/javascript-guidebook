@@ -15,7 +15,7 @@ order: 21
 
 ## 语法
 
-```javascript
+```js
 while (expression) statement;
 ```
 
@@ -32,14 +32,14 @@ while (expression) statement;
 
 ### 标准示例
 
-```javascript
+```js
 var i = 0;
 while (i < 10) {
   i += 2;
 }
 ```
 
-```javascript
+```js
 var cars = ['BMW', 'Volvo', 'Saab', 'Ford'];
 var text = '';
 var i = 0;

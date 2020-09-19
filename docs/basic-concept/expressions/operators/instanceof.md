@@ -14,12 +14,12 @@ order: 2
 `instanceof` 运算符用于测试构造函数的 `prototype` 属性是否出现在对象的原型链中的任何位置。
 
 ```js
-obj instanceof constructor;
+target instanceof constructor;
 ```
 
 ## 检测类型
 
-`instanceof` 可以检测某个对象是否是另一个对象的**实例**。
+`instanceof` 可以检测某个对象是否是另一个对象的 **实例**。
 
 ```js
 const Person = function() {};
@@ -48,33 +48,33 @@ console.log(s instanceof Person);
 // true
 ```
 
-## 检测实例
+## 代码实现
 
-查看对象 Bar 的 `prototype` 指向的对象是否在对象 Foo 的 `[[prototype]]` 链上。如果在，则返回 `true`，如果不在则返回 `false`。不过有一个特殊的情况，当对象 Bar 的 `prototype` 为 `null` 将会报错（类似于空指针异常）。
+查看对象 Parent 的 `prototype` 指向的对象是否在对象 Child 的 `[[prototype]]` 链上。
 
-函数模拟 `Foo instanceof Bar`：
+如果在，则返回 `true`，如果不在则返回 `false`。
+
+不过有一个特殊的情况，当对象 Parent 的 `prototype` 为 `null` 将会报错（类似于空指针异常）。
 
 ```js
-function _instanceof(Foo, Bar) {
-  // 取 Bar 的显式原型
-  var O = Bar.prototype;
-  // 取 Foo 的隐式原型
-  Foo = Foo.__proto__;
+function _instanceof(Child, Parent) {
+  // 取 Parent 的显式原型
+  const prototype = Parent.prototype;
+
+  // 取 Child 的隐式原型
+  Child = Child.__proto__;
+
+  // 递归原型链
   while (true) {
     // Object.prototype.__proto__ === null
-    if (Foo === null) return false;
-    // 这里重点：当 O 严格等于 Foo 时，返回 true
-    if (O === Foo) return true;
-    Foo = Foo.__proto__;
+    if (Child === null) return false;
+
+    // 这里重点：当 Child 严格等于 prototype 时，返回 true
+    if (Child === prototype) return true;
+
+    Child = Child.__proto__;
   }
 }
-```
-
-## 示例
-
-```js
-null instanceof Object;
-// invalid
 ```
 
 ---

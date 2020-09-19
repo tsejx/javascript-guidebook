@@ -11,6 +11,13 @@ order: 2
 
 # 类型检测
 
+类型检测的方法：
+
+1. `typeof`
+2. `instanceof`
+3. `Object.prototype.toString`
+4. `constructor`
+
 ## typeof
 
 `typeof` 操作符返回一个字符串，表示未经计算的操作数的类型。

@@ -15,7 +15,7 @@ order: 20
 
 ## 语法
 
-```javascript
+```js
 do {
   statement;
 } while (expression);
@@ -40,7 +40,7 @@ do {
 
 ### 标准示例
 
-```javascript
+```js
 var i = 0;
 do {
   i += 2;

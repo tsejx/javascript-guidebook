@@ -15,7 +15,7 @@ order: 9
 
 ## 语法
 
-```javascript
+```js
 throw expression;
 ```
 
@@ -31,7 +31,7 @@ throw expression;
 
 你可以抛出任意表达式而不是特定一种类型的表达式。
 
-```javascript
+```js
 throw 'Error2'; // String type
 throw 42; // Number type
 throw true; // Boolean type
@@ -46,7 +46,7 @@ throw {
 
 你可以在抛出异常时指定一个对象。然后可以在 `catch` 块中引用对象的属性。以下示例创建一个类型为 `UserException` 的对象，并在 `throw` 语句中使用它。
 
-```javascript
+```js
 function UserException(message){
     this.message = message;
     this.name = "UserException";

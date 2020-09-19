@@ -17,19 +17,19 @@ order: 16
 
 - 函数调用
 
-```Javascript
+```js
 myFunction(...iterableObj);
 ```
 
 - 数组字面量或字符串
 
-```javascript
+```js
 [...iterableObj, '4', 'five', 6];
 ```
 
 - 对象字面量（ECMAScript 2018 新增内容）
 
-```javascript
+```js
 let iterableObj = { ...obj };
 ```
 
@@ -41,7 +41,7 @@ let iterableObj = { ...obj };
 
 当我们的函数有多个变量的时候（特别是当我们不知道变量的数量的时候），有时候会通过将变量保存在数组中，并通过 `apply` 来执行函数，有了扩展运算符后则有了更好的方式（毕竟使用 `apply` 需要手动指定 `this` ，有时候会不是很方便很准确）。
 
-```javascript
+```js
 // ES5
 function myFunction(x, y, z) {}
 var args = [0, 1, 2];
@@ -55,7 +55,7 @@ myFunction(...args);
 
 参数列表中的人和参数都可以使用扩展语法，并且可以多次使用。
 
-```javascript
+```js
 function myFunction(v, w, x, y, z) {}
 var args = [0, 1];
 myFunction(-1, ...args, 2, ...[3]);
@@ -65,7 +65,7 @@ myFunction(-1, ...args, 2, ...[3]);
 
 JavaScript 的函数只能返回一个值，如果需要返回多个值，只能返回数组或对象。扩展运算符提供了解决这个问题的一个变通方法。
 
-```javascript
+```js
 var dateField = readDateFields(database);
 var d = new Date(...dateFields);
 ```
@@ -78,7 +78,7 @@ var d = new Date(...dateFields);
 
 扩展运算符提供了数组合并的新写法
 
-```javascript
+```js
 // ES5
 [1, 2].concat(more)
 // ES6
@@ -101,7 +101,7 @@ arr1.concat(arr2, arr3);
 
 被拷贝数组元素仅限基本数据类型。
 
-```javascript
+```js
 let a = [1, 2, 3];
 let b = [...a];
 ```
@@ -110,7 +110,7 @@ let b = [...a];
 
 扩展运算符可以与解构赋值结合起来，用于生成数组。
 
-```javascript
+```js
 // ES5
 a = list[0], rest = list.slice(1)
 // ES6
@@ -119,7 +119,7 @@ a = list[0], rest = list.slice(1)
 
 下面是另外一些例子
 
-```javascript
+```js
 // 数组的分割
 const [first, ...rest] = [1, 2, 3, 4, 5];
 console.log(first);
@@ -142,7 +142,7 @@ console.log(rest);
 
 如果将扩展运算符用于数组赋值，则只能将其放在参数的**最后一位**，否则会报错。
 
-```javascript
+```js
 const [...butLast, last] = [1, 2, 3, 4, 5]
 // 报错
 
@@ -154,21 +154,21 @@ const [first, ...middle, last] = [1, 2, 3, 4, 5];
 
 扩展运算符还可以将字符串转为真正的数组。
 
-```javascript
+```js
 [...'hello'];
 // ['h', 'e', 'l', 'l', 'o']
 ```
 
 上面的写法有一个重要的好处：能够正确识别 32 位的 Unicode 字符。
 
-```javascript
+```js
 'x\uD83D\uDE80y'.length			// 4
 [...'x\uD83D\uDE80y'].length	// 3
 ```
 
 以上代码的第一种写法中，JavaScript 会将 32 位 Unicode 字符识别为 2 个字符，采用扩展运算符就没有这个问题。因此，正确返回字符串长度的函数可以像下面这样写。
 
-```javascript
+```js
 function length(str) {
   return [...str].length;
 }
@@ -178,7 +178,7 @@ length('x\uD83D\uDE80y'); // 3
 
 凡事涉及操作 32 位 Unicode 字符的函数都有这个问题。因此，最好都用扩展运算符改写。
 
-```javascript
+```js
 let str = 'x\uD83D\uDE80y';
 
 str.split('').reverse().join('')
@@ -194,7 +194,7 @@ str.split('').reverse().join('')
 
 任何 Iterator 接口的对象都可以用扩展运算符转为**真正的数组**。
 
-```javascript
+```js
 var nodeList = document.querySelectorAll('div');
 var array = [...nodeList];
 ```
@@ -203,7 +203,7 @@ var array = [...nodeList];
 
 对于那些没有部署 Iterator 接口的类似数组的对象，扩展运算符就无法将其转为真正的数组了。
 
-```javascript
+```js
 let arrayLike = {
   '0': 'a',
   '1': 'b',
@@ -221,7 +221,7 @@ let arr = [...arrayLike];
 
 扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符，如 `Map` 结构。
 
-```javascript
+```js
 let map = new Map([
   [1, 'one'],
   [2, 'two'],
@@ -233,7 +233,7 @@ let arr = [...map.keys()]; // [1, 2, 3]
 
 Generator 函数运行后会返回一个遍历器对象，因此也可以使用扩展运算符。
 
-```javascript
+```js
 var go = function*() {
   yield 1;
   yield 2;
@@ -245,7 +245,7 @@ var go = function*() {
 
 上面的代码中，变量 `go` 是一个 Generator 函数，执行后返回的是一个遍历器对象，对这个遍历器对象执行扩展运算符即可将内部遍历得到的值转为一个数组。
 
-```javascript
+```js
 var obj = { a: 1, b: 2 };
 let arr = [...obj]; // TypeError: Cannot spread non-iterable object
 ```

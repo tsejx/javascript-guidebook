@@ -11,7 +11,7 @@ order: 14
 
 # 条件运算符
 
-**条件运算符（Conditional Operator）**是 Javascript 中唯一的一个**三元运算符**（三个操作数），有时直接称做三元运算符。
+**条件运算符（Conditional Operator）**是 JavaScript 中唯一的一个**三元运算符**（三个操作数），有时直接称做三元运算符。
 
 ```js
 variable = boolean_expression ? true_value : false_value;

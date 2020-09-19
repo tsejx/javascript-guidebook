@@ -39,7 +39,7 @@ delete object['property'];
 
 与通常对 `delete` 的理解不同，`delete` 操作符与直接释放内存无关。内存管理通过断开引用来间接完成的。
 
-查看 [内存模型](../../../core-modules/executable-code-and-execution-contexts/memory-management/memory-model.md) 了解更多。
+查看 [内存模型](../../../core-modules/executable-code-and-execution-contexts/memory-management/memory-model) 了解更多。
 
 ## 示例
 

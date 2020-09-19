@@ -15,7 +15,7 @@ order: 7
 
 ## 语法
 
-```javascript
+```js
 switch (expression) {
    case value_1:
       statements_1
@@ -48,7 +48,7 @@ switch (expression) {
 
 ## 示例
 
-```javascript
+```js
 var myCar = 'Porsche'
 switch (myCar) {
   case 'Nissan': alert("My car is Nissan");

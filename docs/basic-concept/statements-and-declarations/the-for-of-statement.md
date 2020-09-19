@@ -15,7 +15,7 @@ order: 24
 
 ## 语法
 
-```javascript
+```js
 for (variable of iterable) {
   //statements
 }
@@ -32,7 +32,7 @@ for (variable of iterable) {
 
 ### 迭代 `Array`
 
-```javascript
+```js
 let iterable = [10, 20, 30];
 
 for (let value of iterable) {
@@ -46,7 +46,7 @@ for (let value of iterable) {
 
 如果你不想修改语句块中的变量 , 也可以使用 `const` 代替 `let`。
 
-```javascript
+```js
 let iterable = [10, 20, 30];
 
 for (const value of iterable) {
@@ -59,7 +59,7 @@ for (const value of iterable) {
 
 ### 迭代 `String`
 
-```javascript
+```js
 let iterable = 'boo';
 
 for (let value of iterable) {
@@ -72,7 +72,7 @@ for (let value of iterable) {
 
 ### 迭代 `TypedArray`
 
-```Javascript
+```js
 let iterable = new Uint8Array([0x00, 0xff]);
 
 for (let value of iterable) {
@@ -84,7 +84,7 @@ for (let value of iterable) {
 
 ### 迭代 `Map`
 
-```Javascript
+```js
 let iterable = new Map([["a", 1], ["b", 2], ["c", 3]]);
 
 for (let entry of iterable) {
@@ -104,7 +104,7 @@ for (let [key, value] of iterable) {
 
 ### 迭代 `Set`
 
-```Javascript
+```js
 let iterable = new Set([1, 1, 2, 2, 3, 3]);
 
 for (let value of iterable) {
@@ -117,7 +117,7 @@ for (let value of iterable) {
 
 ### 迭代 `arguments` 对象
 
-```Javascript
+```js
 (function() {
   for (let argument of arguments) {
     console.log(argument);
@@ -133,7 +133,7 @@ for (let value of iterable) {
 
 迭代 DOM 元素集合，比如一个 `NodeList` 对象：下面的例子演示给每一个 article 标签内的 p 标签添加一个 "`read`" 类。
 
-```Javascript
+```js
 //注意：这只能在实现了NodeList.prototype[Symbol.iterator]的平台上运行
 let articleParagraphs = document.querySelectorAll("article > p");
 
@@ -146,7 +146,7 @@ for (let paragraph of articleParagraphs) {
 
 对于 `for...of` 的循环，可以由 `break`, `continue[4]`, `throw` 或 `return[5]` 终止。在这些情况下，迭代器关闭。
 
-```javascript
+```js
 function* foo() {
   yield 1;
   yield 2;
@@ -163,7 +163,7 @@ for (let o of foo()) {
 
 你还可以迭代一个生成器：
 
-```Javascript
+```js
 function* fibonacci() { // 一个生成器函数
     let [prev, curr] = [0, 1];
     for (;;) { // while (true) {
@@ -205,7 +205,7 @@ for (let o of gen) {
 
 你还可以迭代显式实现可迭代协议的对象：
 
-```Javascript
+```js
 var iterable = {
   [Symbol.iterator]() {
     return {
@@ -238,7 +238,7 @@ for (var value of iterable) {
 
 以下示例显示了与 `Array` 一起使用时，`for...of` 循环和 `for...in` 循环之间的区别。
 
-```Javascript
+```js
 Object.prototype.objCustom = function() {};
 Array.prototype.arrCustom = function() {};
 
@@ -260,7 +260,7 @@ for (let i of iterable) {
 }
 ```
 
-```Javascript
+```js
 Object.prototype.objCustom = function() {};
 Array.prototype.arrCustom = function() {};
 
@@ -270,7 +270,7 @@ iterable.foo = 'hello';
 
 每个对象将继承 `objCustom` 属性，并且作为 `Array` 的每个对象将继承 `arrCustom` 属性，因为将这些属性添加到 `Object.prototype` 和 `Array.prototype`。由于继承和原型链，对象 `iterable` 继承属性 `objCustom` 和 `arrCustom`。
 
-```Javascript
+```js
 for (let i in iterable) {
   console.log(i); // logs 0, 1, 2, "foo", "arrCustom", "objCustom"
 }
@@ -278,7 +278,7 @@ for (let i in iterable) {
 
 此循环仅以原始插入顺序记录 `iterable` 对象的可枚举属性。它不记录数组**元素**`3`, `5`, `7` 或`hello`，因为这些**不是**枚举属性。但是它记录了数组**索引**以及 `arrCustom` 和 `objCustom`。如果你不知道为什么这些属性被迭代，`array iteration and for...in`中有更多解释。
 
-```Javascript
+```js
 for (let i in iterable) {
   if (iterable.hasOwnProperty(i)) {
     console.log(i); // logs 0, 1, 2, "foo"
@@ -288,7 +288,7 @@ for (let i in iterable) {
 
 这个循环类似于第一个，但是它使用`hasOwnProperty()` 来检查，如果找到的枚举属性是对象自己的（不是继承的）。如果是，该属性被记录。记录的属性是 `0`, `1`, `2`和`foo`，因为它们是自身的属性（**不是继承的**）。属性 `arrCustom` 和 `objCustom` 不会被记录，因为它们**是继承的**。
 
-```Javascript
+```js
 for (let i of iterable) {
   console.log(i); // logs 3, 5, 7
 }

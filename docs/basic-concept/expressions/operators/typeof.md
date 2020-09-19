@@ -31,7 +31,7 @@ typeof operand;
 
 下表总结了 `typeof` 可能的返回值。
 
-有关类型和原始值的更多信息，可查看 [JavaScript 数据结构](https://github.com/tsejx/javascript-guidebooke/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.mdhttps://github.com/tsejx/javascript-guidebooke/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.md) 页面。
+有关类型和原始值的更多信息，可查看 [JavaScript 数据结构](https://github.com/tsejx/javascript-guidebooke/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.mdhttps://github.com/tsejx/javascript-guidebooke/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types) 页面。
 
 | 类型         | 结果                     |
 | -----------| -----------------------|

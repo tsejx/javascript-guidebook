@@ -15,7 +15,7 @@ order: 23
 
 ## 语法
 
-```javascript
+```js
 for (property in expression) statement;
 ```
 
@@ -39,7 +39,7 @@ for (property in expression) statement;
 
 ### 标准示例
 
-```javascript
+```js
 for (var propName in window) {
   console.log(propName);
 }
@@ -47,7 +47,7 @@ for (var propName in window) {
 
 ### 提取实例自身属性
 
-```javascript
+```js
 var seat = { a: 1, b: 2, c: 3 };
 
 function Car() {

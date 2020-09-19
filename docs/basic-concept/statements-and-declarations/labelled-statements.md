@@ -17,7 +17,7 @@ order: 8
 
 ## 语法
 
-```javascript
+```js
 identifier: statement;
 ```
 
@@ -38,7 +38,7 @@ identifier: statement;
 
 - 用作标签的 `identifier` 必须是一个合法的 JavaScript 标识符，而不能是一个保留字。
 
-```javascript
+```js
 var i, j;
 
 loop1: for (i = 0; i < 3; i++) {

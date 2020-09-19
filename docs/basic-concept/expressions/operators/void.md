@@ -42,7 +42,7 @@ console.log(t());
 
 - 作用二：客户端 URL
 
-这个运算符最常用在客户端 URL——Javascript:URL 中，在 URL 中可以写带有副作用的表达式，而 `void` 则让浏览器不必显示这个表达式的计算结果。例如，经常在 HTML 代码中的 `<a>` 标签里使用 void 运算符
+这个运算符最常用在客户端 URL——JavaScript:URL 中，在 URL 中可以写带有副作用的表达式，而 `void` 则让浏览器不必显示这个表达式的计算结果。例如，经常在 HTML 代码中的 `<a>` 标签里使用 void 运算符
 
 ```js
 <a href="js:void window.open();">打开一个新窗口</a>
