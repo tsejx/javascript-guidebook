@@ -324,7 +324,11 @@ function objectFactory(constructor, ...rest) {
   const result = constructor.call(instance, rest);
 
   // 判断构造函数的运行结果是否对象类型
-  return (typeof result === 'object' && result) || instance;
+  if (result !== null && /^(object|function)$/.test(typeof result)) {
+    return result;
+  }
+
+  return instance;
 }
 ```
 
