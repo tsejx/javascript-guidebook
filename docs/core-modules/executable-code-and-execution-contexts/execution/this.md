@@ -529,10 +529,19 @@ bar.call(container2);
 - 只使用词法作用域并完全抛弃错误 `this` 风格的代码
 - 完全采用 `this` 风格，在必要时使用 `bind`，尽量避免使用 `self = this` 和箭头函数
 
+## 应用场景总结
+
+1. 函数的普通调用
+2. 函数作为对象方法调用
+3. 函数作为构造函数调用
+4. 函数通过 call、apply、bind 间接调用
+5. 箭头函数的调用
+
 ---
 
 **参考资料：**
 
-- [📚 你不知道的 JavaScript（上卷）](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/README.md)
+- [📚 你不知道的 JavaScript（上卷）](https://github.com/getify/You-Dont-Know-JS/blob/master/this%20%26%20object%20prototypes/README)
 - [📝 this 的值到底是什么？一次说清楚](https://zhuanlan.zhihu.com/p/23804247)
 - [📝 JavaScript 深入之从 ECMAScript 规范解读 this](https://github.com/mqyqingfeng/Blog/issues/7)
+- [作用域与闭包 - this 的原理以及几种不同使用场景的取值](https://github.com/logan70/Blog/issues/27)

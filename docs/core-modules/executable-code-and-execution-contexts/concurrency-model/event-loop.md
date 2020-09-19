@@ -21,8 +21,8 @@ order: 2
 
 JavaScript 的异步任务根据事件分类分为两种：宏任务（MacroTask）和微任务（MicroTask）
 
-- **宏任务**：main script、setTimeout、setInterval、setImmediate、I/O（Mouse Events、Keyboard Events、Network Events）、UI Rendering（HTML Parsing）
-- **微任务**：Promise.then（非 new Promise）、process.nextTick、MutationObserver
+- **宏任务**：main script、setTimeout、setInterval、setImmediate（Node.js）、I/O（Mouse Events、Keyboard Events、Network Events）、UI Rendering（HTML Parsing）、MessageChannel、
+- **微任务**：Promise.then（非 new Promise）、process.nextTick（Node.js）、MutationObserver
 
 宏任务与微任务的区别在于队列中事件的执行优先级。进入整体代码（宏任务）后，开始首次事件循环，当执行上下文栈清空后，事件循环机制会优先检测微任务队列中的事件并推至主线程执行，当微任务队列清空后，又会去检测宏任务队列中的事件，再将事件推至主线程中执行，而当执行上下文栈再次清空后，事件循环机制又会检测微任务队列，如此反复循环。
 

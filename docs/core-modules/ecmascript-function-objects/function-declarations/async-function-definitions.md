@@ -25,7 +25,7 @@ order: 3
 **`async`函数与 Generator 函数的对比**
 
 |                  | async 函数           | Generator 函数   |
-| :---------------- | :-------------------- | :---------------- |
+| :--------------- | :------------------- | :--------------- |
 | **定义方式**     | `async function(){}` | `function* (){}` |
 | **异步语句命令** | `await`              | `yield`          |
 
@@ -357,22 +357,14 @@ async function selectDrink() {
 
 (async () => {
   // 并发执行这些非阻塞异步函数
-  Promise.all(
-    [
-      selectPizza(),
-      selectDrink()
-    ]
-  ).then(orderItems);
+  Promise.all([selectPizza(), selectDrink()]).then(orderItems);
 })();
 ```
 
 补充一种与之相关的比较优雅的写法。
 
 ```js
-await Promise.all(
-  selectPizza().then(choosePizza),
-  selectDrink().then(chooseDrink)
-);
+await Promise.all(selectPizza().then(choosePizza), selectDrink().then(chooseDrink));
 ```
 
 ### 未知数量的异步操作
@@ -388,6 +380,68 @@ async function foo() {
   // 每个配置项对应一个异步请求
   const promises = items.map(item => sendRequest(item));
   await Promise.all(promises);
+}
+```
+
+### 不等待结果的异步循环
+
+`await` 每次循环任务，注意遍历执行的匿名函数也要设置为 `async` 异步函数。
+
+```js
+function delay() {
+  return new Promise(resolve => setTimeout(resolve, 300));
+}
+
+async function delayedLog(item) {
+  // notice that we can await a function that returns promise
+  await delay();
+  // log item only after a delay
+  console.log(item);
+}
+
+async function execute(tasks) {
+  tasks.forEach(async item => {
+    await delayLog(item);
+  });
+
+  console.log('DONE!');
+}
+```
+
+### 串行遍历
+
+要等待所有的结果返回，我们还是要回到老式的 `for` 循环写法：
+
+```js
+async function execute(tasks) {
+  let result = [];
+
+  for (const task of tasks) {
+    try {
+      result.push(await task());
+    } catch (err) {
+      result.push(null);
+    }
+  }
+
+  return result;
+}
+```
+
+上面这段的遍历是 **串行** 执行的，我们也可以把它转换成 **并行** 的。
+
+### 并行遍历
+
+我们可以稍微国内更改上面的代码来编程并行的：
+
+```js
+async function execute(tasks) {
+  // map tasks to promises
+  const promises = tasks.map(delayLog);
+  // wait until all promises are resolved
+  await Promise.all(promises);
+
+  console.log('DONE!');
 }
 ```
 

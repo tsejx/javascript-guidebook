@@ -3,7 +3,7 @@ nav:
   title: 核心模块
   order: 3
 group:
-  title:  模块化
+  title: 模块化
   order: 11
 title: 模块化
 order: 1
@@ -464,7 +464,7 @@ export default () => <img alt="CMD" src={img} width={800} />;
 - [Babel](https://github.com/babel/babel) 将 ES6+ 转换为 ES5- （ES6 的模块化语法 编译成 `commonjs`）
 - Browserify 将 CommonJS 语法编译成能让浏览器识别的语法
 
-## ES6 模块化
+## 严格模式
 
 ES6 的模块自动采用严格模式，不管你是否有在模块头部加上 `'use strict'`。
 
@@ -476,7 +476,7 @@ ES6 的模块自动采用严格模式，不管你是否有在模块头部加上 
 - 不能对只读属性赋值，否则报错
 - 不能使用前缀 0 表示八进制数，否则报错
 - 不能删除不可删除的属性，否则报错
-- 不能删除变量`delete prop`，会报错，只能删除属性 `delete global[prop]`
+- 不能删除变量 `delete prop`，会报错，只能删除属性 `delete global[prop]`
 - `eval` 不会在它的外层作用域引入变量
 - `eval` 和 `arguments` 不能被重新赋值
 - `arguments` 不会自动反映函数参数的变化
@@ -521,7 +521,6 @@ export default () => <img alt="组件化示意图1" src={img} width={720} />;
 | 应用     | 整个项目或整个站点被称之为应用，由多个页面组成  |                                                                                                                        |
 
 那么它们之间的关系如下图所示，一个应用由多个下图的页面组成。一个页面由多个组件组合。组件中可依赖 JS 模块。
-
 
 所以，前端开发现在不仅仅只是别人说的「画画页面实现点效果」的职位，它是实现软件的图形用户界面（Graphical User Interface，简称 GUI），是一名软件工程师。现在前端开发都是基于模块化和组件化的开发，可以说算是工程化的项目了。从单页面（SPA）的应用就可以看出 JavaScript 大大改善了 Web 应用的用户体验。从谷歌提出 PWA（Progressive Web Apps）就可以看出前端在领域的成长。
 

@@ -143,7 +143,7 @@ const a = [1,2,3,4],b =[];
 fn({from:a, to:b, length:4});
 ```
 
-ES6 的 [剩余参数（Rest 参数）](rest-parameters.md) 有效地解决了函数参数过多和参数先后顺序的问题。
+ES6 的 [剩余参数（Rest 参数）](rest-parameters) 有效地解决了函数参数过多和参数先后顺序的问题。
 
 ### 同步
 
