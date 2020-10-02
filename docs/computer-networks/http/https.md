@@ -6,7 +6,7 @@ group:
   title: HTTP
   order: 3
 title: HTTPS
-order: 2
+order: 20
 ---
 
 # HTTPS
