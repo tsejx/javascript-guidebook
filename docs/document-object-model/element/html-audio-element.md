@@ -1,15 +1,19 @@
 ---
 nav:
-  title: BOM
-  order: 5
+  title: DOM
+  order: 6
 group:
-  title: 多媒体 API
-  order: 14
-title: 音频 Web Audio API
-order: 1
+  title: Element
+  order: 6
+title: HTMLAudioElement
+order: 17
 ---
 
-# 音频 Web Audio API
+# HTMLAudioElement
+
+```plain
+EventTarget <- Node <- Element <- HTMLElement <- HTMLMediaElement <- HTMLAudioElment
+```
 
 HTML5 `<audio>` 元素用于在文档中表示音频内容。
 
@@ -169,19 +173,19 @@ export default () => <img alt="AuditoContext2" src={img} width={800} />;
 
 表示一个简单的低频滤波器，可控制声调。它是一个 **AudioNode** 类型的音频处理模块。
 
-```
+```js
 let filterNode = audioContext.createBiquadFilter();
 ```
 
 输出一个变调的音频：
 
-```
+```js
 bufferSource.connect(filterNode);
 filterNode.connect(audioDestinationNode);
 
 let controlFrequency = function(value) {
-    filterNode.frequency.value = value;
-}
+  filterNode.frequency.value = value;
+};
 
 // 音频为1000变调
 controlFrequency(1000);

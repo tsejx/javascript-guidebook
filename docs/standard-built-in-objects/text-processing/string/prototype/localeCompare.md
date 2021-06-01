@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.localeCompare
-order: 12
+order: 18
 ---
 
 # String.prototype.localCompare()

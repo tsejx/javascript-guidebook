@@ -57,6 +57,7 @@ WebRTC 由三大块组成：
 - [简单了解的 HTML5 WebRTC](https://juejin.im/entry/583405be61ff4b006b8c620e)
 - [使用 WebRTC 构建简单的前端视频通讯](https://juejin.im/entry/5779d3172e958a00559b2202)
 - [基于 WebRTC 技术的实时通信服务开发实践](https://juejin.im/entry/5978018251882563080713d6)
+- [WebRTC Samples](https://webrtc.github.io/samples/)
 
 **文献推荐：**
 

@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.matchAll
-order: 14
+order: 20
 ---
 
 # String.prototype.matchAll()

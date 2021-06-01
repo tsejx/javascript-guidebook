@@ -4,7 +4,7 @@ nav:
   order: 6
 group:
   title: 事件类型
-  order: 8
+  order: 21
 title: 鼠标事件
 order: 15
 ---
@@ -171,13 +171,10 @@ iOS 和 Android 设备的实现非常特别，因为这些设备没有鼠标。�
 
 ## MouseEvent API
 
-```js
-
-```
-
 ---
 
 **参考资料：**
 
 - [MDN：MouseEvent 鼠标事件](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)
 - [Web 前端事件](https://cloud.tencent.com/developer/article/1005089)
+

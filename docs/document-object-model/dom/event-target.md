@@ -3,7 +3,7 @@ nav:
   title: DOM
   order: 6
 group:
-  title: EventTarget
+  title: 文档对象模型
   order: 3
 title: EventTarget
 order: 5

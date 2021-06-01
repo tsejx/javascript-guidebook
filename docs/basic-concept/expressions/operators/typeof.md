@@ -17,14 +17,12 @@ order: 4
 
 ```js
 typeof operand;
-
-typeof operand;
 ```
 
 ### 参数
 
 | 参数     | 说明                                           |
-| -------| ---------------------------------------------|
+| -------- | ---------------------------------------------- |
 | `perand` | 是一个表达式，表示对象或原始值，其类型将被返回 |
 
 ### 返回值
@@ -34,7 +32,7 @@ typeof operand;
 有关类型和原始值的更多信息，可查看 [JavaScript 数据结构](https://github.com/tsejx/javascript-guidebooke/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types.mdhttps://github.com/tsejx/javascript-guidebooke/blob/master/01_BasicConcept/1_Grammar&Types/3_DataStructures&Types) 页面。
 
 | 类型         | 结果                     |
-| -----------| -----------------------|
+| :----------- | :----------------------- |
 | Undefined    | `'undefined'`            |
 | Null         | `'object'`               |
 | Boolean      | `'boolean'`              |
@@ -49,7 +47,7 @@ typeof operand;
 
 ### 标准示例
 
-`Numbers`
+#### Number
 
 ```js
 typeof 37 === 'number';
@@ -64,7 +62,7 @@ typeof Number(1) === 'number';
 // 但不要使用这种形式!
 ```
 
-`Strings`
+#### String
 
 ```js
 typeof '' === 'string';
@@ -77,7 +75,7 @@ typeof String('abc') === 'string';
 // 但不要使用这种形式!
 ```
 
-`Booleans`
+#### Boolean
 
 ```js
 typeof true === 'boolean';
@@ -86,7 +84,7 @@ typeof Boolean(true) === 'boolean';
 // 但不要使用这种形式!
 ```
 
-`Symbols`
+#### Symbol
 
 ```js
 typeof Symbol() === 'symbol';
@@ -94,7 +92,7 @@ typeof Symbol('foo') === 'symbol';
 typeof Symbol.iterator === 'symbol';
 ```
 
-`Undefined`
+#### Undefined
 
 ```js
 typeof undefined === 'undefined';
@@ -102,7 +100,7 @@ typeof declaredButUndefinedVariable === 'undefined';
 typeof undeclaredVariable === 'undefined';
 ```
 
-`Objects`
+#### Object
 
 ```js
 typeof { a: 1 } === 'object';
@@ -119,7 +117,7 @@ typeof new Number(1) === 'object';
 typeof new String('abc') === 'object';
 ```
 
-`Function`
+#### Function
 
 ```js
 typeof function() {} === 'function';

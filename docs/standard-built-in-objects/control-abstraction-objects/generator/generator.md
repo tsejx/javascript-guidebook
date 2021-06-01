@@ -7,7 +7,7 @@ group:
   path: /control-abstraction-objects/
   order: 15
 title: Generator
-order: 15
+order: 30
 ---
 
 # Generator

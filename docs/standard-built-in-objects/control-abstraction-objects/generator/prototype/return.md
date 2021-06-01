@@ -7,7 +7,7 @@ group:
   path: /control-abstraction-objects/
   order: 15
 title: Generator.prototype.return
-order: 18
+order: 33
 ---
 
 # Generator.prototype.return

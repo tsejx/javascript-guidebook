@@ -30,7 +30,7 @@ fn('Hello', '');
 // Hello World
 ```
 
-缺点：如果参数 `y` 赋值了，但是对应的布尔值为 `false`，则该赋值不起作用。
+**缺点**：如果参数 `y` 赋值了，但是对应的布尔值为 `false`，则该赋值不起作用。
 
 为了避免这个问题，我们需要先判断参数 `y` 是否被赋值，如果没有，再等于默认值。
 
@@ -47,16 +47,16 @@ ES6 允许为函数的参数设置默认值，即直接写在参数定义的后�
 
 ```js
 function fn(x, y = 'World') {
-    console.log(x, y);
+  console.log(x, y);
 }
 
-log('Hello')
+log('Hello');
 // Hello World
 
-log('Hello', 'China')
+log('Hello', 'China');
 // Hello China
 
-log('Hello', '')
+log('Hello', '');
 // Hello
 ```
 
@@ -70,7 +70,7 @@ log('Hello', '')
 参数变量是 **默认声明** 的，所以不能用 `let` 或 `const` 再次声明。
 
 ```js
-function fn(x = 1){
+function fn(x = 1) {
   let x = 2;
   // SyntaxError: Identifier 'x' has already been declared
   const x = 3;
@@ -78,7 +78,7 @@ function fn(x = 1){
 }
 ```
 
-### 参数不同名
+### 参数命名冲突
 
 使用参数默认值时，函数不能有同名参数。
 
@@ -105,36 +105,38 @@ function fn(p = x + 1) {
   console.log(p);
 }
 
-fn() // 100
+fn();
+// 100
 
 x = 100;
-fn() // 101
+fn();
+// 101
 ```
 
 ### 结合解构赋值
 
 ```js
-function fn({x, y = 5}) {
+function fn({ x, y = 5 }) {
   console.log(x, y);
 }
 
-fn({})
+fn({});
 // undefined 5
 
-fn({x: 1})
+fn({ x: 1 });
 // 1 5
 
-fn({x: 1, y: 2})
+fn({ x: 1, y: 2 });
 // 1 2
 
-fn()
+fn();
 // TypeError: Cannot read property 'x' of undefined
 ```
 
 上面代码只使用了对象的解构赋值默认值，没有使用函数参数的默认值。只有当函数 `fn` 的参数是一个对象时，变量 `x` 和 `y` 才会通过解构赋值生成。如果函数 `fn` 调用时没提供参数，变量 `x` 和 `y` 就不会生成，从而报错。通过提供函数参数的默认值，就可以避免这种情况。
 
 ```js
-function fn({x, y = 5} = {}) {
+function fn({ x, y = 5 } = {}) {
   console.log(x, y);
 }
 
@@ -149,23 +151,23 @@ function fetch(url, { body = '', method = 'GET', headers = {} }) {
   console.log(method);
 }
 
-fetch('http://example.com', {})
+fetch('http://example.com', {});
 // "GET"
 
-fetch('http://example.com')
+fetch('http://example.com');
 // VM1292:1 Uncaught TypeError: Cannot read property 'body' of undefined
 //    at fetch (<anonymous>:1:23)
 //    at <anonymous>:5:1
 ```
 
-上面代码中，如果函数`fetch`的第二个参数是一个对象，就可以为它的三个属性设置默认值。这种写法不能省略第二个参数，如果结合函数参数的默认值，就可以省略第二个参数。这时，就出现了双重默认值。
+上面代码中，如果函数 `fetch` 的第二个参数是一个对象，就可以为它的三个属性设置默认值。这种写法不能省略第二个参数，如果结合函数参数的默认值，就可以省略第二个参数。这时，就出现了双重默认值。
 
 ```js
 function fetch(url, { body = '', method = 'GET', headers = {} } = {}) {
   console.log(method);
 }
 
-fetch('http://example.com')
+fetch('http://example.com');
 // "GET"
 ```
 
@@ -175,46 +177,49 @@ fetch('http://example.com')
 
 ```js
 // 写法一
-function m1({x = 0, y = 0} = {}) {
+function fn1({ x = 0, y = 0 } = {}) {
   return [x, y];
 }
 
 // 写法二
-function m2({x, y} = { x: 0, y: 0 }) {
+function fn2({ x, y } = { x: 0, y: 0 }) {
   return [x, y];
 }
 ```
 
-上面两种写法都对函数的参数设定了默认值，区别是写法一函数参数的默认值是空对象，但是设置了对象解构赋值的默认值；写法二函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值。
+上面两种写法都对函数的参数设定了默认值，区别是：
+
+- 写法一函数参数的默认值是空对象，但是设置了对象解构赋值的默认值；
+- 写法二函数参数的默认值是一个有具体属性的对象，但是没有设置对象解构赋值的默认值
 
 ```js
 // 函数没有参数的情况
-m1()
+fn1();
 // [0, 0]
-m2()
+fn2();
 // [0, 0]
 
 // x 和 y 都有值的情况
-m1({x: 3, y: 8})
+fn1({ x: 3, y: 8 });
 // [3, 8]
-m2({x: 3, y: 8})
+fn2({ x: 3, y: 8 });
 // [3, 8]
 
 // x 有值，y 无值的情况
-m1({x: 3})
+fn1({ x: 3 });
 // [3, 0]
-m2({x: 3})
+fn2({ x: 3 });
 // [3, undefined]
 
 // x 和 y 都无值的情况
-m1({})
+fn1({});
 // [0, 0];
-m2({})
+fn2({});
 // [undefined, undefined]
 
-m1({z: 3})
+fn1({ z: 3 });
 // [0, 0]
-m2({z: 3})
+fn2({ z: 3 });
 // [undefined, undefined]
 ```
 
@@ -265,22 +270,32 @@ function fn(x = 5, y = 6) {
   console.log(x, y);
 }
 
-fn(undefined, null)
+fn(undefined, null);
 // 5 null
 ```
 
-## 函数的 length 属性
+## 函数的长度属性
 
-指定了默认值以后，函数的`length`属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，`length`属性将失真。
+指定了默认值以后，函数的 `length` 属性，将返回没有指定默认值的参数个数。也就是说，指定了默认值后，`length`属性将失真。
+
+示例一：一个参数，没有默认值
 
 ```js
-(function (a) {}).length
+(function(a) {}.length);
 // 1
+```
 
-(function (a = 5) {}).length
+示例二：一个参数，有默认值
+
+```js
+(function(a = 5) {}.length);
 // 0
+```
 
-(function (a, b, c = 5) {}).length
+示例三：三个参数，其中一个参数有默认值
+
+```js
+(function(a, b, c = 5) {}.length);
 // 2
 ```
 
@@ -289,16 +304,17 @@ fn(undefined, null)
 这是因为 `length` 属性的含义是，该函数预期传入的参数个数。某个参数指定默认值以后，预期传入的参数个数就不包括这个参数了。同理，后文的 rest 参数也不会计入 `length` 属性。
 
 ```js
-(function(...args) {}).length // 0
+(function(...args) {}.length); // 0
 ```
 
 如果设置了默认值的参数不是尾参数，那么`length`属性也不再计入后面的参数了。
 
 ```js
-(function (a = 0, b, c) {}).length
-// 0
+(function(a = 0, b, c) {}.length(
+  // 0
 
-(function (a, b = 1, c) {}).length
+  function(a, b = 1, c) {}
+).length);
 // 1
 ```
 
@@ -313,7 +329,7 @@ function fn(x, y = x) {
   console.log(y);
 }
 
-f(2) // 2
+f(2); // 2
 ```
 
 上面代码中，参数 `y` 的默认值等于变量 `x`。调用函数 `fn` 时，参数形成一个单独的作用域。在这个作用域里面，默认值变量 `x` 指向第一个参数 `x`，而不是全局变量 `x`，所以输出是 `2`。
@@ -328,7 +344,7 @@ function fn(y = x) {
   console.log(y);
 }
 
-fn() // 1
+fn(); // 1
 ```
 
 上面代码中，函数 `fn` 调用时，参数 `y = x` 形成一个单独的作用域。这个作用域里面，变量 `x` 本身没有定义，所以指向外层的全局变量 `x`。函数调用时，函数体内部的局部变量 `x` 影响不到默认值变量 `x`。
@@ -341,7 +357,7 @@ function fn(y = x) {
   console.log(y);
 }
 
-fn() // ReferenceError: x is not defined
+fn(); // ReferenceError: x is not defined
 ```
 
 下面这样写，也会报错。
@@ -353,7 +369,7 @@ function fn(x = x) {
   // ...
 }
 
-fn() // ReferenceError: x is not defined
+fn(); // ReferenceError: x is not defined
 ```
 
 上面代码中，参数 `x = x` 形成一个单独作用域。实际执行的是 `let x = x`，由于暂时性死区的原因，这行代码会报错 `x is not defined`（指第二个 `x` 未定义）。
@@ -381,7 +397,7 @@ function bar(func = () => fn) {
   console.log(func());
 }
 
-bar() // ReferenceError: fn is not defined
+bar(); // ReferenceError: fn is not defined
 ```
 
 上面代码中，匿名函数里面的 `fn` 指向函数外层，但是函数外层并没有声明变量 `fn`，所以就报错了。
@@ -390,14 +406,19 @@ bar() // ReferenceError: fn is not defined
 
 ```js
 var x = 1;
-function fn(x, y = function() { x = 2; }) {
+function fn(
+  x,
+  y = function() {
+    x = 2;
+  }
+) {
   var x = 3;
   y();
   console.log(x);
 }
 
-fn() 	// 3
-x 		// 1
+fn(); // 3
+x; // 1
 ```
 
 上面代码中，函数 `fn` 的参数形成一个单独作用域。这个作用域里面，首先声明了变量 `x`，然后声明了变量`y`，`y` 的默认值是一个匿名函数。这个匿名函数内部的变量 `x`，指向同一个作用域的第一个参数 `x`。函数 `fn`内部又声明了一个内部变量 `x`，该变量与第一个参数 `x` 由于不是同一个作用域，所以不是同一个变量，因此执行`y`后，内部变量`x`和外部全局变量 `x` 的值都没变。
@@ -406,16 +427,21 @@ x 		// 1
 
 ```js
 var x = 1;
-function fn(x, y = function() { x = 2; }) {
+function fn(
+  x,
+  y = function() {
+    x = 2;
+  }
+) {
   x = 3;
   y();
   console.log(x);
 }
 
-fn()
+fn();
 // 2
 
-console.log(x)
+console.log(x);
 // 1
 ```
 
@@ -429,7 +455,7 @@ console.log(x)
   - 当函数内部作用域重新声明与已有参数同名变量，变量与同名参数不为同一变量
   - 当函数内部作用域存在同名变量（没有重新声明），变量指向的是函数参数本身
 
-## 抛弃 arguments
+## 抛弃参数对象
 
 现在我们已经看到了 `arguments` 对象可被不定参数和默认参数完美代替，移除 `arguments` 后通常会使代码更易于阅读。除了破坏可读性外，众所周知，针对 `arguments` 对象对 JavaScript 虚拟机进行的优化会导致一些让你头疼不已的问题。
 

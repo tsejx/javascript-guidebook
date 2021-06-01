@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.padEnd
-order: 16
+order: 23
 ---
 
 # String.prototype.padEnd()

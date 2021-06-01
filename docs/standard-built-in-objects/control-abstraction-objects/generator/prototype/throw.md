@@ -7,7 +7,7 @@ group:
   path: /control-abstraction-objects/
   order: 15
 title: Generator.prototype.throw
-order: 18
+order: 34
 ---
 
 # Generator.prototype.throw

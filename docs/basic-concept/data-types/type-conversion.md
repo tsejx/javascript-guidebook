@@ -11,11 +11,11 @@ order: 3
 
 # 类型转换
 
-JavaScript 作为一种弱类型的语言，不用像 C 语言那样要定义好数据类型，因为允许变量类型的 **隐式转换** 和允许 **强制类型转换**。我们在定义一个变量的时候，只需一个 `var`、`let`、`const` 搞定，不用担心数据的类型。
+JavaScript 作为一种弱类型的语言，不用像 C 语言那样要定义好数据类型，因为允许变量类型的 **隐式类型转换** 和允许 **强制类型转换**。我们在定义一个变量的时候，只需一个 `var`、`let`、`const` 搞定，不用担心数据的类型。
 
 ## 基本规则
 
-从 ECMAScript 标准了解 Number、String、Boolean、Array 和 Object 之间的相互转换会更加直观。
+从 ECMAScript Standard 中了解 Number、String、Boolean、Array 和 Object 之间的相互转换会更加直观。
 
 ### ToString
 
@@ -23,12 +23,20 @@ JavaScript 作为一种弱类型的语言，不用像 C 语言那样要定义好
 
 下面列出常见转换为 String 类型的规则：
 
-- null：转为 `"null"`
-- undefined：转为 `"undefined"`
-- Boolean 类型：`true` 和 `false` 分别转为 `"true"` 和 `"false"`
-- Number 类型：转为数字的字符串形式，如 10 转为 `"10"`，1e21 转为 `"1e+21"`
-- Array 类型：转为字符串将各元素以 `,` 连接，相当于调用数组 `Array.prototype.join()` 方法，空数组转为空字符串，数组中 `null` 和 `undefined` 会被当作空字符串处理
+- `null`：转为 `"null"`
+- `undefined`：转为 `"undefined"`
+- Boolean 类型：
+  - `true` 转为 `"true"`
+  - `false` 转为 `"false"`
+- Number 类型：转为数字的字符串形式
+  - 如 10 转为 `"10"`
+  - 1e21 转为 `"1e+21"`
+- Array 类型：转为字符串将各元素以小写逗号 `,` 连接，相当于调用数组 `Array.prototype.join()` 方法
+  - 空数组转为空字符串 `''`
+  - 数组中 `null` 和 `undefined` 会被当作 **空字符串** 处理
 - 普通对象：转为字符串相当于直接使用 `Object.prototype.toString()`，返回 `[object Object]`
+
+<br />
 
 ```js
 String(null);
@@ -64,12 +72,18 @@ String({});
 
 ### ToNumber
 
-- `null`： 转为 0
-- `undefined`：转为 NaN
-- String 类型：如果是纯数字形式，则转为对应的数字，空字符转为 0，否则一律按转换失败处理，转为 NaN
-- Boolean 类型：`true` 和 `false` 被转为 1 和 0
-- Array 类型：数组首先会被转为**原始数据类型**，也就是 [ToPrimitive](#ToPrimitive)，然后在根据转换后的原始类型按照上面的规则处理
+- `null`： 转为 `0`
+- `undefined`：转为 `NaN`
+- String 类型：如果是纯数字形式，则转为对应的数字
+  - 空字符转为 0
+  - 否则一律按转换失败处理，转为 NaN
+- Boolean 类型：
+  - `true` 将被转为 `1`
+  - `false` 将被转为 `0`
+- Array 类型：数组首先会被转为 **原始数据类型**，也就是 [ToPrimitive](#ToPrimitive)，然后在根据转换后的原始类型按照上面的规则处理
 - 对象：同数组的处理
+
+<br />
 
 ```js
 Number(null);
@@ -142,6 +156,8 @@ Boolean(Infinity);
 - 如果传入值为 Number 类型，则调用对象的 `valueOf()` 方法，若返回值为原始数据类型，则结束 `@@ToPrimitive` 操作，如果返回的不是原始数据类型，则继续调用对象的 `toString()` 方法，若返回值为原始数据类型，则结束 `@@ToPrimitive` 操作，如果返回的还是引用数据类型，则抛出异常。
 - 如果传入值为 String 类型，则先调用 `toString()` 方法，再调用 `valueOf()` 方法。
 
+<br />
+
 ```js
 [1, 2] ==
   '1,2'[(1, 2)] // true
@@ -157,13 +173,13 @@ a.valueOf().toString(); // "[object Object]"
 >
 > 以 JavaScript 实现 [ToPrimitive](https://juejin.im/post/59ad2585f265da246a20e026#heading-1)
 
-值得一提的是对于**数值类型**的 `valueOf()` 函数的调用结果仍为数组，因此数组类型的隐式类型转换结果是字符串。
+值得一提的是对于 **数值类型** 的 `valueOf()` 函数的调用结果仍为数组，因此数组类型的隐式类型转换结果是字符串。
 
 而在 ES6 中引入 Symbol 类型之后，JavaScript 会优先调用对象的 `[Symbol.toPrimitive]` 方法来将该对象转化为原始类型，那么方法的调用顺序就变为了：
 
 - 当 `obj[Symbol.toPrimitive](preferredType)` 方法存在时，优先调用该方法
-- 如果 preferredType 参数为 String 类型，则依次尝试 `obj.toString()` 与 `obj.valueOf()`
-- 如果 preferredType 参数为 Number 类型或者默认值，则依次尝试 `obj.valueOf()` 与 `obj.toString()`
+- 如果 `preferredType` 参数为 String 类型，则依次尝试 `obj.toString()` 与 `obj.valueOf()`
+- 如果 `preferredType` 参数为 Number 类型或者默认值，则依次尝试 `obj.valueOf()` 与 `obj.toString()`
 
 ## 显式类型转换
 
@@ -195,15 +211,15 @@ JavaScript 的数据类型隐式转换主要分为三种情况：
 
 Boolean 类型转换规则表：
 
-| 数据值           | 转换后的值 |
-| :---------------- | :---------- |
-| 数字 `0`           | false      |
-| `NaN`              | false      |
-| 空字符串 `""`      | false      |
-| `null`             | false      |
-| `undefined`        | false      |
+| 数据值              | 转换后的值 |
+| :------------------ | :--------- |
+| 数字 `0`            | false      |
+| `NaN`               | false      |
+| 空字符串 `""`       | false      |
+| `null`              | false      |
+| `undefined`         | false      |
 | 非 `!0` 数字        | true       |
-| 非空字符串 `!""`       | true       |
+| 非空字符串 `!""`    | true       |
 | 非 `!null` 对象类型 | true       |
 
 ⚠️ **注意事项**：使用 `new` 运算符创建的对象隐式转换为 Boolean 类型的值都是 `true`。
@@ -240,6 +256,11 @@ Boolean 类型转换规则表：
 
 很多内置函数期望传入的参数的数据类型是固定的，如 `alert(value)`，它期望传入的 `value` 为 String 类型，但是如果我们传入的是 Number 类型或者 Object 类型等非 String 类型的数据的时候，就会发生数据类型的隐式转换。这就是环境运行环境对数据类型转换的影响。
 
+类似的方法还有：
+
+- `alert()`
+- `parseInt()`
+
 ### 运算符
 
 #### 加号运算符
@@ -248,52 +269,52 @@ Boolean 类型转换规则表：
 
 ```js
 +'' +
-// 0
+  // 0
 
-' ' +
-// 0
+  ' ' +
+  // 0
 
-'0' +
-// 0
+  '0' +
+  // 0
 
-'10' +
-// 10
+  '10' +
+  // 10
 
-'String' +
-// NaN
+  'String' +
+  // NaN
 
-true +
-// 1
+  true +
+  // 1
 
-false +
-// 0
+  false +
+  // 0
 
-undefined +
-// 0
+  undefined +
+  // 0
 
-null +
-// 0
+  null +
+  // 0
 
-[] +
-// 0
+  [] +
+  // 0
 
-![] +
-// 0
+  ![] +
+  // 0
 
-[1] +
-// 1
+  [1] +
+  // 1
 
-[1, 2] +
-// NaN
+  [1, 2] +
+  // NaN
 
-[[1]] +
-// 1
+  [[1]] +
+  // 1
 
-[[1, 2]] +
-// NaN
+  [[1, 2]] +
+  // NaN
 
-{} +
-// NaN
+  {} +
+  // NaN
 
   function() {}; // NaN
 ```
@@ -313,7 +334,7 @@ null +
 如果运算符两边均为原始数据类型时，则按照以下规则解释：
 
 - 字符串连接符：如果两个操作数中只要存在一个操作数为 String 类型，那么另一个操作数会调用 `String()` 方法转成字符串然后拼接
-- 算术运算符：如果两个操作数都不是 String 类型，两个操作数会调用 `Number()` 方法隐式转换为 Number 类型（如果无法成功转换成数字，则变为 NaN，再往下操作），然后进行加法算术运算
+- 算术运算符：如果两个操作数都不是 String 类型，两个操作数会调用 `Number()` 方法隐式转换为 Number 类型（如果无法成功转换成数字，则变为 `NaN`，再往下操作），然后进行加法算术运算
 
 值转换为 Number 类型和 String 类型都会遵循一个原则：如果该值为原始数据类型，则直接转换为 String 类型或 Number 类型。如果该值为引用数据类型，那么先通过固定的方法将复杂值转换为原始数据类型，再转为 String 类型或 Number 类型。[ToPrimitive](#ToPrimitive)
 
@@ -393,27 +414,36 @@ nul == null; // true
 
 [关系运算符](../expressions/comparation-operators)：会把其他数据类型转换成 Number 之后再比较关系（除了 Date 类型对象）
 
-- 如果两个操作值都是数值，则进行**数值**比较
-- 如果两个操作值都是字符串，则比较字符串对应的**字符编码值**
+- 如果两个操作值都是数值，则进行 **数值** 比较
+- 如果两个操作值都是字符串，则比较字符串对应的 **ASCII 字符编码值**
   - 多个字符则从左往右依次比较
-- 如果只有一个操作值是数值，则将另一个操作值转换为数值，进行**数值**比较
+- 如果只有一个操作值是数值，则将另一个操作值转换为数值，进行 **数值** 比较
 - 如果一个操作数是对象，则调用 `valueOf()` 方法（如果对象没有 `valueOf()` 方法则调用 `toString()` 方法），得到的结果按照前面的规则执行比较
-- 如果一个操作值是布尔值，则将其转换为**数值**，再进行比较
+- 如果一个操作值是布尔值，则将其转换为 **数值**，再进行比较
 
 📍 `NaN` 是非常特殊的值，它不和任何类型的值相等，包括它自己，同时它与任何类型的值比较大小时都返回 `false`。
 
 ```js
-5 > 10; // false
-'2' > 10; // false
-'2' > '10'; // true
-'abc' > 'b'; // false
-'abc' > 'aad'; // true
+5 > 10;
+// false
+
+'2' > 10;
+// false
+
+'2' > '10';
+// true
+
+'abc' > 'b';
+// false
+
+'abc' > 'aad';
+// true
 ```
 
 **JavaScript 原始类型转换表**
 
 | 原始值             | 转换为数字类型                   | 转换为字符串类型  | 转换为布尔类型                       |
-| ------------------ | -------------------------------- | ----------------- | ------------------------------------ |
+| :----------------- | :------------------------------- | :---------------- | :----------------------------------- |
 | false              | 0                                | "false"           | false                                |
 | true               | 1                                | "true"            | true                                 |
 | 0                  | 0                                | "0"               | false                                |
@@ -454,6 +484,7 @@ const a = {
 
 const eq = a == 1 && a == 2 && a == 3;
 console.log(eq);
+// true
 
 // 或者改写他的 toString 方法
 const num = 0;

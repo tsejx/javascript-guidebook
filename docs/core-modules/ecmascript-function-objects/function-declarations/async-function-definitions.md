@@ -31,7 +31,7 @@ order: 3
 
 ## 基本用法
 
-### 异步函数
+### 异步函数的声明
 
 凡是在函数声明前添加 `async` 关键字的函数在执行后都会自动返回 Promise 对象。
 
@@ -41,21 +41,21 @@ order: 3
 
 ```js
 function timeout(ms) {
-  return new Promise(res => setTimeout(res, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function foo(v, ms) {
+async function foo(arg1, ms) {
   await timeout(ms);
-  return v;
+  return arg1;
 }
 
 foo('Hello world!', 500).then(console.log);
 // 'Hello world!'
 ```
 
-### 异步语句
+### 异步函数的语句
 
-`await`命令必须在 `async` 函数里使用，不能单独使用。
+`await` 命令必须在 `async` 函数里使用，不能单独使用。
 
 由于 `async` 函数返回的是 Promise 对象，可以作为 `await` 命令的参数。
 
@@ -144,7 +144,8 @@ fn.then(res => console.log(res));
 ```js
 async function foo() {
   await Promise.reject('Error!');
-  await Promise.resolve('Hello world!'); // 不会执行
+  await Promise.resolve('Hello world!');
+  // 不会执行
 }
 ```
 
@@ -229,9 +230,11 @@ foo();
 async function foo() {
   // ...
 }
+```
 
-// 等同于
+相当于：
 
+```js
 function foo(args) {
   return spawn(function*() {
     // ...
@@ -308,25 +311,7 @@ getResult()
   });
 ```
 
-### 异步并发
-
-多个网络请求是非继发关系，最好使用 `Promise.all` 方法实现同时触发。
-
-🌰 **标准示例：**
-
-```js
-const [userList, orderList] = await Promise.all([getUserList(), getOrderList()]);
-
-let userPromise = getUserList();
-let orderPromise = getOrderList();
-
-let user = await userPromise;
-let order = await orderPromise;
-```
-
-上面两种写法，`getUserList` 和 `getOrderList` 都是同时触发，这样就会缩短程序的执行时间。
-
-### 非阻塞异步
+### 异步非阻塞
 
 在某些业务场景下，开发者可能需要处理多个连续步骤的操作，但是这些操作未必相互依赖。因此需要对这些操作进行优化。
 
@@ -367,7 +352,25 @@ async function selectDrink() {
 await Promise.all(selectPizza().then(choosePizza), selectDrink().then(chooseDrink));
 ```
 
-### 未知数量的异步操作
+### 异步并发
+
+多个网络请求是非继发关系，最好使用 `Promise.all` 方法实现同时触发。
+
+🌰 **标准示例：**
+
+```js
+const [userList, orderList] = await Promise.all([getUserList(), getOrderList()]);
+
+let userPromise = getUserList();
+let orderPromise = getOrderList();
+
+let user = await userPromise;
+let order = await orderPromise;
+```
+
+上面两种写法，`getUserList` 和 `getOrderList` 都是同时触发，这样就会缩短程序的执行时间。
+
+### 未知数量的异步并发
 
 承接上个实践方案，当我们需要解决未知数量的 Promise 的时候，我们只需要创建数组并存储它们，然后同样使用 `Promise.all` 方法就能够并发地等待所有 Promise 返回结果。
 
@@ -408,7 +411,7 @@ async function execute(tasks) {
 }
 ```
 
-### 串行遍历
+### 异步串行遍历
 
 要等待所有的结果返回，我们还是要回到老式的 `for` 循环写法：
 
@@ -430,9 +433,9 @@ async function execute(tasks) {
 
 上面这段的遍历是 **串行** 执行的，我们也可以把它转换成 **并行** 的。
 
-### 并行遍历
+### 异步并行遍历
 
-我们可以稍微国内更改上面的代码来编程并行的：
+我们可以通过更改上面的代码来实现并行的异步操作：
 
 ```js
 async function execute(tasks) {

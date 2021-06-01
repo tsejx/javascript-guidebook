@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.lastIndexOf
-order: 10
+order: 17
 ---
 
 # String.prototype.lastIndexOf()

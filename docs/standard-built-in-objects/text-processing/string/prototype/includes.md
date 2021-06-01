@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.includes
-order: 8
+order: 15
 ---
 
 # String.prototype.includes()

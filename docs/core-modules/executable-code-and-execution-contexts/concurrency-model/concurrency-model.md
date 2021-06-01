@@ -37,8 +37,8 @@ order: 1
 
 同步与异步的概念：
 
-* **同步（Synchronous）**：程序发出调用的时候，一直等待直到返回结果，没有结果之前不会返回。也就是，同步时调用者主动等待调用过程，且能立即得到结果的。
-* **异步（Asynchronous）**：程序发出调用之后，无法立即得到结果，需要额外的操作才能得到预期的结果是为异步。
+- **同步（Synchronous）**：程序发出调用的时候，一直等待直到返回结果，没有结果之前不会返回。也就是，同步时调用者主动等待调用过程，且能立即得到结果的。
+- **异步（Asynchronous）**：程序发出调用之后，无法立即得到结果，需要额外的操作才能得到预期的结果是为异步。
 
 ## 运行环境
 
@@ -54,20 +54,20 @@ JavaScript 的运行通常是在浏览器环境中进行的，具体由 JavaScri
 - **浏览器事件触发线程：**处理 DOM 事件
 - **异步 HTTP 请求线程：**处理 HTTP 请求
 
-⚠️ 需要注意的是，渲染线程和 JavaScript 引擎线程是互斥的。渲染线程在执行任务的时候，JavaScript 引擎线程会被挂起。因为 JavaScript 可以操作 DOM，若在渲染中 JavaScript 处理了 DOM，浏览器可能会不知所措了。
+⚠️ 需要注意的是，渲染线程和 JavaScript 引擎线程是 <strong style="color: red">互斥</strong> 的。渲染线程在执行任务的时候，JavaScript 引擎线程会被挂起。因为 JavaScript 可以操作 DOM，若在渲染中 JavaScript 处理了 DOM，浏览器可能会不知所措了。
 
 ### 内核引擎
 
 通常讲到浏览器的时候，我们会说到两个浏览器的核心组件：**渲染引擎（Rendering Engine）**和 **JavaScript 解释器（JavaScript Interpreter）**。
 
-|    浏览器厂商     |       渲染引擎       |            JavaScript 解释器             |
-| :--------------- | :------------------ | :-------------------------------------- |
-|      Chrome       |   Webkit => Blink    |                    V8                    |
-|      Safari       |        Webkit        |                  Nitro                   |
-|      Firefox      |        Gecko         | SpiderMonky / TraceMonkey / JaegerMonkey |
-|       Opera       |   Presto => Blink    | Linear A / Linear B / Futhark / Carakan  |
-| Internet Explorer | Trident => EdgeHTML  |          JScript / Chakra（9+）          |
-|       Edge        | EdgeHTML => Chromium |                  Chakra                  |
+| 浏览器厂商        | 渲染引擎             | JavaScript 解释器                        |
+| :---------------- | :------------------- | :--------------------------------------- |
+| Chrome            | Webkit => Blink      | V8                                       |
+| Safari            | Webkit               | Nitro                                    |
+| Firefox           | Gecko                | SpiderMonky / TraceMonkey / JaegerMonkey |
+| Opera             | Presto => Blink      | Linear A / Linear B / Futhark / Carakan  |
+| Internet Explorer | Trident => EdgeHTML  | JScript / Chakra（9+）                   |
+| Edge              | EdgeHTML => Chromium | Chakra                                   |
 
 > 注：Webkit 引擎包含 WebCore 排版引擎及 JavaScript Core 解析引擎
 
@@ -113,7 +113,7 @@ export default () => <img alt="异步任务执行机制图解" src={img} width={
 
 **参考资料：**
 
-* [📝 聊聊 JavaScript 与浏览器的那些事：引擎与线程](<https://hijiangtao.github.io/2018/01/08/JavaScript-and-Browser-Engines-with-Threads/>)
-* [📝 JavaScript 单线程异步的背后——事件循环机制](<https://zhuanlan.zhihu.com/p/27035708>)
-* [📝 JavaScript 运行机制详解：再谈 Event Loop](<http://www.ruanyifeng.com/blog/2014/10/event-loop.html>)
-* [🎥 Philip Roverts: What the heck is the event loop anyway](<https://www.youtube.com/watch?v=8aGhZQkoFbQ>)
+- [📝 聊聊 JavaScript 与浏览器的那些事：引擎与线程](https://hijiangtao.github.io/2018/01/08/JavaScript-and-Browser-Engines-with-Threads/)
+- [📝 JavaScript 单线程异步的背后——事件循环机制](https://zhuanlan.zhihu.com/p/27035708)
+- [📝 JavaScript 运行机制详解：再谈 Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+- [🎥 Philip Roverts: What the heck is the event loop anyway](https://www.youtube.com/watch?v=8aGhZQkoFbQ)

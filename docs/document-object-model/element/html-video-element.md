@@ -1,17 +1,27 @@
 ---
 nav:
-  title: BOM
-  order: 5
+  title: DOM
+  order: 6
 group:
-  title: 多媒体 API
-  order: 14
-title: 视频 Web Video API
-order: 2
+  title: Element
+  order: 6
+title: HTMLVideoElement
+order: 18
 ---
 
-# 视频 Web Video API
+# HTMLVideoElement
 
-## Video 标签
+```plain
+EventTarget <- Node <- Element <- HTMLElement <- HTMLMediaElement <- HTMLVideoElement
+```
+
+继承其父对象 [HTMLMediaElement](./html-media-element) 和 [HTMLElement](./html-element) 的方法。
+
+height
+poster
+videoHeight
+videoWidth
+width
 
 ```html
 <video />

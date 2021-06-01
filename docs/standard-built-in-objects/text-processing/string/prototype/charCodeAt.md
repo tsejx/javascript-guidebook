@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.charCodeAt
-order: 4
+order: 11
 ---
 
 # String.prototype.charCodeAt()

@@ -15,19 +15,19 @@ order: 16
 
 ## 语法
 
-- 函数调用
+### 函数调用
 
 ```js
 myFunction(...iterableObj);
 ```
 
-- 数组字面量或字符串
+### 数组字面量或字符串
 
 ```js
 [...iterableObj, '4', 'five', 6];
 ```
 
-- 对象字面量（ECMAScript 2018 新增内容）
+### 对象字面量
 
 ```js
 let iterableObj = { ...obj };

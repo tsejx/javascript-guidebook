@@ -249,3 +249,11 @@ new Date('2018-8-32');
 new Date('2018-9-1');
 // Sat Sep 01 2018 00:00:00 GMT+0800 (中国标准时间)
 ```
+
+## 应用实例
+
+将秒数转为时分秒 HH:mm:ss
+
+https://blog.csdn.net/veryszhang/article/details/88690687
+
+http://momentjs.cn/docs/#/use-it/

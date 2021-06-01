@@ -7,7 +7,7 @@ group:
   path: /control-abstraction-objects/
   order: 15
 title: Promise.prototype.then
-order: 9
+order: 21
 ---
 
 # Promise.prototype.then
@@ -47,7 +47,10 @@ promise.then(
 ```js
 getJSON('/post/1.json')
   .then(post => getJSON(post.commentURL))
-  .then(comments => console.log('resolved: ', comments), err => console.log('rejected: ', err));
+  .then(
+    comments => console.log('resolved: ', comments),
+    err => console.log('rejected: ', err)
+  );
 ```
 
 ### 参数传递

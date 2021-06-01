@@ -6,7 +6,7 @@ group:
   title: Document
   order: 5
 title: Document 方法
-order: 5
+order: 3
 ---
 
 # Document 方法
@@ -103,6 +103,8 @@ function checkPageFocus() {
 
 - `x`：（必填项）定位横坐标偏移量，指 `clientX`
 - `y`：（必填项）定位纵坐标偏移量，指 `clientY`
+
+返回值为指定坐标上的元素数组（顺序以时间冒泡为依据）
 
 🌰 **示例：检测元素可见性**
 

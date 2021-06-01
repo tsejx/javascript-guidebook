@@ -17,15 +17,15 @@ order: 2
 
 属性查询一般有两种方法：
 
-* [点运算符](#点运算符)
-* [方括号运算符](#方括号运算符)
+- [点运算符](#点运算符)
+- [方括号运算符](#方括号运算符)
 
 键名可以是中文，因为中文相当于字符，与英文字符同样对待，因此可以写成 `person.白` 或 `person['白']`。
 
 ```js
 const person = {
-  白 : 1
-}
+  白: 1,
+};
 console.log(person.白);
 // 1
 console.log(person['白']);
@@ -36,7 +36,7 @@ console.log(person['白']);
 
 点运算符是很多面向对象语句的通用写法，由于其比较简单，所以较方括号运算符相比，更常用。
 
-由于 JavaScript 是弱类型语言，在任何对象中都可以创建任意数量的属性。但当通过点运算符 `. ` 访问对象的属性时，属性名用一个标识符来表示，标识符要符合 [变量命名规则](../../basic-concept/lexical-grammar/lexical-grammar#标识符)。标识符必须直接出现在 JavaScript 程序中，它们不是数据类型，因此程序无法修改它们。
+由于 JavaScript 是弱类型语言，在任何对象中都可以创建任意数量的属性。但当通过点运算符 `.` 访问对象的属性时，属性名用一个标识符来表示，标识符要符合 [变量命名规则](../../basic-concept/lexical-grammar/lexical-grammar#标识符)。标识符必须直接出现在 JavaScript 程序中，它们不是数据类型，因此程序无法修改它们。
 
 ```js
 const foo = {
@@ -70,7 +70,7 @@ console.log(o.1);
 ```js
 const a = 1;
 const foo = {
-  3: 'abc'
+  3: 'abc',
 };
 
 foo[a + 2]; // 'abc'
@@ -93,7 +93,7 @@ ES6 增加了可计算属性名，可以在文字中使用 `[]` 包裹一个表�
 const a = 1;
 
 const foo = {
-  [a + 3]: 'bar'
+  [a + 3]: 'bar',
 };
 
 foo[4];
@@ -156,8 +156,8 @@ foo['p'] = 'bar';
 ```js
 // Bad
 const len = undefined;
-if(book){
-  if(book.subtitle){
+if (book) {
+  if (book.subtitle) {
     len = book.subtitle.length;
   }
 }
@@ -193,23 +193,23 @@ undefined.a = 1;
 
 ## 属性删除
 
-使用 [delete](../../basic-concept/expressions/unary-operators/delete) 运算符可以删除对象属性（包括数组元素）。
+使用 [delete](../../basic-concept/expressions/operators/delete) 运算符可以删除对象属性（包括数组元素）。
 
 ```js
-const foo = { a : 1 };
+const foo = { a: 1 };
 
-console.log( foo.a );
+console.log(foo.a);
 // 1
-console.log( 'a' in foo );
+console.log('a' in foo);
 // true
 
 // delete object attribute
-console.log( delete foo.a );
+console.log(delete foo.a);
 // true
 
-console.log( foo.a );
+console.log(foo.a);
 // undefined
-console.log( 'a' in foo );
+console.log('a' in foo);
 // false
 ```
 
@@ -247,8 +247,8 @@ console.log(Object.prototype.__proto__ === null);
 
 ### 判断方法
 
-* [in](../../basic-concept/expressions/unary-operators/in)：`in` 操作符可以判断属性在不在该对象上，但无法区别自有还是继承属性。
-* [for-in](../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement)：通过 `for-in` 循环可以遍历出该对象中所有**可枚举属性**。
-* [hasOwnProperty](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-prototype-object/hasOwnProperty)：通过 `hasOwnProperty()` 方法**可以确定该属性是自有属性还是继承属性**。
-* [Object.keys](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/keys)：`Object.keys()` 方法返回所有**可枚举的自有属性**。
-* [Object.getOwnPropertyNames](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/getOwnPropertyNames)：`Object.getOwnPropertyNames()` 方法返回所有自有属性（包括不可枚举的属性）。
+- [in](../../basic-concept/expressions/operators/in)：`in` 操作符可以判断属性在不在该对象上，但无法区别自有还是继承属性。
+- [for-in](../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement)：通过 `for-in` 循环可以遍历出该对象中所有**可枚举属性**。
+- [hasOwnProperty](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-prototype-object/hasOwnProperty)：通过 `hasOwnProperty()` 方法**可以确定该属性是自有属性还是继承属性**。
+- [Object.keys](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/keys)：`Object.keys()` 方法返回所有**可枚举的自有属性**。
+- [Object.getOwnPropertyNames](../../standard-built-in-objects/fundamental-objects/object-objects/properties-of-the-object-constructor/getOwnPropertyNames)：`Object.getOwnPropertyNames()` 方法返回所有自有属性（包括不可枚举的属性）。

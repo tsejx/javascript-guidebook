@@ -280,3 +280,21 @@ CSRF 攻击过程中，用户是在不知情的情况下构造了网络请求，
 - [📝 JSON Web Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
 
 敏感操作一定要判断请求来源、在 Cookie 之外的地方增加密串，和请求一同带上，甚至发送验证码给用户
+
+看了几个问题和答案感觉自己明白了一些
+
+token，放在 cookie 中，还是和直接使用 cookie 一样，所以仅仅将 token 放在 cookie 是不行的；
+
+需要在页面上有一个地方存放 token，以表单提交的方式提供给后台，后台可以校验表单中的 token 和 cookie 中的 token 是否一致，一致则继续校验 token，不一致直接返回；
+
+既然页面有 token 了为什么 cookie 还要额外存放一份，因为如果 cookie 不存放 token，就要 localStore 存在 token，总之要有一个地方将 token 落盘，因为如果不将 token 落盘，下次你再打开这个网址的时候，token 就没了，还需要重新登录重新获取 token；
+
+为什么放在 cookie 之后，别的网站获取不到 cookie 里面的 token 而自己的网站可以获取 token 中的 cookie 呢？
+
+因为 cookie 采取同源策略，只有相同域名的网页才能获取域名对应的 cookie，
+
+你在自己的网页上 getCookie 可以获取自己的 cookie；所以你自己的网站可以获取自己的 token，放到 input 中
+
+而别人在其他域名无法获取你的 cookie，也就无法获取你的 token，所以当别人伪造请求时，token 和 cookie 中的 token 是绝对不一致的；
+
+至于想知道 token 放在 cookie 和 localStore 的区别的话，可以百度去查一下，我也不知道，我去百度了
