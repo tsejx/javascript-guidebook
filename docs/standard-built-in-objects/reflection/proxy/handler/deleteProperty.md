@@ -18,7 +18,7 @@ order: 5
 
 ```js
 const proxy = new Proxy(target, {
-  construct: function(target, property) {
+  deleteProperty: function(target, property) {
     // do something
   },
 });
