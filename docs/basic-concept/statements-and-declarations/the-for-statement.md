@@ -30,7 +30,7 @@ for (initialization; expression; post - loop - expression) {
 
 ## 最佳实践
 
-### 标准示例
+### 代码示例
 
 ```js
 var count = 10;

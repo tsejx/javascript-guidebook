@@ -15,7 +15,7 @@ order: 34
 Generator 函数返回的遍历器对象，都有一个 `throw` 方法，可以在**函数体外抛出错误**，然后在 Generator **函数体内捕获**。
 
 ```js
-const geratorgenerator = function*() {
+const geratorgenerator = function* () {
   try {
     yield;
   } catch (e) {
@@ -48,7 +48,7 @@ try {
 💡 `throw` 方法可以接受一个参数，该参数会被 `catch` 语句接收，建议抛出 `Error` 对象的实例。
 
 ```js
-const generator = function*() {
+const generator = function* () {
   try {
     yield;
   } catch (e) {
@@ -69,7 +69,7 @@ iterator.throw(new Error('出错了！'));
 上面代码的错误，是用遍历器对象的 `throw` 方法抛出的，而不是用 [throw](../../../../basic-concept/statements-and-declarations/the-throw-statement) 命令抛出的。后者只能被函数体外的 `catch` 语句捕获。
 
 ```js
-const generator = function*() {
+const generator = function* () {
   while (true) {
     try {
       yield;
@@ -101,7 +101,7 @@ try {
 如果 Generator 函数内部没有部署 `try...catch` 代码块，那么 `throw` 方法抛出的错误，将被外部 `try...catch` 代码块捕获。
 
 ```js
-const generator = function*() {
+const generator = function* () {
   while (true) {
     yield;
     console.log('内部捕获', e);
@@ -220,7 +220,7 @@ try {
 
 Generator 函数体外抛出的错误，可以在函数体内捕获；反过来，Generator 函数体内抛出的错误，也可以被函数体外的 `catch` 捕获。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 function* foo() {

@@ -11,13 +11,13 @@ order: 2
 
 # 箭头函数
 
-箭头函数表达式的语法比函数表达式更短，并且没有自己的 `this`、`arguments`、`super` 或 `new.target`。
+箭头函数表达式的语法比函数表达式更短，并且没有自己的 `this`、`arguments`、`super` 和 `new.target`。
 
 箭头函数表达式更适用于那些本来需要匿名函数的业务场景，并且它们不能用作构造函数。
 
 ## 赋值式写法
 
-箭头函数只能用 **赋值式写法**，不能用声明式写法
+箭头函数只能用 **赋值式写法**，不能用声明式写法。
 
 ```js
 const fn = () => {
@@ -25,14 +25,14 @@ const fn = () => {
 };
 ```
 
-## 参数
+## 箭头函数参数
 
 ### 单个参数
 
 当只有一个参数时，圆括号是可选的，如果没有参数或者参数多于一个就需要加括号。
 
 ```js
-const fn1 = param1 => {
+const fn1 = (param1) => {
   // do something
 };
 
@@ -55,7 +55,7 @@ const fn = (params1, params2, ...rest) => {
 };
 ```
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 const numbers = (...nums) => nums;
@@ -88,7 +88,7 @@ fn();
 // 6
 ```
 
-🌰 **标准示例**
+🌰 **代码示例**
 
 ```js
 const full = ({ first, last }) => firsr + '' + last;
@@ -124,7 +124,7 @@ fn(1, 2);
 加括号的函数体返回对象字面表达式
 
 ```js
-const fn = bar => ({ foo: bar });
+const fn = (bar) => ({ foo: bar });
 ```
 
 ## 应用场景
@@ -135,19 +135,19 @@ const fn = bar => ({ foo: bar });
 
 ```js
 // 普通函数写法
-const result = [1, 2, 3].map(function(x) {
+const result = [1, 2, 3].map(function (x) {
   return x * x;
 });
 
 // 箭头函数写法
-const result = [1, 2, 3].map(x => x * x);
+const result = [1, 2, 3].map((x) => x * x);
 ```
 
 **数组方法 sort 函数：**
 
 ```js
 // 普通函数写法
-const result = values.sort(function(a, b) {
+const result = values.sort(function (a, b) {
   return a - b;
 });
 
@@ -194,7 +194,7 @@ function Timer() {
   setInterval(() => this.num1++, 1000);
 
   // 普通函数
-  setInterval(function() {
+  setInterval(function () {
     this.num2++;
   }, 1000);
 }
@@ -216,10 +216,10 @@ setTimeout(() => console.log('num2', timer.num2), 3000);
 ```js
 const handler = {
   id: '123456',
-  init: function() {
-    document.addEventListener('click', event => this.doSomething(event.type), false);
+  init: function () {
+    document.addEventListener('click', (event) => this.doSomething(event.type), false);
   },
-  doSomething: function(type) {
+  doSomething: function (type) {
     console.log('Handling' + type + ' for ' + this.id);
   },
 };
@@ -227,7 +227,7 @@ const handler = {
 
 以上的代码的 `init` 方法中使用了箭头函数，这导致箭头函数里面的 `this` 总是指向 `handler` 对象。否则，回调函数运行时，`this.doSomething` 一行会报错，因为此时 `this` 指向 `document` 对象。
 
-⚠️ **注意：**`this` 指向的固定化并不是因为箭头函数内部有绑定 `this` 的机制，实际原因时箭头函数根本没有自己的 `this`，导致内部的 `this` 就是外层代码块的 `this`。正是因为它没有 `this`，所以不能用作构造函数。
+⚠️ **注意**：`this` 指向的固定化并不是因为箭头函数内部有绑定 `this` 的机制，实际原因时箭头函数根本没有自己的 `this`，导致内部的 `this` 就是外层代码块的 `this`。正是因为它没有 `this`，所以不能用作构造函数。
 
 箭头函数转成 ES5 的代码如下。
 
@@ -243,7 +243,7 @@ function foo() {
 function foo() {
   var _this = this;
 
-  setTimeout(function() {
+  setTimeout(function () {
     console.log('id:', _this.id);
   }, 100);
 }
@@ -293,7 +293,7 @@ foo(2, 4, 6, 8);
 另外，由于箭头函数没有自己的`this`，所以当然也就不能用`call()`、`apply()`、`bind()`这些方法去改变`this`的指向。
 
 ```js
-(function() {
+(function () {
   return [(() => this.x).bind({ x: 'inner' })()];
 }.call({ x: 'outer' }));
 // ['outer']
@@ -308,9 +308,9 @@ foo(2, 4, 6, 8);
 ```js
 function insert(value) {
   return {
-    into: function(array) {
+    into: function (array) {
       return {
-        after: function(afterValue) {
+        after: function (afterValue) {
           array.splice(array.indexOf(afterValue) + 1, 0, value);
           return array;
         },
@@ -319,35 +319,31 @@ function insert(value) {
   };
 }
 
-insert(2)
-  .into([1, 3])
-  .after(1); // [1, 2, 3]
+insert(2).into([1, 3]).after(1); // [1, 2, 3]
 ```
 
 上面这个函数，可以使用箭头函数改写。
 
 ```js
-let insert = value => ({
-  into: array => ({
-    after: afterValue => {
+let insert = (value) => ({
+  into: (array) => ({
+    after: (afterValue) => {
       array.splice(array.indexOf(afterValue) + 1, 0, value);
       return array;
     },
   }),
 });
 
-insert(2)
-  .into([1, 3])
-  .after(1); // [1, 2, 3]
+insert(2).into([1, 3]).after(1); // [1, 2, 3]
 ```
 
 下面是一个部署管道机制（pipeline）的例子，即前一个函数的输出是后一个函数的输入。
 
 ```js
-const pipeline = (...focus) => val => focus.reduce((a, b) => b(a), val);
+const pipeline = (...focus) => (val) => focus.reduce((a, b) => b(a), val);
 
-const plus1 = a => a + 1;
-const mult2 = a => a * 2;
+const plus1 = (a) => a + 1;
+const mult2 = (a) => a * 2;
 const addThenMult = pipeline(plus1, mult2);
 
 addTheMult(5);
@@ -357,8 +353,8 @@ addTheMult(5);
 如果觉得上面的可读性比较差，也可以采用下面的写法。
 
 ```js
-const plus1 = a => a + 1;
-const mult2 = a => a * 2;
+const plus1 = (a) => a + 1;
+const mult2 = (a) => a * 2;
 
 mult2(plus1(5));
 // 12

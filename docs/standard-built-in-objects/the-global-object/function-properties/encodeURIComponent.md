@@ -34,7 +34,7 @@ encodeURIComponent(URIString);
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 // 原 URI 组件

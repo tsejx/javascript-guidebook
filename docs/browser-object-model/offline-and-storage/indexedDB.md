@@ -379,7 +379,6 @@ const batchDelete = function (storeName, keys) {
 | :------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [zangodb](https://github.com/erikolson186/zangodb) | ZangoDB 是一个类似 MongoDB 的 HTML5 IndexedDB 接口库，支持 MongoDB 的大多数常见功能包括 filer、sorting、updating 和 aggregation，可在 Web 浏览器中使用 |
 | [dexie.js](https://dexie.org/)                     | IndexedDB 的简约包装器                                                                                                                                 |
-|                                                    |                                                                                                                                                        |
 
 ## 参考资料
 

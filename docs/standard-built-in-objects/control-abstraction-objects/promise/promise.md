@@ -39,12 +39,12 @@ Promise 的参数 `executor` 是带有 `resolve` 和 `reject` 两个参数的函
 
 如果某些事件不断地反复发生，一般来说，使用  [Stream](https://nodejs.org/api/stream.html)  模式是比部署 Promise 更好的选择。
 
-🌰 **标准示例**
+🌰 **代码示例**
 
 ```js
 new Promise(
   /* 执行器 */
-  function(resolve, reject) {
+  function (resolve, reject) {
     // 异步处理
 
     // 数据处理完成后执行
@@ -131,7 +131,7 @@ export default () => <img alt="Promise State" src={img} width={720} />;
 ### 多任务串行
 
 ```js
-const Task = function(result, isSuccess = true) {
+const Task = function (result, isSuccess = true) {
   return () =>
     new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -144,7 +144,7 @@ const Task = function(result, isSuccess = true) {
     });
 };
 
-execute([Task('A'), Task('B'), Task('C', false), Task('D')]).then(resultList => {
+execute([Task('A'), Task('B'), Task('C', false), Task('D')]).then((resultList) => {
   // do something
 });
 ```
@@ -164,10 +164,10 @@ function execute(tasks) {
   return;
   task.reduce(
     (previousPromise, currentPromise) =>
-      previousPromise.then(resultList => {
-        return new Promise(resolve => {
+      previousPromise.then((resultList) => {
+        return new Promise((resolve) => {
           currentPromise()
-            .then(result => {
+            .then((result) => {
               resolve(resultList.concat(result));
             })
             .catch(() => {

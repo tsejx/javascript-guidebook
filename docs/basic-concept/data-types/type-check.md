@@ -41,7 +41,7 @@ typeof true;
 typeof 'foo';
 // "string"
 
-typeof function() {};
+typeof function () {};
 // "function"
 
 typeof [1, 2];
@@ -96,7 +96,7 @@ ben instanceof Person;
 
 可以通过 `toString()` 来获取每个对象的类型。
 
-为了**每个对象**都能通过 `Object.prototype.toString` 来检测，需要以 `Function.prototype.call` 或者 `Function.prototype.apply` 的形式来调用，传递要检查的对象作为第一个参数。
+为了 **每个对象** 都能通过 `Object.prototype.toString` 来检测，需要以 `Function.prototype.call` 或者 `Function.prototype.apply` 的形式来调用，传递要检查的对象作为第一个参数。
 
 ```js
 Obejct.prototype.toString.call(undefined)；
@@ -123,7 +123,9 @@ Obejct.prototype.toString.call({})；
 
 💡 使用 `Object.prototype.toString` 方法能精准地判断出值的数据类型。
 
-💡 `Object.prototype.toString` 属于 `Object` 的原型方法，而 `Array` ， `Function` 等类型作为 `Object` 的实例，都重写了 `toString` 方法。因此，不同对象类型调用 `toString` 方法时，调用的是重写后的 `toString` 方法，而非 `Object` 上原型 `toString` 方法，所以采用 `xxx.toString()` 不能得到其对象类型，只能将 `xxx` 转换成字符串类型。
+⚠️ **注意事项**：
+
+- **方法重写**：`Object.prototype.toString` 属于 Object 的原型方法，而 Array 或 Function 等类型作为 Object 的实例，都重写了 `toString` 方法。因此，不同对象类型调用 `toString` 方法时，调用的是重写后的 `toString` 方法，而非 `Object` 上原型 `toString` 方法，所以采用 `xxx.toString()` 不能得到其对象类型，只能将 `xxx` 转换成字符串类型。
 
 ## constructor
 

@@ -5,44 +5,33 @@ nav:
 group:
   title: 事件类型
   order: 21
-title: 鼠标事件
+title: 鼠标事件 MouseEvent
 order: 15
 ---
 
-# 鼠标事件
-
-- auxclick
-- click
-- contextmenu
-- dbclick
-- mousedown
-- mouseenter
-- mouseleave
-- mousemove
-- mouseover
-- mouseout
-- mouseup
-- pointerlockchange
-- pointerlockerror
-- select
-- wheel
+# 鼠标事件 MouseEvent
 
 常见的鼠标事件主要是以下几种：
 
-| 方法        | 说明                                                                                                                                                        |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| click       | 在用户**单击**主鼠标按钮（一般是左边的按钮）或者按下回车键触发。这一点对确保易访问性很重要，意味着 `onclick` 事件处理程序即可以通过键盘也可以通过鼠标执行。 |
-| dbclick     | 在用户**双击**主鼠标按钮（一般是左边的按钮）时触发。                                                                                                        |
-| mousedown   | 在用户**按下**了任意鼠标按钮时触发。                                                                                                                        |
-| mouseup     | 在用户**释放**鼠标按钮时触发。                                                                                                                              |
-| mouseenter  | 鼠标光标从元素外部首次**移动到元素范围之内时**触发。这个事件**不冒泡**，而且在光标移动到后代元素上不会触发。                                                |
-| mouseleave  | 在位于元素上方的鼠标光标**移动到元素范围之外时**触发。这个事件**不冒泡**，而且在光标移动到后代元素上不会触发。                                              |
-| mousemove   | 当鼠标指针在元素内部**移动时重复地触发**。                                                                                                                  |
-| mouseover   | 在鼠标指针位于一个元素上方，然后用户将其移入另一个元素时触发。又移入的另一个元素可能位于前一个元素的外部，也可能是这个元素的子元素。                        |
-| mouseout    | 在鼠标指针位于一个元素外部，然后用户将其首次移入另一个元素边界之内时触发。                                                                                  |
-| contextmenu | 弹出右键菜单                                                                                                                                                |
+| 方法              | 说明                                                                                                                                                        |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| click             | 在用户**单击**主鼠标按钮（一般是左边的按钮）或者按下回车键触发。这一点对确保易访问性很重要，意味着 `onclick` 事件处理程序即可以通过键盘也可以通过鼠标执行。 |
+| dbclick           | 在用户**双击**主鼠标按钮（一般是左边的按钮）时触发。                                                                                                        |
+| mousedown         | 在用户**按下**了任意鼠标按钮时触发。                                                                                                                        |
+| mouseup           | 在用户**释放**鼠标按钮时触发。                                                                                                                              |
+| mouseenter        | 鼠标光标从元素外部首次**移动到元素范围之内时**触发。这个事件**不冒泡**，而且在光标移动到后代元素上不会触发。                                                |
+| mouseleave        | 在位于元素上方的鼠标光标**移动到元素范围之外时**触发。这个事件**不冒泡**，而且在光标移动到后代元素上不会触发。                                              |
+| mousemove         | 当鼠标指针在元素内部**移动时重复地触发**。                                                                                                                  |
+| mouseover         | 在鼠标指针位于一个元素上方，然后用户将其移入另一个元素时触发。又移入的另一个元素可能位于前一个元素的外部，也可能是这个元素的子元素。                        |
+| mouseout          | 在鼠标指针位于一个元素外部，然后用户将其首次移入另一个元素边界之内时触发。                                                                                  |
+| contextmenu       | 弹出右键菜单                                                                                                                                                |
+| auxclick          |                                                                                                                                                             |
+| pointerlockchange |                                                                                                                                                             |
+| pointerlockerror  |                                                                                                                                                             |
+| select            |                                                                                                                                                             |
+| wheel             |                                                                                                                                                             |
 
-页面上的所有元素都支持鼠标事件。除了 mouseenter 和 mouseleave，所有鼠标事件都会冒泡，也可以被取消，而取消鼠标事件将会影响浏览器的默认行为。取消鼠标事件的默认行为还会影响其他事件，因为鼠标事件与其他事件是密不可分的关系。
+页面上的所有元素都支持鼠标事件。除了 `mouseenter` 和 `mouseleave`，所有鼠标事件都会冒泡，也可以被取消，而取消鼠标事件将会影响浏览器的默认行为。取消鼠标事件的默认行为还会影响其他事件，因为鼠标事件与其他事件是密不可分的关系。
 
 在 HTML5 中鼠标有了新的事件，如下表格：
 
@@ -169,12 +158,14 @@ iOS 和 Android 设备的实现非常特别，因为这些设备没有鼠标。�
 
 遵照以上提示可以极大地提升残疾人在访问你的 Web 应用程序或网站时的易访问性。
 
-## MouseEvent API
+<code src="../../../../example/mouse-event/index.tsx" />
 
 ---
 
 **参考资料：**
 
-- [MDN：MouseEvent 鼠标事件](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)
+- [📖 W3C: Interfacee MouseEvent](https://w3c.github.io/uievents/#interface-mouseevent)
+- [📖 TypeScript: Interface MouseEvent](https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_dom_d_.mouseevent.html)
+- [📖 MDN：MouseEvent 鼠标事件](https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent)
 - [Web 前端事件](https://cloud.tencent.com/developer/article/1005089)
-
+- [一文读懂鼠标滚轮事件（wheelEvent）](https://segmentfault.com/a/1190000017390159)

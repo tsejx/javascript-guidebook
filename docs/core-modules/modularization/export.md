@@ -3,7 +3,7 @@ nav:
   title: 核心模块
   order: 3
 group:
-  title:  模块化
+  title: 模块化
   order: 11
 title: 模块导出 export
 order: 3
@@ -17,8 +17,8 @@ order: 3
 
 ECMAScript 规范中的模块化方案提供了两种导出模块的方式：
 
-* 命名导出（Named Exports）
-* 默认导出（Default Export）
+- 命名导出（Named Exports）
+- 默认导出（Default Export）
 
 ### 命名导出
 
@@ -31,7 +31,7 @@ ECMAScript 规范中的模块化方案提供了两种导出模块的方式：
 ```js
 const originModule = true;
 
-export { originModule }
+export { originModule };
 ```
 
 **在导出时重命名：**
@@ -39,9 +39,9 @@ export { originModule }
 同样使用 `as` 关键字，同一函数可以定义多个不同的变量名输出。
 
 ```js
-export { originModule as newModule }
+export { originModule as newModule };
 
-export { originModule as smartModule }
+export { originModule as smartModule };
 ```
 
 **声明后立即导出：**
@@ -64,7 +64,7 @@ export class interesting = true;
 export default something;
 ```
 
-⚠️  **注意：** 仅当源模块只有一个导出时，才建议使用此做法。
+⚠️ **注意**： 仅当源模块只有一个导出时，才建议使用此做法。
 
 将默认和命名导出组合在同一个模块中是不好的做法，尽管它是规范允许的。
 
@@ -114,13 +114,13 @@ export foo
 如上两种写法都会报错，因为均会输出 `1`，而 `1` 只是一个值 ，并非对外的接口。
 
 ```js
-export var foo = 1
+export var foo = 1;
 
-var bar = 1
-export { bar }
+var bar = 1;
+export { bar };
 
-var baz = 1
-export { baz as bat }
+var baz = 1;
+export { baz as bat };
 ```
 
 其他脚本可以通过这个接口，取到值 `1`。它们的实质是，在接口名与模块内部变量之间，建立了一一对应的关系。
@@ -150,9 +150,9 @@ export { baz }
 
 ```js
 function foo() {
-  export default 'bar'
+  export default 'bar';
   // SyntaxError
 }
 
-foo()
+foo();
 ```

@@ -45,7 +45,7 @@ typeof operand;
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 #### Number
 
@@ -120,7 +120,7 @@ typeof new String('abc') === 'object';
 #### Function
 
 ```js
-typeof function() {} === 'function';
+typeof function () {} === 'function';
 typeof class C {} === 'function';
 typeof Math.sin === 'function';
 typeof new Function() === 'function';

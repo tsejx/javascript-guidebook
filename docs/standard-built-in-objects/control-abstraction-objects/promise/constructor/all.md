@@ -43,24 +43,24 @@ Promise.all([promise1, promise2, ..., promiseN])
 
 ⚠️ **注意**：作为参数的 Promise 实例，自身定义的 `catch` 方法，那么它的状态一旦变更为 Rejected，并不会触发 `Promise.all` 的 `catch` 方法。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 const p1 = new Promise((resolve, reject) => {
   resolve('hello');
 })
-  .then(result => result)
-  .catch(err => err);
+  .then((result) => result)
+  .catch((err) => err);
 
 const p2 = new Promise((resolve, reject) => {
   throw new Error('报错了');
 })
-  .then(result => result)
-  .catch(err => err);
+  .then((result) => result)
+  .catch((err) => err);
 
 Promise.all([p1, p2])
-  .then(result => console.log(result)) // ["hello", Error: 报错了]
-  .catch(err => console.log(err));
+  .then((result) => console.log(result)) // ["hello", Error: 报错了]
+  .catch((err) => console.log(err));
 ```
 
 ## 示例
@@ -76,7 +76,7 @@ const p3 = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 'foo');
 });
 
-Promise.all([p1, p2, p3]).then(v => console.log(v));
+Promise.all([p1, p2, p3]).then((v) => console.log(v));
 // ['3', 1234, 'foo']
 ```
 
@@ -109,10 +109,10 @@ var p5 = new Promise((resolve, reject) => {
 
 // You can also use .catch
 Promise.all([p1, p2, p3, p4, p5])
-  .then(values => {
+  .then((values) => {
     console.log(values);
   })
-  .catch(reason => {
+  .catch((reason) => {
     console.log(reason);
   });
 ```
@@ -122,12 +122,12 @@ Promise.all([p1, p2, p3, p4, p5])
 如果你需要在所有的 Promise 都结束之后执行某些操作，而不论他们是否 Fulfilled，Promise.all 的这种机制就会成为一种限制，有个比较 Trick 的办法是给 `.then` 和 `.catch` 传入相同的回调，显然，这会让代码的可读性大打折扣。
 
 ```js
-Promise.all(promises.map(p => p.catch(() => undefined)));
+Promise.all(promises.map((p) => p.catch(() => undefined)));
 ```
 
 如果 Promise 的 `.catch` 回调返回了 `undefined`，那么 Promise 的失败就会被当做成功来处理。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 Promise.all(
@@ -136,7 +136,7 @@ Promise.all(
     Promise.resolve(1),
     // Rejects after 2 seconds
     new Promise((resolve, reject) => setTimeout(() => reject(1), 2000)),
-  ].map(p => p.catch(() => undefined))
+  ].map((p) => p.catch(() => undefined))
 ).then(() => console.log('done!'));
 
 // >> done!

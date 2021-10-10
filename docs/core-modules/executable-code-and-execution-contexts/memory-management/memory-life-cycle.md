@@ -15,16 +15,16 @@ order: 2
 import React from 'react';
 import img from '../../../assets/memory-life-cycle/memory-life-cycle.png';
 
-export default () => <img alt="内存生命周期" src={img} width={640} />;
+export default () => <img alt="内存生命周期" src={img} width={520} />;
 ```
 
 JavaScript 环境中分配的内存一般有如下生命周期：
 
-1. **内存分配：**当我们声明变量、函数、对象的时候，系统会自动为他们分配内存
-2. **内存使用：**即读写内存，也就是使用变量、函数等
-3. **内存回收：**使用完毕，由垃圾回收机制自动回收不再使用的内存
+1. **内存分配**：当我们声明变量、函数、对象的时候，系统会自动为他们分配内存
+2. **内存使用**：即读写内存，也就是使用变量、函数等
+3. **内存回收**：使用完毕，由 [垃圾回收机制](./garbage-collection) 自动回收不再使用的内存
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 // 在内存中给数值变量分配空间
@@ -67,7 +67,7 @@ function e() {
 // 函数表达式也能分配内存
 someElement.addEventListener(
   'click',
-  function() {
+  function () {
     someElement.style.backgroundColor = 'blue';
   },
   false
@@ -112,8 +112,6 @@ var z = x.concat(y);
 
 高级语言解释器嵌入了 [垃圾回收器机制](./garbage-collection)，它的主要工作是跟踪内存的分配和使用，以便当分配的内存不再使用时，自动释放它。这只能是一个近似的过程，因为要知道是否仍然需要某块内存是[无法判定的](http://en.wikipedia.org/wiki/Decidability_%28logic%29)（无法通过某种算法解决）。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 How JavaScript works:memory management + how to handle 4 common memory leaks](https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec)

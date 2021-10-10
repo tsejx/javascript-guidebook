@@ -39,7 +39,7 @@ str.split( [separator [, limit]] )
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 'abcd'.split();

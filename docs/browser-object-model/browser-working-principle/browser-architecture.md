@@ -175,9 +175,7 @@ export default () => <img alt="站点隔离示意图" src={img} width={520} />;
 
 启用站点隔离是多年来工程人员努力的结果。站点隔离并不只是分配不同的渲染进程这么简单。它从根本上改变了 `iframe` 的通信方式。在一个页面上打开开发者工具，让 `iframe` 在不同的进程上运行，这意味着开发者工具必须在幕后工作，以使它看起来无缝。即使运行一个简单的 `Ctrl + F` 来查找页面中的一个单词，也意味着在不同的渲染器进程中进行搜索。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 原文 Inside look at modern web browser（Part 1）](https://developers.google.com/web/updates/2018/09/inside-browser-part1#browser-architecture)
 - [📝 现代浏览器内部揭秘 Part 1](https://github.com/xitu/gold-miner/blob/master/TODO1/inside-look-at-modern-web-browser-part1.md)

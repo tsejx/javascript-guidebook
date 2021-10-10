@@ -60,16 +60,16 @@ order: 2
 // 被观察者
 class Subject {
   constructor(name) {
-    this.state = 'Happy';
-    this.observer = [];
+    // 观察者队列
+    this.observers = [];
   }
   // 注册观察者到被观察者上
   attach(observer) {
-    this.observer.push(observer);
+    this.observers.push(observer);
   }
-  setState(nextState) {
-    this.state = nextState;
-    this.observer.forEach(o => o.update(nextState));
+  // 执行所有观察者的 update 方法
+  notify(nextState) {
+    this.observers.forEach((o) => o.update(nextState));
   }
 }
 
@@ -82,6 +82,23 @@ class Observer {
     console.log('通知：被观察已更新');
   }
 }
+
+// 创建被观察者
+const subject = new Subject();
+// 收到广播时要执行的方法
+const update = () => console.log('被观察者发出通知');
+// 观察者 1
+const obs1 = new Observer(update);
+// 观察者 2
+const obs2 = new Observer(update);
+
+// 观察者 1 订阅 subject 的通知
+subject.attach(obs1);
+// 观察者 2 订阅 subject 的通知
+subject.attach(obs2);
+
+// 发出广播，执行所有观察者的 update 方法
+subject.notify();
 ```
 
 ## 订阅发布模式
@@ -119,7 +136,7 @@ class EventEmitter {
     });
 
     return () => {
-      this.listeners = this.listeners.filter(item => item.cb !== cb);
+      this.listeners = this.listeners.filter((item) => item.cb !== cb);
     };
   }
 
@@ -141,7 +158,7 @@ class EventEmitter {
     this.listeners[type] &&
       this.listeners[type]
         .sort((a, b) => a.priority - b.priority)
-        .forEach(item => item.cb.call(null, data));
+        .forEach((item) => item.cb.call(null, data));
   }
 }
 ```

@@ -5,7 +5,7 @@ nav:
 group:
   title: 行为型
   order: 4
-title: 迭代器模式
+title: 解释器模式
 order: 12
 ---
 

@@ -31,7 +31,7 @@ arr.includes( searchValue [, fromIndex])
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 let foo = [1, 2, 3];
@@ -99,7 +99,7 @@ arr.includes('c', -100);
 `includes()` 方法有意设计为通用方法。它不要求 `this` 值是数组对象，所以它可以被用于其他类型的对象（比如类数组对象）。下面的例子展示了 在函数的 `arguments` 对象上调用的 `includes()` 方法。
 
 ```js
-(function() {
+(function () {
   console.log([].includes.call(arguments, 'a'));
   // true
   console.log([].includes.call(arguments, 'd'));

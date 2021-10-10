@@ -27,7 +27,7 @@ throw expression;
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 你可以抛出任意表达式而不是特定一种类型的表达式。
 
@@ -36,7 +36,7 @@ throw 'Error2'; // String type
 throw 42; // Number type
 throw true; // Boolean type
 throw {
-  toString: function() {
+  toString: function () {
     return "I'm an object";
   },
 };

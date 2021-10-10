@@ -11,7 +11,7 @@ order: 3
 
 # 异步函数
 
-`async` 函数是 Generator 函数的语法糖。使用关键字 `async` 来表示，在函数内部是使用 `await` 命令来表示异步。
+`async` 函数是 [Generator](../../../standard-built-in-objects/control-abstraction-objects/generator) 函数的语法糖。使用关键字 `async` 来表示，在函数内部是使用 `await` 命令来表示异步。
 
 相较于 Generator，`async` 函数的改进在于以下四点：
 
@@ -37,11 +37,11 @@ order: 3
 
 `async` 函数返回一个 Promise 对象，可以使用 `then` 方法添加回调函数。当函数执行的时候，一旦遇到 `await` 就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function foo(arg1, ms) {
@@ -80,7 +80,7 @@ async function foo() {
   return 'Hello world!';
 }
 
-foo().then(res => console.log(res));
+foo().then((res) => console.log(res));
 // 'Hello world!'
 ```
 
@@ -92,18 +92,18 @@ async function foo() {
 }
 
 foo()
-  .then(res => console.log(res))
-  .catch(err => console.log(err));
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
 ```
 
 ### 返回值状态变化
 
 `async` 函数返回的 Promise 对象，必须等到内部所有 `await` 命令后面的 Promise 对象执行完，才会发生状态改变，除非遇到 `return` 语句或者抛出错误。也就是说，只有 `async` 函数内部的异步操作执行完，才会执行 `then` 方法指定的回调函数。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
-const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout));
+const delay = (timeout) => new Promise((resolve) => setTimeout(resolve, timeout));
 
 async function foo() {
   await delay(1000);
@@ -122,7 +122,7 @@ foo().then(console.log);
 
 正常情况下，异步语句 `await` 命令后面是一个 Promise 对象，返回该对象的结果。如果不是 Promise 对象，就直接返回对应的值。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 async funciont foo(){
@@ -139,7 +139,7 @@ fn.then(res => console.log(res));
 
 任何一个 `await` 语句后面的 Promise 对象变为 `rejected` 状态，那么整个 `async` 函数都会中断执行。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 async function foo() {
@@ -155,7 +155,7 @@ async function foo() {
 
 有时，我们希望即使前一个异步操作失败，也不要中断后面的异步操作。这时可以将第一个 `await` 放在 `try...catch` 结构里面，这样不管这个异步操作是否成功，第二个 `await` 都会执行。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 async function foo() {
@@ -168,22 +168,22 @@ async function foo() {
   return await Promise.resolve('Hello world!');
 }
 
-foo().then(res => console.log(res));
+foo().then((res) => console.log(res));
 // 'Hello world!'
 ```
 
 另一种方法是 `await` 后面的 Promise 对象再跟一个 `catch` 方法，处理前面可能出现的错误。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 async function foo() {
-  await Promise.reject('Error!').catch(e => console.log(e));
+  await Promise.reject('Error!').catch((e) => console.log(e));
 
   return await Promise.resolve('Hello world!');
 }
 
-foo().then(res => console.log(res));
+foo().then((res) => console.log(res));
 // 'Error!'
 // 'Hello world!'
 ```
@@ -194,7 +194,7 @@ foo().then(res => console.log(res));
 
 使用 `try...catch` 语句，实现多次重复尝试。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 const superagent = require('superagent');
@@ -224,7 +224,7 @@ foo();
 
 `async` 函数的实现原理，就是将 Generator 函数和自动执行器，包装在一个函数里。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 async function foo() {
@@ -236,7 +236,7 @@ async function foo() {
 
 ```js
 function foo(args) {
-  return spawn(function*() {
+  return spawn(function* () {
     // ...
   });
 }
@@ -246,7 +246,7 @@ function foo(args) {
 
 ```js
 function spawn(genF) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     const gen = genF();
     function step(nextF) {
       let next;
@@ -259,19 +259,19 @@ function spawn(genF) {
         return resolve(next.value);
       }
       Promise.resolve(next.value).then(
-        function(v) {
-          step(function() {
+        function (v) {
+          step(function () {
             return gen.next(v);
           });
         },
-        function(e) {
-          step(function() {
+        function (e) {
+          step(function () {
             return gen.throw(e);
           });
         }
       );
     }
-    step(function() {
+    step(function () {
       return gen.next(undefined);
     });
   });
@@ -284,7 +284,7 @@ function spawn(genF) {
 
 后面请求的发送总是需要依赖上一个请求返回的数据。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 function request(time) {
@@ -303,10 +303,10 @@ async function getResult() {
 }
 
 getResult()
-  .then(res => {
+  .then((res) => {
     console.log(res);
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });
 ```
@@ -317,7 +317,7 @@ getResult()
 
 综合上述 [异步阻塞](#异步阻塞) 和 [异步并发](#异步并发)，我们可以利用 Event Loop 的优势并发执行这些非阻塞异步函数。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 // 选择披萨
@@ -356,7 +356,7 @@ await Promise.all(selectPizza().then(choosePizza), selectDrink().then(chooseDrin
 
 多个网络请求是非继发关系，最好使用 `Promise.all` 方法实现同时触发。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 const [userList, orderList] = await Promise.all([getUserList(), getOrderList()]);
@@ -374,14 +374,14 @@ let order = await orderPromise;
 
 承接上个实践方案，当我们需要解决未知数量的 Promise 的时候，我们只需要创建数组并存储它们，然后同样使用 `Promise.all` 方法就能够并发地等待所有 Promise 返回结果。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 async function foo() {
   // 批量配置项
   const items = await batchDisposal();
   // 每个配置项对应一个异步请求
-  const promises = items.map(item => sendRequest(item));
+  const promises = items.map((item) => sendRequest(item));
   await Promise.all(promises);
 }
 ```
@@ -392,7 +392,7 @@ async function foo() {
 
 ```js
 function delay() {
-  return new Promise(resolve => setTimeout(resolve, 300));
+  return new Promise((resolve) => setTimeout(resolve, 300));
 }
 
 async function delayedLog(item) {
@@ -403,7 +403,7 @@ async function delayedLog(item) {
 }
 
 async function execute(tasks) {
-  tasks.forEach(async item => {
+  tasks.forEach(async (item) => {
     await delayLog(item);
   });
 
@@ -448,9 +448,7 @@ async function execute(tasks) {
 }
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📚 《ECMAScript 6 入门》](http://es6.ruanyifeng.com/#docs/async)
 - [📝 译文：更快的 async 函数和 Promise](https://juejin.im/post/5beea5f5f265da61590b40cd)

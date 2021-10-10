@@ -109,7 +109,7 @@ const app = new Koa();
 
 app.use(
   cors({
-    origin: function(ctx) {
+    origin: function (ctx) {
       if (ctx.url === '/login') {
         // 允许来自所有域名的请求
         return '*';
@@ -188,7 +188,7 @@ app.use(
     changeOrigin: true,
 
     // 修改响应头信息，实现跨域并允许带cookie
-    onProxyRes: function(proxyRes, req, res) {
+    onProxyRes: function (proxyRes, req, res) {
       res.header('Access-Control-Allow-Origin', 'http://www.domain1.com');
       res.header('Access-Control-Allow-Credentials', 'true');
     },
@@ -280,7 +280,7 @@ script.src = 'http://localhost:8080/api/jsonp?cb=jsonpCallback';
 document.appendChild(script);
 
 // 通过定义回调函数接收响应数据
-window.jsonpCallback = function(res) {
+window.jsonpCallback = function (res) {
   // do something with response data
 };
 ```
@@ -324,11 +324,11 @@ WebSocket 是一种通信协议，使用 `ws://`（非加密）和 `wss://`（�
 ```js
 const socket = new WebSocket('ws://localhost:8080');
 
-socket.onopen = function() {
+socket.onopen = function () {
   socket.send('Client Socket is openning');
 };
 
-socket.onmessage = function(e) {
+socket.onmessage = function (e) {
   console.log(e.data);
 };
 ```
@@ -339,8 +339,8 @@ socket.onmessage = function(e) {
 const WebSocket = require('ws');
 const server = new WebSocket.Server({ port: 8080 });
 
-server.on('connection', function(socket) {
-  socket.on('message', function(data) {
+server.on('connection', function (socket) {
+  socket.on('message', function (data) {
     socket.send(data);
   });
 });
@@ -378,7 +378,7 @@ otherWindow.postMessage(message, targetOrigin, [transfer]);
   function load() {
     iframe.contentWindow.postMessage('Hello world!', 'http://localhost:8080/');
 
-    window.onmessage = e => {
+    window.onmessage = (e) => {
       console.log(e.data);
     };
   }
@@ -390,7 +390,7 @@ otherWindow.postMessage(message, targetOrigin, [transfer]);
 ```html
 <div></div>
 <script type="application/javascript">
-  window.onmessage = e => {
+  window.onmessage = (e) => {
     console.log(e.data);
     // Hello world!
     e.source.postMessage(e.data, e.origin);
@@ -406,7 +406,7 @@ Cookie 是服务器写入浏览器的一小段信息，只有同源的网页才�
 
 但是，两个网页一级域名相同，只是二级域名不同，浏览器只需要设置 `document.domain` 为更高级别的域就能实现 Cookie 共享。
 
-🌰 **标准示例**
+🌰 **代码示例**
 
 以 `a.foo.com` 和 `b.foo.com` 为例，只要设置相同的 `document.domain`，两个网页就可以共享 Cookie。
 
@@ -442,7 +442,7 @@ Set-Cookie: key=value; domain=.example; path=/
 <script type="application/javascript">
   console.log(location.hash);
 
-  window.onhashchange = function() {
+  window.onhashchange = function () {
     console.log(location.hash);
   };
 </script>

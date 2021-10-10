@@ -155,7 +155,7 @@ const variableName = function functionName(arg) {
 **匿名函数（anonymous function）** 也叫拉姆达函数，是 `function` 关键字后面没有标识符的函数。
 
 ```js
-const square = function(number) {
+const square = function (number) {
   return number * number;
 };
 ```
@@ -226,7 +226,7 @@ function fn() {}
 console.log(fn.name);
 // 'fn'
 
-var fn = function() {};
+var fn = function () {};
 console.log(fn.name);
 // ''，在chrome浏览器中会显示'fn'
 
@@ -239,7 +239,7 @@ console.log(fn.name);
 
 虽然都可以定义函数，但最大的区别在于：
 
-- 解析器会率 **先读取函数声明**，使其在执行任何代码之前就可以访问（也就是 **函数声明提升**）；
+- 解析器会 **率先读取函数声明**，使其在执行任何代码之前就可以访问（也就是 **函数声明提升**）；
 - 而函数表达式则需要 **解析器执行到它所在的代码行** 才会被解释执行。
 
 ```js

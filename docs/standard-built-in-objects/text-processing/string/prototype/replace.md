@@ -59,7 +59,7 @@ str.replace(pattern, replacement);
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 在下面的例子中，`replace()` 中使用了正则表达式及忽略大小写标示。
 
@@ -168,7 +168,7 @@ function f2c(x) {
 
 ```js
 function htmlEscape(text) {
-  return text.replace(/[<>"&]/g, function(match, pos, originalText) {
+  return text.replace(/[<>"&]/g, function (match, pos, originalText) {
     switch (match) {
       case '<':
         return '&lt;';
@@ -188,7 +188,7 @@ function htmlEscape(text) {
 ```js
 function camelCased(str) {
   const regexp = /-(\w)/g;
-  str.replace(regexp, function(match, pos) {
+  str.replace(regexp, function (match, pos) {
     return pos.toUpperCase();
   });
 }

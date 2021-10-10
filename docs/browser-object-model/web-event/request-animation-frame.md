@@ -5,11 +5,11 @@ nav:
 group:
   title: 全局 API
   order: 2
-title: 动画 API
+title: requestAnimationFrame
 order: 7
 ---
 
-# 动画 API
+# requestAnimationFrame
 
 `window.requestAnimationFrame()` 方法告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用。
 
@@ -63,7 +63,7 @@ window.cancelAnimationFrame(requestID);
 Firefox、Chrome、IE10+ 对 `requestAnimationFrame` 支持很好，但不兼容 IE9- 浏览器，但是我们可以用定时器完成兼容性改造。
 
 ```js
-(function() {
+(function () {
   var lastTime = 0;
   var vendors = ['webkit', 'moz'];
   for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
@@ -74,11 +74,11 @@ Firefox、Chrome、IE10+ 对 `requestAnimationFrame` 支持很好，但不兼容
   }
 
   if (!window.requestAnimationFrame)
-    window.requestAnimationFrame = function(callback) {
+    window.requestAnimationFrame = function (callback) {
       /*调整时间，让一次动画等待和执行时间在最佳循环时间间隔内完成*/
       var currTime = new Date().getTime();
       var timeToCall = Math.max(0, 17 - (currTime - lastTime));
-      var id = window.setTimeout(function() {
+      var id = window.setTimeout(function () {
         callback(currTime + timeToCall);
       }, timeToCall);
       lastTime = currTime + timeToCall;
@@ -86,7 +86,7 @@ Firefox、Chrome、IE10+ 对 `requestAnimationFrame` 支持很好，但不兼容
     };
 
   if (!window.cancelAnimationFrame)
-    window.cancelAnimationFrame = function(id) {
+    window.cancelAnimationFrame = function (id) {
       clearTimeout(id);
     };
 })();

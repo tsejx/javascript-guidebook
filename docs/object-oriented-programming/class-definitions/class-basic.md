@@ -23,7 +23,7 @@ function Point(x, y) {
   this.y = y;
 }
 
-Point.prototype.toString = function() {
+Point.prototype.toString = function () {
   return '(' + this.x + ',' + this.y + ')';
 };
 
@@ -107,7 +107,7 @@ const Baz2 = class Baz1 {
 
 构造函数（`constructor` 方法）是类的默认方法，通过 `new` 关键字生成对象实例时，自动调用该方法。若没有显式定义，一个空的构造函数会被默认添加。
 
-> ⚠️ **注意：**类必须使用 `new` 关键字调用，否则会报错。这是它跟普通构造函数的一个主要区别，后者不用 `new` 关键字也能执行。
+> ⚠️ **注意**：类必须使用 `new` 关键字调用，否则会报错。这是它跟普通构造函数的一个主要区别，后者不用 `new` 关键字也能执行。
 
 ### 实例对象
 

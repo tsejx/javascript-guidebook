@@ -53,7 +53,7 @@ try {
 
 `finally` 子句在 `try` 块和 `catch` 块之后执行但是在下一个 `try` 声明之前执行。
 
-⚠️ **注意：** 无论是否有异常抛出或着是否被捕获它总是执行。
+⚠️ **注意**： 无论是否有异常抛出或着是否被捕获它总是执行。
 
 ```js
 function fn() {
@@ -96,7 +96,7 @@ console.log(fn())
 
 先执行 `return` 之前的语句，再执行 `finnally`，最后返回 `return` 的值。
 
-> ⚠️ **注意：** 如果从 `finally` 块中返回一个值，那么这个值将会成为整个 `try-catch-finally` 的返回值，无论是否有 `return` 语句在 `try` 和 `catch` 中。这包括在 `catch` 块里抛出的异常。
+> ⚠️ **注意**： 如果从 `finally` 块中返回一个值，那么这个值将会成为整个 `try-catch-finally` 的返回值，无论是否有 `return` 语句在 `try` 和 `catch` 中。这包括在 `catch` 块里抛出的异常。
 
 ## 嵌套捕获
 

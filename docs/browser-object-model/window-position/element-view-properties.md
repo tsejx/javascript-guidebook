@@ -54,7 +54,7 @@ DOM 元素的 `offsetParent` 属性返回一个**对象的引用**，这个对�
 
 - 元素自身为 `fixed` 固定定位，`offsetParent` 的结果为 `null`
 
-⚠️ **注意：** 当元素自身为 `fixed` 固定定位时，固定定位的元素相对于视口进行定位，此时没有父级。
+⚠️ **注意**： 当元素自身为 `fixed` 固定定位时，固定定位的元素相对于视口进行定位，此时没有父级。
 
 ```html
 <div id="foo" style="position: fixed"></div>

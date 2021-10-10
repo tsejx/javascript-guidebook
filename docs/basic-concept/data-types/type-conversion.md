@@ -29,8 +29,8 @@ JavaScript 作为一种弱类型的语言，不用像 C 语言那样要定义好
   - `true` 转为 `"true"`
   - `false` 转为 `"false"`
 - Number 类型：转为数字的字符串形式
-  - 如 10 转为 `"10"`
-  - 1e21 转为 `"1e+21"`
+  - 如 `10` 转为 `"10"`
+  - `1e21` 转为 `"1e+21"`
 - Array 类型：转为字符串将各元素以小写逗号 `,` 连接，相当于调用数组 `Array.prototype.join()` 方法
   - 空数组转为空字符串 `''`
   - 数组中 `null` 和 `undefined` 会被当作 **空字符串** 处理
@@ -75,8 +75,8 @@ String({});
 - `null`： 转为 `0`
 - `undefined`：转为 `NaN`
 - String 类型：如果是纯数字形式，则转为对应的数字
-  - 空字符转为 0
-  - 否则一律按转换失败处理，转为 NaN
+  - 空字符转为 `0`
+  - 否则一律按转换失败处理，转为 `NaN`
 - Boolean 类型：
   - `true` 将被转为 `1`
   - `false` 将被转为 `0`
@@ -213,14 +213,14 @@ Boolean 类型转换规则表：
 
 | 数据值              | 转换后的值 |
 | :------------------ | :--------- |
-| 数字 `0`            | false      |
-| `NaN`               | false      |
-| 空字符串 `""`       | false      |
-| `null`              | false      |
-| `undefined`         | false      |
-| 非 `!0` 数字        | true       |
-| 非空字符串 `!""`    | true       |
-| 非 `!null` 对象类型 | true       |
+| 数字 `0`            | `false`    |
+| `NaN`               | `false`    |
+| 空字符串 `""`       | `false`    |
+| `null`              | `false`    |
+| `undefined`         | `false`    |
+| 非 `!0` 数字        | `true`     |
+| 非空字符串 `!""`    | `true`     |
+| 非 `!null` 对象类型 | `true`     |
 
 ⚠️ **注意事项**：使用 `new` 运算符创建的对象隐式转换为 Boolean 类型的值都是 `true`。
 
@@ -248,7 +248,7 @@ Boolean 类型转换规则表：
 !![];
 // true
 
-!!function() {};
+!!function () {};
 // true
 ```
 
@@ -268,64 +268,61 @@ Boolean 类型转换规则表：
 当加号运算符作为一元运算符运算值时，它会将该值转换为 Number 类型。
 
 ```js
+' ' +
+// 0
+
+'0' +
+// 0
+
+'10' +
+// 10
+
+'String' +
+// NaN
+
+true +
+// 1
+
+false +
+// 0
+
+undefined +
+// 0
+
+null +
+// 0
+
+[] +
+// 0
+
+![] +
+// 0
+
+[1] +
+// 1
+
+[1, 2] +
+// NaN
+
+[[1]] +
+// 1
+
+[[1, 2]] +
+// NaN
+
+{} +
+// NaN
+
+function () {};
+// NaN
+
 +'' +
-  // 0
-
-  ' ' +
-  // 0
-
-  '0' +
-  // 0
-
-  '10' +
-  // 10
-
-  'String' +
-  // NaN
-
-  true +
-  // 1
-
-  false +
-  // 0
-
-  undefined +
-  // 0
-
-  null +
-  // 0
-
-  [] +
-  // 0
-
-  ![] +
-  // 0
-
-  [1] +
-  // 1
-
-  [1, 2] +
-  // NaN
-
-  [[1]] +
-  // 1
-
-  [[1, 2]] +
-  // NaN
-
-  {} +
-  // NaN
-
-  function() {}; // NaN
+// 0
 ```
 
 当加号运算符作为二元运算符操作值时，它会根据两边值类型进行数据类型隐式转换。
 
-首先，当引用对象类型的值进行二元加号运算符运算时，会涉及到转换为原始数据类型的问题。
-
-事实上，当一个对象执行例如加法操作的时候，如果它是原始类型，那么就不需要转换。
-
-否则，将遵循以下规则：
+首先，当引用对象类型的值进行二元加号运算符运算时，会涉及到转换为原始数据类型的问题。事实上，当一个对象执行例如加法操作的时候，如果它是原始类型，那么就不需要转换。否则，将遵循以下规则：
 
 - 调用实例的 `valueOf()` 方法，如果有返回的是基础类型，停止下面的过程；否则继续
 - 调用实例的 `toString()` 方法，如果有返回的是基础类型，停止下面的过程；否则继续
@@ -333,8 +330,8 @@ Boolean 类型转换规则表：
 
 如果运算符两边均为原始数据类型时，则按照以下规则解释：
 
-- 字符串连接符：如果两个操作数中只要存在一个操作数为 String 类型，那么另一个操作数会调用 `String()` 方法转成字符串然后拼接
-- 算术运算符：如果两个操作数都不是 String 类型，两个操作数会调用 `Number()` 方法隐式转换为 Number 类型（如果无法成功转换成数字，则变为 `NaN`，再往下操作），然后进行加法算术运算
+- **字符串连接符**：如果两个操作数中只要存在一个操作数为 String 类型，那么另一个操作数会调用 `String()` 方法转成字符串然后拼接
+- **算术运算符**：如果两个操作数都不是 String 类型，两个操作数会调用 `Number()` 方法隐式转换为 Number 类型（如果无法成功转换成数字，则变为 `NaN`，再往下操作），然后进行加法算术运算
 
 值转换为 Number 类型和 String 类型都会遵循一个原则：如果该值为原始数据类型，则直接转换为 String 类型或 Number 类型。如果该值为引用数据类型，那么先通过固定的方法将复杂值转换为原始数据类型，再转为 String 类型或 Number 类型。[ToPrimitive](#ToPrimitive)
 
@@ -477,7 +474,7 @@ nul == null; // true
 ```js
 const a = {
   num: 0,
-  valueOf: function() {
+  valueOf: function () {
     return (this.num += 1);
   },
 };
@@ -488,15 +485,15 @@ console.log(eq);
 
 // 或者改写他的 toString 方法
 const num = 0;
-Function.prototype.toString = function() {
+Function.prototype.toString = function () {
   return ++num;
 };
 function a() {}
 
 // 还可以改写 ES6 的 Symbol 类型的 toPrimitive 的方法
 const a = {
-  [Symbol.toPrimitive]: (function(i) {
-    return function() {
+  [Symbol.toPrimitive]: (function (i) {
+    return function () {
       return ++i;
     };
   })(0),
@@ -509,7 +506,7 @@ const a = {
 ```js
 const a = {
   num: 4,
-  valueOf: function() {
+  valueOf: function () {
     return (this.num -= 1);
   },
 };

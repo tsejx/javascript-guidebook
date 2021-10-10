@@ -70,7 +70,7 @@ const blob = new Blob(data [, options]);
 - 资源分段上传：通过 `Blob.slice` 可以分割二进制数据为子 Blob 上传
 - 本地读取文件：`FileReader` 的 API 可以将 Blob 或 File 转化为文本/ArrayBuffer/Data URL 等类型
 
-### 标准示例
+### 代码示例
 
 ```js
 const data1 = 'a';

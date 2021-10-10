@@ -13,6 +13,15 @@ order: 1
 
 ```jsx | inline
 import React from 'react';
+import img from '../../assets/computer-network/iso.gif';
+
+export default () => <img alt="计算机网络体系" src={img} width={800} />;
+```
+
+<br />
+
+```jsx | inline
+import React from 'react';
 import img from '../../assets/computer-network/computer-network.jpg';
 
 export default () => <img alt="计算机网络体系" src={img} width={800} />;
