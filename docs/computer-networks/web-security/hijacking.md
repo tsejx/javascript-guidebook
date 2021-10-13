@@ -26,7 +26,7 @@ order: 6
 
 ## DNS 劫持
 
-**域名解析劫持（DNS 劫持）**是针对传统 DNS 解析的常见劫持方式。用户在浏览器输入网址，即发出一个 HTTP 请求，首先需要进行域名解析，得到业务服务器的 IP 地址。使用传统 DNS 解析时，会通过当地网络运营商提供的本地域名服务器解析得到结果。在请求本地域名服务器解析域名时会出现问题，目标域名被恶意地解析到其他 IP 地址，造成用户无法正常使用服务。
+**域名解析劫持**（DNS 劫持）是针对传统 DNS 解析的常见劫持方式。用户在浏览器输入网址，即发出一个 HTTP 请求，首先需要进行域名解析，得到业务服务器的 IP 地址。使用传统 DNS 解析时，会通过当地网络运营商提供的本地域名服务器解析得到结果。在请求本地域名服务器解析域名时会出现问题，目标域名被恶意地解析到其他 IP 地址，造成用户无法正常使用服务。
 
 [🌐 关于域名解析过程详解](../computer-network-architecture/dns#域名解析过程)
 
@@ -193,16 +193,16 @@ module.exports = {
 ```js
 function loadScript(url) {
   return fetch(url)
-    .then(res => {
+    .then((res) => {
       if (res.ok) {
         return res;
       }
       return Promise.reject(new Error());
     })
-    .then(res => {
+    .then((res) => {
       return res.text();
     })
-    .catch(e => {
+    .catch((e) => {
       return '';
     });
 }
@@ -213,14 +213,14 @@ function loadScript(url) {
 ```js
 function checkScriptDiff(src, srcNew) {
   return Promise.all([loadScript(src), loadScript(srcNew)])
-    .then(data => {
+    .then((data) => {
       var res1 = data[0].slice(0, 1000);
       var res2 = data[1].slice(0, 1000);
       if (!!res1 && !!res2 && res1 !== res2) {
         // CDN劫持事件发生
       }
     })
-    .catch(e => {
+    .catch((e) => {
       // ...
     });
 }
@@ -228,9 +228,7 @@ function checkScriptDiff(src, srcNew) {
 
 这里为什么只比较前 1000 个字符？因为通常 CDN 劫持者会在 js 文件最前面注入一些代码来达到他们的目的，注入中间代码需要 AST 解析，成本较高，所以比较全部字符串没有意义。如果你还是有顾虑的话，可以加上后 n 个字符的比较。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📖 MDN：Subresource Integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity)
 - [📝 常见 Web 安全攻防总结](https://juejin.im/entry/5a559dd36fb9a01c9e45d896)

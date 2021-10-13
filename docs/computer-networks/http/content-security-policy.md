@@ -157,9 +157,7 @@ Content-Security-Policy: script-src 'sha256-qznLcsROx4GACP2dm0UCKCzCG-HiZ1guq6ZZ
 
 除了 `script-src` 选项，`nonce` 值和 `hash` 值还可以用在 `style-src` 选项，控制页面内嵌的样式表。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📖 内容安全策略（CSP）](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
 - [📝 Content Security Policy 入门教程](http://www.ruanyifeng.com/blog/2016/09/csp.html)

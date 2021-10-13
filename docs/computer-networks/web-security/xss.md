@@ -535,9 +535,7 @@ import img from '../../assets/web-security/xss-cookies-httponly.jpg';
 export default () => <img alt="Cookies HttpOnly" src={img} width={720} />;
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📖 MDN: 内容安全策略(CSP)](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP)
 - [📽 Web 安全之 XSS 攻击与防御](https://www.bilibili.com/video/av56520828)

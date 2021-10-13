@@ -229,8 +229,6 @@ RF Jamming 攻击即为 RF 干扰攻击。该攻击是通过发出干扰射频�
 
 DDoS 攻击究其本质其实是无法彻底防御的，我们能做得就是不断优化自身的网络和服务架构，来提高对 DDoS 的防御能力。
 
----
+## 参考资料
 
-**参考资料：**
-
-* [浅谈 DDoS 攻击与防御](https://juejin.im/entry/5b7a21256fb9a01a031aef67)
+- [浅谈 DDoS 攻击与防御](https://juejin.im/entry/5b7a21256fb9a01a031aef67)

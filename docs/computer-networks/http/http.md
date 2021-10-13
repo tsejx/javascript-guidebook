@@ -52,9 +52,7 @@ HTTP 的特点概括如下：
 
 当 HTTP 开启长连接时，共用一个 TCP 连接，同一时刻只能处理一个请求，那么当前请求耗时过长的情况下，其它的请求只能处于 **阻塞状态**，也就是著名的队头阻塞问题。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [Fetch Living Standard](https://fetch.spec.whatwg.org/)
 - [HTTP 灵魂之问，巩固你的 HTTP 知识体系](https://juejin.im/post/5e76bd516fb9a07cce750746#heading-0)

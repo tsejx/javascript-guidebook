@@ -5,15 +5,15 @@ nav:
 group:
   title: Web 安全
   order: 4
-title: CSRF 跨站点请求伪造攻击
+title: CSRF 跨站请求伪造攻击
 order: 3
 ---
 
-# CSRF 跨站点请求伪造攻击
+# CSRF 跨站请求伪造攻击
 
-**跨站点请求伪造**（Cross-site request forgery，简称 CSRF）是一种挟制用户在当前已登录的 Web 应用程序上执行非本意的操作的攻击方法。
+**跨站请求伪造**（Cross-site Request Forgery，简称 CSRF）是一种挟制用户在当前已登录的 Web 页面上执行非本意的操作的攻击方法。
 
-简单来说，CSRF 攻击就是可以在用户不知情的情况下以受害者名义伪造请求发送给受攻击的站点。
+CSRF 攻击的本质是利用 cookie 会在同源请求中携带发送给服务器的特点，以此来实现用户的冒充。
 
 与 [XSS](./xss) 相比，XSS 利用的是用户对指定网站的信任，CSRF 利用的是网站对用户网页浏览器的信任。
 
@@ -200,10 +200,11 @@ CSRF Token 的防护策略分为三个步骤：
 
 1. 将 CSRF Token 输出到页面中
 
-首先，用户打开页面的时候，服务器需要给这个用户生成一个 Token，该 Token 通过加密算法对数据进行加密，一般 Token 都包括随机字符串和时间戳的组合，显然在提交时 Token 不能再放在 Cookie 中了，否则又会被攻击者冒用。因此，为了安全起见 Token 最好还是存在服务器的 Session 中，之后在每次页面加载时，使用 JS 遍历整个 DOM 树，对于 DOM 中所有的 a 和 form 标签后加入 Token。这样可以解决大部分的请求，但是对于在页面加载之后动态生成的 HTML 代码，这种方法就没有作用，还需要程序员在编码时手动添加 Token。
+首先，用户打开页面的时候，服务器需要给这个用户生成一个 Token，该 Token 通过加密算法对数据进行加密，一般 Token 都包括随机字符串和时间戳的组合，显然在提交时 Token 不能再放在 Cookie 中了，否则又会被攻击者冒用。因此，为了安全起见 Token 最好还是存在服务器的 Session 中，之后在每次页面加载时，使用 JS 遍历整个 DOM 树，对于 DOM 中所有的 a 和 form 标签后加入 Token。这样可以解决大部分的请求，但是对于在页面加载之后动态生成的 HTML 代码，这种方法就没有作用，还需要开发者在编码时手动添加 Token
 
 2. 页面提交的请求携带这个 Token
-   对于 GET 请求，Token 将附在请求地址之后，这样 URL 就变成 `http://url?csrftoken=tokenvalue`。 而对于 POST 请求来说，要在 `form` 的最后加上：
+
+对于 GET 请求，Token 将附在请求地址之后，这样 URL 就变成 `http://url?csrftoken=tokenvalue`。 而对于 POST 请求来说，要在 `form` 的最后加上：
 
 ```html
 <input type="”hidden”" name="”csrftoken”" value="”tokenvalue”" />
@@ -270,31 +271,9 @@ CSRF 攻击过程中，用户是在不知情的情况下构造了网络请求，
 - CSRF 的主动防御策略：CSRF Token 验证、双重 Cookie 验证和 Samesite Cookie
 - 保证页面的幂等性，后端接口不要在 GET 页面中做用户操作
 
----
-
-**参考资料**
+## 参考资料
 
 - [📝 前端安全系列：如何防止 CSRF 攻击?](https://juejin.im/post/5bc009996fb9a05d0a055192)
 - [📝 CSRF 攻击的应对之道](https://juejin.im/entry/58802eb58fd9c50067dd746b)
 - [📝 CSRF 漏洞详细说明](https://juejin.im/entry/5b1e4575f265da6e2c19fd57)
 - [📝 JSON Web Token 入门教程](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
-
-敏感操作一定要判断请求来源、在 Cookie 之外的地方增加密串，和请求一同带上，甚至发送验证码给用户
-
-看了几个问题和答案感觉自己明白了一些
-
-token，放在 cookie 中，还是和直接使用 cookie 一样，所以仅仅将 token 放在 cookie 是不行的；
-
-需要在页面上有一个地方存放 token，以表单提交的方式提供给后台，后台可以校验表单中的 token 和 cookie 中的 token 是否一致，一致则继续校验 token，不一致直接返回；
-
-既然页面有 token 了为什么 cookie 还要额外存放一份，因为如果 cookie 不存放 token，就要 localStore 存在 token，总之要有一个地方将 token 落盘，因为如果不将 token 落盘，下次你再打开这个网址的时候，token 就没了，还需要重新登录重新获取 token；
-
-为什么放在 cookie 之后，别的网站获取不到 cookie 里面的 token 而自己的网站可以获取 token 中的 cookie 呢？
-
-因为 cookie 采取同源策略，只有相同域名的网页才能获取域名对应的 cookie，
-
-你在自己的网页上 getCookie 可以获取自己的 cookie；所以你自己的网站可以获取自己的 token，放到 input 中
-
-而别人在其他域名无法获取你的 cookie，也就无法获取你的 token，所以当别人伪造请求时，token 和 cookie 中的 token 是绝对不一致的；
-
-至于想知道 token 放在 cookie 和 localStore 的区别的话，可以百度去查一下，我也不知道，我去百度了

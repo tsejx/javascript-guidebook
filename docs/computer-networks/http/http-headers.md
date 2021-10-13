@@ -174,9 +174,7 @@ Accept-Encoding: gzip
 | Retry-After       | 如果实体暂时不可取，通知客户端在指定时间之后再次尝试        | `Retry-After: 120`                             |
 | Server            | Web 服务器的安装信息                                        | `Server: Apache/1.3.27 (Unix) (Red-Hat/Linux)` |
 
----
-
-**参考资料：**
+## 参考资料
 
 - [MDN HTTP Headers](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers)
 - [HTTP 协议 Header 详解](https://juejin.im/entry/57482a5379bc44005c7e8594)

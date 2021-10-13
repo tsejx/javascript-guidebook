@@ -260,9 +260,7 @@ export default () => <img alt="CDN Upload Flow" src={img} width={720} />;
 
 - [CDN 命中率、回源率常见问题](https://developer.qiniu.com/fusion/kb/4080/the-common-problems-in-the-cdn)
 
----
-
-**参考资料**
+## 参考资料
 
 - [📖 维基百科：内容分发网络](https://zh.wikipedia.org/wiki/%E5%85%A7%E5%AE%B9%E5%82%B3%E9%81%9E%E7%B6%B2%E8%B7%AF)
 - [📝 CDN 的基本工作过程](http://book.51cto.com/art/201205/338756.htm)
