@@ -15,9 +15,13 @@ order: 2
 
 ## 语法
 
-```js
-Function.prototype.apply(thisArg, argArray);
+语法：
+
+```ts
+apply(thisArg: any, argArray?: any): any;
 ```
+
+参数：
 
 | 参数     | 说明                                     | 类型                |
 | -------- | ---------------------------------------- | ------------------- |
@@ -85,7 +89,7 @@ function minOfArray(arr) {
 var min = minOfArray([5, 6, 2, 3, 7]);
 ```
 
-## Polyfill
+## 兼容实现
 
 实现步骤：
 
@@ -100,32 +104,32 @@ var min = minOfArray([5, 6, 2, 3, 7]);
 与 [Function.prototype.call](./call) 实现仅获取参数的区别。
 
 ```js
-Function.prototype.call = function(context) {
+Function.prototype.call = function (context) {
   // context 是调用 call 的时候参数中的第一个参数
 
   // 先判断当前的调用方是不是一个函数
   if (typeof this !== 'function') {
-    throw new TypeError('当前调用 call 方法的不是函数.')
+    throw new TypeError('当前调用 call 方法的不是函数.');
   }
 
   // 保存调用方给的参数
-  const args = arguments[1]
+  const args = arguments[1];
 
   // 确定执行方的类型，因为可以传 null 和 undefined
   context = context || window;
 
   // 将调用方的内容保存为执行方的一个属性，为了保证不与执行方中的 key 键名重复
-  const fn = Symbol('fn')
+  const fn = Symbol('fn');
 
   context[fn] = this;
 
   // 执行保存的函数，这个时候作用域就是在调用方的对象的作用域下执行，改变 this 的指向
-  const result = context[fn](...args)
+  const result = context[fn](...args);
 
   // 执行完删除刚才新增的属性值
-  delete context[fn]
+  delete context[fn];
 
   // 返回执行结果
-  return result
-}
+  return result;
+};
 ```

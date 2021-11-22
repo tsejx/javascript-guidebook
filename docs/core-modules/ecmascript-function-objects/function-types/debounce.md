@@ -11,7 +11,7 @@ order: 10
 
 # 函数防抖
 
-**函数防抖**：在频繁触发的情况下，只有足够的空闲时间，才执行代码一次，如果没有执行完就清除掉，重新执行逻辑。
+**函数防抖**：在频繁触发的情况下，只有足够的空闲时间，才执行代码一次，如果没有执行完就清除掉，重新执行逻辑。简单来说，当触发后再次触发，会取消上一次触发的执行，直到最后一次触发后过去设定时间后才执行。
 
 🏕 **生活中的实例：**
 
@@ -46,7 +46,12 @@ function debounce(func, wait = 500, immediate = false) {
   let timer = null;
 
   // 返回一个函数，这个函数会在一个时间区间结束后的 wait 毫秒执行 func 函数
-  return function(...params) {
+  return function (...args) {
+    // 是否立即执行
+    if (immediate) {
+      fn.apply(this, args);
+    }
+
     // 函数被调用，清除定时器
     timer && clearTimout(timer);
 
@@ -54,7 +59,7 @@ function debounce(func, wait = 500, immediate = false) {
     // 再过 wait 毫秒就执行 func
     // 这里直接使用箭头函数就不用保存执行上下文的引用了
     timer = setTimeout(() => {
-      fn.apply(this, params);
+      fn.apply(this, args);
     }, delay);
   };
 }
@@ -73,12 +78,12 @@ function debounce(func, wait = 500, immediate = false) {
 
 ## 应用实践
 
-**注册实时验证**
+### 注册实时验证
 
 这里以用户注册时验证用户名是否被占用为例，如今很多网站为了提高用户体验，不会再输入框失去焦点的时候再去判断用户名是否被占用，而是在输入的时候就在判断这个用户名是否已被注册：
 
 ```js
-$('input.user-name').on('input', function() {
+$('input.user-name').on('input', function () {
   $.ajax({
     url: `https://just.com/check`,
     method: 'post',
@@ -104,7 +109,7 @@ $('input.user-name').on('input', function() {
 ```js
 $('input.user-name').on(
   'input',
-  debounce(function() {
+  debounce(function () {
     $.ajax({
       url: `https://just.com/check`,
       method: 'post',
@@ -132,7 +137,7 @@ $('input.user-name').on(
 function debounce(fn, interval = 300) {
   let timeout = null;
 
-  return function() {
+  return function () {
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
@@ -142,8 +147,6 @@ function debounce(fn, interval = 300) {
 }
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 函数节流和函数防抖的可视化区别](http://demo.nimius.net/debounce_throttle/)

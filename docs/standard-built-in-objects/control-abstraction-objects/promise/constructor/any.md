@@ -11,3 +11,7 @@ order: 9
 ---
 
 # Promise.any
+
+## 参考资料
+
+- [Promise.any 的作用，如何自己实现一个 Promise.any](https://juejin.cn/post/6965596525388890142)

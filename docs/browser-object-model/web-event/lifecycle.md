@@ -128,7 +128,7 @@ Firefox，Chrome 和 Opera 都会在 `DOMContentLoaded` 中自动填充表单。
 
 ```html
 <script type="text/javascript">
-  window.onload = function() {
+  window.onload = function () {
     alert('Page loaded');
 
     // 此时图片已经加载完成
@@ -148,7 +148,7 @@ Firefox，Chrome 和 Opera 都会在 `DOMContentLoaded` 中自动填充表单。
 你可以通过运行下面这段代码，然后重新加载页面来进行尝试：
 
 ```js
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
   return false;
 };
 ```
@@ -158,7 +158,7 @@ window.onbeforeunload = function() {
 这里有个例子：
 
 ```js
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
   return 'There are unsaved changes. Leave now?';
 };
 ```

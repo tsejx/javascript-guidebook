@@ -323,7 +323,7 @@ function objectFactory(constructor, ...rest) {
   const instance = Object.create(constructor.prototype);
 
   // 执行对象类的构造函数，同时该实例的属性和方法被 this 所引用，即 this 指向新构造的实例
-  const result = constructor.call(instance, rest);
+  const result = constructor.apply(instance, rest);
 
   // 判断构造函数的运行结果是否对象类型
   if (result !== null && /^(object|function)$/.test(typeof result)) {

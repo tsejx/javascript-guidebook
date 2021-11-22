@@ -18,7 +18,7 @@ order: 13
 
 ```js
 const proxy = new Proxy(target, {
-  apply: function(target, context, args) {
+  apply: function (target, context, args) {
     return Reflect.apply(...arguments);
   },
 });
@@ -49,8 +49,8 @@ const proxy = new Proxy(target, {
 ## 示例
 
 ```js
-const proxy = new Proxy(function() {}, {
-  apply: function(target, context, args) {
+const proxy = new Proxy(function () {}, {
+  apply: function (target, context, args) {
     console.log('Called:' + args.join(', '));
     return args[0] + args[1] + args[2];
   },
@@ -71,7 +71,7 @@ const twice = {
   },
 };
 
-const sum = function(left, right) {
+const sum = function (left, right) {
   return left + right;
 };
 

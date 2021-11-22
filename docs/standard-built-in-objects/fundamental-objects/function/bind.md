@@ -15,12 +15,16 @@ order: 4
 
 ## 语法
 
-```js
-Function.prototype.bind(thisArg [, arg1 [, arg2 [, ...argN]]])
+语法：
+
+```ts
+bind(thisArg: any, ...argArray: any[]): any;
 ```
 
+参数
+
 | 参数          | 说明                                                               | 类型 |
-| ------------- | ------------------------------------------------------------------ | ---- |
+| :------------ | :----------------------------------------------------------------- | :--- |
 | thisArg       | 可选参数。调用函数时指向的 `this` 指针。                           | /    |
 | arg1,arg2,... | 可选参数。当目标函数被调用时，被预置入绑定函数的参数列表中的参数。 | any  |
 
@@ -50,7 +54,7 @@ this.a = '100';
 
 const foo = {
   a: '99',
-  getA: function() {
+  getA: function () {
     return this.a;
   },
 };
@@ -74,9 +78,9 @@ boundGetA();
 `Function.prototype.bind()` 方法的另一个最简单的用法是使一个函数拥有预设的初始参数。只要将这些参数（如果有的话）作为 `bind()` 的参数写在 `this` 后面。当绑定函数被调用时，这些参数会被插入到目标函数的参数列表的开始位置，传递给绑定函数的参数会跟在它们后面。
 
 ```js
-const foo = function(a, b, c, d, e, f) {
+const foo = function (a, b, c, d, e, f) {
   console.log(a, b, c, d, e, f);
-}
+};
 
 // 预设三个参数 1 2 3 -> 对应 foo 参数 a b c
 const bar = foo.bind(null, 1, 2, 3);
@@ -94,11 +98,11 @@ function LaterBloomer() {
   this.petalCount = Math.ceil(Math.random() * 12) + 1;
 }
 
-LaterBloomer.prototype.bloom = function() {
+LaterBloomer.prototype.bloom = function () {
   window.setTimeout(this.declare.bind(this), 1000);
 };
 
-LateBloomer.prototype.declare = function() {
+LateBloomer.prototype.declare = function () {
   console.log('I am a beautiful flower with ' + this.petalCount + ' petals!');
 };
 
@@ -107,7 +111,7 @@ const flower = new LateBloomer();
 flower.bloom();
 ```
 
-## Polyfill
+## 兼容实现
 
 关键点：
 
@@ -117,32 +121,35 @@ flower.bloom();
 实现步骤：
 
 1. 确保调用 `call` 方法的调用方为 `function` 类型
-2. 参数：使用 `Array.prototype.slice.call` 将 `context` 参数去除❗️（重点）
+2. 参数：使用 `Array.prototype.slice.call` 将 `context` 参数去除 ❗️（重点）
 3. 当前执行上下文：就是调用 `bind` 的函数 `this`
 4. 创建返回的新函数
-    - 调用方是 `bind` 函数的执行上下文 `currentContext`
-    - 使用 `apply` 实现
-    - 执行方看调用新函数的所在上下文是否是新函数的实例，是则 `this` 否则 `context`
-    - 参数是 `bind` 的参数与新函数参数的合并
+   - 调用方是 `bind` 函数的执行上下文 `currentContext`
+   - 使用 `apply` 实现
+   - 执行方看调用新函数的所在上下文是否是新函数的实例，是则 `this` 否则 `context`
+   - 参数是 `bind` 的参数与新函数参数的合并
 5. 处理原型链
 6. 返回新函数
 
 ```js
-Function.prototype.bind = function(context) {
+Function.prototype.bind = function (context) {
   if (typeof this !== 'function') {
-    throw new TypeError('当前调用 call 方法的不是函数.')
+    throw new TypeError('当前调用 call 方法的不是函数.');
   }
 
   // 参数要拼接
-  const args = Array.prototype.slice.call(arguments, 1)
+  const args = Array.prototype.slice.call(arguments, 1);
 
   const currentContext = this;
 
   const fn = function () {
-    return currentContext.apply(this instanceof fn ? this : context, args.concat(Array.prototype.slice.call(arguments)))
+    return currentContext.apply(
+      this instanceof fn ? this : context,
+      args.concat(Array.prototype.slice.call(arguments))
+    );
   };
 
-  const OP = function () {}
+  const OP = function () {};
 
   if (this.prototype) {
     OP.prototype = this.prototype;
@@ -153,5 +160,5 @@ Function.prototype.bind = function(context) {
   fn.prototype = new OP();
 
   return fn;
-}
+};
 ```

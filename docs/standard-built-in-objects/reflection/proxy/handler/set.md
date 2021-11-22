@@ -18,7 +18,7 @@ order: 3
 
 ```js
 const proxy = new Proxy(target, {
-  get: function(target, property, value, receiver) {
+  get: function (target, property, value, receiver) {
     // do something
   },
 });
@@ -59,7 +59,7 @@ const proxy = new Proxy(target, {
 const proxy = new Proxy(
   {},
   {
-    set: function(target, prop, value, receiver) {
+    set: function (target, prop, value, receiver) {
       target[prop] = value;
       console.log('property set:' + prop + ' = ' + value);
       return true;
@@ -86,7 +86,7 @@ console.log(proxy.foo);
 
 ```js
 const validator = {
-  set: function(target, prop, value) {
+  set: function (target, prop, value) {
     if (prop === 'age') {
       if (!Number.isInteger(value)) {
         throw new TypeError('The age is not an integer');
@@ -120,7 +120,7 @@ person.age = 300;
 下面示例代码，只要读写的属性名第一个字符不是下划线，一律抛错，从而达到禁止读写内部属性的目的。
 
 ```js
-const invariant = function(key, action) {
+const invariant = function (key, action) {
   if (key[0] === '_') {
     throw new Error(`Invalid attempt to ${action} private "${key}" property`);
   }

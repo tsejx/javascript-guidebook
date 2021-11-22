@@ -18,7 +18,7 @@ order: 14
 
 ```js
 const proxy = new Proxy(target, {
-  construct: function(target, property) {
+  construct: function (target, property) {
     // do something
   },
 });
@@ -50,8 +50,8 @@ const proxy = new Proxy(target, {
 下面代码演示如何拦截 `new` 操作符
 
 ```js
-const proxy = new Proxy(function() {}, {
-  construct: function(target, args, newTarget) {
+const proxy = new Proxy(function () {}, {
+  construct: function (target, args, newTarget) {
     console.log('Called:' + args.join(', '));
     return { value: args[0] * 10 };
   },
@@ -65,8 +65,8 @@ console.log(new proxy(1).value);
 下面代码违反了约定，没有返回一个对象：
 
 ```js
-const proxy = new Proxy(function() {}, {
-  construct: function(target, args, newTarget) {
+const proxy = new Proxy(function () {}, {
+  construct: function (target, args, newTarget) {
     return 1;
   },
 });

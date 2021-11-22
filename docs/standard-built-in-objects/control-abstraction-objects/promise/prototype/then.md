@@ -21,7 +21,7 @@ promiseInstance.then(onFulfilled, onRejected);
 ```
 
 | 参数        | 说明                                                                                                                                                                                                        |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | onFulfilled | 当 Promise 变成 Fulfilled 状态时，该参数作为回调函数被调用。该函数有一个参数，即接受的最终结果。如果传入的 onFulfilled 的参数类型不是函数，则会被内部转换为 `(x) => x`，即原样返回 Promise 最终结果的函数。 |
 | onRejected  | 当 Promise 变成 Rejected 状态时，该参数作为回调函数被调用。该函数有一个参数，即拒绝的原因。                                                                                                                 |
 
@@ -35,8 +35,8 @@ const promise = new Promise((resolve, reject) => {
 });
 
 promise.then(
-  res => console.log(res), // Output: 'Fulfilled'
-  rej => console.log(rej)
+  (res) => console.log(res), // Output: 'Fulfilled'
+  (rej) => console.log(rej)
 );
 ```
 
@@ -46,10 +46,10 @@ promise.then(
 
 ```js
 getJSON('/post/1.json')
-  .then(post => getJSON(post.commentURL))
+  .then((post) => getJSON(post.commentURL))
   .then(
-    comments => console.log('resolved: ', comments),
-    err => console.log('rejected: ', err)
+    (comments) => console.log('resolved: ', comments),
+    (err) => console.log('rejected: ', err)
   );
 ```
 
@@ -77,7 +77,7 @@ promise
   .then(foo)
   .then(bar)
   .then(baz)
-  .catch(error => console.log(err));
+  .catch((error) => console.log(err));
 ```
 
 执行流程分析：

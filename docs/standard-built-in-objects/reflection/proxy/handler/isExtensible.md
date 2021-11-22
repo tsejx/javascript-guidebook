@@ -18,7 +18,7 @@ order: 11
 
 ```js
 const proxy = new Proxy(target, {
-  isExtensions: function(target) {
+  isExtensions: function (target) {
     // do something
   },
 });

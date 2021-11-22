@@ -18,7 +18,7 @@ order: 4
 
 ```js
 const proxy = new Proxy(target, {
-  has: function(target, property) {
+  has: function (target, property) {
     // do something
   },
 });
@@ -55,7 +55,7 @@ const proxy = new Proxy(target, {
 const proxy = new Proxy(
   {},
   {
-    has: function(target, prop) {
+    has: function (target, prop) {
       console.log('Called:' + prop);
       return true;
     },
@@ -75,7 +75,7 @@ const foo = { a: 10 };
 Object.preventExtensions(foo);
 
 const proxy = new Proxy(foo, {
-  has: function(target, prop) {
+  has: function (target, prop) {
     return false;
   },
 });
@@ -88,12 +88,12 @@ console.log('a' in proxy);
 
 ```js
 const handler = {
-  has (target, prop) {
+  has(target, prop) {
     if (key[0] === '_') {
       return false;
     }
     return key in target;
-  }
+  },
 };
 
 const target = { _prop: 'foo', prop: 'foo' };

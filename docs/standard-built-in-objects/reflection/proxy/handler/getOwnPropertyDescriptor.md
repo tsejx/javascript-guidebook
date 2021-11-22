@@ -18,7 +18,7 @@ order: 7
 
 ```js
 const proxy = new Proxy(target, {
-  getOwnPropertyDescriptor: function(target, property) {
+  getOwnPropertyDescriptor: function (target, property) {
     // do something
   },
 });

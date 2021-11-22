@@ -50,11 +50,11 @@ Function ( [ argName1 [, argName1 [, argNameN... [, funcBody ]]]] )
 
 ## 构造函数
 
-- :-1: Function.arguments：以数组形式获取传入函数的所有参数。此属性已被 [`arguments`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments) 替代。
-- :warning: Function.caller：获取调用函数的具体对象
-- Function.length：获取函数的接收参数个数
-- Function.name：获取函数的名称
-- :warning: ​Function.displayName：获取函数的 display name
+- `Function.arguments`：以数组形式获取传入函数的所有参数。此属性已被 [`arguments`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions_and_function_scope/arguments) 替代。
+- `Function.caller`：获取调用函数的具体对象
+- `Function.length`：获取函数的接收参数个数
+- `Function.name`：获取函数的名称
+- `Function.displayName`：获取函数的 display name
 
 ## 原型对象
 
@@ -129,7 +129,7 @@ console.log(sum instanceof Object);
 使用 `function` 关键字也可以声明匿名函数，并将函数的引用赋给某个变量。我们还可以在声明一个匿名函数后，立即执行该函数。
 
 ```js
-var foo = function() {
+var foo = function () {
   var name = 'CodePlayer';
   console.log(name);
 };
@@ -143,7 +143,7 @@ foo();
 定义代码后面加上小括号，里面可以传入执行所需的参数（这里为 `2` 和 `3`）
 
 ```js
-(function(x, y) {
+(function (x, y) {
   console.log(x + y);
 })(2, 3);
 // 5
@@ -152,7 +152,7 @@ foo();
 上述匿名函数立即执行的代码，还可以如下书写（请注意小括号的位置和匹配）：
 
 ```js
-(function(x, y) {
+(function (x, y) {
   console.log(x + y);
 })(2, 3);
 // 5

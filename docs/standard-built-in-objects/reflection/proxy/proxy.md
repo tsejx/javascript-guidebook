@@ -18,9 +18,9 @@ Proxy 可以理解成，在目标对象之前架设一层 **拦截**，外界对
 
 Proxy 这个词的原意是 **代理**，用在这里表示由它来 **代理** 某些操作，可以译为 **代理器**。
 
+- `target`：被 Proxy 处理虚拟化的对象，它常被作为代理的存储后端，根据目标验证关于对象不可扩展性或不可配置属性的不变量（保持不变的语义）
 - `handler`：包含捕捉器（Trap）的占位符对象，可译为处理器对象
 - `traps`：提供属性访问的方法，这类似于操作系统中捕获器的概念
-- `target`：被 Proxy 处理虚拟化的对象，它常被作为代理的存储后端，根据目标验证关于对象不可扩展性或不可配置属性的不变量（保持不变的语义）
 
 **使用方式：**
 
@@ -38,13 +38,15 @@ Proxy 对象的所有用法，都是上面这种形式，不同的只是 `handle
 const proxy = new Proxy(
   {},
   {
-    get: function(target, propKey, receiver) {
-      console.log(`Getting ${propKey}!`);
-      return Reflect.get(target, propKey, receiver);
+    get: function (target, property, receiver) {
+      console.log(`Getting ${property}!`);
+
+      return Reflect.get(target, property, receiver);
     },
-    set: function(target, proxyKey, value, receiver) {
-      console.log(`Getting ${propKey}!`);
-      return Reflect.set(target, propKey, value, receiver);
+    set: function (target, proxyKey, value, receiver) {
+      console.log(`Getting ${property}!`);
+
+      return Reflect.set(target, property, value, receiver);
     },
   }
 );
@@ -70,7 +72,7 @@ proxy.count = 1;
 
 ```js
 const target = {
-  foo: function() {
+  foo: function () {
     console.log(this === proxy);
   },
 };
@@ -156,14 +158,14 @@ Proxy 的劣势就是兼容性问题，而且无法用 Polyfill 磨平。
 使用 Proxy 也可以实现 `pipe` 功能，只要使用 `get` 对属性访问进行拦截就能轻易实现，将访问的方法都放到 `stack` 数组里面，一旦最后访问了 `execute` 就返回结果。
 
 ```js
-const pipe = value => {
+const pipe = (value) => {
   const stack = [];
   const proxy = new Proxy(
     {},
     {
       get(target, prop) {
         if (prop === 'execute') {
-          return stack.reduce(function(val, fn) {
+          return stack.reduce(function (val, fn) {
             return fn(val);
           }, value);
         }
@@ -175,8 +177,8 @@ const pipe = value => {
   return proxy;
 };
 
-const double = n => n * 2;
-const pow = n => n * n;
+const double = (n) => n * 2;
+const pow = (n) => n * n;
 
 console.log(pipe(3).double.pow.execute);
 ```
@@ -203,7 +205,7 @@ if (num in range(1, 100)) {
   // do something
 }
 
-data.filter(n => n in range(1, 10));
+data.filter((n) => n in range(1, 10));
 // [1, 5]
 ```
 
@@ -223,7 +225,7 @@ const data = [
 ];
 
 const products = new Proxy(data, {
-  get: function(target, prop) {
+  get: function (target, prop) {
     // 默认行为是返回属性值
     if (prop in target) {
       return target[prop];
@@ -291,20 +293,20 @@ console.log(products.number);
 方法代理可以轻松地通过一个新构造函数来扩展一个已有的构造函数。
 
 ```js
-const extend = function(sup, base) {
+const extend = function (sup, base) {
   const descriptor = Object.getOwnPropertyDescriptor(base.prototype, 'constructor');
 
   base.prototype = Object.create(sup.prototype);
 
   const handler = {
-    construct: function(target, args) {
+    construct: function (target, args) {
       const obj = Object.create(base.prototype);
 
       this.apply(target, obj, args);
 
       return obj;
     },
-    apply: function(target, context, args) {
+    apply: function (target, context, args) {
       sup.apply(context, args);
       base.apply(context, args);
     },
@@ -323,11 +325,11 @@ const extend = function(sup, base) {
 使用示例：
 
 ```js
-const Person = function(name) {
+const Person = function (name) {
   this.name = name;
 };
 
-const Boy = extend(Person, function(name, age) {
+const Boy = extend(Person, function (name, age) {
   this.age = age;
 });
 
@@ -353,7 +355,7 @@ const dosomething = () => {
 };
 
 const handler = {
-  set: function(target, prop, value) {
+  set: function (target, prop, value) {
     if (prop === 'status' && value === 'complete') {
       dosomething();
     }
@@ -416,7 +418,7 @@ const getCookie = () => {
 
   const setCookie = (name, val) => (document.cookie = `${name}=${val}`);
 
-  const deleteCookie = name =>
+  const deleteCookie = (name) =>
     (document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`);
 
   return new Proxy(cookies, {
@@ -530,13 +532,13 @@ const api = new Proxy(
 // GET /api/user?id=12
 api.user
   .get({ params: { id: 12 } })
-  .then(user => console.log(user))
+  .then((user) => console.log(user))
   .catch(console.error);
 
 // POST /api/register
 api.register
   .post({ body: { username: 'xxx', passworld: 'xxxx' } })
-  .then(res => console.log(res))
+  .then((res) => console.log(res))
   .catch(console.error);
 ```
 

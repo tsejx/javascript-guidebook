@@ -18,7 +18,7 @@ order: 6
 
 ```js
 const proxy = new Proxy(target, {
-  ownKeys: function(target) {
+  ownKeys: function (target) {
     // do something
   },
 });
@@ -78,7 +78,7 @@ const target = {
 };
 
 const proxy = new Proxy(target, {
-  ownKeys: function() {
+  ownKeys: function () {
     return ['a', 'b'];
   },
 });
@@ -99,7 +99,7 @@ const target = {};
 const proxy = new Proxy(
   {},
   {
-    ownKeys: function(target) {
+    ownKeys: function (target) {
       return [123, true, undefined, null, {}, []];
     },
   }

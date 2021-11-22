@@ -18,7 +18,7 @@ order: 12
 
 ```js
 const proxy = new Proxy(target, {
-  setPrototypeOf: function(target, prototype) {
+  setPrototypeOf: function (target, prototype) {
     // do something
   },
 });
@@ -56,7 +56,7 @@ const handler = {
 
 const proto = {};
 
-const target = function() {};
+const target = function () {};
 
 const proxy = new Proxy(target, handler);
 

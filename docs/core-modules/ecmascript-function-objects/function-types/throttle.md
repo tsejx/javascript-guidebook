@@ -11,7 +11,7 @@ order: 8
 
 # 函数节流
 
-**函数节流**：规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。
+**函数节流**：规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。简单来说，触发后立即执行，但如果要执行下一次，需要在离上次执行时间间隔设定时间后再出发才能执行。
 
 🏕 **生活中的实例：**
 
@@ -25,52 +25,38 @@ order: 8
 
 ## 代码实现
 
-### 时间戳实现
-
 ```js
 /**
  * 实现函数的节流（目的是频繁触发中缩减频率）
- * @param func {Function} 实际要执行的函数
+ * @param fn {Function} 实际要执行的函数
  * @param wait {Number} 执行间隔，单位是毫秒(ms)，默认100ms
  * @return {Function} 可被调用执行的函数
  */
 
-function throttle(func, wait = 500) {
+function throttle(fn, wait = 500) {
   // 利用闭包保存定时器和上次执行时间
-  let timer = null;
-
   // 上次执行时间
-  let prev = Date.now();
+  let timer = null,
+    last;
 
-  return function(...params) {
-    const now = Date.now();
+  return function (...args) {
+    const now = +new Date();
 
-    if (now - prev > wait) {
-      prev = now;
-      func.apply(this, params);
-    }
-  };
-}
-```
-
-### 定时器实现
-
-```js
-function throttle(func, wait = 500) {
-  let timer = null;
-
-  return function(...params) {
-    if (!timer) {
+    if (last && now < last + timeout) {
+      clearTimeout(timer);
       timer = setTimeout(() => {
-        func.apply(this, params);
-        timer = null;
-      }, wait);
+        last = now;
+        fun.apply(this, args);
+      }, timeout);
+    } else {
+      last = now;
+      fn.apply(this, args);
     }
   };
 }
 ```
 
-## 具体应用
+## 应用实践
 
 ### 原生实现应用
 
@@ -97,7 +83,7 @@ import { throttle } from '@utils/throttle';
 export default class Invoke extends Component {
   constructor() {
     super();
-    this.change = throttle(e => {
+    this.change = throttle((e) => {
       console.log(e.target.value);
       console.log('throttle');
     }, 100);
@@ -111,7 +97,7 @@ export default class Invoke extends Component {
   componentWillUnmount() {
     window.removeEvenetListener('resize', throttle(this.handleWindowResize), 100);
   }
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     // 持久化
     e.persist();
     this.change(e);
@@ -147,7 +133,7 @@ export default class Invoke extends Component {
 这里以判断页面是否滚动到底部为例，普通的做法就是监听 Window 对象的 `scroll` 事件，然后在函数体中写入判断是否滚动到底部的逻辑。
 
 ```js
-$(window).on('scroll', function() {
+$(window).on('scroll', function () {
   // 判断是否滚动到底部的逻辑
   let pageHeight = $('body').height(),
     scrollTop = $(window).scrollTop(),
@@ -165,7 +151,7 @@ $(window).on('scroll', function() {
 ```js
 $(window).on(
   'scroll',
-  throttle(function() {
+  throttle(function () {
     // 判断是否滚动到底部的逻辑
     let pageHeight = $('body').height(),
       scrollTop = $(window).scrollTop(),
@@ -185,7 +171,7 @@ $(window).on(
 ```js
 function throttle(fn, interval = 300) {
   let canRun = true;
-  return function() {
+  return function () {
     if (!canRun) return;
     canRun = false;
     setTimeout(() => {
@@ -196,9 +182,7 @@ function throttle(fn, interval = 300) {
 }
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 函数节流和函数防抖的可视化区别](http://demo.nimius.net/debounce_throttle/)
 - [📝 轻松理解 JavaScript 函数节流和函数防抖](https://juejin.im/post/5a35ed25f265da431d3cc1b1)

@@ -60,7 +60,9 @@ const promise1 = Promise.resolve(3);
 const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
 const promises = [promise1, promise2];
 
-Promise.allSettled(promises).then(results => results.forEach(result => console.log(result.status)));
+Promise.allSettled(promises).then((results) =>
+  results.forEach((result) => console.log(result.status))
+);
 
 // 结果：
 // fulfilled
@@ -125,8 +127,6 @@ async function uploadFiles(files) {
 }
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [ECMAScript(ECMA-262)：The definition of Promise.allSettled in taht specification](https://tc39.es/proposal-promise-allSettled/)
