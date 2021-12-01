@@ -20,14 +20,14 @@ order: 8
 前自增：先自增，再赋值
 
 ```js
-let foo = 10;
+let n = 10;
 
 // 前自增
-const a = ++foo;
+const res = ++n;
 
-console.log(a);
+console.log(n);
 // 11
-console.log(foo);
+console.log(res);
 // 11
 ```
 
@@ -36,14 +36,14 @@ console.log(foo);
 前自减：先自减，再赋值
 
 ```js
-let foo = 10;
+let n = 10;
 
 // 前自减
-const b = --foo;
+const res = --n;
 
-console.log(b);
+console.log(res);
 // 9
-console.log(foo);
+console.log(n);
 // 9
 ```
 
@@ -52,14 +52,14 @@ console.log(foo);
 后自增：先赋值，再自增
 
 ```js
-let foo = 10;
+let n = 10;
 
 // 后自增
-const c = foo++;
+const res = n++;
 
-console.log(b);
+console.log(res);
 // 10
-console.log(foo);
+console.log(n);
 // 11
 ```
 
@@ -68,14 +68,14 @@ console.log(foo);
 后自减：先赋值，再自减
 
 ```js
-let foo = 10;
+let n = 10;
 
 // 后自减
-const d = foo--;
+const res = n--;
 
-console.log(d);
+console.log(res);
 // 10
-console.log(foo);
+console.log(n);
 // 9
 ```
 
