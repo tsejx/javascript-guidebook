@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.concat
-order: 6
+order: 13
 ---
 
 # String.prototype.concat()

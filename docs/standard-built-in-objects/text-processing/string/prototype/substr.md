@@ -36,7 +36,7 @@ str.substr( startIndex [, length] )
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 var str = 'Hello world!';
@@ -85,8 +85,8 @@ if ('ab'.substr(-1) != 'b') {
    *  @param  {integer}  length  how many characters to return
    *  @return {string}
    */
-  String.prototype.substr = (function(substr) {
-    return function(start, length) {
+  String.prototype.substr = (function (substr) {
+    return function (start, length) {
       // did we get a negative start, calculate how much it is
       // from the beginning of the string
       if (start < 0) start = this.length + start;

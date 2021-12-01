@@ -7,7 +7,7 @@ group:
   path: /control-abstraction-objects/
   order: 15
 title: Generator.prototype.next
-order: 17
+order: 32
 ---
 
 # Generator.prototype.next

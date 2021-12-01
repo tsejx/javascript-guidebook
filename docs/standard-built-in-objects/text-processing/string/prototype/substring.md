@@ -39,7 +39,7 @@ str.substring(startIndex [, indexEnd])
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 下例使用 `substring` 输出字符串 "Mozilla" 中的字符：
 
@@ -106,10 +106,10 @@ console.log(word5);
 ### 删除字符末尾子字符
 
 ```js
-const removeTail = function(str){
+const removeTail = function (str) {
   if (str === null || str.length === 0) return str;
   const len = str.length;
 
   return str.substring(0, len - 1);
-}
+};
 ```

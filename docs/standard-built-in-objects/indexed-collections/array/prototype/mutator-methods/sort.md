@@ -54,7 +54,7 @@ function compare(a, b) {
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 const foo = ['b', 'c', 'a'];
@@ -114,7 +114,7 @@ var items = [
   { name: 'Zeros', value: 37 },
 ];
 
-items.sort(function(a, b) {
+items.sort(function (a, b) {
   if (a.value > b.value) {
     return 1;
   }
@@ -149,7 +149,7 @@ a = ['ant', 'Bug', 'cat', 'Dog'];
 a.sort();
 // ['Bug','Dog','ant','cat'];
 
-a.sort(function(s, t) {
+a.sort(function (s, t) {
   var a = s.toLowerCase();
   var b = t.toLowerCase();
 
@@ -197,7 +197,7 @@ function asc = function (x, y) {
 ```js
 let items = ['réservé', 'premier', 'cliché', 'communiqué', 'café', 'adieu'];
 
-items.sort(function(a, b) {
+items.sort(function (a, b) {
   return a.localeCompare(b);
 });
 
@@ -214,17 +214,17 @@ console.log(item);
 let list = ['Delta', 'alpha', 'CHARLIE', 'bravo'];
 
 // 对需要排序的数字和位置的临时存储
-let mapped = list.map(function(el, i) {
+let mapped = list.map(function (el, i) {
   return { index: i, value: el.toLowerCase() };
 });
 
 // 按照多个值排序数组
-mapped.sort(function(a, b) {
+mapped.sort(function (a, b) {
   return +(a.value > b.value) || +(a.value === b.value) - 1;
 });
 
 // 根据索引得到排序的结果
-let result = mapped.map(function(el) {
+let result = mapped.map(function (el) {
   return list[el.index];
 });
 ```

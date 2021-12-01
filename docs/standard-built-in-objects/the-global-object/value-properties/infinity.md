@@ -16,7 +16,7 @@ order: 1
 `Infinity` 属性的属性特性
 
 | 属性特性       | 布尔值  |
-| -------------- | ------- |
+| :------------- | :------ |
 | `writable`     | `false` |
 | `enumerable`   | `false` |
 | `configurable` | `false` |
@@ -30,12 +30,17 @@ order: 1
 
 ## 示例
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
-console.log(Infinity); // Infinity
-console.log(Infinity + 1); // Infinity
-console.log(Math.pow(10, 1000)); // Infinity
-console.log(Math.log(0)); // Infinity
-console.log(1 / Infinity); // 0
+console.log(Infinity);
+// Infinity
+console.log(Infinity + 1);
+// Infinity
+console.log(Math.pow(10, 1000));
+// Infinity
+console.log(Math.log(0));
+// Infinity
+console.log(1 / Infinity);
+// 0
 ```

@@ -32,7 +32,7 @@ JSON.stringify( value[, replacer [, space]] )
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 - 非数组对象的属性不能保证以特定的顺序出现在序列化后的字符串中。
 - JavaScript 基本数据类型
@@ -77,7 +77,7 @@ JSON.stringify({ [Symbol('foo')]: 'foo' });
 JSON.stringify({ [Symbol.for('foo')]: 'foo' }, [Symbol.for('foo')]);
 // '{}'
 
-JSON.stringify({ [Symbol.for('foo')]: 'foo' }, function(k, v) {
+JSON.stringify({ [Symbol.for('foo')]: 'foo' }, function (k, v) {
   if (typeof k === 'symbol') {
     return 'a symbol';
   }
@@ -159,7 +159,7 @@ JSON.stringify({ uno: 1, dos: 2 }, null, '\t');
 ```js
 var obj = {
   foo: 'foo',
-  toJSON: function() {
+  toJSON: function () {
     return 'bar';
   },
 };

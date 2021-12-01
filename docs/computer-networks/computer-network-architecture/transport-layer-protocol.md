@@ -11,7 +11,7 @@ order: 2
 
 # 传输层协议
 
-传输层（Transport Layer）的主要任务就是负责向两台主机进程之间的通信提供通用的**数据传输服务**。应用进程利用该服务传送应用层报文。
+传输层（Transport Layer）的主要任务就是负责向两台主机进程之间的通信提供通用的 <strong style="color:red">数据传输服务</strong>。应用进程利用该服务传送应用层报文。
 
 网络协议族中有两个具有代表性的传输层协议，分别是 TCP 和 UDP。
 
@@ -20,25 +20,20 @@ order: 2
 
 ## TCP
 
-**传输控制协议**（Transmission Control Protocol，简称 TCP）是一种**面向连接**（连接导向）的、可靠的、 基于 IP 协议的传输层协议。
+**传输控制协议**（Transmission Control Protocol，简称 TCP）是一种 **面向连接**（连接导向）的、可靠的、 基于 IP 协议的传输层协议。
 
-- 每一条 TCP 连接只能有两个端点，每一条 TCP 连接只能是一对一
-- TCP 提供可靠交付的服务。通过 TCP 连接传送的数据，无差错、不丢失、不重复、并且按序到达
-- TCP 提供全双工通信。TCP 允许通信双方的应用进程在任何时候都能发送数据。TCP 连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据
-- 面向字节流，TCP 中的 **流**（Stream）指的是流入进程或从进程流出的字节序列
+- **面向连接**：每条 TCP 连接只能有两个端点（亦即点对点，不可广播、多播），每一条 TCP 连接只能是一对一
+- **可靠的传输服务**：通过 TCP 连接传送的数据，无差错、不丢失、不重复、并且按序到达，丢包时通过重传机制进而增加时延实现可靠性
+- **全双工通信**：TCP 允许通信双方的应用进程在任何时候都能发送数据。TCP 连接的两端都设有发送缓存和接收缓存，用来临时存放双方通信的数据
+- **字节流**：面向字节流，TCP 中的 **流**（Stream）指的是流入进程或从进程流出的字节序列
+- **流量缓冲**：解决速度不匹配问题
 
-### TCP 协议特点
+```jsx | inline
+import React from 'react';
+import img from '../../assets/transport-layer-protocol/tcp-status-machine.jpeg';
 
-在 IP 协议之上，解决网络通讯可依赖问题。
-
-- 点对点（不能广播、多播），面向连接
-- 双向传递（全双工）
-- 字节流：打包成报文段、保证有序接收、重复报文自动丢弃
-  - 缺点：不维护应用报文的边界（对比 HTTP、GEPC）
-  - 优点：不强制要求应用必须离散的创建数据块，不限制数据块大小
-- 流量缓冲：解决速度不匹配问题
-- 可靠的传输服务（保证可达，丢包时通过重发进而增加时延实现可靠性）
-- 拥塞控制
+export default () => <img alt="TCP 状态机" src={img} width={400} />;
+```
 
 ### 数据包结构
 
@@ -46,21 +41,19 @@ order: 2
 
 TCP 首部标志比特有 6 个：URG、ACK、PSH、RST、SYN、FIN
 
-- **URG**：紧急指针
-- **ACK**（Acknowledge）：确认序号有效
-- **PSH**：尽可能快地将数据送往接收进程
-- **RST**：可能需要重现创建建 TCP 连接
-- **SYN**（Synchronize）：同步序号来发起一个连接
-- **FIN**（Finnaly）：发送方完成发送任务，要求释放连接
-
-其他：
-
-- 序列号（Seq = sequance number）
-- 确认号（Ack = acknowledgment number）
+| 控制位 | 名称             | 说明                             |
+| :----- | :--------------- | :------------------------------- |
+| URG    | Urgent Flag      | 紧急指针                         |
+| ACK    | Acknowledge Flag | 确认序号有效                     |
+| PSH    | Push Flag        | 尽可能快地将数据送往接收进程     |
+| RST    | Reset Flag       | 可能需要重现创建建 TCP 连接      |
+| SYN    | Synchronize      | 同步序号来发起一个连接           |
+| FIN    | Finish           | 发送方完成发送任务，要求释放连接 |
+| Seq    | Sequance number  | 序列号                           |
 
 ### 三次握手
 
-TCP 提供<span style="font-weight:bold;color:red">面向连接</span>的通信传输。面向有连接是指在数据通信开始之前先做好两端之间的准备工作，也就是说无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。
+TCP 提供 <strong style="color:red">面向连接</strong> 的通信传输。面向有连接是指在数据通信开始之前先做好两端之间的准备工作，也就是说无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。
 
 三次握手是指建立一个 TCP 连接时需要客户端和服务器端总共发送三个包以确认连接的建立。
 
@@ -182,72 +175,27 @@ export default () => <img alt="四次挥手流程图" src={img} width={800} />;
 
 TCP 建立链接后，只是在两端的内核里面维持 TCP 信息，实际上并没有一个物理的连接通路，对端这个时候挂了，谁也不知道。
 
-### TCP 状态机
+### 重传机制
 
-```jsx | inline
-import React from 'react';
-import img from '../../assets/transport-layer-protocol/tcp-status-machine.jpeg';
+### 拥塞控制机制
 
-export default () => <img alt="TCP 状态机" src={img} width={400} />;
-```
+### 流量控制机制
 
-- 11 种状态
-  - CLOSED
-  - LISTEN
-  - SYN-SENT
-  - SYN-RECEIVED
-  - ESTABLISHED
-  - CLOSE-WAIT
-  - LAST-ACK
-  - FIN-WAIT1
-  - FIN-WAIT2
-  - CLOSING
-  - TIME-WAIT
-- 3 种事件
-
-  - SYN
-  - FIN
-  - ACK
-
-### Keep-Alive
-
-TCP 的 Keep-Alive 功能
-
-Linux 的 TCP Keep-Alive
-
-- 发送心跳周期
-  - Linux：`net.ipv4.tcp_keepalive_time = 7200`
-- 探测包发送间隔
-  - `net.ipv4.tcp_keepalive_intvl = 75`
-- 探测包重试次数
-  - `net.ipv4.tcp_keepalive_probes = 9`
-
-### SYN FLOOD 攻击
-
-攻击原理：
-
-攻击者短时间伪造不同 IP 地址的 SYN 报文，快速占满 backlog 队列，使服务器不能为正常用户服务。
-
-- net.core.netdev_max_backlog
-  - 接收自网卡、但未被内核协议栈处理的报文队列长度
-- net.ipv4.tcp_max_syn_backlog
-  - SYN_RCVD 状态连接的最大个数
-- net.ipv4.tcp_abort_on_overflow
-  - 超出处理能力时，对心来的 SYN 直接回包 RST，丢弃连接
+### 可靠传输机制
 
 ## UDP
 
-用户数据报协议（User Datagram Protocol，UDP），又称使用者资料包协定，是一个简单的面向数据报的传输层协议，正式规范为 RFC 768。
+用户数据报协议（User Datagram Protocol，UDP），又称使用者资料包协定，是一个简单的面向数据包的传输层协议，正式规范为 RFC 768。
 
 在 TCP/IP 模型中，UDP 为网络层以上和应用层以下提供了一个简单的接口。UDP 只提供数据的不可靠传递，它一旦把应用程序发给网络层的数据发送出去，就不保留数据备份（所以 UDP 有时候也被认为是不可靠的数据报协议）。UDP 在 IP 数据报的头部仅仅加入了复用和数据校验（字段）。
 
 ### 特点
 
-- UDP 无需建立连接（减少延迟）
-- UDP 尽最大努力交付，即不保证可靠交付，因此主机不需要维持复杂的链接状态
+- <strong style="color:red">无需建立连接</strong>（减少延迟）
+- 尽最大努力交付，即不保证可靠交付，因此主机不需要维持复杂的链接状态
 - UDP 的首部开销小，只有 8 个字节，比 TCP 的 20 个字节的首部要短
-- UDP 没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如直播，实时视频会议等）
-- UDP 支持一对一、一对多、多对一和多对多的交互通信
+- 没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低（对实时应用很有用，如直播，实时视频会议等）
+- 支持一对一、一对多、多对一和多对多的交互通信
 
 ### 实践
 
@@ -268,17 +216,23 @@ Linux 的 TCP Keep-Alive
 
 ## TCP 与 UDP
 
-| 协议 | 连接性   | 双工性        | 可靠性                   | 有序性                | 有界性             | 拥塞控制 | 传输速度 | 量级 | 头部大小   |
-| ---- | -------- | ------------- | ------------------------ | --------------------- | ------------------ | -------- | -------- | ---- | ---------- |
-| TCP  | 面向连接 | 全双工（1:1） | 可靠（重传机制）         | 有序（通过 SYN 排序） | 无，有沾包情况     | 有       | 慢       | 低   | 20~60 字节 |
-| UDP  | 无连接   | n:m           | 不可靠（丢包后数据丢失） | 无序                  | 有消息边界，无沾包 | 无       | 快       | 高   | 8 字节     |
+|          | TCP                   | UDP                      |
+| :------- | :-------------------- | :----------------------- |
+| 连接性   | 面向连接              | 无连接                   |
+| 双工性   | 全双工（1:1）         | `n:m`                    |
+| 可靠性   | 可靠（重传机制）      | 不可靠（丢包后数据丢失） |
+| 有序性   | 有序（通过 SYN 排序） | 无序                     |
+| 有界性   | 无，有沾包情况        | 有消息边界，无沾包       |
+| 拥塞控制 | 有                    | 无                       |
+| 传输速度 | 慢                    | 快                       |
+| 量级     | 低                    | 20-60 字节               |
+| 头部大小 | 高                    | 8 字节                   |
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📖 维基百科：传输控制协议](https://zh.wikipedia.org/wiki/%E4%BC%A0%E8%BE%93%E6%8E%A7%E5%88%B6%E5%8D%8F%E8%AE%AE)
 - [📝 TCP 协议详解](https://juejin.im/post/5ba895a06fb9a05ce95c5dac)
 - [📝 一篇文章带你熟悉 TCP/IP 协议](https://juejin.im/post/5a069b6d51882509e5432656)
 - [📝 前端必须懂的计算机网络知识](https://juejin.im/post/5ba3b68c6fb9a05d287345ab)
 - [📝 就是要你懂 TCP](http://jm.taobao.org/2017/06/08/20170608/)
+- [📝 TCP / IP 协议没有哪篇文章能讲的这么明明白白！](https://segmentfault.com/a/1190000024571707)

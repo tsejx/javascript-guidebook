@@ -24,7 +24,7 @@ str.trim();
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 var foo = '   foo  ';
@@ -46,7 +46,7 @@ bar.trim();
 
 ```js
 if (!String.prototype.trim) {
-  String.prototype.trim = function() {
+  String.prototype.trim = function () {
     return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
   };
 }

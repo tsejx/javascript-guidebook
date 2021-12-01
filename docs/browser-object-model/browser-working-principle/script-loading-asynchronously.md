@@ -44,10 +44,10 @@ order: 5
 
 浏览器会做如下处理
 
-* 同步加载，停止解析 document
-* 请求 `foo.js`
-* 执行 `foo.js` 中的脚本
-* 继续解析 document
+- 同步加载，停止解析 document
+- 请求 `foo.js`
+- 执行 `foo.js` 中的脚本
+- 继续解析 document
 
 ### defer
 
@@ -58,9 +58,9 @@ order: 5
 
 `defer` 属性规定是否对异步加载的脚本延迟执行，直到页面加载为止。
 
-* 不阻止解析 document，并行下载 `foo.js`、`bar.js`
-* 即使下载完 `foo.js` 和 `bar.js` 仍继续解析 document
-* 按照页面中出现的顺序，在其他同步脚本执行后，`DOMContentLoaded` 事件前依次执行 `foo.js` 和 `bar.js`
+- 不阻止解析 document，并行下载 `foo.js`、`bar.js`
+- 即使下载完 `foo.js` 和 `bar.js` 仍继续解析 document
+- 按照页面中出现的顺序，在其他同步脚本执行后，`DOMContentLoaded` 事件前依次执行 `foo.js` 和 `bar.js`
 
 ### async
 
@@ -71,24 +71,23 @@ order: 5
 
 `async` 属性规定异步加载脚本并且立即执行，则会异步执行。
 
-* 不阻止解析 document，并行下载 `foo.js` 和 `bar.js`
-* 当脚本下载完成后立即执行
-* 两者执行顺序不确定，执行阶段不确定，可能在 `DOMContentLoaded` 事件前或者后
-* 第二个脚本文件可能会在第一个脚本文件之前执行，因此确保两者之间互不依赖非常重要
-* 目的是不让页面等待两个脚本下载和执行，从而异步加载页面其他内容
+- 不阻止解析 document，并行下载 `foo.js` 和 `bar.js`
+- 当脚本下载完成后立即执行
+- 两者执行顺序不确定，执行阶段不确定，可能在 `DOMContentLoaded` 事件前或者后
+- 第二个脚本文件可能会在第一个脚本文件之前执行，因此确保两者之间互不依赖非常重要
+- 目的是不让页面等待两个脚本下载和执行，从而异步加载页面其他内容
 
 ### 综合运用
 
-* 如果使用 `async`：脚本相对于页面的其余部分异步地执行
-* 如果不使用 `async` 但使用 `defer`：脚本将在页面完成解析时执行
-* 如果既不使用 `async` 也不使用 `defer`：在浏览器继续解析页面之前，立即读取并执行脚本
+- 如果使用 `async`：脚本相对于页面的其余部分异步地执行
+- 如果不使用 `async` 但使用 `defer`：脚本将在页面完成解析时执行
+- 如果既不使用 `async` 也不使用 `defer`：在浏览器继续解析页面之前，立即读取并执行脚本
 
 如果 `<script>` 无 `src` 属性，则 `defer` 和 `async` 会被忽略
 
 动态添加的 `<script>` 标签隐含 `async` 属性
 
 **图解脚本的异步加载**
-
 
 ```jsx | inline
 import React from 'react';
@@ -97,34 +96,32 @@ import img from '../../assets/browser-working-principle/parse-javascript.png';
 export default () => <img alt="JavaScript解析" src={img} width={720} />;
 ```
 
-* 两者都不会阻止 document 的解析
-* `defer` 会在 DOMContentLoaded 前依次执行
-* `async` 则是下载完立即执行，不一定是在 DOMContentLoaded 前
-* `async` 因为乱序，所以很适合像 Google Analytics 这样的无依赖脚本
+- 两者都不会阻止 document 的解析
+- `defer` 会在 DOMContentLoaded 前依次执行
+- `async` 则是下载完立即执行，不一定是在 DOMContentLoaded 前
+- `async` 因为乱序，所以很适合像 Google Analytics 这样的无依赖脚本
 
 ## 加载事项
 
-* `<link>`：加载外部 CSS 样式文件 。异步加载，继续解析 HTML。
-* `<script src='url'>`：加载 JavaScript 脚本文件，同步加载并阻塞解析 HTML，加载完马上执行。
-* `<script src='url' async>`：加载 JavaScript 脚本文件。异步加载，继续解析 HTML，加载完马上执行。
-* `<script src='url' defer>`：加载 JavaScript 脚本文件。异步加载，继续解析 HTML，加载完延迟执行。
-* `<img src='url' />`：加载图片，异步加载，继续解析 HTML；但是需要等待 CSS 解析完才解码，所以 CSS 阻塞图片呈现。
+- `<link>`：加载外部 CSS 样式文件 。异步加载，继续解析 HTML。
+- `<script src='url'>`：加载 JavaScript 脚本文件，同步加载并阻塞解析 HTML，加载完马上执行。
+- `<script src='url' async>`：加载 JavaScript 脚本文件。异步加载，继续解析 HTML，加载完马上执行。
+- `<script src='url' defer>`：加载 JavaScript 脚本文件。异步加载，继续解析 HTML，加载完延迟执行。
+- `<img src='url' />`：加载图片，异步加载，继续解析 HTML；但是需要等待 CSS 解析完才解码，所以 CSS 阻塞图片呈现。
 
 DOMContentLoaded 标识着程序从同步脚本执行转化为事件驱动阶段。
 
-* CSSOM 树和 DOM 树是互不关联的两个过程
-* CSS 不会阻塞 DOM 的解析，但会阻塞 DOM 渲染
-* JavaScript 阻塞 DOM 解析，但浏览器会"偷看"DOM，提前下载资源
-* 平时我们把 `<link>` 标签放部头而 `<script>` 放 `<body>` 尾部，是因为 JavaScript 阻塞阻塞 DOM 树的构建
-* 但是 JavaScript 需要查询 CSS 信息，所以 JavaScript 还要等待 CSSOM 树构建完才可以执行
-* 这就造成 CSS 阻塞了 JavaScript，JavaScript 阻塞了 DOM 树构建
+- CSSOM 树和 DOM 树是互不关联的两个过程
+- CSS 不会阻塞 DOM 的解析，但会阻塞 DOM 渲染
+- JavaScript 阻塞 DOM 解析，但浏览器会"偷看"DOM，提前下载资源
+- 平时我们把 `<link>` 标签放部头而 `<script>` 放 `<body>` 尾部，是因为 JavaScript 阻塞阻塞 DOM 树的构建
+- 但是 JavaScript 需要查询 CSS 信息，所以 JavaScript 还要等待 CSSOM 树构建完才可以执行
+- 这就造成 CSS 阻塞了 JavaScript，JavaScript 阻塞了 DOM 树构建
 
-- 浏览器遇到 `<script>` 且没有 `defer` 或 `async` 属性的标签时，会触发页面渲染，因而如果前面 CSS 资源尚未加载完毕时，浏览器会等待它加载完毕在执行脚本。
+* 浏览器遇到 `<script>` 且没有 `defer` 或 `async` 属性的标签时，会触发页面渲染，因而如果前面 CSS 资源尚未加载完毕时，浏览器会等待它加载完毕在执行脚本。
 
----
+## 参考资料
 
-**参考资料：**
-
-* [📝 浏览器原理](<https://juejin.im/post/5b0a6f1af265da0ddb63ecd9#heading-28>)
-* [📝 浅谈 script 标签的 defer 和 async](<https://segmentfault.com/a/1190000006778717>)
-* [📝 JavaScript 和 CSS 的位置对资源加载顺序的影响](<https://zhuanlan.zhihu.com/p/24944905>)
+- [📝 浏览器原理](https://juejin.im/post/5b0a6f1af265da0ddb63ecd9#heading-28)
+- [📝 浅谈 script 标签的 defer 和 async](https://segmentfault.com/a/1190000006778717)
+- [📝 JavaScript 和 CSS 的位置对资源加载顺序的影响](https://zhuanlan.zhihu.com/p/24944905)

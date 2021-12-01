@@ -37,7 +37,7 @@ for (property in expression) statement;
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 for (var propName in window) {

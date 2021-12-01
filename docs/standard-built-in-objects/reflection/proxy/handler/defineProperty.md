@@ -18,7 +18,7 @@ order: 8
 
 ```js
 const proxy = new Proxy(target, {
-  defineProperty: function(target, property, descriptor) {
+  defineProperty: function (target, property, descriptor) {
     // do something
   },
 });
@@ -58,7 +58,7 @@ const proxy = new Proxy(target, {
 const proxy = new Proxy(
   {},
   {
-    defineProperty: function(target, prop, descriptor) {
+    defineProperty: function (target, prop, descriptor) {
       console.log('Called: ' + prop);
       return true;
     },

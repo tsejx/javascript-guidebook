@@ -65,12 +65,10 @@ CSSOM 为何具有树结构？为页面上的任何对象计算最后一组样�
 
 还请注意，以上树并非完整的 CSSOM 树，它只显示了我们决定在样式表中替换的样式。每款浏览器都提供一组默认样式（也称为 User Agent 样式），即我们不提供任何自定义样式时所看到的样式，我们的样式只是替换这些默认样式（例如 [默认 IE 样式](http://www.iecss.com/)）。
 
----
+## 参考资料
 
-**参考资料：**
-
-* [📖 W3C The HTML syntax: Parsing HTML documents](https://www.w3.org/TR/html5/syntax.html#html-parser)
-* [📖 W3C Document Object Model (DOM) Technical Reports](https://www.w3.org/DOM/DOMTR)
-* [📝 Ilya Grigorik: Constructing the Object Model](<https://developers.google.com/web/fundamentals/performance/critical-rendering-path/construction-of-render-tree?hl=zh-cn>)
-* [📝 浏览器原理](https://juejin.im/post/5b0a6f1af265da0ddb63ecd9)
-* [📝 前端必读：浏览器内部工作原理](https://www.cnblogs.com/wjlog/p/5744753.html)
+- [📖 W3C The HTML syntax: Parsing HTML documents](https://www.w3.org/TR/html5/syntax.html#html-parser)
+- [📖 W3C Document Object Model (DOM) Technical Reports](https://www.w3.org/DOM/DOMTR)
+- [📝 Ilya Grigorik: Constructing the Object Model](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/construction-of-render-tree?hl=zh-cn)
+- [📝 浏览器原理](https://juejin.im/post/5b0a6f1af265da0ddb63ecd9)
+- [📝 前端必读：浏览器内部工作原理](https://www.cnblogs.com/wjlog/p/5744753.html)

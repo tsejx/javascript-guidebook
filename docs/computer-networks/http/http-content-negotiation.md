@@ -108,8 +108,6 @@ Content-Encoding: gzip
 Content-Language: de-DE, en-CA
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📖 MDN：HTTP 内容协商](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Content_negotiation)

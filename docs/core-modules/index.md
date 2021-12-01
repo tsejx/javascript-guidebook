@@ -22,10 +22,10 @@ order: 1
     - [声明提升](/core-modules/executable-code-and-execution-contexts/compilation/hoisting)
     - [闭包](/core-modules/executable-code-and-execution-contexts/compilation/closures)
   - **执行阶段**
-    - [执行上下文栈](/core-modules/executable-code-and-execution-contexts/execution/execution-context-stack)
+    - [执行上下文](/core-modules/executable-code-and-execution-contexts/execution/execution-context-stack)
     - [变量对象](/core-modules/executable-code-and-execution-contexts/execution/variable-object)
     - [作用域链](/core-modules/executable-code-and-execution-contexts/execution/scope-chain)
-    - [this](/core-modules/executable-code-and-execution-contexts/execution/this)
+    - [当前执行上下文 this](/core-modules/executable-code-and-execution-contexts/execution/this)
   - **内存管理**
     - [内存模型](/core-modules/executable-code-and-execution-contexts/memory-management/memory-model)
     - [内存生命周期](/core-modules/executable-code-and-execution-contexts/memory-management/memory-life-cycle)

@@ -15,18 +15,43 @@ order: 3
 
 ## 语法
 
-```js
-Object.create(proto, properties);
+语法：
+
+```ts
+Object.create(o: object | null): any;
+Object.create(o: object | null, properties: PropertyDescriptorMap & ThisType<any>): any;
 ```
 
-| 参数       | 说明                                                                                 | 类型   |
-| ---------- | ------------------------------------------------------------------------------------ | ------ |
-| proto      | 新创建对象指向的原型对象                                                             | object |
-| properties | 可选参数。添加到新创建对象的可枚举属性（即自身定义的属性，而不是原型链上的枚举属性） | object |
+类型声明拓展：
 
-⚠️ **注意**：如果 `properties` 参数不是 `null` 或对象，则抛出一个 TypeError 异常。
+```ts
+interface PropertyDescriptor {
+  configurable?: boolean;
+  enumerable?: boolean;
+  value?: any;
+  writable?: boolean;
+  get?(): any;
+  set?(v: any): void;
+}
 
-返回指定原型对象和可枚举属性的新对象。
+interface PropertyDescriptorMap {
+  [s: string]: PropertyDescriptor;
+}
+
+interface ThisType<T> {}
+```
+
+参数说明：
+
+| 参数         | 说明                                                                                 | 类型   |
+| :----------- | :----------------------------------------------------------------------------------- | ------ |
+| `o`          | 新创建对象指向的原型对象                                                             | object |
+| `properties` | 可选参数。添加到新创建对象的可枚举属性（即自身定义的属性，而不是原型链上的枚举属性） | object |
+
+⚠️ **注意**：
+
+- 如果 `properties` 参数不是 `null` 或对象，则抛出一个 TypeError 异常
+- 返回指定原型对象和可枚举属性的新对象
 
 ## 示例
 
@@ -40,7 +65,7 @@ function Shape() {
 }
 
 // Super Class Methods
-Shape.prototype.move = function() {
+Shape.prototype.move = function () {
   this.x += x;
   this.y += y;
   console.log('Shap moved');

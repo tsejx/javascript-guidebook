@@ -53,7 +53,7 @@ map.set(null, 2);
 ## 实例方法
 
 | 方法                            | 说明                                |
-| ------------------------------- | ----------------------------------- |
+| :------------------------------ | :---------------------------------- |
 | `WeakMap.prototype.delete(key)` | 移除 `key` 的关联对象               |
 | `WeakMap.prototype.get(key)`    | 返回 `key` 的关联对象或 `undefined` |
 | `WeakMap.prototype.has(key)`    | 判定是否有指定 `key` 关联对象爱哪个 |
@@ -66,7 +66,7 @@ const x = new WeakMap();
 const y = new WeakMap();
 
 const a = {};
-const b = function() {};
+const b = function () {};
 const c = window;
 
 x.set(a, 100);

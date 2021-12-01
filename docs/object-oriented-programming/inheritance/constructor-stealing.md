@@ -22,7 +22,7 @@ function Parent() {
     hair: 'black',
     skin: 'white',
   };
-  this.sayName = function() {
+  this.sayName = function () {
     console.log('Name');
   };
 }
@@ -30,7 +30,7 @@ function Parent() {
 function Child() {
   Parent.call(this);
 
-  this.sayHi = function() {
+  this.sayHi = function () {
     console.log('Hello world!');
   };
 }
@@ -51,7 +51,7 @@ console.log(girl.attr);
 
 `Child` 的每个实例都会具有自己的继承与父类构造函数的属性的副本。
 
-> ⚠️ **注意：** 函数只不过是在特定环境中执行代码的对象，因此通过使用 `apply` 和 `call` 方法也可以在新创建的对象上执行构造函数。
+> ⚠️ **注意**： 函数只不过是在特定环境中执行代码的对象，因此通过使用 `apply` 和 `call` 方法也可以在新创建的对象上执行构造函数。
 
 ## 传递参数
 

@@ -18,7 +18,7 @@ order: 9
 
 ```js
 const proxy = new Proxy(target, {
-  preventExtensions: function(target) {
+  preventExtensions: function (target) {
     // do something
   },
 });
@@ -51,7 +51,7 @@ const proxy = new Proxy(target, {
 const proxy = new Proxy(
   {},
   {
-    preventExtensions: function(target) {
+    preventExtensions: function (target) {
       console.log('Called');
       Object.preventExtensions(target);
       return true;

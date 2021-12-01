@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.padStart
-order: 17
+order: 24
 ---
 
 # String.prototype.padStart()

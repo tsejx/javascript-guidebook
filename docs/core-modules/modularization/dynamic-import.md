@@ -20,7 +20,7 @@ if (x === 2) {
 }
 ```
 
-⚠️ **注意：**引擎处理 `import` 语句是在编译阶段，这时并不会去分析或执行 `if` 语句，所以 `import` 语句放在 `if` 代码块之中毫无意义，因此会报句法错误，而不是执行时错误。也就是说，`import` 和 `export` 命令只能在模块的顶层，不能在代码块之中。
+⚠️ **注意**：引擎处理 `import` 语句是在编译阶段，这时并不会去分析或执行 `if` 语句，所以 `import` 语句放在 `if` 代码块之中毫无意义，因此会报句法错误，而不是执行时错误。也就是说，`import` 和 `export` 命令只能在模块的顶层，不能在代码块之中。
 
 如此的设计，固然有利于编译器提高效率，但也导致无法在运行时加载模块。在语法上，条件加载就不可能实现。如果 `import` 命令要取代 Node 的 `require` 方法，这就形成了一个障碍。因为 `require` 是运行时加载模块，`import` 命令无法取代 `require` 的 **动态加载功能**。
 
@@ -46,10 +46,10 @@ import(module);
 const main = document.querySelector('main');
 
 import(`./section-modules/${someVariable}.js`)
-  .then(module => {
+  .then((module) => {
     module.loadPageInto(main);
   })
-  .catch(err => {
+  .catch((err) => {
     main.textContent = err.message;
   });
 ```
@@ -63,12 +63,12 @@ import(`./section-modules/${someVariable}.js`)
 `import()` 可以在需要的时候，再加载某个模块。
 
 ```js
-button.addEventListener('click', event => {
+button.addEventListener('click', (event) => {
   import('./dialogBox.js')
-    .then(dialogBox => {
+    .then((dialogBox) => {
       dialogBox.open();
     })
-    .catch(error => {
+    .catch((error) => {
       /* Error handling */
     });
 });
@@ -119,7 +119,7 @@ import('./module.js').then(({ export1, export2 }) => {
 如果模块有 `default` 输出接口，可以用参数直接获得。
 
 ```js
-import('./module.js').then(module => {
+import('./module.js').then((module) => {
   console.log(module.default);
 });
 ```

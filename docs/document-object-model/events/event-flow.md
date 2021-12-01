@@ -4,7 +4,7 @@ nav:
   order: 6
 group:
   title: DOM 事件流
-  order: 7
+  order: 20
 title: 事件流
 order: 1
 ---

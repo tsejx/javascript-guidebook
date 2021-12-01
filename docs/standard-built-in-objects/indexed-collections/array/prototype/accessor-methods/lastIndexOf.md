@@ -29,7 +29,7 @@ arr.lastIndexOd( searchValue [, fromIndex ] )
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 const arr = [2, 5, 9, 2];

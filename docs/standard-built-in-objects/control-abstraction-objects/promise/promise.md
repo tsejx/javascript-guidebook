@@ -12,22 +12,34 @@ order: 2
 
 # Promise
 
-传统异步编程最大特点是地狱式回调嵌套，一旦嵌套层级过深，项目代码将难以理解和维护。而 Promise 能让我们通过 **链式调用** 的方法去解决回调地狱的问题。
+传统异步编程最大特点是地狱式回调嵌套，一旦嵌套层级过深，项目代码将难以理解和维护。而 Promise 能让我们通过 <strong style="color:red">链式调用</strong> 的方法去解决回调地狱的问题。
 
 Promise 是异步编程的一种解决方案，可以将异步操作队列化，按照期望的顺序执行，返回符合预期的结果。可以在对象之间传递和操作 Promise，帮助我们处理队列。
 
-## 语法
+语法：
 
 ```js
-new Promise(executor)
-
-new Promise(function(resolve, reject){...})
+new Promise(executor);
 ```
 
-Promise 的参数 `executor` 是带有 `resolve` 和 `reject` 两个参数的函数。而这两个参数也是函数，由 JavaScript 引擎提供，不用开发者部署。
+`executor` 函数参数语法：
+
+```js
+function(resolve, reject){...}
+```
+
+Promise 的参数 `executor` 是带有 `resolve` 和 `reject` 两个参数的函数。而这两个参数也是函数。
 
 - `resolve`：从 Pending（待定） 变为 Fullfilled（实现），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去。该函数的参数除了**正常的值**以外，还可能是**另一个 Promise 实例**。
 - `reject`：从 Pending（待定） 变为 Rejected（否决），在异步失败时调用，并将异步操作报出的错误，作为参数传递出去。该函数的参数通常是 **Error 对象**的实例，表示抛出的错误。
+
+类型声明：
+
+```ts
+constructor(executor: (resolve: (result: R) => void, reject: (error: any) => void) => void): Promise
+
+constructor(executor: (resolve: (thenable: Thenable<R>) => void, reject: (error: any) => void) => void): Promise
+```
 
 ## 描述
 
@@ -39,12 +51,12 @@ Promise 的参数 `executor` 是带有 `resolve` 和 `reject` 两个参数的函
 
 如果某些事件不断地反复发生，一般来说，使用  [Stream](https://nodejs.org/api/stream.html)  模式是比部署 Promise 更好的选择。
 
-🌰 **标准示例**
+🌰 **代码示例**
 
 ```js
 new Promise(
   /* 执行器 */
-  function(resolve, reject) {
+  function (resolve, reject) {
     // 异步处理
 
     // 数据处理完成后执行
@@ -131,7 +143,7 @@ export default () => <img alt="Promise State" src={img} width={720} />;
 ### 多任务串行
 
 ```js
-const Task = function(result, isSuccess = true) {
+const Task = function (result, isSuccess = true) {
   return () =>
     new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -144,7 +156,7 @@ const Task = function(result, isSuccess = true) {
     });
 };
 
-execute([Task('A'), Task('B'), Task('C', false), Task('D')]).then(resultList => {
+execute([Task('A'), Task('B'), Task('C', false), Task('D')]).then((resultList) => {
   // do something
 });
 ```
@@ -164,10 +176,10 @@ function execute(tasks) {
   return;
   task.reduce(
     (previousPromise, currentPromise) =>
-      previousPromise.then(resultList => {
-        return new Promise(resolve => {
+      previousPromise.then((resultList) => {
+        return new Promise((resolve) => {
           currentPromise()
-            .then(result => {
+            .then((result) => {
               resolve(resultList.concat(result));
             })
             .catch(() => {
@@ -180,9 +192,11 @@ function execute(tasks) {
 }
 ```
 
----
+### 同步并发
 
-**参考资料：**
+### 异步并发
+
+## 参考资料
 
 - [📚 JavaScript Promise 迷你书](http://liubin.org/promises-book/)
 - [📝 Promise 原理讲解(遵循 Promise/A+ 规范)](https://juejin.im/post/5aa7868b6fb9a028dd4de672)

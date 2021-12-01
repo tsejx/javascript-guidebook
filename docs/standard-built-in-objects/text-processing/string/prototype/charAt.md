@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.charAt
-order: 3
+order: 10
 ---
 
 # String.prototype.charAt()

@@ -41,7 +41,9 @@ order: 2
 import React from 'react';
 import img from '../../assets/browser-working-principle/renderer-process-with-main-thread.png';
 
-export default () => <img alt="渲染进程内部包含主线程、工作线程、合成线程和光栅线程" src={img} width={520} />;
+export default () => (
+  <img alt="渲染进程内部包含主线程、工作线程、合成线程和光栅线程" src={img} width={520} />
+);
 ```
 
 不同的线程，有着不同的工作职责。
@@ -75,12 +77,12 @@ JavaScript 解析器：
 下面是渲染引擎在获取文档内容之后的大致工作流程：
 
 1. Parsing：解析文档
-    - [构建文档对象模型](./construction-of-the-object-model)
-    - [构建样式对象模型](./construction-of-the-object-model#css-对象模型)
-    - [脚本异步加载](./script-loading-asynchronously)
+   - [构建文档对象模型](./construction-of-the-object-model)
+   - [构建样式对象模型](./construction-of-the-object-model#css-对象模型)
+   - [脚本异步加载](./script-loading-asynchronously)
 2. RenderTree：构建渲染
-    - [遍历文档树](./construction-of-render-tree)
-    - [Style Calculation：样式计算](./construction-of-render-tree#样式计算)
+   - [遍历文档树](./construction-of-render-tree)
+   - [Style Calculation：样式计算](./construction-of-render-tree#样式计算)
 3. [Layout：布局](./layout)
 4. [Paint：绘制](./paint)
 5. [Rasterization：光栅化](./rasterization)
@@ -98,7 +100,7 @@ export default () => <img alt="浏览器工作大致流程" src={img} width={720
 <br />
 
 1. **浏览器解析过程**
-   - HTML / SVG / XHTML：渲染引擎通过三个 C++ 的类对应这三类文档，解析这三类文，件并构建 **DOM 树**（DOM Tree）
+   - HTML / SVG / XHTML：渲染引擎通过三个 C++ 的类对应这三类文档，解析这三类文件并构建 **DOM 树**（DOM Tree）
    - CSS：渲染引擎解析外部 CSS 文件及内联 `style` 标签内的样式数据，并构建 **CSS 规则树**（ CSS Rule Tree）
    - JavaScript：JavaScript 通过 DOM API 和 CSSOM API 来操作 DOM Tree 和 CSS Rule Tree
 2. **构建渲染树（Rendering Tree）**
@@ -112,7 +114,6 @@ export default () => <img alt="浏览器工作大致流程" src={img} width={720
 6. 最后通过调用操作系统 NativeGUI API 进行绘制
 
 值得注意的是，这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早地将内容呈现到屏幕上，并不会等到所有 HTML 都解析完成之后再去构建和布局渲染树，它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。
-
 
 ### Webkit 实现
 
@@ -138,9 +139,7 @@ export default () => <img alt="Gecko主流程实现" src={img} width={640} />;
 - 对于元素的放置，Webkit 使用的术语是 **布局**（Layout），而 Gecko 称之为 **重排**（Reflow）
 - Webkit 称利用 DOM 节点及样式信息去构建渲染树的过程为 Attachment，Gecko 在 HTML 和 DOM 树之间附加了一层，这层称为内容接收器，相当制造 DOM 元素的工厂。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 原文 Inside look at modern web browser（Part 2）](https://developers.google.com/web/updates/2018/09/inside-browser-part2)
 - [📝 原文：Inside look at modern web browser（Part 3）](https://developers.google.com/web/updates/2018/09/inside-browser-part3)

@@ -3,15 +3,15 @@ nav:
   title: 设计模式
   order: 10
 group:
-  title: 创建型
-  order: 2
+  title: 结构型
+  order: 3
 title: 装饰者模式
 order: 4
 ---
 
 # 装饰者模式
 
-**装饰模式（Decorator Pattern）**：动态地给一个对象增加一些额外的职责（Responsibility），就增加对象功能来说，装饰模式比生成子类实现更为灵活。其别名也可以称为包装器（Wrapper），与适配器模式的别名相同，但它们适用于不同的场合。根据翻译的不同，装饰模式也有人称之为 **油漆工模式**，它是一种对象结构型模式。
+**装饰模式（Decorator Pattern）**：动态地给一个对象增加一些额外的职责（Responsibility），就增加对象功能来说，装饰模式比生成子类实现更为灵活。其别名也可以称为包装器（Wrapper），与适配器模式的别名相同，但它们适用于不同的场合。根据翻译的不同，装饰模式也有人称之为 **油漆工模式**，它是一种对象结构型模式。ES7 的装饰器语法以及 React 中的高阶组件（HoC）都是这一模式的实现，`react-redux` 的 `connect()` 也运用了装饰器模式。
 
 ## 模式结构
 
@@ -45,7 +45,7 @@ order: 4
 
 AOP 是一种可以通过预编译方式和运行期动态代理实现在不修改源代码的情况下给程序动态统一添加功能的一种技术。
 
-AOP 实际是 GoF 设计模式的延续，设计模式孜孜不倦追求的是调用者和被调用者之间的解耦，提高代码的灵活性和可扩展性，AOP可以说也是这种目标的一种实现。
+AOP 实际是 GoF 设计模式的延续，设计模式孜孜不倦追求的是调用者和被调用者之间的解耦，提高代码的灵活性和可扩展性，AOP 可以说也是这种目标的一种实现。
 
 AOP （面向切面编程）装饰函数：
 
@@ -53,22 +53,22 @@ AOP （面向切面编程）装饰函数：
 Function.prototype.before = function (fn) {
   const self = this;
 
-  return function() {
-    fn.apply(new(self), arguments)
+  return function () {
+    fn.apply(new self(), arguments);
 
-    return self.apply(new(self), arguments)
-  }
-}
+    return self.apply(new self(), arguments);
+  };
+};
 
 Function.prototype.after = function (fn) {
   const self = this;
 
-  return function() {
-    self.apply(new(self), arguments);
+  return function () {
+    self.apply(new self(), arguments);
 
-    return fn.apply(new(self), arguments)
-  }
-}
+    return fn.apply(new self(), arguments);
+  };
+};
 ```
 
 ⚠️ **注意**：装饰器对类的行为的改变，是代码编译时发生的，而不是在运行时。
@@ -89,34 +89,34 @@ Function.prototype.before = function (fn) {
       return;
     }
 
-    return self.apply(this, arguments)
-  }
-}
+    return self.apply(this, arguments);
+  };
+};
 
 const params = {
   username: 'mrsingsing',
-  password: ''
-}
+  password: '',
+};
 
 const validate = function () {
   if (params.username === '') {
-    console.log('用户名无效')
-    return false
+    console.log('用户名无效');
+    return false;
   }
   if (params.password === '') {
-    console.log('密码无效')
-    return false
+    console.log('密码无效');
+    return false;
   }
-}
+};
 
 let submit = function () {
   const params = {
     username: 'mrsingsing',
-    password: ''
-  }
-}
+    password: '',
+  };
+};
 
-submit = submit.before(validate)
+submit = submit.before(validate);
 // 密码无效
 ```
 
@@ -125,27 +125,29 @@ submit = submit.before(validate)
 ```js
 const onceDecorator = function (fn) {
   if (typeof fn !== 'function') {
-    throw new TypeError('`fn` must be a function')
+    throw new TypeError('`fn` must be a function');
   }
 
   // 函数执行上下文
   const context = this;
   // Promise 是否被 fulfilled
   let isPromiseFulfilled = false;
-  // 韩式是否已被调用过
+  // 函数是否已被调用过
   let isFuncInvoked = false;
 
   const invokeFunc = (funcArgs, resolve, reject) => {
-    fn.call(context, funcArgs).then(() => {
-      isPromiseFulfilled = true;
-      resolve()
-    }, () => {
-      isPromiseFulfilled = false;
-      isFuncInvoked = false;
-      reject();
-    })
-  }
-
+    fn.call(context, funcArgs).then(
+      () => {
+        isPromiseFulfilled = true;
+        resolve();
+      },
+      () => {
+        isPromiseFulfilled = false;
+        isFuncInvoked = false;
+        reject();
+      }
+    );
+  };
 
   return function (...args) {
     return new Promise((resolve, reject) => {
@@ -153,9 +155,9 @@ const onceDecorator = function (fn) {
         invokeFunc(args, resolve, reject);
         isFuncInvoked = true;
       }
-    })
-  }
-}
+    });
+  };
+};
 
 export default onceDecorator;
 ```
@@ -164,23 +166,23 @@ export default onceDecorator;
 
 ```js
 /**
-* 装饰函数
-* @param {*} func 被装饰的函数
-* @param {*} decorator 装饰器
-*/
+ * 装饰函数
+ * @param {*} func 被装饰的函数
+ * @param {*} decorator 装饰器
+ */
 const decorateFunction = (func, decorator) => {
   return decorator(func);
-}
+};
 
 /**
-* 装饰方法
-* @param {*} func 被装饰的方法
-* @param {*} decorator 装饰器
-* @param {*} context 上下文
-*/
+ * 装饰方法
+ * @param {*} func 被装饰的方法
+ * @param {*} decorator 装饰器
+ * @param {*} context 上下文
+ */
 const decorateMethod = (func, decorator, context) => {
   return decorator.bind(context)(func);
-}
+};
 ```
 
 实际应用场景：

@@ -18,7 +18,7 @@ order: 10
 
 ```js
 const proxy = new Proxy(target, {
-  getPrototypeOf: function(target) {
+  getPrototypeOf: function (target) {
     // do something
   },
 });

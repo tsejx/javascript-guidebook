@@ -12,13 +12,17 @@ order: 1
 
 # Proxy
 
-Proxy 对象用于修改某些操作的默认行为（如属性查找、赋值、枚举、函数调用等），等同于在语言层面做出修改，所以属于一种 **元编程**（meta programming），即对编程语言进行编程。
+Proxy 对象用于修改某些操作的默认行为（如属性查找、赋值、枚举、函数调用等），等同于在语言层面做出修改，所以属于一种 **元编程**（Meta Programming），即对编程语言进行编程。
 
-Proxy 可以理解成，在目标对象之前架设一层 **拦截**，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。Proxy 这个词的原意是代理，用在这里表示由它来 **代理** 某些操作，可以译为 **代理器**。
+Proxy 可以理解成，在目标对象之前架设一层 **拦截**，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。
 
+Proxy 这个词的原意是 **代理**，用在这里表示由它来 **代理** 某些操作，可以译为 **代理器**。
+
+- `target`：被 Proxy 处理虚拟化的对象，它常被作为代理的存储后端，根据目标验证关于对象不可扩展性或不可配置属性的不变量（保持不变的语义）
 - `handler`：包含捕捉器（Trap）的占位符对象，可译为处理器对象
 - `traps`：提供属性访问的方法，这类似于操作系统中捕获器的概念
-- `target`：被 Proxy 处理虚拟化的对象，它常被作为代理的存储后端，根据目标验证关于对象不可扩展性或不可配置属性的不变量（保持不变的语义）
+
+**使用方式：**
 
 ES6 原生提供 Proxy 构造函数，用来生成 Proxy 实例。
 
@@ -26,27 +30,29 @@ ES6 原生提供 Proxy 构造函数，用来生成 Proxy 实例。
 const proxy = new Proxy(target, handler);
 ```
 
-Proxy 对象的所有用法，都是上面这种形式，不同的只是 `handler` 参数的写法。其中，`new Proxy()` 表示生成一个 Proxy 实例，`target` 参数表示所要拦截的目标对象，`handler` 参数也是一个对象，用来定制拦截行为。
+Proxy 对象的所有用法，都是上面这种形式，不同的只是 `handler` 参数的写法。其中，`new Proxy()` 表示生成一个 Proxy 实例，`target` 参数表示所要拦截的目标对象，`handler` 参数也是一个对象，用于定制拦截行为。
 
-## 基本使用方法
+## 基本使用
 
 ```js
 const proxy = new Proxy(
   {},
   {
-    get: function(target, propKey, receiver) {
-      console.log(`Getting ${propKey}!`);
-      return Reflect.get(target, propKey, receiver);
+    get: function (target, property, receiver) {
+      console.log(`Getting ${property}!`);
+
+      return Reflect.get(target, property, receiver);
     },
-    set: function(target, proxyKey, value, receiver) {
-      console.log(`Getting ${propKey}!`);
-      return Reflect.set(target, propKey, value, receiver);
+    set: function (target, proxyKey, value, receiver) {
+      console.log(`Getting ${property}!`);
+
+      return Reflect.set(target, property, value, receiver);
     },
   }
 );
 ```
 
-上面代码对一个空对象架设了一层拦截，重定义了属性的读取（`get`）和设置（`set`）行为。这里暂时先不解释具体的语法，只看运行结果。对设置了拦截行为的对象 `proxy`，去读写它的属性，就会得到下面的结果。
+上面代码对一个空对象架设了一层拦截，重定义了属性的 **读取**（`get`）和 **设置**（`set`）行为。这里暂时先不解释具体的语法，只看运行结果。对设置了拦截行为的对象 `proxy`，去读写它的属性，就会得到下面的结果。
 
 ```js
 proxy.count = 1;
@@ -58,15 +64,15 @@ proxy.count = 1;
 // 2
 ```
 
-上面代码说明，Proxy 实际上重载（Overload）了点运算符，即用自己的定义覆盖了语言的原始定义。
+上面代码说明，Proxy 实际上 **重载**（Overload）了点运算符，即用自己的定义覆盖了语言的原始定义。
 
-## this 指向问题
+## 代理的引用上下文问题
 
 虽然 Proxy 可以代理针对目标对象的访问，但它不是目标对象的透明代理，即不做任何拦截的情况下，也无法保证与目标对象的行为一致。主要原因就是 Proxy 代理的情况下，目标对象内部的 `this` 关键字会指向 Proxy 代理。
 
 ```js
 const target = {
-  foo: function() {
+  foo: function () {
     console.log(this === proxy);
   },
 };
@@ -85,9 +91,10 @@ console.log(proxy.foo());
 
 ## 嵌套支持
 
-Proxy 也是不支持嵌套的，这点和 `Object.defineProperty()` 是一样的。因此与需要通过逐层遍历来解决。Proxy 的写法是在 `get` 里面递归调用 Proxy 并返回。
+Proxy 也是 **不支持嵌套** 的，这点和 `Object.defineProperty()` 是一样的。因此与需要通过逐层遍历来解决。Proxy 的写法是在 `get` 里面递归调用 Proxy 并返回。
 
 ```js
+// 需要代理的数据
 const data = {
   info: {
     name: 'Eason',
@@ -95,9 +102,11 @@ const data = {
   },
 };
 
+// 处理器对象
 const handler = {
   get(target, key, receiver) {
     console.log('GET', key);
+
     // 递归创建并返回
     if (typeof target[key] === 'object' && target[key] !== null) {
       return new Proxy(target[key], handler);
@@ -149,14 +158,14 @@ Proxy 的劣势就是兼容性问题，而且无法用 Polyfill 磨平。
 使用 Proxy 也可以实现 `pipe` 功能，只要使用 `get` 对属性访问进行拦截就能轻易实现，将访问的方法都放到 `stack` 数组里面，一旦最后访问了 `execute` 就返回结果。
 
 ```js
-const pipe = value => {
+const pipe = (value) => {
   const stack = [];
   const proxy = new Proxy(
     {},
     {
       get(target, prop) {
         if (prop === 'execute') {
-          return stack.reduce(function(val, fn) {
+          return stack.reduce(function (val, fn) {
             return fn(val);
           }, value);
         }
@@ -168,8 +177,8 @@ const pipe = value => {
   return proxy;
 };
 
-const double = n => n * 2;
-const pow = n => n * n;
+const double = (n) => n * 2;
+const pow = (n) => n * n;
 
 console.log(pipe(3).double.pow.execute);
 ```
@@ -196,7 +205,7 @@ if (num in range(1, 100)) {
   // do something
 }
 
-data.filter(n => n in range(1, 10));
+data.filter((n) => n in range(1, 10));
 // [1, 5]
 ```
 
@@ -216,7 +225,7 @@ const data = [
 ];
 
 const products = new Proxy(data, {
-  get: function(target, prop) {
+  get: function (target, prop) {
     // 默认行为是返回属性值
     if (prop in target) {
       return target[prop];
@@ -284,20 +293,20 @@ console.log(products.number);
 方法代理可以轻松地通过一个新构造函数来扩展一个已有的构造函数。
 
 ```js
-const extend = function(sup, base) {
+const extend = function (sup, base) {
   const descriptor = Object.getOwnPropertyDescriptor(base.prototype, 'constructor');
 
   base.prototype = Object.create(sup.prototype);
 
   const handler = {
-    construct: function(target, args) {
+    construct: function (target, args) {
       const obj = Object.create(base.prototype);
 
       this.apply(target, obj, args);
 
       return obj;
     },
-    apply: function(target, context, args) {
+    apply: function (target, context, args) {
       sup.apply(context, args);
       base.apply(context, args);
     },
@@ -316,11 +325,11 @@ const extend = function(sup, base) {
 使用示例：
 
 ```js
-const Person = function(name) {
+const Person = function (name) {
   this.name = name;
 };
 
-const Boy = extend(Person, function(name, age) {
+const Boy = extend(Person, function (name, age) {
   this.age = age;
 });
 
@@ -346,7 +355,7 @@ const dosomething = () => {
 };
 
 const handler = {
-  set: function(target, prop, value) {
+  set: function (target, prop, value) {
     if (prop === 'status' && value === 'complete') {
       dosomething();
     }
@@ -409,7 +418,7 @@ const getCookie = () => {
 
   const setCookie = (name, val) => (document.cookie = `${name}=${val}`);
 
-  const deleteCookie = name =>
+  const deleteCookie = (name) =>
     (document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:01 GMT;`);
 
   return new Proxy(cookies, {
@@ -523,13 +532,13 @@ const api = new Proxy(
 // GET /api/user?id=12
 api.user
   .get({ params: { id: 12 } })
-  .then(user => console.log(user))
+  .then((user) => console.log(user))
   .catch(console.error);
 
 // POST /api/register
 api.register
   .post({ body: { username: 'xxx', passworld: 'xxxx' } })
-  .then(res => console.log(res))
+  .then((res) => console.log(res))
   .catch(console.error);
 ```
 

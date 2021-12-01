@@ -19,32 +19,32 @@ order: 3
 
 实际的结果就是在这个代码片段的周围创建了一个作用域气泡，也就是说这段代码中的任何声明（变量或函数）都将绑定在这个新创建的包装函数的作用域中，而不是先前所在的作用域中。换句话说，可以把变量和函数包裹在一个函数的作用域中，然后用这个作用域来隐藏它们。
 
-有很多原因促成了这种基于作用域的隐藏方法。它们大都是从最小权限原则中引申出来的，也叫 [最小权限原则](<https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E6%9D%83%E9%99%90%E5%8E%9F%E5%88%99>)。
+有很多原因促成了这种基于作用域的隐藏方法。它们大都是从 [最小权限原则](https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E6%9D%83%E9%99%90%E5%8E%9F%E5%88%99) 中引申出来的。
 
-这个原则是指在软件设计中，应该最小限度地暴露必要内容，而将其他内容都 **隐藏** 起来，比如某个模块或对象的 API 设计。
+这个原则是指在软件设计中，应该最小限度地暴露必要内容，而将其他内容都 **隐藏** 起来，比如某个模块或对象的 API 设计。这个原则可以延伸到如何选择作用域来包含变量和函数。如果所有变量和函数都在全局作用域中。当然可以在所有的内部嵌套作用域中访问到它们。但这样会破坏前面提到的最小权限原则，因为可能会暴露过多的变量或函数，而这些变量或函数本应该是私有的，正确的代码应该是 **可以阻止对这些变量或函数进行访问**。
 
-这个原则可以延伸到如何选择作用域来包含变量和函数。如果所有变量和函数都在全局作用域中。当然可以在所有的内部嵌套作用域中访问到它们。但这样会破坏前面提到的最小权限原则，因为可能会暴露过多的变量或函数，而这些变量或函数本应该是私有的，正确的代码应该是 **可以阻止对这些变量或函数进行访问的**。
-
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
-function doSomething(a){
-    b = a + doSomethingElse( a * 2 );
+function doSomething(a) {
+  b = a + doSomethingElse(a * 2);
 
-    console.log( b * 3 );
+  console.log(b * 3);
 }
+
 function doSomethingElse(a) {
-    return a - 1;
+  return a - 1;
 }
 
 var b;
 
-doSomething( 2 );	// 15
+doSomething(2);
+// 15
 ```
 
 在这个代码片段中，变量 `b` 和函数 `doSomethingElse` 应该是 `doSomething` 内部具体实现的私有内容。给予外部作用域对 `b` 和 `doSomethingElse` 的访问权限不仅没有必要，而且可能是危险的，因为它们可能被有意或无意地以非预期的方式使用，从而导致超出了 `doSomething` 的适用条件。更使用的设计会将这些私有的具体内容隐藏在 `doSomething` 内部。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 function doSomething(a) {
@@ -54,33 +54,33 @@ function doSomething(a) {
 
   var b;
 
-  b = a + doSomethingElse( a * 2 );
+  b = a + doSomethingElse(a * 2);
 
-  console.log( b * 3 );
+  console.log(b * 3);
 }
 
-doSomething( 2 );	// 15
+doSomething(2); // 15
 ```
 
 现在，`b` 和 `doSomethingElse` 都无法从外部被访问，而只能被 `doSomething` 所控制。功能性和最终效果都没有受影响，但是设计上将具体内容私有化了，设计良好的软件都会依次进行实现。
 
-## 规避冲突
+## 规避命名冲突
 
 隐藏作用域中的变量和函数可以避免同名标识符之间的冲突，两个标识符可能具有相同的名字但用途却不一样，无意间可能造成命名冲突。冲突会导致变量的值被意外覆盖。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
-function foo(){
-  function bar(a){
+function foo() {
+  function bar(a) {
     // 修改 for 循环所属作用域中的 i
     i = 3;
-    console.log( a + i );
+    console.log(a + i);
   }
 
-  for(var i = 0;i < 10; i++){
+  for (var i = 0; i < 10; i++) {
     // 糟糕，无限循环了！
-    bar( i * 2);
+    bar(i * 2);
   }
 }
 
@@ -95,14 +95,14 @@ foo();
 
 ```js
 const MyReallyCoolLibrary = {
-    awesome: 'stuff',
-    doSomething: function() {
-      	// ...
-    },
-    doAnotherThing: function() {
-        // ...
-    }
-}
+  awesome: 'stuff',
+  doSomething: function () {
+    // ...
+  },
+  doAnotherThing: function () {
+    // ...
+  },
+};
 ```
 
 ### 模块管理
@@ -118,27 +118,28 @@ const MyReallyCoolLibrary = {
 ```js
 const a = 2;
 
-function foo() { // <-- 添加这一行
-    const a = 3;
-    console.log( a );	// 3
-}	// <-- 以及这一行
-foo();	// <-- 以及这一行
+function foo() {
+  // <-- 添加这一行
+  const a = 3;
+  console.log(a); // 3
+} // <-- 以及这一行
+foo(); // <-- 以及这一行
 
-console.log( a );	// 2
+console.log(a); // 2
 ```
 
 虽然这种技术可以解决一些问题，但是它并不理想，因为会导致一些额外的问题。首先，必须声明一个具名函数 `foo()` ，意味着 `foo` 这个名称本身"污染"了所在作用域（在这个例子中是全局作用域）。其次，必须显式地通过函数名`foo()`调用这个函数才能运行其中的代码。
 
 如果函数不需要函数名（或者至少函数名可以不污染所在作用域），并且能够自动运行，这将会更加理想。
 
-## 匿名和具名
+## 匿名和具名函数表达式
 
 无论是匿名还是具名，都是针对 **函数表达式** 的。函数声明必须有名称，否则报错。
 
 ```js
 // 函数声明
-function foo(){
-    // do something
+function foo() {
+  // do something
 }
 ```
 
@@ -147,9 +148,9 @@ function foo(){
 **匿名函数表达式：**
 
 ```js
-let foo = function(){
+let foo = function () {
   // do something
-}
+};
 console.log(foo.name);
 // foo
 ```
@@ -158,7 +159,7 @@ console.log(foo.name);
 
 ```js
 // 不要这样写
-let bar = function foobar(){
+let bar = function foobar() {
   // do something
 };
 console.log(bar.name);
@@ -168,20 +169,20 @@ console.log(bar.name);
 对于函数表达式最熟悉的场景可能就是回调参数了。
 
 ```js
-setTimeout(function(){
-    console.log("I waited 1 second!");
+setTimeout(function () {
+  console.log('I waited 1 second!');
 }, 1000);
 ```
 
-这叫 **匿名函数表达式**，因为 `function(){}` 没有名称标识符。
+这叫 **匿名函数表达式**，因为 `function(){}` 是没有名称的标识符。
 
-尽管函数表达式可以是匿名的，而 **函数声明** 是不可以省略函数名。
+⚠️ **注意**：函数表达式可以是匿名的，而 **函数声明** 是不可以省略函数名。
 
 匿名函数表达式的缺点：
 
-- 匿名函数在栈追踪中不会显示出有意义的函数名，使得调试很困难。
-- 如果没有函数名，当函数需要引用自身时只能使用已经过期的 `arguments.callee` 引用，比如在递归中。另一个函数需要引用自身的例子，是在事件触发后事件监听器需要解绑自身。
-- 匿名函数省略了对于代码可读性 / 可理解性很重要的函数名。一个描述性的名称可以让代码不言自明。
+- 匿名函数在栈追踪中不会显示出有意义的函数名，使得调试很困难
+- 如果没有函数名，当函数需要引用自身时只能使用已经过期的 `arguments.callee` 引用。比如在递归中，另一个函数需要引用自身的例子，是在事件触发后事件监听器需要解绑自身
+- 匿名函数省略了对于代码可读性 / 可理解性很重要的函数名。一个描述性的名称可以让代码不言自明
 
 行内函数表达式非常强大且有用——匿名和具名之间的区别并不会对这点有任何影响。给函数表达式指定一个函数名可以有效解决以上问题。始终给函数表达式命名时一个最佳实践。
 
@@ -189,16 +190,13 @@ setTimeout(function(){
 
 **立即执行函数表达式** 又称 **自执行函数**，社区给他规定了术语为 **IIFE**（Immediately Invoked Function Expression）。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
-(function (){
+(function () {
   // do something
-})()
-
-(function (){
-
-}())
+  console.log('IIFE');
+})();
 ```
 
 IIFE 的另一个非常普遍的进阶用法是把它们当作函数调用并传递参数进去。
@@ -206,14 +204,14 @@ IIFE 的另一个非常普遍的进阶用法是把它们当作函数调用并传
 ```js
 var a = 2;
 
-(function IIFE(global){
-    var a = 3;
-    console.log(a);
-    // 3
-    console.log(global.a);
-    // 2
-})(window)
+(function IIFE(global) {
+  var a = 3;
+  console.log(a);
+  // 3
+  console.log(global.a);
+  // 2
+})(window);
 
-console.log( a );
+console.log(a);
 // 2
 ```

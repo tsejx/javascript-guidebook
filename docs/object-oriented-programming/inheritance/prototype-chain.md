@@ -89,10 +89,10 @@ export default () => <img alt="构造函数" src={img} width={800} />;
 | 定义函数时被自动赋值，值默认为 `{}` | 在创建实例对象时被自动添加，并赋值为构造函数的 `prototype` 值 |
 | 用于实现基于原型的继承与属性的共享  | 构成原型链，同样用于实现基于原型的继承                        |
 
-🌰 **标准示例：访问原型链中的原型对象**
+🌰 **代码示例：访问原型链中的原型对象**
 
 ```js
-const Foo = function() {};
+const Foo = function () {};
 
 const foo = new Foo();
 
@@ -135,7 +135,7 @@ console.log(Object.getPrototypeOf(foo) === Object.prototype);
 ### 构造器方式
 
 ```js
-const Foo = function() {};
+const Foo = function () {};
 
 const foo = new Foo();
 

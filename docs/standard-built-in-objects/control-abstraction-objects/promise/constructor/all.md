@@ -14,7 +14,7 @@ order: 4
 
 `Promise.all` 接收一个以 Promise 实例为成员的可迭代对象作为参数，当所有输入的 Promise 成员全部变为 Fulfilled 状态时才会继续执行后续的 `Promise.prototype.then`，如果某个成员变为 Rejected 的时候，函数后续的 `Promise.prototype.catch` 会被执行。
 
-## 语法
+语法：
 
 ```js
 Promise.all(iterable)
@@ -22,17 +22,25 @@ Promise.all(iterable)
 Promise.all([promise1, promise2, ..., promiseN])
 ```
 
-### 参数
+参数：
 
-参数 `iterable` 必须具备 [Iterator](../../iterator-objects/iterator) 接口，且每个成员都是 Promise 实例。
+- `iterable`：必须具备 [Iterator](../../iterator-objects/iterator) 接口，且每个成员都是 Promise 实例。
 
 如果 `iterable` 内每个成员都不是 Promise 实例，会先调用 [Promise.resolve](resolve) 将每个成员转化为 Promise 实例，再进一步处理。
 
-|             参数             |          返回值          |
-| :--------------------------: | :----------------------: |
+| 参数                         | 返回值                   |
+| :--------------------------- | :----------------------- |
 | 空的具备 Iterator 接口的对象 | Fulfilled 状态的 Promise |
-|      不包含任何 Promise      |    异步完成的 Promise    |
-|           其他情况           |  Pending 状态的 Promise  |
+| 不包含任何 Promise           | 异步完成的 Promise       |
+| 其他情况                     | Pending 状态的 Promise   |
+
+类型声明：
+
+```ts
+interface PromiseConstructor {
+  all<T>(values: readonly (T | PromiseLike<T>)[]): Promise<T[]>;
+}
+```
 
 ### 描述
 
@@ -43,24 +51,24 @@ Promise.all([promise1, promise2, ..., promiseN])
 
 ⚠️ **注意**：作为参数的 Promise 实例，自身定义的 `catch` 方法，那么它的状态一旦变更为 Rejected，并不会触发 `Promise.all` 的 `catch` 方法。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 const p1 = new Promise((resolve, reject) => {
   resolve('hello');
 })
-  .then(result => result)
-  .catch(err => err);
+  .then((result) => result)
+  .catch((err) => err);
 
 const p2 = new Promise((resolve, reject) => {
   throw new Error('报错了');
 })
-  .then(result => result)
-  .catch(err => err);
+  .then((result) => result)
+  .catch((err) => err);
 
 Promise.all([p1, p2])
-  .then(result => console.log(result)) // ["hello", Error: 报错了]
-  .catch(err => console.log(err));
+  .then((result) => console.log(result)) // ["hello", Error: 报错了]
+  .catch((err) => console.log(err));
 ```
 
 ## 示例
@@ -76,7 +84,7 @@ const p3 = new Promise((resolve, reject) => {
   setTimeout(resolve, 100, 'foo');
 });
 
-Promise.all([p1, p2, p3]).then(v => console.log(v));
+Promise.all([p1, p2, p3]).then((v) => console.log(v));
 // ['3', 1234, 'foo']
 ```
 
@@ -109,10 +117,10 @@ var p5 = new Promise((resolve, reject) => {
 
 // You can also use .catch
 Promise.all([p1, p2, p3, p4, p5])
-  .then(values => {
+  .then((values) => {
     console.log(values);
   })
-  .catch(reason => {
+  .catch((reason) => {
     console.log(reason);
   });
 ```
@@ -122,12 +130,12 @@ Promise.all([p1, p2, p3, p4, p5])
 如果你需要在所有的 Promise 都结束之后执行某些操作，而不论他们是否 Fulfilled，Promise.all 的这种机制就会成为一种限制，有个比较 Trick 的办法是给 `.then` 和 `.catch` 传入相同的回调，显然，这会让代码的可读性大打折扣。
 
 ```js
-Promise.all(promises.map(p => p.catch(() => undefined)));
+Promise.all(promises.map((p) => p.catch(() => undefined)));
 ```
 
 如果 Promise 的 `.catch` 回调返回了 `undefined`，那么 Promise 的失败就会被当做成功来处理。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 Promise.all(
@@ -136,14 +144,12 @@ Promise.all(
     Promise.resolve(1),
     // Rejects after 2 seconds
     new Promise((resolve, reject) => setTimeout(() => reject(1), 2000)),
-  ].map(p => p.catch(() => undefined))
+  ].map((p) => p.catch(() => undefined))
 ).then(() => console.log('done!'));
 
 // >> done!
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 Promise.all 处理 Rejection 的技巧](https://zhuanlan.zhihu.com/p/26920718)

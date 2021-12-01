@@ -30,7 +30,7 @@ break [labelname];
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 var num = 0;

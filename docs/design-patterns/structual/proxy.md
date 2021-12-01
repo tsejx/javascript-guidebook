@@ -3,17 +3,24 @@ nav:
   title: 设计模式
   order: 10
 group:
-  title: 创建型
-  order: 2
+  title: 结构型
+  order: 3
 title: 代理模式
 order: 3
 ---
 
 # 代理模式
 
-代理模式（Proxy Pattern）：给某一个对象提供一个代理，并由代理对象控制对原对象的引用。代理模式的英文叫做 Proxy 或 Surrogate，它是一种对象结构型模式。
+**代理模式（Proxy Pattern）** 是指为一个原对象找一个代理对象，以便对原对象进行访问。即在访问者与目标对象之间加一层代理，通过代理做授权和控制。代理模式的英文叫做 Proxy 或 Surrogate，它是一种对象结构型模式。
 
-代理模式又分为**静态代理**和**动态代理**。静态代理是由程序猿创建或特定工具自动生成源代码，再对其编译。在程序运行前，代理类的 `.class` 文件就已经存在了。动态代理是在程序运行时，通过运用反射机制动态的创建而成。
+最常见的例子就是经纪人代理明星业务，假设你作为投资人，想联系明星打广告，那么你就需要先经过代理经纪人，经纪人对你的资质进行考察，并为你进行排期，替明星过滤不必要的信息。
+
+事件委托/代理、jQuery 的 `$.proxy`、ES6 的 `proxy` 都是这一模式的实现。
+
+代理模式又分为 **静态代理** 和 **动态代理**：
+
+- **静态代理** 是由程序员创建或特定工具自动生成源代码，再对其编译。在程序运行前，代理类的 `.class` 文件就已经存在了。
+- **动态代理** 是在程序运行时，通过运用反射机制动态的创建而成。
 
 ## 模式结构
 
@@ -37,10 +44,76 @@ order: 3
 - 由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢。
 - 实现代理模式需要额外的工作，有些代理模式的实现非常复杂。
 
-## 代码实现
+## 实践应用
+
+### 图片预加载
+
+虚拟代理：作为创建开销大的对象的代表；虚拟代理经常直到我们真正需要一个对象的时候才创建它；当对象在创建或创建中时，由虚拟代理来扮演对象的替身；对象创建后，代理就会将请求直接委托给对象。
 
 ```js
+const image = (function () {
+  const imgNode = document.createElement('img');
 
+  document.body.appendChild(imgNode);
+
+  return {
+    setSrc: function (src) {
+      imgNode.src = src;
+    },
+  };
+})();
+
+// 代理容器
+const proxyImage = (function () {
+  let img = new Image();
+
+  // 加载完之后将设置为添加的图片
+  img.onload = function () {
+    image.setSrc(this.src);
+  };
+
+  return {
+    setSrc: function (src) {
+      image.setSrc('loading.gif');
+      img.src = src;
+    },
+  };
+})();
+
+proxyImage.setSrc('file.jpg');
 ```
 
-## 实践应用
+代理容器控制了客户对 Image 的访问，并且在过程中加了一些额外的操作。
+
+### 计算乘积
+
+缓存代理可以为一些开销大的运算结果提供暂时的存储，在下次运算时，如果传递进来的参数跟之前一致，则可以直接返回前端存储的结果。
+
+```js
+// 求乘积函数（专注于自身职责，计算成绩，缓存由代理实现）
+const mult = function () {
+  let result = 1;
+  for (let i = 0, l = arguments.length; i < l; i++) {
+    result = result * arguments[i];
+  }
+
+  return result;
+};
+
+// proxyMult
+const proxyMult = (function () {
+  let cache = {};
+  return function () {
+    let args = Array.prototype.join.call(arguments, ',');
+
+    if (args in cache) {
+      return cache[args];
+    }
+
+    return (cache[arg] = mult.apply(this, arguments));
+  };
+})();
+
+proxyMult(1, 2, 3); // 6
+proxyMult(1, 2, 3); // 6
+```

@@ -11,9 +11,11 @@ order: 2
 
 # Blob API
 
-Blob，Binary Large Object 的缩写，代表二进制类型的大对象。Blob 的概念在一些数据库中有使用到，例如，MYSQL 中的 BLOB 类型就表示二进制数据的容器。在 Web 中，Blob 类型的对象表示不可变的类似文件对象的原始数据，通俗点说，就是 Blob 对象是二进制数据，但它是类似文件对象的二进制数据，因此可以像操作 File 对象一样操作 Blob 对象，实际上，File 继承自 Blob，并将其扩展为支持用户系统上的文件。
+Blob（Binary Large Object）对象表示一个不可变、原始数据的类文件对象。它的数据可以按文本或二进制的格式进行读取，也可以转换成 ReadableStream 来用于数据操作。
 
-## 构造 Blob 对象
+Blob 表示的不一定是 JavaScript 原生格式的数据。File 接口基于 Blob，继承了 `blob` 的功能并将其扩展使其支持用户系统上的文件。
+
+## 基本用法
 
 ### 构造函数
 
@@ -23,75 +25,108 @@ Blob，Binary Large Object 的缩写，代表二进制类型的大对象。Blob 
 const blob = new Blob(data [, options]);
 ```
 
-#### 参数
+### 参数
 
-|  参数   |                                                                                                                                                                                 说明                                                                                                                                                                                  |
-| :-----: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  data   |                                                                                                              （类）数组类型，数组中的每一项连接起来构成 Blob 对象的数据，数组中的每项元素可以是 `ArrayBuffer`，`ArrayBufferView`，`Blob`，`DOMString`。                                                                                                               |
-| options | 可选项，字典格式类型，可以指定如下两个属性：<br />type，默认值为 `""`，它代表了将会被放入到 Blob 中的数组内容的 MIME 类型<br /> endings，默认值为 `"transparent"`，用于指定包含行结束符 `\n` 的字符串如何被写入。 它是以下两个值中的一个： `"native"`，表示行结束符会被更改为适合宿主操作系统文件系统的换行符； `"transparent"`，表示会保持 Blob 中保存的结束符不变。 |
+- `data`：类数组类型，数组中的每一项连接起来构成 Blob 对象的数据，数组中的每项元素可以是 `ArrayBuffer`、`ArrayBufferView`、`Blob`、`DOMString`
+- `options`：可选项，字典格式类型，可以指定如下两个属性
+  - `type`：默认值为空字符串 `''`，它代表了将会被放入到 Blob 中的数组内容的 MIME 类型
+  - `endings`：默认值为 `transparent`，用于指定包含行结束符 `\n` 的字符串如何被写入。 它是以下两个值中的一个：
+    - `native`，表示行结束符会被更改为适合宿主操作系统文件系统的换行符
+    - `transparent`，表示会保持 Blob 中保存的结束符不变
 
-#### 示例
+## 属性和方法
 
-```js
-const blob = new Blob(['我是Blob'], { type: 'text/html' });
-```
+### 属性
 
-### slice 方法
+| 属性        | 说明                                                    |
+| :---------- | :------------------------------------------------------ |
+| `Blob.size` | （只读）Blob 对象的大小（单位：字节）                   |
+| `Blob.type` | （只读）Blob 对象的 MIME 类型，如果是未知，则是空字符串 |
 
-Blob 对象有一个 `slice()` 方法，返回一个新的 Blob 对象，包含了源 Blob 对象中指定范围内的数据。
+### 方法
 
-```js
-const newBlob = originBlob.slice([start [, end [, contentType]]])
-```
+| 属性                                          | 说明                                                       |
+| :-------------------------------------------- | :--------------------------------------------------------- |
+| `Blob.slice([start [, end [, contentType]]])` | 返回源 Blob 对象指定范围的新 Blob 对象                     |
+| `Blob.stream()`                               | 返回能读取 Blob 对象内容的 ReadableStream                  |
+| `Blob.text()`                                 | 返回 Promise 且包含 Blob 所有内容的 UTF-8 格式的 USVString |
+| `Blob.arrayBuffer()`                          | 返回 Promise 且包含 Blob 所有内容二进制格式的 ArrayBuffer  |
 
-#### 参数
+## 与 ArrayBuffer 的关系
 
-|    参数     |                                                                              参数                                                                               |
-| :---------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|    start    |        可选，代表 Blob 里的下标，表示第一个会被拷贝进新的 Blob 的字节的起始位置。如果传入的是一个负数，那么这个偏移量将会从数据的末尾从后到前开始计算。         |
-|     end     | 可选，代表的是 Blob 的一个下标，这个下标-1 的对应将会是被拷贝进新的 Blob 的最后一个字节。如果你传入了一个负数，那么这个偏移量将会从数据的末尾从后到前开始计算。 |
-| contentType |                           可选，给新的 Blob 赋予一个新的文档类型。这将会把它的 type 属性设为被传入的值。它的默认值是一个空的字符串。                            |
+相同点：Blob 和 ArrayBuffer 都是二进制的容器
 
-#### 示例
+- ArrayBuffer：ArrayBuffer 更加底层，就是一段纯粹的内存上的二进制数据，我们可以对其任何一个字节进行单独的修改，也可以根据我们的需要以我们制定的形式读取指定范围的数据
+- Blob：Blob 就是将一段二进制数据做了一个封装，我们拿到的就是一个整体，可以看到它的整体属性大小、类型；也可以对其分割，但不能了解到它的细节
 
-```js
-const data = 'abcdef';
-const blob1 = new Blob([data]);
-const blob2 = blob1.slice(0, 3);
+联系：Blob 可以接受一个 ArrayBuffer 作为参数生成一个 Blob 对象，此行为就相当于对 ArrayBuffer 数据做一个封装，之后就是以整体的形式展现了
 
-console.log(blob1); // export: Blob {size: 6, type: ""}
-console.log(blob2); // export: Blob {size: 3, type: ""}
-```
+应用上的区别：由于 ArrayBuffer 和 Blob 的特性，Blob 作为一个整体文件，适合用于传输；而只有需要关注细节（比如修改某段数据时），才需要用到 ArrayBuffer
 
-通过 `slice()` 方法，从 `blob1` 中创建出一个新的 Blob 对象，siez 等于 3。
+## 应用示例
 
-### Blob 属性
+- 文件下载：通过 `URL.createObjectURL(blob)` 生成 Blob URL，赋给 `a.download` 属性
+- 图片显示：通过 `URL.createObjectURL(blob)` 生成 Blob URL，赋给 `img.src` 属性
+- 资源分段上传：通过 `Blob.slice` 可以分割二进制数据为子 Blob 上传
+- 本地读取文件：`FileReader` 的 API 可以将 Blob 或 File 转化为文本/ArrayBuffer/Data URL 等类型
 
-| 属性      | 说明                                            |
-| --------- | ----------------------------------------------- |
-| blob.size | Blob 对象的大小（以字节为单位）                 |
-| blob.type | Blob 对象的 MIME 类型，如果是未知，则是空字符串 |
-
-## Blob 的使用
-
-使用 Blob 最简单的方法就是创建一个 URL 来指向 Blob：
-
-```html
-// html <a download="data.txt" id="getData">下载</a>
-```
+### 代码示例
 
 ```js
-// js
-const data = 'Hello world!';
-const blob = new Blob([data], {
-    type: 'text/html,charset=UTF-8'
-})；
+const data1 = 'a';
+const data2 = 'b';
+const data3 = '<div style="color: red;">This is a blob</div>';
+const data4 = { name: 'abc' };
 
-window.URL = window.URL || window.webkitURL;
-document.querySelect('#getData').href = URL.createObjectURL(blob);
+const blob1 = new Blob([data1]);
+const blob2 = new Blob([data1, data2]);
+const blob3 = new Blob([data3]);
+const blob4 = new Blob([JSON.stringify(data4)]);
+const blob5 = new Blob([data4]);
+const blob6 = new Blob([data3, data4]);
+
+console.log(blob1);
+// Blob { size: 1, type: "" }
+console.log(blob2);
+// Blob { size: 2, type: "" }
+console.log(blob3);
+// Blob { size: 44, type: "" }
+console.log(blob4);
+// Blob { size: 14, type: "" }
+console.log(blob5);
+// Blob { size: 15, type: "" }
+console.log(blob6);
+// Blob { size: 59, type: "" }
 ```
 
-上面的代码将 Blob URL 赋值给 `a` ，点击后提示下载文本文件 `data.txt` ，文件内容为 `“Hello world！”`。
+- `blob4`：通过 `JSON.stringify` 把 `data4` 对象转换成 JSON 的字符串
+- `blob5`：直接使用 `data4` 创建
+
+实际上，当使用普通对象创建 Blob 对象时，相当于调用了普通对象的 `toString` 方法得到字符串数据，然后再创建 Blob 对象。
+
+所以 `blob5` 保存的数据是 `"[object Object]"`，是 15 个字节（不包含最外层的引号）。
+
+### Blob URL
+
+Blob URL 是 Blob 协议的 URL，格式如下：
+
+```
+blob:http://xxx
+```
+
+<br />
+
+<code src="../../../example/binary-data/blob-url/index.tsx" />
+
+和冗长的 Base64 格式的 Data URL 相比，Blob URL 的长度显然不能够存储足够的信息，这也就意味着它只是类似于一个浏览器内部的 **引用**。
+
+从这个角度来看，Blob URL 是 **浏览器自行制定的伪协议**。
+
+常见的应用场景：
+
+- 作为文件的下载地址
+- 作为图片资源地址
+- 本地视频文件上传前播放器的预览地址
 
 ---
 

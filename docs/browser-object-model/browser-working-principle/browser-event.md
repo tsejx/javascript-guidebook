@@ -51,7 +51,7 @@ export default () => <img alt="非立即可滚动区输入描述示意图" src={
 Web 开发中常用的事件处理模式是 **事件代理**。因为事件会冒泡，所以你可以在最顶层的元素中添加一个事件处理器，用来代理事件目标产生的任务。下面这样的代码，你可能见过，或许也写过。
 
 ```js
-document.body.addEventListener('touchstart', event => {
+document.body.addEventListener('touchstart', (event) => {
   if (event.target === area) {
     event.preventDefault();
   }
@@ -63,13 +63,17 @@ document.body.addEventListener('touchstart', event => {
 你可以给事件监听添加一个 `passive: true` 选项 ，将这种负面效果最小化。这会提示浏览器你想继续在主线程中监听事件，但合成器不必停滞等候，可接着创建新的合成帧。
 
 ```js
-document.body.addEventListener('touchstart', event => {
-  if (event.target === area) {
-    event.preventDefault()
+document.body.addEventListener(
+  'touchstart',
+  (event) => {
+    if (event.target === area) {
+      event.preventDefault();
+    }
+  },
+  {
+    passive: true,
   }
- }, {
-   passive: true
-});
+);
 ```
 
 ## 检查事件是否可撤销
@@ -141,19 +145,21 @@ export default () => <img alt="相同的时间轴下事件被合并且延迟发�
 
 ## 帧内事件
 
-事件合并可帮助大多数 Web 应用构建良好的用户体验。然而，如果你开发的是一个绘图类应用，需要基于 `touchmove` 事件的坐标绘制线路，那么在你试图画下一根光滑的线条时，区间内的一些坐标点也可能会因事件合并而丢失。这时，你可以使用目标事件的  `getCoalescedEvents` 方法获取事件合并后的信息。
+事件合并可帮助大多数 Web 应用构建良好的用户体验。然而，如果你开发的是一个绘图类应用，需要基于 `touchmove` 事件的坐标绘制线路，那么在你试图画下一根光滑的线条时，区间内的一些坐标点也可能会因事件合并而丢失。这时，你可以使用目标事件的 `getCoalescedEvents` 方法获取事件合并后的信息。
 
 ```jsx | inline
 import React from 'react';
 import img from '../../assets/browser-working-principle/touch-gesture-and-coalesced-event.png';
 
-export default () => <img alt="左为流畅的触摸手势路径、右为事件合并后的有限路径" src={img} width={520} />;
+export default () => (
+  <img alt="左为流畅的触摸手势路径、右为事件合并后的有限路径" src={img} width={520} />
+);
 ```
 
 <br />
 
 ```js
-window.addEventListener('pointermove', event => {
+window.addEventListener('pointermove', (event) => {
   const events = event.getCoalescedEvents();
   for (let event of events) {
     const x = event.pageX;
@@ -163,9 +169,7 @@ window.addEventListener('pointermove', event => {
 });
 ```
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 英语原文：Inside look at modern web browser（Part 4）](https://developers.google.com/web/updates/2018/09/inside-browser-part4)
 - [📝 现代浏览器内部揭秘（Part 4）](https://juejin.im/post/6844903695600058375)

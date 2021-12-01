@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.indexOf
-order: 9
+order: 16
 ---
 
 # String.prototype.indexOf()

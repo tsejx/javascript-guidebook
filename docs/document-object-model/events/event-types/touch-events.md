@@ -4,7 +4,7 @@ nav:
   order: 6
 group:
   title: 事件类型
-  order: 8
+  order: 21
 title: 触控事件
 order: 50
 ---
@@ -60,8 +60,6 @@ touchstart -> touchmove -> touchend -> click
 - 当用户产生的触点个数超过设备支持的个数，从而导致 TouchList 中最早的 Touch 对象被取消
 
 很值得注意的是，在很多情况下，触摸事件和鼠标事件会一起触发（以使非触摸专用的代码仍然可以与用户交互）。如果你要使用触摸事件，你可以使用 `preventDefault()` 来取消鼠标事件。
-
-
 
 ## 接口对象
 

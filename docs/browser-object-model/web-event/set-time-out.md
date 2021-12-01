@@ -5,11 +5,11 @@ nav:
 group:
   title: 全局 API
   order: 2
-title: setTimeout 超时调用
-order: 2
+title: setTimeout
+order: 1
 ---
 
-# setTimeout 超时调用
+# setTimeout
 
 `window.setTimeout()` 方法用于在指定的毫秒数后调用函数或计算表达式。
 
@@ -24,7 +24,7 @@ let timeoutId = window.setTimeout(code [, delay]);
 ### 参数
 
 | 参数      | 描述                                                                                                                           |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| :-------- | :----------------------------------------------------------------------------------------------------------------------------- |
 | timeoutId | 定时器的唯一辨识符，可以作为参数传给 `clearInvterval()`                                                                        |
 | func      | 需要重复调用的函数                                                                                                             |
 | code      | 是另一种语法的应用，是指你想重复执行的一段字符串构成的代码（不推荐使用，不推荐的原因和 `eval()` 一样）                         |
@@ -41,7 +41,7 @@ let timeoutId = window.setTimeout(code [, delay]);
 
 ```js
 // 超时调用函数
-const animate = function() {
+const animate = function () {
   console.log('超时调用');
 };
 
@@ -57,11 +57,11 @@ clearTimeout(timeoutID);
 ```js
 window.timeWorkers = {};
 
-const _setInterval = function(cb, time) {
+const _setInterval = function (cb, time) {
   let key = Symbol('interval');
 
-  const execute = function(fn, time) {
-    timeWorkers[key] = setTimeout(function() {
+  const execute = function (fn, time) {
+    timeWorkers[key] = setTimeout(function () {
       fn();
       execute(fn, time);
     });
@@ -72,7 +72,7 @@ const _setInterval = function(cb, time) {
   execute(cb, time);
 };
 
-const _clearInterval = function(key) {
+const _clearInterval = function (key) {
   if (key in window.timeWorkers) {
     clearTimeout(timeWorkers[key]);
     delete timeWorkers[key];

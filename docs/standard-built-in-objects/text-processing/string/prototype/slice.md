@@ -38,7 +38,7 @@ str.slice( startIndex [, endIndex] )
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 var str = 'abcdefghij';

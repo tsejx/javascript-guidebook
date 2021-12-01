@@ -22,37 +22,365 @@ indexedDB 的整体架构，是由一系列的单独概念串联而成，去不�
 - IndexedDBCursor
 - IndexedDBTransaction
 
----
+整体逻辑图如下：
 
-**参考资料：**
+```jsx | inline
+import React from 'react';
+import img from '../../assets/indexeddb/overview.png';
 
-- [张鑫旭：HTML5 indexedDB 前端本地储存数据库实例教程](https://www.zhangxinxu.com/wordpress/2017/07/html5-indexeddb-js-example/)
-- [IndexedDB 打造靠谱的 Web 离线数据库](https://juejin.im/post/5b028b28518825426e024008)
+export default () => <img alt="IndexedDB逻辑图" src={img} width={540} />;
+```
 
-* [IndexedDB 不完全指南](https://blog.kisnows.com/2017/12/06/step-into-indexdb/)
-* [前端存储技术](https://juejin.im/post/5c3d5d97e51d455243765e8a)
-* [前端与 SQL](https://juejin.im/post/593d0c5d61ff4b006c8fec76)
-* [HTML5 - IndexedDB 使用 HTML5 IndexedDB 存储图像和文件](https://juejin.im/post/5bdd67206fb9a04a0c2de0c3)
-* [IndexedDB 操作工具类](https://juejin.im/post/5db6902ae51d452a0e212d99)
-* [前端大容量缓存方案 IndexedDB](https://juejin.im/post/5e344b20e51d4577794c123c)
-* [localForage](https://www.awesomes.cn/repo/localForage/localforage)
-* [前端存储全家桶 Cookie、sessionStorage、localStorage 和 indexedDB 重点合集](https://juejin.im/post/5b8d1b3c518825430f30165b)
-* [How to use IndexedDB to build Progressive Web Apps](http://ichengde.github.io/2018/04/21/How-to-use-IndexedDB-to-build-Progressive-Web-Apps/)
-* [浅谈浏览器本地存储 IndexedDB](https://juejin.im/post/59bb2e755188257e7852d40f)
-* [打造前端离线日志 IndexedDB](https://juejin.im/post/5c91b3c86fb9a070cf6bcab2) 实用
-* [浏览器数据库 IndexedDB 入门教程](https://mp.weixin.qq.com/s?__biz=MzI3MTI2NzkxMA==&mid=2247486097&idx=1&sn=f5552b1c205558a8f5acd0f5a01bf0ba&chksm=eac52bb8ddb2a2ae40ac8c3a5955de3c53ed41a83e93afb5d3e82159286888df0ebb2ace4369#rd)
-* [浏览器里的本地数据库：IndexedDB](https://juejin.im/post/5da2d9cae51d4577e86d0db2)
-* [IndexedDB 打造靠谱 Web 离线数据库](https://juejin.im/post/5b028b28518825426e024008)
-* [IndexedDB 实用与出坑指南](https://juejin.im/post/5a9d65916fb9a028e46e257a)
-* [深入了解浏览器存储 从 Cookie 到 WebStorage、IndexedDB](https://juejin.im/post/5c8e6fa8e51d453ec75168cd)
-* [HTML5 进阶系列：IndexedDB 数据库](https://juejin.im/post/59013d2c0ce46300614ebe70)
-* [新一代的前端存储方案 IndexedDB](https://juejin.im/post/5b09a641f265da0dcd0b674f)
+下文主要介绍了 indexedDB 的基本概念，以及在实际应用中的实操代码。
 
-打造可靠的前端离线日志系统
+- indexedDB 基础概念。在 indexedDB 里面会根据索引 index 来进行整体数据结构的划分。
+- indexedDB 数据库的更新是一个非常蛋疼的事情，因为，Web 的灵活性，你既需要做好向上版本的更新，也需要完善向下版本的容错性。
+- indexedDB 高效索引机制，在内部，indexedDB 已经提供了 index、cursor 等高效的索引机制，推荐不要直接将所有数据都取回来，再进行筛选，而是直接利用 cursor 进行。
+- 最后推荐几个常用库
 
-- https://github.com/Leo555/Blog/blob/b3597520b6e3d46f6fdc828d1e102a74c44a62b2/source/_drafts/%E6%89%93%E9%80%A0%E5%8F%AF%E9%9D%A0%E7%9A%84%E5%89%8D%E7%AB%AF%E7%A6%BB%E7%BA%BF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%AE%BE%E8%AE%A1
-- https://github.com/Leo555/Blog/blob/b3597520b6e3d46f6fdc828d1e102a74c44a62b2/source/_drafts/%E6%89%93%E9%80%A0%E5%8F%AF%E9%9D%A0%E7%9A%84%E5%89%8D%E7%AB%AF%E7%A6%BB%E7%BA%BF%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F
+## 离线存储
 
-- [H5 缓存机制浅析 移动端 Web 加载性能优化](https://segmentfault.com/a/1190000004132566)
-- [前端监控了解与简易实现](https://juejin.im/post/5cbee97a6fb9a0324936b4a7)
-- [介绍一下渐进式 Web App（即使加载） Part 12](https://juejin.im/post/5a32456bf265da430406a421)
+IndexedDB 可以存储非常多类型的数据，比如 `Object`、`File`、`Blob` 等，里面的存储结构是根据 Database 来进行存储的。每个 DB 里面可以有不同的 Object Stores。具体结构如下图：
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/indexeddb/indexeddb-structure.png';
+
+export default () => <img alt="IndexedDB结构图" src={img} width={540} />;
+```
+
+并且，我们可以给 `key` 设定相关特定的值，然后在索引的时候，可以直接通过 `key` 得到具体的内容。使用 IndexDB 需要注意，其遵循的是 **同域原则**。
+
+## 基本概念
+
+在 indexDB 中，有几个基本的操作对象：
+
+### Database
+
+`Database` 通过 `open` 方法直接打开，可以得到一个实例的 DB。每个页面可以创建多个 DB，不过一般都是一个。
+
+```js
+idb.open(name, version, upgradeCallback);
+```
+
+### Object Store
+
+`Object Store` 这个就是 DB 里面具体存储的对象。这个可以对应于 SQL 里面的 Table（表）内容。其存储的结构为：
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/indexeddb/object-store-example.png';
+
+export default () => <img alt="" src={img} width={540} />;
+```
+
+### Index
+
+`index` 有点类似于外链，它本身是一种 Object Store，主要是用来在本体的 Store 中，索引另外 Object Store 里面的数据。需要区别的是，`key` 和 `index` 是不一样的。
+
+可以参考：[DEMO1](https://mdn.github.io/indexeddb-examples/idbindex/)、[DEMO2](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex)
+
+如下图表示：
+
+```jsx | inline
+import React from 'react';
+import img from '../../assets/indexeddb/indexeddb-index.png';
+
+export default () => <img alt="" src={img} width={540} />;
+```
+
+```js
+// 创建 index
+const myIndex = objectStore.index('lName');
+```
+
+### Transaction
+
+`transaction` 事务其实就是一系列 CRUD 的集合内容。如果其中一个环节失败了，那么整个事务的处理都会被取消。例如：
+
+```js
+var trans1 = db.transaction('foo', 'readwrite');
+var trans2 = db.transaction('foo', 'readwrite');
+var objectStore2 = trans2.objectStore('foo');
+var objectStore1 = trans1.objectStore('foo');
+objectStore2.put('2', 'key');
+objectStore1.put('1', 'key');
+```
+
+### Cursor
+
+`cursor` 主要是用来遍历 DB 里面的数据内容。主要是通过 `openCursor` 来进行控制。
+
+```js
+function displayData() {
+  var transaction = db.transaction(['rushAlbumList'], 'readonly');
+  var objectStore = transaction.objectStore('rushAlbumList');
+
+  objectStore.openCursor().onsuccess = function (event) {
+    var cursor = event.target.result;
+    if (cursor) {
+      var listItem = document.createElement('li');
+      listItem.innerHTML = cursor.value.albumTitle + ', ' + cursor.value.year;
+      list.appendChild(listItem);
+
+      cursor.continue();
+    } else {
+      console.log('Entries all displayed.');
+    }
+  };
+}
+```
+
+## 基本用法
+
+### 创建数据库
+
+```js
+const createUpdateStore = function (name, version = 1) {
+  const request = window.indexdDB.open(name, version);
+
+  request.onsuccess = function (event) {
+    console.log('open success');
+  };
+
+  request.onerror = function (event) {
+    console.log('open fail');
+  };
+
+  request.onupgradeneeded = function (event) {
+    const db = event.target.result;
+
+    if (!db.objectStoreNames.contains(name)) {
+      // 创建仓库对象（创建表格）
+      // 这里我将主键设为 ID
+      const objectStore = db.createObjectStore(name, {
+        keyPath: 'id',
+        autoIncrement: true,
+      });
+    }
+  };
+};
+```
+
+### 添加数据
+
+```js
+const addDataStore = function (storeName, data, verson) {
+  return new Promise((resolve, reject) => {
+    let databaseName = storeName;
+    let databaseVersion = verson || 1;
+    let db;
+    let request = indexedDB.open(databaseName, databaseVersion);
+
+    request.onsuccess = function (event) {
+      db = event.target.result;
+      db = event.target.result;
+      // 将数据保存到新建的对象仓库
+      let objectStore = db.transaction(databaseName, 'readwrite').objectStore(databaseName);
+      if (uf.utils.typeof(data, 'array')) {
+        data.forEach(function (dataItem) {
+          // 添加一条数据
+          objectStore.add(dataItem);
+        });
+        resolve();
+      } else {
+        // 添加一条数据
+        objectStore.add(data);
+        resolve();
+      }
+    };
+
+    request.error = function () {
+      reject();
+    };
+
+    request.onupgradeneeded = function (event) {
+      let db = event.target.result;
+      if (!db.objectStoreNames.contains(storeName)) {
+        // 创建仓库对象（创建表格）
+        // 这里我将主键设置为id
+        let objectStore = db.createObjectStore(storeName, {
+          keyPath: 'id',
+          autoIncrement: true,
+        });
+      }
+    };
+  });
+};
+```
+
+### 获取数据
+
+```js
+let getStoreData = function (name, key = 1) {
+  console.log('getStoreData');
+  return new Promise((resolve, reject) => {
+    let request = indexedDB.open(name);
+    request.onsuccess = function (event) {
+      let db = event.target.result;
+      let req;
+      try {
+        req = db.transaction(name, 'readwrite').objectStore(name).get(key); // 这里的“1”也是主键的键值
+      } catch (e) {
+        reject('用户失败');
+      }
+      if (!req) {
+        return;
+      }
+      req.onsuccess = function () {
+        resolve(req.result);
+      };
+      req.onerror = function () {
+        reject('获取失败');
+      };
+    };
+    request.onupgradeneeded = function (event) {
+      let db = event.target.result;
+      if (!db.objectStoreNames.contains(name)) {
+        // 创建仓库对象（创建表格）
+        // 这里我将主键设置为id
+        let objectStore = db.createObjectStore(name, {
+          keyPath: 'id',
+          autoIncrement: true,
+        });
+      }
+    };
+  });
+};
+```
+
+### 删除数据
+
+```js
+const delectStoreData = function (name, key) {
+  console.log('delectStoreData');
+  return new Promise((resolve, reject) => {
+    let databaseName = name;
+    let db;
+    let request = window.indexedDB.open(databaseName);
+    request.onsuccess = function (event) {
+      db = event.target.result;
+      // 这里指定的是主键的键值
+      let req = db.transaction(databaseName, 'readwrite').objectStore(databaseName).delete(key);
+
+      req.onsuccess = function () {
+        resolve('删除成功');
+      };
+
+      req.onerror = function () {
+        reject('删除失败');
+      };
+    };
+  });
+};
+```
+
+### 更新数据
+
+```js
+const updateStoreData = function (storeName, newData, key) {
+  console.log('updateStoreData');
+  return new Promise((resolve, reject) => {
+    let request = window.indexedDB.open(storeName);
+    let db;
+    request.onsuccess = function (event) {
+      db = event.target.result;
+      let transaction = db.transaction(storeName, 'readwrite');
+      let store = transaction.objectStore(storeName);
+      let storeData = store.get(key);
+
+      storeData.onsuccess = function (e) {
+        let data = e.target.result || {};
+        for (a in newData) {
+          data[a] = newData[a];
+        }
+        store.put(data);
+        resolve();
+      };
+    };
+    request.onupgradeneeded = function (event) {
+      let db = event.target.result;
+      if (!db.objectStoreNames.contains(storeName)) {
+        // 创建仓库对象（创建表格）
+        // 这里我将主键设置为id
+        let objectStore = db.createObjectStore(storeName, {
+          keyPath: 'id',
+          autoIncrement: true,
+        });
+      }
+    };
+  });
+};
+```
+
+### 遍历获取
+
+```js
+const storeDataList = function (storeName) {
+  console.log('storeDataList');
+  return new Promise((resolve, reject) => {
+    let request = window.indexedDB.open(storeName);
+    let db;
+    request.onsuccess = function (event) {
+      db = event.target.result;
+      let transaction = db.transaction(storeName);
+      let store = transaction.objectStore(storeName);
+      // 打开游标
+      let cursor = store.openCursor();
+      let dataList = new Array();
+      cursor.onsuccess = function (e) {
+        var cursorVal = e.target.result;
+        if (cursorVal) {
+          dataList.push(cursorVal.value);
+          cursorVal.continue();
+        } else {
+          // 遍历结束
+          resolve(dataList);
+        }
+      };
+    };
+    request.onupgradeneeded = function (event) {
+      let db = event.target.result;
+      if (!db.objectStoreNames.contains(storeName)) {
+        // 创建仓库对象（创建表格）
+        // 这里我将主键设置为id
+        let objectStore = db.createObjectStore(storeName, {
+          keyPath: 'id',
+          autoIncrement: true,
+        });
+      }
+    };
+  });
+};
+```
+
+### 批量删除
+
+```js
+const batchDelete = function (storeName, keys) {
+  console.log('batchDelete');
+  let allKeys = keys.map((item) => {
+    item = +item;
+    return delectStoreData(storeName, item);
+  });
+  return allKeys;
+  /* Promise.all(allKeys).then(data => {
+      console.log(data);
+      resolve(data);
+  });*/
+};
+```
+
+## 第三方依赖库
+
+如果碰到前端频繁存储操作或者大文件缓存的需求，可以考虑使用 IndexedDB，当然项目中推荐直接使用第三方库：
+
+| 名称                                               | 说明                                                                                                                                                   |
+| :------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [zangodb](https://github.com/erikolson186/zangodb) | ZangoDB 是一个类似 MongoDB 的 HTML5 IndexedDB 接口库，支持 MongoDB 的大多数常见功能包括 filer、sorting、updating 和 aggregation，可在 Web 浏览器中使用 |
+| [dexie.js](https://dexie.org/)                     | IndexedDB 的简约包装器                                                                                                                                 |
+
+## 参考资料
+
+- [IndexedDB 打造靠谱 Web 离线数据库](https://juejin.cn/post/6844903608480169991)
+- [打造前端离线日志 IndexedDB](https://juejin.im/post/5c91b3c86fb9a070cf6bcab2)

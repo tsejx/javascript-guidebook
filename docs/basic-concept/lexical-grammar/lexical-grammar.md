@@ -23,7 +23,7 @@ JavaScript 程序使用 Unicode 字符集编写。Unicode 是 ASCII 和 Latin-1 
 
 JavaScript 是区分大小写的语言，也就是说，关键字、变量、函数名和所有的标识符（Identifier）都必须采取一致的大小写的形式。但是需要注意的是，HTML 和 CSS 并不区分大小写（尽管 XHTML 区分大小写），也就是说如果我们在用 JavaScript 控制 HTML 属性的时候对 HTML 来说 `id` 和 `ID` 没区别，但是 JavaScript 有区别。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 `abc`、`Abc`、`aBc`、`abC`、`ABC` 是五个不同的变量名。
 
@@ -257,7 +257,7 @@ const firstSecond = 123;
 
 const myCar = 'Toyota';
 
-const doSomethingImportant = function() {};
+const doSomethingImportant = function () {};
 ```
 
 虽然没有谁强制要求必须采用这种格式，但为了与 ECMAScript 内置的函数和对象命名格式保持一致，可以将其当作一种最佳实践。
@@ -342,7 +342,7 @@ b = 4;
 
 但 JavaScript 并不是在所有换行处都填补分号，只有在缺少了分号无法正确解析代码时，JavaScript 才会填补分号。换句话说，如果当前语句和随后的非空格字符不能当成一个整体来解析的话，JavaScript 就在当前语句行结束处填补分号。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 var a;
@@ -364,7 +364,7 @@ JavaScript 并不是在所有换行处都填补分号，只有在缺少了分号
 
 - 当出现一个不允许的行终止符或 `}` 时，会在其之前插入一个分号。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 { 1 2 } 3
@@ -377,7 +377,7 @@ JavaScript 并不是在所有换行处都填补分号，只有在缺少了分号
 
 在下面这段中，由于在 `b` 和 `++` 之间出现了一个行终止符，所以 `++` 未被当成变量 `b` 的后置运算符。
 
-🌰 **标准示例：**
+🌰 **代码示例**：
 
 ```js
 a = b;

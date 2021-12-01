@@ -18,14 +18,14 @@ order: 2
 
 ```js
 const proxy = new Proxy(target, {
-  get: function(target, property, receiver) {
+  get: function (target, property, receiver) {
     // do something
   },
 });
 ```
 
 | 参数       | 说明                        | 类型   |
-| ---------- | --------------------------- | ------ |
+| :--------- | :-------------------------- | :----- |
 | `target`   | 目标对象                    | object |
 | `property` | 被获取的属性名              | string |
 | `receiver` | Proxy 或者继承 Proxy 的对象 | object |
@@ -55,7 +55,7 @@ const proxy = new Proxy(target, {
 const proxy = new Proxy(
   {},
   {
-    get: function(target, prop, receiver) {
+    get: function (target, prop, receiver) {
       console.log('Called:' + prop);
       return 10;
     },
@@ -79,7 +79,7 @@ Object.defineProperty(foo, 'a', {
 });
 
 const proxy = new Proxy(foo, {
-  get: function(target, prop) {
+  get: function (target, prop) {
     return 'b';
   },
 });
@@ -92,7 +92,7 @@ console.log(proxy.a);
 ### 数组读取负数的索引
 
 ```js
-const createArr = function(...elements) {
+const createArr = function (...elements) {
   const handler = {
     get(target, propKey, receiver) {
       const index = Number(propKey);
@@ -119,15 +119,15 @@ console.log(arr[-1]);
 ### 链式操作
 
 ```js
-const pipe = function(value) {
+const pipe = function (value) {
   const stack = [];
 
   const proxy = new Proxy(
     {},
     {
-      get: function(pipeObject, fnName) {
+      get: function (pipeObject, fnName) {
         if (fnName === 'get') {
-          return stack.reduce(function(val, fn) {
+          return stack.reduce(function (val, fn) {
             return fn(val);
           }, value);
         }
@@ -140,14 +140,9 @@ const pipe = function(value) {
   return proxy;
 };
 
-const double = x => x * 2;
-const pow = x => x * x;
-const reverseInt = x =>
-  x
-    .toString()
-    .split('')
-    .reverse()
-    .join('') | 0;
+const double = (x) => x * 2;
+const pow = (x) => x * x;
+const reverseInt = (x) => x.toString().split('').reverse().join('') | 0;
 
 pipe(3).double.pow.reverseInt.get;
 // 63
@@ -160,7 +155,7 @@ const dom = new Proxy(
   {},
   {
     get(target, property) {
-      return function(attrs = {}, ...children) {
+      return function (attrs = {}, ...children) {
         const ele = document.createElement(property);
 
         for (let prop of Object.keys(attrs)) {

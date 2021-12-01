@@ -83,7 +83,7 @@ export default () => (
 
 浏览器接收到网站页面文档后，会将文档中的标记语言解析为 DOM 树。DOM 树和 CSS 结合形成浏览器构建页面的渲染树。渲染树中包含了大量的渲染元素，每个渲染元素会被分到单独一个图层中，每个图层又会被加载到 GPU 形成渲染纹理，而图层在 GPU 中 `transform` 是不会触发 `repaint` 的，这点非常类似 3D 绘图功能，最终这些使用 `transform` 的图层都会由 [独立的合成器进程进行处理](https://www.chromium.org/developers/design-documents/gpu-accelerated-compositing-in-chrome)。
 
-CSS `transform` 创建新的复合图层，可以被 GPU 直接用来执行 `transofmr` 操作。在 Chrome 开发者工具中开启 show layer border 选项后，每个复合涂层就会显示一条黄色的边界。
+CSS `transform` 创建新的复合图层，可以被 GPU 直接用来执行 `transofmr` 操作。在 Chrome 开发者工具中开启 Show Layer Border 选项后，每个复合涂层就会显示一条黄色的边界。
 
 ### 内部原理
 
@@ -164,9 +164,7 @@ CSS 中以下几个属性能触发硬件加速：
 1. 过多地开启硬件加速可能会耗费较多内存，因此什么时候开启硬件加速，给多少元素开启硬件加速，需要用测试结果说话
 2. GPU 渲染会影响字体的抗锯齿效果。这是因为 GPU 和 CPU 具有不同的渲染机制，即使最终硬件加速停止了，文本还是会在动画期间显示得很模糊
 
----
-
-**参考资料：**
+## 参考资料
 
 - [High Performance Animations](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/)
 - [Increase Your Site's Performance with Hardware-Accelerated CSS](https://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css)

@@ -3,8 +3,8 @@ nav:
   title: 设计模式
   order: 10
 group:
-  title: 创建型
-  order: 2
+  title: 结构型
+  order: 3
 title: 组合模式
 order: 6
 ---

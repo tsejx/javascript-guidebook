@@ -37,12 +37,12 @@ callbackFunc = function (currentValue, index, array) {
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 const arr = [1, 2, 3, 4, 5, 12, 22, 2, 2, 2];
 
-const foo = arr.findIndex(function(currentValue, index, array) {
+const foo = arr.findIndex(function (currentValue, index, array) {
   return currentValue === 2;
 });
 

@@ -18,7 +18,6 @@ order: 6
 
 JavaScript 中的函数显然满足高阶函数的条件，在实际开发中，无论是将函数当作参数传递，还是让函数的执行结果返回另外一个函数，这两种情形都有很多应用场景。
 
-
 ## 作为参数传递
 
 把函数当作参数传递，代表可以抽离出一部分容易变化的业务逻辑，把这部分业务逻辑放在函数参数中，这样一来可以分离业务代码中变化与不变的部分。
@@ -31,19 +30,19 @@ JavaScript 中的函数显然满足高阶函数的条件，在实际开发中，
 - 在不确定请求返回的时间时，将 `callback` 回调函数当作参数传入
 - 待请求完成后执行 `callback` 函数
 
-🌰 **标准示例**
+🌰 **代码示例**
 
 ```js
-const getUserInfo = function(userId, callback){
-  $.ajax( 'http://example.com/getUserInfo?' + userId, function(data){
-    if (typeof callback === 'function'){
-      callback( data );
+const getUserInfo = function (userId, callback) {
+  $.ajax('http://example.com/getUserInfo?' + userId, function (data) {
+    if (typeof callback === 'function') {
+      callback(data);
     }
   });
-}
+};
 
-getUserInfo(123, function(data){
-  console.log( data.userName );
+getUserInfo(123, function (data) {
+  console.log(data.userName);
 });
 ```
 
@@ -52,11 +51,11 @@ getUserInfo(123, function(data){
 比如，想在页面中创建 100 个 `div` 节点，然后把这些 `div` 节点都设置为隐藏。
 
 ```js
-const appendDiv = function(){
-  for ( let i = 0; i < 100; i++ ){
-    const div = document.createElement( 'div' );
+const appendDiv = function () {
+  for (let i = 0; i < 100; i++) {
+    const div = document.createElement('div');
     div.innerHTML = i;
-    document.body.appendChild( div );
+    document.body.appendChild(div);
     div.style.display = 'none';
   }
 };
@@ -68,18 +67,18 @@ appendDiv();
 于是把 `div.style.display = 'none'` 这行代码抽出来，用回调函数的形式传入 `appendDiv` 方法
 
 ```js
-const appendDiv = function( callback ){
-  for ( let i = 0; i < 100; i++ ){
-    const div = document.createElement( 'div' );
+const appendDiv = function (callback) {
+  for (let i = 0; i < 100; i++) {
+    const div = document.createElement('div');
     div.innerHTML = i;
-    document.body.appendChild( div );
-    if ( typeof callback === 'function' ){
-      callback( div );
+    document.body.appendChild(div);
+    if (typeof callback === 'function') {
+      callback(div);
     }
   }
 };
 
-appendDiv(function( node ){
+appendDiv(function (node) {
   node.style.display = 'none';
 });
 ```
@@ -92,12 +91,12 @@ appendDiv(function( node ){
 
 ```js
 // 从小到大排列，输出: [ 1, 3, 4 ]
-[ 1, 4, 3 ].sort( function( a, b ){
+[1, 4, 3].sort(function (a, b) {
   return a - b;
 });
 
 // 从大到小排列，输出: [ 4, 3, 1 ]
-[ 1, 4, 3 ].sort( function( a, b ){
+[1, 4, 3].sort(function (a, b) {
   return b - a;
 });
 ```
@@ -109,33 +108,33 @@ appendDiv(function( node ){
 下面是使用 `Object.prototype.toString` 方法判断数据类型的一系列的 `isType` 函数
 
 ```js
-let isString = function( obj ){
-  return Object.prototype.toString.call( obj ) === '[object String]';
+let isString = function (obj) {
+  return Object.prototype.toString.call(obj) === '[object String]';
 };
 
-let isArray = function( obj ){
-  return Object.prototype.toString.call( obj ) === '[object Array]';
+let isArray = function (obj) {
+  return Object.prototype.toString.call(obj) === '[object Array]';
 };
 
-let isNumber = function( obj ){
-  return Object.prototype.toString.call( obj ) === '[object Number]';
+let isNumber = function (obj) {
+  return Object.prototype.toString.call(obj) === '[object Number]';
 };
 ```
 
 实际上，这些函数的大部分实现都是相同的，不同的只是 `Object.prototype.toString.call(obj)` 返回的字符串。为了避免多余的代码，可以把这些字符串作为参数提前传入 `isType` 函数。
 
 ```js
-let isType = function( type ){
-  return function( obj ){
-    return Object.prototype.toString.call( obj ) === '[object '+ type +']';
-  }
+let isType = function (type) {
+  return function (obj) {
+    return Object.prototype.toString.call(obj) === '[object ' + type + ']';
+  };
 };
 
-const isString = isType( 'String' );
-const isArray = isType( 'Array' );
-const isNumber = isType( 'Number' );
+const isString = isType('String');
+const isArray = isType('Array');
+const isNumber = isType('Number');
 
-console.log( isArray( [ 1, 2, 3 ] ) );
+console.log(isArray([1, 2, 3]));
 // true
 ```
 
@@ -145,17 +144,17 @@ console.log( isArray( [ 1, 2, 3 ] ) );
 
 ```js
 let Type = {};
-for ( var i = 0, type; type = [ 'String', 'Array', 'Number' ][ i++ ]; ){
-  (function( type ){
-    Type[ 'is' + type ] = function( obj ){
-      return Object.prototype.toString.call( obj ) === '[object '+ type +']';
-    }
-  })( type )
-};
+for (var i = 0, type; (type = ['String', 'Array', 'Number'][i++]); ) {
+  (function (type) {
+    Type['is' + type] = function (obj) {
+      return Object.prototype.toString.call(obj) === '[object ' + type + ']';
+    };
+  })(type);
+}
 
-Type.isArray( [] );
+Type.isArray([]);
 // true
-Type.isString( "str" );
+Type.isString('str');
 // true
 ```
 
@@ -177,7 +176,7 @@ Function.prototype.before = function (beforefn) {
 
     // 再执行原函数
     return _this.apply(this, arguments);
-  }
+  };
 };
 
 Function.prototype.after = function (afterfn) {
@@ -191,18 +190,20 @@ Function.prototype.after = function (afterfn) {
     afterfn.apply(this, arguments);
 
     return result;
-  }
+  };
 };
 
 const fn = function () {
   console.log(2);
 };
 
-fn = fn.before(function () {
-  console.log(1);
-}).after(function () {
-  console.log(3);
-});
+fn = fn
+  .before(function () {
+    console.log(1);
+  })
+  .after(function () {
+    console.log(3);
+  });
 
 fn();
 // 1 2 3
@@ -213,34 +214,34 @@ fn();
 通过执行上面的代码，控制台顺利地返回了执行结果 1、2、3。
 
 ```js
-const service = function (){
+const service = function () {
   console.log('功能逻辑');
-}
+};
 
-const proxyMethod = (function (){
+const proxyMethod = (function () {
   let startTime;
 
   return {
-    before: function (){
+    before: function () {
       startTime = new Date();
 
       console.log('计时开始');
     },
-    after: function (){
-      const endTime = (new Date()) - startTime;
+    after: function () {
+      const endTime = new Date() - startTime;
 
-      console.log('计时结束，用时：' + endTime)
-    }
-  }
+      console.log('计时结束，用时：' + endTime);
+    },
+  };
 })();
 
-const aop = function(fn, proxy){
+const aop = function (fn, proxy) {
   proxy.before && proxy.before();
 
   fn();
 
   proxy.after && proxy.after();
-}
+};
 
 aop(service, proxyMethod);
 // 计时开始

@@ -18,15 +18,15 @@ order: 5
 **回调函数**
 
 ```js
-function add(num1, num2, callback){
+function add(num1, num2, callback) {
   const sum = num1 + num2;
 
   // 数值相加后，将相加和作为参数传入回调函数
   callback(sum);
 }
 
-function print(num){
-	console.log(num);
+function print(num) {
+  console.log(num);
 }
 
 add(1, 2, print);
@@ -36,14 +36,14 @@ add(1, 2, print);
 **匿名回调函数**
 
 ```js
-function add(num1, num2, callback){
+function add(num1, num2, callback) {
   const sum = num1 + num2;
 
   // 数值相加后，将相加和作为参数传入回调函数
-	callback(sum);
+  callback(sum);
 }
 
-add(1, 2, function(sum){
+add(1, 2, function(sum) {
   console.log(sum);
   // 3
 });
@@ -53,7 +53,7 @@ add(1, 2, function(sum){
 
 ### 不会立即执行
 
-回调函数作为参数传递给一个函数的时候，传递的只是函数的定义并不会立即执行。和普通的函数一样，回调函数在函调用函数数中也要通过`()`运算符调用才会执行。
+回调函数作为参数传递给一个函数的时候，传递的只是函数的定义并不会立即执行。和普通的函数一样，回调函数在函调用函数数中也要通过 `()` 括号运算符调用才会执行。
 
 ### 是个闭包
 
@@ -62,11 +62,11 @@ add(1, 2, function(sum){
 ### 执行前类型判断
 
 ```js
-function add(num1, num2, callback){
-	var sum = num1 + num2;
-	if(typeof callback === 'function'){
-		callback(sum);
-	}
+function add(num1, num2, callback) {
+  var sum = num1 + num2;
+  if (typeof callback === 'function') {
+    callback(sum);
+  }
 }
 ```
 
@@ -76,15 +76,15 @@ function add(num1, num2, callback){
 
 ```js
 var obj = {
-	sum: 0,
-	add: function(num1, num2){
-		this.sum = num1 + num2;
-	}
+  sum: 0,
+  add: function(num1, num2) {
+    this.sum = num1 + num2;
+  },
 };
 
-function add(num1, num2, callback){
-	callback(num1, num2);
-};
+function add(num1, num2, callback) {
+  callback(num1, num2);
+}
 
 add(1, 2, obj.add);
 
@@ -101,17 +101,17 @@ console.log(window.sum);
 
 ```js
 const obj = {
-	sum: 0,
-	add: function(num1, num2){
-		this.sum = num1 + num2;
-	}
+  sum: 0,
+  add: function(num1, num2) {
+    this.sum = num1 + num2;
+  },
 };
 
-function add(num1, num2, callbackObj, callback){
-	callback.apply(callbackObj, [ num1, num2 ]);
-};
+function add(num1, num2, callbackObj, callback) {
+  callback.apply(callbackObj, [num1, num2]);
+}
 
-add(1,2, obj, obj.add);
+add(1, 2, obj, obj.add);
 
 console.log(obj.sum);
 // 3
@@ -146,7 +146,7 @@ $.ajax({
   before: beforeCallback,
   success: successCallback,
   complete: completeCallback,
-  error: errorCallback
+  error: errorCallback,
 });
 ```
 

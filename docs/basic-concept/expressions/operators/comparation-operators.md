@@ -41,45 +41,49 @@ order: 13
 ### 抽象相等比较算法
 
 > 1. 若 Type(x) 与 Type(y) 相同，则
->    1. 若 Type(x) 为 Undefined，返回 true
->    2. 若 Type(x) 为 Null，返回 true
+>    1. 若 Type(x) 为 Undefined，返回 `true`
+>    2. 若 Type(x) 为 Null，返回 `true`
 >    3. 若 Type(x) 为 Number，则
->       1. 若 x 为 NaN，返回 false
->       2. 若 y 为 NaN，返回 false
->       3. 若 x 与 y 为相等数值，返回 true
->       4. 若 x 为 +0 且 y 为 -0，返回 true
->       5. 若 x 为 -0 且 y 为 +0，返回 true
->       6. 返回 false
->    4. 若 Type(x) 为 String，则当 x 和 y 为完全相同的字符序列（长度相等且相同字符在相同位置）时返回 true。否则，返回 false。
->    5. 若 Type(x) 为 Boolean，当 x 和 y 为同为 true 或者同为 false 时返回 true。否则，返回 false。
->    6. 当 x 和 y 为引用用一对象时返回 true。否则，返回 false。
-> 2. 若 x 为 null 且 y 为 undefined，返回 true
-> 3. 若 x 为 undefined 且 y 为 null，返回 true
+>       1. 若 x 为 NaN，返回 `false`
+>       2. 若 y 为 NaN，返回 `false`
+>       3. 若 x 与 y 为相等数值，返回 `true`
+>       4. 若 x 为 +0 且 y 为 -0，返回 `true`
+>       5. 若 x 为 -0 且 y 为 +0，返回 `true`
+>       6. 返回 `false`
+>    4. 若 Type(x) 为 String
+>       1. 当 x 和 y 为完全相同的字符序列（长度相等且相同字符在相同位置）时返回 `true`
+>       2. 否则，返回 `false`
+>    5. 若 Type(x) 为 Boolean
+>       1. 当 x 和 y 为同为 `true` 或者同为 `false` 时返回 `true`
+>       2. 否则，返回 `false`
+>    6. 当 x 和 y 为引用用一对象时返回 `true`。否则，返回 `false`。
+> 2. 若 x 为 null 且 y 为 undefined，返回 `true`
+> 3. 若 x 为 undefined 且 y 为 null，返回 `true`
 > 4. 若 Type(x) 为 Number 且 Type(y) 为 String，返回比较 `x == ToNumber(y)` 的结果
 > 5. 若 Type(x) 为 String 且 Type(y) 为 Number，返回比较 `ToNumber(x) == y` 的结果
 > 6. 若 Type(x) 为 Boolean，返回比较 `ToNumber(x) == y` 的结果
 > 7. 若 Type(y) 为 Boolean，返回比较 `x == ToNumber(y)` 的结果
 > 8. 若 Type(x) 为 String 或 Number，且 Type(y) 为 Object，返回比较 `x == ToPrimitive(y)` 的结果
 > 9. 若 Type(x) 为 Object 且 Type(y) 为 String 或 Number，返回比较 `ToPrimitive(x) == y` 的结果
-> 10. 返回 false
+> 10. 返回 `false`
 
-⚠️ 按以上相等之定义：
+按以上相等之定义：
 
 - 字符串比较可以按这种方式强制执行：`'' + a == '' + b`
 - 数值比较可以按这种方式强制执行：`+a == +b`
 - 布尔值比较可以按这种方式强制执行：`!a == !b`
 
-⚠️ 等值比较操作保证以下不变：
+等值比较操作保证以下不变：
 
 - `A !== B` 等价于 `!(A == B)`
 - `A == B` 等价于 `B == A`，除了 A 与 B 的执行顺序。
 
-⚠️ 相等运算符不总是传递的。例如，两个不同的 String 对象，都表示相同的字符串值；`==` 运算符认为每个 `String` 对象都与字符串值相等，但是两个字符串对象互不相等。
+相等运算符不总是传递的。例如，两个不同的 String 对象，都表示相同的字符串值；`==` 运算符认为每个 `String` 对象都与字符串值相等，但是两个字符串对象互不相等。
 
 - `new String('a') == 'a'` 和 `'a' == new String('a')` 皆为 `true`
 - `new String('a') == new String('a')` 为 `false`
 
-字符串比较使用的方式是简单地检测字符编码单元序列是否相同。不会做更复杂的、基于语义的字符或者字符串相等的定义以及 Unicode 规范中定义的 collating order。所以 Unicode 标准中认为相等的 String 值可能被检测为不等。实际上这一算法认为两个字符串已经是经过规范化的形式。
+字符串比较使用的方式是简单地检测字符编码单元序列是否相同。不会做更复杂的、基于语义的字符或者字符串相等的定义以及 Unicode 规范中定义的 Collating Order。所以 Unicode 标准中认为相等的 String 值可能被检测为不等。实际上这一算法认为两个字符串已经是经过规范化的形式。
 
 ### 引用数据类型间比较
 
@@ -97,7 +101,7 @@ console.log({} === {});
 // false
 ```
 
-当我们访问引用数据类型（对象/数组/函数 .etc）的值时，首先从栈中获得该对象的**地址指针**，然后再从**堆内存**中取得所需的数据。
+当我们访问引用数据类型（对象、数组、函数等等）的值时，首先从栈中获得该对象的 **地址指针**，然后再从 **堆内存** 中取得所需的数据。
 
 变量 `a` 实际保存的是指向堆内存中对象的一个指针，而变量 `b` 保存的是指向堆内存中的另一个对象的指针，虽然这两个对象的值时一样的，但它们是独立的两个对象，占了两份内存空间，所以它们互不相等。
 

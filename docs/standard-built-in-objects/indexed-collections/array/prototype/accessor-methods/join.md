@@ -32,7 +32,7 @@ const str = arr.jon(separator);
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 const arr = ['1', '2', '3', '4', '5'];

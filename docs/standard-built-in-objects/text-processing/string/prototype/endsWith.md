@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.endsWith
-order: 7
+order: 14
 ---
 
 # String.prototype.endsWith()

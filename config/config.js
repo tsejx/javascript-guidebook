@@ -6,14 +6,24 @@ const config = {
   publicPath: '/javascript-guidebook/',
   favicon: './favicon.ico',
   logo: 'http://img.mrsingsing.com/javascript-guidebook-favicon.png',
+  hash: true,
   exportStatic: {},
-  dynamicImport: {},
   navs: [
     null,
     {
       title: 'Github',
       path: 'https://github.com/tsejx/javascript-guidebook',
     },
+  ],
+  extraBabelPlugins: [
+    [
+      'import',
+      {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: 'css',
+      },
+    ],
   ],
 };
 

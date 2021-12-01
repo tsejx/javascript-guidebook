@@ -101,9 +101,7 @@ CORS 机制是为了在认可用户发起的请求的同时，阻止恶意注入
 
 如果您正在开发使用 Webview（使用 Cordova 或 Ionic）的移动应用程序，Android 将不会给您带来任何麻烦，但 iOS 上的新 WKWebview 将需要 CORS。这意味着您几乎必须始终将 `Access-Control-Allow-Origin` 标头设置为 `*` ，但实际上这并不理想。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📖 MDN HTTP Access control CORS](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS)
 - [📝 理解 CORS](https://juejin.im/post/5a97b5a3f265da23766ab19a)

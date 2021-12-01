@@ -14,25 +14,28 @@ order: 28
 
 `Array.prototype.reduce()` 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。对空数组时不会执行回调函数。
 
-该方法可以作为一个高阶函数，用于函数的 Compose。
-
 ## 语法
 
-```js
-arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
+语法：
+
+```ts
+reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T): T;
+reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T, initialValue: T): T;
 ```
 
 | 实例方法参数   | 说明                                                                                                                                               | 类型     |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `callback`     | 回调函数，用于遍历数组成员时执行                                                                                                                   | function |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :------- |
+| `callbackfn`   | 回调函数，用于遍历数组成员时执行                                                                                                                   | function |
 | `initialValue` | （可选）累加器初始值，用作第一个调用回调函数的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用将报错。 | any      |
 
-| 回调函数参数 | 说明                                                                          | 类型   |
-| ------------ | ----------------------------------------------------------------------------- | ------ |
-| `acc`        | 累加器累加回调的返回值，它是上一次调用回调时返回的累积值，或 `initialValue`。 | number |
-| `currentValue`      | 数组中正在处理的数组成员                                                      | any    |
-| `currentIndex`      | 数组中正在处理的当前成员的索引                                                | number |
-| `arr`        | 调用函数的数组                                                                | array  |
+<br />
+
+| 回调函数参数    | 说明                                                                        | 类型   |
+| :-------------- | :-------------------------------------------------------------------------- | :----- |
+| `previousValue` | 累加器累加回调的返回值，它是上一次调用回调时返回的累积值，或 `initialValue` | any    |
+| `currentValue`  | 数组中正在处理的数组成员                                                    | any    |
+| `currentIndex`  | 数组中正在处理的当前成员的索引                                              | number |
+| `array`         | 调用函数的数组                                                              | array  |
 
 **返回值：** 函数累计处理的结果。
 
@@ -44,7 +47,7 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 
 - 回调函数参数取值问题
   - 提供 `initialValue`，累加器 `acc` 取值为 `initialValue`，`currentValue` 取数组中的第一个值
-  - 没有提供 `initialValue`，累加器 `acc` **取数组中的第一个值作为初始值**，`currentValue` 取数组中的第二个值。
+  - 没有提供 `initialValue`，累加器 `acc` <strong style="color:red">取数组中的第一个值作为初始值</strong>，`currentValue` 取数组中的第二个值。
 - 回调函数调用问题
   - 如果提供 `initialValue`，从索引 0 开始执行回调函数。
   - 如果没有提供 `initialValue`，`reduce` 会从索引 1 的地方开始执行回调函数，跳过第一个索引。
@@ -61,12 +64,12 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 
 回调函数被调用四次，每次调用的参数和返回值如下表所示。
 
-| callback 回调函数 | acc 累加器 | val 当前值 | index 当前索引 |       arr       | 返回值 |
-| :---------------: | :--------: | :--------: | :------------: | :-------------: | :----: |
-|    first call     |     0      |     1      |       1        | [0, 1, 2, 3, 4] |   1    |
-|    second call    |     1      |     2      |       2        | [0, 1, 2, 3, 4] |   3    |
-|    third call     |     3      |     3      |       3        | [0, 1, 2, 3, 4] |   6    |
-|    fourth call    |     6      |     4      |       4        | [0, 1, 2, 3, 4] |   10   |
+| callback 回调函数 | acc 累加器 | val 当前值 | index 当前索引 | arr             | 返回值 |
+| :---------------- | :--------- | :--------- | :------------- | :-------------- | :----- |
+| first call        | 0          | 1          | 1              | [0, 1, 2, 3, 4] | 1      |
+| second call       | 1          | 2          | 2              | [0, 1, 2, 3, 4] | 3      |
+| third call        | 3          | 3          | 3              | [0, 1, 2, 3, 4] | 6      |
+| fourth call       | 6          | 4          | 4              | [0, 1, 2, 3, 4] | 10     |
 
 `reduce()` 方法最终的返回值为 10。
 
@@ -76,23 +79,76 @@ arr.reduce( callback = function(acc, value, index, arr){} [, initialValue ] )
 [0, 1, 2, 3, 4].reduce((acc, val, index, arr) => accumulator + currentValue, 10);
 ```
 
-| callback 回调函数 | acc 累加器 | val 当前值 | index 当前索引 |       arr       | 返回值 |
-| :---------------: | :--------: | :--------: | :------------: | :-------------: | :----: |
-|    first call     |     10     |     0      |       0        | [0, 1, 2, 3, 4] |   10   |
-|    second call    |     10     |     1      |       1        | [0, 1, 2, 3, 4] |   11   |
-|    third call     |     11     |     2      |       2        | [0, 1, 2, 3, 4] |   13   |
-|    fourth call    |     13     |     3      |       3        | [0, 1, 2, 3, 4] |   16   |
-|    fifth call     |     16     |     4      |       4        | [0, 1, 2, 3, 4] |   20   |
+| callback 回调函数 | acc 累加器 | val 当前值 | index 当前索引 | arr             | 返回值 |
+| :---------------- | :--------- | :--------- | :------------- | :-------------- | :----- |
+| first call        | 10         | 0          | 0              | [0, 1, 2, 3, 4] | 10     |
+| second call       | 10         | 1          | 1              | [0, 1, 2, 3, 4] | 11     |
+| third call        | 11         | 2          | 2              | [0, 1, 2, 3, 4] | 13     |
+| fourth call       | 13         | 3          | 3              | [0, 1, 2, 3, 4] | 16     |
+| fifth call        | 16         | 4          | 4              | [0, 1, 2, 3, 4] | 20     |
 
 `reduce()` 方法最终的返回值为 20。
 
-## 示例
+## 兼容实现
 
-将数组转为对象
-展开更大的数组
-在一次遍历中进行两次计算
-将映射和过滤函数组合
-按顺序运行异步函数
+```js
+if (!Array.prototype.reduce) {
+  Object.defineProperty(Array.prototype, 'reduce', {
+    value: function (callback) {
+      if (this === null) {
+        throw new TypeError('Array.prototype.reduce called on null or undefined');
+      }
+
+      if (typeof callback !== 'function') {
+        throw new TypeError(callback + ' is not a function');
+      }
+
+      // 将数组对象化
+      const obj = Object(this);
+
+      const len = obj.length >>> 0;
+
+      let index = 0;
+      let accumulator;
+
+      // 处理累加器（也就是 reduce 方法第二个参数）
+      if (arguments.length >= 2) {
+        // 累加器
+        accumulator = arguments[1];
+      } else {
+        while (index < len && !(index in obj)) {
+          index++;
+        }
+
+        if (index >= len) {
+          throw new TypeError('Reduce of empty array with no initial value');
+        }
+
+        accumulator = obj[index++];
+      }
+
+      // 走有累加器的那种实现
+      while (index < len) {
+        if (index in obj) {
+          accumulator = callback(accumulator, obj[index], index, obj);
+        }
+
+        index++;
+      }
+
+      return accumulator;
+    },
+  });
+}
+```
+
+## 应用示例
+
+- 将数组转为对象
+- 展开更大的数组
+- 在一次遍历中进行两次计算
+- 将映射和过滤函数组合
+- 按顺序运行异步函数
 
 ### 聚合为数字
 
@@ -108,11 +164,11 @@ console.log(res);
 数组成员为对象类型时。
 
 ```js
-const arr = [{total: 1}, {total: 2}, {total: 3}, {total: 4}, {total: 5}]
+const arr = [{ total: 1 }, { total: 2 }, { total: 3 }, { total: 4 }, { total: 5 }];
 
-const res = arr.reduce((acc, { total }) => (acc + total), 0)
+const res = arr.reduce((acc, { total }) => acc + total, 0);
 
-console.log(res)
+console.log(res);
 // 15
 ```
 
@@ -121,11 +177,15 @@ console.log(res)
 将数组的每项转换为固定格式的字符串，每项直接以分号作为分隔。
 
 ```js
-const arr = [{ key: 'foo', value: 1}, { key: 'bar', value: 2}, { key: 'baz', value: 3}];
+const arr = [
+  { key: 'foo', value: 1 },
+  { key: 'bar', value: 2 },
+  { key: 'baz', value: 3 },
+];
 
-const res = arr.reduce((acc, {key, value}) => (acc + `${key}=${value}&`), '?')
+const res = arr.reduce((acc, { key, value }) => acc + `${key}=${value}&`, '?');
 
-console.log(res)
+console.log(res);
 // "?foo=1&bar=2&baz=3&"
 ```
 
@@ -134,17 +194,20 @@ console.log(res)
 只要目标是将数组聚合为唯一的元素时，都可以考虑使用 reduce
 
 ```js
-const arr = [{id: 1, type: 'a', name: 'foo'}, {id: 2, type: 'b', name: 'bar'}, { id: 3, type: 'c', name: 'baz'}];
+const arr = [
+  { id: 1, type: 'a', name: 'foo' },
+  { id: 2, type: 'b', name: 'bar' },
+  { id: 3, type: 'c', name: 'baz' },
+];
 
-const res = arr.reduce((acc, {id, type, name}) => {
-  acc[id] = { type, name }
-  return acc
-}, {})
+const res = arr.reduce((acc, { id, type, name }) => {
+  acc[id] = { type, name };
+  return acc;
+}, {});
 
-console.log(res)
+console.log(res);
 // { 1: { name: 'foo', type: 'a'}, 2: { name: 'bar', type: 'b'}, { name: 'baz', type: 'c' }}
 ```
-
 
 ### 初始值的必要性
 
@@ -194,7 +257,7 @@ const max = [1, 2, 3, 4, 5].reduce((a, b) => (a > b ? a : b));
 找出长度最长的数组元素。
 
 ```js
-const findLongest = entries =>
+const findLongest = (entries) =>
   entries.reduce((prev, cur) => (cur.length > prev.length ? cur : prev), '');
 
 console.log(findLongest([1, 2, 3, 'ab', 4, 'bcd', 5, 6785, 4]));
@@ -204,18 +267,26 @@ console.log(findLongest([1, 2, 3, 'ab', 4, 'bcd', 5, 6785, 4]));
 ### 二维数组扁平化
 
 ```js
-const arr = [[0, 1], [2, 3], [4, 5]]
+const arr = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+];
 
 const res = arr.reduce((a, b) => a.concat(b), []);
 
-console.log(res)
+console.log(res);
 // [0, 1, 2, 3, 4, 5]
 ```
 
 你也可以写成箭头函数的形式：
 
 ```js
-var flattened = [[0, 1], [2, 3], [4, 5]].reduce((acc, cur) => acc.concat(cur), []);
+var flattened = [
+  [0, 1],
+  [2, 3],
+  [4, 5],
+].reduce((acc, cur) => acc.concat(cur), []);
 ```
 
 ### 计算数组成员次数

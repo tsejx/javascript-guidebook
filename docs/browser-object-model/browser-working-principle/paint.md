@@ -77,7 +77,7 @@ export default () => (
 
 正如上文所述，当 DOM 的结构发生了改变，需要从生成 DOM 这一步开始，重新经过 **样式计算**、**生成布局树**、**建立图层树**、再到 **生成绘制列表** 以及之后的显示器显示整个渲染过程走一遍，开销是非常大的。
 
-在重排过程中，可能会增加一些渲染器，如文本字符串。DOM 树里的每个节点（内部）都会有 `reflow` 方法，一个结点的重排很有可能导致子节点，甚至父节点以及同级节点的重排。
+在重排过程中，可能会增加一些渲染器，如文本字符串。DOM 树里的每个节点（内部）都会有 `reflow` 方法，一个节点的重排很有可能导致子节点，甚至父节点以及同级节点的重排。
 
 重排后，浏览器会重新绘制受影响的部分到屏幕可视区域，该过程称为[重绘](#重绘)。另外，DOM 变化不一定都会影响几何属性，比如改变一个元素的背景色不影响宽高，这种情况下只会发生重绘，代价较小。
 
@@ -85,12 +85,12 @@ export default () => (
 
 ### 重排原因
 
-引发重排的原因：
+引发重排的根本原因：
 
 - **Initial**：网页初始化的时候
-- **Incremental**：JavaScript 在操作 DOM Tree 时
-- **Resize**：某些元件的尺寸变了
-- **StyleChange**：如果 CSS 的属性发生变化了
+- **Incremental**：JavaScript 在操作 DOM 树时
+- **Resize**：元素节点的尺寸改变
+- **StyleChange**：样式属性发生变化
 - **Dirty**：几个 Incremental 的 Reflow 发生在同一个元素的子树上
 
 ### 重排场景
@@ -108,16 +108,16 @@ export default () => (
 - 改变文字大小（StyleChange）
 - 激活伪类，如 `:hover`（StyleChange）
 
-浏览器并不会在我们进行上述操作时立即进行重排，浏览器会积攥一批 `reflow` 后批量进行重排，不过有的操作会让浏览器立马进行重排，比如 **窗口缩放**，**改变了页面默认的字体**，或者说 **获取以下这些值**。
+浏览器并不会在我们进行上述操作时立即进行重排，浏览器会积攥一批 `reflow` 后批量进行重排。
+
+不过有的操作会让浏览器立马进行重排，比如 **窗口缩放**，**改变了页面默认的字体**，或者说 **获取以下这些值**。
 
 - `offsetTop`、`offsetLeft`、`offsetWidth`、`offsetHeight`
 - `scrollTop`、`scrollLeft`、`scrollWidth`、`scrollHeight`
 - `clientTop`、`clientLeft`、`clientWidth`、`clientHeight`
 - IE 中的 `getComputedStyle()` 和 `currentStyle`
 
-### 重排属性
-
-触发页面重新布局的属性：
+触发页面重新布局的样式属性：
 
 - 盒子模型相关属性
 - 定位属性及浮动相关属性
@@ -129,9 +129,10 @@ height            bottom          vertical-align
 padding           left            line-height
 margin            right           overflow
 display           position        font-family
-border-width      float           font-size
-border            clear           white-space
+border            float           font-size
+border-width      clear           white-space
 min-height
+min-width
 ```
 
 ### 优化方案
@@ -185,9 +186,7 @@ box-shadow
 - 添加 DOM 节点：会对该节点进行**布局和重绘**。
 - 一些重大变化（例如增大 `<html>` 元素的字体）会导致缓存无效，使得整个渲染树都会进行重新**布局**和**绘制**。
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 学习重流和重绘（reflow 和 repaint）](https://segmentfault.com/a/1190000015851927)
 - [📝 研讨浏览器绘制和 Web 性能的注意事项](https://segmentfault.com/a/1190000016056546)

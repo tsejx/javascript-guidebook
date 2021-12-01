@@ -37,8 +37,8 @@ order: 1
 
 同步与异步的概念：
 
-* **同步（Synchronous）**：程序发出调用的时候，一直等待直到返回结果，没有结果之前不会返回。也就是，同步时调用者主动等待调用过程，且能立即得到结果的。
-* **异步（Asynchronous）**：程序发出调用之后，无法立即得到结果，需要额外的操作才能得到预期的结果是为异步。
+- **同步（Synchronous）**：程序发出调用的时候，一直等待直到返回结果，没有结果之前不会返回。也就是，同步时调用者主动等待调用过程，且能立即得到结果的。
+- **异步（Asynchronous）**：程序发出调用之后，无法立即得到结果，需要额外的操作才能得到预期的结果是为异步。
 
 ## 运行环境
 
@@ -48,26 +48,26 @@ JavaScript 的运行通常是在浏览器环境中进行的，具体由 JavaScri
 
 目前最为流行的浏览器为：Chrome、IE、Safari、Firefox、Opera。浏览器的内核是多线程的，通常由以下几个常驻的线程组成：
 
-- **渲染引擎线程：**负责页面的渲染
-- **JavaScript 引擎线程：**负责 JavaScript 的解析和执行
-- **定时触发器线程：**处理定时事件，比如 `setTimeout`、`setInterval`
-- **浏览器事件触发线程：**处理 DOM 事件
-- **异步 HTTP 请求线程：**处理 HTTP 请求
+- **渲染引擎线程**：负责页面的渲染
+- **JavaScript 引擎线程**：负责 JavaScript 的解析和执行
+- **定时触发器线程**：处理定时事件，比如 `setTimeout`、`setInterval`
+- **浏览器事件触发线程**：处理 DOM 事件
+- **异步 HTTP 请求线程**：处理 HTTP 请求
 
-⚠️ 需要注意的是，渲染线程和 JavaScript 引擎线程是互斥的。渲染线程在执行任务的时候，JavaScript 引擎线程会被挂起。因为 JavaScript 可以操作 DOM，若在渲染中 JavaScript 处理了 DOM，浏览器可能会不知所措了。
+⚠️ 需要注意的是，渲染线程和 JavaScript 引擎线程是 <strong style="color: red">互斥</strong> 的。渲染线程在执行任务的时候，JavaScript 引擎线程会被挂起。因为 JavaScript 可以操作 DOM，若在渲染中 JavaScript 处理了 DOM，浏览器可能会不知所措了。
 
 ### 内核引擎
 
-通常讲到浏览器的时候，我们会说到两个浏览器的核心组件：**渲染引擎（Rendering Engine）**和 **JavaScript 解释器（JavaScript Interpreter）**。
+通常讲到浏览器的时候，我们会说到两个浏览器的核心组件：**渲染引擎**（Rendering Engine）和 **JavaScript 解释器**（JavaScript Interpreter）。
 
-|    浏览器厂商     |       渲染引擎       |            JavaScript 解释器             |
-| :--------------- | :------------------ | :-------------------------------------- |
-|      Chrome       |   Webkit => Blink    |                    V8                    |
-|      Safari       |        Webkit        |                  Nitro                   |
-|      Firefox      |        Gecko         | SpiderMonky / TraceMonkey / JaegerMonkey |
-|       Opera       |   Presto => Blink    | Linear A / Linear B / Futhark / Carakan  |
-| Internet Explorer | Trident => EdgeHTML  |          JScript / Chakra（9+）          |
-|       Edge        | EdgeHTML => Chromium |                  Chakra                  |
+| 浏览器厂商        | 渲染引擎             | JavaScript 解释器（引擎）                |
+| :---------------- | :------------------- | :--------------------------------------- |
+| Chrome            | Webkit => Blink      | V8                                       |
+| Safari            | Webkit               | Nitro                                    |
+| Firefox           | Gecko                | SpiderMonky / TraceMonkey / JaegerMonkey |
+| Opera             | Presto => Blink      | Linear A / Linear B / Futhark / Carakan  |
+| Internet Explorer | Trident => EdgeHTML  | JScript / Chakra（9+）                   |
+| Edge              | EdgeHTML => Chromium | Chakra                                   |
 
 > 注：Webkit 引擎包含 WebCore 排版引擎及 JavaScript Core 解析引擎
 
@@ -92,7 +92,7 @@ JavaScript 中的程序任务可以分为两种：
 - **同步任务（Synchronous）**：同步任务在主线程上调用之后需要一直等待，只有当前任务执行完毕后，才能执行下一个任务
 - **异步任务（Asynchronous）**：异步任务会在主线程先执行一部分，然后退出主线程至专用线程中执行。在异步任务准备就绪后，会被推进任务队列等待（Task Queue），当主线程空闲时，JavaScript 解释器会执行一次事件循环（EventLoop）将事件队列中首个事件推进主线程执行
 
-具体来说，**异步执行的运行机制**如下：
+具体来说，**异步执行的运行机制** 如下：
 
 1. 所有同步任务及异步任务按照 [编译原理](../compilation/compilation#编译原理) 在主线程上执行，形成一个 [执行上下文栈](../execution/execution-context-stack)（Execution Context Stack）
 2. 同步任务执行完成并返回结果后退出执行上下文栈；异步任务执行一部分后，退出主线程的执行上下文栈，推进至运行环境的专用线程中继续执行
@@ -109,11 +109,9 @@ import img from '../../../assets/concurrency-model/workflow.png';
 export default () => <img alt="异步任务执行机制图解" src={img} width={640} />;
 ```
 
----
+## 参考资料
 
-**参考资料：**
-
-* [📝 聊聊 JavaScript 与浏览器的那些事：引擎与线程](<https://hijiangtao.github.io/2018/01/08/JavaScript-and-Browser-Engines-with-Threads/>)
-* [📝 JavaScript 单线程异步的背后——事件循环机制](<https://zhuanlan.zhihu.com/p/27035708>)
-* [📝 JavaScript 运行机制详解：再谈 Event Loop](<http://www.ruanyifeng.com/blog/2014/10/event-loop.html>)
-* [🎥 Philip Roverts: What the heck is the event loop anyway](<https://www.youtube.com/watch?v=8aGhZQkoFbQ>)
+- [📝 聊聊 JavaScript 与浏览器的那些事：引擎与线程](https://hijiangtao.github.io/2018/01/08/JavaScript-and-Browser-Engines-with-Threads/)
+- [📝 JavaScript 单线程异步的背后——事件循环机制](https://zhuanlan.zhihu.com/p/27035708)
+- [📝 JavaScript 运行机制详解：再谈 Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+- [🎥 Philip Roverts: What the heck is the event loop anyway](https://www.youtube.com/watch?v=8aGhZQkoFbQ)

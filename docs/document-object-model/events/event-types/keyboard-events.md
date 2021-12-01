@@ -4,7 +4,7 @@ nav:
   order: 6
 group:
   title: 事件类型
-  order: 8
+  order: 21
 title: 键盘事件
 order: 14
 ---
@@ -99,3 +99,22 @@ const EventUtil = {
 当用户按下十字键盘（键码为 175 ～ 178）、减号（170）、加号（174）、1（172）或 2（173）键时就会触发键盘事件。但没有办法得知用户是否按下了电源开关、A、B 或主页键。
 
 iOS 版 Safari 和 Android 版 Webkit 在使用屏幕键盘时会触发键盘事件。
+
+删除
+
+Backspace 和 Delete
+
+```js
+const keycode = e.keycode;
+
+if (keycode === 46 || keycode === 8) {
+}
+```
+
+兼容 ctrl 和 command
+
+```js
+if (!e.altKey && !e.shiftKey && e.keyCode === 75 && (e.metaKey || e.ctrlKey)) {
+  console.log('ctrl+k 或者 command+k ');
+}
+```

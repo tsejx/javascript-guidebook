@@ -6,7 +6,7 @@ group:
   title: Document
   order: 5
 title: Document 方法
-order: 5
+order: 3
 ---
 
 # Document 方法
@@ -48,7 +48,7 @@ document.write(maskup);
 
 > 只有当页面被加载的时候 `document.write()` 函数才会被执行
 
-⚠️ **注意：**
+⚠️ **注意**：
 
 - 因为 `document.write()` 需要向文档流中写入内容，所以，若在一个已关闭（例如，已完成加载）的文档上调用 `document.write()`，就会自动调用 `document.open()`，浙江清空该文档的内容。
 - 在由 `deferred` 或 `asynchronous` 属性的 `<script>` 中，`document.write()` 会被忽略，控制台会显示 “A call to `document.write()` from an asynchronously-loaded external script was ignored” 的报错信息
@@ -103,6 +103,8 @@ function checkPageFocus() {
 
 - `x`：（必填项）定位横坐标偏移量，指 `clientX`
 - `y`：（必填项）定位纵坐标偏移量，指 `clientY`
+
+返回值为指定坐标上的元素数组（顺序以时间冒泡为依据）
 
 🌰 **示例：检测元素可见性**
 
@@ -404,7 +406,7 @@ DocumentFragments 是 DOM 节点。它们不是主 DOM 树的一部分。通常�
   const fragment = document.createDocumentFragment();
   const browsers = ['Firefox', 'Chrome', 'Opera', 'Safari', 'Internet Explorer'];
 
-  browsers.forEach(function(browser) {
+  browsers.forEach(function (browser) {
     const li = document.createElement('li');
     li.textContent = browser;
     fragment.appendChild(li);

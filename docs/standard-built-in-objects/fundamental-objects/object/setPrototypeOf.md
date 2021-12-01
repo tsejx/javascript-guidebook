@@ -5,7 +5,7 @@ nav:
 group:
   title: Object
   order: 4
-title: Object.seal
+title: Object.setPrototypeOf
 order: 19
 ---
 
@@ -30,4 +30,12 @@ Object.setPrototypeOf(O, proto);
 
 ```js
 const foo = Object.setPrototypeOf({}, null);
+```
+
+## 代码实现
+
+```js
+if (!Object.setPrototypeOf) {
+  Object.setPrototypeOf = function() {};
+}
 ```

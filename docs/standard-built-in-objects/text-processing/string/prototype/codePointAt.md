@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.codePointAt
-order: 5
+order: 12
 ---
 
 # String.prototype.codePointAt()

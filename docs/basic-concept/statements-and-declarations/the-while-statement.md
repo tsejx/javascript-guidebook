@@ -30,7 +30,7 @@ while (expression) statement;
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
 var i = 0;

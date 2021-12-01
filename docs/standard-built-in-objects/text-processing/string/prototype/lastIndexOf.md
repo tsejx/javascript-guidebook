@@ -7,7 +7,7 @@ group:
   path: /text-processing/string/
   order: 9
 title: String.prototype.lastIndexOf
-order: 10
+order: 17
 ---
 
 # String.prototype.lastIndexOf()
@@ -37,7 +37,7 @@ str.lastIndexOf( searchValue [, startIndex])
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 字符串中的字符被从左向右索引。首字符的索引（index）是 0，最后一个字符的索引是 `stringName.length - 1`。
 

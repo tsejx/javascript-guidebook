@@ -72,7 +72,7 @@ func.call( [thisArg [, arg1 [, arg2 [, argN...]]]] )
 ## 示例
 
 ```js
-const sayName = function() {
+const sayName = function () {
   console.log(this.name);
 };
 
@@ -86,7 +86,7 @@ sayName.call(peter); // peter
 ```js
 function Person1() {
   this.name = 'person1';
-  this.sayName = function() {
+  this.sayName = function () {
     alert(this.name);
   };
 }
@@ -126,7 +126,7 @@ func.bind( thisArg [, arg1 [, arg2 [, ...]]] )
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 `bind()` 最简单的用法是创建一个函数，使这个函数不论怎么调用都有同样的 `this` 值。JavaScript 新手经常犯的一个错误是将一个方法从对象中拿出来，然后再调用，希望方法中的 `this` 是原来的对象（比如在回调中传入这个方法）。如果不做特殊处理的话，一般会丢失原来的对象。从原来的函数和原来的对象创建一个绑定函数，则能很漂亮地解决这个问题。
 
@@ -135,7 +135,7 @@ this.x = 9;
 
 var module = {
   x: 8,
-  getX: function() {
+  getX: function () {
     return this.x;
   },
 };
@@ -177,11 +177,11 @@ function LateBloomer() {
 }
 
 // Declare bloom after a delay of 1 second
-LateBloomer.prototype.bloom = function() {
+LateBloomer.prototype.bloom = function () {
   window.setTimeout(this.declare.bind(this), 1000);
 };
 
-LateBloomer.prototype.declare = function() {
+LateBloomer.prototype.declare = function () {
   console.log('I am a beautiful flower with ' + this.petalCount + ' petals!');
 };
 

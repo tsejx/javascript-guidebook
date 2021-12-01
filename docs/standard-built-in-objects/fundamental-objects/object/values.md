@@ -5,7 +5,7 @@ nav:
 group:
   title: Object
   order: 4
-title: Object.seal
+title: Object.values
 order: 20
 ---
 

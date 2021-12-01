@@ -41,10 +41,10 @@ arr.filter( callback = function (currentValue, index, arr) {} [, thisArg ] )
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 ```js
-const isBigEnough = value => value >= (10)[(12, 5, 8, 130, 44)].filter(isBigEnough);
+const isBigEnough = (value) => value >= (10)[(12, 5, 8, 130, 44)].filter(isBigEnough);
 // false
 ```
 
@@ -53,7 +53,7 @@ const isBigEnough = value => value >= (10)[(12, 5, 8, 130, 44)].filter(isBigEnou
 ```js
 let arr = [1, 2, 3, 5, 6, 9, 10];
 
-arr.filter(value => value % 2 !== 0);
+arr.filter((value) => value % 2 !== 0);
 // [1, 3, 5, 9]
 ```
 
@@ -62,6 +62,6 @@ arr.filter(value => value % 2 !== 0);
 ```js
 let arr = ['A', '', 'B', null, undefined, 'c', ' '];
 
-arr.filter(value => value && value.trim());
+arr.filter((value) => value && value.trim());
 // ['A', 'B', 'C']
 ```

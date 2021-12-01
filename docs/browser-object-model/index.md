@@ -25,7 +25,6 @@ order: 1
   - [alert](/browser-object-model/web-event/alert)
   - [confirm](/browser-object-model/web-event/confirm)
   - [prompt](/browser-object-model/web-event/prompt)
-  - [拖放 Drag and Drop API](/browser-object-model/web-event/drag-and-drop-api)
   - [动画渲染 Animation Framee API](/browser-object-model/web-event/request-animation-frame)
 - **视窗尺寸位置**
   - [Window 视图属性](/browser-object-model/window-position/window-view-properties)
@@ -68,9 +67,6 @@ order: 1
   - [Performance Timeline API](/browser-object-model/performance/performance-timeline)
   - Timing API
   - Performance Frame Timing API
-- **多媒体 API**
-  - [音频 Web Audio API](/browser-object-model/multimedia/audio)
-  - [视频 Web Video API](/browser-object-model/multimedia/video)
 - **设备 API**
   - [地理定位 Geolocation API](/browser-object-model/device/geolocation)
   - [触控事件 TouchEvent](/browser-object-model/device/touch-event)

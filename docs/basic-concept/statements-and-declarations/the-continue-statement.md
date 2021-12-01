@@ -38,7 +38,7 @@ break [labelname];
 
 ## 示例
 
-### 标准示例
+### 代码示例
 
 在 `for` 语句中使用 `continue`
 

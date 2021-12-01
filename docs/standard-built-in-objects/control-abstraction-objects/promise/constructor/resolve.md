@@ -52,7 +52,7 @@ let thenable = {
 
 let p = Promise.resolve(thenable);
 
-p.then(value => console.log(value)); // 100
+p.then((value) => console.log(value)); // 100
 ```
 
 上述代码中，当 `thenable` 对象的 `then` 方法执行后，对象 `p` 的状态就变为 Fulfilled，从而立即执行最后那个 `.then()` 方法指定的回调函数。
@@ -64,7 +64,7 @@ p.then(value => console.log(value)); // 100
 ```js
 const p = Promise.resolve('Hello');
 
-p.then(v => console.log(v));
+p.then((v) => console.log(v));
 // 'Hello'
 ```
 
@@ -86,10 +86,10 @@ p.then(v => console.log(v));
 
 ```js
 Promise.resolve('Fulfilled').then(
-  res => {
+  (res) => {
     console.log(res); // 'Fulfilled'
   },
-  rej => {
+  (rej) => {
     console.log(rej); // 不会调用
   }
 );
@@ -102,7 +102,7 @@ Promise.resolve('Fulfilled').then(
 ```js
 const promise = Promise.resolve([0, 1, 2]);
 
-promise.then(v => {
+promise.then((v) => {
   console.log(v[0]); // 0
 });
 ```
@@ -116,7 +116,7 @@ const foo = new Promise('foo');
 
 const bar = Promise.resolve(foo);
 
-bar.then(value => {
+bar.then((value) => {
   console.log(value); // 2. Output: 'foo'
 });
 
