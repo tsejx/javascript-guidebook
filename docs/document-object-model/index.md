@@ -11,7 +11,7 @@ order: 1
 
 # DOM 文档对象模型
 
-**文档对象模型 Document Oject Model**
+**文档对象模型 Document Object Model**
 
 - **文档对象模型**
   - [文档对象模型](/document-object-model/dom/dom)

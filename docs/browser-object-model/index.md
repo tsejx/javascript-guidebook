@@ -11,7 +11,7 @@ order: 1
 
 # BOM 浏览器对象模型
 
-**浏览器对象模型 Browser Oject Model**
+**浏览器对象模型 Browser Object Model**
 
 - **全局对象**
   - [Window 对象](/browser-object-model/window/window)

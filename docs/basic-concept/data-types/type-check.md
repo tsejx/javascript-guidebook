@@ -47,7 +47,7 @@ typeof function () {};
 typeof [1, 2];
 // "object"
 
-typeof new Oject();
+typeof new Object();
 // "object"
 ```
 
