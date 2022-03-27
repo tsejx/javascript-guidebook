@@ -12,19 +12,41 @@ order: 20
 
 # String.prototype.matchAll()
 
+⭐️ `ES2019(ES10)新特性`
+
 `matchAll()` 方法返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。
 
 ## 语法
 
+语法：
+
 ```js
-str.match(regexp);
+str.matchAll(regexp);
 ```
 
-| 参数     | 说明                                         | 类型   |
-| -------- | -------------------------------------------- | ------ |
-| `regexp` | 正则表达式，如果传参非正则会通过构造函数转换 | RegExp |
+类型声明：
 
-## 示例
+```ts
+interface Iterable<T> {
+  [Symbol.iterator](): Iterator<T>;
+}
+
+interface IterableIterator<T> extends Iterator<T> {
+  [Symbol.iterator](): IterableIterator<T>;
+}
+
+interface String {
+  matchAll(regexp: RegExp): IterableIterator<RegExpMatchArray>;
+}
+```
+
+参数说明：
+
+| 参数   | 说明                                         | 类型   |
+| :----- | :------------------------------------------- | :----- |
+| regexp | 正则表达式，如果传参非正则会通过构造函数转换 | RegExp |
+
+## 代码示例
 
 ### 获取字符串所有匹配项
 
@@ -39,7 +61,7 @@ for (const match of matches) {
   console.log(match[0], match.index, match.index + match[0].length);
 }
 
-const arr = Array.from(str.matchAll(regexp), m => m[0]);
+const arr = Array.from(str.matchAll(regexp), (m) => m[0]);
 // ['football', 'foosball']
 ```
 
@@ -68,3 +90,8 @@ console.log(arr[0]);
 console.log(arr[1]);
 // ['test2', 'e', 'st2', '2', index: 5, input: 'test1test2', length: 4]
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.matchAll](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll)
+- [TypeScript: lib.es2020.string.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2020.string.d.ts)

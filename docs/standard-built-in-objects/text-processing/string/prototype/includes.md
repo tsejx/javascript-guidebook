@@ -16,20 +16,32 @@ order: 15
 
 ## 语法
 
+语法：
+
 ```js
 str.includes( searchString [, startIndex] )
 ```
 
-| 参数           | 说明                                                           | 类型   |
-| -------------- | -------------------------------------------------------------- | ------ |
-| `searchString` | 要在字符串中搜索的字符串                                       | string |
-| `startIndex`   | 从当前字符串指定索引位置开发搜索子字符串，默认为 0，包含该索引 | number |
+类型声明：
+
+```ts
+interface String {
+  includes(searchString: string, position?: number): boolean;
+}
+```
+
+参数说明：
+
+| 参数         | 说明                                                           | 类型   |
+| :----------- | :------------------------------------------------------------- | :----- |
+| searchString | 要在字符串中搜索的字符串                                       | string |
+| startIndex   | 从当前字符串指定索引位置开发搜索子字符串，默认为 0，包含该索引 | number |
 
 这个方法可以帮你判断一个字符串是否包含另外一个字符串。
 
 这个方法搜索匹配的字符串是区分大小写的。
 
-## 示例
+## 代码示例
 
 ```js
 var str = 'To be, or not to be, that is the question.';
@@ -50,11 +62,11 @@ console.log(str.includes('TO BE'));
 // false
 ```
 
-## Polyfill
+## 兼容性代码
 
 ```js
 if (!String.prototype.includes) {
-  String.prototype.includes = function(searchString, startIndex) {
+  String.prototype.includes = function (searchString, startIndex) {
     'use strict';
 
     if (typeof startIndex !== 'number') {
@@ -69,3 +81,8 @@ if (!String.prototype.includes) {
   };
 }
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.includes](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

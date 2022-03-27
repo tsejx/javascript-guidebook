@@ -16,15 +16,27 @@ order: 25
 
 ## 语法
 
+语法：
+
 ```js
 str.repeat(count);
 ```
 
-| 参数    | 说明                                                                      | 类型   |
-| ------- | ------------------------------------------------------------------------- | ------ |
-| `count` | 介于 0 与正无穷大之间的整数。表示在新构造的字符串中重复了多少遍原字符串。 | number |
+类型声明：
 
-## 示例
+```ts
+interface String {
+  repeat(count: number): string;
+}
+```
+
+参数说明：
+
+| 参数  | 说明                                                                    | 类型   |
+| :---- | :---------------------------------------------------------------------- | :----- |
+| count | 介于 0 与正无穷大之间的整数。表示在新构造的字符串中重复了多少遍原字符串 | number |
+
+## 代码示例
 
 ```js
 const str = 'abc';
@@ -48,11 +60,11 @@ str.repeat(-1);
 // RangeError: repeat count mutst be positive and less than infinity
 ```
 
-## Polyfill
+## 兼容性代码
 
 ```js
 if (!String.prototype.repeat) {
-  String.prototype.repeat = function(count) {
+  String.prototype.repeat = function (count) {
     'use strict';
 
     if (this === null) {
@@ -101,3 +113,8 @@ if (!String.prototype.repeat) {
   };
 }
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.repeat](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/repeat)
+- [TypeScript: lib.es105.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

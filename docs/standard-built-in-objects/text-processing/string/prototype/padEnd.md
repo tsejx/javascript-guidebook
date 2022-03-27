@@ -34,10 +34,10 @@ interface String {
 
 参数说明：
 
-| 参数         | 说明                                                                                                             | 类型   |
-| :----------- | :--------------------------------------------------------------------------------------------------------------- | :----- |
-| `maxLength`  | 当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。                         | number |
-| `fillString` | （可选）填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。 | string |
+| 参数       | 说明                                                                                                             | 类型   |
+| :--------- | :--------------------------------------------------------------------------------------------------------------- | :----- |
+| maxLength  | 当前字符串需要填充到的目标长度。如果这个数值小于当前字符串的长度，则返回当前字符串本身。                         | number |
+| fillString | （可选）填充字符串。如果字符串太长，使填充后的字符串长度超过了目标长度，则只保留最左侧的部分，其他部分会被截断。 | string |
 
 ## 代码示例
 
@@ -79,4 +79,5 @@ if (String.prototype.padEnd) {
 
 ## 参考资料
 
+- [MDN: Array.prototype.padEnd](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd)
 - [TypeScript - lib.es2017.string.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2017.string.d.ts)

@@ -16,15 +16,25 @@ order: 41
 
 ## 语法
 
+语法：
+
 ```js
 str.toUpperCase();
 ```
 
-## 描述
+类型声明：
+
+```ts
+interface String {
+  toUpperCase(): string;
+}
+```
+
+## 方法说明
 
 `toUpperCase` 将调用该方法的字符串值转换为大写形式，并返回。`toUpperCase` 方法不影响字符串本身的值，返回的是新的字符串。
 
-## 示例
+## 代码示例
 
 ```js
 var abc = 'abc';
@@ -32,3 +42,8 @@ var abc = 'abc';
 abc.toUpperCase();
 // 'ABC'
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.toUpperCase](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

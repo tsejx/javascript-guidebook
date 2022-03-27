@@ -16,18 +16,32 @@ order: 16
 
 ## 语法
 
+语法：
+
 ```js
-str.indexOf( searchValue[, startIndex])
+str.indexOf( searchString [, position])
 ```
 
-| 参数          | 说明                                           | 类型   |
-| ------------- | ---------------------------------------------- | ------ |
-| `searchValue` | 需要查找的子字符串。                           | string |
-| `startIndex`  | 可选，在当前字符串中查找的起始索引，默认为 0。 | number |
+类型声明：
 
-`indexOf()` 方法的返回值为 Number 类型，返回子字符串在当前字符串中第一次查找到的起始位置（索引）。
+```ts
+interface String {
+  indexOf(searchString: string, position?: number): number;
+}
+```
 
-## 示例
+参数说明：
+
+| 参数         | 说明                                           | 类型   |
+| :----------- | :--------------------------------------------- | :----- |
+| searchString | 需要查找的子字符串。                           | string |
+| position     | 可选，在当前字符串中查找的起始索引，默认为 0。 | number |
+
+返回值：
+
+返回值为 Number 类型，返回子字符串在当前字符串中第一次查找到的起始位置（索引）。
+
+## 代码示例
 
 字符串中的字符被从左向右索引。首字符的索引（index）为 0，字符串 `stringName` 的最后一个字符的索引是 `stringName.length - 1`。
 
@@ -95,3 +109,8 @@ console.log(count); // displays 4
 'Blue Whale'.indexOf('Bloe') !== -1;
 // false
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.indexOf](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

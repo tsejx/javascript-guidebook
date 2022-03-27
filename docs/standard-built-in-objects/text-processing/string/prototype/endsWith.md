@@ -16,22 +16,34 @@ order: 14
 
 ## 语法
 
+语法：
+
 ```js
-str.endsWith( searchString [, length] )
+str.endsWith( searchString [, endPosition] )
 ```
 
-| 参数           | 说明              | 类型   |
-| -------------- | ----------------- | ------ |
-| `searchString` | 要搜索的子字符串  | string |
-| `length`       | 作为 `str` 的长度 | number |
+类型声明：
+
+```ts
+interface String {
+  endsWith(seachString: string, endPosition?: number): boolean;
+}
+```
+
+参数说明：
+
+| 参数         | 说明              | 类型   |
+| :----------- | :---------------- | :----- |
+| searchString | 要搜索的子字符串  | string |
+| endPosition  | 作为 `str` 的长度 | number |
 
 这个方法帮助你确定一个字符串是否在另一个字符串的末尾。这个方法是大小写敏感的。
 
-## 说明
+## 方法说明
 
 `concat` 方法将一个或多个字符串与原字符串连接合并，形成一个新的字符串并返回。 `concat` 方法并不影响原字符串。
 
-## 示例
+## 代码示例
 
 ```js
 const str = 'Hello world!';
@@ -43,15 +55,20 @@ console.log(str.endsWith('abc'));
 // false
 ```
 
-## Polyfill
+## 兼容性代码
 
 ```js
 if (!String.prototype.endsWith) {
-  String.prototype.endsWith = function(searchString, length) {
-    if (length === undefined || length > this.length) {
-      length = this.length;
+  String.prototype.endsWith = function (searchString, endPosition) {
+    if (endPosition === undefined || endPosition > this.length) {
+      endPosition = this.length;
     }
-    return this.substring(length - searchString.length, length) === searchString;
+    return this.substring(endPosition - searchString.length, endPosition) === searchString;
   };
 }
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.endsWith](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

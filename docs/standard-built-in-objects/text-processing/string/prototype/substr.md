@@ -16,27 +16,39 @@ order: 32
 
 ## 语法
 
+语法：
+
 ```js
-str.substr( startIndex [, length] )
+str.substr( from [, length] )
 ```
 
-| 参数         | 说明                                     | 类型   |
-| ------------ | ---------------------------------------- | ------ |
-| `startIndex` | 指向字符串指定部分的开头的索引。         | number |
-| `length`     | 可选，返回的子字符串片段中包含的字符数。 | number |
+类型声明：
 
-## 描述
+```ts
+interface String {
+  substr(from: number, length?: number): string;
+}
+```
 
-`substr()` 函数从 `str` 的索引 `startIndex` 处开始复制，直到复制 `length` 个字符或字符串的结尾为止。
+参数说明：
 
-- 如果 `startIndex` 为正值，且大于或等于字符串的长度，则返回一个空字符串。
-- 如果 `startIndex` 为负值，则将其视为 `str.length + startIndex` 开始的一个字符索引。若 `str.length + startIndex` 大于字符串的长度，则使用 0 作为开始提取的索引。
+| 参数   | 说明                                     | 类型   |
+| :----- | :--------------------------------------- | :----- |
+| from   | 指向字符串指定部分的开头的索引。         | number |
+| length | 可选，返回的子字符串片段中包含的字符数。 | number |
+
+## 方法说明
+
+`substr()` 函数从 `str` 的索引 `from` 处开始复制，直到复制 `length` 个字符或字符串的结尾为止。
+
+- 如果 `from` 为正值，且大于或等于字符串的长度，则返回一个空字符串。
+- 如果 `from` 为负值，则将其视为 `str.length + from` 开始的一个字符索引。若 `str.length + from` 大于字符串的长度，则使用 0 作为开始提取的索引。
 - 如果 `length` 为负数或 0，则不会复制任何字符，返回空字符串。
 - 如果省略了 `length` 参数，则一直复制到字符串的结尾。
 
-## 示例
+## 代码示例
 
-### 代码示例
+### 基本用法
 
 ```js
 var str = 'Hello world!';
@@ -72,9 +84,9 @@ str.substr(0, 0);
 // ''
 ```
 
-### Polyfill
+### 兼容性代码
 
-Microsoft's JScript 不支持负数的 `startIndex` 参数，如果想充分利用该方法，需要使用下面的兼容代码修复 BUG：
+Microsoft's JScript 不支持负数的 `from` 参数，如果想充分利用该方法，需要使用下面的兼容代码修复 BUG：
 
 ```js
 // only run when the substr function is broken
@@ -97,3 +109,8 @@ if ('ab'.substr(-1) != 'b') {
   })(String.prototype.substr);
 }
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.substr](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/substr)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

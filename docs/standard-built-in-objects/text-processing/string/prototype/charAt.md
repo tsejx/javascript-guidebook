@@ -16,49 +16,72 @@ order: 10
 
 ## 语法
 
+语法：
+
 ```js
-str.charAt(index);
+str.charAt(pos);
 ```
 
-| 参数    | 说明                                                                                  | 类型   |
-| ------- | ------------------------------------------------------------------------------------- | ------ |
-| `index` | 一个介于 0 和字符串长度减 1 之间的整数。 (0~length-1)。如果没有提供索引，默认值为 0。 | number |
+类型声明：
 
-## 说明
+```ts
+interface String {
+  chartAt(pos: number): string;
+}
+```
+
+参数说明：
+
+| 参数 | 说明                                                                                  | 类型   |
+| :--- | :------------------------------------------------------------------------------------ | :----- |
+| pos  | 一个介于 0 和字符串长度减 1 之间的整数。 (0~length-1)。如果没有提供索引，默认值为 0。 | number |
+
+返回值：
+
+返回字符串指定索引的字符。
+
+## 方法说明
 
 字符串中的字符从左向右索引：
 
 - 第一个字符的索引值为 0
 - 最后一个字符（假设该字符位于字符串 `stringName`中）的索引值为 `stringName.length - 1`
-- 如果指定的 `index` 值超出了该范围，则返回一个空字符串 `''`
+- 如果指定的 `pos` 值超出了该范围，则返回一个空字符串 `''`
 
-## 示例
+## 代码示例
 
 ```js
-const javascript = 'JAVASCRIPT';
+const str = 'JAVASCRIPT';
 
-javascript.charAt();
+str.charAt();
 // J
-javascript.charAt(0);
+str.chartAt(-1);
+// ''
+str.charAt(0);
 // J
-javascript.charAt(1);
+str.charAt(1);
 // A
-javascript.charAt(2);
+str.charAt(2);
 // V
-javascript.charAt(3);
+str.charAt(3);
 // A
-javascript.charAt(4);
+str.charAt(4);
 // S
-javascript.charAt(5);
+str.charAt(5);
 // C
-javascript.charAt(6);
+str.charAt(6);
 // R
-javascript.charAt(7);
+str.charAt(7);
 // I
-javascript.charAt(8);
+str.charAt(8);
 // P
-javascript.charAt(9);
+str.charAt(9);
 // T
-javascript.charAt(100);
+str.charAt(100);
 // ''
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.charAt](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)
