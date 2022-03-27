@@ -30,56 +30,18 @@ arr.includes(searchElement [, fromIndex])
 interface Array<T> {
   includes(searchElement: T, fromIndex?: number): boolean;
 }
-
-interface ReadonlyArray<T> {
-  includes(searchElement: T, fromIndex?: number): boolean;
-}
-
-interface Int8Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Uint8Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Uint8ClampedArray {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Int16Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Uint16Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Int32Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Uint32Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Float32Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
-
-interface Float64Array {
-  includes(searchElement: number, fromIndex?: number): boolean;
-}
 ```
 
 参数说明：
 
-| 参数            | 说明               | 类型   |
-| :-------------- | :----------------- | :----- |
-| `searchElement` | 需要查找的元素值   | any    |
-| `fromIndex`     | 查找数组开始的索引 | number |
+| 参数          | 说明               | 类型   |
+| :------------ | :----------------- | :----- |
+| searchElement | 需要查找的元素值   | any    |
+| fromIndex     | 查找数组开始的索引 | number |
 
-**返回值：** 如果存在指定值则返回 `true`，否则返回 `false`。
+返回值：
+
+如果存在指定值则返回 `true`，否则返回 `false`。
 
 ## 代码示例
 
@@ -104,7 +66,7 @@ arr2.includes(NaN);
 // true
 ```
 
-### NaN
+### 参数值为 NaN
 
 `Array.prototype.indexOf()` 无法查找出数组中的 NaN，而该方法可以判断出数组中是否包含 NaN。
 
@@ -164,4 +126,5 @@ arr.includes('c', -100);
 
 ## 参考资料
 
-- [TypeScript - lib.es2016.array.include.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2016.array.include.d.ts)
+- [MDN: Array.prototype.includes](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+- [TypeScript: lib.es2016.array.include.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2016.array.include.d.ts)

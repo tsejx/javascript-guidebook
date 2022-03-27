@@ -18,28 +18,49 @@ order: 28
 
 语法：
 
-```ts
-reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T): T;
-reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T, initialValue: T): T;
+```js
+arr.reduce(callbackfn [, initialValue]);
 ```
 
-| 实例方法参数   | 说明                                                                                                                                               | 类型     |
-| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :------- |
-| `callbackfn`   | 回调函数，用于遍历数组成员时执行                                                                                                                   | function |
-| `initialValue` | （可选）累加器初始值，用作第一个调用回调函数的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用将报错。 | any      |
+类型声明
 
-<br />
+```ts
+interface Array<T> {
+  reduce(
+    callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T
+  ): T;
 
-| 回调函数参数    | 说明                                                                        | 类型   |
-| :-------------- | :-------------------------------------------------------------------------- | :----- |
-| `previousValue` | 累加器累加回调的返回值，它是上一次调用回调时返回的累积值，或 `initialValue` | any    |
-| `currentValue`  | 数组中正在处理的数组成员                                                    | any    |
-| `currentIndex`  | 数组中正在处理的当前成员的索引                                              | number |
-| `array`         | 调用函数的数组                                                              | array  |
+  reduce(
+    callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T,
+    initialValue: T
+  ): T;
 
-**返回值：** 函数累计处理的结果。
+  reduce<U>(
+    callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U,
+    initialValue: U
+  ): U;
+}
+```
 
-## 描述
+参数说明：
+
+| 参数         | 说明                                                                                                                                               | 类型     |
+| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------- | :------- |
+| callbackfn   | 回调函数，用于遍历数组成员时执行                                                                                                                   | function |
+| initialValue | （可选）累加器初始值，用作第一个调用回调函数的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用将报错。 | any      |
+
+`callbackfn` 函数的参数：
+
+- `previousValue`：累加器累加回调的返回值，它是上一次调用回调时返回的累积值，或 `initialValue`
+- `currentValue`：当前数组中处理的元素
+- `index`：数组中正处理的当前元素的索引
+- `array`：被调用的数组
+
+返回值：
+
+返回函数累计处理的结果。
+
+## 方法说明
 
 `reduce()` 方法为数组中的每一个元素依次执行 `callback` 回调函数，不包括数组中被删除或从未被赋值的元素。
 
@@ -53,8 +74,6 @@ reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, arr
   - 如果没有提供 `initialValue`，`reduce` 会从索引 1 的地方开始执行回调函数，跳过第一个索引。
   - 如果数组为空且没有提供 `initialValue`，会抛出 `TypeError` 。
   - 如果数组仅有一个元素（无论位置如何）并且没有提供 `initialValue`， 或者有提供 `initialValue` 但是数组为空，那么此唯一值将被返回并且 `callback` 不会被执行。
-
-## 运行机制
 
 假如运行下段代码：
 
@@ -89,60 +108,7 @@ reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, arr
 
 `reduce()` 方法最终的返回值为 20。
 
-## 兼容实现
-
-```js
-if (!Array.prototype.reduce) {
-  Object.defineProperty(Array.prototype, 'reduce', {
-    value: function (callback) {
-      if (this === null) {
-        throw new TypeError('Array.prototype.reduce called on null or undefined');
-      }
-
-      if (typeof callback !== 'function') {
-        throw new TypeError(callback + ' is not a function');
-      }
-
-      // 将数组对象化
-      const obj = Object(this);
-
-      const len = obj.length >>> 0;
-
-      let index = 0;
-      let accumulator;
-
-      // 处理累加器（也就是 reduce 方法第二个参数）
-      if (arguments.length >= 2) {
-        // 累加器
-        accumulator = arguments[1];
-      } else {
-        while (index < len && !(index in obj)) {
-          index++;
-        }
-
-        if (index >= len) {
-          throw new TypeError('Reduce of empty array with no initial value');
-        }
-
-        accumulator = obj[index++];
-      }
-
-      // 走有累加器的那种实现
-      while (index < len) {
-        if (index in obj) {
-          accumulator = callback(accumulator, obj[index], index, obj);
-        }
-
-        index++;
-      }
-
-      return accumulator;
-    },
-  });
-}
-```
-
-## 应用示例
+## 代码示例
 
 - 将数组转为对象
 - 展开更大的数组
@@ -328,3 +294,61 @@ const minMax = arr.reduce(reduceMaxMin, initMinMax);
 console.log(minMax);
 // { min: 0.2, max: 5.5}
 ```
+
+## 兼容性代码
+
+```js
+if (!Array.prototype.reduce) {
+  Object.defineProperty(Array.prototype, 'reduce', {
+    value: function (callback) {
+      if (this === null) {
+        throw new TypeError('Array.prototype.reduce called on null or undefined');
+      }
+
+      if (typeof callback !== 'function') {
+        throw new TypeError(callback + ' is not a function');
+      }
+
+      // 将数组对象化
+      const obj = Object(this);
+
+      const len = obj.length >>> 0;
+
+      let index = 0;
+      let accumulator;
+
+      // 处理累加器（也就是 reduce 方法第二个参数）
+      if (arguments.length >= 2) {
+        // 累加器
+        accumulator = arguments[1];
+      } else {
+        while (index < len && !(index in obj)) {
+          index++;
+        }
+
+        if (index >= len) {
+          throw new TypeError('Reduce of empty array with no initial value');
+        }
+
+        accumulator = obj[index++];
+      }
+
+      // 走有累加器的那种实现
+      while (index < len) {
+        if (index in obj) {
+          accumulator = callback(accumulator, obj[index], index, obj);
+        }
+
+        index++;
+      }
+
+      return accumulator;
+    },
+  });
+}
+```
+
+## 参考资料
+
+- [MDN: Array.prototype.reduce](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

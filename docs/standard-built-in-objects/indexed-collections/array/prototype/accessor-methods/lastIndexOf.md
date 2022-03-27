@@ -16,20 +16,34 @@ order: 14
 
 ## 语法
 
+语法：
+
 ```js
-arr.lastIndexOd( searchValue [, fromIndex ] )
+arr.lastIndexOd( searchElement [, fromIndex ] )
 ```
 
-| 参数          | 说明                                                 | 类型  |
-| ------------- | ---------------------------------------------------- | ----- |
-| `searchValue` | 需要查找的数组元素                                   | any   |
-| `fromIndex`   | 在当前数组中查找的起始索引，默认为 `arr.lengt - 1`。 | numer |
+类型声明：
 
-**返回值：** `lastIndexOf()` 方法的返回值为 `Number` 类型，返回数组元素在当前数组中最后一次查找到的起始位置（索引）。
+```ts
+interface Array<T> {
+  lastIndexOf(searchElement: T, fromIndex?: number): number;
+}
+```
 
-## 示例
+参考资料：
 
-### 代码示例
+| 参数          | 说明                                               | 类型  |
+| :------------ | :------------------------------------------------- | :---- |
+| searchElement | 需要查找的数组元素                                 | any   |
+| fromIndex     | 在当前数组中查找的起始索引，默认为 `arr.lengt - 1` | numer |
+
+返回值：
+
+返回值为 `Number` 类型，返回数组元素在当前数组中最后一次查找到的起始位置（索引）。
+
+## 代码示例
+
+### 基本用法
 
 ```js
 const arr = [2, 5, 9, 2];
@@ -72,3 +86,8 @@ console.log(indices); // Outputs: [4, 2, 0];
 ```
 
 注意：我们要单独处理 `idx == 0` 时的情况，因为如果是第一个元素，忽略了`fromIndex` 参数则第一个元素总会被查找。这不同于 `indexOf` 方法。
+
+## 参考资料
+
+- [MDN: Array.prototype.lastIndexOf](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

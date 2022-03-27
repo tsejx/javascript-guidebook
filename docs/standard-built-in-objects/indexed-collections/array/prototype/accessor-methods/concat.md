@@ -16,18 +16,41 @@ order: 10
 
 ## 语法
 
+语法：
+
 ```js
 const new_array = old_array.concat( item1[, itemN ] )
 ```
 
-| 参数    | 描述                                         | 类型 |
-| ------- | -------------------------------------------- | ---- |
-| `item1` | 添加到当前数组末尾处的数据项                 | any  |
-| `itemN` | 要添加到当前数组末尾处的其他项，可以有多个。 | any  |
+类型声明：
 
-**返回值：** 新的 `Array` 实例。
+```ts
+interface ConcatArray<T> {
+  readonly length: number;
+  readonly [n: number]: T;
+  join(separator?: string): string;
+  slice(start?: number, end?: number): T[];
+}
 
-## 描述
+interface Array<T> {
+  concat(...items: ConcatArray<T>[]): T[];
+
+  concat(...items: (T | ConcatArray<T>)[]): T[];
+}
+```
+
+参数说明：
+
+| 参数  | 描述                                         | 类型 |
+| :---- | :------------------------------------------- | :--- |
+| item1 | 添加到当前数组末尾处的数据项                 | any  |
+| itemN | 要添加到当前数组末尾处的其他项，可以有多个。 | any  |
+
+返回值：
+
+返回合并后新的 `Array` 实例。
+
+## 方法说明
 
 `concat` 方法创建一个新的数组，它由被调用的对象中的元素组成，每个参数的顺序依次是该参数的元素（如果参数是数组）或参数本身（如果参数不是数组）。它不会递归到嵌套数组参数中。
 
@@ -38,7 +61,7 @@ const new_array = old_array.concat( item1[, itemN ] )
 
 **注意**：数组/值在连接时保持不变。此外，对于新数组的任何操作（仅当元素不是对象引用时）都不会对原始数组产生影响，反之亦然。
 
-## 示例
+## 代码示例
 
 ### 连接两个数组
 
@@ -48,7 +71,8 @@ const new_array = old_array.concat( item1[, itemN ] )
 const alpha = ['a', 'b', 'c'];
 const numeric = [1, 2, 3];
 
-alpha.concat(numeric); // Outputs: ['a', 'b', 'c', 1, 2, 3]
+alpha.concat(numeric);
+// Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
 ### 连接三个数组
@@ -62,7 +86,8 @@ const num1 = [1, 2, 3],
 
 const nums = num1.concat(num2, num3);
 
-console.log(nums); // Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log(nums);
+// Outputs: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 ### 将值连接到数组
@@ -74,7 +99,8 @@ var alpha = ['a', 'b', 'c'];
 
 var alphaNumeric = alpha.concat(1, [2, 3]);
 
-console.log(alphaNumeric); // Outputs: ['a', 'b', 'c', 1, 2, 3]
+console.log(alphaNumeric);
+// Outputs: ['a', 'b', 'c', 1, 2, 3]
 ```
 
 ### 合并嵌套数组
@@ -87,12 +113,14 @@ var num2 = [2, [3]];
 
 var nums = num1.concat(num2);
 
-console.log(nums); // Outputs: [[1], 2, [3]]
+console.log(nums);
+// Outputs: [[1], 2, [3]]
 
 // modify the first element of num1
 num1[0].push(4);
 
-console.log(nums); // Outputs: [[1, 4], 2, [3]]
+console.log(nums);
+// Outputs: [[1, 4], 2, [3]]
 ```
 
 ### 将对象合并为数组
@@ -100,7 +128,14 @@ console.log(nums); // Outputs: [[1, 4], 2, [3]]
 ```js
 var newArray = Array.prototype.concat.call({ a: 1 }, { b: 2 });
 
-console.log(newArray); // [{ a: 1 }, { b: 2 }]
+console.log(newArray);
+// [{ a: 1 }, { b: 2 }]
 
-console.log(newArray[0].a); // 1
+console.log(newArray[0].a);
+// 1
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.concat](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

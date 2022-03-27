@@ -16,17 +16,31 @@ order: 5
 
 ### 语法
 
+语法：
+
 ```js
 Array.of( ele0[, ele1[, ...[, eleN ] ] ] )
 ```
 
-| 参数       | 说明                                           | 类型 |
-| ---------- | ---------------------------------------------- | ---- |
-| `elementN` | 任意个参数，将按**顺序**成为返回数组中的元素。 | any  |
+类型声明：
 
-**返回值：**新的 `Array` 实例。
+```ts
+interface ArrayConstructor {
+  of<T>(...items: T[]): T[];
+}
+```
 
-### 描述
+参数说明：
+
+| 参数     | 说明                                             | 类型 |
+| :------- | :----------------------------------------------- | :--- |
+| elementN | 任意个参数，将按 **顺序** 成为返回数组中的元素。 | any  |
+
+返回值：
+
+新的 `Array` 实例。
+
+### 方法说明
 
 `Array.of()` 和 `Array` 构造函数之间的区别在于处理整数参数。
 
@@ -41,10 +55,15 @@ Array(7); // [ , , , , , , ]
 Array(1, 2, 3); // [1, 2, 3]
 ```
 
-### 示例
+### 代码示例
 
 ```js
 Array.of(1); // [1]
 Array.of(1, 2, 3); // [1, 2, 3]
 Array.of(undefined); // [undefined]
 ```
+
+## 参考资料
+
+- [MDN: Array.of](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/of)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

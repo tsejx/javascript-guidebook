@@ -16,28 +16,36 @@ order: 24
 
 ## 语法
 
-```js
-arr.findIndex( callbackFunc [, thisArg ])
+语法：
 
-callbackFunc = function (currentValue, index, array) {
-    // do something to
+```js
+arr.findIndex( callback [, thisArg ])
+```
+
+类型声明：
+
+```ts
+interface Array<T> {
+  findIndex(predicate: (value: T, index: number, obj: T[]) => unknown, thisArg?: any): number;
 }
 ```
 
-| 实例方法参数 | 类型                       | 说明     |
-| ------------ | -------------------------- | -------- |
-| `callback`   | 用于判定数组成员的回调函数 | function |
-| `thisArg`    | 执行回调函数的 `this` 值   |          |
+参数说明：
 
-| 回调函数参数   | 类型                     | 说明   |
-| -------------- | ------------------------ | ------ |
-| `currentValue` | 当前遍历的数组成员       | any    |
-| `index`        | 当前遍历的数组成员的索引 | number |
-| `array`        | 原数组                   | array  |
+| 参数     | 类型                       | 说明     |
+| :------- | :------------------------- | :------- |
+| callback | 用于判定数组成员的回调函数 | function |
+| thisArg  | 执行回调函数的 `this` 值   |          |
 
-## 示例
+`callback` 函数的参数：
 
-### 代码示例
+- `currentValue`：当前数组中处理的元素
+- `index`：数组中正处理的当前元素的索引
+- `array`：被调用的数组
+
+## 代码示例
+
+### 基本用法
 
 ```js
 const arr = [1, 2, 3, 4, 5, 12, 22, 2, 2, 2];
@@ -70,3 +78,8 @@ console.log([4, 6, 8, 12].findIndex(isPrime));
 console.log([4, 6, 7, 12].findIndex(isPrime));
 // 2
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.findIndex](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

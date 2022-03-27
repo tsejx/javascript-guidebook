@@ -16,30 +16,46 @@ order: 15
 
 ## 语法
 
+语法：
+
 ```js
-arr.slice( startIndex [, endIndex ] );
+arr.slice( start [, end ] );
 ```
 
-|     参数     |                       说明                       |  类型  |
-| :----------: | :----------------------------------------------: | :----: |
-| `startIndex` |              浅拷贝区间的开始索引。              | number |
-|  `endIndex`  | 浅拷贝区间的结束索引，浅拷贝不包括该索引所得值。 | number |
+类型声明：
 
-**返回值：** 一个含有提取元素的新数组。
+```ts
+interface Array<T> {
+  slice(start?: number, end?: number): T[];
+}
+```
 
-## 描述
+参数说明：
 
-`slice` 方法不修改原数组，只会返回浅拷贝原数组的新数组。原数组的元素会按照下述规则拷贝：
+| 参数  | 说明                                           | 类型   |
+| :---- | :--------------------------------------------- | :----- |
+| start | 浅拷贝区间的开始索引                           | number |
+| end   | 浅拷贝区间的结束索引，浅拷贝不包括该索引所得值 | number |
+
+返回值：
+
+返回一个含有提取元素的新数组。
+
+## 方法说明
+
+`slice` 方法不修改原数组，只会返回浅拷贝原数组的新数组。
+
+原数组的元素会按照下述规则拷贝：
 
 - 如果该元素是个对象引用 （不是实际的对象），`slice` 会拷贝这个对象引用到新的数组里。两个对象引用都引用了同一个对象。如果被引用的对象发生改变，则新的和原来的数组中的这个元素也会发生改变。
 - 对于字符串、数字及布尔值来说，`slice` 会拷贝这些值到新的数组里。在别的数组里修改这些字符串或数字或是布尔值，将不会影响另一个数组。
   如果向两个数组任一中添加了新元素，则另一个不会受到影响。
 
-⚠️ `slice()` 方法涉及到 `Number()` 转型函数的隐式类型转换，当 `startIndex` 被转换为 `NaN` 时，相当于 `startIndex` 为 0；当 `endIndex` 被转换为 `NaN` 时（`endIndex` 为 `undefined` 除外），则输出空数组。
+`slice()` 方法涉及到 `Number()` 转型函数的隐式类型转换，当 `start` 被转换为 `NaN` 时，相当于 `start` 为 0；当 `end` 被转换为 `NaN` 时（`end` 为 `undefined` 除外），则输出空数组。
 
-## 示例
+## 代码示例
 
-### 代码示例
+### 基本用法
 
 ```js
 const arr = [1, 2, 3, 4, 5];
@@ -108,3 +124,8 @@ function list() {
 const arr = list(1, 2, 3);
 // [1, 2, 3]
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.slice](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

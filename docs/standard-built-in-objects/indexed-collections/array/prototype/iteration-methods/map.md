@@ -16,29 +16,43 @@ order: 27
 
 ## 语法
 
+语法：
+
 ```js
 const new_arr = old_arr.map(callback = function(currentValue, index, array){} [, thisArg])
 ```
 
-| 实例方法参数   | 说明                             | 类型     |
-| -------------- | -------------------------------- | -------- |
-| `callbackFunc` | 用于遍历数组成员时执行的回调函数 | function |
-| `thisArg`      | 执行回调函数的 `this` 值         |          |
+类型声明：
 
-| 回调函数参数   | 说明                     | 类型   |
-| -------------- | ------------------------ | ------ |
-| `currentValue` | 当前遍历的数组成员       | any    |
-| `index`        | 当前遍历的数组成员的索引 | number |
-| `array`        | 原数组                   | array  |
+```ts
+interface Array<T> {
+  map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+}
+```
 
-**返回值：** 返回回调函数的结果，如果未设定返回值，则返回当前遍历的数组成员。
+参数说明：
 
-## 描述
+| 参数         | 说明                             | 类型     |
+| :----------- | :------------------------------- | :------- |
+| callbackFunc | 用于遍历数组成员时执行的回调函数 | function |
+| thisArg      | 执行回调函数的 `this` 值         |          |
+
+`callback` 函数的参数：
+
+- `currentValue`：当前数组中处理的元素
+- `index`：数组中正处理的当前元素的索引
+- `array`：被调用的数组
+
+返回值：
+
+返回回调函数的结果，如果未设定返回值，则返回当前遍历的数组成员。
+
+## 方法说明
 
 - 该方法按升序为数组中含有效值的每一项执行一次回调函数，那些已删除（使用 `delete` 方法等情况）或者未初始化的项将被跳过（但不包括那些值为 `undefined` 的项，例如在稀疏数组中）。
 - 使用 `map` 方法处理数组时，数组元素的范围是在 `callback` 方法第一次调用之前就已经确定了。在 `map` 方法执行的过程中：原数组中新增加的元素将不会被 `callback` 访问到；若已经存在的元素被改变或删除了，则它们的传递到 `callback` 的值是 `map` 方法遍历到它们的那一时刻的值；而被删除的元素将不会被访问到。
 
-## 示例
+## 代码示例
 
 下面的代码创建了一个新数组，值为原数组中对应数字的平方根。
 
@@ -48,8 +62,10 @@ const roots = numbers.map(Math.sqrt);
 
 // Math.sqrt(x)
 
-console.log(numbers); // [1, 4, 9]
-console.log(roots); // [1, 2, 3],
+console.log(numbers);
+// [1, 4, 9]
+console.log(roots);
+// [1, 2, 3],
 ```
 
 ### 格式化对象数组
@@ -72,7 +88,7 @@ const kvArray = [
   },
 ];
 
-const reformattedArray = kvArray.map(function(obj) {
+const reformattedArray = kvArray.map(function (obj) {
   let rObj = {};
   rObj[obj.key] = obj.value;
   return rObj;
@@ -93,5 +109,11 @@ const reformattedArray = kvArray.map(function(obj) {
 ```js
 const answer = ['1', '2', '3'].map(parseInt);
 
-console.log(answer); // [1, NaN, NaN]
+console.log(answer);
+// [1, NaN, NaN]
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.map](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

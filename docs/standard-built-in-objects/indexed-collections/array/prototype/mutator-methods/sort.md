@@ -16,23 +16,37 @@ order: 45
 
 ## 语法
 
+语法：
+
 ```js
-arr.sort(sortFunction);
+arr.sort(compareFn);
 ```
 
-| 参数           | 说明                                   | 类型     |
-| -------------- | -------------------------------------- | -------- |
-| `sortFunction` | （可选）指定如何比较元素顺序的函数名称 | function |
+类型声明：
 
-**返回值：** 返回排序后的数组对象。
+```ts
+interface Array<T> {
+  sort(compareFn?: (a: T, b: T) => number): this;
+}
+```
+
+参数说明：
+
+| 参数      | 说明                                   | 类型     |
+| :-------- | :------------------------------------- | :------- |
+| compareFn | （可选）指定如何比较元素顺序的函数名称 | function |
+
+返回值：
+
+返回排序后的数组对象。
 
 在排序过程中，并不会创建新的数组对象，返回的数组对象就是经过排序后的当前数组本身。
 
-## 描述
+## 方法说明
 
-如果省略 `sortFunction` 参数，元素将按 ASCII 字符顺序的**升序**进行排列。[ASCII 字符表](http://ascii.911cha.com/)
+如果省略 `compareFn` 参数，元素将按 ASCII 字符顺序的**升序**进行排列。[ASCII 字符表](http://ascii.911cha.com/)
 
-如果提供了 `sortFunction` 参数，那么该函数必须返回下列值之一：
+如果提供了 `compareFn` 参数，那么该函数必须返回下列值之一：
 
 - 如果所传递的第一个参数小于第二个参数，则返回负值。
 - 如果两个参数相等，则返回零。
@@ -52,9 +66,9 @@ function compare(a, b) {
 }
 ```
 
-## 示例
+## 代码示例
 
-### 代码示例
+### 基本用法
 
 ```js
 const foo = ['b', 'c', 'a'];
@@ -228,3 +242,8 @@ let result = mapped.map(function (el) {
   return list[el.index];
 });
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.sort](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

@@ -16,24 +16,36 @@ order: 40
 
 ## 语法
 
+语法：
+
 ```js
-arr.fill( value [, startIndex [, endIndex] ] )
+arr.fill( value [, start [, end] ] )
 ```
 
-| 参数         | 说明                             | 类型   |
-| ------------ | -------------------------------- | ------ |
-| `value`      | 填充数组元素的值                 | any    |
-| `startIndex` | 起始索引，默认为 0。             | number |
-| `endIndex`   | 结束索引，默认为 `arr.length` 。 | number |
+类型声明：
 
-## 描述
+```ts
+interface Array<T> {
+  fill(value: T, start?: number, end?: number): this;
+}
+```
 
-具体填充区间始于 `startIndex`，结束但不包括于 `emdIndex`（半开半闭区间）
+参数说明：
 
-- 当 `startIndex` 为负数，则开始索引为 `arr.length + startIndex`
-- 当 `endIndex` 为负数，则结束索引为 `arr.length + endIndex`
+| 参数  | 说明                             | 类型   |
+| :---- | :------------------------------- | :----- |
+| value | 填充数组元素的值                 | any    |
+| start | 起始索引，默认为 0。             | number |
+| end   | 结束索引，默认为 `arr.length` 。 | number |
 
-## 示例
+## 方法说明
+
+具体填充区间始于 `start`，结束但不包括于 `emdIndex`（半开半闭区间）
+
+- 当 `start` 为负数，则开始索引为 `arr.length + start`
+- 当 `end` 为负数，则结束索引为 `arr.length + end`
+
+## 代码示例
 
 ```js
 [1, 2, 3].fill(4)
@@ -73,3 +85,8 @@ var arr = Array(3).fill({})
 arr[0].hi = 'hi';
 // [{hi: 'hi'}, {hi: 'hi'}, {hi: "hi"}]
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.fill](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)
