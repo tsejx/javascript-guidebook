@@ -16,18 +16,34 @@ order: 7
 
 ## 语法
 
+语法：
+
 ```js
 Promise.resolve(value);
 ```
 
-### 参数
+类型声明：
+
+```ts
+interface PromiseConstructor {
+  resolve(): Promise<void>;
+
+  resolve<T>(value: T | PromiseLike<T>): Promise<T>;
+}
+```
+
+参数说明：
+
+| 参数  | 说明   | 类型 |
+| :---- | :----- | :--- |
+| value | 见下方 | any  |
 
 根据传入参数的不同，会有不同的响应效果。
 
-- **Promise 实例** => 返回传入的 Promise 实例
-- **Thenable 对象** => 将该 Thenable 对象转化为 Promise 对象，然后立即执行 `.then()` 方法
-- **非 Thenable 对象** => 返回新的 Fulfilled 状态的 Promise 实例
-- **不带参数** => 返回新的 Fulfilled 状态的 Promise 实例
+- **Promise 实例**：返回传入的 Promise 实例
+- **Thenable 对象**：将该 Thenable 对象转化为 Promise 对象，然后立即执行 `.then()` 方法
+- **非 Thenable 对象**：返回新的 Fulfilled 状态的 Promise 实例
+- **不带参数**：返回新的 Fulfilled 状态的 Promise 实例
 
 ### Promise 实例
 
@@ -50,21 +66,21 @@ let thenable = {
   then: (resolve, reject) => resolve(100),
 };
 
-let p = Promise.resolve(thenable);
+let promise = Promise.resolve(thenable);
 
-p.then((value) => console.log(value)); // 100
+promise.then((value) => console.log(value)); // 100
 ```
 
-上述代码中，当 `thenable` 对象的 `then` 方法执行后，对象 `p` 的状态就变为 Fulfilled，从而立即执行最后那个 `.then()` 方法指定的回调函数。
+上述代码中，当 `thenable` 对象的 `then` 方法执行后，对象 `promise` 的状态就变为 Fulfilled，从而立即执行最后那个 `.then()` 方法指定的回调函数。
 
 ### 非 Thenable 对象
 
 如果参数是一个原始值，或者是一个不具有 `then` 方法的对象，则 `Promise.resolve` 方法返回一个新的 Promise 对象，状态为 Fulfilled。
 
 ```js
-const p = Promise.resolve('Hello');
+const promise = Promise.resolve('Hello');
 
-p.then((v) => console.log(v));
+promise.then((v) => console.log(v));
 // 'Hello'
 ```
 
@@ -78,7 +94,7 @@ p.then((v) => console.log(v));
 
 需要注意的是，状态为 Fulfilled 的 Promise 对象，是在本轮 [事件循环](../../../../core-modules/executable-code-and-execution-contexts/concurrency-model/event-loop)（Event Loop）的结束时，而不是在下一轮事件循环的开始时。
 
-## 示例
+## 代码示例
 
 ### 基本用法
 
@@ -107,7 +123,7 @@ promise.then((v) => {
 });
 ```
 
-### Promise 作参数
+### Promise 作为参数
 
 如果传入的参数为 Promise 的实例对象，那么会直接返回该 Promise 的实力对象。
 
@@ -117,10 +133,16 @@ const foo = new Promise('foo');
 const bar = Promise.resolve(foo);
 
 bar.then((value) => {
-  console.log(value); // 2. Output: 'foo'
+  console.log(value);
+  // 2. 输出: 'foo'
 });
 
-console.log(foo === bar); // 1. Output: true
+console.log(foo === bar);
+// 1. 输出: true
 
 // 这里有同步异步先后执行的区别
 ```
+
+## 参考资料
+
+- [TypeScript - lib.es2015.promise.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.promise.d.ts)

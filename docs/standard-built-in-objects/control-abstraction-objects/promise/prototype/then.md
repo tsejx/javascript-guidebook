@@ -7,7 +7,7 @@ group:
   path: /control-abstraction-objects/
   order: 15
 title: Promise.prototype.then
-order: 21
+order: 20
 ---
 
 # Promise.prototype.then
@@ -16,16 +16,31 @@ order: 21
 
 ## 语法
 
+语法：
+
 ```js
-promiseInstance.then(onFulfilled, onRejected);
+promiseInstance.then(onfulfilled, onrejected);
 ```
 
-| 参数        | 说明                                                                                                                                                                                                        |
-| :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| onFulfilled | 当 Promise 变成 Fulfilled 状态时，该参数作为回调函数被调用。该函数有一个参数，即接受的最终结果。如果传入的 onFulfilled 的参数类型不是函数，则会被内部转换为 `(x) => x`，即原样返回 Promise 最终结果的函数。 |
-| onRejected  | 当 Promise 变成 Rejected 状态时，该参数作为回调函数被调用。该函数有一个参数，即拒绝的原因。                                                                                                                 |
+类型声明：
 
-## 示例
+```ts
+interface Promise<T> {
+  then<TResult1 = T, TResult2 = never>(
+    onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+    onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+  ): Promise<TResult1 | TResult2>;
+}
+```
+
+参数说明：
+
+| 参数        | 说明                                                                                                                                                                                                                     |
+| :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| onfulfilled | 当 Promise 变成 Fulfilled 状态时，该参数作为回调函数被调用。<br/>该函数有一个参数，即接受的最终结果。如果传入 `onfulfilled` 作为参数的参数类型不是函数，则会被内部转换为 `(x) => x`，即原样返回 Promise 最终结果的函数。 |
+| onrejected  | 当 Promise 变成 Rejected 状态时，该参数作为回调函数被调用。<br/>该函数有一个参数，即拒绝的原因。                                                                                                                         |
+
+## 代码示例
 
 ### 基本用法
 

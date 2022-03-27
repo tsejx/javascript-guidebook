@@ -12,31 +12,66 @@ order: 8
 
 # Promise.allSettled
 
+⭐️ `ES2020(ES11)新特性`
+
 `Promise.allSettled` 方法返回一个在所有给定的 Promise 都已经 `fullfilled` 或 `rejected` 后的 Promise，并带有一个对象数组，每个对象表示对应的 Promise 结果。
 
 当您有多个彼此不依赖的异步任务成功完成时，或者您总是想知道每个 Promise 的结果时，通常使用它。
 
 ## 语法
 
-```js
-Promise.allSettled(iterable)
+语法：
 
-Promise.allSettled([promise1, promise2, ..., promiseN])
+```js
+Promise.allSettled(iterable);
 ```
 
-### 参数
+类型声明：
 
-参数 `iterable` 必须具备 [Iterator](../../iterator-objects/iterator) 接口，且每个成员都是 Promise 实例。
+```ts
+interface PromiseFulfilledResult<T> {
+  status: 'fulfilled';
+  value: T;
+}
 
-如果 `iterable` 内每个成员都不是 Promise 实例，会先调用 [Promise.resolve](resolve) 将每个成员转化为 Promise 实例，再进一步处理。
+interface PromiseRejectedResult {
+  status: 'rejected';
+  reason: any;
+}
 
-| 参数                         | 返回值                        |
-| :--------------------------- | :---------------------------- |
-| 空的具备 Iterator 接口的对象 | 状态为 `fulfilled` 的 Promise |
-| 不包含任何 Promise           | 异步完成的 Promise            |
-| 其他情况                     | 状态为 `pending` 的 Promise   |
+type PromiseSettledResult<T> = PromiseFulfilledResult<T> | PromiseRejectedResult;
 
-### 描述
+interface PromiseConstructor {
+  allSettled<T extends readonly unknown[] | readonly [unknown]>(
+    values: T
+  ): Promise<
+    { -readonly [P in keyof T]: PromiseSettledResult<T[P] extends PromiseLike<infer U> ? U : T[P]> }
+  >;
+
+  allSettled<T>(
+    values: Iterable<T>
+  ): Promise<PromiseSettledResult<T extends PromiseLike<infer U> ? U : T>[]>;
+}
+```
+
+参数说明：
+
+| 参数     | 说明   | 类型 |
+| :------- | :----- | :--- |
+| iterable | 见下方 | any  |
+
+根据传入参数的不同，会有不同的响应效果：
+
+- 空的具备 Iterator 接口的对象，返回状态为 Fulfilled 的 Promise
+- 不包含任何 Promise，返回异步完成的 Promise
+- 其他情况，返回状态为 Pending 的 Promise
+
+<br />
+
+- 参数 `iterable` 必须具备 [Iterator](../../iterator-objects/iterator) 接口，且每个成员都是 Promise 实例
+- 如果 `iterable` 内每个成员都不是 Promise 实例，会先调用 [Promise.resolve](resolve) 将每个成员转化为 Promise 实例，再进一步处理
+
+## 方法描述
 
 对于 `Promise.allSettled` 执行集合中的每个 Promise 都已经完成后，无论时成功（`fulfiiled`）或是拒绝（`rejected`），未决议的 Promise 将被异步完成。那时，所返回的 Promise 的处理器将传入一个数组作为输入，该数组包含原始 Promise 集合中每个 Promise 的结果。
 
@@ -47,7 +82,7 @@ Promise.allSettled([promise1, promise2, ..., promiseN])
 
 `value` 和 `reason` 分别反映了每个 Promise 决议（或拒绝）的值。
 
-## 示例
+## 代码示例
 
 应用场景：
 

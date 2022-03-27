@@ -12,37 +12,121 @@ order: 4
 
 # Promise.all
 
-`Promise.all` 接收一个以 Promise 实例为成员的可迭代对象作为参数，当所有输入的 Promise 成员全部变为 Fulfilled 状态时才会继续执行后续的 `Promise.prototype.then`，如果某个成员变为 Rejected 的时候，函数后续的 `Promise.prototype.catch` 会被执行。
+`Promise.all` 接收一个以 Promise 实例为成员的可迭代对象作为参数，当所有输入的 Promise 成员全部变为 Fulfilled 状态时才会继续执行后续的 [Promise.prototype.then()](./then)，如果某个成员变为 Rejected 的时候，函数后续的 [Promise.prototype.catch()](./catch) 会被执行。
+
+## 语法
 
 语法：
 
 ```js
-Promise.all(iterable)
-
-Promise.all([promise1, promise2, ..., promiseN])
+Promise.all(values);
 ```
-
-参数：
-
-- `iterable`：必须具备 [Iterator](../../iterator-objects/iterator) 接口，且每个成员都是 Promise 实例。
-
-如果 `iterable` 内每个成员都不是 Promise 实例，会先调用 [Promise.resolve](resolve) 将每个成员转化为 Promise 实例，再进一步处理。
-
-| 参数                         | 返回值                   |
-| :--------------------------- | :----------------------- |
-| 空的具备 Iterator 接口的对象 | Fulfilled 状态的 Promise |
-| 不包含任何 Promise           | 异步完成的 Promise       |
-| 其他情况                     | Pending 状态的 Promise   |
 
 类型声明：
 
 ```ts
 interface PromiseConstructor {
-  all<T>(values: readonly (T | PromiseLike<T>)[]): Promise<T[]>;
+  all<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10>(
+    values: readonly [
+      T1 | PromiseLike<T1>,
+      T2 | PromiseLike<T2>,
+      T3 | PromiseLike<T3>,
+      T4 | PromiseLike<T4>,
+      T5 | PromiseLike<T5>,
+      T6 | PromiseLike<T6>,
+      T7 | PromiseLike<T7>,
+      T8 | PromiseLike<T8>,
+      T9 | PromiseLike<T9>,
+      T10 | PromiseLike<T10>
+    ]
+  );
+
+  all<T1, T2, T3, T4, T5, T6, T7, T8, T9>(
+    values: readonly [
+      T1 | PromiseLike<T1>,
+      T2 | PromiseLike<T2>,
+      T3 | PromiseLike<T3>,
+      T4 | PromiseLike<T4>,
+      T5 | PromiseLike<T5>,
+      T6 | PromiseLike<T6>,
+      T7 | PromiseLike<T7>,
+      T8 | PromiseLike<T8>,
+      T9 | PromiseLike<T9>
+    ]
+  );
+
+  all<T1, T2, T3, T4, T5, T6, T7, T8>(
+    values: readonly [
+      T1 | PromiseLike<T1>,
+      T2 | PromiseLike<T2>,
+      T3 | PromiseLike<T3>,
+      T4 | PromiseLike<T4>,
+      T5 | PromiseLike<T5>,
+      T6 | PromiseLike<T6>,
+      T7 | PromiseLike<T7>,
+      T8 | PromiseLike<T8>
+    ]
+  );
+
+  all<T1, T2, T3, T4, T5, T6, T7>(
+    values: readonly [
+      T1 | PromiseLike<T1>,
+      T2 | PromiseLike<T2>,
+      T3 | PromiseLike<T3>,
+      T4 | PromiseLike<T4>,
+      T5 | PromiseLike<T5>,
+      T6 | PromiseLike<T6>,
+      T7 | PromiseLike<T7>
+    ]
+  );
+  all<T1, T2, T3, T4, T5, T6>(
+    values: readonly [
+      T1 | PromiseLike<T1>,
+      T2 | PromiseLike<T2>,
+      T3 | PromiseLike<T3>,
+      T4 | PromiseLike<T4>,
+      T5 | PromiseLike<T5>,
+      T6 | PromiseLike<T6>
+    ]
+  );
+  all<T1, T2, T3, T4, T5>(
+    values: readonly [
+      T1 | PromiseLike<T1>,
+      T2 | PromiseLike<T2>,
+      T3 | PromiseLike<T3>,
+      T4 | PromiseLike<T4>,
+      T5 | PromiseLike<T5>
+    ]
+  );
+  all<T1, T2, T3, T4>(
+    values: readonly [
+      T1 | PromiseLike<T1>,
+      T2 | PromiseLike<T2>,
+      T3 | PromiseLike<T3>,
+      T4 | PromiseLike<T4>
+    ]
+  );
+  all<T1, T2, T3>(
+    values: readonly [T1 | PromiseLike<T1>, T2 | PromiseLike<T2>, T3 | PromiseLike<T3>]
+  );
+  all<T1, T2>(values: readonly [T1 | PromiseLike<T1>, T2 | PromiseLike<T2>]);
+  all<T>(values: readonly [T | PromiseLike<T>]);
 }
 ```
 
-### 描述
+参数说明：
+
+| 参数   | 参数说明 | 类型 |
+| :----- | :------- | :--- |
+| values | 见下方   | any  |
+
+- 空的具备 Iterator 接口的对象，将返回 Fulfilled 状态的 Promise |
+- 不包含任何 Promise，将返回异步完成的 Promise |
+- 其他情况，将返回 Pending 状态的 Promise |
+- `iterable`：必须具备 [Iterator](../../iterator-objects/iterator) 接口，且每个成员都是 Promise 实例。
+- 如果 `iterable` 内每个成员都不是 Promise 实例，会先调用 [Promise.resolve](resolve) 将每个成员转化为 Promise 实例，再进一步处理。
+
+## 方法说明
 
 `Promise.all` 执行后返回一个新创建的 Promise 实例，该实例状态由 `Promise.all` 参数成员决定，可以分为两种情况：
 
@@ -71,7 +155,7 @@ Promise.all([p1, p2])
   .catch((err) => console.log(err));
 ```
 
-## 示例
+## 代码示例
 
 ### 基本用法
 
@@ -92,7 +176,7 @@ Promise.all([p1, p2, p3]).then((v) => console.log(v));
 
 `Promise.all` 在任意一个传入的 Promise 否决时返回新的 Rejected 状态的 Promise 实例。
 
-例如，如果你传入的 Promise 中，有四个 Promise 实例在一定的时间之后调用成功函数，有一个立即调用失败函数，那么 `Promise.all` 将立即变为 _Rejected_ 状态。
+例如，如果你传入的 Promise 中，有四个 Promise 实例在一定的时间之后调用成功函数，有一个立即调用失败函数，那么 `Promise.all` 将立即变为 Rejected 状态。
 
 ```js
 var p1 = new Promise((resolve, reject) => {
@@ -152,4 +236,5 @@ Promise.all(
 
 ## 参考资料
 
+- [TypeScript - lib.es2015.promise.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.promise.d.ts)
 - [📝 Promise.all 处理 Rejection 的技巧](https://zhuanlan.zhihu.com/p/26920718)
