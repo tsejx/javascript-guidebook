@@ -15,27 +15,40 @@ order: 19
 
 ## 语法
 
+语法：
+
 ```js
-Object.setPrototypeOf(O, proto);
+Object.setPrototypeOf(o, proto);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  setPrototypeOf(o: any, proto: object | null): any;
+}
+```
+
+参数说明：
+
 | 参数  | 说明               | 类型   |
-| ----- | ------------------ | ------ |
-| O     | 要设置其原型的对象 | object |
+| :---- | :----------------- | :----- |
+| o     | 要设置其原型的对象 | object |
 | proto | 原型对象           | object |
+
+返回值：
 
 返回设置原型后的对象。
 
-## 示例
-
-```js
-const foo = Object.setPrototypeOf({}, null);
-```
-
-## 代码实现
+## 代码示例
 
 ```js
 if (!Object.setPrototypeOf) {
-  Object.setPrototypeOf = function() {};
+  Object.setPrototypeOf = function () {};
 }
 ```
+
+## 参考资料
+
+- [MDN: Object.setPrototypeOf](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

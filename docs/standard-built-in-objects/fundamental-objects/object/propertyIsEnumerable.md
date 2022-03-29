@@ -5,7 +5,7 @@ nav:
 group:
   title: Object
   order: 4
-title: Object.prototype.isPrototypeOf
+title: Object.prototype.prototypeIsEnumerable
 order: 23
 ---
 
@@ -15,19 +15,25 @@ order: 23
 
 ## 语法
 
+语法：
+
 ```js
-O.prototype.prototypeIsEnumerable(V);
+obj.prototypeIsEnumerable(V);
 ```
 
+参数说明：
+
 | 参数 | 说明                     | 类型   |
-| ---- | ------------------------ | ------ |
+| :--- | :----------------------- | :----- |
 | V    | 需要检测的 Property 键名 | string |
+
+返回值：
 
 返回表示指定 Property 键名是否可枚举的 Boolean 类型值。
 
-## 示例
+## 代码示例
 
-### 基本示例
+### 基本用法
 
 ```js
 const foo = {};
@@ -55,7 +61,7 @@ function b() {
   this.property = 'b';
 }
 
-b.prototype.firstMethod = function() {};
+b.prototype.firstMethod = function () {};
 
 function c() {
   this.method = function method() {
@@ -82,3 +88,7 @@ d.property = 'd';
 d.prototypeIsEnumerable('property');
 // true
 ```
+
+## 参考资料
+
+- [MDN: Object.prototypeIsEnumerable](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/prototypeIsEnumerable)

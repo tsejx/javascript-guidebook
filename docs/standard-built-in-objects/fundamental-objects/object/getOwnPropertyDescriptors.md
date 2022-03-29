@@ -26,12 +26,6 @@ Object.getOwnPropertyDescriptors(obj);
 类型声明：
 
 ```ts
-interface ObjectConstructor {
-  getOwnPropertyDescriptors<T>(
-    o: T
-  ): { [P in keyof T]: TypedPropertyDescriptor<T[P]> } & { [x: string]: PropertyDescriptor };
-}
-
 interface TypedPropertyDescriptor<T> {
   enumerable?: boolean;
   configurable?: boolean;
@@ -49,13 +43,19 @@ interface PropertyDescriptor {
   get?(): any;
   set?(v: any): void;
 }
+
+interface ObjectConstructor {
+  getOwnPropertyDescriptors<T>(
+    o: T
+  ): { [P in keyof T]: TypedPropertyDescriptor<T[P]> } & { [x: string]: PropertyDescriptor };
+}
 ```
 
 参数说明：
 
-| 参数  | 说明                                   | 类型   |
-| :---- | :------------------------------------- | :----- |
-| `obj` | 用于获取 Property 的 Attributes 的对象 | object |
+| 参数 | 说明                                   | 类型   |
+| :--- | :------------------------------------- | :----- |
+| obj  | 用于获取 Property 的 Attributes 的对象 | object |
 
 ## 代码示例
 
@@ -72,4 +72,5 @@ Object.getOwnPropertyDescriptors(a);
 
 ## 参考资料
 
+- [MDN: Object.getOwnPropertyDescriptors](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptors)
 - [TypeScript - lib.es2017.object.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2017.object.d.ts)

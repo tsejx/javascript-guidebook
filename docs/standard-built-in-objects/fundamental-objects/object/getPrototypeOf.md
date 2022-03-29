@@ -15,17 +15,31 @@ order: 12
 
 ## 语法
 
+语法：
+
 ```js
-Object.getPrototypeOf(O);
+Object.getPrototypeOf(o);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  getPrototypeOf(o: any): any;
+}
+```
+
+参数说明：
+
 | 参数 | 说明     | 类型   |
-| ---- | -------- | ------ |
-| O    | 目标对象 | object |
+| :--- | :------- | :----- |
+| o    | 目标对象 | object |
+
+返回值：
 
 返回目标对象的原型对象。
 
-## 示例
+## 代码示例
 
 ### 基本示例
 
@@ -60,3 +74,8 @@ Object.prototype === Object.getPrototypeOf(bar);
 Obejct.prototype === Object.getPrototypeOf({});
 // true
 ```
+
+## 参考资料
+
+- [MDN: Object.getPrototypeOf](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getPrototypeOf)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

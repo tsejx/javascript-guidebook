@@ -15,21 +15,33 @@ order: 16
 
 ## 语法
 
+语法：
+
 ```js
-Object.keys(O);
+Object.keys(o);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  keys(o: {}): string[];
+}
+```
+
+参数说明：
+
 | 参数 | 说明     | 类型   |
-| ---- | -------- | ------ |
-| O    | 指定对象 | object |
+| :--- | :------- | :----- |
+| o    | 指定对象 | object |
 
 返回对象所有可枚举 Property 的键名组成的数组。
 
-## 描述
+## 方法说明
 
 获取到的数组中键名顺序与使用 `for` 系列循环语句获取到的键名顺序一致。
 
-## 示例
+## 代码示例
 
 ### 数组
 
@@ -57,7 +69,7 @@ const foo = Object.create(
   {},
   {
     getBar: {
-      value: function() {
+      value: function () {
         return this.bar;
       },
     },
@@ -69,3 +81,8 @@ foo.bar = 1;
 console.log(Object.keys(foo));
 // ['bar']
 ```
+
+## 参考资料
+
+- [MDN: Object.keys](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/keys)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

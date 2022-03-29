@@ -15,15 +15,42 @@ order: 5
 
 ## 语法
 
+语法：
+
 ```js
-Object.defineProperty(O, P, Attributes);
+Object.defineProperty(o, p, attributes);
 ```
 
+类型声明：
+
+```ts
+declare type PropertyKey = string | number | symbol;
+
+interface PropertyDescriptor {
+  configurable?: boolean;
+  enumerable?: boolean;
+  value?: any;
+  writable?: boolean;
+  get?(): any;
+  set?(v: any): void;
+}
+
+interface ThisType<T> {}
+
+interface ObjectConstructor {
+  defineProperty<T>(o: T, p: PropertyKey, attributes: PropertyDescriptor & ThisType<any>): T;
+}
+```
+
+参数：
+
 | 参数       | 说明                           | 类型   |
-| ---------- | ------------------------------ | ------ |
-| O          | 定义或修改 Property 的目标对象 | object |
-| P          | 需要定义的 Property 键名       | string |
-| Attributes | 被定义或修改的 Attributes      | object |
+| :--------- | :----------------------------- | :----- |
+| o          | 定义或修改 Property 的目标对象 | object |
+| p          | 需要定义的 Property 键名       | string |
+| attributes | 被定义或修改的 Attributes      | object |
+
+返回值：
 
 返回变更后的对象。
 
@@ -70,22 +97,26 @@ console.log(foo.b);
 const data = {
   a: 'a',
   b: 'b',
-  c: 'c'
+  c: 'c',
 };
 
 // 遍历对象，对其属性值进行劫持
-Object.keys(data).forEach(function(key) {
+Object.keys(data).forEach(function (key) {
   Object.defineProperty(data, key, {
     enumerable: true,
     configurable: true,
-    get: function() {
-      console.log('GET')
+    get: function () {
+      console.log('GET');
     },
-    set: function(value) {
+    set: function (value) {
       // 当属性值发生变化时我们可以进行额外操作
-      console.log('SET')
-    }
-  })
-})
+      console.log('SET');
+    },
+  });
+});
 ```
 
+## 参考资料
+
+- [MDN: Object.defineProperty](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)
