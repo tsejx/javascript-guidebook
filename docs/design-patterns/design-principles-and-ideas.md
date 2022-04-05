@@ -35,7 +35,7 @@ SOLID 原则并非单纯的 1 个原则，而是由 5 个设计原则组成的�
 
 里式替换原则（Liskov Substitution Principle）指子类对象能够替换程序中父类对象出现的任何地方，并且保证原来程序的逻辑行为不变及正确性不被破坏。
 
-### LSP 接口隔离原则
+### ISP 接口隔离原则
 
 接口隔离原则（Interface Segregation Principle）指接口的调用者不应该被强迫依赖它不需要的接口。
 
