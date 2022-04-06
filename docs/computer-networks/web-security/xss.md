@@ -503,7 +503,7 @@ content-security-policy: default-scr https:; connect-src https:; font-src https:
 - 禁止未授权的脚本执行（新特性，Google Map 移动版在使用）
 - 合理使用上报可以及时发现 XSS，利于尽快修复问题
 
-> 更多关于 CSP 的理解可以参考 [Content Security Policy（CSP）是什么？为什么它能低于 XSS 攻击？](https://www.zhihu.com/question/21979782)
+> 更多关于 CSP 的理解可以参考 [Content Security Policy（CSP）是什么？为什么它能抵御 XSS 攻击？](https://www.zhihu.com/question/21979782)
 >
 > 或者查看关于 [HTTP CSP 内容安全策略](/computer-networks/http/content-security-policy) 的整理。
 
