@@ -68,7 +68,7 @@ const a = 1;
 console.log(a); // 1
 ```
 
-注意块级作用域里的常量声明 `const c = 2`  并不会抛出 `SyntaxError: Identifier 'a' has already been declared` 这样的语法错误，因为这是一个新的作用域。
+注意块级作用域里的常量声明 `const a = 2`  并不会抛出 `SyntaxError: Identifier 'a' has already been declared` 这样的语法错误，因为这是一个新的作用域。
 
 ### function
 
