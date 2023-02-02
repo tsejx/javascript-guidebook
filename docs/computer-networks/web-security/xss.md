@@ -56,7 +56,7 @@ XSS 攻击全称 **跨站脚本攻击**（Cross-Site Scripting），是一种代
 
 <script type="application/javascript">
   // 假设这是请求返回的数据
-  const res = ['1', '2', '3', '<img src="1" onerror="console.log(windwo.localStorage)" />'];
+  const res = ['1', '2', '3', '<img src="1" onerror="console.log(window.localStorage)" />'];
 
   const root = document.querySelector('#root');
 
