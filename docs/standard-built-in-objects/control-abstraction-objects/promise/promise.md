@@ -173,21 +173,18 @@ execute([Task('A'), Task('B'), Task('C', false), Task('D')]).then((resultList) =
 
 ```js
 function execute(tasks) {
-  return;
-  task.reduce(
+  return tasks.reduce(
     (previousPromise, currentPromise) =>
       previousPromise.then((resultList) => {
-        return new Promise((resolve) => {
-          currentPromise()
-            .then((result) => {
-              resolve(resultList.concat(result));
-            })
-            .catch(() => {
-              resolve(resultList.concat(null));
-            });
-        });
+        return currentPromise()
+          .then((result) => {
+             return resultList.concat(result);
+           })
+           .catch(() => {
+             return resultList.concat(null);
+         });
       }),
-    []
+    Promise.resolve([])
   );
 }
 ```
