@@ -11,7 +11,23 @@ order: 1
 
 # Symbol
 
-Symbol 数据类型是一种原始数据类型，该类型的性质在于这个类型的值可以用来创建匿名的对象属性。
+Symbol 数据类型是一种原始数据类型，该类型的性质在于这个类型的值可以用来创建 <strong style="color: red">匿名</strong> 的对象属性。
+
+## 类型声明
+
+```ts
+interface SymbolConstructor {
+  readonly prototype: Symbol;
+
+  (descriptioon?: string | number): symbol;
+
+  for(key: string): symbol;
+
+  keyFor(sym: symbol): string | undefined;
+}
+
+declare var Symbol: SymbolConstructor;
+```
 
 ## 类型特性
 
@@ -22,8 +38,8 @@ Symbol 值只能通过 Symbol 函数生成。 Symbol 类型的值作为对象属
 ```js
 const symbol = Symbol();
 
-typeof symbol;
-// 'symbol'
+console.log(typeof symbol);
+// Output: 'symbol'
 ```
 
 ### 无法实例化
@@ -317,12 +333,12 @@ Symbol.keyFor(s2);
 手动实现 Symbol：
 
 ```js
-(function() {
+(function () {
   var root = this;
 
-  var generateName = (function() {
+  var generateName = (function () {
     var postfix = 0;
-    return function(descString) {
+    return function (descString) {
       postfix++;
       return '@@' + descString + '_' + postfix;
     };
@@ -334,10 +350,10 @@ Symbol.keyFor(s2);
     var descString = description === undefined ? undefined : String(description);
 
     var symbol = Object.create({
-      toString: function() {
+      toString: function () {
         return this.__Name__;
       },
-      valueOf: function() {
+      valueOf: function () {
         return this;
       },
     });
@@ -364,7 +380,7 @@ Symbol.keyFor(s2);
 
   Object.defineProperties(SymbolPolyfill, {
     for: {
-      value: function(description) {
+      value: function (description) {
         var descString = description === undefined ? undefined : String(description);
         return forMap[descString]
           ? forMap[descString]
@@ -375,7 +391,7 @@ Symbol.keyFor(s2);
       configurable: true,
     },
     keyFor: {
-      value: function(symbol) {
+      value: function (symbol) {
         for (var key in forMap) {
           if (forMap[key] === symbol) return key;
         }
@@ -410,9 +426,7 @@ Symbol.keyFor(s2);
 
 1. 利用 Symbol 值的唯一特性，作为类库某些对象的属性名，这样可以避免使用者命名冲突导致的覆盖问题
 
----
-
-**参考资料：**
+## 参考资料
 
 - [📝 ECMAScript 6 入门：Symbol](http://es6.ruanyifeng.com/?search=ad&x=0&y=0#docs/symbol)
 - [📝 ES6 系列之模拟实现 Symbol](https://juejin.im/post/6844903619544760328)
