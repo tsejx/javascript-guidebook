@@ -7,21 +7,24 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="/javascript-guidebook/umi.d5b66b8e.css" />
+    <link rel="stylesheet" href="/javascript-guidebook/umi.c1e1dfc3.css" />
     <script>
       window.routerBase = "/javascript-guidebook/";
     </script>
     <script>
-      //! umi version: 3.5.21
+      //! umi version: 3.5.41
     </script>
     <script>
       !(function () {
-        var e = localStorage.getItem("dumi:prefers-color"),
-          t = window.matchMedia("(prefers-color-scheme: dark)").matches,
-          r = ["light", "dark", "auto"];
+        var e =
+            navigator.cookieEnabled && void 0 !== window.localStorage
+              ? localStorage.getItem("dumi:prefers-color")
+              : "auto",
+          o = window.matchMedia("(prefers-color-scheme: dark)").matches,
+          t = ["light", "dark", "auto"];
         document.documentElement.setAttribute(
           "data-prefers-color",
-          e === r[2] ? (t ? r[1] : r[0]) : r.indexOf(e) > -1 ? e : r[0]
+          e === t[2] ? (o ? t[1] : t[0]) : t.indexOf(e) > -1 ? e : t[0]
         );
       })();
     </script>
@@ -45,12 +48,12 @@
 </span></div><div class="token-line"><span class="token plain">boy</span><span class="token punctuation">.</span><span class="token method function property-access">sayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token plain"></span></div><div class="token-line"><span class="token plain"></span><span class="token comment">// &#x27;Jothan&#x27;</span><span class="token plain"></span></div><div class="token-line"><span class="token plain">
 </span></div><div class="token-line"><span class="token plain"></span><span class="token comment">// The second instance</span><span class="token plain"></span></div><div class="token-line"><span class="token plain"></span><span class="token keyword">const</span><span class="token plain"> girl </span><span class="token operator">=</span><span class="token plain"> </span><span class="token keyword">new</span><span class="token plain"> </span><span class="token class-name">Child</span><span class="token punctuation">(</span><span class="token string">&#x27;Kat&#x27;</span><span class="token punctuation">,</span><span class="token plain"> </span><span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token plain"></span></div><div class="token-line"><span class="token plain">
 </span></div><div class="token-line"><span class="token plain"></span><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token plain">girl</span><span class="token punctuation">.</span><span class="token property-access">num</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token plain"></span></div><div class="token-line"><span class="token plain"></span><span class="token comment">// [0, 1, 2]</span><span class="token plain"></span></div><div class="token-line"><span class="token plain">
-</span></div><div class="token-line"><span class="token plain">girl</span><span class="token punctuation">.</span><span class="token method function property-access">sayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token plain"></span></div><div class="token-line"><span class="token plain"></span><span class="token comment">// &#x27;Kat&#x27;</span></div></pre></div><p>这个例子的高效率体现在它只调用了一次 Parent 构造函数，并且因此避免了在 <code>Child.prototype</code> 上面创建不必要的、多余的属性。与此同时，原型链还保持不变。</p></div><div class="__dumi-default-layout-footer-meta"><a target="_blank" rel="noopener noreferrer" href="https://github.com/tsejx/javascript-guidebook/edit/master/docs/object-oriented-programming/inheritance/parasitic-combination-inheritance.md">Edit this doc on GitHub<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="__dumi-default-external-link-icon"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><span data-updated-text="Last update: ">3/27/2022 17:05:47</span></div></div></div></div>
+</span></div><div class="token-line"><span class="token plain">girl</span><span class="token punctuation">.</span><span class="token method function property-access">sayName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token plain"></span></div><div class="token-line"><span class="token plain"></span><span class="token comment">// &#x27;Kat&#x27;</span></div></pre></div><p>这个例子的高效率体现在它只调用了一次 Parent 构造函数，并且因此避免了在 <code>Child.prototype</code> 上面创建不必要的、多余的属性。与此同时，原型链还保持不变。</p></div><div class="__dumi-default-layout-footer-meta"><a target="_blank" rel="noopener noreferrer" href="https://github.com/tsejx/javascript-guidebook/edit/master/docs/object-oriented-programming/inheritance/parasitic-combination-inheritance.md">Edit this doc on GitHub<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="__dumi-default-external-link-icon"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><span data-updated-text="Last update: ">12/18/2023 17:22:50</span></div></div></div></div>
 	<script>
   window.g_useSSR = true;
   window.g_initialProps = {};
 	</script>
 
-    <script src="/javascript-guidebook/umi.b0c512ca.js"></script>
+    <script src="/javascript-guidebook/umi.5f4ca60e.js"></script>
   </body>
 </html>
