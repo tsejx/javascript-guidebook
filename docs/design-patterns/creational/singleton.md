@@ -6,148 +6,54 @@ group:
   title: 创建型
   order: 2
 title: 单例模式
-order: 2
+order: 5
 ---
 
 # 单例模式
 
-**单例模式（Singleton）** 指保证一个类仅有一个实例，且该类能自行创建这个实例的一种模式。例如，Windows 中只能打开一个任务管理器，这样可以避免因打开多个任务管理器窗口而造成内存资源的浪费，或出现各个窗口显示内容的不一致等错误。
+单例模式（Singleton Pattern） 是一种创建型设计模式，其主要目的是确保一个类只有一个实例，并提供一个全局访问点以获取该实例。
 
-在计算机系统中，还有 Windows 的回收站、操作系统中的文件系统、多线程中的线程池、显卡的驱动程序对象、打印机的后台处理服务、应用程序的日志对象、数据库的连接池、网站的计数器、Web 应用的配置对象、应用程序中的对话框、系统中的缓存等常常被设计成单例。
+单例模式通常在以下情况下使用：
 
-单例模式在现实生活中的应用也非常广泛，例如公司 CEO、部门经理等都属于单例模型。
+1. 一个全局对象负责协调系统的操作。
+2. 一个共享的资源，例如配置信息，需要在系统中的多个部分之间共享。
 
-## 特点
+单例模式的关键特点包括：
 
-单例模式有三个特点：
+1. 私有构造函数（Private Constructor）： 单例类通常会将其构造函数设为私有，以防止直接通过 new 关键字创建多个实例。
+2. 静态方法或属性提供访问点： 单例类通常提供一个静态方法或属性，用于获取该类的唯一实例。
+3. 延迟实例化（Lazy Instantiation）： 实例的创建通常是延迟的，即在第一次请求实例时才进行创建。
 
-1. 单例类只有一个实例对象
-2. 该单例对象必须由单例类自行创建
-3. 单例类对外提供一个访问该单例的全局访问点
+下面是一个简单的 JavaScript 实现单例模式的示例：
 
-优点：
+```typescript
+class Singleton {
+  // 私有变量，用于存储唯一实例
+  static instance = null;
 
-1. 可避免对共享资源的多重占用
-2. 可保证内存中只有一个实例，减少内存的开销
-3. 可设置全局访问点，优化和共享资源的访问
-
-缺点：
-
-1. 扩展性差：单例模式一般没有接口，扩展困难。如果要扩展，则修改原来的代码，违背开闭原则
-2. 职责过重：单例模式的功能代码通常写在一个类中，如果功能设计不合理，则很容易违背单一职责原则
-
-## 模式结构
-
-## 代码示例
-
-全局作用域中的全局变量不是单例模式，全局变量会存在很大的隐患，随着项目的体积和功能日益增大，很容易出现命名冲突、作用域内变量污染和变量覆盖等问题，给开发人员带来很多苦恼。
-
-所以要减少全局变量使用，即使用全局变量也要将污染降到最低。
-
-单例模式通常有两种实现形式：懒汉式单例和饿汉式单例子。
-
-### 饿汉式单例
-
-该模式的特点是类一旦加载就创建一个单例，保证在调用 `getInstance` 方法之前单例已经存在了。
-
-```ts
-class HungrySingleton {
-  public name: string;
-  public type: number;
-
-  private static instance: HungrySingleton = new HungrySingleton();
-
-  // 将 constructor 设为私有属性，防止 new 调用
-  private constructor() {}
-
-  public static getInstance(): HungrySingleton {
-    return HungrySingleton.instance;
-  }
-}
-
-const personA = HungrySingleton.getInstance();
-const personB = HugnrySingleton.getInstance();
-
-console.log(personA === personB);
-// true
-```
-
-### 懒汉模式
-
-1. 实例被需要时才去创建，如果单例已经创建，将无法创建新的单例，返回原先的单例。
-2. 如果某个单例使用的次数少，并且创建单例消耗的资源较多，那么就需要实现单例的按需创建
-
-```ts
-class LazySingleton {
-  public name: string;
-  public age: number;
-  private static instance: LazySingleton;
-
-  public construcotr(name: string, age: number) {
-    this.name = name;
-    this.age = age;
-  }
-
-  public static getInstance(name: string, age: number): LazySingleton {
-    if (LazySingleton.instance === null) {
-      LazySingleton.instance = new LazySingleton(name, age);
+  // 私有构造函数
+  constructor() {
+    if (!Singleton.instance) {
+      // 如果实例不存在，则创建实例
+      Singleton.instance = this;
     }
 
-    return this.instance;
+    // 返回唯一实例
+    return Singleton.instance;
+  }
+
+  // 公共方法
+  showMessage() {
+    console.log("Hello, I am a Singleton!");
   }
 }
 
-const personA = LazySingleton.getInstance('Dave', 20);
-const personB = LazySingleton.getInstance('Mary', 24);
+// 使用单例模式
+const singleton1 = new Singleton();
+singleton1.showMessage();  // 输出：Hello, I am a Singleton!
 
-console.log(personA, personB);
-// LazySingleton{ name: "Dave", age: 20 } LazySingleton{ name: "Dave", age: 20 }
+const singleton2 = new Singleton();
+console.log(singleton1 === singleton2);  // 输出：true，因为它们是同一个实例
 ```
 
-### 命名空间
-
-命名空间可以减少全局变量的数量，可以使用对象字面量将这一类的变量作为它的属性进行访问。
-
-```js
-var Singleton = {
-  fun1: function () {
-    console.log('fun1');
-  },
-  fun2: function () {
-    console.log('fun2');
-  },
-};
-```
-
-### 使用闭包封装私有变量
-
-使用 IIFI 立即执行函数表达式，让 JavaScript 编译器不在认为这是一个函数声明，而是 **立即执行函数**，将私有变量保存在它的闭包环境中，暴露可以访问私有变量的接口。类似创建一个块级作用域，和其他作用域的变量隔离。
-
-```js
-const Singleton = (function () {
-  let instance;
-
-  function createInstance() {
-    var object = new Object('I am the instance');
-    return object;
-  }
-
-  return {
-    getInstance: function () {
-      if (!instance) {
-        instance = createInstance();
-      }
-      return instance;
-    },
-  };
-})();
-
-function run() {
-  const instance1 = Singleton.getInstance();
-  const instance2 = Singleton.getInstance();
-
-  console.log('Same instance? ' + (instance1 === instance2));
-}
-
-run();
-```
+在这个例子中，通过构造函数的私有性和静态属性来确保只有一个实例，并通过 `showMessage` 方法来验证单例的存在。使用单例模式可以确保在整个应用程序中只有一个实例，避免了不必要的资源浪费和复杂性。
