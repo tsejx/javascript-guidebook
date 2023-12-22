@@ -44,7 +44,7 @@ JavaScript 采用 **词法作用域**（Lexical Scope），也称为 **静态作
 function foo(a) {
   var b = a * 2;
 
-  function brc(c) {
+  function bar(c) {
     console.log(a, b, c);
   }
 
