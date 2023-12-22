@@ -32,7 +32,7 @@ decodeURI(encodedURIString);
 ## 示例
 
 ```js
-let a = 'Hello JavaScript!';
+let a = '你好JavaScript!';
 let b = encodeURI(a);
 
 console.log(b);
