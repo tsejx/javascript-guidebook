@@ -34,7 +34,7 @@ decodeURIComponent(encodedURIString);
 ## 示例
 
 ```js
-var a = 'Hello JavaScript';
+var a = '你好JavaScript';
 var b = encodeURIComponent(a);
 
 console.log(b);
