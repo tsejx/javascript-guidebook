@@ -86,7 +86,7 @@ function foo() {
   console.log(number);
 }
 
-function bar(） {
+function bar() {
   if(true) {
     let number = 5;
     console.log(number);
