@@ -1,0 +1,3893 @@
+{
+  "menus": {
+    "en-US": {
+      "*": [
+        {
+          "path": "/",
+          "title": "JavaScript Guidebook - 📚 JavaScript 知识图谱：ECMAScript、DOM、BOM、HTML5、计算机网络",
+          "meta": {
+            "order": 10
+          }
+        }
+      ],
+      "/basic-concept": [
+        {
+          "title": "基本语法",
+          "path": "/basic-concept",
+          "meta": {
+            "order": 1
+          },
+          "children": []
+        },
+        {
+          "title": "词法语法",
+          "path": "/basic-concept/lexical-grammar",
+          "meta": {
+            "order": 1
+          },
+          "children": []
+        },
+        {
+          "title": "数据类型和值",
+          "path": "/basic-concept/data-types",
+          "meta": {
+            "order": 3
+          },
+          "children": [
+            {
+              "path": "/basic-concept/data-types/data-types",
+              "title": "数据类型",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/basic-concept/data-types/type-check",
+              "title": "类型检测",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/basic-concept/data-types/type-conversion",
+              "title": "类型转换",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "表达式",
+          "path": "/basic-concept/expressions/expressions",
+          "meta": {
+            "order": 4
+          },
+          "children": [
+            {
+              "path": "/basic-concept/expressions/expressions/literal",
+              "title": "字面量",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/expressions/array-initializer",
+              "title": "数组初始化表达式",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/expressions/object-initializer",
+              "title": "对象初始化表达式",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/expressions/property-accessors",
+              "title": "属性访问器",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "运算符",
+          "path": "/basic-concept/expressions/operators",
+          "meta": {
+            "order": 5
+          },
+          "children": [
+            {
+              "path": "/basic-concept/expressions/operators/in",
+              "title": "in",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/instanceof",
+              "title": "instanceof",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/delete",
+              "title": "delete",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/typeof",
+              "title": "typeof",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/void",
+              "title": "void",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/string-operator",
+              "title": "字符串运算符",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/arithmetic-operators",
+              "title": "算术运算符",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/update-expressions",
+              "title": "更新表达式",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/assignment-operators",
+              "title": "赋值运算符",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/bitwise-operators",
+              "title": "位运算移位运算符",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/comma-operator",
+              "title": "逗号运算符",
+              "meta": {
+                "order": 12
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/comparation-operators",
+              "title": "比较运算符",
+              "meta": {
+                "order": 13
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/conditional-operator",
+              "title": "条件运算符",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/logical-operators",
+              "title": "逻辑运算符",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/spread-operator",
+              "title": "扩展运算符",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/the-grouping-operator",
+              "title": "分组表达式",
+              "meta": {
+                "order": 17
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/detructing-assignment",
+              "title": "解构赋值",
+              "meta": {
+                "order": 18
+              }
+            },
+            {
+              "path": "/basic-concept/expressions/operators/operators-precedence",
+              "title": "运算符优先级",
+              "meta": {
+                "order": 20
+              }
+            }
+          ]
+        },
+        {
+          "title": "语句和声明",
+          "path": "/basic-concept/statements-and-declarations",
+          "meta": {
+            "order": 7
+          },
+          "children": [
+            {
+              "path": "/basic-concept/statements-and-declarations/block",
+              "title": "块语句",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/declarations-and-the-variable-statement",
+              "title": "变量声明",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-if-statement",
+              "title": "if 语句",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-continue-statement",
+              "title": "continue 语句",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-break-statement",
+              "title": "break 语句",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-return-statement",
+              "title": "return 语句",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-switch-statement",
+              "title": "switch 语句",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/labelled-statements",
+              "title": "label 语句",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-throw-statement",
+              "title": "throw 语句",
+              "meta": {
+                "order": 9
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-try-statement",
+              "title": "try-catch 语句",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-do-while-statement",
+              "title": "do...while 语句",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-while-statement",
+              "title": "while 语句",
+              "meta": {
+                "order": 21
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-for-statement",
+              "title": "for 语句",
+              "meta": {
+                "order": 22
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-for-in-statement",
+              "title": "for...in 语句",
+              "meta": {
+                "order": 23
+              }
+            },
+            {
+              "path": "/basic-concept/statements-and-declarations/the-for-of-statement",
+              "title": "for...of 语句",
+              "meta": {
+                "order": 24
+              }
+            }
+          ]
+        }
+      ],
+      "/browser-object-model": [
+        {
+          "title": "BOM 浏览器对象模型",
+          "path": "/browser-object-model",
+          "meta": {
+            "order": 1
+          },
+          "children": []
+        },
+        {
+          "title": "全局对象",
+          "path": "/browser-object-model/window",
+          "meta": {
+            "order": 1
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/window/window",
+              "title": "Window 对象",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/window/location",
+              "title": "Location 对象",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/window/history",
+              "title": "History 对象",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/browser-object-model/window/screen",
+              "title": "Screen 对象",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/browser-object-model/window/navigator",
+              "title": "Navigator 对象",
+              "meta": {
+                "order": 5
+              }
+            }
+          ]
+        },
+        {
+          "title": "全局 API",
+          "path": "/browser-object-model/web-event",
+          "meta": {
+            "order": 2
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/web-event/set-time-out",
+              "title": "setTimeout",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/web-event/set-interval",
+              "title": "setInterval",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/web-event/dialog",
+              "title": "对话框 API",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/browser-object-model/web-event/request-animation-frame",
+              "title": "requestAnimationFrame",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/browser-object-model/web-event/request-idle-callback",
+              "title": "requestIdleCallback",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/browser-object-model/web-event/get-computed-style",
+              "title": "getComputedStyle",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/browser-object-model/web-event/lifecycle",
+              "title": "页面生命周期方法",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "视窗尺寸位置",
+          "path": "/browser-object-model/window-position",
+          "meta": {
+            "order": 5
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/window-position/window-view-properties",
+              "title": "Window 对象视图属性",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/window-position/screen-view-properties",
+              "title": "Screen 对象视图属性",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/window-position/element-view-properties",
+              "title": "Element 文档元素视图属性",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/browser-object-model/window-position/document-view-and-element-view",
+              "title": "文档视图和元素视图",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/browser-object-model/window-position/mouse-position",
+              "title": "鼠标位置",
+              "meta": {
+                "order": 5
+              }
+            }
+          ]
+        },
+        {
+          "title": "二进制数据和文件 API",
+          "path": "/browser-object-model/binary-data-and-files",
+          "meta": {
+            "order": 10
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/binary-data-and-files/application",
+              "title": "文件应用",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/blob",
+              "title": "Blob API",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/file",
+              "title": "File API",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/file-list",
+              "title": "FileList API",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/file-reader",
+              "title": "FileReader API",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/file-reader-sync",
+              "title": "FileReaderSync API",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/form-data",
+              "title": "FormData API",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/data-transfer",
+              "title": "DataTransfer API",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/url",
+              "title": "URL API",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/browser-object-model/binary-data-and-files/base64",
+              "title": "Base64",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "数据通信 API",
+          "path": "/browser-object-model/connectivity",
+          "meta": {
+            "order": 11
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/connectivity/post-message",
+              "title": "PostMessage",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/xmlhttprequest",
+              "title": "XHMLHttpRequest API",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/featch",
+              "title": "Fetch API",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/beacon",
+              "title": "Beacon API",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/web-socket",
+              "title": "WebSocket",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/event-source",
+              "title": "EventSource",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/server-sent-events",
+              "title": "Server-sent Events",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/web-real-time-communication",
+              "title": "WebRTC",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/browser-object-model/connectivity/progress-event",
+              "title": "Progress Event",
+              "meta": {
+                "order": 10
+              }
+            }
+          ]
+        },
+        {
+          "title": "离线与存储 API",
+          "path": "/browser-object-model/offline-and-storage",
+          "meta": {
+            "order": 12
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/offline-and-storage/browser-cache",
+              "title": "浏览器缓存机制",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/offline-and-storage/http-cache",
+              "title": "HTTP Cache",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/offline-and-storage/cookie",
+              "title": "Cookie",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/browser-object-model/offline-and-storage/web-storage",
+              "title": "Web Storage",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/browser-object-model/offline-and-storage/web-workers",
+              "title": "Web Workers",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/browser-object-model/offline-and-storage/service-worker",
+              "title": "Service Worker",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/browser-object-model/offline-and-storage/indexed-db",
+              "title": "IndexedDB",
+              "meta": {
+                "order": 7
+              }
+            }
+          ]
+        },
+        {
+          "title": "性能 API",
+          "path": "/browser-object-model/performance",
+          "meta": {
+            "order": 13
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/performance/performance",
+              "title": "Performance API",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/performance/performance-resource-timing",
+              "title": "Performance Resource Timing API",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/performance/performance-navigation-timing",
+              "title": "Performance Navifation API",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/browser-object-model/performance/perfromance-timeline",
+              "title": "性能时间线",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "设备 API",
+          "path": "/browser-object-model/device",
+          "meta": {
+            "order": 15
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/device/geolocation",
+              "title": "地理定位 Geolocation API",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/device/camera",
+              "title": "摄录设备",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/browser-object-model/device/position",
+              "title": "位置信息 Position API",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "集成 API",
+          "path": "/browser-object-model/integration",
+          "meta": {
+            "order": 16
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/integration/full-screen",
+              "title": "全屏 Fullscreen API",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "监视 API",
+          "path": "/browser-object-model/observer",
+          "meta": {
+            "order": 16
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/observer/intersection-observer",
+              "title": "IntersectionObserver API",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/browser-object-model/observer/mutation-observer",
+              "title": "MutationObserver API",
+              "meta": {
+                "order": 2
+              }
+            }
+          ]
+        },
+        {
+          "title": "浏览器工作原理",
+          "path": "/browser-object-model/browser-working-principle",
+          "meta": {
+            "order": 20
+          },
+          "children": [
+            {
+              "path": "/browser-object-model/browser-working-principle/browser-architecture",
+              "title": "浏览器架构",
+              "meta": {
+                "order": 0
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/workflow",
+              "title": "渲染进程的内部机制",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/construction-of-the-object-model",
+              "title": "构建对象模型",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/script-loading-asynchronously",
+              "title": "脚本异步加载",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/construction-of-render-tree",
+              "title": "渲染树构建",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/layout",
+              "title": "布局",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/paint",
+              "title": "绘制",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/composite",
+              "title": "合并",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/browser-object-model/browser-working-principle/browser-event",
+              "title": "浏览器事件处理",
+              "meta": {
+                "order": 15
+              }
+            }
+          ]
+        }
+      ],
+      "/computer-networks": [
+        {
+          "title": "计算机网络",
+          "path": "/computer-networks",
+          "meta": {
+            "order": 1
+          },
+          "children": []
+        },
+        {
+          "title": "计算机网络体系",
+          "path": "/computer-networks/computer-network-architecture",
+          "meta": {
+            "order": 2
+          },
+          "children": [
+            {
+              "path": "/computer-networks/computer-network-architecture/computer-networks",
+              "title": "计算机网络体系",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/computer-networks/computer-network-architecture/transport-layer-protocol",
+              "title": "传输层协议",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/computer-networks/computer-network-architecture/network-layer-and-data-link-layer-protocol",
+              "title": "网络层与数据链路层协议",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/computer-networks/computer-network-architecture/dns",
+              "title": "DNS 域名解析系统",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/computer-networks/computer-network-architecture/cdn",
+              "title": "CDN 内容分发网络",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/computer-networks/computer-network-architecture/hls",
+              "title": "HLS 流媒体网络传输协议",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "HTTP",
+          "path": "/computer-networks/http",
+          "meta": {
+            "order": 3
+          },
+          "children": [
+            {
+              "path": "/computer-networks/http/http",
+              "title": "HTTP",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/computer-networks/http/http-resource-and-uris",
+              "title": "HTTP 资源标识",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/computer-networks/http/http-message",
+              "title": "HTTP 报文格式",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/computer-networks/http/http-headers",
+              "title": "HTTP 首部字段",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/computer-networks/http/http-status-code",
+              "title": "HTTP 状态码",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/computer-networks/http/http-connection",
+              "title": "HTTP 连接",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/computer-networks/http/http-content-negotiation",
+              "title": "HTTP 内容协商",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/computer-networks/http/cross-origin-resource-sharing",
+              "title": "HTTP CORS 跨域资源共享",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/computer-networks/http/content-security-policy",
+              "title": "HTTP CSP 内容安全策略",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/computer-networks/http/https",
+              "title": "HTTPS",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/computer-networks/http/http2",
+              "title": "HTTP2",
+              "meta": {
+                "order": 21
+              }
+            },
+            {
+              "path": "/computer-networks/http/http3",
+              "title": "HTTP3",
+              "meta": {
+                "order": 22
+              }
+            }
+          ]
+        },
+        {
+          "title": "Web 安全",
+          "path": "/computer-networks/web-security",
+          "meta": {
+            "order": 4
+          },
+          "children": [
+            {
+              "path": "/computer-networks/web-security/same-origin-policy",
+              "title": "同源策略",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/computer-networks/web-security/xss",
+              "title": "XSS 跨站脚本攻击",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/computer-networks/web-security/csrf",
+              "title": "CSRF 跨站请求伪造攻击",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/computer-networks/web-security/ddos",
+              "title": "DDoS 攻击",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/computer-networks/web-security/sql-injection",
+              "title": "SQL 注入攻击",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/computer-networks/web-security/hijacking",
+              "title": "流量劫持",
+              "meta": {
+                "order": 6
+              }
+            }
+          ]
+        }
+      ],
+      "/core-modules": [
+        {
+          "title": "核心模块",
+          "path": "/core-modules",
+          "meta": {
+            "order": 1
+          },
+          "children": []
+        },
+        {
+          "title": "编译阶段",
+          "path": "/core-modules/executable-code-and-execution-contexts/compilation",
+          "meta": {
+            "order": 2
+          },
+          "children": [
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/compilation/compilation",
+              "title": "编译阶段",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/compilation/lexical-scope",
+              "title": "词法作用域",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/compilation/function-as-scopes",
+              "title": "函数作用域",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/compilation/blocks-as-scopes",
+              "title": "块作用域",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/compilation/hoisting",
+              "title": "声明提升",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/compilation/closures",
+              "title": "闭包",
+              "meta": {
+                "order": 6
+              }
+            }
+          ]
+        },
+        {
+          "title": "执行阶段",
+          "path": "/core-modules/executable-code-and-execution-contexts/execution",
+          "meta": {
+            "order": 3
+          },
+          "children": [
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/execution/execution-context-stack",
+              "title": "执行上下文",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/execution/variable-object",
+              "title": "变量对象",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/execution/scope-chain",
+              "title": "作用域链",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/execution/this",
+              "title": "当前执行上下文 this",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "内存管理",
+          "path": "/core-modules/executable-code-and-execution-contexts/memory-management",
+          "meta": {
+            "order": 4
+          },
+          "children": [
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/memory-management/memory-model",
+              "title": "内存模型",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/memory-management/memory-life-cycle",
+              "title": "内存生命周期",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/memory-management/garbage-collection",
+              "title": "垃圾回收",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "并发模型",
+          "path": "/core-modules/executable-code-and-execution-contexts/concurrency-model",
+          "meta": {
+            "order": 5
+          },
+          "children": [
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/concurrency-model/concurrency-model",
+              "title": "并发模型",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/concurrency-model/event-loop",
+              "title": "事件循环",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/executable-code-and-execution-contexts/concurrency-model/timers-mechanism",
+              "title": "定时器机制",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "函数声明",
+          "path": "/core-modules/ecmascript-function-objects/function-declarations",
+          "meta": {
+            "order": 6
+          },
+          "children": [
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-declarations/function-definitions",
+              "title": "函数声明定义",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-declarations/arrow-function-definitions",
+              "title": "箭头函数",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-declarations/async-function-definitions",
+              "title": "异步函数",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "函数参数",
+          "path": "/core-modules/ecmascript-function-objects/function-arguments",
+          "meta": {
+            "order": 7
+          },
+          "children": [
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-arguments/function-parameters",
+              "title": "函数参数",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-arguments/default-parameters",
+              "title": "默认参数",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-arguments/rest-parameters",
+              "title": "剩余参数",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "函数调用",
+          "path": "/core-modules/ecmascript-function-objects/function-calls",
+          "meta": {
+            "order": 8
+          },
+          "children": [
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-calls/method-invocation-pattern",
+              "title": "方法调用模式",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-calls/function-invocation-pattern",
+              "title": "函数调用模式",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-calls/constructor-invocation-pattern",
+              "title": "构造函数调用模式",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-calls/apply-invocation-pattern",
+              "title": "间接调用模式",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "函数内部",
+          "path": "/core-modules/ecmascript-function-objects/function-internal",
+          "meta": {
+            "order": 9
+          },
+          "children": [
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-internal/function-accessor",
+              "title": "函数存取器",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-internal/function-prototype-object-methods",
+              "title": "函数原型对象方法",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-internal/function-prototype-object-properties",
+              "title": "函数原型对象属性",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "函数类型",
+          "path": "/core-modules/ecmascript-function-objects/function-types",
+          "meta": {
+            "order": 10
+          },
+          "children": [
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/structure-function",
+              "title": "构造函数",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/class-structure-function",
+              "title": "类构造函数",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/lazy-function",
+              "title": "惰性函数",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/cascade-function",
+              "title": "级联函数",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/callback-function",
+              "title": "回调函数",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/hight-order-function",
+              "title": "高阶函数",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/function-currying",
+              "title": "函数柯里化",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/throttle",
+              "title": "函数节流",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/debounce",
+              "title": "函数防抖",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/memorize-function",
+              "title": "函数记忆",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/sleep-function",
+              "title": "函数睡眠",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/core-modules/ecmascript-function-objects/function-types/partial-function",
+              "title": "偏函数",
+              "meta": {
+                "order": 20
+              }
+            }
+          ]
+        },
+        {
+          "title": "模块化",
+          "path": "/core-modules/modularization",
+          "meta": {
+            "order": 11
+          },
+          "children": [
+            {
+              "path": "/core-modules/modularization/modularization",
+              "title": "模块化",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/core-modules/modularization/import",
+              "title": "模块导入 import",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/core-modules/modularization/export",
+              "title": "模块导出 export",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/core-modules/modularization/compound",
+              "title": "模块导入/导出的复合写法",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/core-modules/modularization/module-inheritance",
+              "title": "模块继承",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/core-modules/modularization/cross-module-constant",
+              "title": "跨模块常量",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/core-modules/modularization/dynamic-import",
+              "title": "动态加载",
+              "meta": {
+                "order": 7
+              }
+            }
+          ]
+        }
+      ],
+      "/design-patterns": [
+        {
+          "title": "设计模式",
+          "path": "/design-patterns",
+          "meta": {
+            "order": 1
+          },
+          "children": [
+            {
+              "path": "/design-patterns",
+              "title": "设计模式",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/design-patterns/design-principles-and-ideas",
+              "title": "设计思想与原则",
+              "meta": {
+                "order": 1
+              }
+            }
+          ]
+        },
+        {
+          "title": "创建型",
+          "path": "/design-patterns/creational",
+          "meta": {
+            "order": 2
+          },
+          "children": [
+            {
+              "path": "/design-patterns/creational/factory-method",
+              "title": "工厂方法模式",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/design-patterns/creational/abstract-factory",
+              "title": "抽象工厂模式",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/design-patterns/creational/prototype",
+              "title": "原型模式",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/design-patterns/creational/singleton",
+              "title": "单例模式",
+              "meta": {
+                "order": 5
+              }
+            }
+          ]
+        },
+        {
+          "title": "结构型",
+          "path": "/design-patterns/structual",
+          "meta": {
+            "order": 3
+          },
+          "children": [
+            {
+              "path": "/design-patterns/structual/adapter",
+              "title": "适配器模式",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/design-patterns/structual/bridge",
+              "title": "桥接模式",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/design-patterns/structual/composite",
+              "title": "组合模式",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/design-patterns/structual/decorator",
+              "title": "装饰者模式",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/design-patterns/structual/facade",
+              "title": "外观模式",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/design-patterns/structual/flyweight",
+              "title": "享元模式",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/design-patterns/structual/proxy",
+              "title": "代理模式",
+              "meta": {
+                "order": 7
+              }
+            }
+          ]
+        },
+        {
+          "title": "行为型",
+          "path": "/design-patterns/behavioral",
+          "meta": {
+            "order": 4
+          },
+          "children": [
+            {
+              "path": "/design-patterns/behavioral/chain-of-responsibility",
+              "title": "职责链模式",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/command",
+              "title": "命令模式",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/interpreter",
+              "title": "解释器模式",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/iterator",
+              "title": "迭代器模式",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/mediator",
+              "title": "中介者模式",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/memento",
+              "title": "备忘录模式",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/observer",
+              "title": "观察者模式",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/state",
+              "title": "状态模式",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/strategy",
+              "title": "策略模式",
+              "meta": {
+                "order": 9
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/template-method",
+              "title": "模版方法模式",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/design-patterns/behavioral/visitor",
+              "title": "访问者模式",
+              "meta": {
+                "order": 11
+              }
+            }
+          ]
+        },
+        {
+          "title": "Architectural",
+          "path": "/design-patterns/architectural",
+          "meta": {},
+          "children": [
+            {
+              "path": "/design-patterns/architectural/dependency-injection",
+              "title": "Dependency-injection",
+              "meta": {}
+            },
+            {
+              "path": "/design-patterns/architectural/model-view-controller",
+              "title": "Model-view-controller",
+              "meta": {}
+            },
+            {
+              "path": "/design-patterns/architectural/model-view-viewmodel",
+              "title": "Model-view-viewmodel",
+              "meta": {}
+            },
+            {
+              "path": "/design-patterns/architectural/service-locator",
+              "title": "Service-locator",
+              "meta": {}
+            }
+          ]
+        }
+      ],
+      "/document-object-model": [
+        {
+          "title": "DOM 文档对象模型",
+          "path": "/document-object-model",
+          "meta": {
+            "order": 1
+          },
+          "children": []
+        },
+        {
+          "title": "文档对象模型",
+          "path": "/document-object-model/dom",
+          "meta": {
+            "order": 3
+          },
+          "children": [
+            {
+              "path": "/document-object-model/dom/dom",
+              "title": "文档对象模型",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/document-object-model/dom/hierarchy-of-nodes",
+              "title": "节点层次",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/document-object-model/dom/event-target",
+              "title": "EventTarget",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/document-object-model/dom/dom-rect",
+              "title": "DOMRect",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/document-object-model/dom/audio-context",
+              "title": "AudioContext",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/document-object-model/dom/video-context",
+              "title": "VideoContext",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/document-object-model/dom/global-attributes",
+              "title": "全局属性",
+              "meta": {}
+            }
+          ]
+        },
+        {
+          "title": "Node",
+          "path": "/document-object-model/node",
+          "meta": {
+            "order": 4
+          },
+          "children": [
+            {
+              "path": "/document-object-model/node/node",
+              "title": "Node",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/document-object-model/node/node-properties",
+              "title": "Node 属性",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/document-object-model/node/node-methods",
+              "title": "Node 方法",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "Document",
+          "path": "/document-object-model/document",
+          "meta": {
+            "order": 5
+          },
+          "children": [
+            {
+              "path": "/document-object-model/document/document",
+              "title": "Document",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/document-object-model/document/document-properties",
+              "title": "Document 属性",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/document-object-model/document/document-methods",
+              "title": "Document 方法",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/document-object-model/document/document-fragment",
+              "title": "DocumentFragment",
+              "meta": {
+                "order": 5
+              }
+            }
+          ]
+        },
+        {
+          "title": "Element",
+          "path": "/document-object-model/element",
+          "meta": {
+            "order": 6
+          },
+          "children": [
+            {
+              "path": "/document-object-model/element/element",
+              "title": "Element",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/document-object-model/element/element-properties",
+              "title": "Element 属性",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/document-object-model/element/element-methods",
+              "title": "Element 方法",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/document-object-model/element/html-element",
+              "title": "HTMLElement",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/document-object-model/element/html-image-element",
+              "title": "HTMLImageElement",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/document-object-model/element/html-iframe-element",
+              "title": "HTMLIFrameElement",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/document-object-model/element/html-media-element",
+              "title": "HTMLMediaElement",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/document-object-model/element/html-audio-element",
+              "title": "HTMLAudioElement",
+              "meta": {
+                "order": 17
+              }
+            },
+            {
+              "path": "/document-object-model/element/html-video-element",
+              "title": "HTMLVideoElement",
+              "meta": {
+                "order": 18
+              }
+            },
+            {
+              "path": "/document-object-model/element/html-text-area-element",
+              "title": "HTMLTextAreaElement",
+              "meta": {
+                "order": 30
+              }
+            }
+          ]
+        },
+        {
+          "title": "CSSOM",
+          "path": "/document-object-model/cssom",
+          "meta": {
+            "order": 7
+          },
+          "children": [
+            {
+              "path": "/document-object-model/cssom/css-style-sheet",
+              "title": "CSSstyleSheet",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/document-object-model/cssom/css-style-declaration",
+              "title": "CSSStyleDeclaration",
+              "meta": {
+                "order": 2
+              }
+            }
+          ]
+        },
+        {
+          "title": "动态集合",
+          "path": "/document-object-model/dynamic-collection",
+          "meta": {
+            "order": 7
+          },
+          "children": [
+            {
+              "path": "/document-object-model/dynamic-collection/node-list",
+              "title": "NodeList",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/document-object-model/dynamic-collection/named-node-map",
+              "title": "NamedNodeMap",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/document-object-model/dynamic-collection/html-collection",
+              "title": "HTMLCollection",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/document-object-model/dynamic-collection/dom-token-list",
+              "title": "DOMTokenList",
+              "meta": {
+                "order": 15
+              }
+            }
+          ]
+        },
+        {
+          "title": "DOM 事件流",
+          "path": "/document-object-model/events",
+          "meta": {
+            "order": 20
+          },
+          "children": [
+            {
+              "path": "/document-object-model/events/event-flow",
+              "title": "事件流",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-handlers-or-listener",
+              "title": "事件处理程序",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/document-object-model/events/the-event-object",
+              "title": "事件对象",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-delegation",
+              "title": "事件委托",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "事件类型",
+          "path": "/document-object-model/events/event-types",
+          "meta": {
+            "order": 21
+          },
+          "children": [
+            {
+              "path": "/document-object-model/events/event-types/event-types",
+              "title": "事件类型",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/resource-events",
+              "title": "资源事件",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/network-events",
+              "title": "网络事件",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/focus-events",
+              "title": "焦点事件",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/websocket-events",
+              "title": "WebSocket 事件",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/session-history-events",
+              "title": "会话历史事件",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/css-animation-events",
+              "title": "CSS 动画事件",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/css-transition-events",
+              "title": "CSS 过渡事件",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/form-events",
+              "title": "表单事件",
+              "meta": {
+                "order": 9
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/printing-events",
+              "title": "打印事件",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/text-composition-events",
+              "title": "文本写作事件",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/view-events",
+              "title": "视图事件",
+              "meta": {
+                "order": 12
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/clipboard-events",
+              "title": "剪贴板事件",
+              "meta": {
+                "order": 13
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/keyboard-events",
+              "title": "键盘事件",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/pointer-events",
+              "title": "指针事件",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/mouse-event",
+              "title": "鼠标事件 MouseEvent",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/drag-and-drop-events",
+              "title": "拖拽事件",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/media-events",
+              "title": "媒体事件",
+              "meta": {
+                "order": 17
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/progress-events",
+              "title": "进度条事件",
+              "meta": {
+                "order": 18
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/storage-events",
+              "title": "存储事件",
+              "meta": {
+                "order": 19
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/update-events",
+              "title": "更新事件",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/value-change-events",
+              "title": "值变化事件",
+              "meta": {
+                "order": 21
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/uncategorized-events",
+              "title": "未分类事件",
+              "meta": {
+                "order": 22
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/custom-event",
+              "title": "自定义事件 CustomEvent",
+              "meta": {
+                "order": 50
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/touch-events",
+              "title": "触控事件",
+              "meta": {
+                "order": 50
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/the-orientationchange-event",
+              "title": "设备事件",
+              "meta": {
+                "order": 99
+              }
+            },
+            {
+              "path": "/document-object-model/events/event-types/ui-events",
+              "title": "用户界面事件",
+              "meta": {
+                "order": 100
+              }
+            }
+          ]
+        },
+        {
+          "title": "Multimedia",
+          "path": "/document-object-model/multimedia",
+          "meta": {},
+          "children": [
+            {
+              "path": "/document-object-model/multimedia/audio-buffer",
+              "title": "AudioBuffer",
+              "meta": {}
+            },
+            {
+              "path": "/document-object-model/multimedia/audio-node",
+              "title": "AudioNode",
+              "meta": {}
+            },
+            {
+              "path": "/document-object-model/multimedia/audio-track",
+              "title": "AudioTrack",
+              "meta": {}
+            }
+          ]
+        }
+      ],
+      "/object-oriented-programming": [
+        {
+          "title": "面向对象编程",
+          "path": "/object-oriented-programming",
+          "meta": {
+            "order": 1
+          },
+          "children": [
+            {
+              "path": "/object-oriented-programming",
+              "title": "目录",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-oriented-programming",
+              "title": "简介",
+              "meta": {
+                "order": 2
+              }
+            }
+          ]
+        },
+        {
+          "title": "理解对象",
+          "path": "/object-oriented-programming/object-understand",
+          "meta": {
+            "order": 2
+          },
+          "children": [
+            {
+              "path": "/object-oriented-programming/object-understand/the-object-type",
+              "title": "对象类型",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-understand/manipulating-property",
+              "title": "属性操作",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-understand/attributes-object",
+              "title": "对象属性描述符",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-understand/the-object-status",
+              "title": "对象状态",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "创建对象",
+          "path": "/object-oriented-programming/object-creation",
+          "meta": {
+            "order": 3
+          },
+          "children": [
+            {
+              "path": "/object-oriented-programming/object-creation/the-factory-pattern",
+              "title": "工厂模式",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-creation/the-constructor-pattern",
+              "title": "构造函数模式",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-creation/the-prototype-pattern",
+              "title": "原型模式",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-creation/combination-constructor-and-prototype-pattern",
+              "title": "组合使用构造函数模式和原型模式",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-creation/dynamic-prototype-pattern",
+              "title": "动态原型模式",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-creation/parastic-constructor-pattern",
+              "title": "寄生构造函数模式",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/object-oriented-programming/object-creation/durable-constructor-pattern",
+              "title": "稳妥构造函数模式",
+              "meta": {
+                "order": 7
+              }
+            }
+          ]
+        },
+        {
+          "title": "继承",
+          "path": "/object-oriented-programming/inheritance",
+          "meta": {
+            "order": 4
+          },
+          "children": [
+            {
+              "path": "/object-oriented-programming/inheritance/prototype-chain",
+              "title": "原型链",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/object-oriented-programming/inheritance/constructor-stealing",
+              "title": "借用构造函数",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/object-oriented-programming/inheritance/combination-inheritance",
+              "title": "组合继承",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/object-oriented-programming/inheritance/prototypal-inheritance",
+              "title": "原型式继承",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/object-oriented-programming/inheritance/parasitic-inheritance",
+              "title": "寄生式继承",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/object-oriented-programming/inheritance/parasitic-combination-inheritance",
+              "title": "寄生组合式继承",
+              "meta": {
+                "order": 6
+              }
+            }
+          ]
+        },
+        {
+          "title": "类",
+          "path": "/object-oriented-programming/class-definitions",
+          "meta": {
+            "order": 5
+          },
+          "children": [
+            {
+              "path": "/object-oriented-programming/class-definitions/class-basic",
+              "title": "类的基本语法",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/object-oriented-programming/class-definitions/class-extends",
+              "title": "类的继承",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/object-oriented-programming/class-definitions/class-private-member",
+              "title": "私有成员",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/object-oriented-programming/class-definitions/class-static-member",
+              "title": "静态成员",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        }
+      ],
+      "/standard-built-in-objects": [
+        {
+          "title": "标准内置对象",
+          "path": "/standard-built-in-objects",
+          "meta": {
+            "order": 1
+          },
+          "children": []
+        },
+        {
+          "title": "全局对象 - 值属性",
+          "path": "/standard-built-in-objects/the-global-object/value-properties",
+          "meta": {
+            "order": 2
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/the-global-object/value-properties/infinity",
+              "title": "Infinity",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/value-properties/na-n",
+              "title": "NaN",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/value-properties/undefined",
+              "title": "undefined",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "全局对象 - 函数属性",
+          "path": "/standard-built-in-objects/the-global-object/function-properties",
+          "meta": {
+            "order": 3
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/eval",
+              "title": "eval",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/is-finite",
+              "title": "isFinite",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/is-na-n",
+              "title": "isNaN",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/parse-float",
+              "title": "parseFloat",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/parse-int",
+              "title": "parseInt",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/decode-uri",
+              "title": "decodeURI",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/decode-uricomponent",
+              "title": "decodeURIComponent",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/encode-uri",
+              "title": "encodeURI",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/the-global-object/function-properties/encode-uricomponent",
+              "title": "encodeURIComponent",
+              "meta": {
+                "order": 9
+              }
+            }
+          ]
+        },
+        {
+          "title": "Object",
+          "path": "/standard-built-in-objects/fundamental-objects/object",
+          "meta": {
+            "order": 4
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/object",
+              "title": "Object",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/assign",
+              "title": "Object.assign",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/create",
+              "title": "Object.create",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/define-properties",
+              "title": "Object.defineProperties",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/define-property",
+              "title": "Object.defineProperty",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/entries",
+              "title": "Object.entries",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/freeze",
+              "title": "Object.freeze",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/get-own-property-descriptor",
+              "title": "Object.getOwnPropertyDescriptor",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/get-own-property-descriptors",
+              "title": "Object.getOwnPropertyDescriptors",
+              "meta": {
+                "order": 9
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/get-own-property-names",
+              "title": "Object.getOwnPropertyNames",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/get-own-property-symbols",
+              "title": "Object.getOwnPropertySymbols",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/get-prototype-of",
+              "title": "Object.getPrototypeOf",
+              "meta": {
+                "order": 12
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/is",
+              "title": "Object.is",
+              "meta": {
+                "order": 13
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/is-extensible",
+              "title": "Object.isExtensible",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/is-frozen",
+              "title": "Object.isFrozen",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/is-sealed",
+              "title": "Object.isSealed",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/keys",
+              "title": "Object.keys",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/prevent-extensions",
+              "title": "Object.preventExtensions",
+              "meta": {
+                "order": 17
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/seal",
+              "title": "Object.seal",
+              "meta": {
+                "order": 18
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/set-prototype-of",
+              "title": "Object.setPrototypeOf",
+              "meta": {
+                "order": 19
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/values",
+              "title": "Object.values",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/has-own-property",
+              "title": "Object.prototype.hasOwnProperty",
+              "meta": {
+                "order": 21
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/is-prototype-of",
+              "title": "Object.prototype.isPrototypeOf",
+              "meta": {
+                "order": 22
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/property-is-enumerable",
+              "title": "Object.prototype.prototypeIsEnumerable",
+              "meta": {
+                "order": 23
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/to-string",
+              "title": "Object.prototype.toString",
+              "meta": {
+                "order": 24
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/object/from-entries",
+              "title": "Object.fromEntries",
+              "meta": {
+                "order": 25
+              }
+            }
+          ]
+        },
+        {
+          "title": "Function",
+          "path": "/standard-built-in-objects/fundamental-objects/function",
+          "meta": {
+            "order": 5
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/function/function",
+              "title": "Function",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/function/apply",
+              "title": "Function.prototype.apply",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/function/call",
+              "title": "Function.prototype.call",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/function/bind",
+              "title": "Function.prototype.bind",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "Symbol",
+          "path": "/standard-built-in-objects/fundamental-objects/symbol",
+          "meta": {
+            "order": 6
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/symbol",
+              "title": "Symbol",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/has-instance",
+              "title": "Symbol.hasInstance",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/is-concat-spreadable",
+              "title": "Symbol.isConcatSpreadable",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/iterator",
+              "title": "Symbol.iterator",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/match",
+              "title": "Symbol.match",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/replace",
+              "title": "Symbol.replace",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/search",
+              "title": "Symbol.search",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/species",
+              "title": "Symbol.species",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/split",
+              "title": "Symbol.split",
+              "meta": {
+                "order": 9
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/to-primitive",
+              "title": "Symbol.toPrimitive",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/to-string-tag",
+              "title": "Symbol.toStringTag",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/unscopables",
+              "title": "Symbol.unscopables",
+              "meta": {
+                "order": 12
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/symbol/description",
+              "title": "Symbol.prototype.description",
+              "meta": {
+                "order": 13
+              }
+            }
+          ]
+        },
+        {
+          "title": "其他基础对象",
+          "path": "/standard-built-in-objects/fundamental-objects",
+          "meta": {
+            "order": 7
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/boolean",
+              "title": "Boolean",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/fundamental-objects/error",
+              "title": "Error",
+              "meta": {
+                "order": 2
+              }
+            }
+          ]
+        },
+        {
+          "title": "数字和日期",
+          "path": "/standard-built-in-objects/numbers-and-dates/",
+          "meta": {
+            "order": 8
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/numbers-and-dates/date",
+              "title": "Date",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/numbers-and-dates/math",
+              "title": "Math",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/numbers-and-dates/number",
+              "title": "Number",
+              "meta": {
+                "order": 3
+              }
+            }
+          ]
+        },
+        {
+          "title": "String",
+          "path": "/standard-built-in-objects/text-processing/string/",
+          "meta": {
+            "order": 9
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/text-processing/string/string",
+              "title": "String",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/from-char-code",
+              "title": "String.fromCharCode",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/from-code-point",
+              "title": "String.fromCodePoint",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/raw",
+              "title": "String.raw",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/char-at",
+              "title": "String.prototype.charAt",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/char-code-at",
+              "title": "String.prototype.charCodeAt",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/code-point-at",
+              "title": "String.prototype.codePointAt",
+              "meta": {
+                "order": 12
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/concat",
+              "title": "String.prototype.concat",
+              "meta": {
+                "order": 13
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/ends-with",
+              "title": "String.prototype.endsWith",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/includes",
+              "title": "String.prototype.includes",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/index-of",
+              "title": "String.prototype.indexOf",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/last-index-of",
+              "title": "String.prototype.lastIndexOf",
+              "meta": {
+                "order": 17
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/locale-compare",
+              "title": "String.prototype.localeCompare",
+              "meta": {
+                "order": 18
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/match",
+              "title": "String.prototype.match",
+              "meta": {
+                "order": 19
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/match-all",
+              "title": "String.prototype.matchAll",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/normalize",
+              "title": "String.prototype.normalize",
+              "meta": {
+                "order": 22
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/pad-end",
+              "title": "String.prototype.padEnd",
+              "meta": {
+                "order": 23
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/pad-start",
+              "title": "String.prototype.padStart",
+              "meta": {
+                "order": 24
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/repeat",
+              "title": "String.prototype.repeat",
+              "meta": {
+                "order": 25
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/replace",
+              "title": "String.prototype.replace",
+              "meta": {
+                "order": 26
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/replace-all",
+              "title": "String.prototype.replaceAll",
+              "meta": {
+                "order": 27
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/search",
+              "title": "String.prototype.search",
+              "meta": {
+                "order": 28
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/slice",
+              "title": "String.prototype.slice",
+              "meta": {
+                "order": 29
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/split",
+              "title": "String.prototype.split",
+              "meta": {
+                "order": 30
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/starts-with",
+              "title": "String.prototype.startsWith",
+              "meta": {
+                "order": 31
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/substr",
+              "title": "String.prototype.substr",
+              "meta": {
+                "order": 32
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/substring",
+              "title": "String.prototype.substring",
+              "meta": {
+                "order": 33
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/to-lower-case",
+              "title": "String.prototype.toLowerCase",
+              "meta": {
+                "order": 40
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/to-upper-case",
+              "title": "String.prototype.toUpperCase",
+              "meta": {
+                "order": 41
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/trim",
+              "title": "String.prototype.trim",
+              "meta": {
+                "order": 42
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/trim-end",
+              "title": "String.prototype.trimEnd",
+              "meta": {
+                "order": 43
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/string/trim-start",
+              "title": "String.prototype.trimStart",
+              "meta": {
+                "order": 44
+              }
+            }
+          ]
+        },
+        {
+          "title": "RegExp",
+          "path": "/standard-built-in-objects/text-processing/regexp/",
+          "meta": {
+            "order": 10
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/text-processing/regexp/regexp",
+              "title": "RegExp",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/regexp/regexp-rule",
+              "title": "RegExp 语法",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/regexp/exec",
+              "title": "RegExp.prototype.exec",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/text-processing/regexp/test",
+              "title": "RegExp.prototype.test",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "Array",
+          "path": "/standard-built-in-objects/indexed-collections/array/",
+          "meta": {
+            "order": 11
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/array",
+              "title": "Array",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/array-detection",
+              "title": "数组检测",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/from",
+              "title": "Array.from",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/is-array",
+              "title": "Array.isArray",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/of",
+              "title": "Array.of",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/concat",
+              "title": "Array.prototype.concat",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/includes",
+              "title": "Array.prototype.includes",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/index-of",
+              "title": "Array.prototype.indexOf",
+              "meta": {
+                "order": 12
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/join",
+              "title": "Array.prototype.join",
+              "meta": {
+                "order": 13
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/last-index-of",
+              "title": "Array.prototype.lastIndexOf",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/slice",
+              "title": "Array.prototype.slice",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/flat",
+              "title": "Array.prototype.flat",
+              "meta": {
+                "order": 16
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/flat-map",
+              "title": "Array.prototype.flatMap",
+              "meta": {
+                "order": 17
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/copy-within",
+              "title": "Array.prototype.copyWithin",
+              "meta": {
+                "order": 18
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/entries",
+              "title": "Array.prototype.entries",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/every",
+              "title": "Array.prototype.every",
+              "meta": {
+                "order": 21
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/filter",
+              "title": "Array.prototype.filter",
+              "meta": {
+                "order": 22
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/find",
+              "title": "Array.prototype.find",
+              "meta": {
+                "order": 23
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/find-index",
+              "title": "Array.prototype.findIndex",
+              "meta": {
+                "order": 24
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/for-each",
+              "title": "Array.prototype.forEach",
+              "meta": {
+                "order": 25
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/keys",
+              "title": "Array.prototype.keys",
+              "meta": {
+                "order": 26
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/map",
+              "title": "Array.prototype.map",
+              "meta": {
+                "order": 27
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/reduce",
+              "title": "Array.prototype.reduce",
+              "meta": {
+                "order": 28
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/reduce-right",
+              "title": "Array.prototype.reduceRight",
+              "meta": {
+                "order": 29
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/some",
+              "title": "Array.prototype.some",
+              "meta": {
+                "order": 30
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/fill",
+              "title": "Array.prototype.fill",
+              "meta": {
+                "order": 40
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/pop",
+              "title": "Array.prototype.pop",
+              "meta": {
+                "order": 41
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/push",
+              "title": "Array.prototype.push",
+              "meta": {
+                "order": 42
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/reverse",
+              "title": "Array.prototype.reverse",
+              "meta": {
+                "order": 43
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/shift",
+              "title": "Array.prototype.shift",
+              "meta": {
+                "order": 44
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/sort",
+              "title": "Array.prototype.sort",
+              "meta": {
+                "order": 45
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/splice",
+              "title": "Array.prototype.splice",
+              "meta": {
+                "order": 46
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/unshift",
+              "title": "Array.prototype.unshift",
+              "meta": {
+                "order": 47
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/indexed-collections/array/typed-array",
+              "title": "Typed Array",
+              "meta": {
+                "order": 100
+              }
+            }
+          ]
+        },
+        {
+          "title": "键值集合",
+          "path": "/standard-built-in-objects/keyed-collections/",
+          "meta": {
+            "order": 13
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/keyed-collections/map",
+              "title": "Map",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/keyed-collections/set",
+              "title": "Set",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/keyed-collections/weak-map",
+              "title": "WeakMap",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/keyed-collections/weak-set",
+              "title": "WeakSet",
+              "meta": {
+                "order": 5
+              }
+            }
+          ]
+        },
+        {
+          "title": "结构化数据",
+          "path": "/standard-built-in-objects/structured-data/",
+          "meta": {
+            "order": 14
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/structured-data/array-buffer",
+              "title": "ArrayBuffer",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/structured-data/json",
+              "title": "JSON",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/structured-data/json-parse",
+              "title": "JSON.parse",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/structured-data/json-stringify",
+              "title": "JSON.stringify",
+              "meta": {
+                "order": 4
+              }
+            }
+          ]
+        },
+        {
+          "title": "控制抽象对象",
+          "path": "/standard-built-in-objects/control-abstraction-objects/",
+          "meta": {
+            "order": 15
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/iterator",
+              "title": "Iterator",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/promise",
+              "title": "Promise",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/promise-standard",
+              "title": "Promise/A+ 规范",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/all",
+              "title": "Promise.all",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/any",
+              "title": "Promise.any",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/race",
+              "title": "Promise.race",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/reject",
+              "title": "Promise.reject",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/resolve",
+              "title": "Promise.resolve",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/all-settled",
+              "title": "Promise.allSettled",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/then",
+              "title": "Promise.prototype.then",
+              "meta": {
+                "order": 20
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/catch",
+              "title": "Promise.prototype.catch",
+              "meta": {
+                "order": 21
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/finally",
+              "title": "Promise.prototype.finally",
+              "meta": {
+                "order": 22
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/generator",
+              "title": "Generator",
+              "meta": {
+                "order": 30
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/generator-async",
+              "title": "Generator 函数的异步应用",
+              "meta": {
+                "order": 31
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/next",
+              "title": "Generator.prototype.next",
+              "meta": {
+                "order": 32
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/return",
+              "title": "Generator.prototype.return",
+              "meta": {
+                "order": 33
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/control-abstraction-objects/throw",
+              "title": "Generator.prototype.throw",
+              "meta": {
+                "order": 34
+              }
+            }
+          ]
+        },
+        {
+          "title": "Reflection",
+          "path": "/standard-built-in-objects/reflection/",
+          "meta": {
+            "order": 16
+          },
+          "children": [
+            {
+              "path": "/standard-built-in-objects/reflection/proxy",
+              "title": "Proxy",
+              "meta": {
+                "order": 1
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/get",
+              "title": "Proxy - handler.get",
+              "meta": {
+                "order": 2
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/set",
+              "title": "Proxy - handler.set",
+              "meta": {
+                "order": 3
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/has",
+              "title": "Proxy - handler.has",
+              "meta": {
+                "order": 4
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/delete-property",
+              "title": "Proxy - handler.deleteProperty",
+              "meta": {
+                "order": 5
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/own-keys",
+              "title": "Proxy - handler.ownKeys",
+              "meta": {
+                "order": 6
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/get-own-property-descriptor",
+              "title": "Proxy - handler.getOwnPropertyDescriptor",
+              "meta": {
+                "order": 7
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/define-property",
+              "title": "Proxy - handler.defineProperty",
+              "meta": {
+                "order": 8
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/prevent-extensions",
+              "title": "Proxy - handler.preventExtensions",
+              "meta": {
+                "order": 9
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/get-prototype-of",
+              "title": "Proxy - handler.getPrototypeOf",
+              "meta": {
+                "order": 10
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/is-extensible",
+              "title": "Proxy - handler.isExtensions",
+              "meta": {
+                "order": 11
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/set-prototype-of",
+              "title": "Proxy - handler.setPrototypeOf",
+              "meta": {
+                "order": 12
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/apply",
+              "title": "Proxy - handler.apply",
+              "meta": {
+                "order": 13
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/construct",
+              "title": "Proxy - handler.construct",
+              "meta": {
+                "order": 14
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/revocable",
+              "title": "Proxy - revocable",
+              "meta": {
+                "order": 15
+              }
+            },
+            {
+              "path": "/standard-built-in-objects/reflection/reflect",
+              "title": "Reflect",
+              "meta": {
+                "order": 20
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "locales": [
+    {
+      "name": "en-US",
+      "label": "English"
+    }
+  ],
+  "navs": {
+    "en-US": [
+      {
+        "title": "基本语法",
+        "order": 1,
+        "path": "/basic-concept"
+      },
+      {
+        "title": "内置对象",
+        "order": 2,
+        "path": "/standard-built-in-objects"
+      },
+      {
+        "title": "核心模块",
+        "order": 3,
+        "path": "/core-modules"
+      },
+      {
+        "title": "OOP",
+        "order": 4,
+        "path": "/object-oriented-programming"
+      },
+      {
+        "title": "BOM",
+        "order": 5,
+        "path": "/browser-object-model"
+      },
+      {
+        "title": "DOM",
+        "order": 6,
+        "path": "/document-object-model"
+      },
+      {
+        "title": "计算机网络",
+        "order": 8,
+        "path": "/computer-networks"
+      },
+      {
+        "title": "设计模式",
+        "order": 10,
+        "path": "/design-patterns"
+      },
+      {
+        "title": "Github",
+        "path": "https://github.com/tsejx/javascript-guidebook"
+      }
+    ]
+  },
+  "title": "JavaScript Guidebook",
+  "logo": "http://img.mrsingsing.com/javascript-guidebook-favicon.png",
+  "description": "JavaScript 完全知识体系",
+  "mode": "site",
+  "repository": {
+    "url": "https://github.com/tsejx/javascript-guidebook",
+    "branch": "master"
+  },
+  "theme": {}
+}
