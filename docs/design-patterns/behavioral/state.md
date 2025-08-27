@@ -6,7 +6,7 @@ group:
   title: 行为型
   order: 4
 title: 状态模式
-order: 3
+order: 8
 ---
 
 # 状态模式

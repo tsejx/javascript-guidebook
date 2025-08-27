@@ -6,7 +6,7 @@ group:
   title: 行为型
   order: 4
 title: 模版方法模式
-order: 1
+order: 10
 ---
 
 # 模版方法模式
