@@ -567,7 +567,7 @@ let { foo, bar } = example();
 
 ```js
 // 参数是一组有次序的值
-function f({x, y, z}) { ... }
+function f([x, y, z]) { ... }
 f([1, 2, 3]);
 
 // 参数是一组无次序的值
@@ -625,7 +625,7 @@ map.set('first', 'hello');
 map.set('second', 'world!');
 
 for (let [key, value] of map) {
-  console.log(ket + ' is ' + value);
+  console.log(key + ' is ' + value);
 }
 // first is hello
 // second is world
