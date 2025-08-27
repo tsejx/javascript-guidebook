@@ -56,7 +56,7 @@ setTimeout(() => {
   console.log(2);
 }, 0);
 
-let promise = new Promise((res) => {
+let promise = new Promise((resolve) => {
   console.log(3);
   resolve();
 })
