@@ -15,26 +15,39 @@ order: 10
 
 ## 语法
 
+语法：
+
 ```js
-Object.getOwnPropertyNames(O);
+Object.getOwnPropertyNames(o);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  getOwnPropertyName(o: any): string[];
+}
+```
+
+参数说明：
+
 | 参数 | 说明                             | 类型   |
-| ---- | -------------------------------- | ------ |
-| O    | 用于获取 Property 键名的目标对象 | object |
+| :--- | :------------------------------- | :----- |
+| o    | 用于获取 Property 键名的目标对象 | object |
+
+返回值：
 
 返回 Properties 键名组成的数组。
 
-## 描述
+## 方法说明
 
 如果只需要获取可枚举属性，可以使用 [Object.keys](keys) 或用 [for-in 语句](../../../../basic-concept/statements-and-declarations/iteration-statement/the-for-in-statement)（还会获取到原型链上的可枚举属性，不过可以使用 [Object.prototype.hasOwnProperty](../properties-of-the-object-prototype-object/hasOwnProperty) 方法过滤）。
 
-## 示例
+## 代码示例
 
 ### 数组
 
 ```js
-// Array
 const foo = ['a', 'b', 'c'];
 console.log(Object.getOwnPropertyNames(foo).sort());
 // ['0', '1', '2', 'length']
@@ -49,7 +62,7 @@ console.log(Object.getOwnPropertyNames(foo).sort());
 // ['0', '1', '2']
 
 // 使用 Array.forEach 输出属性名和属性值
-Object.getOwnPropertyNames(foo).forEach(function(val, idx, array) {
+Object.getOwnPropertyNames(foo).forEach(function (val, idx, array) {
   console.log(`${val}:${foo[val]}`);
 });
 // 0:a
@@ -65,7 +78,7 @@ const foo = Object.create(
   {},
   {
     getBar: {
-      value: function() {
+      value: function () {
         return this.bar;
       },
       enumerable: false,
@@ -82,15 +95,15 @@ console.log(Object.getOwnPropertyNames(foo).sort());
 
 ```js
 function SuperClass() {}
-SuperClass.prototype.inheritedMethod = function() {};
+SuperClass.prototype.inheritedMethod = function () {};
 
 function SubClass() {
   this.prop = 5;
-  this.method = function() {};
+  this.method = function () {};
 }
 
 SubClass.prototype = new SuperClass();
-SubClass.prototype.prototypeMethod = function() {};
+SubClass.prototype.prototypeMethod = function () {};
 
 Object.getOwnPropertyNames(new SubClass());
 // ['prop', 'method']
@@ -103,7 +116,7 @@ Object.getOwnPropertyNames(new SubClass());
 ```js
 const enum_and_nonenum = Object.getOwnPropertyNames(target);
 const enum_only = Object.keys(target);
-const nonenum_only = enum_and_nonenum.filter(function(key) {
+const nonenum_only = enum_and_nonenum.filter(function (key) {
   const indexInEnum = enum_only.indexOf(key);
   if (indexInEnum === -1) {
     return true;
@@ -112,3 +125,8 @@ const nonenum_only = enum_and_nonenum.filter(function(key) {
   }
 });
 ```
+
+## 参考资料
+
+- [MDN: Object.getOwnPropertyNames](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

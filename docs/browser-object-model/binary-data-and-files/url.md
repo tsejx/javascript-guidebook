@@ -56,10 +56,3 @@ URL 接口实现的在 URLUtils 中定义的方法。
 | :-------------------- | :----------------------------------------------------------- |
 | URL.createObjectURL() | 返回一个 DOMString，包含一个唯一的 Blob URL（该 URL 协议）。 |
 | URL.revokeObjectURL() | 销毁之前使用 `URL.createObjectURL()` 创建的 URL 实例。       |
-
-```js
-const blobUrl = 'blob://'
-
-const URL
-
-```

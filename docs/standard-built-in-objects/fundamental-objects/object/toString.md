@@ -5,7 +5,7 @@ nav:
 group:
   title: Object
   order: 4
-title: Object.prototype.isPrototypeOf
+title: Object.prototype.toString
 order: 24
 ---
 
@@ -15,19 +15,29 @@ order: 24
 
 ## 语法
 
+语法：
+
 ```js
-O.prototype.toString();
+obj.toString();
+```
+
+类型声明：
+
+```ts
+interface Object {
+  toString(): string;
+}
 ```
 
 表示该对象的字符串。
 
-## 描述
+## 方法说明
 
 所有经过标准内置对象创建的值均能通过 `toString()` 方法获取 String 类型值。
 
-## 示例
+## 代码示例
 
-### 基本示例
+### 基本用法
 
 ```js
 const foo = new Object();

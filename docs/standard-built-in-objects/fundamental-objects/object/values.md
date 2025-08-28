@@ -35,9 +35,9 @@ interface ObjectConstructor {
 
 参数说明：
 
-| 参数  | 说明     | 类型   |
-| :---- | :------- | :----- |
-| `obj` | 指定对象 | object |
+| 参数 | 说明     | 类型   |
+| :--- | :------- | :----- |
+| obj  | 指定对象 | object |
 
 返回对象可枚举 Property 值的数组集合。
 
@@ -60,4 +60,5 @@ console.log(Object.values(obj));
 
 ## 参考资料
 
+- [MDN: Object.values](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/values)
 - [TypeScript - lib.es2017.object.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2017.object.d.ts)

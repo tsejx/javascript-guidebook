@@ -16,30 +16,42 @@ order: 33
 
 ## 语法
 
+语法：
+
 ```js
-str.substring(startIndex [, indexEnd])
+str.substring(start [, end])
 ```
 
-| 参数         | 描述                                                   | 类型   |
-| ------------ | ------------------------------------------------------ | ------ |
-| `startIndex` | 指向字符串指定部分的开头的索引。                       | number |
-| `endIndex`   | 可选，指向字符串指定部分的结尾的索引（不包括该索引）。 | number |
+类型声明：
 
-### 描述
+```ts
+interface String {
+  substring(start: number, end?: number): string;
+}
+```
 
-`substring()` 函数的返回值为 String 类型，返回当前字符串索引 `[startIndex, endIndex)` 之间的连续字符所组成的字符串（不包括 `endIndex`）。
+参数说明：
 
-`substring()` 函数的参数顺序是不固定的，该函数将自动使用 `startIndex` 和 `endIndex` 中较小的值作为起始索引，较大的值作为结尾索引。
+| 参数  | 描述                                                 | 类型   |
+| :---- | :--------------------------------------------------- | :----- |
+| start | 指向字符串指定部分的开头的索引                       | number |
+| end   | 可选，指向字符串指定部分的结尾的索引（不包括该索引） | number |
 
-- 如果省略 `indexEnd`，`substring()` 提取字符一直到字符串末尾。
+## 方法说明
+
+`substring()` 函数的返回值为 String 类型，返回当前字符串索引 `[start, end)` 之间的连续字符所组成的字符串（不包括 `end`）。
+
+`substring()` 函数的参数顺序是不固定的，该函数将自动使用 `start` 和 `end` 中较小的值作为起始索引，较大的值作为结尾索引。
+
+- 如果省略 `end`，`substring()` 提取字符一直到字符串末尾。
 - 如果任一参数为负数或 `NaN`，则将其置为 0。
 - 如果任一参数大于 `str.length`，则被当作 `str.length`。
-- 如果 `startIndex` 等于 `endIndex`，则不会复制任何字符，返回空字符串。
-- 如果 `startIndex` 大于 `endIndex`，则 `substring()` 的执行效果就像两个参数调换了一样。例如，`str.substring(1, 0)` 等价于 `str.substring(0, 1)`。
+- 如果 `start` 等于 `end`，则不会复制任何字符，返回空字符串。
+- 如果 `start` 大于 `end`，则 `substring()` 的执行效果就像两个参数调换了一样。例如，`str.substring(1, 0)` 等价于 `str.substring(0, 1)`。
 
-## 示例
+## 代码示例
 
-### 代码示例
+### 基本用法
 
 下例使用 `substring` 输出字符串 "Mozilla" 中的字符：
 
@@ -113,3 +125,8 @@ const removeTail = function (str) {
   return str.substring(0, len - 1);
 };
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.substring](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/substring)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

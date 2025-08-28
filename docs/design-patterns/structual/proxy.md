@@ -6,114 +6,67 @@ group:
   title: 结构型
   order: 3
 title: 代理模式
-order: 3
+order: 7
 ---
 
 # 代理模式
 
-**代理模式（Proxy Pattern）** 是指为一个原对象找一个代理对象，以便对原对象进行访问。即在访问者与目标对象之间加一层代理，通过代理做授权和控制。代理模式的英文叫做 Proxy 或 Surrogate，它是一种对象结构型模式。
+代理模式（Proxy Pattern）是一种结构型设计模式，其主要目的是通过引入一个代理对象来控制对另一个对象的访问。代理对象充当了客户端和目标对象之间的中介，可以用于实现各种用途，如延迟加载、权限控制、日志记录等。
 
-最常见的例子就是经纪人代理明星业务，假设你作为投资人，想联系明星打广告，那么你就需要先经过代理经纪人，经纪人对你的资质进行考察，并为你进行排期，替明星过滤不必要的信息。
+代理模式涉及到以下几个角色：
 
-事件委托/代理、jQuery 的 `$.proxy`、ES6 的 `proxy` 都是这一模式的实现。
+1. `抽象主题（Subject）`： 定义了目标对象和代理对象的共同接口，客户端通过该接口访问目标对象。
+2. `具体主题（Real Subject）`： 实现了抽象主题接口，是真正的目标对象，代理对象直接控制对它的访问。
+3. `代理（Proxy）`： 实现了抽象主题接口，保存了对真正目标对象的引用，客户端通过代理访问目标对象。代理对象可以在客户端访问目标对象之前或之后执行一些额外的操作。
 
-代理模式又分为 **静态代理** 和 **动态代理**：
+代理模式可以分为多种类型，包括：
 
-- **静态代理** 是由程序员创建或特定工具自动生成源代码，再对其编译。在程序运行前，代理类的 `.class` 文件就已经存在了。
-- **动态代理** 是在程序运行时，通过运用反射机制动态的创建而成。
+静态代理（Static Proxy）： 代理对象在编译时就已经确定，代理类和目标类的关系在编译阶段就确定了。静态代理需要为每一个目标类创建一个代理类，导致类的数量增加。
 
-## 模式结构
+动态代理（Dynamic Proxy）： 代理对象在运行时动态生成，代理类不需要预先定义，而是在运行时根据需要创建。Java 中的 java.lang.reflect.Proxy 和 InvocationHandler 接口就是动态代理的经典实现。
 
-代理模式包含如下角色：
+下面是一个简单的静态代理的示例，假设有一个简单的接口 Subject，以及一个实现了该接口的类 RealSubject，我们可以使用代理模式创建一个代理类 Proxy：
 
-- Subject（抽象主题角色）：声明了目标对象和代理对象的共同接口，这样一来在任何可以使用目标对象的地方都可以使用代理对象。
-- Proxy（代理主题角色）：也称为委托角色或者被代理角色。定义了代理对象所代表的目标对象。
-- RealSubject（真实主题角色）：也叫委托类、代理类。代理对象内部含有目标对象的引用，从而可以在任何时候操作目标对象；代理对象提供一个与目标对象相同的接口，以便可以在任何时候替代目标对象。代理对象通常在客户端调用传递给目标对象之前或之后，执行某个操作，而不是单纯地将调用传递给目标对象。
+```typescript
+// 抽象主题
+interface Subject {
+    void request();
+}
 
-## 优点和缺点
+// 具体主题
+class RealSubject implements Subject {
+    @Override
+    public void request() {
+        System.out.println("RealSubject: Handling request.");
+    }
+}
 
-代理模式的优点
+// 代理
+class Proxy implements Subject {
+    private RealSubject realSubject;
 
-- 代理模式能够协调调用者和被调用者，在一定程度上降低了系统的耦合度。
-- 远程代理使得客户端可以访问在远程机器上的对象，远程机器可能具有更好的计算性能与处理速度，可以快速响应并处理客户端请求。
-- 虚拟代理通过使用一个小对象来代表一个大对象，可以减少系统资源的消耗，对系统进行优化并提高运行速度。
-- 保护代理可以控制对真实对象的使用权限。
-
-代理模式的缺点
-
-- 由于在客户端和真实主题之间增加了代理对象，因此有些类型的代理模式可能会造成请求的处理速度变慢。
-- 实现代理模式需要额外的工作，有些代理模式的实现非常复杂。
-
-## 实践应用
-
-### 图片预加载
-
-虚拟代理：作为创建开销大的对象的代表；虚拟代理经常直到我们真正需要一个对象的时候才创建它；当对象在创建或创建中时，由虚拟代理来扮演对象的替身；对象创建后，代理就会将请求直接委托给对象。
-
-```js
-const image = (function () {
-  const imgNode = document.createElement('img');
-
-  document.body.appendChild(imgNode);
-
-  return {
-    setSrc: function (src) {
-      imgNode.src = src;
-    },
-  };
-})();
-
-// 代理容器
-const proxyImage = (function () {
-  let img = new Image();
-
-  // 加载完之后将设置为添加的图片
-  img.onload = function () {
-    image.setSrc(this.src);
-  };
-
-  return {
-    setSrc: function (src) {
-      image.setSrc('loading.gif');
-      img.src = src;
-    },
-  };
-})();
-
-proxyImage.setSrc('file.jpg');
-```
-
-代理容器控制了客户对 Image 的访问，并且在过程中加了一些额外的操作。
-
-### 计算乘积
-
-缓存代理可以为一些开销大的运算结果提供暂时的存储，在下次运算时，如果传递进来的参数跟之前一致，则可以直接返回前端存储的结果。
-
-```js
-// 求乘积函数（专注于自身职责，计算成绩，缓存由代理实现）
-const mult = function () {
-  let result = 1;
-  for (let i = 0, l = arguments.length; i < l; i++) {
-    result = result * arguments[i];
-  }
-
-  return result;
-};
-
-// proxyMult
-const proxyMult = (function () {
-  let cache = {};
-  return function () {
-    let args = Array.prototype.join.call(arguments, ',');
-
-    if (args in cache) {
-      return cache[args];
+    public Proxy(RealSubject realSubject) {
+        this.realSubject = realSubject;
     }
 
-    return (cache[arg] = mult.apply(this, arguments));
-  };
-})();
+    @Override
+    public void request() {
+        System.out.println("Proxy: Logging before request.");
+        realSubject.request();
+        System.out.println("Proxy: Logging after request.");
+    }
+}
 
-proxyMult(1, 2, 3); // 6
-proxyMult(1, 2, 3); // 6
+// 客户端
+public class Client {
+    public static void main(String[] args) {
+        RealSubject realSubject = new RealSubject();
+        Proxy proxy = new Proxy(realSubject);
+
+        // 通过代理访问目标对象
+        proxy.request();
+    }
+}
 ```
+
+在这个示例中，`Subject` 是抽象主题，`RealSubject` 是具体主题。`Proxy` 是代理类，它持有一个 `RealSubject` 的引用，并在调用 `request` 方法前后添加了额外的日志记录。客户端通过代理对象访问目标对象，实现了对目标对象的访问控制。

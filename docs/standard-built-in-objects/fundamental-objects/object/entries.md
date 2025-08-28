@@ -35,9 +35,9 @@ interface ObjectConstructor {
 
 参数说明：
 
-| 参数  | 说明           | 类型   |
-| :---- | :------------- | :----- |
-| `obj` | 用于枚举的对象 | object |
+| 参数 | 说明           | 类型   |
+| :--- | :------------- | :----- |
+| obj  | 用于枚举的对象 | object |
 
 返回值：
 
@@ -70,4 +70,5 @@ Object.entries(obj).forEach(([key, value]) => {
 
 ## 参考资料
 
+- [MDN: Object.entries](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/entries)
 - [TypeScript - lib.es2017.object.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2017.object.d.ts)

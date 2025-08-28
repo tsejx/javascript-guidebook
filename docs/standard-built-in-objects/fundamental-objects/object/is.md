@@ -15,18 +15,32 @@ order: 13
 
 ## 语法
 
+语法：
+
 ```js
 Object.is(value1, value2);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstruct {
+  is(value1: any, value2: any): boolean;
+}
+```
+
+参数说明：
+
 | 参数   | 说明     | 类型 |
-| ------ | -------- | ---- |
+| :----- | :------- | :--- |
 | value1 | 比较值 1 | any  |
 | value2 | 比较值 2 | any  |
 
+返回值：
+
 返回判断表达式的结果。
 
-## 描述
+## 方法说明
 
 判断下列任何一项成立，则两个值相同：
 
@@ -45,7 +59,7 @@ Object.is(value1, value2);
 
 这与 `===` 运算符的判定方式也不一样。`===` 运算符（和 `==` 运算符）将数字值 `-0` 和 `+0` 视为相等，并认为 `Number.NaN` 不等于 `NaN`。
 
-## 示例
+## 代码示例
 
 ```js
 Object.is(undefined, undefined);
@@ -73,3 +87,8 @@ Object.is(-0, -0);
 Object.is(NaN, 0 / 0);
 // true
 ```
+
+## 参考资料
+
+- [MDN: Object.is](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/is)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

@@ -6,39 +6,94 @@ group:
   title: 行为型
   order: 4
 title: 职责链模式
-order: 5
+order: 1
 ---
 
 # 职责链模式
 
-**职责链模式（Chain of Responsibility）**：解决请求的发送者和请求的接受者之间的耦合，通过职责链上的多个对象对分解请求流程，实现请求在多个对象之间的传递，直到有对象处理它为止。
+职责链模式（Chain of Responsibility Pattern）是一种行为型设计模式，它允许你构建一个对象链，每个对象都包含了请求的一部分处理逻辑，并且请求沿着这条链传递，直到有一个对象处理它为止。这种模式使得一个请求发送者无需知道是哪个对象处理了请求，而只需要知道请求会被处理。
 
-## 概述
+在职责链模式中，通常涉及三种主要角色：
 
-- **解决问题**：职责链上的处理者负责处理请求，客户只需要将请求发送到职责链上即可，无须关心请求的处理细节和请求的传递，所以职责链将请求的发送者和请求的处理者解耦了。
-- **何时使用**：在处理消息的时候以过滤很多道
-- **如何解决**：拦截的类都实现统一接口
-- **核心代码**：Handler 里面聚合它自己，在 HandlerRequest 里判断是否合适，如果没达到条件则向下传递，向谁传递之前 set 进去。
-- **应用实例**：
-  - 如果早高峰能顺利挤上公交车的话，那么估计这一天都会过得很开心。因为公交车上人实在太多了，经常上车后却找不到售票员在哪，所以只好把两块钱硬币往前面递。除非你运气够好，站在你前面的第一个人就是售票员，否则，你的硬币通常要在 N 个人手上传递，才能最终到达售票员的手里。
-  - 中学时代的期末考试，如果你平时不太老实，考试时就会被安排在第一个位置。遇到不会答的题目，就把题目编号写在小纸条上往后传递，坐在后面的同学如果也不会答，他就会把这张小纸条继续递给他后面的人。
-- **优点**：
-  - 降低耦合度。它将请求的发送者和接收者解耦。
-  - 简化对象。使得对象不需要知道链的结构。
-  - 增强给对象指派职责的灵活性。通过改变链内的成员活着调动它们的次序，允许动态地新增活着删除责任。
-  - 增加新的请求处理类很方便
-- **缺点**：
-  - 不能保证请求一定被接收
-  - 系统性能将受到一定影响，而且在进行代码调试时不太方便，可能会造成循环调用
-  - 可能不容易观察运行时的特征，有碍于除错
-- **使用场景**：
-  - 有多个对象可以处理同一个请求，具体哪个对象处理该请求由运行时刻自动确定
-  - 在不明确指定接收者的情况下，向多个对象中的一个提交一个请求
-  - 可动态指定一组对象处理请求
+1. **请求类（Request）**： 表示需要被处理的请求，包含了请求的信息和状态。在实际应用中，请求类通常包含了与具体业务相关的数据。
+2. **处理者基类（Handler）**： 定义了一个处理请求的接口或抽象类，具体的处理者类继承自这个基类。处理者基类通常包含一个指向下一个处理者的引用，形成了一个链条。
+3. **具体处理者（Concrete Handler）**： 继承自处理者基类，实现了处理请求的具体逻辑。具体处理者决定了它能够处理的请求类型，如果无法处理，则将请求传递给下一个处理者。
 
-## 结构
+在一些实现中，还可能包含以下两个角色：
 
-职责链模式包含如下角色：
+1. **客户端（Client）**： 创建请求对象并将请求提交给处理者链的起始点。客户端通常不需要知道具体的处理者，只需通过处理者基类与处理者链交互。
+2. **具体客户端（Concrete Client）**： 实现了客户端接口，负责创建具体的请求对象并将其提交给处理者链。这个角色在一些场景中可能会省略，因为客户端的工作通常是由系统的其他部分来完成。
 
-- 抽象处理者（Handler）：定义一个处理请求的抽象类。如果需要，可以定义一个方法以设定返回对下家的引用。
-- 具体处理者（ConcreteHandler）：具体处理者接到请求后，可以选择将请求处理掉，或者将请求传给下家。由于具体处理者持有对下家的引用，因此，如果需要，具体处理者可以访问下家。
+这些角色共同协作，使得请求在处理者链上传递，每个处理者负责判断自己是否能够处理请求，如果能够处理，则处理之；如果不能处理，则将请求传递给下一个处理者。这种方式实现了请求的解耦和责任的分担，提高了系统的灵活性和可维护性。
+
+假设我们有一个报销审批的场景，有不同级别的审批人（经理、副总裁、总裁），每个审批人有不同的审批权限，如果一个审批人无法处理该报销请求，请求将被传递给下一个级别的审批人。
+
+```typescript
+// 请求类
+class ExpenseRequest {
+    constructor(amount) {
+        this.amount = amount;
+        this.approved = false;
+    }
+}
+
+// 处理者基类
+class Approver {
+    constructor(name, approvalLimit, nextApprover = null) {
+        this.name = name;
+        this.approvalLimit = approvalLimit;
+        this.nextApprover = nextApprover;
+    }
+
+    processRequest(request) {
+        if (request.amount <= this.approvalLimit) {
+            request.approved = true;
+            console.log(`${this.name} approved the expense request of $${request.amount}`);
+        } else if (this.nextApprover) {
+            console.log(`${this.name} cannot approve. Escalating to ${this.nextApprover.name}`);
+            this.nextApprover.processRequest(request);
+        } else {
+            console.log(`No one is able to approve the expense request of $${request.amount}`);
+        }
+    }
+}
+
+// 具体处理者
+class Manager extends Approver {
+    constructor() {
+        super("Manager", 1000);
+    }
+}
+
+class VicePresident extends Approver {
+    constructor() {
+        super("Vice President", 5000);
+    }
+}
+
+class President extends Approver {
+    constructor() {
+        super("President", 10000);
+    }
+}
+
+// 客户端代码
+const manager = new Manager();
+const vp = new VicePresident();
+const president = new President();
+
+// 构建职责链
+manager.nextApprover = vp;
+vp.nextApprover = president;
+
+// 创建报销请求
+const expenseRequest = new ExpenseRequest(8000);
+
+// 提交报销请求
+manager.processRequest(expenseRequest);
+
+```
+
+在这个例子中，Approver 是处理者的基类，包含了处理请求的通用逻辑，每个具体的处理者（Manager、VicePresident、President）都继承自 Approver，并在构造函数中设置了自己的审批限额和下一个处理者。
+
+在客户端代码中，我们创建了一个报销请求对象，并创建了处理者对象（经理、副总裁、总裁）。然后，通过设置处理者之间的关系，形成了一个处理者链。当请求提交时，会依次经过链上的处理者，直到有一个处理者能够处理该请求为止。

@@ -79,4 +79,5 @@ if (String.prototype.padStart) {
 
 ## 参考资料
 
+- [MDN: Array.prototype.padStart](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
 - [TypeScript - lib.es2017.string.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2017.string.d.ts)

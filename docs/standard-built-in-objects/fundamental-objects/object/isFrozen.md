@@ -15,23 +15,35 @@ order: 15
 
 ## 语法
 
+语法：
+
 ```js
-Object.isFrozen(O);
+Object.isFrozen(o);
 ```
 
+类型声明：
+
+```ts
+interface Object {
+  isFrozen(o: any): boolean;
+}
+```
+
+参数说明：
+
 | 参数 | 说明               | 类型   |
-| ---- | ------------------ | ------ |
-| O    | 指定用于检测的对象 | object |
+| :--- | :----------------- | :----- |
+| o    | 指定用于检测的对象 | object |
 
 返回 Boolean 类型的值表示用于检测的对象是否被冻结。
 
-## 描述
+## 方法说明
 
 被冻结的对象不可扩展，所有 Property 均不可配置，且所有数据属性（即没有 `getter` 或 `setter` 组件的访问器的属性 ）都是不可写的。
 
-## 示例
+## 代码
 
-### 基本示例
+### 基本用法
 
 ```js
 let foo = {
@@ -70,3 +82,8 @@ console.log(Object.freeze(foo));
 // { value: 1, writable: false, enumerable: true, configurable: false }
 console.log(Object.getOwnPropertyDescriptor(foo, 'a'));
 ```
+
+## 参考资料
+
+- [MDN: Object.isFrozen](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/isFrozen)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

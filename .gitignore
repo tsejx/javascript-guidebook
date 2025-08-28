@@ -8,3 +8,5 @@ yarn.lock
 .temp/*
 todo/
 dist/
+.umi-production/*
+.vscode/

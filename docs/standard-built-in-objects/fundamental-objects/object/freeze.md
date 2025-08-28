@@ -15,17 +15,35 @@ order: 7
 
 ## 语法
 
+语法：
+
 ```js
-Object.freeze(O);
+Object.freeze(o);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  freeze<T>(a: T[]): readonly T[];
+
+  freeze<T extends Function>(f: T): T;
+
+  freeze<T>(o: T): Readonly<T>;
+}
+```
+
+参数说明：
+
 | 参数 | 说明           | 类型   |
-| ---- | -------------- | ------ |
-| O    | 将被冻结的对象 | object |
+| :--- | :------------- | :----- |
+| o    | 将被冻结的对象 | object |
+
+返回值：
 
 返回被冻结的对象。
 
-## 描述
+## 方法说明
 
 一个被冻结的对象再也不能被修改。
 
@@ -36,3 +54,8 @@ Object.freeze(O);
 如果一个属性的值是个对象，则这个对象中的属性是可以修改的，除非它也是个冻结对象。
 
 数组作为一种对象，被冻结，其元素不能被修改。没有数组元素可以被添加或移除。
+
+## 参考资料
+
+- [MDN: Object.freeze](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

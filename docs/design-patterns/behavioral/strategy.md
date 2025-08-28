@@ -6,7 +6,7 @@ group:
   title: 行为型
   order: 4
 title: 策略模式
-order: 4
+order: 9
 ---
 
 # 策略模式

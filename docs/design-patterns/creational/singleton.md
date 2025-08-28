@@ -6,82 +6,54 @@ group:
   title: 创建型
   order: 2
 title: 单例模式
-order: 1
+order: 5
 ---
 
 # 单例模式
 
-**单例模式（Singleton）** 指保证一个类仅有一个实例，并提供一个访问它的全局访问点。
+单例模式（Singleton Pattern） 是一种创建型设计模式，其主要目的是确保一个类只有一个实例，并提供一个全局访问点以获取该实例。
 
-## 功能
+单例模式通常在以下情况下使用：
 
-- 单例模式能保证全局的唯一性，可以减少命名变量
-- 单例模式在一定情况下可以节约内存，减少过多的类生成需要的内存和运行时间
-- 把代码都放在一个类里面维护，实现了高内聚
+1. 一个全局对象负责协调系统的操作。
+2. 一个共享的资源，例如配置信息，需要在系统中的多个部分之间共享。
 
-优点：
+单例模式的关键特点包括：
 
-1. 提供了对唯一实例的受控访问
-2. 避免对共享资源的多重占用
-3. 节约系统资源
+1. 私有构造函数（Private Constructor）： 单例类通常会将其构造函数设为私有，以防止直接通过 new 关键字创建多个实例。
+2. 静态方法或属性提供访问点： 单例类通常提供一个静态方法或属性，用于获取该类的唯一实例。
+3. 延迟实例化（Lazy Instantiation）： 实例的创建通常是延迟的，即在第一次请求实例时才进行创建。
 
-缺点：
+下面是一个简单的 JavaScript 实现单例模式的示例：
 
-1. 扩展性差
-2. 职责过重
+```typescript
+class Singleton {
+  // 私有变量，用于存储唯一实例
+  static instance = null;
 
-## 代码示例
+  // 私有构造函数
+  constructor() {
+    if (!Singleton.instance) {
+      // 如果实例不存在，则创建实例
+      Singleton.instance = this;
+    }
 
-全局作用域中的全局变量不是单例模式，全局变量会存在很大的隐患，随着项目的体积和功能日益增大，很容易出现命名冲突、作用域内变量污染和变量覆盖等问题，给开发人员带来很多苦恼。
-
-所以要减少全局变量使用，即使用全局变量也要将污染降到最低。
-
-### 命名空间
-
-命名空间可以减少全局变量的数量，可以使用对象字面量将这一类的变量作为它的属性进行访问。
-
-```js
-var Singleton = {
-  fun1: function () {
-    console.log('fun1');
-  },
-  fun2: function () {
-    console.log('fun2');
-  },
-};
-```
-
-### 使用闭包封装私有变量
-
-使用 IIFI 立即执行函数表达式，让 JavaScript 编译器不在认为这是一个函数声明，而是 **立即执行函数**，将私有变量保存在它的闭包环境中，暴露可以访问私有变量的接口。类似创建一个块级作用域，和其他作用域的变量隔离。
-
-```js
-var Singleton = (function () {
-  let instance;
-
-  function createInstance() {
-    var object = new Object('I am the instance');
-    return object;
+    // 返回唯一实例
+    return Singleton.instance;
   }
 
-  return {
-    getInstance: function () {
-      if (!instance) {
-        instance = createInstance();
-      }
-      return instance;
-    },
-  };
-})();
-
-function run() {
-  const instance1 = Singleton.getInstance();
-  const instance2 = Singleton.getInstance();
-
-  alert('Same instance? ' + (instance1 === instance2));
+  // 公共方法
+  showMessage() {
+    console.log("Hello, I am a Singleton!");
+  }
 }
 
-run();
+// 使用单例模式
+const singleton1 = new Singleton();
+singleton1.showMessage();  // 输出：Hello, I am a Singleton!
+
+const singleton2 = new Singleton();
+console.log(singleton1 === singleton2);  // 输出：true，因为它们是同一个实例
 ```
 
-### 惰性单例
+在这个例子中，通过构造函数的私有性和静态属性来确保只有一个实例，并通过 `showMessage` 方法来验证单例的存在。使用单例模式可以确保在整个应用程序中只有一个实例，避免了不必要的资源浪费和复杂性。

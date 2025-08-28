@@ -6,7 +6,7 @@ group:
   title: 行为型
   order: 4
 title: 观察者模式
-order: 2
+order: 7
 ---
 
 # 观察者模式

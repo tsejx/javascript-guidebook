@@ -16,13 +16,27 @@ order: 22
 
 ## 语法
 
+语法：
+
 ```js
 str.normalize([form]);
 ```
 
-| 参数   | 说明                                                                      | 类型   |
-| ------ | ------------------------------------------------------------------------- | ------ |
-| `form` | 可选，四种 Unicode 正规形式（Unicode Normalization Form），默认值为 `NFC` | string |
+类型声明：
+
+```ts
+interface String {
+  normalize(form: 'NFC' | 'NFD' | 'NFKC' | 'NFKD'): string;
+
+  normalize(form?: string): string;
+}
+```
+
+参数说明：
+
+| 参数 | 说明                                                                      | 类型   |
+| :--- | :------------------------------------------------------------------------ | :----- |
+| form | 可选，四种 Unicode 正规形式（Unicode Normalization Form），默认值为 `NFC` | string |
 
 可选值：
 
@@ -35,7 +49,7 @@ str.normalize([form]);
 
 如果给 `form` 参数传入了上述四个字符串意外以外的参数，则会抛出 `RangeError` 异常。
 
-## 示例
+## 代码示例
 
 ```js
 // U+1E9B: LATIN SMALL LETTER LONG S WITH DOT ABOVE
@@ -68,3 +82,8 @@ str.normalize('NFKC'); // "\u1E69"
 // U+0307: COMBINING DOT ABOVE
 str.normalize('NFKD'); // "\u0073\u0323\u0307"
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.normalize](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
+- [TypeScript: lib.es2015.core.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es2015.core.d.ts)

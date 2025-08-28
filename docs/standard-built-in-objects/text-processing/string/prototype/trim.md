@@ -16,15 +16,27 @@ order: 42
 
 ## 语法
 
+语法：
+
 ```js
 str.trim();
 ```
 
+类型声明：
+
+```ts
+interface String {
+  trim(): string;
+}
+```
+
+返回值：
+
 `trim()` 方法并不影响原字符串本身，它返回的是一个新的字符串。
 
-## 示例
+## 代码示例
 
-### 代码示例
+### 基本用法
 
 ```js
 var foo = '   foo  ';
@@ -42,7 +54,7 @@ bar.trim();
 // 'bar'
 ```
 
-### Polyfill
+### 兼容性代码
 
 ```js
 if (!String.prototype.trim) {
@@ -51,3 +63,8 @@ if (!String.prototype.trim) {
   };
 }
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.trim](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/trim)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

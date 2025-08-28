@@ -18,11 +18,10 @@ order: 3
 语法：
 
 ```ts
-Object.create(o: object | null): any;
-Object.create(o: object | null, properties: PropertyDescriptorMap & ThisType<any>): any;
+Object.create(o [, properties]);
 ```
 
-类型声明拓展：
+类型声明：
 
 ```ts
 interface PropertyDescriptor {
@@ -39,21 +38,27 @@ interface PropertyDescriptorMap {
 }
 
 interface ThisType<T> {}
+
+interface ObjectConstructor {
+  create(o: object | null): any;
+
+  create(o: object | null, properties: PropertyDescriptorMap & ThisType<any>): any;
+}
 ```
 
 参数说明：
 
-| 参数         | 说明                                                                                 | 类型   |
-| :----------- | :----------------------------------------------------------------------------------- | ------ |
-| `o`          | 新创建对象指向的原型对象                                                             | object |
-| `properties` | 可选参数。添加到新创建对象的可枚举属性（即自身定义的属性，而不是原型链上的枚举属性） | object |
+| 参数       | 说明                                                                                 | 类型   |
+| :--------- | :----------------------------------------------------------------------------------- | :----- |
+| o          | 新创建对象指向的原型对象                                                             | object |
+| properties | 可选参数。添加到新创建对象的可枚举属性（即自身定义的属性，而不是原型链上的枚举属性） | object |
 
-⚠️ **注意**：
+**注意**：
 
 - 如果 `properties` 参数不是 `null` 或对象，则抛出一个 TypeError 异常
 - 返回指定原型对象和可枚举属性的新对象
 
-## 示例
+## 代码示例
 
 ### 类式继承
 
@@ -87,3 +92,8 @@ console.log(rect instanceof Retangle);
 console.log(rect instanceof Shape);
 // true
 ```
+
+## 参考资料
+
+- [MDN: Object.create](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

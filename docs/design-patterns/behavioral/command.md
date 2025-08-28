@@ -6,37 +6,73 @@ group:
   title: 行为型
   order: 4
 title: 命令模式
-order: 6
+order: 2
 ---
 
 # 命令模式
 
-**命令模式（Command Pattern）**：将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作（Action）模式或事务（Transaction）模式。
+命令模式（Command Pattern）是一种行为型设计模式，其主要目的是将请求封装成对象，以便对请求的参数化、排队、操作、以及日志记录等进行处理。这使得我们能够在不同的请求发送者和接收者之间解耦，同时也能够轻松地添加新的命令，实现撤销和恢复操作。
 
-### 模式概述
+在命令模式中，通常涉及以下几种角色：
 
-- **解决问题**：在软件系统中，行为请求者与行为实现者通常是一种紧耦合的关系，但某些场合，比如需要对行为进行记录、撤销或重做、事务等处理时，这种无法抵御变化的紧耦合的设计就不太合适。
-- **何时使用**：在某些场合，比如要对行为进行"记录、撤销/重做、事务"等处理，这种无法抵御变化的紧耦合是不合适的。在这种情况下，如何将"行为请求者"与"行为实现者"解耦？将一组行为抽象为对象，可以实现二者之间的松耦合。
-- **如何解决**：通过调用者调用接受者执行命令，顺序：调用者→接受者→命令。
-- **核心代码**：定义三个角色：1、received 真正的命令执行对象 2、Command 3、`invoker` 使用命令对象的入口
-- **应用实例**：
-  -
-- **优点**：
-  - 降低耦合度
-  - 新的命令可以很容易添加到系统中去
-- **缺点**：
-  - 使用命令模式可能会导致某些系统有过多的具体命令类
-- **使用场景**：
-  - 认为是命令的地方都可以使用命令模式
-    - GUI 中每一个按钮都是一条命令
-    - 模拟 CMD
+1. **命令（Command）**： 定义了执行操作的接口。具体的命令类实现了这个接口，并包含了执行该操作所需的具体逻辑。
+2. **具体命令（Concrete Command）**： 实现了命令接口，封装了对接收者的调用。具体命令负责调用接收者的相应操作。
+3. **接收者（Receiver）**： 知道如何执行与请求相关的操作。实际的业务逻辑将在接收者中执行。
+4. **调用者/请求者（Invoker）**： 请求的发送者，负责向命令对象发起请求。调用者不需要知道命令的具体实现，只需要知道如何发起请求。
+5. **客户端（Client）**： 创建具体命令对象并将其与接收者关联，构建命令和调用者之间的关系。
 
-### 模式结构
+下面是一个简单的 JavaScript 伪代码示例，演示了命令模式的基本结构：
 
-职责链模式包含如下角色：
+```typescript
+// 命令接口
+class Command {
+  execute() {
+    throw new Error("This method should be overridden by concrete commands");
+  }
+}
 
-- Command（抽象命令类）：
-- ConcreteCommand（具体命令类）：
-- Invoker（调用者）：
-- Receiver（接收者）：
-- Client（客户类）：
+// 具体命令
+class ConcreteCommand extends Command {
+  constructor(receiver) {
+    super();
+    this.receiver = receiver;
+  }
+
+  execute() {
+    this.receiver.action();
+  }
+}
+
+// 接收者
+class Receiver {
+  action() {
+    console.log("Receiver: Performing action");
+  }
+}
+
+// 请求者
+class Invoker {
+  constructor(command) {
+    this.command = command;
+  }
+
+  setCommand(command) {
+    this.command = command;
+  }
+
+  executeCommand() {
+    console.log("Invoker: Executing command");
+    this.command.execute();
+  }
+}
+
+// 客户端
+const receiver = new Receiver();
+const concreteCommand = new ConcreteCommand(receiver);
+const invoker = new Invoker(concreteCommand);
+
+// 客户端发起请求
+invoker.executeCommand();
+```
+
+在这个示例中，`Command` 是命令接口，`ConcreteCommand` 是具体的命令类，`Receiver` 是接收者，实际业务逻辑将在这里执行。`Invoker` 是请求者，负责发起命令的执行。客户端创建了一个具体的命令对象，并将其与接收者关联，然后通过请求者发起了命令的执行。这种方式使得命令的发起者和执行者解耦，同时也为实现撤销、恢复等操作提供了方便。

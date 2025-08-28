@@ -6,7 +6,7 @@ group:
   title: 行为型
   order: 4
 title: 迭代器模式
-order: 10
+order: 4
 ---
 
 # 迭代器模式

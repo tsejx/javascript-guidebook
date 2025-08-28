@@ -6,7 +6,7 @@ group:
   title: 行为型
   order: 4
 title: 中介者模式
-order: 8
+order: 5
 ---
 
 # 中介者模式

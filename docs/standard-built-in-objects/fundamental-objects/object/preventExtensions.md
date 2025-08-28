@@ -15,29 +15,43 @@ order: 17
 
 ## 语法
 
+语法：
+
 ```js
-Object.preventExtensions(O);
+Object.preventExtensions(o);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  preventExtensions<T>(o: T): T;
+}
+```
+
+参数说明：
+
 | 参数 | 说明                   | 类型   |
-| ---- | ---------------------- | ------ |
-| O    | 将标记为不可扩展的对象 | object |
+| :--- | :--------------------- | :----- |
+| o    | 将标记为不可扩展的对象 | object |
+
+返回值：
 
 返回处理后的对象。
 
-## 描述
+## 方法说明
 
 如果一个对象可以添加新的属性，则这个对象是可扩展的。
 
 `Object.preventExtensions` 能将对象标记为不可扩展，因此它将永远不会具有超出它被标记为不可扩展的 Properties。
 
-⚠️ **注意**：一般来说，不可扩展对象的属性可能仍然可被删除。
+**注意**：一般来说，不可扩展对象的属性可能仍然可被删除。
 
 该方法仅阻止添加自身的属性。但属性仍然可以添加到对象原型。
 
 一旦使其不可扩展，就无法再对象进行扩展。
 
-## 示例
+## 代码示例
 
 字面量方式创建的对象默认是可扩展的。
 
@@ -66,3 +80,8 @@ Object.preventExtensions(nonExtensible);
 Object.defineProperty(nonExtensible, 'new', { value: 5678 });
 // throw TypeError Exception
 ```
+
+## 参考资料
+
+- [MDN: Object.preventExtensions](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/preventExtensions)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

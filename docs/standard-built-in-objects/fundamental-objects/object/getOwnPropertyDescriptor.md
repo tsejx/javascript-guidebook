@@ -15,16 +15,39 @@ order: 8
 
 ## 语法
 
+语法：
+
 ```js
-Object.getOwnPropertyDescriptor(O, Property);
+Object.getOwnPropertyDescriptor(o, property);
 ```
 
-| 参数     | 说明                | 类型   |
-| -------- | ------------------- | ------ |
-| O        | 需要查找的目标对象  | object |
-| Property | 目标对象的 Property | string |
+类型声明：
 
-## 示例
+```ts
+declare type PropertyKey = string | number | symbol;
+
+interface PropertyDescriptor {
+  configurable?: boolean;
+  enumerable?: boolean;
+  value?: any;
+  writable?: boolean;
+  get?(): any;
+  set?(v: any): void;
+}
+
+interface ObjectConstructor {
+  getOwnPropertyDescriptor(o: any, p: PropertyKey): PropertyDescriptor | undefined;
+}
+```
+
+参数说明：
+
+| 参数     | 说明                | 类型   |
+| :------- | :------------------ | :----- |
+| o        | 需要查找的目标对象  | object |
+| property | 目标对象的 Property | string |
+
+## 代码示例
 
 ```js
 const foo = { a: 1 };
@@ -37,3 +60,8 @@ Object.getOwnPropertyDescriptor(foo, 'a');
 // 	configurable: true,
 // }
 ```
+
+## 参考资料
+
+- [MDN: Object.getOwnPropertyDescriptor](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

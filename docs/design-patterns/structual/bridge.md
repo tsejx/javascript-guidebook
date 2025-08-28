@@ -6,40 +6,110 @@ group:
   title: 结构型
   order: 3
 title: 桥接模式
-order: 5
+order: 2
 ---
 
 # 桥接模式
 
-桥接模式（Bridge Pattern）：将抽象部分与它的实现部分分离，使它们都可以独立地变化。它是一种对象结构型模式，又称为柄体（Handle and Body）模式或接口（Interface）模式。
+桥接模式（Bridge Pattern）是一种结构型设计模式，它将抽象部分与实现部分分离，使它们可以独立变化，而不影响彼此。桥接模式主要用于处理具有多层次继承结构的情况，通过将抽象部分和实现部分分开，使得系统更加灵活。
 
-### 模式结构
+在桥接模式中，有两个关键的角色：
 
-桥接模式包含如下角色：
+1. **抽象类（Abstraction）**： 定义了抽象部分的接口，并维护一个指向实现部分的引用。
+2. **实现类（Implementor）**： 定义了实现部分的接口，被抽象类引用。
+3. **具体抽象类（Concrete Abstraction）**： 继承自抽象类，实现抽象类定义的接口。
+4. **具体实现类（Concrete Implementor）**： 继承自实现类，实现实现类定义的接口。
 
-- Abstraction（抽象类）：定义抽象接口，拥有一个 Implementor 类型的对象引用
-- RefinedAbstraction（扩充抽象类）：扩展 Abstraction 中的接口定义
-- Implementor（实现类接口）：是具体实现的接口，Implementor 和 RefinedAbstraction 接口并不一定完全一致，实际上这两个接口可以完全不一样 Implementor 提供具体操作方法，而 Abstraction 提供更高层次的调用
-- ConcreteImplementor（具体实现类）：实现 Implementor 接口，给出具体实现
+以下是一个通俗易懂的 JavaScript 示例，假设我们要设计一个绘制不同形状的图形的系统：
 
-### 模式分析
+```typescript
+// 实现类接口
+class DrawingAPI {
+  drawCircle(x, y, radius) {}
+  drawSquare(x, y, side) {}
+}
 
-理解桥接模式，重点需要理解如何将抽象化（Abstraction）与实现化（Implementation）脱耦，使得二者可以独立地变化。
+// 具体实现类 - SVG 绘制
+class SVGDrawingAPI extends DrawingAPI {
+  drawCircle(x, y, radius) {
+    console.log(`Drawing a circle at (${x},${y}) with radius ${radius} using SVG`);
+  }
 
-- 抽象化：抽象化就是忽略一些信息，把不同的实体当作同样的实体对待。在面向对象中，将对象的共同性质抽取出来形成类的过程即为抽象化的过程。
-- 实现化：针对抽象化给出的具体实现，就是实现化，抽象化与实现化是一对互逆的概念，实现化产生的对象比抽象化更具体，是对抽象化事物的进一步具体化的产物。
-- 脱耦：脱耦就是将抽象化和实现化之间的耦合解脱开，或者说是将它们之间的强关联改换成弱关联，将两个角色之间的继承关系改为关联关系。桥接模式中的所谓脱耦，就是指在一个软件系统的抽象化和实现化之间使用关联关系（组合或者聚合关系）而不是继承关系，从而使两者可以相对独立地变化，这就是桥接模式的用意。
+  drawSquare(x, y, side) {
+    console.log(`Drawing a square at (${x},${y}) with side ${side} using SVG`);
+  }
+}
 
-### 优点和缺点
+// 具体实现类 - Canvas 绘制
+class CanvasDrawingAPI extends DrawingAPI {
+  drawCircle(x, y, radius) {
+    console.log(`Drawing a circle at (${x},${y}) with radius ${radius} using Canvas`);
+  }
 
-桥接模式的优点:
+  drawSquare(x, y, side) {
+    console.log(`Drawing a square at (${x},${y}) with side ${side} using Canvas`);
+  }
+}
 
-- 分离抽象接口及其实现部分。
-- 桥接模式有时类似于多继承方案，但是多继承方案违背了类的单一职责原则（即一个类只有一个变化的原因），复用性比较差，而且多继承结构中类的个数非常庞大，桥接模式是比多继承方案更好的解决方法。
-- 桥接模式提高了系统的可扩充性，在两个变化维度中任意扩展一个维度，都不需要修改原有系统。
-- 实现细节对客户透明，可以对用户隐藏实现细节。
+// 抽象类
+class Shape {
+  constructor(drawingAPI) {
+    this.drawingAPI = drawingAPI;
+  }
 
-桥接模式的缺点:
+  draw() {}
 
-- 桥接模式的引入会增加系统的理解与设计难度，由于聚合关联关系建立在抽象层，要求开发者针对抽象进行设计与编程。
-- 桥接模式要求正确识别出系统中两个独立变化的维度，因此其使用范围具有一定的局限性。
+  resize() {}
+}
+
+// 具体抽象类 - 圆
+class Circle extends Shape {
+  constructor(x, y, radius, drawingAPI) {
+    super(drawingAPI);
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+  }
+
+  draw() {
+    this.drawingAPI.drawCircle(this.x, this.y, this.radius);
+  }
+
+  resize(radius) {
+    this.radius = radius;
+  }
+}
+
+// 具体抽象类 - 正方形
+class Square extends Shape {
+  constructor(x, y, side, drawingAPI) {
+    super(drawingAPI);
+    this.x = x;
+    this.y = y;
+    this.side = side;
+  }
+
+  draw() {
+    this.drawingAPI.drawSquare(this.x, this.y, this.side);
+  }
+
+  resize(side) {
+    this.side = side;
+  }
+}
+
+// 客户端代码
+const svgDrawingAPI = new SVGDrawingAPI();
+const canvasDrawingAPI = new CanvasDrawingAPI();
+
+const circle = new Circle(1, 2, 3, svgDrawingAPI);
+const square = new Square(4, 5, 6, canvasDrawingAPI);
+
+circle.draw();
+square.draw();
+
+circle.resize(4);
+circle.draw();
+```
+
+在这个例子中，`DrawingAPI` 是实现类的接口，`SVGDrawingAPI` 和 `CanvasDrawingAPI` 是具体的实现类。`Shape` 是抽象类，`Circle` 和 `Square` 是具体的抽象类。通过这种设计，我们可以方便地切换不同的实现类，例如从 `SVG` 切换到 `Canvas` 绘制，而不需要修改 `Circle` 和 `Square` 类的代码。这样的设计使得抽象部分和实现部分可以独立演化，提高了系统的灵活性和可维护性。

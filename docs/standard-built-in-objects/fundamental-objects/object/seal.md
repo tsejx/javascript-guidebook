@@ -15,17 +15,31 @@ order: 18
 
 ## 语法
 
+语法：
+
 ```js
-Object.seal(O);
+Object.seal(o);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  seal<T>(o: T): T;
+}
+```
+
+参数说明
+
 | 参数 | 说明             | 类型   |
-| ---- | ---------------- | ------ |
-| O    | 将要被密封的对象 | object |
+| :--- | :--------------- | :----- |
+| o    | 将要被密封的对象 | object |
+
+返回值：
 
 返回处理后的对象。
 
-## 示例
+## 代码示例
 
 `Object.seal` 处理后的对象将不可扩展。
 
@@ -58,3 +72,8 @@ console.log(Object.getOwnPropertyDescriptors(foo));
 console.log(Object.isSealed(foo));
 // true
 ```
+
+## 参考资料
+
+- [MDN: Object.seal](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/seal)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

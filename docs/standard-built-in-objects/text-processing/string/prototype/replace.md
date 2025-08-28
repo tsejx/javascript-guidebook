@@ -16,18 +16,35 @@ order: 26
 
 ## 语法
 
+语法：
+
 ```js
 str.replace(pattern, replacement);
 ```
 
-| 参数          | 说明                                                       | 类型              |
-| :------------ | :--------------------------------------------------------- | :---------------- |
-| `pattern`     | 指定的正则表达式模式的 RegExp 对象的实例。也可以是字符串。 | string / RegExp   |
-| `replacement` | 用于替换的字符串，或返回替换字符串的函数。                 | string / function |
+类型声明：
+
+```ts
+interface String {
+  replace(searchValue: string | RegExp, replaceValue: string): string;
+
+  replace(
+    searchValue: string | RegExp,
+    replacer: (substring: string, ...args: any[]) => string
+  ): string;
+}
+```
+
+参数说明：
+
+| 参数        | 说明                                                     | 类型              |
+| :---------- | :------------------------------------------------------- | :---------------- |
+| pattern     | 指定的正则表达式模式的 RegExp 对象的实例。也可以是字符串 | string / RegExp   |
+| replacement | 用于替换的字符串，或返回替换字符串的函数                 | string / function |
 
 一个部分或全部匹配由替代模式所取代的新的字符串。
 
-## 描述
+## 方法说明
 
 - 如果参数 `pattern` 是字符串，则 `replace()` 函数将直接根据该字符串进行精确匹配，而不会试图转换为正则表达式，并且 **只替换第一个匹配到** 的子字符串
 - 参数 `replacement` 可以使用以下以 `$` 开头的 **匹配变量** 来动态确定用于替换的字符串内容（参数 `pattern` 为正则表达式时才生效）
@@ -57,9 +74,9 @@ str.replace(pattern, replacement);
 
 精确的参数个数依赖于 `replace()`的第一个参数是否是一个正则表达式对象， 以及这个正则表达式中指定了多少个括号子串。
 
-## 示例
+## 代码示例
 
-### 代码示例
+### 基本用法
 
 在下面的例子中，`replace()` 中使用了正则表达式及忽略大小写标示。
 
@@ -204,3 +221,8 @@ const res = str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 console.log(res);
 // 123,456,789
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.replace](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

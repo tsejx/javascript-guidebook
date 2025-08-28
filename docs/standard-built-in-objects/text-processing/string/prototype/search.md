@@ -16,26 +16,38 @@ order: 28
 
 ## 语法
 
+语法：
+
 ```js
 str.search(regexp);
 ```
 
-| 参数     | 说明                                                                                   | 类型   |
-| -------- | -------------------------------------------------------------------------------------- | ------ |
-| `regexp` | 包含正则表达式模式的 `RegExp` 对象的实例。也可以是包含正则表达式模式的变量名或字符串。 | RegExp |
+类型声明：
+
+```ts
+interface String {
+  search(regexp: string | RegExp): number;
+}
+```
+
+参数说明：
+
+| 参数   | 说明                                                                                   | 类型   |
+| :----- | :------------------------------------------------------------------------------------- | :----- |
+| regexp | 包含正则表达式模式的 `RegExp` 对象的实例。也可以是包含正则表达式模式的变量名或字符串。 | RegExp |
 
 如果参数 `regexp` 不是正则表达式对象（RegExp），而是字符串类型，则 `search()` 先将该字符串传递给 RegExp 的构造函数，将其转换为一个 RegExp 对象。
 
 - 如果匹配成功，则 `search()` 返回正则表达式在字符串中首次匹配项的**索引**。
 - 如果没有查找到任何匹配，则返回 -1。
 
-## 描述
+## 方法说明
 
 当你想要知道字符串中是否存在某个模式（pattern）时可使用 `search`，类似于正则表达式的 `test` 方法。当要了解更多匹配信息时，可使用 `match`（会更慢），该方法类似于正则表达式的 `exec` 方法。
 
-## 示例
+## 代码示例
 
-### 代码示例
+### 基本用法
 
 ```js
 var str = 'Code123Player34Code456';
@@ -56,3 +68,8 @@ str.search(/James/);
 str.search(/player/i);
 // 7
 ```
+
+## 参考资料
+
+- [MDN: Array.prototype.search](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/search)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)

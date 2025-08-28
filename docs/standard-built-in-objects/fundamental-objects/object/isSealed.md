@@ -15,21 +15,35 @@ order: 15
 
 ## 语法
 
+语法：
+
 ```js
-Object.isSealed(O);
+Object.isSealed(o);
 ```
 
+类型声明：
+
+```ts
+interface ObjectConstructor {
+  isSealed(o: any): boolean;
+}
+```
+
+参数说明：
+
 | 参数 | 说明               | 类型   |
-| ---- | ------------------ | ------ |
-| O    | 指定用于检测的对象 | object |
+| :--- | :----------------- | :----- |
+| o    | 指定用于检测的对象 | object |
+
+返回值：
 
 返回 Boolean 类型的值表示用于检测的对象是否可扩展。
 
-## 描述
+## 方法说明
 
 密封对象不可扩展，自身 Property 不可配置并且不可删除（但不一定是不可写）对象。
 
-## 示例
+## 代码示例
 
 ```js
 let foo = { a: 1, b: 2 };
@@ -66,3 +80,8 @@ console.log(Object.seal(foo));
 console.log(Object.getOwnPropertyDescriptor(foo, 'a'));
 // { value: 1, writable: true, enumerable: true, configurable: false }
 ```
+
+## 参考资料
+
+- [MDN: Object.isSealed](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/isSealed)
+- [TypeScript: lib.es5.d.ts](https://github.com/microsoft/TypeScript/blob/main/lib/lib.es5.d.ts)
